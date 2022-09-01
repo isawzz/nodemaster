@@ -3,7 +3,7 @@ var Pollmode = 'auto';
 var Info, ColorDi, Items = {}, DA = {}, Card = {}, TO = {}, Counter = { server: 0 }, Socket = null;
 var uiActivated = false, Selected, Turn, Prevturn;
 var S = {}, Z, U = null, PL, G, UI = {}, Users, Tables, Basepath, Serverdata = {}, Clientdata = {};
-var dTable //, dTitle; //, dUsers, dGames, dTables, dLogo, dLoggedIn, dPlayerNames, dInstruction, dError, dMessage, dStatus, dTableName, dGameControls, dUserControls, dMoveControls, dSubmitMove, dPlayerStats;
+var dTable, dHeader, dFooter, dMessage, dPuppet; //, dTitle; //, dUsers, dGames, dTables, dLogo, dLoggedIn, dPlayerNames, dInstruction, dError, dMessage, dStatus, dTableName, dGameControls, dUserControls, dMoveControls, dSubmitMove, dPlayerStats;
 var Config, Syms, SymKeys, ByGroupSubgroup, KeySets, C52, Cinno, C52Cards;
 var FORCE_REDRAW = false, TESTING = false;
 var ColorThiefObject, SelectedItem, SelectedColor;
@@ -1122,6 +1122,7 @@ const STYLE_PARAMS = {
 	z: 'z-index'
 };
 function getStyleProp(elem, prop) { return getComputedStyle(elem).getPropertyValue(prop); }
+function mStyleGet(elem,prop){return mGetStyle(elem,prop);}
 function mGetStyle(elem, prop) {
 	let val;
 	elem = toElem(elem);
@@ -1427,6 +1428,25 @@ function mText(text, dParent, styles, classes) {
 	if (isdef(styles)) mStyle(d, styles);
 	if (isdef(classes)) mClass(d, classes);
 	return d;
+}
+function mTextWidth(txt,fz=16){
+	//let font = mStyleGet(dTable,'font');
+	//console.log('fz',fz,'font',font);
+	//let w=getTextWidth(txt,`${mStyleGet(dTable,'font')}`);
+	let len = txt.length;
+	let wprox=(len+1.5)*fz/2;
+
+	//console.log('w',w,wprox)
+	return wprox;
+
+}
+function getTextWidth(text, font) { //mit canvas
+	// re-use canvas object for better performance
+	var canvas = getTextWidth.canvas || (getTextWidth.canvas = document.createElement('canvas'));
+	var context = canvas.getContext('2d');
+	context.font = font;
+	var metrics = context.measureText(text);
+	return metrics.width;
 }
 function mTextArea(rows, cols, dParent, styles = {}, id) {
 	let html = `<textarea id="${id}" rows="${rows}" cols="${cols}" wrap="hard"></textarea>`;
