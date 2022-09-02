@@ -1562,6 +1562,30 @@ function aFlip(d, ms = 300, x = 0, y = 1, easing = 'cubic-bezier(1,-0.03,.27,1)'
 	// return d.animate({ 'transform-origin': '50% 50%',transform: `scale(${x}px,${y}px)` }, {easing:easing,duration:ms}); 
 	return d.animate({ transform: `scale(${2}px,${y}px)` }, { easing: easing, duration: ms });
 }
+function aRollby(elem, dx, ms = 3000) {
+	anime({ targets: elem, translateX: dx, rotate: '1turn', duration: ms });
+}
+function aJumpby(elem, h = 40, ms = 1000) {
+	anime({
+		targets: elem,
+		keyframes: [
+			// {translateY: 0, scaleX:1, scaleY:1}, 
+			{ translateY: 2, scaleX: 1.05, scaleY: .95 },
+			{ translateY: 2, scaleX: 1.05, scaleY: .95 },
+			{ translateY: -h, scaleX: .9, scaleY: 1.1 },
+			{ translateY: -h, scaleX: .9, scaleY: 1.1 },
+			{ translateY: 0, scaleX: 1, scaleY: 1 },
+			{ translateY: -7, scaleX: 1, scaleY: 1 },
+			{ translateY: 0, scaleX: 1, scaleY: 1 },
+			{ translateY: 0, scaleX: 1, scaleY: 1 },
+			{ translateY: 0, scaleX: 1, scaleY: 1 },
+			{ translateY: 0, scaleX: 1, scaleY: 1 },
+		],
+		duration: 1000,
+		easing: 'easeInOutSine', //'easeOutElastic(1, .8)',
+		//loop: 2,
+	});
+}
 
 //#endregion
 

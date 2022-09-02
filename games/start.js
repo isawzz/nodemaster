@@ -8,47 +8,35 @@ async function start() {
 	initui(); //macht dHeader,dMessage,dTable,dFooter und den monkey: dPuppet
 
 	//make puppet jump every 10 seconds
-	TO.puppet = setInterval(()=>anime({ targets: dPuppet, translateY: -12, rotate: '1turn', direction: 'alternate',duration: 1000 }),5000);
-	
+	TO.puppet = setInterval(monkey_jump, rNumber(5000,10000));
+
 
 }
 
-function initui(){
-	let htop=105;
+function initui() {
+	let htop = 105;
 
-	dPuppet = miPic('monkey', document.body, { position: 'fixed', fz: 40, left: 40, top: htop-45 });
-	anime({ targets: dPuppet, translateX: 250, rotate: '1turn', duration: 3000 });
+	dPuppet = miPic('monkey', document.body, { position: 'fixed', fz: 40, left: 40, top: htop - 45 });
+	aRollby(dPuppet, 250);
 
-	dHeader = mBy('dHeader'); mStyle(dHeader, { h: htop-22, w: '100vw' });
+	dHeader = mBy('dHeader'); mStyle(dHeader, { h: htop - 22, w: '100vw' });
 
-	mButton('TEST', () => mStyle('dTable', { h: rNumber(500,1500) }), dHeader);
+	//mButton('TEST', () => mStyle('dTable', { h: rNumber(500, 1500) }), dHeader);
+	// mButton('TEST', monkey_jump, dHeader);
 
 	dMessage = mBy('dMessage'); mStyle(dMessage, { h: 22, w: '100vw' });
 
-	let hmintable=`calc( 90vh - ${htop}px )`;
+	let hmintable = `calc( 90vh - ${htop}px )`;
 	dTable = mBy('dTable'); mStyle(dTable, { position: 'relative', hmin: hmintable, wmin: '100%' }); mClass(dTable, 'wood');
 
-	let txt='copyright 2022 Vidulus Ludorum';
-	let fz = mStyleGet(dTable,'fz');
-	let wprox = mTextWidth(txt,fz);
-	dFooter = mDiv(dTable, { position: 'absolute', bottom: -22, left: `calc( 50vw - ${wprox/2}px )` }, 'dFooter', txt); mCenterFlex(dFooter);
+	let txt = 'copyright 2022 Vidulus Ludorum';
+	let fz = mStyleGet(dTable, 'fz');
+	let wprox = mTextWidth(txt, fz);
+	dFooter = mDiv(dTable, { position: 'absolute', bottom: -22, left: `calc( 50vw - ${wprox / 2}px )` }, 'dFooter', txt); mCenterFlex(dFooter);
 
-	//dFooter = mBy('dFooter'); mStyle(dFooter,{position:'absolute',bottom:-20});dFooter.innerHTML='copyright 2022 vidulusludorum';
-
-
-
-	console.log('dTable', dTable)
-	//jetzt wie soll eine file upload form aussehen?
-	//ich will beliebiges file uploaden koennen, aber nur als admin oder mit authorization
-	//specify upload folder default ./base/uploads
-	//specify filename (default orig)
-	//dTable soll min von 600 haben
-
-
-	//wie hab ich die texture wood gemacht>
-
-
-
+	//console.log('dTable', dTable)
 }
+function monkey_jump() { aJumpby(dPuppet, 60); }
+
 
 
