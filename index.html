@@ -1,25 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
-	<style>
-		a{
-			display:block;
-			font-size:28px;
-			width:94%;
-			margin-left:10%;
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>node world</title>
+		<link rel="icon" href="../base/assets/icons/belinda.png" style="height: 40px" />
+		<link rel="stylesheet" href="../base/assets/fonts/fonts.css" />
+		<style>
+			a {
+				display: block;
+				font-size: 28px;
+				width: 94%;
+				margin-left: 10%;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>welcome to land of everything</h1>
+		<h2>examples:</h2>
+		<a href="./games/index.html">games</a>
+		<a href="./plant/index.html">plant</a>
+		<a href="./tree/index.html">tree</a>
 
-		}
-	</style>
-</head>
-<body>
-	<h1>welcome to land of everything</h1>
-	<h2>examples:</h2>
-	<a href="./games/index.html">games</a>
-	<a href="./plant/index.html">plant</a>
-	<a href="./tree/index.html">tree</a>
-</body>
+		<script src="../base/alibs/anime.min.js"></script>
+		<script src="../base/alibs/jsyaml.js"></script>
+		<script src="../basejs/basemin.js"></script>
+		<script>
+			onload = start;
+
+			async function start() {
+				await load_syms();
+				mPuppet('bell pepper',null,{left:200,top:10});
+			}
+		</script>
+	</body>
 </html>
