@@ -7,8 +7,7 @@ async function start() {
 	await load_syms();
 	initui(); //macht dHeader,dMessage,dTable,dFooter und den monkey: dPuppet
 
-	//make puppet jump every 10 seconds
-	TO.puppet = setInterval(monkey_jump, rNumber(5000,10000));
+	TO.puppet = setInterval(monkey_jump, rNumber(5000,10000)); //make puppet jump every random seconds
 
 
 }
@@ -36,7 +35,7 @@ function initui() {
 
 	//console.log('dTable', dTable)
 }
-function monkey_jump() { aJumpby(dPuppet, 60); }
+function monkey_jump() { aJumpby(dPuppet, rNumber(40,60)); }
 
 
 

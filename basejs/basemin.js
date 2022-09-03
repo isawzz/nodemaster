@@ -4256,7 +4256,7 @@ async function load_assets_fetch(basepath, baseminpath) {
 }
 async function load_syms(path){
 	//sollten in base/assets/allSyms.yaml sein!
-	if (nundef(path)) path = './base/assets/';
+	if (nundef(path)) path = '../base/assets/';
 	Syms = await route_path_yaml_dict(path + 'allSyms.yaml');
 	SymKeys = Object.keys(Syms);
 	ByGroupSubgroup = await route_path_yaml_dict(path + 'symGSG.yaml');

@@ -3,8 +3,8 @@
 		"baseUrl": ".",
 		"paths": {
 			"@/base/*": ["./base/js/*"],
-			"@/alibs/*": ["./base/alibs/*"],
-			"@/*": ["./js/*"]
+			// "@/alibs/*": ["./base/alibs/*"],
+			"@/*": ["./basejs/*"]
 		}
 	}
 }
