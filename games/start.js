@@ -7,7 +7,7 @@ async function start() {
 	await load_syms();
 	initui(); //macht dHeader,dMessage,dTable,dFooter und den monkey: dPuppet
 
-	TO.puppet = setInterval(monkey_jump, rNumber(5000,10000)); //make puppet jump every random seconds
+	TO.puppet = setInterval(monkey_jump, rNumber(5000, 10000)); //make puppet jump every random seconds
 
 
 }
@@ -15,8 +15,7 @@ async function start() {
 function initui() {
 	let htop = 105;
 
-	dPuppet = miPic('monkey', document.body, { position: 'fixed', fz: 40, left: 40, top: htop - 45 });
-	aRollby(dPuppet, 250);
+	mPuppet('monkey', null, { h: htop - 18 });
 
 	dHeader = mBy('dHeader'); mStyle(dHeader, { h: htop - 22, w: '100vw' });
 
@@ -35,7 +34,7 @@ function initui() {
 
 	//console.log('dTable', dTable)
 }
-function monkey_jump() { aJumpby(dPuppet, rNumber(40,60)); }
+function monkey_jump() { aJumpby(dPuppet, rNumber(40, 60)); }
 
 
 

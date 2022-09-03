@@ -1,87 +1,89 @@
-var pi, delta, len, xstart, ystart, w, h;
-var PI=Math.pi;
-var pts = [],speed=500;
-var n = 10,i=0; //total number of branches
-var interval_id=null, factor=.7, angle=PI/4;
+
+var PI = Math.pi, interval_id, angle, factor = .67, tree = [], leaves = [], jittering = false;
+
+function add_element(f){
+	if (tree.length == 0) { addlayer(); return; }
+	let root = firstCond(tree, x => !x.finished);
+	if (!root) {
+		console.log('tree is finished!');
+		return;
+	}
+	if (root) f(root);
+}
 
 function setup() {
-	[w, h] = [600, 500]; //windowWidth,windowHeight];
-	createCanvas(w, h);
-	slider = createSlider(0,TWO_PI,PI/4,PI/40);
+	show_jittering();
+	createCanvas(600, 500); //windowWidth
+	newtree();
 }
-function drawtree(){
-	background(51);
-	stroke(255);
-	translate(w/2,h);
-	angle=slider.value();
-	branches(100);
-	//noLoop();
-}
-function branches(len){
-	line(0,0,0,-len);
-	translate(0,-len);
-	if (len>4) {
-		push();
-		rotate(angle);
-		branches(len*factor);
-		pop();
-		push();
-		rotate(-angle);
-		branches(len*factor);
-		pop();
-	}
+function newtree() {
+	tree = []; leaves = []; numlayers = 0;
+
+	//tree[1] = root.branch(PI / 4);
+	//tree[2] = root.branch(-PI / 4);
+	// slider = createSlider(0,TWO_PI,PI/4,PI/40);
 }
 function draw() {
-	drawtree();
-	//drawbranch();
-}
-function drawbranch(){
-	if (i<n) {
-		branch();
-		i++;
-	} else {
-		clearInterval(interval_id); interval_id = null;
-		console.log('tree is complete w/', n, 'branches!')
-	}
-	noLoop();
-}
-function branch() {
+	background(51);
 
-	//randomly select a point
-	//from that point, draw 1|2 branches
-	//replace point by 1|2 new points
-	let p = rChoose(pts);
-	if (i == 0) {
-		//just 1 main branch straight up
-		let [x, y, l] = [p.x, p.y, p.l];
-		let pnew = { x: x, y: y + l, l: l *factor };
-		line(x, y, pnew.x, pnew.y);
-		arrReplace(pts, [p], [pnew]);
-	} else {
-		//2 branches left up, right up
-		let [x, y, l] = [p.x, p.y, p.l];
-		let pnew1 = { x: x - 10, y: y - l, l: l  *factor };
-		line(x, y, pnew1.x, pnew1.y);
-		let pnew2 = { x: x + 10, y: y - l, l: l  *factor };
-		line(x, y, pnew2.x, pnew2.y);
-		arrReplace(pts, [p], [pnew1, pnew2]);
+	for (let i = 0; i < tree.length; i++) {
+		tree[i].show();
+		if (jittering) tree[i].jitter();
+	}
+	// angle=slider.value();
+	for (let i = 0; i < leaves.length; i++) {
+		let l = leaves[i].current;
+		noStroke();
+		fill(0, 255, 100, 100); //last one is alpha!
+		ellipse(l.x, l.y, 8, 8);
+		if (jittering) leaves[i].current.y += random(0, 2);
 	}
 
+	//noLoop();
 }
+function show_jittering() { let b = mBy('bJittering'); b.innerHTML = jittering ? 'repair' : 'desintegrate';  }
+function addleaf(root) {
+	let leaf = { current: root.get_healthy_end().copy(), orig: root.get_healthy_end().copy() }; //copy the vector
+	leaves.push(leaf);
+	root.finished = true;
+}
+function addfork(root) {
+	for (const a of [PI / 4, -PI / 6]) {
+		let b = root.branch(a);
+		root.children.push(b);
+		tree.push(b);
+	}
+	root.finished = true;
+}
+var numlayers = 0;
+function addlayer() {
+	if (tree.length == 0) {
+		let a = createVector(width / 2, height);
+		let b = createVector(width / 2, height - 100);
+		let root = tree[0] = new Branch(a, b);
 
-function animate_tree(){
-	interval_id = setInterval(next,speed);
-}
-
-function next() {
-	draw();
-}
-function start_animation() {
-	if (interval_id) {
-		//i=0;
+	} else if (numlayers === 6) {
+		for (let i = tree.length - 1; i >= 0; i--) {
+			if (!tree[i].finished) addleaf(tree[i]);
+		}
 		clearInterval(interval_id);
+
+
+	} else {
+		for (let i = tree.length - 1; i >= 0; i--) {
+			if (!tree[i].finished) addfork(tree[i]);
+		}
+		numlayers++;
 	}
-	i=0;
-	animate_tree();
+
+
 }
+
+
+
+
+
+
+
+
 

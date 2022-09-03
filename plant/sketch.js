@@ -1,119 +1,73 @@
-//variables: A B
-//axiom: A
-//rules: A->AB, B->A
-var axiom, rules, factor, angle, max, sentence, interval_id;;
-const Simple = {
-	axiom: 'A',
-	rules: [
-		{ aus: 'A', mach: 'AB' },
-		{ aus: 'B', mach: 'A' }
-	],
-};
-const Algae = {
-	axiom: 'A',
-	rules: [
-		{ aus: 'A', mach: 'A+[B]-[A]' },
-		{ aus: 'B', mach: 'AA' }
-	],
-	angle: 25,
-	factor: .9,
-	max: 5,
-};
-const Complex = {
-	axiom: 'F',
-	rules: [
-		{ aus: 'F', mach: 'FF+[+F-F-F]-[-F+F+F]' }
-	],
-	angle: 25,
-	factor: .5,
-	max: 6,
-};
-var system = Algae, len = 100, angle;
+// Coding Rainbow
+// Daniel Shiffman
+// http://patreon.com/codingtrain
+// Code for: https://youtu.be/E1B4UoSQMFw
 
-var numgen=0;
+// variables: A B
+// axiom: A
+// rules: (A → AB), (B → A)
+var angle;
+var axiom = 'F';
+var sentence = axiom;
+var len = 100;
+
+var rules = [];
+rules[0] = {
+  a: 'F',
+  b: 'FF+[+F-F-F]-[-F+F+F]'
+};
+
 function generate() {
-
-	numgen++;if (numgen>system.max){
-		clearInterval(interval_id);
-		console.log('done!')
-		return;
-	}
-
-	len *= factor;
-	let nextSentence = '';
-	for (let i = 0; i < sentence.length; i++) {
-		let current = sentence.charAt(i);
-		let done = false;
-		for (const rule of rules) {
-			if (current == rule.aus) {
-				nextSentence += rule.mach;
-				done = true;
-				break;
-			}
-		}
-		if (!done) nextSentence += current;
-	}
-	sentence = nextSentence;
-	createP(sentence);
-	turtle();
-}
-function setup() {
-	axiom = system.axiom;
-	rules = system.rules;
-	factor = valf(system.factor,1);
-	angle = radians(valf(system.angle,60));
-	sentence = axiom;
-	let button = createButton("generate"); button.mousePressed(generate);
-
-	button = createButton("animate"); button.mousePressed(()=>interval_id=setInterval(generate,500));
-
-	//noCanvas();
-	createCanvas(400, 400);
-	background(51);
-
-	createP(axiom);
-	turtle();
+  len *= 0.5;
+  var nextSentence = '';
+  for (var i = 0; i < sentence.length; i++) {
+    var current = sentence.charAt(i);
+    var found = false;
+    for (var j = 0; j < rules.length; j++) {
+      if (current == rules[j].a) {
+        found = true;
+        nextSentence += rules[j].b;
+        break;
+      }
+    }
+    if (!found) {
+      nextSentence += current;
+    }
+  }
+  sentence = nextSentence;
+  createP(sentence);
+  turtle();
 }
 
 function turtle() {
-	background(51);
-	stroke(255,100); //100 is alpha
-	translate(width/2,height);
-	for (let i = 0; i < sentence.length; i++) {
-		let x = sentence.charAt(i);
-		if ('ABF'.includes(x)) {line(0, 0, 0, -len);translate(0,-len);}
-		else if (x == '+') rotate(angle);
-		else if (x == '-') rotate(-angle);
-		else if (x == '[') push(); 
-		else if (x == ']') pop();
-	}
+  background(51);
+  resetMatrix();
+  translate(width / 2, height);
+  stroke(255, 100);
+  for (var i = 0; i < sentence.length; i++) {
+    var current = sentence.charAt(i);
+
+    if (current == 'F') {
+      line(0, 0, 0, -len);
+      translate(0, -len);
+    } else if (current == '+') {
+      rotate(angle);
+    } else if (current == '-') {
+      rotate(-angle);
+    } else if (current == '[') {
+      push();
+    } else if (current == ']') {
+      pop();
+    }
+  }
 }
 
-function draw() {
-
+function setup() {
+  createCanvas(400, 400);
+  angle = radians(25);
+  background(51);
+  createP(axiom);
+  turtle();
+  var button = createButton('generate');  button.mousePressed(generate);
+  var button1 = createButton('clear');  button1.mousePressed(()=>{len=100;sentence=axiom;removeElements();clear();setup();});
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

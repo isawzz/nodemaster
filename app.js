@@ -10,7 +10,7 @@ const io = new Server(server, { cors: { origins: '*', } });//live-server: brauch
 //const io = new Server(server);//ohne cors reicht das:
 
 app.use(express.static(__dirname + '')); //Serve root directory
-for (const name of ['','games', 'tree']) {
+for (const name of ['','games', 'tree', 'plant']) {
 	app.get('/'+name, (req, res) => {
 		res.sendFile(__dirname + '/'+name+'/index.html');
 	});

@@ -1463,6 +1463,13 @@ function mYaml(d, js) {
 //#endregion
 
 //#region m prefix anim, a prefix
+function mPuppet(key,dParent, styles={}){
+	if (nundef(dParent)) dParent = document.body;
+	addKeys({ position: 'fixed', fz: 40, left: 40, top: 40 },styles);
+	dPuppet = miPic(key, dParent, styles);
+	aRollby(dPuppet, 250);
+
+}
 function mTableTransition(d, ms = 800) {
 	toElem(d).animate([{ opacity: .25 }, { opacity: 1 },], { fill: 'both', duration: ms, easing: 'ease' });
 }
