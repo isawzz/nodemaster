@@ -372,7 +372,7 @@ function mButton(caption, handler, dParent, styles, classes, id) {
 	let x = mCreate('button');
 	x.innerHTML = caption;
 	if (isdef(handler)) x.onclick = handler;
-	if (isdef(dParent)) dParent.appendChild(x);
+	if (isdef(dParent)) toElem(dParent).appendChild(x);
 	if (isdef(styles)) mStyle(x, styles);
 	if (isdef(classes)) mClass(x, classes);
 	if (isdef(id)) x.id = id;
@@ -402,6 +402,25 @@ function mButtonX(dParent, handler, pos = 'tr', sz = 25, color = 'white') {
 	return d2;
 }
 function mBy(id) { return document.getElementById(id); }
+function mCanvas(dParent, vw, vh, styles = {}, center = 'w') {
+	let cv = mCreate('canvas');
+	mAppend(toElem(dParent), cv);
+
+	if (center == 'w') mStyle(dParent, { align: 'center' });
+	if (nundef(styles.w)) styles.w = vw;
+	if (nundef(styles.h)) styles.h = vh;
+
+	mStyle(cv, styles);
+	cv.width = vw;
+	cv.height = vh;
+
+	//cv = mSection({ bg: BLUE, position: 'absolute', left: '50%', top: '50%', transform: 'translate(-50%,-50%)' }, 'canvas1')
+	cx = cv.getContext('2d');
+	// let w = cv.width = window.innerWidth * .8;
+	// let h = cv.height = 400; //window.innerHeight * .8;
+
+	return [cv, cx];
+}
 function mCardButton(caption, handler, dParent, styles, classtr = '', id = null) {
 	let classes = toWords("card300 wb fett no_outline btn" + classtr);
 	return mButton(caption, handler, dParent, styles, classes, id);
@@ -1606,6 +1625,39 @@ function aJumpby(elem, h = 40, ms = 1000) {
 		easing: 'easeInOutSine', //'easeOutElastic(1, .8)',
 		//loop: 2,
 	});
+}
+
+//#endregion
+
+//#region canvas c prefix
+function cClear(cv, cx) {
+	cx.clearRect(0, 0, cv.width, cv.height);
+}
+function cShadow(cx, color, offx, offy, blur) {
+	cx.shadowColor = color;
+	cx.shadowOffsetX = offx;
+	cx.shadowOffsetY = offy;
+	cx.shadowBlur = blur;
+}
+function cSetOrigin(cx, x, y) {
+	cx.translate(x, y);
+}
+function cCenterOrigin(cv, ctx) {
+	cSetOrigin(ctx, cv.width / 2, cv.height / 2);
+}
+function cLine(ctx, x1, y1, x2, y2) {
+	ctx.beginPath();
+	ctx.moveTo(x1, y1);
+	ctx.lineTo(x2, y2)
+	ctx.stroke();
+}
+function cRect(cvx, x, y, w, h) { cvx.fillRect(x, y, w, h); }
+function cStyle(cvx, fill, stroke, wline, cap) {
+	cvx.fillStyle = fill;
+	if (isdef(stroke)) cvx.strokeStyle = stroke;
+	if (isdef(wline)) cvx.lineWidth = wline;
+	if (isdef(cap)) cvx.lineCap = cap;
+
 }
 
 //#endregion
@@ -4454,7 +4506,8 @@ function setRect(elem, options) {
 	return r;
 }
 function toElem(d) { return isString(d) ? mBy(d) : d; }
-
+function toRadian(deg) { return deg * (Math.PI / 180); }
+function toDegree(rad) { return 180 * rad / Math.PI; }
 function toggleSelection(pic, selected, clSelected = 'framedPicture', clUnselected = null) {
 	//if selected is a list, pic is added or removed from it
 	//if selected is an object, it is unselected

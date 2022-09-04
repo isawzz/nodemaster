@@ -1,33 +1,44 @@
 onload = start;
-var cv, cx;
+var cv, cx, w = 600;
+var sides, scale, angle, color;
 function start() {
-	cv = mSection({ bg: BLUE, position: 'absolute', left: '50%', top: '50%', transform: 'translate(-50%,-50%)' }, 'canvas1')
-	cx = cv.getContext('2d');
-	let w = cv.width = window.innerWidth * .8;
-	let h = cv.height = window.innerHeight * .8;
 
-	cStyle(cx, 'red', 'yellow', 10, 'round');
-	//cRect(cx, 0, 0, w, h);
+	[cv, cx] = mCanvas('dTable', w, w, { bg: '#333', margin: 'auto' });
 
+	cv.onclick = onclick_generate;
+	mButton('clear', onclick_clear, 'dTable', { fx: 20, bg: 'silver' });
+	mLinebreak('dTable')
+	mDiv('dTable',{},'dInfo');
 
-	
+	onclick_generate();
+}
+function onclick_clear(){
+	cClear(cv,cx);
+	mClear('dInfo');
+}
+function onclick_generate() {
+	randomize_fractal();
+	cStyle(cx, 'red', color, 10, 'round');
+	cShadow(cx, 'silver', 5, 5, 10);
 
+	//cx, sides, size, angle, branches, scale, maxlevel, x, y
+	draw_fractal(cx, sides, w / 4, angle, 2, scale, 4, w / 2, w / 2);
+}
 
-	cx.save(); //saves canvas state including transform
+function randomize_fractal() {
+	sides = Math.round(Math.random() * 8 + 2);
+	scale = Math.random() * 0.2 + 0.4;
+	angle = Math.random() * 2.9 + 0.1;
+	color = 'hsla(' + Math.random() * 360 + ', 100%,50%,100%)';
 
-	//draw_spiral(cx,w,h,50,10);
-
-	//h-tree fractals!!!!!!!!!!
-	cCenterOrigin(cv, cx); //translate origin to center
-
-	draw_fractal(cx, 8, 100, .5, 2, .5, 4);
-
-	cx.restore(); //reverts cv state to last save
-
+	let txt = `sides:${sides.toFixed(0)} scale:${scale.toFixed(1)} angle:${toDegree(angle).toFixed(0)}`
+	console.log('sides', sides, 'scale', scale, 'angle', angle);
+	mLinebreak('dTable');
+	mText(txt,'dInfo');
 
 }
 
-function draw_fractal(cx, sides, size, angle, branches, scale, maxlevel) {
+function draw_fractal(cx, sides, size, angle, branches, scale, maxlevel, x, y) {
 	function drawBranch(level) {
 
 		if (level <= 0) return;
@@ -35,19 +46,19 @@ function draw_fractal(cx, sides, size, angle, branches, scale, maxlevel) {
 
 		for (let i = 0; i < branches; i++) {
 
-			let x=size - (size/branches) * i;
+			let x = size - (size / branches) * i;
 
 			cx.save();
 			cx.translate(x, 0);
 			cx.rotate(angle);
-			cx.scale(scale,scale);
+			cx.scale(scale, scale);
 			drawBranch(level - 1);
 			cx.restore();
 
 			cx.save();
 			cx.translate(x, 0);
 			cx.rotate(-angle);
-			cx.scale(scale,scale);
+			cx.scale(scale, scale);
 			drawBranch(level - 1);
 			cx.restore();
 		}
@@ -57,17 +68,20 @@ function draw_fractal(cx, sides, size, angle, branches, scale, maxlevel) {
 
 	//drawBranch(maxlevel);
 
-	for(let i=0;i<sides;i++){
-		cx.rotate((Math.PI*2)/sides);
+	cx.save();
+
+	//cSetOrigin(cx, x, y);
+	cx.translate(x, y);
+	cx.scale(1, 1);
+	cx.rotate(0);
+	for (let i = 0; i < sides; i++) {
+		cx.rotate((Math.PI * 2) / sides);
 
 		drawBranch(maxlevel);
 	}
+	cx.restore();
 
 
-}
-
-function cCenterOrigin(cv, ctx) {
-	ctx.translate((cv.width / 2), (cv.height / 2));
 }
 function draw_spiral(ctx, w, h, sides, trans) {
 	//wie berechnet sich center width?
@@ -96,21 +110,6 @@ function draw_spiral(ctx, w, h, sides, trans) {
 	}
 
 }
-function cLine(ctx, x1, y1, x2, y2) {
-	ctx.beginPath();
-	ctx.moveTo(x1, y1);
-	ctx.lineTo(x2, y2)
-	ctx.stroke();
-}
-function cRect(cvx, x, y, w, h) { cvx.fillRect(x, y, w, h); }
-function cStyle(cvx, fill, stroke, wline, cap) {
-	cvx.fillStyle = fill;
-	if (isdef(stroke)) cvx.strokeStyle = stroke;
-	if (isdef(wline)) cvx.lineWidth = wline;
-	if (isdef(cap)) cvx.lineCap = cap;
-
-}
-
 
 
 
