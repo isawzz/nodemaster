@@ -6,17 +6,17 @@ const { Server } = require("socket.io");
 
 const cors = require('cors');
 app.use(cors());
-const io = new Server(server, { cors: { origins: '*', } });//live-server: brauch ich cors!
 //const io = new Server(server);//ohne cors reicht das:
 
 app.use(express.static(__dirname + '')); //Serve root directory
-for (const name of ['','games', 'tree', 'plant']) {
-	app.get('/'+name, (req, res) => {
-		res.sendFile(__dirname + '/'+name+'/index.html');
+for (const name of ['', 'games', 'nature', 'tree', 'plant']) {
+	app.get('/' + name, (req, res) => {
+		res.sendFile(__dirname + '/' + name + '/index.html');
 	});
 }
 
 
+const io = new Server(server, { cors: { origins: '*', } });//live-server: brauch ich cors!
 io.on('connection', (socket) => {
 	console.log('a user connected');
 });

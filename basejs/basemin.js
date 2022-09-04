@@ -355,7 +355,7 @@ function mAnimateTo(elem, prop, val, callback, msDuration = 1000, easing = 'cubi
 }
 function mAnimateList(elem, ogoal, callback, msDuration = 1000, easing = 'cubic-bezier(1,-0.03,.86,.68)', delay = 0) {
 	//usage: mAnimateTo(elem, 'opacity', 1, somefunc, 2000, 'ease-in', 1000);
-	for(const k in ogoal) {
+	for (const k in ogoal) {
 		ogoal[k] = isString(ogoal[k]) || k == 'opacity' ? ogoal[k] : '' + ogoal[k] + 'px';
 	}
 	let kflist = [ogoal];
@@ -441,8 +441,11 @@ function mCenterCenterFlex(d) { mCenterFlex(d, true, true, true); }
 function mClass0(d) { d = toElem(d); d.className = ''; }
 function mClass(d) {
 	d = toElem(d);
-	if (arguments.length == 2 && isList(arguments[1])) for (let i = 0; i < arguments[1].length; i++) d.classList.add(arguments[1][i]);
-	else for (let i = 1; i < arguments.length; i++) d.classList.add(arguments[i]);
+	if (arguments.length == 2) {
+		let arg = arguments[1];
+		if (isString(arg)) { arg = toWords(arg); }
+		if (isList(arg)) for (let i = 0; i < arg.length; i++) d.classList.add(arg[i]);
+	} else for (let i = 1; i < arguments.length; i++) d.classList.add(arguments[i]);
 }
 function mClassRemove(d) { d = toElem(d); for (let i = 1; i < arguments.length; i++) d.classList.remove(arguments[i]); }
 function mClassReplace(d, weg, her) { mClassRemove(d, weg); mClass(d, her); }
@@ -502,6 +505,7 @@ function mDataTable(reclist, dParent, rowstylefunc, headers, id, showheaders = t
 	return { div: t, rowitems: rowitems };
 }
 function mDiv(dParent, styles, id, inner, classes, sizing) {
+	dParent = toElem(dParent);
 	let d = mCreate('div');
 	if (dParent) mAppend(dParent, d);
 	if (isdef(styles)) mStyle(d, styles);
@@ -693,15 +697,6 @@ function mEditableInput(dParent, label, val, styles, classes, id) {
 	return elem;
 }
 //#endregion
-function mGrid(rows, cols, dParent, styles = {}) {
-	//styles.gap=valf(styles.gap,4);
-	let d = mDiv(dParent, styles);
-	d.style.gridTemplateColumns = 'repeat(' + cols + ',1fr)';
-	d.style.gridTemplateRows = 'repeat(' + rows + ',1fr)';
-	d.style.display = 'inline-grid';
-	d.style.padding = valf(styles.padding, styles.gap) + 'px';
-	return d;
-}
 function mFlexEvenly(d) {
 	let styles = { display: 'flex' };
 	styles['justify-content'] = 'space-evenly';
@@ -748,6 +743,15 @@ function mFromPoint(x, y) {
 	}
 	elements.reverse();
 	return elements;
+}
+function mGrid(rows, cols, dParent, styles = {}) {
+	//styles.gap=valf(styles.gap,4);
+	let d = mDiv(dParent, styles);
+	d.style.gridTemplateColumns = 'repeat(' + cols + ',1fr)';
+	d.style.gridTemplateRows = 'repeat(' + rows + ',1fr)';
+	d.style.display = 'inline-grid';
+	d.style.padding = valf(styles.padding, styles.gap) + 'px';
+	return d;
 }
 function mIfNotRelative(d) { if (isEmpty(d.style.position)) d.style.position = 'relative'; }
 function mImage() { return mImg(...arguments); }
@@ -967,7 +971,7 @@ function mRadioGroup(dParent, styles, id, legend, legendstyles) {
 		let l = mCreate('legend');
 		l.innerHTML = legend;
 		mAppend(f, l);
-		if (isdef(legendstyles)) {mStyle(l, legendstyles);}
+		if (isdef(legendstyles)) { mStyle(l, legendstyles); }
 	}
 	mAppend(dParent, f);
 	return f;
@@ -995,6 +999,16 @@ function mRemove(elem) {
 	elem.remove(); //elem.parentNode.removeChild(elem);
 }
 function mRemoveChildrenFromIndex(dParent, i) { while (dParent.children[i]) { mRemove(dParent.children[i]); } }
+function mSection(styles = {}, id, inner, tag, classes) { //sets global dHeader
+	//dParent, styles, id, inner, classes, sizing
+	let d = mBy(id);
+	addKeys({ position: 'relative' }, styles);
+	mStyle(d, styles);
+	if (isdef(tag) && isdef(inner)) inner = `<${tag}>${inner}</${tag}>`;
+	if (isdef(inner)) d.innerHTML = inner;
+	if (isdef(classes)) mClass(d, classes);
+	return d;
+}
 function mShield(dParent, styles = { bg: '#00000020' }, id = null, classnames = null, hideonclick = false) {
 	dParent = toElem(dParent);
 	let d = mDiv(dParent, styles, id, classnames);
@@ -1122,7 +1136,7 @@ const STYLE_PARAMS = {
 	z: 'z-index'
 };
 function getStyleProp(elem, prop) { return getComputedStyle(elem).getPropertyValue(prop); }
-function mStyleGet(elem,prop){return mGetStyle(elem,prop);}
+function mStyleGet(elem, prop) { return mGetStyle(elem, prop); }
 function mGetStyle(elem, prop) {
 	let val;
 	elem = toElem(elem);
@@ -1429,12 +1443,12 @@ function mText(text, dParent, styles, classes) {
 	if (isdef(classes)) mClass(d, classes);
 	return d;
 }
-function mTextWidth(txt,fz=16){
+function mTextWidth(txt, fz = 16) {
 	//let font = mStyleGet(dTable,'font');
 	//console.log('fz',fz,'font',font);
 	//let w=getTextWidth(txt,`${mStyleGet(dTable,'font')}`);
 	let len = txt.length;
-	let wprox=(len+1.5)*fz/2;
+	let wprox = (len + 1.5) * fz / 2;
 
 	//console.log('w',w,wprox)
 	return wprox;
@@ -1463,9 +1477,9 @@ function mYaml(d, js) {
 //#endregion
 
 //#region m prefix anim, a prefix
-function mPuppet(key,dParent, styles={}){
-	if (nundef(dParent)) dParent = document.body;
-	addKeys({ position: 'fixed', fz: 40, left: 40, top: 40 },styles);
+function mPuppet(key, dParent, styles = {}) {
+	if (nundef(dParent)) dParent = document.body; else dParent = toElem(dParent)
+	addKeys({ position: 'fixed', fz: 40, left: 40, top: 40 }, styles);
 	dPuppet = miPic(key, dParent, styles);
 	aRollby(dPuppet, 250);
 
@@ -1478,7 +1492,7 @@ function mFade(d, ms = 800, callback = null) { return mAnimateTo(d, 'opacity', 0
 function mFadeRemove(d, ms = 800, callback = null) { return mAnimateTo(d, 'opacity', 0, () => { mRemove(d); if (callback) callback(); }, ms); }
 function mFadeClear(d, ms = 800, callback = null) { return mAnimateTo(d, 'opacity', 0, () => { mClear(d); if (callback) callback(); }, ms); }
 function mFadeClearShow(d, ms = 800, callback = null) { return mAnimate(d, 'opacity', [1, 0], () => { mClear(d); if (callback) callback(); }, ms); }
-function mFall(d, ms = 800, dist=50) { toElem(d).animate([{ opacity: 0, transform: `translateY(-${dist}px)` }, { opacity: 1, transform: 'translateY(0px)' },], { fill: 'both', duration: ms, easing: 'ease' }); }
+function mFall(d, ms = 800, dist = 50) { toElem(d).animate([{ opacity: 0, transform: `translateY(-${dist}px)` }, { opacity: 1, transform: 'translateY(0px)' },], { fill: 'both', duration: ms, easing: 'ease' }); }
 function mPulse(d, ms, callback = null) { mClass(d, 'onPulse'); TO[getUID()] = setTimeout(() => { mClassRemove(d, 'onPulse'); if (callback) callback(); }, ms); }
 function mPulse1(d, callback) { mPulse(d, 1000, callback); }
 function mPulse2(d, callback) { mPulse(d, 2000, callback); }
@@ -1504,12 +1518,12 @@ function mTranslate(child, newParent, ms = 800, callback = null) {
 	//let anim = toElem(child).animate([{ transform: `scale(${1},${1})` }, { transform: `scale(${x},${y})` },], { fill: 'both', duration: ms, easing: 'ease' });
 	//anim.onfinish = callback;
 }
-function mTranslateBy(elem,x,y, ms = 800, callback = null) {
+function mTranslateBy(elem, x, y, ms = 800, callback = null) {
 	mAnimate(elem, 'transform', [`translateX(${x}px) translateY(${y}px)`], callback, ms, 'ease'); //translate(${dx}px,${dy}px)`
 	//let anim = toElem(child).animate([{ transform: `scale(${1},${1})` }, { transform: `scale(${x},${y})` },], { fill: 'both', duration: ms, easing: 'ease' });
 	//anim.onfinish = callback;
 }
-function mTranslateByFade(elem,x,y, ms = 800, callback = null) {
+function mTranslateByFade(elem, x, y, ms = 800, callback = null) {
 
 	mAnimate(elem, 'transform', [`translateX(${x}px) translateY(${y}px)`], callback, ms, 'ease'); //translate(${dx}px,${dy}px)`
 	let a = toElem(elem).animate([{ opacity: .25 }, { opacity: 1 },], { fill: 'both', duration: ms, easing: 'ease' });
@@ -1837,7 +1851,7 @@ function arrBuckets(arr, func, sortbystr) {
 }
 function arrClear(arr) { arr.length = 0; }
 function arrChildren(elem) { return [...toElem(elem).children]; }
-function arrCount(arr,func){ return arr.filter(func).length; }
+function arrCount(arr, func) { return arr.filter(func).length; }
 function arrCycle(arr, count) { return arrRotate(arr, count); }
 function arrExtend(arr, list) { list.map(x => arr.push(x)); return arr; }
 function arrFirst(arr) { return arr.length > 0 ? arr[0] : null; }
@@ -4261,7 +4275,7 @@ async function load_assets_fetch(basepath, baseminpath) {
 	console.assert(isdef(Config), 'NO Config!!!!!!!!!!!!!!!!!!!!!!!!');
 	return { users: dict2list(DB.users, 'name'), games: dict2list(Config.games, 'name'), tables: [] };
 }
-async function load_syms(path){
+async function load_syms(path) {
 	//sollten in base/assets/allSyms.yaml sein!
 	if (nundef(path)) path = '../base/assets/';
 	Syms = await route_path_yaml_dict(path + 'allSyms.yaml');
