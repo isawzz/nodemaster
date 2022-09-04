@@ -6,6 +6,7 @@ function start() {
 	[cv, cx] = mCanvas('dTable', w, w, { bg: '#333', margin: 'auto' });
 
 	cv.onclick = onclick_generate;
+	mLinebreak('dTable')
 	mButton('clear', onclick_clear, 'dTable', { fx: 20, bg: 'silver' });
 	mLinebreak('dTable')
 	mDiv('dTable',{},'dInfo');
