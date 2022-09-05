@@ -1496,11 +1496,11 @@ function mYaml(d, js) {
 //#endregion
 
 //#region m prefix anim, a prefix
-function mPuppet(key, dParent, styles = {}) {
-	if (nundef(dParent)) dParent = document.body; else dParent = toElem(dParent)
+function mPuppet(key, dParent, styles = {},dist=250) {
+	if (nundef(dParent)) dParent = document.body; else dParent = toElem(dParent);
 	addKeys({ position: 'fixed', fz: 40, left: 40, top: 40 }, styles);
 	dPuppet = miPic(key, dParent, styles);
-	aRollby(dPuppet, 250);
+	aRollby(dPuppet, dist);
 
 }
 function mTableTransition(d, ms = 800) {
@@ -3845,6 +3845,7 @@ function replaceEvery(w, letter, nth) {
 	if (w.length % 2) res += w[0];
 	return res;
 }
+function replaceWhite(s,sby='_'){let w=toWords(s); return w.join(sby);}
 function splitAtAnyOf(s, sep) {
 	let arr = [], w = '';
 	for (let i = 0; i < s.length; i++) {
@@ -4507,7 +4508,7 @@ function setRect(elem, options) {
 }
 function toElem(d) { return isString(d) ? mBy(d) : d; }
 function toRadian(deg) { return deg * (Math.PI / 180); }
-function toDegree(rad) { return 180 * rad / Math.PI; }
+function toDegree(rad) { return Math.floor(180 * rad / Math.PI); }
 function toggleSelection(pic, selected, clSelected = 'framedPicture', clUnselected = null) {
 	//if selected is a list, pic is added or removed from it
 	//if selected is an object, it is unselected
