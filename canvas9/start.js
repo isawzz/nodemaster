@@ -3,46 +3,46 @@ var cv, cx, w = 600;
 var sides, scale, angle, color, wline;
 function start() {
 
-	dTable = mSection({align:'center'},'dTable');
+	dTable = mSection({ align: 'center' }, 'dTable');
 	[cv, cx] = mCanvas(dTable, w, w, { bg: '#333', margin: 'auto' });
 
 	cv.onclick = onclick_generate;
 	mLinebreak(dTable);
-	mSlider('angle',0.1,3.1,0.02,1,set_and_draw,'toDegree',dTable,{display:'flex','justify-content':'center',gap:10});
+	mSlider('angle', 0.1, 3.1, 0.02, 1, set_and_draw, 'toDegree', dTable, { display: 'flex', 'justify-content': 'center', gap: 10 });
 	mLinebreak(dTable);
 	mButton('clear', onclick_clear, dTable, { fx: 20, bg: 'silver' });
 	mLinebreak(dTable)
-	mDiv(dTable,{},'dInfo');
+	mDiv(dTable, {}, 'dInfo');
 
 	onclick_generate();
 }
 
-function mSlider(label,min,max,step,val,onchange,oninput,dParent,styles,id,classes){
+function mSlider(label, min, max, step, val, onchange, oninput, dParent, styles, id, classes) {
 	//<input type="range" value="24" min="1" max="100" oninput="this.nextElementSibling.value = this.value">
 
 	// let d=mDiv(toElem(dParent),styles,id,`${label}: <input oninput="this.nextElementSibling.value = ${oninput}(this.value)" type="range" min="${min}" max="${max}" step="${step}" value="${val}" id="${id}" /><output>${window[oninput](val)}</output>`,classes);
-	let d=mDiv(toElem(dParent),styles,id,`${label}: <input type="range" min="${min}" max="${max}" step="${step}" value="${val}" id="${id}" /><output>${window[oninput](val)}</output>`,classes);
+	let d = mDiv(toElem(dParent), styles, id, `${label}: <input type="range" min="${min}" max="${max}" step="${step}" value="${val}" id="${id}" /><output>${window[oninput](val)}</output>`, classes);
 	//let inp = d.firstChild;
 	//d.onchange = (ev)=>onchange(label,ev.target.value);
-	d.onchange=(ev)=>{
-		let el=ev.target;
+	d.onchange = (ev) => {
+		let el = ev.target;
 		el.nextElementSibling.value = toDegree(el.value);
 		onclick_clear();
-		onchange(label,el.value);
+		onchange(label, el.value);
 	};
 }
 
-function onclick_clear(){
-	cClear(cv,cx);
+function onclick_clear() {
+	cClear(cv, cx);
 	mClear('dInfo');
 }
 function onclick_generate() {
 	randomize_fractal();
 	set_and_draw();
 }
-function set_and_draw(prop,val){
+function set_and_draw(prop, val) {
 
-	if (isdef(prop)) window[prop]=val;
+	if (isdef(prop)) window[prop] = val;
 
 	cStyle(cx, 'red', color, wline, 'round');
 	cShadow(cx, 'silver', 5, 5, 10);
@@ -61,7 +61,7 @@ function randomize_fractal() {
 	let txt = `sides:${sides.toFixed(0)} scale:${scale.toFixed(1)} angle:${toDegree(angle).toFixed(0)}`
 	console.log('sides', sides, 'scale', scale, 'angle', angle);
 	mLinebreak('dTable');
-	mText(txt,'dInfo');
+	mText(txt, 'dInfo');
 
 }
 
