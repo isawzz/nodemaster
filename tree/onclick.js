@@ -11,4 +11,3 @@ function onclick_jittering() {
 	}
 	show_jittering();
 }
-function onclick_repair() { }

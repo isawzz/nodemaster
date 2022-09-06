@@ -439,7 +439,7 @@ function mCenterFlex(d, hCenter = true, vCenter = false, wrap = true) {
 	mStyle(d, styles);
 	//console.log('d', d)
 }
-function mClear(d) { clearElement(d); }
+function mClear(d) { clearElement(toElem(d)); }
 function mColFlex(dParent, chflex = [1, 5, 1], bgs) { // = [YELLOW, ORANGE, RED]) {
 	// let styles = { opacity:1, bg:RED, display: 'flex','justify-content':'stretch','align-content':'flex-start','flex-wrap':'nowrap' };
 	let styles = { opacity: 1, display: 'flex', 'align-items': 'stretch', 'flex-flow': 'nowrap' };
@@ -1487,6 +1487,16 @@ function mTextArea(rows, cols, dParent, styles = {}, id) {
 	mAppend(dParent, t);
 	mStyle(t, styles);
 	return t;
+}
+function mToolbar(){
+	let d = mBy('dToolbar');mFlex(d);mStyle(d,{padding:10,gap:10})
+	for(const arg of arguments){
+		//replace all white spaces by _
+		let funcname = replaceWhite(arg);
+		mButton(arg,window['onclick_'+funcname],d);
+
+	}
+	return d;
 }
 function mYaml(d, js) {
 	d.innerHTML = '<pre>' + jsonToYaml(js) + '</pre>';
