@@ -2,6 +2,7 @@
 onload = start;
 
 var cv, cx, iv, iv1, go = {}, FR = 30, isdirty = true; //go by type
+const MAXBRANCHES = Math.pow(2,5)-2;
 async function start() {
 	// await load_syms();
 	// dHeader = mSection({ padding: 10, position:'relative' }, 'dHeader', 'Hello!', 'h1');
@@ -9,7 +10,7 @@ async function start() {
 
 	dToolbar = mToolbar('sp co', 'L-sys');
 
-	mToolbar('addfork');
+	mToolbar('addfork','grow');
 
 	onclick_sp_co();
 }
@@ -22,7 +23,6 @@ function onclick_sp_co() {
 	[cv, cx] = mCanvas('dTable', 500, 400, { bg: '#222' }); //make a canvas?
 
 	gameloop();
-
 
 	let len = 100;
 	let o = {
@@ -40,7 +40,6 @@ function onclick_sp_co() {
 function gameloop() {
 	iv = setInterval(go_draw, 1000 / FR);
 
-	//iv1 = setInterval(onclick_addfork, 1000);
 }
 function go_register(o) { 
 	lookupAddToList(go, [o.t], o); 
@@ -85,13 +84,19 @@ function add_branch(pt,a1,len,thickness){
 
 }
 function draw_branch(o) {
+	cStyle(cx, 'white', 'red', o.thickness, 'round');
 	cLine(cx, o.p[0].x, o.p[0].y, o.p[1].x, o.p[1].y);
 }
 function onclick_addfork() {
-	console.log('tree is',go)
+	//console.log('tree is',go)
+	if (nundef(go.branch) || go.branch.length > MAXBRANCHES) return;
 	for (const o of go.branch){
 		if (!o.done) {add_fork(o); break;}
 	}
+}
+function onclick_grow() {
+	iv1 = setInterval(onclick_addfork, 500);
+	mBy('bgrow').disabled = true;
 }
 
 

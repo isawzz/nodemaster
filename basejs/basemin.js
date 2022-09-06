@@ -1493,7 +1493,7 @@ function mToolbar(){
 	for(const arg of arguments){
 		//replace all white spaces by _
 		let funcname = replaceWhite(arg);
-		mButton(arg,window['onclick_'+funcname],d);
+		mButton(arg,window['onclick_'+funcname],d,{},null,`b${funcname}`);
 
 	}
 	return d;
