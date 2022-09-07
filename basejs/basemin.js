@@ -1488,12 +1488,12 @@ function mTextArea(rows, cols, dParent, styles = {}, id) {
 	mStyle(t, styles);
 	return t;
 }
-function mToolbar(){
-	let d = mBy('dToolbar');mFlex(d);mStyle(d,{padding:10,gap:10})
-	for(const arg of arguments){
+function mToolbar(buttons, dParent, styles, id, classes) {
+	let d = mDiv(dParent, { padding: 10, gap: 10 }, id, classes); mFlex(d);
+	for (const arg of buttons) {
 		//replace all white spaces by _
 		let funcname = replaceWhite(arg);
-		mButton(arg,window['onclick_'+funcname],d,{},null,`b${funcname}`);
+		mButton(arg, window['onclick_' + funcname], d, styles, null, `b${funcname}`);
 
 	}
 	return d;
@@ -1506,7 +1506,7 @@ function mYaml(d, js) {
 //#endregion
 
 //#region m prefix anim, a prefix
-function mPuppet(key, dParent, styles = {},dist=250) {
+function mPuppet(key, dParent, styles = {}, dist = 250) {
 	if (nundef(dParent)) dParent = document.body; else dParent = toElem(dParent);
 	addKeys({ position: 'fixed', fz: 40, left: 40, top: 40 }, styles);
 	dPuppet = miPic(key, dParent, styles);
@@ -1643,6 +1643,17 @@ function aJumpby(elem, h = 40, ms = 1000) {
 function cClear(cv, cx) {
 	cx.clearRect(0, 0, cv.width, cv.height);
 }
+function cEllipse(ctx, x, y, w, h, angle) {
+	//ellipse(x, y, radiusX, radiusY, rotation)
+
+	//ctx.save();
+	ctx.beginPath(); //ctx.moveTo(x,y)
+	ctx.ellipse(x, y, w / 2, h / 2, -angle, 0, 2 * Math.PI);
+	ctx.fill();
+	ctx.stroke(); //doesnt work!
+	//ctx.restore();
+}
+
 function cShadow(cx, color, offx, offy, blur) {
 	cx.shadowColor = color;
 	cx.shadowOffsetX = offx;
@@ -2325,8 +2336,36 @@ function alphaToHex(zero1) {
 	//console.log('alpha from', zero1, 'to', hex);
 	return hex;
 }
-function colorDark(c, zero1 = -.5, log = true) {
-	if (nundef(c)) c = rColor();
+function colorChannelMixer(colorChannelA, colorChannelB, amountToMix) {
+	//colorChannelA and colorChannelB are ints ranging from 0 to 255
+	var channelA = colorChannelA * amountToMix;
+	var channelB = colorChannelB * (1 - amountToMix);
+	return parseInt(channelA + channelB);
+}
+function colorMixer(rgbA, rgbB, amountToMix) {
+	//rgbA and rgbB are arrays, amountToMix ranges from 0.0 to 1.0
+	//example (red): rgbA = [255,0,0]
+	var r = colorChannelMixer(rgbA[0], rgbB[0], amountToMix);
+	var g = colorChannelMixer(rgbA[1], rgbB[1], amountToMix);
+	var b = colorChannelMixer(rgbA[2], rgbB[2], amountToMix);
+	return "rgb(" + r + "," + g + "," + b + ")";
+}
+function colorMix(c1, c2, percent=50) {
+	return pSBC(percent/100,colorHex(c1),colorHex(c2),true); //last param true:log blending, [false]:linear blending
+	//rgbA and rgbB are arrays, amountToMix ranges from 0.0 to 1.0
+	//example (red): rgbA = [255,0,0]
+	let o1=colorRGB(c1,true);let rgbA=[o1.r,o1.g,o1.b];
+	let o2=colorRGB(c2,true);let rgbB=[o2.r,o2.g,o2.b];
+	amountToMix = percent/100;
+	var r = colorChannelMixer(rgbA[0], rgbB[0], amountToMix);
+	var g = colorChannelMixer(rgbA[1], rgbB[1], amountToMix);
+	var b = colorChannelMixer(rgbA[2], rgbB[2], amountToMix);
+	return "rgb(" + r + "," + g + "," + b + ")";
+}
+function colorDark(c, percent = 50, log = true) {
+	if (nundef(c)) c = rColor(); else c = colorFrom(c);
+
+	let zero1 = -percent / 100;
 	return pSBC(zero1, c, undefined, !log);
 }
 function colorFrom(cAny, a, allowHsl = false) {
@@ -2535,15 +2574,12 @@ function colorIdealText(bg, grayPreferred = false) {
 	return foreColor;
 	// return 'white';
 }
-function colorLight(c, zero1 = .3, log = true) {
-	//zero1 = 0 ... 1 (1 being brightest!)
+function colorLight(c, percent = 20, log = true) {
 	if (nundef(c)) {
-		//console.log('HAAAAAAAAAAAAAAAAAAAAAALLLLLLLLLLLLOOOOOOO')
-		let hue = rHue();
-
 		return colorFromHSL(rHue(), 100, 85);
 	} else c = colorFrom(c);
 	// if (nundef(c)) c = colorFrom(rChoose(['yellow', 'skyblue', 'orange', 'violet', 'pink', 'GREEN', 'lime']));//rPrimaryColor();
+	let zero1 = percent / 100;
 	return pSBC(zero1, c, undefined, !log);
 }
 function colorRGB(cAny, asObject = false) {
@@ -3855,7 +3891,7 @@ function replaceEvery(w, letter, nth) {
 	if (w.length % 2) res += w[0];
 	return res;
 }
-function replaceWhite(s,sby='_'){let w=toWords(s); return w.join(sby);}
+function replaceWhite(s, sby = '_') { let w = toWords(s); return w.join(sby); }
 function splitAtAnyOf(s, sep) {
 	let arr = [], w = '';
 	for (let i = 0; i < s.length; i++) {
@@ -4055,6 +4091,11 @@ function clearElement(elem) {
 		$(elem.firstChild).remove();
 	}
 	return elem;
+}
+function clear_timeouts() {
+	//clear ALL timeouts!
+	for (const k in TO) clearTimeout(TO[k]);
+	stop_simple_timer();
 }
 function divInt(a, b) { return Math.trunc(a / b); }
 function errlog() { console.log('ERROR!', ...arguments); }
