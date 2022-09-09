@@ -23,7 +23,6 @@ function add_fork(b) {
 }
 function init_tree() {
 	let len = 100;
-	add_branch(null, toRadian(90));
 	let o = {
 		done: false,
 		p: [{ x: cv.width / 2, y: cv.height }, { x: cv.width / 2, y: cv.height - len }],

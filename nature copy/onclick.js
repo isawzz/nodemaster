@@ -1,5 +1,6 @@
 
 var changed = true;
+
 function onclick_add_layer() {
 	let sys=DA.system;
 	if (nundef(sys)) {

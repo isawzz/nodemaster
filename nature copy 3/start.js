@@ -18,28 +18,26 @@ async function start() {
 }
 
 //#region system
-function create_canvas(){
+function handle_command(cmd,c) {
+	console.log('handle command', cmd, 'of component', c);
+	G[cmd]();
+}
+function system_clear() { gameloop_stop(); clear_timeouts(); mClear('dTable'); G = null; }
+function system_init(name) {
+	// creates top level component
+	name = replaceWhite(name) + '_funcs';
+	//die components koennten lauter so G singer sein!
+	G = { fen: {}, primitives: {}, name: stringBefore(name, '_'), created: false, running: false, changed: true };
+	addKeys(isdef(window[name]) ? window[name]() : default_system(), G);
+
+	G.init(G.fen);
+	mLinebreak(dTable, 10);
+
 	[cv, cx] = mCanvas(dTable, 500, 400, { bg: '#222' }); //make a canvas?
 	mLinebreak(dTable);
 
-}
-function create_menu(){
-	dMenu = mDiv(dTable, { w: '100%', display: 'flex' });
+	mPlayPause(dTable, { fz: 28, fg: 'lightgreen', display: 'flex', ajcenter: true }, onclick_playpause);
 
-}
-function handle_command(cmd) {
-	console.log('handle command', cmd);
-}
-function system_clear() { gameloop_stop(); clear_timeouts(); mClear('dTable'); G=cv=cx=null;}
-function system_init(name,cparent) {
-
-	if (!cv){
-		create_menu();
-		create_canvas();
-	}
-	//ang name is tree
-	let c = create_component(name,cparent);
-	
 }
 function gameloop_start() { TO.iv = setInterval(system_draw, 1000 / FR); flag_set('running'); }
 function gameloop_stop() { clearInterval(TO.iv); if (G) { G.running = false; flag_reset('running'); } }
