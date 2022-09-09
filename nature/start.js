@@ -43,9 +43,10 @@ function system_init(name) {
 	addKeys({ name: stringBefore(name,'_'), created: false, running: false, changed: true }, G); //reset flags
 
 	G.init();
+	mLinebreak(dTable,10)
 
 	[cv, cx] = mCanvas(dTable, 500, 400, { bg: '#222' }); //make a canvas?
-	mLinebreak(dTable)
+	mLinebreak(dTable);
 
 	mPlayPause(dTable, { fz: 28, fg: 'lightgreen', display: 'flex', ajcenter: true }, onclick_playpause);
 

@@ -1523,7 +1523,7 @@ function mToggle(label, dParent, styles = {}, handler, is_on, styleyes, styleno)
 function mTogglebar(di, handler, styleyes, styleno, dParent, styles, id, classes) {
 	styles = { margin: 0, padding: 0 };
 	let d = mDiv(dParent, styles, id, classes); 
-	mStyle(d, { bg: 'blue' })
+	//mStyle(d, { bg: 'blue' })
 	for (const k in di) {
 		mToggle(k, d, {}, handler, di[k], styleyes, styleno);
 	}
@@ -1531,7 +1531,7 @@ function mTogglebar(di, handler, styleyes, styleno, dParent, styles, id, classes
 function mToolbar(buttons, handler, dParent, styles, id, classes) {
 	styles = { margin: 0, padding: 0 };
 	let d = mDiv(dParent, styles, id, classes); 
-	mStyle(d, { bg: 'blue' })
+	//mStyle(d, { bg: 'blue' })
 	for (const arg of buttons) {
 		let funcname = replaceWhite(arg);
 		mButton(arg, () => handler(arg), d, {}, null, `b${funcname}`);

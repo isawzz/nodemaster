@@ -18,7 +18,6 @@ function tree_system() {
 
 		let d1 = mDiv(dTable, { w: '100%', display:'flex' });
 		mToolbar(['add', 'grow', 'reset'], handle_command, d1, {bg:'red'});
-
 		mTogglebar({ jitter: false }, flag_toggle,{bg:'green'},{bg:'#eee'}, d1, {bg:'blue'});
 
 	}
