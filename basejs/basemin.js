@@ -7,6 +7,7 @@ var dTable, dHeader, dFooter, dMessage, dPuppet; //, dTitle; //, dUsers, dGames,
 var Config, Syms, SymKeys, ByGroupSubgroup, KeySets, C52, Cinno, C52Cards;
 var FORCE_REDRAW = false, TESTING = false;
 var ColorThiefObject, SelectedItem, SelectedColor;
+var cv, cx, go = {}, FR = 30;
 
 //#endregion
 //#region color const
@@ -296,30 +297,6 @@ const SHERIFF = {
 	}
 }
 //#endregion cards
-
-//#region from base m,i,mg
-function mgSvg(dParent, attrs) { return mgTag('svg', dParent, attrs); }
-function mgText(text, dParent, attrs, styles) { return mgTag('text', dParent, attrs, styles, text); }
-function mgTag(tag, dParent, attrs, styles = {}, innerHTML) {
-	let elem = gCreate(tag);
-	mStyle(elem, styles);
-	mAttrs(elem, attrs);
-	if (isdef(innerHTML)) elem.innerHTML = innerHTML;
-	if (isdef(dParent)) mAppend(dParent, elem);
-	return elem;
-}
-function iSvg(i) { return isdef(i.live) ? i.live.svg : isdef(i.svg) ? i.svg : i; }
-function iG(i) { return isdef(i.live) ? i.live.g : isdef(i.g) ? i.g : i; }
-function mAttrs(elem, attrs) { for (const k in attrs) { elem.setAttribute(k, attrs[k]); } }
-function mBackground(bg, fg) { mStyle(document.body, { bg: bg, fg: fg }); }
-function mBoxFromMargins(dParent, t, r, b, l, styles, id, inner, classes) {
-	let d = mDiv(dParent, { position: 'absolute', top: t, right: r, bottom: b, left: l }, id, inner, classes);
-	let pos = dParent.style.position;
-	if (pos != 'absolute') dParent.style.position = 'relative';
-	if (isdef(styles)) mStyle(d, styles);
-	return d;
-}
-//#endregion
 
 //#region m prefix (DOM)
 function mAnimate(elem, prop, valist, callback, msDuration = 1000, easing = 'cubic-bezier(1,-0.03,.86,.68)', delay = 0, forwards = 'none') {
@@ -913,6 +890,26 @@ function mPlace(elem, pos, offx, offy) {
 	elem.style[di[pos[0]]] = hor + 'px'; elem.style[di[pos[1]]] = vert + 'px';
 
 }
+function mPlayPause(dParent, styles = {}, handler = null) {
+	let fname = isdef(handler) ? handler.name : 'audio_onclick_pp';
+	//console.log('fname', fname);
+	let html = `
+		<section id="dButtons">
+			<a id="bPlay" href="#">
+				<i class="fa fa-play fa-2x"></i>
+			</a>
+			<a id="bPause" href="#" style="font-size: 28px; display: none">
+				<i class="fa fa-pause fa-2x"></i>
+			</a>
+		</section>
+	`;
+	let pp = mCreateFrom(html);
+	mAppend(dParent, pp);
+	mStyle(pp, styles);
+	mBy('bPlay').onclick = () => { hide0('bPlay'); show0('bPause'); onclick_playpause(); }
+	mBy('bPause').onclick = () => { hide0('bPause'); show0('bPlay'); onclick_playpause(); }
+
+}
 function mPos(d, x, y, unit = 'px') { mStyle(d, { left: x, top: y, position: 'absolute' }, unit); }
 function mPopup(content, dParent, styles, id) {
 	if (isdef(mBy(id))) mRemove(id);
@@ -1132,6 +1129,11 @@ const STYLE_PARAMS = {
 	fg: 'color',
 	hgap: 'column-gap',
 	vgap: 'row-gap',
+	jcontent: 'justify-content',
+	jitems: 'justify-items',
+	justify: 'justify-content',
+	acontent: 'align-content',
+	aitems: 'align-items',
 	matop: 'margin-top',
 	maleft: 'margin-left',
 	mabottom: 'margin-bottom',
@@ -1231,6 +1233,9 @@ function mStyle(elem, styles, unit = 'px') {
 			//console.log('________________________YES!')
 			if (isNumber(val)) val = `solid ${val}px ${isdef(styles.fg) ? styles.fg : '#ffffff80'}`;
 			if (val.indexOf(' ') < 0) val = 'solid 1px ' + val;
+		} else if (k == 'ajcenter') {
+			elem.style.setProperty('justify-content', 'center');
+			elem.style.setProperty('align-items', 'center');
 		} else if (k == 'layout') {
 			if (val[0] == 'f') {
 				//console.log('sssssssssssssssssssssssssssssssssssssssssssss')
@@ -1488,13 +1493,48 @@ function mTextArea(rows, cols, dParent, styles = {}, id) {
 	mStyle(t, styles);
 	return t;
 }
-function mToolbar(buttons, dParent, styles, id, classes) {
-	let d = mDiv(dParent, { padding: 10, gap: 10 }, id, classes); mFlex(d);
-	for (const arg of buttons) {
-		//replace all white spaces by _
-		let funcname = replaceWhite(arg);
-		mButton(arg, window['onclick_' + funcname], d, styles, null, `b${funcname}`);
+function mToggle(label, dParent, styles = {}, handler, is_on, styleyes, styleno) {
+	let cursor = styles.cursor; delete styles.cursor;
+	let name = replaceWhite(label);
+	let checked = isdef(is_on) ? is_on : false;
+	let b = mButton(label, null, dParent); 
+	mClass(b,'noactive');
+	b.setAttribute('checked', checked);
+	b.onclick = ev => {
+		ev.cancelBubble = true;
+		let b = ev.target;
+		assertion(b == ev.target, 'NOOOOOOOOOOOOOOOOOOOOOOO')
+		// console.log('clicked button!!!', b);
+		let oldval = b.getAttribute('checked') == 'false' ? false : true;
 
+		let newval = oldval ? false : true; 
+		// console.log('old', oldval, typeof (oldval), 'new', newval);
+		if (newval === true) {
+			// console.log('sollte', styleyes)
+			mStyle(b, styleyes);
+		} else {
+			mStyle(b, styleno);
+		}
+		b.setAttribute('checked', newval);
+		handler(name, newval);
+	};
+	return b;
+}
+function mTogglebar(di, handler, styleyes, styleno, dParent, styles, id, classes) {
+	styles = { margin: 0, padding: 0 };
+	let d = mDiv(dParent, styles, id, classes); 
+	mStyle(d, { bg: 'blue' })
+	for (const k in di) {
+		mToggle(k, d, {}, handler, di[k], styleyes, styleno);
+	}
+}
+function mToolbar(buttons, handler, dParent, styles, id, classes) {
+	styles = { margin: 0, padding: 0 };
+	let d = mDiv(dParent, styles, id, classes); 
+	mStyle(d, { bg: 'blue' })
+	for (const arg of buttons) {
+		let funcname = replaceWhite(arg);
+		mButton(arg, () => handler(arg), d, {}, null, `b${funcname}`);
 	}
 	return d;
 }
@@ -1714,6 +1754,30 @@ function iRegister(item, id) { let uid = isdef(id) ? id : getUID(); Items[uid] =
 
 //#endregion
 
+//#region from base m,i,mg
+function mgSvg(dParent, attrs) { return mgTag('svg', dParent, attrs); }
+function mgText(text, dParent, attrs, styles) { return mgTag('text', dParent, attrs, styles, text); }
+function mgTag(tag, dParent, attrs, styles = {}, innerHTML) {
+	let elem = gCreate(tag);
+	mStyle(elem, styles);
+	mAttrs(elem, attrs);
+	if (isdef(innerHTML)) elem.innerHTML = innerHTML;
+	if (isdef(dParent)) mAppend(dParent, elem);
+	return elem;
+}
+function iSvg(i) { return isdef(i.live) ? i.live.svg : isdef(i.svg) ? i.svg : i; }
+function iG(i) { return isdef(i.live) ? i.live.g : isdef(i.g) ? i.g : i; }
+function mAttrs(elem, attrs) { for (const k in attrs) { elem.setAttribute(k, attrs[k]); } }
+function mBackground(bg, fg) { mStyle(document.body, { bg: bg, fg: fg }); }
+function mBoxFromMargins(dParent, t, r, b, l, styles, id, inner, classes) {
+	let d = mDiv(dParent, { position: 'absolute', top: t, right: r, bottom: b, left: l }, id, inner, classes);
+	let pos = dParent.style.position;
+	if (pos != 'absolute') dParent.style.position = 'relative';
+	if (isdef(styles)) mStyle(d, styles);
+	return d;
+}
+//#endregion
+
 //#region _SVG/g shapes
 var SHAPEFUNCS = {
 	'circle': agCircle,
@@ -1903,6 +1967,82 @@ function aSvgg(dParent, originInCenter = true) {
 
 }
 //endregion
+
+//#region audio
+var _audioSources = {
+	incorrect1: '../base/assets/sounds/incorrect1.wav',
+	incorrect3: '../base/assets/sounds/incorrect3.mp3',
+	goodBye: "../base/assets/sounds/level1.wav",
+	down: "../base/assets/sounds/down.mp3",
+	levelComplete: "../base/assets/sounds/sound1.wav",
+	rubberBand: "../base/assets/sounds/sound2.wav",
+	hit: "../base/assets/sounds/hit.wav",
+	mozart: "../base/assets/music/mozart_s39_4.mp3",
+};
+var _TOSound, _sndPlayer, _loaded = false, _qSound, _idleSound = true, _sndCounter = 0;
+var _AUDIOCONTEXT;// browsers limit the number of concurrent audio contexts, so you better re-use'em
+//API:
+function audio_beep(vol, freq, duration) {
+	console.log('sollte beepen!!!'); //return;
+	if (nundef(_AUDIOCONTEXT)) _AUDIOCONTEXT = new AudioContext();
+	let a = _AUDIOCONTEXT;
+	v = a.createOscillator()
+	u = a.createGain()
+	v.connect(u)
+	v.frequency.value = freq
+	v.type = "square";
+	u.connect(a.destination)
+	u.gain.value = vol * 0.01
+	v.start(a.currentTime)
+	v.stop(a.currentTime + duration * 0.001);
+}
+function audio_play(key, wait = true) {
+	//console.log(getFunctionsNameThatCalledThisFunction(),'=> playSound');
+	//console.log('_______playSound', 'key', key, '_sndPlayer', _sndPlayer, '\nIdle', _idleSound, 'loaded', _loaded, 'count:' + _sndCounter);
+	if (!wait) _qSound = [];
+	_enqSound(key);
+	if (_idleSound) { _idleSound = false; _deqSound(); }
+}
+function audio_pause() {
+	_qSound = [];
+	if (_loaded && isdef(_sndPlayer)) {
+		clearTimeout(_TOSound);
+		_sndPlayer.onended = null;
+		_sndPlayer.onpause = _whenSoundPaused;
+		_sndPlayer.pause();
+	}
+}
+function audio_playing() { return DA.isSound; }
+function audio_toggle(key) {
+	if (DA.isSound == true) { audio_pause(); DA.isSound = false; return; }
+
+	audio_play(key);
+	DA.isSound = true;
+
+}
+function audio_onclick_pp() { //default playpause button handler (see mPlayPause)
+	audio_toggle('mozart');
+	if (audio_playing()) { hide0('bPlay'); show0('bPause'); } else { hide0('bPause'); show0('bPlay'); }
+}
+
+//internal:
+function _whenSoundPaused() {
+	_sndPlayer = null;
+	_sndPlayerIdle = true;
+	_loaded = false;
+	//console.log('ENDED!!! Idle=true loaded=false');
+	if (!isEmpty(_qSound)) { _deqSound(); } else { _idleSound = true; }
+}
+function _enqSound(key) { if (nundef(_qSound)) _qSound = []; _qSound.push(key); }
+function _deqSound() {
+	let key = _qSound.shift();
+	let url = _audioSources[key];
+	_sndPlayer = new Audio(url);
+	_sndPlayer.onended = _whenSoundPaused;
+	_sndPlayer.onloadeddata = () => { _loaded = true; _sndPlayer.play(); };
+	_sndPlayer.load();
+}
+//#endregion audio
 
 //#region arr dict
 function addIf(arr, el) { if (!arr.includes(el)) arr.push(el); }
@@ -2350,13 +2490,13 @@ function colorMixer(rgbA, rgbB, amountToMix) {
 	var b = colorChannelMixer(rgbA[2], rgbB[2], amountToMix);
 	return "rgb(" + r + "," + g + "," + b + ")";
 }
-function colorMix(c1, c2, percent=50) {
-	return pSBC(percent/100,colorHex(c1),colorHex(c2),true); //last param true:log blending, [false]:linear blending
+function colorMix(c1, c2, percent = 50) {
+	return pSBC(percent / 100, colorHex(c1), colorHex(c2), true); //last param true:log blending, [false]:linear blending
 	//rgbA and rgbB are arrays, amountToMix ranges from 0.0 to 1.0
 	//example (red): rgbA = [255,0,0]
-	let o1=colorRGB(c1,true);let rgbA=[o1.r,o1.g,o1.b];
-	let o2=colorRGB(c2,true);let rgbB=[o2.r,o2.g,o2.b];
-	amountToMix = percent/100;
+	let o1 = colorRGB(c1, true); let rgbA = [o1.r, o1.g, o1.b];
+	let o2 = colorRGB(c2, true); let rgbB = [o2.r, o2.g, o2.b];
+	amountToMix = percent / 100;
 	var r = colorChannelMixer(rgbA[0], rgbB[0], amountToMix);
 	var g = colorChannelMixer(rgbA[1], rgbB[1], amountToMix);
 	var b = colorChannelMixer(rgbA[2], rgbB[2], amountToMix);
@@ -4507,6 +4647,8 @@ function hide(elem) {
 		elem.style.display = 'none';
 	}
 }
+function hide0(id) { mBy(id).style.display = "none"; }
+function show0(id) { mBy(id).style.display = "block"; }
 function show_special_message(msg, stay = false, ms = 3000, delay = 0, styles = {}, callback = null) { //divTestStyles={}) {
 	let dParent = mBy('dBandMessage');
 	if (nundef(dParent)) dParent = mDiv(document.body, {}, 'dBandMessage');

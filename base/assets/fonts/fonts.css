@@ -1,3 +1,7 @@
+/* @font-face {
+  font-family: 'fa';
+	src: url('./fa-regular-400.ttf') format("truetype");
+} */
 @font-face {
   font-family: 'tangerine';
 	src: url('./tangerine.ttf') format("truetype");

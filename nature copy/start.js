@@ -1,28 +1,29 @@
 onload = start;
 
-var cv, cx, go = {}, FR = 30,isdirty = true;
-const TREE={ created:false, jittering: false, len:100, depth:3, branching:[25,5,-25], init:init_tree};
-DA.system = TREE;
+var cv, cx, go = {}, FR = 30, isdirty = true;
+
+G=tree_system();
 
 async function start() {
 	// await load_syms();
 	// dHeader = mSection({ padding: 10, position:'relative' }, 'dHeader', 'Hello!', 'h1');
 	// mPuppet('pineapple', dHeader, {position:'absolute', top:6},100);
 
-	dToolbar = mToolbar(['tree', 'sp co', 'L-sys', 'jitter'], 'dToolbar');
-+
+	dToolbar = mToolbar(['tree', 'sp co', 'L-sys', 'fractal', 'flower'], 'dToolbar');
+
 	onclick_tree(); onclick_grow();
 }
 
 //#region tree
 function add_fork(b) {
-	for(const a of TREE.branching){
-		add_branch(b, b.p[1], b.angle + toRadian(a));
+	for (const a of TREE.branching) {
+		add_branch(b, b.angle + toRadian(a));
 	}
 	b.done = true;
 }
 function init_tree() {
 	let len = 100;
+	add_branch(null, toRadian(90));
 	let o = {
 		done: false,
 		p: [{ x: cv.width / 2, y: cv.height }, { x: cv.width / 2, y: cv.height - len }],
@@ -38,18 +39,20 @@ function init_tree() {
 //#endregion 
 
 //#region branch
-function add_branch(b, pt, angle) {
+function add_branch(b, angle) {
 	let len = b.len * .67;
-	let x = pt.x + Math.cos(angle) * len;
-	let y = pt.y - Math.sin(angle) * len;
+	let x = b.x2 + Math.cos(angle) * len;
+	let y = b.y2 - Math.sin(angle) * len;
 	let age = b.age + 1;
 
 	let o = {
 		done: false,
-		p: [pt, { x: x, y: y }],
+		x1: b.x2,
+		y1: b.y2,
+		x2: x,
+		y2: y,
 		x: x,
 		y: y,
-		pbase: { x: x, y: y },
 		t: 'branch',
 		age: age,
 		len: len,
@@ -62,7 +65,7 @@ function add_branch(b, pt, angle) {
 }
 function draw_branch(o) {
 	cStyle(cx, 'white', o.color, o.thickness, 'round');
-	cLine(cx, o.p[0].x, o.p[0].y, o.p[1].x, o.p[1].y);
+	cLine(cx, o.x1, o.y1, o.x2, o.y2);
 }
 //#endregion
 
@@ -156,14 +159,14 @@ function draw_leaf(o) {
 function clear_table() {
 
 	go = {};
-	isdirty=true;
-	TREE.jittering=false;
-	len=100;
+	isdirty = true;
+	TREE.jittering = false;
+	len = 100;
 	//if I leave Items, I can always reconstruct the tree?
-	mClear('dTable'); 
+	mClear('dTable');
 	clear_timeouts();
 }
-function gameloop() {
+function gameloop_start() {
 
 	TO.iv = setInterval(go_draw, 1000 / FR);
 
