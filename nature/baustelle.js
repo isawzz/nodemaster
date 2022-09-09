@@ -13,19 +13,15 @@ function create_component(name, cparent, x, y, options) {
 function init_tree(options={},x,y) {
 	let o = {
 		done: false,
-		x1: isdef(x) ? x : cv.width / 2,
-		y1: isdef(y) ? y : cv.height,
-		x: x,
-		y: y,
-		t: 'branch',
+		x2: isdef(x) ? x : cv.width / 2,
+		y2: isdef(y) ? y : cv.height,
+		t: 'root',
 		age: 0,
 		len: valf(options.len, 100),
 		angle: toRadian(90),
 		thickness: valf(options.thick, 20),
 		color: valf(options.color, 'sienna'),
 	};
-	o.x2 = o.x1;
-	o.y2 = o.y1 - o.len;
 	return o;
 }
 

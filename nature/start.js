@@ -38,7 +38,10 @@ function system_init(name,cparent) {
 		create_canvas();
 	}
 	//ang name is tree
-	let c = create_component(name,cparent);
+	let c = G = create_component(name,cparent);
+	
+}
+function system_draw(){
 	
 }
 function gameloop_start() { TO.iv = setInterval(system_draw, 1000 / FR); flag_set('running'); }
