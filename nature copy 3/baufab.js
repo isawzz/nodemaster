@@ -2,7 +2,7 @@
 function add_stem(){}{
 
 }
-function add_branch(b, angle) {
+function branch_add(b, angle) {
 	let len = b.len * .67;
 	let x = b.x2 + Math.cos(angle) * len;
 	let y = b.y2 - Math.sin(angle) * len;

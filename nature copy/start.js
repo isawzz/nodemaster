@@ -17,11 +17,11 @@ async function start() {
 //#region tree
 function add_fork(b) {
 	for (const a of TREE.branching) {
-		add_branch(b, b.angle + toRadian(a));
+		branch_add(b, b.angle + toRadian(a));
 	}
 	b.done = true;
 }
-function init_tree() {
+function tree_init() {
 	let len = 100;
 	let o = {
 		done: false,
@@ -38,7 +38,7 @@ function init_tree() {
 //#endregion 
 
 //#region branch
-function add_branch(b, angle) {
+function branch_add(b, angle) {
 	let len = b.len * .67;
 	let x = b.x2 + Math.cos(angle) * len;
 	let y = b.y2 - Math.sin(angle) * len;
@@ -118,7 +118,7 @@ function draw_flower(x, y, color, angle = 0, petalCount = 1, lineWidth = 3, sz =
 //#endregion
 
 //#region leaf
-function add_leaf(b) {
+function create_leaf(b) {
 	pt = b.p[1];
 	angle = b.angle;
 	let len = b.len * .67;

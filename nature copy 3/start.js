@@ -10,7 +10,7 @@ async function start() {
 	G = null;
 
 	dToolbar = mToolbar(['tree', 'sp co', 'L-sys', 'fractal', 'flower'], onclick_menu_item, 'dToolbar');
-	mButton('clear', system_clear, dToolbar, { position: 'absolute', right: 10 });
+	mButton('clear', G_clear, dToolbar, { position: 'absolute', right: 10 });
 
 	dTable = mBy('dTable'); mCenterFlex(dTable);
 
@@ -22,8 +22,8 @@ function handle_command(cmd,c) {
 	console.log('handle command', cmd, 'of component', c);
 	G[cmd]();
 }
-function system_clear() { gameloop_stop(); clear_timeouts(); mClear('dTable'); G = null; }
-function system_init(name) {
+function G_clear() { gameloop_stop(); clear_timeouts(); mClear('dTable'); G = null; }
+function G_init(name) {
 	// creates top level component
 	name = replaceWhite(name) + '_funcs';
 	//die components koennten lauter so G singer sein!
@@ -39,7 +39,7 @@ function system_init(name) {
 	mPlayPause(dTable, { fz: 28, fg: 'lightgreen', display: 'flex', ajcenter: true }, onclick_playpause);
 
 }
-function gameloop_start() { TO.iv = setInterval(system_draw, 1000 / FR); flag_set('running'); }
+function gameloop_start() { TO.iv = setInterval(C_draw, 1000 / FR); flag_set('running'); }
 function gameloop_stop() { clearInterval(TO.iv); if (G) { G.running = false; flag_reset('running'); } }
 function gameloop_toggle() { if (G.running === true) gameloop_stop(); else gameloop_start(); }
 function flag_set(prop) { G[prop] = true; }

@@ -675,8 +675,8 @@ button:active,
 	-webkit-appearance: none;
 	cursor: pointer;
 	min-width: 60px;
-	margin-right: 10px;
-	margin-top: 8px;
+	/* margin-right: 10px; */
+	/* margin-top: 8px; */
 	box-sizing: border-box;
 	/* padding: 4px; */
 	/* min-height: 40px; */

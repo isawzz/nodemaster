@@ -2,8 +2,8 @@
 var Pollmode = 'auto';
 var Info, ColorDi, Items = {}, DA = {}, Card = {}, TO = {}, Counter = { server: 0 }, Socket = null;
 var uiActivated = false, Selected, Turn, Prevturn;
-var S = {}, Z, U = null, PL, G, UI = {}, Users, Tables, Basepath, Serverdata = {}, Clientdata = {};
-var dTable, dHeader, dFooter, dMessage, dPuppet, dMenu; //, dTitle; //, dUsers, dGames, dTables, dLogo, dLoggedIn, dPlayerNames, dInstruction, dError, dMessage, dStatus, dTableName, dGameControls, dUserControls, dMoveControls, dSubmitMove, dPlayerStats;
+var S = {}, Z, U = null, PL, G, C, UI = {}, Users, Tables, Basepath, Serverdata = {}, Clientdata = {};
+var dTable, dHeader, dFooter, dMessage, dPuppet, dMenu,dLeft,dCenter,dRight; //, dTitle; //, dUsers, dGames, dTables, dLogo, dLoggedIn, dPlayerNames, dInstruction, dError, dMessage, dStatus, dTableName, dGameControls, dUserControls, dMoveControls, dSubmitMove, dPlayerStats;
 var Config, Syms, SymKeys, ByGroupSubgroup, KeySets, C52, Cinno, C52Cards;
 var FORCE_REDRAW = false, TESTING = false;
 var ColorThiefObject, SelectedItem, SelectedColor;
@@ -417,22 +417,6 @@ function mCenterFlex(d, hCenter = true, vCenter = false, wrap = true) {
 	//console.log('d', d)
 }
 function mClear(d) { clearElement(toElem(d)); }
-function mColFlex(dParent, chflex = [1, 5, 1], bgs) { // = [YELLOW, ORANGE, RED]) {
-	// let styles = { opacity:1, bg:RED, display: 'flex','justify-content':'stretch','align-content':'flex-start','flex-wrap':'nowrap' };
-	let styles = { opacity: 1, display: 'flex', 'align-items': 'stretch', 'flex-flow': 'nowrap' };
-	mStyle(dParent, styles);
-	let res = [];
-	for (let i = 0; i < chflex.length; i++) {
-		let bg = isdef(bgs) ? bgs[i] : null;
-		let d1 = mDiv(dParent, { flex: chflex[i], bg: bg });
-		res.push(d1);
-	}
-	return res;
-
-	// let d2=mDiv(dParent,{flex:chflex[1],bg:ORANGE},null,'hallo');
-	// let d3=mDiv(dParent,{flex:chflex[2],bg:RED},null,'hallo');
-	// return {left:d1,middle:d2,right:d3};
-}
 function mCenterCenterFlex(d) { mCenterFlex(d, true, true, true); }
 function mClass0(d) { d = toElem(d); d.className = ''; }
 function mClass(d) {
@@ -699,6 +683,18 @@ function mFlexEvenly(d) {
 	mStyle(d, styles);
 }
 function mFlexWrap(d) { mFlex(d, 'w'); }
+function mColFlex(dParent, chflex = [1, 5, 1], bgs) { // = [YELLOW, ORANGE, RED]) {
+	// let styles = { opacity:1, bg:RED, display: 'flex','justify-content':'stretch','align-content':'flex-start','flex-wrap':'nowrap' };
+	let styles = { opacity: 1, display: 'flex', aitems: 'stretch', 'flex-flow': 'nowrap' };
+	mStyle(dParent, styles);
+	let res = [];
+	for (let i = 0; i < chflex.length; i++) {
+		let bg = isdef(bgs) ? bgs[i] : null;
+		let d1 = mDiv(dParent, { flex: chflex[i], bg: bg });
+		res.push(d1);
+	}
+	return res;
+}
 function mFlexColumn(d, or = 'h') {
 	d = toElem(d);
 	d.style.display = 'flex';
@@ -890,15 +886,16 @@ function mPlace(elem, pos, offx, offy) {
 	elem.style[di[pos[0]]] = hor + 'px'; elem.style[di[pos[1]]] = vert + 'px';
 
 }
-function mPlayPause(dParent, styles = {}, handler = null) {
-	let fname = isdef(handler) ? handler.name : 'audio_onclick_pp';
+function mPlayPause(dParent, styles = {}, handler = null, autoplay = false) {
+	if (!handler) handler = audio_onclick_pp;
+	//let fname = isdef(handler) ? handler.name : 'audio_onclick_pp';
 	//console.log('fname', fname);
 	let html = `
 		<section id="dButtons">
-			<a id="bPlay" href="#">
+			<a id="bPlay" href="#" style="display: ${autoplay?'none':'block'}">
 				<i class="fa fa-play fa-2x"></i>
 			</a>
-			<a id="bPause" href="#" style="font-size: 28px; display: none">
+			<a id="bPause" href="#" style="display: ${autoplay?'block':'none'}">
 				<i class="fa fa-pause fa-2x"></i>
 			</a>
 		</section>
@@ -906,8 +903,10 @@ function mPlayPause(dParent, styles = {}, handler = null) {
 	let pp = mCreateFrom(html);
 	mAppend(dParent, pp);
 	mStyle(pp, styles);
-	mBy('bPlay').onclick = () => { hide0('bPlay'); show0('bPause'); onclick_playpause(); }
-	mBy('bPause').onclick = () => { hide0('bPause'); show0('bPlay'); onclick_playpause(); }
+	mBy('bPlay').onclick = () => { hide0('bPlay'); show0('bPause'); handler(); }
+	mBy('bPause').onclick = () => { hide0('bPause'); show0('bPlay'); handler(); }
+
+	// if (autoplay){hide0(document.getElementById('bPlay'));show0(document.getElementById('bPause'));}
 
 }
 function mPos(d, x, y, unit = 'px') { mStyle(d, { left: x, top: y, position: 'absolute' }, unit); }
@@ -1493,11 +1492,11 @@ function mTextArea(rows, cols, dParent, styles = {}, id) {
 	mStyle(t, styles);
 	return t;
 }
-function mToggle(label, dParent, styles = {}, handler, is_on, styleyes, styleno) {
+function mToggle(label, dParent, styles = {}, handler, is_on, styleyes, styleno, classes=null) {
 	let cursor = styles.cursor; delete styles.cursor;
 	let name = replaceWhite(label);
 	let checked = isdef(is_on) ? is_on : false;
-	let b = mButton(label, null, dParent); 
+	let b = mButton(label, null, dParent, styles, classes); 
 	mClass(b,'noactive');
 	b.setAttribute('checked', checked);
 	b.onclick = ev => {
@@ -1520,21 +1519,21 @@ function mToggle(label, dParent, styles = {}, handler, is_on, styleyes, styleno)
 	};
 	return b;
 }
-function mTogglebar(di, handler, styleyes, styleno, dParent, styles, id, classes) {
-	styles = { margin: 0, padding: 0 };
+function mTogglebar(di, handler, styleyes, styleno, dParent, styles,bstyles, id, classes,bclasses) {
+	//styles = { margin: 0, padding: 0 };
 	let d = mDiv(dParent, styles, id, classes); 
 	//mStyle(d, { bg: 'blue' })
 	for (const k in di) {
-		mToggle(k, d, {}, handler, di[k], styleyes, styleno);
+		mToggle(k, d, bstyles, handler, di[k], styleyes, styleno,bclasses);
 	}
 }
-function mToolbar(buttons, handler, dParent, styles, id, classes) {
-	styles = { margin: 0, padding: 0 };
+function mToolbar(buttons, handler, dParent, styles={}, bstyles={}, id=null, classes=null, bclasses=null) {
+	//styles = { margin: 0, padding: 0 };
 	let d = mDiv(dParent, styles, id, classes); 
 	//mStyle(d, { bg: 'blue' })
 	for (const arg of buttons) {
 		let funcname = replaceWhite(arg);
-		mButton(arg, () => handler(arg), d, {}, null, `b${funcname}`);
+		mButton(arg, () => handler(arg), d, bstyles, bclasses, `b${funcname}`);
 	}
 	return d;
 }

@@ -29,8 +29,8 @@ function tree_system() {
 			G.changed = false;
 			for (const b of G.branches) {
 				if (!b.done) {
-					if (b.age < G.depth) { for (const a of G.branching) { add_branch(b, b.angle + toRadian(a)); } }
-					else add_leaf(b); 
+					if (b.age < G.depth) { for (const a of G.branching) { branch_add(b, b.angle + toRadian(a)); } }
+					else create_leaf(b); 
 					G.changed = true;
 					b.done = true;
 				}

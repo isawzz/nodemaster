@@ -1,4 +1,20 @@
 
+
+function create_component(name, cparent, x, y, options) {
+	name = replaceWhite(name);
+	let funcname = `${name}_init`;
+	let c = window[funcname](x, y, options);
+	c.name = name;
+
+	if (isdef(cparent)) {
+		c.parent = cparent;
+		cparent.children.push(c);
+	}
+
+	return c;
+}
+
+
 function mTogglew(label, dParent, styles = {}, handler, group_id, is_on) {
 	let cursor = styles.cursor; delete styles.cursor;
 	let name = replaceWhite(label);
@@ -266,6 +282,6 @@ function add_fork(b) {
 	//let color = colorLight(b.color, .1*
 	b.done = true;
 
-	add_branch(pt,b.angle + toRadian(25),len,thickness,color,b.age+1);
-	add_branch(pt,b.angle - toRadian(25),len,thickness,b.age+1);
+	branch_add(pt,b.angle + toRadian(25),len,thickness,color,b.age+1);
+	branch_add(pt,b.angle - toRadian(25),len,thickness,b.age+1);
 }

@@ -8,7 +8,7 @@ async function start() {
 	G=null;
 
 	dToolbar = mToolbar(['tree', 'sp co', 'L-sys', 'fractal', 'flower'], onclick_menu_item, 'dToolbar');
-	mButton('clear', system_clear, dToolbar, { position: 'absolute', right: 10 });
+	mButton('clear', G_clear, dToolbar, { position: 'absolute', right: 10 });
 
 	dTable = mBy('dTable'); mCenterFlex(dTable);
 
@@ -19,7 +19,7 @@ function handle_command(cmd) {
 	G[cmd]();
 }
 
-function system_clear() {
+function G_clear() {
 
 	go = {};
 	gameloop_stop();
@@ -29,13 +29,13 @@ function system_clear() {
 	G = null;
 
 }
-function system_draw() {
+function C_draw() {
 	console.log('drawing...');
 	for(const k in go){
 		for(const o of go[k]) G.draw(o);
 	}
 }
-function system_init(name) {
+function G_init(name) {
 
 	name = replaceWhite(name) + '_system';
 	G = isdef(window[name])? window[name]():default_system();
@@ -51,7 +51,7 @@ function system_init(name) {
 	mPlayPause(dTable, { fz: 28, fg: 'lightgreen', display: 'flex', ajcenter: true }, onclick_playpause);
 
 }
-function gameloop_start() { TO.iv = setInterval(system_draw, 1000 / FR); flag_set('running'); }
+function gameloop_start() { TO.iv = setInterval(C_draw, 1000 / FR); flag_set('running'); }
 function gameloop_stop() { clearInterval(TO.iv); if (G){G.running = false; flag_reset('running');} }
 function gameloop_toggle() { if (G.running === true) gameloop_stop(); else gameloop_start(); }
 function flag_set(prop) { G[prop] = true; }

@@ -1,7 +1,7 @@
 onload = start;
 
 var cv, cx, go = {}, FR = 30,isdirty = true;
-const TREE={ created:false, jittering: false, len:100, depth:3, branching:[25,5,-25], init:init_tree};
+const TREE={ created:false, jittering: false, len:100, depth:3, branching:[25,5,-25], init:tree_init};
 DA.system = TREE;
 
 async function start() {
@@ -17,11 +17,11 @@ async function start() {
 //#region tree
 function add_fork(b) {
 	for(const a of TREE.branching){
-		add_branch(b, b.p[1], b.angle + toRadian(a));
+		branch_add(b, b.p[1], b.angle + toRadian(a));
 	}
 	b.done = true;
 }
-function init_tree() {
+function tree_init() {
 	let len = 100;
 	let o = {
 		done: false,
@@ -38,7 +38,7 @@ function init_tree() {
 //#endregion 
 
 //#region branch
-function add_branch(b, pt, angle) {
+function branch_add(b, pt, angle) {
 	let len = b.len * .67;
 	let x = pt.x + Math.cos(angle) * len;
 	let y = pt.y - Math.sin(angle) * len;
@@ -116,7 +116,7 @@ function draw_flower(x, y, color, angle = 0, petalCount = 1, lineWidth = 3, sz =
 //#endregion
 
 //#region leaf
-function add_leaf(b) {
+function create_leaf(b) {
 	pt = b.p[1];
 	angle = b.angle;
 	let len = b.len * .67;

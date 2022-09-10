@@ -19,8 +19,8 @@ function tree_funcs() {
 			c.changed = false;
 			for (const b of c.branches) {
 				if (!b.done) {
-					if (b.age < c.depth) { for (const a of chis.branching) { add_branch(b, b.angle + toRadian(a)); } }
-					else add_leaf(b);
+					if (b.age < c.depth) { for (const a of chis.branching) { branch_add(b, b.angle + toRadian(a)); } }
+					else create_leaf(b);
 					cEllipse.changed = true;
 					b.done = true;
 				}

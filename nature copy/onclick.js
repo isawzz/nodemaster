@@ -10,7 +10,7 @@ function onclick_add_layer() {
 	else {
 		changed = false;
 		for (const o of go.branch) {
-			if (!o.done) { changed = true; if (o.age < TREE.depth) add_fork(o); else add_leaf(o); break; }
+			if (!o.done) { changed = true; if (o.age < TREE.depth) add_fork(o); else create_leaf(o); break; }
 		}
 	}
 }
