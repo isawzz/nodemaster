@@ -1,4 +1,42 @@
 
+
+
+function select_pool(type, percent, layer, func) {
+	let root = C.root;
+	let res = [];
+	let pool = isdef(type) ? C.items[type] : arrFlatten(get_values(C.items));
+	//console.log('pool',pool)
+	//console.log('the pool has', pool.length, 'members');
+	if (layer == 'outer') {
+		let pnew = [];
+		let max = root.maxage;
+		while (max > 0 && isEmpty(pnew)) { pnew = pool.filter(x => x.age == max); max--; }
+		if (isEmpty(pool)) return res;
+		pool = pnew;
+	} else if (layer == 'inner') {
+		let pnew = [];
+		let min = 0;
+		while (min <= root.maxage && isEmpty(pnew)) { pnew = pool.filter(x => x.age == min); min++; }
+		if (isEmpty(pool)) return res;
+		pool = pnew;
+	}
+	for (const item of pool) {
+		if (isdef(percent) && !coin(percent)) continue;
+		if (isdef(func) && !func(item)) continue;
+		res.push(item);
+	}
+
+	console.log('res',res.length)
+	return res;
+}
+
+function mutate_color(list, colors) {
+	for (const b of list) {
+		let icolor = colors.indexOf(b.color) + 1;
+		b.color = colors[icolor];
+	}
+}
+
 function tree_init(offx = 0, offy = 0, options = {}) {
 	let o = {
 		done: false,
@@ -39,24 +77,16 @@ function tree_add() {
 					let o = create_leaf(b, root); lookupAddToList(C.items, [o.t], o);
 				}
 				C.changed = true;
+				root.maxage = b.age + 1;
 				b.done = true;
 			}
 		}
-		if (!C.changed) root.phase = 'summer';
+		if (!C.changed) { root.minage = 0; root.phase = 'summer'; }
 	}
 	else if (root.phase == 'summer') {
-
-		let colors = ['limegreen','green','mediumseagreen','lightgreen','yellowgreen','olive','darkgoldenrod','golden','orange','chocolate','peru','sienna','tan','#b2846c','#32041c'];
-		let alive = C.items.leaf.filter(x => x.color != arrLast(colors));
-		if (isEmpty(alive)) {
-			root.phase = 'autumn';
-		} else {
-			//console.log('falling',falling,C.changed)
-			for (const b of alive) { 
-				if (coin(25)) {let icolor=colors.indexOf(b.color)+1; b.color = colors[icolor]; }
-			}
-		}
-
+		let colors = ['limegreen', 'green', 'mediumseagreen', 'lightgreen', 'yellowgreen', 'olive', 'darkgoldenrod', 'golden', 'orange', 'chocolate', 'peru', 'sienna', 'tan', '#b2846c', '#32041c'];
+		let list = select_pool('leaf', 50, null, x => x.color != arrLast(colors));
+		if (isEmpty(list)) root.phase = 'autumn'; else mutate_color('leaf', colors);
 		C.changed = true;
 	}
 	else if (root.phase == 'autumn') {
@@ -70,12 +100,12 @@ function tree_add() {
 		}
 	}
 	else if (root.phase == 'winter') {
+		let colors = ['darkgoldenrod', 'peru', 'sienna', 'tan', 'transparent'];
+		let list = select_pool('branch', 50, null, x => x.color != arrLast(colors));
+		if (isEmpty(list)) root.phase = 'over'; else mutate_color('branch', colors);
 		C.changed = true;
-		cStyle(cx, 'red', 'red');
-		cEllipse(cx, cv.width / 2, 100, 100, 25);
-		root.phase = 'over';
 	}
-	else if (root.phase == 'over') { C.changed = false; }
+	else if (root.phase == 'over') { tree_clear(); }
 
 
 	if (root.animated) TO.iv1 = setTimeout(tree_add, C.root.speed[C.root.phase]);
@@ -85,7 +115,7 @@ function tree_grow() {
 
 	C.root.animated = true;
 	tree_add();
-	
+
 }
 function tree_clear() {
 	G_clear();

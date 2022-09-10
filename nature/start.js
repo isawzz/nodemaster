@@ -77,7 +77,7 @@ function toggle_growing(){
 	gameloop_toggle();
 	console.log('running',G.running)
 
-	if (G.running) tree_grow(); else {C.root.animated=false;}
+	if (G.running) get_func(C.name,'grow')(); else {C.root.animated=false;}
 }
 function gameloop_start() { TO.iv = setInterval(C_draw, 1000 / FR); flag_set('running'); }
 function gameloop_stop() { clearInterval(TO.iv); if (G) { flag_reset('running'); } }
