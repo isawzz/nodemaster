@@ -3897,7 +3897,7 @@ function setKeys({ allowDuplicates, nMin = 25, lang, key, keySets, filterFunc, p
 //#region random
 function choose(arr, n, excepti) { return rChoose(arr, n, null, excepti); }
 function chooseRandom(arr) { return rChoose(arr); }
-function coin(percent = 50) { let r = Math.random(); r *= 100; return r < percent; }
+function coin(percent = 50) { return Math.random()*100 < percent; }
 function rAlphanums(n) { return rChoose(toLetters('0123456789abcdefghijklmnopq'), n); }
 function rCard(postfix = 'n', ranks = '*A23456789TJQK', suits = 'HSDC') { return rChoose(ranks) + rChoose(suits) + postfix; }
 function rRank(ranks = 'A23456789TJQK') { return rChoose(ranks); }

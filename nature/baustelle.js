@@ -1,4 +1,5 @@
 
+const DEPTH=5;
 
 
 function select_pool(type, percent, layer, func) {
@@ -26,7 +27,7 @@ function select_pool(type, percent, layer, func) {
 		res.push(item);
 	}
 
-	console.log('res',res.length)
+	console.log('res', res.length)
 	return res;
 }
 
@@ -35,6 +36,29 @@ function mutate_color(list, colors) {
 		let icolor = colors.indexOf(b.color) + 1;
 		b.color = colors[icolor];
 	}
+}
+function mutate_colors(type, colors) {
+	// let list = select_pool('leaf', 50, null, x => x.color != arrLast(colors));
+	// if (isEmpty(list)) root.phase = 'autumn'; else mutate_color('leaf', colors);
+	let items = C.items[type]; //dict2list(C.items, 'type');
+	let changed = false;
+	let lastcolor = arrLast(colors);
+	for (const item of items) {
+		//if (item.type != type) continue;
+		//console.log('item',item)
+		if (item.color == lastcolor) continue;
+		changed = true;
+		if (coin()) continue;
+		
+		let i = colors.indexOf(item.color) + 1;
+		item.color = colors[i];
+	}
+	return changed;
+	// if (!changed) 
+	// for (const b of list) {
+	// 	let icolor = colors.indexOf(b.color) + 1;
+	// 	b.color = colors[icolor];
+	// }
 }
 
 function tree_init(offx = 0, offy = 0, options = {}) {
@@ -48,7 +72,7 @@ function tree_init(offx = 0, offy = 0, options = {}) {
 		angle: toRadian(90),
 		thickness: valf(options.thick, 20),
 		color: valf(options.color, 'sienna'),
-		depth: 5,
+		depth: DEPTH,
 		branching: [25, 5, -25],
 		dlen: .7,
 		dthickness: .7,
@@ -84,9 +108,10 @@ function tree_add() {
 		if (!C.changed) { root.minage = 0; root.phase = 'summer'; }
 	}
 	else if (root.phase == 'summer') {
-		let colors = ['limegreen', 'green', 'mediumseagreen', 'lightgreen', 'yellowgreen', 'olive', 'darkgoldenrod', 'golden', 'orange', 'chocolate', 'peru', 'sienna', 'tan', '#b2846c', '#32041c'];
-		let list = select_pool('leaf', 50, null, x => x.color != arrLast(colors));
-		if (isEmpty(list)) root.phase = 'autumn'; else mutate_color('leaf', colors);
+		let colors = ['#8B9216','#A79F0F','#EDA421','#E98604','#DF3908','#C91E0A','#8C584A'];
+		//let colors = ['limegreen', 'green', 'mediumseagreen', 'lightgreen', 'yellowgreen', 'olive', 'darkgoldenrod', 'golden', 'orange', 'chocolate', 'peru', 'sienna', 'tan', '#b2846c', '#32041c'];
+		let changed = mutate_colors('leaf', colors);
+		if (!changed) root.phase = 'autumn';
 		C.changed = true;
 	}
 	else if (root.phase == 'autumn') {
@@ -100,12 +125,13 @@ function tree_add() {
 		}
 	}
 	else if (root.phase == 'winter') {
-		let colors = ['darkgoldenrod', 'peru', 'sienna', 'tan', 'transparent'];
-		let list = select_pool('branch', 50, null, x => x.color != arrLast(colors));
-		if (isEmpty(list)) root.phase = 'over'; else mutate_color('branch', colors);
+		let colors = ['#8E2100','#5C1306','#371C0F','#1C1B19'];
+		//let colors = ['darkgoldenrod', 'peru', 'sienna', 'tan', 'black']; // 'transparent'];
+		let changed = mutate_colors('branch', colors);
+		if (!changed) root.phase = 'over';
 		C.changed = true;
 	}
-	else if (root.phase == 'over') { tree_clear(); }
+	else if (root.phase == 'over') { C.changed = false; } //tree_clear(); }
 
 
 	if (root.animated) TO.iv1 = setTimeout(tree_add, C.root.speed[C.root.phase]);
