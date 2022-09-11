@@ -1,3 +1,5 @@
+const DEPTH = 3;
+const BRANCHING = [-25, 5, 25];
 
 function tree_init(offx = 0, offy = 0, options = {}) {
 	let root = {
@@ -9,12 +11,12 @@ function tree_init(offx = 0, offy = 0, options = {}) {
 		angle: toRadian(90),
 		thickness: valf(options.thick, 20), //thickness of stem
 		color: valf(options.color, 'sienna'), //color of stem
-		depth: NATURE.depth, // 6
-		branching: NATURE.branching, // [25, 5, -25],
+		depth: DEPTH, // 6
+		branching: BRANCHING, // [25, 5, -25],
 		dlen: .7,
 		dthickness: .7,
 		phase: 'spring',
-		speed: { spring: 200, summer: 100, autumn: 25, winter: 100, over: 2000 },
+		speed: { spring: 500, summer: 100, autumn: 25, winter: 100, over: 2000 },
 		animated: false,
 		jitter: false,
 	};
@@ -26,7 +28,7 @@ function tree_add() {
 		C.changed = false;
 		assertion(root, 'ROOT IS NULL BEI TREE_ADD!!!!!!!!!!!!!')
 		if (!root.done) {
-			let b = create_branch(root, root.angle, root.len * root.dlen, root.color);
+			let b = create_branch(root, root.angle, root);
 			lookupAddToList(C.items, [b.t], b);
 			C.changed = true;
 		} else {
@@ -34,7 +36,7 @@ function tree_add() {
 				if (b.age < root.depth) { //-rNumber(0,1)) {
 					let br = root.branching; //rChoose(root.branching,rNumber(2,4));
 					for (const a of br) {
-						let o = create_branch(b, b.angle + toRadian(a), b.len * root.dlen, colorMix(b.color, 'lime', 3)); lookupAddToList(C.items, [o.t], o);
+						let o = create_branch(b, b.angle + toRadian(a), root); lookupAddToList(C.items, [o.t], o);
 					}
 				} else {
 					let o = create_leaf(b, root); lookupAddToList(C.items, [o.t], o);
@@ -69,14 +71,14 @@ function tree_add() {
 		if (!changed) root.phase = 'over';
 		C.changed = true;
 	}
-	else if (root.phase == 'over') { root.animated = false;  }
+	else if (root.phase == 'over') { C.changed = false; root.animated = false; tree_clear(); }
 
-	if (root.animated) TO.iv1 = setTimeout(tree_add, root.speed[root.phase]); else TO.iv1= setTimeout(()=>G_init('tree'),3000);
+	if (root.animated) TO.iv1 = setTimeout(tree_add, root.speed[root.phase]);
 }
 function tree_clear() { G_clear(); onclick_menu_item('tree'); }
 
-function create_branch(b, angle, len, color) {
-	let root = C.root;
+function create_branch(b, angle, root) {
+	let len = b.len * root.dlen;
 	let x = b.p2.x + Math.cos(angle) * len;
 	let y = b.p2.y - Math.sin(angle) * len;
 	let age = b.age + 1;
@@ -89,10 +91,10 @@ function create_branch(b, angle, len, color) {
 		y: y,
 		t: 'branch',
 		age: age,
-		angle: angle,
 		len: len,
+		angle: angle,
 		thickness: b.thickness * root.dthickness,
-		color: color,
+		color: colorMix(b.color, 'lime', 3),
 	};
 	b.done = true;
 	return o;

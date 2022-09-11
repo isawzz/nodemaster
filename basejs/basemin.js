@@ -3,7 +3,7 @@ var Pollmode = 'auto';
 var Info, ColorDi, Items = {}, DA = {}, Card = {}, TO = {}, Counter = { server: 0 }, Socket = null;
 var uiActivated = false, Selected, Turn, Prevturn;
 var S = {}, Z, U = null, PL, G, C, UI = {}, Users, Tables, Basepath, Serverdata = {}, Clientdata = {};
-var dTable, dHeader, dFooter, dMessage, dPuppet, dMenu,dLeft,dCenter,dRight; //, dTitle; //, dUsers, dGames, dTables, dLogo, dLoggedIn, dPlayerNames, dInstruction, dError, dMessage, dStatus, dTableName, dGameControls, dUserControls, dMoveControls, dSubmitMove, dPlayerStats;
+var dTable, dHeader, dFooter, dMessage, dPuppet, dMenu, dLeft, dCenter, dRight; //, dTitle; //, dUsers, dGames, dTables, dLogo, dLoggedIn, dPlayerNames, dInstruction, dError, dMessage, dStatus, dTableName, dGameControls, dUserControls, dMoveControls, dSubmitMove, dPlayerStats;
 var Config, Syms, SymKeys, ByGroupSubgroup, KeySets, C52, Cinno, C52Cards;
 var FORCE_REDRAW = false, TESTING = false;
 var ColorThiefObject, SelectedItem, SelectedColor;
@@ -30,6 +30,83 @@ const YELLOW2 = '#fff620'; //?pink???
 const YELLOW3 = '#ffed01';
 //#endregion
 //#region game globals
+const ARI = {
+	sz_hand: 7,
+	stage: {
+		1: 'journey',
+		2: 'tax',
+		3: 'auto market',
+		4: 'stall selection',
+		1004: 'TEST_starts_in_stall_selection_complete',
+		5: 'action: command',
+		6: 'action step 2',
+		7: 'action 3',
+		8: 'action 4',
+		9: 'action 5',
+		10: 'end game?',
+		11: 'ball',
+		12: 'auction: bid',
+		13: 'auction: buy',
+		14: 'complementing_market_after_church',
+		15: 'commission',
+		16: 'commission new',
+		17: 'church',
+		18: 'church_minplayer_tithe',
+		//180: 'downgrade_cards_church', ***geht zu downgrade!
+		19: 'church_newcards',
+
+		20: 'payment action',
+		21: 'church_minplayer_tithe_add',
+		22: 'church_minplayer_tithe_downgrade',
+		23: 'comm_weitergeben',
+		24: 'rumors_weitergeben',
+		25: 'rumor',
+		26: 'blackmail',
+		blackmail: 26,
+		27: 'inspect',
+		rumor: 25,
+		28: 'buy rumor',
+		'buy rumor': 28,
+		29: 'rumor discard',
+
+		30: 'pick luxury or journey cards',
+		31: 'add new journey',
+		32: 'rumor_both',
+		33: 'blackmail_owner',
+		34: 'accept_blackmail',
+		35: 'blackmail_complete',
+		36: 'reject_blackmail',
+		37: 'commission_stall',
+		38: 'pick_schwein',
+
+		40: 'trade',
+		41: 'build',
+		42: 'visit',
+		43: 'buy',
+		44: 'upgrade',
+		45: 'downgrade',
+		46: 'visit destroy',
+		build: 41,
+		upgrade: 44,
+		downgrade: 45,
+		visit: 42,
+		buy: 43,
+
+		100: 'pickup end',
+		101: 'build end',
+		102: 'select building to upgrade',
+		103: 'select downgrade cards',
+		104: 'next_comm_setup_stage',
+		105: 'next_rumor_setup_stage',
+
+	}
+};
+const BLUFF = {
+	torank: { _: '_', three: '3', four: '4', five: '5', six: '6', seven: '7', eight: '8', nine: '9', ten: 'T', jack: 'J', queen: 'Q', king: 'K', ace: 'A' },
+	toword: { _: '_', '3': 'three', '4': 'four', '5': 'five', '6': 'six', '7': 'seven', '8': 'eight', '9': 'nine', T: 'ten', J: 'jack', Q: 'queen', K: 'king', A: 'ace' },
+	rankstr: '3456789TJQKA',
+
+};
 const DIBOA = {
 	home: { link: "../rechnung/index.html", img: 'home.png', align: 'left', pop: false },
 	bill: { link: "../rechnung/index.html", img: 'bill.png', align: 'left', pop: false },
@@ -141,7 +218,6 @@ const DIBOA = {
 
 	}
 };
-
 const INNO = {
 	color: { blue: '#89aad7', red: '#da7887', green: '#72b964', yellow: '#e2e57a', purple: '#9b58ba' },
 	sym: {
@@ -184,83 +260,12 @@ const INNO = {
 		HISTORY: "Claim immediately if you have 4 or more echoes in one color (May also be claimed via Photography from Age 7)",
 	},
 };
-const ARI = {
-	sz_hand: 7,
-	stage: {
-		1: 'journey',
-		2: 'tax',
-		3: 'auto market',
-		4: 'stall selection',
-		1004: 'TEST_starts_in_stall_selection_complete',
-		5: 'action: command',
-		6: 'action step 2',
-		7: 'action 3',
-		8: 'action 4',
-		9: 'action 5',
-		10: 'end game?',
-		11: 'ball',
-		12: 'auction: bid',
-		13: 'auction: buy',
-		14: 'complementing_market_after_church',
-		15: 'commission',
-		16: 'commission new',
-		17: 'church',
-		18: 'church_minplayer_tithe',
-		//180: 'downgrade_cards_church', ***geht zu downgrade!
-		19: 'church_newcards',
-
-		20: 'payment action',
-		21: 'church_minplayer_tithe_add',
-		22: 'church_minplayer_tithe_downgrade',
-		23: 'comm_weitergeben',
-		24: 'rumors_weitergeben',
-		25: 'rumor',
-		26: 'blackmail',
-		blackmail: 26,
-		27: 'inspect',
-		rumor: 25,
-		28: 'buy rumor',
-		'buy rumor': 28,
-		29: 'rumor discard',
-
-		30: 'pick luxury or journey cards',
-		31: 'add new journey',
-		32: 'rumor_both',
-		33: 'blackmail_owner',
-		34: 'accept_blackmail',
-		35: 'blackmail_complete',
-		36: 'reject_blackmail',
-		37: 'commission_stall',
-		38: 'pick_schwein',
-
-		40: 'trade',
-		41: 'build',
-		42: 'visit',
-		43: 'buy',
-		44: 'upgrade',
-		45: 'downgrade',
-		46: 'visit destroy',
-		build: 41,
-		upgrade: 44,
-		downgrade: 45,
-		visit: 42,
-		buy: 43,
-
-		100: 'pickup end',
-		101: 'build end',
-		102: 'select building to upgrade',
-		103: 'select downgrade cards',
-		104: 'next_comm_setup_stage',
-		105: 'next_rumor_setup_stage',
-
-	}
-};
-const BLUFF = {
-	torank: { _: '_', three: '3', four: '4', five: '5', six: '6', seven: '7', eight: '8', nine: '9', ten: 'T', jack: 'J', queen: 'Q', king: 'K', ace: 'A' },
-	toword: { _: '_', '3': 'three', '4': 'four', '5': 'five', '6': 'six', '7': 'seven', '8': 'eight', '9': 'nine', T: 'ten', J: 'jack', Q: 'queen', K: 'king', A: 'ace' },
-	rankstr: '3456789TJQKA',
-
-};
+const NATURE = {
+	depth: 6,
+	branching: [-25, 5, 25],
+	axiom: 'A', // L-system
+	rules: [{ aus: 'A', wird: 'AA+[+A-A-A]-[-A+A+A]' }], //[{ aus: 'A', wird: 'AB' },{aus:'B', wird:'A'}], [{ aus: 'A', wird: 'B[+A]-A' }]
+}
 const SHERIFF = {
 	color: {
 		legal: GREEN, //'lime',
@@ -892,10 +897,10 @@ function mPlayPause(dParent, styles = {}, handler = null, autoplay = false) {
 	//console.log('fname', fname);
 	let html = `
 		<section id="dButtons">
-			<a id="bPlay" href="#" style="display: ${autoplay?'none':'block'}">
+			<a id="bPlay" href="#" style="display: ${autoplay ? 'none' : 'block'}">
 				<i class="fa fa-play fa-2x"></i>
 			</a>
-			<a id="bPause" href="#" style="display: ${autoplay?'block':'none'}">
+			<a id="bPause" href="#" style="display: ${autoplay ? 'block' : 'none'}">
 				<i class="fa fa-pause fa-2x"></i>
 			</a>
 		</section>
@@ -903,9 +908,11 @@ function mPlayPause(dParent, styles = {}, handler = null, autoplay = false) {
 	let pp = mCreateFrom(html);
 	mAppend(dParent, pp);
 	mStyle(pp, styles);
+
 	mBy('bPlay').onclick = () => { hide0('bPlay'); show0('bPause'); handler(); }
 	mBy('bPause').onclick = () => { hide0('bPause'); show0('bPlay'); handler(); }
 
+	return { button: pp, show_play: () => { hide0('bPause'); show0('bPlay'); }, show_pause: () => { hide0('bPlay'); show0('bPause'); } };
 	// if (autoplay){hide0(document.getElementById('bPlay'));show0(document.getElementById('bPause'));}
 
 }
@@ -1492,12 +1499,12 @@ function mTextArea(rows, cols, dParent, styles = {}, id) {
 	mStyle(t, styles);
 	return t;
 }
-function mToggle(label, dParent, styles = {}, handler, is_on, styleyes, styleno, classes=null) {
+function mToggle(label, dParent, styles = {}, handler, is_on, styleyes, styleno, classes = null) {
 	let cursor = styles.cursor; delete styles.cursor;
 	let name = replaceWhite(label);
 	let checked = isdef(is_on) ? is_on : false;
-	let b = mButton(label, null, dParent, styles, classes); 
-	mClass(b,'noactive');
+	let b = mButton(label, null, dParent, styles, classes);
+	mClass(b, 'noactive');
 	b.setAttribute('checked', checked);
 	b.onclick = ev => {
 		ev.cancelBubble = true;
@@ -1506,7 +1513,7 @@ function mToggle(label, dParent, styles = {}, handler, is_on, styleyes, styleno,
 		// console.log('clicked button!!!', b);
 		let oldval = b.getAttribute('checked') == 'false' ? false : true;
 
-		let newval = oldval ? false : true; 
+		let newval = oldval ? false : true;
 		// console.log('old', oldval, typeof (oldval), 'new', newval);
 		if (newval === true) {
 			// console.log('sollte', styleyes)
@@ -1519,17 +1526,17 @@ function mToggle(label, dParent, styles = {}, handler, is_on, styleyes, styleno,
 	};
 	return b;
 }
-function mTogglebar(di, handler, styleyes, styleno, dParent, styles,bstyles, id, classes,bclasses) {
+function mTogglebar(di, handler, styleyes, styleno, dParent, styles, bstyles, id, classes, bclasses) {
 	//styles = { margin: 0, padding: 0 };
-	let d = mDiv(dParent, styles, id, classes); 
+	let d = mDiv(dParent, styles, id, classes);
 	//mStyle(d, { bg: 'blue' })
 	for (const k in di) {
-		mToggle(k, d, bstyles, handler, di[k], styleyes, styleno,bclasses);
+		mToggle(k, d, bstyles, handler, di[k], styleyes, styleno, bclasses);
 	}
 }
-function mToolbar(buttons, handler, dParent, styles={}, bstyles={}, id=null, classes=null, bclasses=null) {
+function mToolbar(buttons, handler, dParent, styles = {}, bstyles = {}, id = null, classes = null, bclasses = null) {
 	//styles = { margin: 0, padding: 0 };
-	let d = mDiv(dParent, styles, id, classes); 
+	let d = mDiv(dParent, styles, id, classes);
 	//mStyle(d, { bg: 'blue' })
 	for (const arg of buttons) {
 		let funcname = replaceWhite(arg);
@@ -3897,7 +3904,7 @@ function setKeys({ allowDuplicates, nMin = 25, lang, key, keySets, filterFunc, p
 //#region random
 function choose(arr, n, excepti) { return rChoose(arr, n, null, excepti); }
 function chooseRandom(arr) { return rChoose(arr); }
-function coin(percent = 50) { return Math.random()*100 < percent; }
+function coin(percent = 50) { return Math.random() * 100 < percent; }
 function rAlphanums(n) { return rChoose(toLetters('0123456789abcdefghijklmnopq'), n); }
 function rCard(postfix = 'n', ranks = '*A23456789TJQK', suits = 'HSDC') { return rChoose(ranks) + rChoose(suits) + postfix; }
 function rRank(ranks = 'A23456789TJQK') { return rChoose(ranks); }
@@ -4235,6 +4242,14 @@ function clear_timeouts() {
 	//clear ALL timeouts!
 	for (const k in TO) clearTimeout(TO[k]);
 	stop_simple_timer();
+}
+function countAll(s, scount) {
+	//usage: countAll('A+[+A-A-A]-[-A+A+A]', toLetters('ABF')) >7
+	let letters = toLetters(scount);
+	function counter(total, ch) { if (letters.includes(ch)) return total + 1; else return total; }
+
+	let res = [...s].reduce(counter, 0);
+	return res;
 }
 function divInt(a, b) { return Math.trunc(a / b); }
 function errlog() { console.log('ERROR!', ...arguments); }
