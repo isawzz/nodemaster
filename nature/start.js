@@ -9,7 +9,8 @@ async function start() {
 	FR = 25;
 	G = null;
 
-	dToolbar = mToolbar(['tree', 'lsys', 'spaceco', 'fractal', 'flower'], onclick_menu_item, 'dToolbar', { padding: 10, display: 'flex', gap: 10, bg: 'orange' });
+	let menulist=['tree', 'lsys']; //, 'flower', 'spaceco', 'fractal'];
+	dToolbar = mToolbar(menulist, onclick_menu_item, 'dToolbar', { padding: 10, display: 'flex', gap: 10, bg: 'orange' });
 	mButton('clear', G_clear, dToolbar, { position: 'absolute', right: 10 });
 
 	dTable = mSection({ bg: '#ddd', vpadding: 10, hmin: 400 }, 'dTable'); mCenterFlex(dTable);

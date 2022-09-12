@@ -1,24 +1,28 @@
-
+DA.isystem = -1;
 function lsys_init(offx = 0, offy = 0, options = {}) {
 
-	let maxdepth = calc_maxdepth(12000, NATURE.rules);
+	let n=NATURE.lsystems.length;
+	let i=DA.isystem=(DA.isystem+1)%n;
+	let system = NATURE.lsystems[i]; //if (DA.isystem>10) DA.isystem=0;  //rChoose(NATURE.lsystems);
+	let maxdepth = calc_maxdepth(12000, system.rules);
+
 	let root = {
-		axiom: NATURE.axiom, //'F',
-		sentence: NATURE.axiom,
-		rules: NATURE.rules, //[{ aus: 'F', wird: 'FF+[+F-F-F]-[-F+F+F]' },],
+		axiom: system.axiom, //'F',
+		sentence: system.axiom,
+		rules: system.rules, //[{ aus: 'F', wird: 'FF+[+F-F-F]-[-F+F+F]' },],
 		t: 'root',
-		p2: { x: cv.width / 2, y: cv.height },
+		p2: { x: cv.width / valf(system.xstart,2), y: cv.height },
 		angle: toRadian(90),
-		len: 100,
+		len: valf(system.len, 100),
 		age: 0,
 		gen: 0,
 		id: 0,
-		dangle: toRadian(25),
-		dlen: .5,
+		dangle: toRadian(valf(system.angle,25)),
+		dlen: valf(system.dlen, .5),
 		thickness: valf(options.thick, 1),
 		dthickness: 1,
-		color: 'seagreen',
-		depth: Math.min(NATURE.depth, maxdepth), // 6
+		color: rColor(70), //'seagreen',
+		depth: Math.min(valf(system.depth,NATURE.depth), maxdepth), // 6
 		animated: false,
 		jitter: false,
 		done: true,
@@ -31,16 +35,16 @@ function lsys_add() {
 	let [stack, gen, b, sentence, x, y, angle, len, id] = [[], root.gen, root, root.sentence, root.p2.x, root.p2.y, root.angle, root.len, root.id++];
 	for (let i = 0; i < gen; i++) { len *= root.dlen; sentence = generate(sentence); }
 
-	let step = 0;
+	let step = 0;//for testing
 	for (var i = 0; i < sentence.length; i++) {
 		var ch = sentence[i];
-		if ('FAB'.includes(ch)) {
-			b = create_branch(b, angle, len,b.color); lookupAddToList(C.items, ['branch'], b); b.id = id++;
+		if ('ABCFVWXYZ'.includes(ch)) {
+			b = create_branch(b, angle, len, b.color); lookupAddToList(C.items, ['branch'], b); b.id = id++;
 			//console.log(`(${step++}) branch`, toDegree(angle))
 		} else if (ch == '+') {
-			angle -= toRadian(25); //console.log(`(${step++}) +`, toDegree(angle))
+			angle -= root.dangle; //toRadian(25); //console.log(`(${step++}) +`, toDegree(angle))
 		} else if (ch == '-') {
-			angle += toRadian(25); //console.log(`(${step++}) -`, toDegree(angle))
+			angle += root.dangle; //console.log(`(${step++}) -`, toDegree(angle))
 		} else if (ch == '[') {
 			stack.push({ x: b.p2.x, y: b.p2.y, angle: angle, b: b }); //console.log(`(${step++}) push`, toDegree(angle))
 		} else if (ch == ']') {
@@ -49,7 +53,7 @@ function lsys_add() {
 		}
 	}
 	C.changed = true;
-	if (root.gen < root.depth) TO.iv1 = setTimeout(lsys_add, 100); else TO.iv1= setTimeout(()=>G_init('lsys'),3000);
+	if (root.gen < root.depth) TO.iv1 = setTimeout(lsys_add, 100); else TO.iv1 = setTimeout(() => G_init('lsys'), 5000);
 }
 function generate(sentence) {
 	let root = C.root;

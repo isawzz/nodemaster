@@ -14,7 +14,7 @@ function tree_init(offx = 0, offy = 0, options = {}) {
 		dlen: .7,
 		dthickness: .7,
 		phase: 'spring',
-		speed: { spring: 200, summer: 100, autumn: 25, winter: 100, over: 2000 },
+		speed: { spring: 100, summer: 100, autumn: 25, winter: 100, over: 2000 },
 		animated: false,
 		jitter: false,
 	};

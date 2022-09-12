@@ -263,9 +263,128 @@ const INNO = {
 const NATURE = {
 	depth: 6,
 	branching: [-25, 5, 25],
-	axiom: 'A', // L-system
-	rules: [{ aus: 'A', wird: 'AA+[+A-A-A]-[-A+A+A]' }], //[{ aus: 'A', wird: 'AB' },{aus:'B', wird:'A'}], [{ aus: 'A', wird: 'B[+A]-A' }]
-}
+	lsystems: [
+		{
+			axiom: 'A', // L-system
+			rules: [
+				{ aus: 'A', wird: 'A+[+A-A]' },
+			], 
+			angle: 25,
+			len:500,
+			dlen: .7,
+			depth: 6
+		},
+		{
+			axiom: 'F', // L-system
+			rules: [
+				{ aus: 'F', wird: 'F[+F]F[-F]F' },
+			], 
+			angle: 26,
+			len:50,
+		},
+		{
+			axiom: 'F', // L-system
+			rules: [
+				{ aus: 'F', wird: 'F[+F]F[-F][F]' },
+			], 
+			angle: 20,
+			len:200,
+		},
+		{
+			axiom: 'X', // L-system
+			rules: [
+				{ aus: 'X', wird: 'F[+X][-X]FX' },
+				{ aus: 'F', wird: 'FF' },
+			], 
+			angle: 26,
+			len:200,
+		},
+		// {
+		// 	axiom: 'X', // L-system
+		// 	rules: [
+		// 		{ aus: 'X', wird: 'F[+X][-X]FX' },
+		// 		{ aus: 'F', wird: 'FF' },
+		// 	], 
+		// 	angle: 26,
+		// 	len:200,
+		// },
+		{
+			axiom: 'A', // L-system
+			rules: [{ aus: 'A', wird: 'AA+[+A-A-A]-[-A+A+A]' }], //[{ aus: 'A', wird: 'AB' },{aus:'B', wird:'A'}], [{ aus: 'A', wird: 'B[+A]-A' }]
+			angle: 25,
+		},
+		{
+			axiom: 'A',
+			rules: [{ aus: 'F', wird: 'FF' }, { aus: 'A', wird: 'F-[[A]+A]+F[+FA]-A' }],
+			angle: 23,
+		},
+		{
+			axiom: 'Y',
+			rules: [{ aus: 'X', wird: 'X[-FFF][+FFF]FX' }, { aus: 'Y', wird: 'YFX[+Y][-Y]' }, { aus: 'F', wird: 'X' }],
+			angle: 25,
+			len: 85,
+		},
+		{
+			axiom: 'F',
+			rules: [{ aus: 'F', wird: 'F[+FF][-FF]F[-F][+F]F' }],
+			angle: 35,
+			len: 70,
+		},
+		{
+			axiom: 'VZFFF',
+			rules: [{ aus: 'V', wird: '[+++W][---W]YV' },
+			{ aus: 'W', wird: '+X[-W]Z' },
+			{ aus: 'Y', wird: 'YZ' },
+			{ aus: 'F', wird: 'Y' },
+			{ aus: 'Z', wird: '[-FFF][+FFF]F' },
+			{ aus: 'X', wird: '-W[+X]Z' }],
+			angle: 40,
+			len: 100,
+		},
+		{
+			axiom: 'F++F++F',
+			rules: [{ aus: 'F', wird: 'F-F++F-F' }],
+			angle: 60,
+			len: 100,
+			depth: 3,
+			xstart: 3,
+		},
+		{
+			axiom: 'F+F+F+F',
+			rules: [{ aus: 'F', wird: 'FF+F+F+F+FF' }],
+			angle: 90,
+			len: 100,
+			depth: 3,
+			xstart: 6,
+		},
+		{
+			axiom: 'F+F+F+F',
+			rules: [{ aus: 'F', wird: 'F+F-F-FFF+F+F-F' }],
+			angle: 90,
+			len: 28,
+			depth: 3,
+		},
+		{
+			axiom: 'X',
+			rules: [
+				{ aus: 'X', wird: '-YF+XFX+FY-' },
+				{ aus: 'Y', wird: '+XF-YFY-FX+' },
+				{ aus: 'F', wird: 'F' },
+			],
+			angle: 90,
+			len: 150,
+			xstart: 1.3,
+			depth: 4,
+		},
+		{
+			axiom: 'X',
+			rules: [{ aus: 'F', wird: 'FF' },
+			{ aus: 'X', wird: 'F[+X]F[-X]+X' }],
+			angle: 20,
+			len: 200,
+		},
+	]
+};
 const SHERIFF = {
 	color: {
 		legal: GREEN, //'lime',
@@ -3949,8 +4068,7 @@ function rChoose(arr, n = 1, func = null, exceptIndices = null) {
 
 }
 function rColor(brightness) {
-
-	//brightness can be dark,bright,medium, or a percentage, where 0 is black and 100 is white
+	//percent (0=black), or dark,bright,medium, or a percentage, where 0 is black and 100 is white
 	if (isdef(brightness)) {
 		let hue = rHue();
 		let sat = 100;
