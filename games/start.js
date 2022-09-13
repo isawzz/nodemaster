@@ -5,14 +5,14 @@ TESTING = 'live'; // live | nginx | [false] | true (live for live-server, nginx 
 async function start() {
 	Socket = TESTING == 'live' ? io('http://localhost:2121') : TESTING == 'nginx' ? io('http://216.250.112.218:3000') : io();
 	await load_syms();
-	initui(); //macht dHeader,dMessage,dTable,dFooter und den monkey: dPuppet
+	game_init(); //macht dHeader,dMessage,dTable,dFooter und den monkey: dPuppet
 
 	TO.puppet = setInterval(monkey_jump, rNumber(5000, 10000)); //make puppet jump every random seconds
 
 
 }
 
-function initui() {
+function game_init() {
 	let htop = 105;
 
 	mPuppet('monkey', null, { h: htop - 18 });
