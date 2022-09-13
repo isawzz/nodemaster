@@ -1,0 +1,84 @@
+/* #region button */
+button,
+button:focus,
+button:active,
+/* input[type='checkbox'], */
+.button:focus,
+.button:active,
+.button,
+.selectbutton,
+.donebutton,
+.togglebg label {
+	text-align: center;
+	border: unset;
+	/* border: 0px solid transparent; */
+	/* border: 1px solid transparent; */
+	/* border: solid grey 1px; */
+	border-radius: 4px;
+	/* border-radius: 10px; */
+	font-size: 1rem;
+	line-height: 1.5;
+	outline: none;
+	box-shadow: none;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	cursor: pointer;
+	min-width: 60px;
+	/* margin-right: 10px; */
+	/* margin-top: 8px; */
+	box-sizing: border-box;
+	/* padding: 4px; */
+	/* min-height: 40px; */
+}
+.disabled {
+	cursor: default;
+}
+.enabled:hover,
+button:hover,
+.button:hover,
+.togglebg label:hover {
+	/* filter: invert();  */
+	filter: brightness(0.75);
+}
+button:active,
+.button:active {
+	/* filter: invert();  */
+	filter: invert();
+}
+
+/* #endregion button */
+
+.noactive:active{
+	filter: unset;
+	background-color: unset;
+}
+.togglebg {
+	display: inline-block;
+	text-align: center;
+}
+.invisible {
+	opacity: 0;
+	width: 0px;
+	height: 0px;
+	margin: 0px;
+	padding: 0px;
+}
+.mp0 {
+	margin: 0px;
+	padding: 0px;
+}
+.togglebg label {
+	display: inline-block;
+	/* padding: 1px 6px; */
+	/* margin: 3px; */
+	background-color: buttonface;
+	transition: background-color 200ms ease-in;
+}
+.togglebg input:checked ~ label {
+	background-color: lime;
+}
+
+.anders{
+	font-size: 40px;
+}
+

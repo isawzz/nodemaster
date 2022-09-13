@@ -24,8 +24,9 @@ function G_init(name) {
 	if (cv) G_clear();
 
 	[dLeft, dCenter] = mColFlex(dTable, [0, 5]);
-	[cv, cx] = mCanvas(dCenter, 500, 400, { bg: '#222', rounding: 10 });
-	let bpp = mPlayPause(dCenter, { fz: 28, fg: 'lightgreen', display: 'flex', ajcenter: true }, onclick_playpause);
+	[cv, cx] = mCanvas(dCenter, { w:500, h:500, bg: '#222', rounding: 10 });
+
+	let bpp = _mPlayPause(dCenter, { fz: 28, fg: 'lightgreen', display: 'flex', ajcenter: true }, onclick_playpause);
 
 	G = { running: false, bPP: bpp };
 	C = { changed: true, name: name, items: {}, root: get_func(name, 'init')() };
@@ -44,7 +45,32 @@ function gameloop_toggle() { if (G.running === true) gameloop_stop(); else gamel
 
 function get_func(itemtype, cmd) { return window[`${itemtype}_${cmd}`]; }
 
+//uses deprecated: mPlayPause
+function _mPlayPause(dParent, styles = {}, handler = null) {
+	if (!handler) handler = audio_onclick_pp;
+	//let fname = isdef(handler) ? handler.name : 'audio_onclick_pp';
+	//console.log('fname', fname);
+	let html = `
+		<section id="dButtons">
+			<a id="bPlay" href="#" }">
+				<i class="fa fa-play fa-2x"></i>
+			</a>
+			<a id="bPause" href="#" style="display: none">
+				<i class="fa fa-pause fa-2x"></i>
+			</a>
+		</section>
+	`;
+	let pp = mCreateFrom(html);
+	mAppend(dParent, pp);
+	mStyle(pp, styles);
 
+	mBy('bPlay').onclick = () => { hide0('bPlay'); show0('bPause'); handler(); }
+	mBy('bPause').onclick = () => { hide0('bPause'); show0('bPlay'); handler(); }
+
+	//deprecate:::
+	return  { button: pp, show_play: () => { hide0('bPause'); show0('bPlay'); }, show_pause: () => { hide0('bPlay'); show0('bPause'); } };
+
+}
 
 
 

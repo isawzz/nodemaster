@@ -26,10 +26,10 @@ function G_init(name) {
 	if (cv) G_clear();
 
 	[dLeft, dCenter] = mColFlex(dTable, [0, 5]);
-	[cv, cx] = mCanvas(dCenter, 500, 400, { bg: '#222', rounding: 10 });
+	[cv, cx] = mCanvas(dCenter, { w:500, h:500, bg: '#222', rounding: 10 });
 	//create_menu(dLeft, 'v');
 	//mLinebreak(dParent);
-	let bpp = mPlayPause(dCenter, { fz: 28, fg: 'lightgreen', display: 'flex', ajcenter: true }, onclick_playpause); //, AUTOMATISCH); //uncomment to autostart
+	let bpp = _mPlayPause(dCenter, { fz: 28, fg: 'lightgreen', display: 'flex', ajcenter: true }, onclick_playpause); //, AUTOMATISCH); //uncomment to autostart
 
 	G = { running: false, bPP: bpp };
 	C = { changed: true, name: name, items: {}, root: get_func(name, 'init')() };

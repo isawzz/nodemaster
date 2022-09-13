@@ -268,9 +268,9 @@ const NATURE = {
 			axiom: 'A', // L-system
 			rules: [
 				{ aus: 'A', wird: 'A+[+A-A]' },
-			], 
+			],
 			angle: 25,
-			len:500,
+			len: 500,
 			dlen: .7,
 			depth: 6
 		},
@@ -278,26 +278,26 @@ const NATURE = {
 			axiom: 'F', // L-system
 			rules: [
 				{ aus: 'F', wird: 'F[+F]F[-F]F' },
-			], 
+			],
 			angle: 26,
-			len:50,
+			len: 50,
 		},
 		{
 			axiom: 'F', // L-system
 			rules: [
 				{ aus: 'F', wird: 'F[+F]F[-F][F]' },
-			], 
+			],
 			angle: 20,
-			len:200,
+			len: 200,
 		},
 		{
 			axiom: 'X', // L-system
 			rules: [
 				{ aus: 'X', wird: 'F[+X][-X]FX' },
 				{ aus: 'F', wird: 'FF' },
-			], 
+			],
 			angle: 26,
-			len:200,
+			len: 200,
 		},
 		// {
 		// 	axiom: 'X', // L-system
@@ -503,17 +503,17 @@ function mButtonX(dParent, handler, pos = 'tr', sz = 25, color = 'white') {
 	return d2;
 }
 function mBy(id) { return document.getElementById(id); }
-function mCanvas(dParent, vw, vh, styles = {}, center = 'w') {
+function mCanvas(dParent, styles = {}) { //, center = 'w') {
 	let cv = mCreate('canvas');
 	mAppend(toElem(dParent), cv);
 
-	if (center == 'w') mStyle(dParent, { align: 'center' });
-	if (nundef(styles.w)) styles.w = vw;
-	if (nundef(styles.h)) styles.h = vh;
+	// if (center == 'w') mStyle(dParent, { align: 'center' });
+	// if (nundef(styles.w)) styles.w = vw;
+	// if (nundef(styles.h)) styles.h = vh;
 
 	mStyle(cv, styles);
-	cv.width = vw;
-	cv.height = vh;
+	if (isdef(styles.w)) cv.width = styles.w;
+	if (isdef(styles.h)) cv.height = styles.h;
 
 	//cv = mSection({ bg: BLUE, position: 'absolute', left: '50%', top: '50%', transform: 'translate(-50%,-50%)' }, 'canvas1')
 	cx = cv.getContext('2d');
@@ -553,6 +553,11 @@ function mClass(d) {
 }
 function mClassRemove(d) { d = toElem(d); for (let i = 1; i < arguments.length; i++) d.classList.remove(arguments[i]); }
 function mClassReplace(d, weg, her) { mClassRemove(d, weg); mClass(d, her); }
+function mClassToggle(d, classes) {
+	let wlist = toWords(classes);
+	d = toElem(d);
+	for (const c of wlist) if (d.classList.contains(c)) mClassRemove(d, c); else mClass(d, c);
+}
 function mColorLetters(s, brightness) {
 	return toLetters(s).map(x => `<div style='display:inline-block;transform:rotate(${rChoose([10, 5, -10, -5])}deg);color:${rColor(brightness)}'>${x == ' ' ? '&nbsp;' : x}</div>`).join('');
 }
@@ -1010,16 +1015,17 @@ function mPlace(elem, pos, offx, offy) {
 	elem.style[di[pos[0]]] = hor + 'px'; elem.style[di[pos[1]]] = vert + 'px';
 
 }
-function mPlayPause(dParent, styles = {}, handler = null, autoplay = false) {
-	if (!handler) handler = audio_onclick_pp;
+function mPlayPause(dParent, styles = {}, handle_play, handle_pause) {
+	if (!handle_play) handle_play = audio_onclick_pp;
+	if (!handle_pause) handle_pause = handle_play;
 	//let fname = isdef(handler) ? handler.name : 'audio_onclick_pp';
 	//console.log('fname', fname);
 	let html = `
 		<section id="dButtons">
-			<a id="bPlay" href="#" style="display: ${autoplay ? 'none' : 'block'}">
+			<a id="bPlay" href="#" }">
 				<i class="fa fa-play fa-2x"></i>
 			</a>
-			<a id="bPause" href="#" style="display: ${autoplay ? 'block' : 'none'}">
+			<a id="bPause" href="#" style="display: none">
 				<i class="fa fa-pause fa-2x"></i>
 			</a>
 		</section>
@@ -1028,11 +1034,10 @@ function mPlayPause(dParent, styles = {}, handler = null, autoplay = false) {
 	mAppend(dParent, pp);
 	mStyle(pp, styles);
 
-	mBy('bPlay').onclick = () => { hide0('bPlay'); show0('bPause'); handler(); }
-	mBy('bPause').onclick = () => { hide0('bPause'); show0('bPlay'); handler(); }
+	mBy('bPlay').onclick = () => { hide0('bPlay'); show0('bPause'); handle_play(); }
+	mBy('bPause').onclick = () => { hide0('bPause'); show0('bPlay'); handle_pause(); }
 
-	return { button: pp, show_play: () => { hide0('bPause'); show0('bPlay'); }, show_pause: () => { hide0('bPlay'); show0('bPause'); } };
-	// if (autoplay){hide0(document.getElementById('bPlay'));show0(document.getElementById('bPause'));}
+	return { ui: pp, play: () => fireClick('bPlay'), pause: () => fireClick('bPlay') };
 
 }
 function mPos(d, x, y, unit = 'px') { mStyle(d, { left: x, top: y, position: 'absolute' }, unit); }
@@ -3788,6 +3793,44 @@ function format_date(date) {
 function get_weekday(date) {
 	let d = new Date(date);
 	return d.getDay();
+}
+//#endregion
+
+//#region fire
+function fireClick(elem) {
+	const evt = new Event("click", { "bubbles": true, "cancelable": false });
+	elem.dispatchEvent(evt);
+}
+function fireWheel(node) {
+	if (document.createEvent) {
+		var evt = document.createEvent('MouseEvents');
+		evt.initEvent('wheel', true, false);
+		console.log('fireClick: createEvent and node.dispatchEvent exist!!!', node)
+		node.dispatchEvent(evt);
+	} else if (document.createEventObject) {
+		console.log('fireClick: createEventObject and node.fireEvent exist!!!', node)
+		node.fireEvent('onclick');
+	} else if (typeof node.onclick == 'function') {
+		console.log('fireClick: node.onclick exists!!!', node)
+		node.onclick();
+	}
+}
+function fireKey(k, { control, alt, shift } = {}) {
+	console.log('fireKey called!' + document.createEvent)
+	if (document.createEvent) {
+		// var evt = document.createEvent('KeyEvents');
+		// evt.initEvent('keyup', true, false);
+		console.log('fireKey: createEvent and node.dispatchEvent exist!!!', k, control, alt, shift);
+		//el.dispatchEvent(new Event('focus'));
+		//el.dispatchEvent(new KeyboardEvent('keypress',{'key':'a'}));
+		window.dispatchEvent(new KeyboardEvent('keypress', { key: '+', ctrlKey: true }));
+	} else if (document.createEventObject) {
+		console.log('fireClick: createEventObject and node.fireEvent exist!!!', node)
+		node.fireEvent('onclick');
+	} else if (typeof node.onclick == 'function') {
+		console.log('fireClick: node.onclick exists!!!', node)
+		node.onclick();
+	}
 }
 //#endregion
 

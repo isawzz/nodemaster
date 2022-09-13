@@ -658,8 +658,7 @@ button:active,
 .button:active,
 .button,
 .selectbutton,
-.donebutton,
-.togglebg label {
+.donebutton {
 	text-align: center;
 	border: unset;
 	/* border: 0px solid transparent; */
@@ -686,8 +685,7 @@ button:active,
 }
 .enabled:hover,
 button:hover,
-.button:hover,
-.togglebg label:hover {
+.button:hover {
 	/* filter: invert();  */
 	filter: brightness(0.75);
 }
@@ -699,13 +697,9 @@ button:active,
 
 /* #endregion button */
 
-.noactive:active{
+.noactive:active {
 	filter: unset;
 	background-color: unset;
-}
-.togglebg {
-	display: inline-block;
-	text-align: center;
 }
 .invisible {
 	opacity: 0;
@@ -718,13 +712,21 @@ button:active,
 	margin: 0px;
 	padding: 0px;
 }
-.togglebg label {
-	display: inline-block;
-	/* padding: 1px 6px; */
-	/* margin: 3px; */
-	background-color: buttonface;
-	transition: background-color 200ms ease-in;
+
+.bgred {
+	background: red;
 }
-.togglebg input:checked ~ label {
-	background-color: lime;
+.bgblue {
+	background: blue;
 }
+
+
+
+
+
+
+
+
+
+
+
