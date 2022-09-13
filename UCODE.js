@@ -1,4 +1,15 @@
 
+function game_update(types) {
+	//wird nur 1 mal bei game_start() aufgerufen!
+	let changed = false;
+	if (nundef(types)) types = get_keys(G.agents);
+	for (const type of types) { let f = get_func(type, 'update'); for (const agent of G.agents[type]) { changed ||= f(agent); } }
+	G.need_draw = changed;
+
+}
+
+
+
 //#region nature start.js
 onload = start;
 //const AUTOMATISCH = false;

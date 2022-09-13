@@ -1843,7 +1843,21 @@ function cLine(ctx, x1, y1, x2, y2) {
 	ctx.stroke();
 }
 function cRect(cvx, x, y, w, h) { cvx.fillRect(x, y, w, h); }
-function cStyle(cvx, fill, stroke, wline, cap) {
+function cColor(fill, cvx) { if (nundef(cvx)) cvx = cx; cx.fillStyle = fill; }
+function cStyle(styles = {}, cvx) { //}, fill, stroke, wline, cap) {
+	if (nundef(cvx)) cvx = cx; if (!cx) return;
+	const di = { bg: 'fillStyle', fill: 'fillStyle', stroke: 'strokeStyle', fg: 'strokeStyle', thickness: 'lineWidth', cap: 'lineCap', ending: 'lineCap' };
+	for (const k in styles) {
+		//let s=`hallo ich bin der ${name}`
+		//if (isdef(di[k])) styles[di[k]] = styles[k];
+		cx[isdef(di[k]) ? di[k] : k] = styles[k];
+	}
+	// cvx.fillStyle = fill;
+	// if (isdef(stroke)) cvx.strokeStyle = stroke;
+	// if (isdef(wline)) cvx.lineWidth = wline;
+	// if (isdef(cap)) cvx.lineCap = cap;
+}
+function cStyle_dep(cvx, fill, stroke, wline, cap) {
 	cvx.fillStyle = fill;
 	if (isdef(stroke)) cvx.strokeStyle = stroke;
 	if (isdef(wline)) cvx.lineWidth = wline;
