@@ -3,11 +3,11 @@ onload = start;
 function start() {
 	if (nundef(dTable)) dTable = mSection({ padding: 10, hmin: 400 }, 'dTable'); //mFlex(dTable);	//test0_fireClick();
 
-	if (CV) game_clear();
+	if (C) game_clear();
 	//test1_canvas(); return;
 
 	let o = ui_type_canvas(dTable, gameloop_start, gameloop_stop);
-
+	[CV,CX]=[o.cv,o.cx];TM=createTM(CV,CX);
 	G = { running: false, agents: {}, items: {}, play: o.play, pause: o.pause, need_draw: true, root: null, draw: game_draw };
 	G.play();
 }
@@ -21,6 +21,7 @@ function game_draw(types) {
 	G.need_draw = false;
 }
 function game_update() {
+	//console.log('CV',CV)
 	let o = walker_create();
 	//add_agent('walker',o);
 	add_item('walker', o);

@@ -99,7 +99,7 @@ function create_branch(b, angle, len, color) {
 
 }
 function branch_draw(o) {
-	cStyle_dep(CX, 'white', o.color, o.thickness, 'round');
+	cStyle({fg:o.color,thickness:o.thickness,cap:'round'},CX);
 	if (C.root.jitter) cLine(CX, o.p1.x, o.p1.y, o.p2.x + Math.random() * 2 - 1, o.p2.y + Math.random() * 2 - 1);
 	else cLine(CX, o.p1.x, o.p1.y, o.p2.x, o.p2.y);
 }
@@ -121,10 +121,9 @@ function create_leaf(b, root) {
 	return o;
 }
 function leaf_draw(o) {
-	cStyle_dep(CX, o.color, o.color, 1, null);
 	let [x, y] = [o.p.x, o.p.y];
 	let [w, h] = [o.len * 1.5, o.len];
-	cEllipse(CX, x, y, w, h, o.angle);
+	cEllipse(x, y, w, h, {bg:o.color},o.angle);
 }
 
 function mutate_colors(type, colors) {

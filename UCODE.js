@@ -1,4 +1,16 @@
 
+
+function _cEllipse(x, y, w, h, angle, ctx) {
+	//ellipse(x, y, radiusX, radiusY, rotation)
+
+	//ctx.save();
+	ctx.beginPath(); //ctx.moveTo(x,y)
+	ctx.ellipse(x, y, w / 2, h / 2, -angle, 0, 2 * Math.PI);
+	ctx.fill();
+	ctx.stroke(); //doesnt work!
+	//ctx.restore();
+}
+
 function game_update(types) {
 	//wird nur 1 mal bei game_start() aufgerufen!
 	let changed = false;
@@ -37,7 +49,8 @@ function G_init(name) {
 	if (CV) G_clear();
 
 	[dLeft, dCenter] = mColFlex(dTable, [0, 5]);
-	[CV, CX] = mCanvas(dCenter, { w:500, h:500, bg: '#222', rounding: 10 });
+	let res = mCanvas(dCenter, { w:500, h:500, bg: '#222', rounding: 10 });
+	[CV, CX] = [res.cv,res.cx];
 	//create_menu(dLeft, 'v');
 	//mLinebreak(dParent);
 	let bpp = _mPlayPause(dCenter, { fz: 28, fg: 'lightgreen', display: 'flex', ajcenter: true }, onclick_playpause); //, AUTOMATISCH); //uncomment to autostart
@@ -495,7 +508,7 @@ function leaf_draw(o) {
 	//console.log('angle', o.angle);
 
 	let [w, h] = [o.len * 1.5, o.len];
-	cEllipse(CX, x, y, w, h, o.angle);
+	cEllipse(x, y, w, h,{bg:o.color}, o.angle);
 	//draw_flower(x, y, 'hotpink', -o.angle, 5, 1);
 
 }

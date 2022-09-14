@@ -1,6 +1,7 @@
 function test1_canvas() {
 
-	[CV, CX] = mCanvas(dTable, { w: 500, h: 500, bg: 'black' }); 
+	let res = mCanvas(dTable, { w:500, h:500, bg: '#222', rounding: 10 });
+	[CV, CX] = [res.cv,res.cx];
 	
 	cStyle({ bg: 'blue' });
 	CX.fillRect(10, 10, CV.width - 20, CV.height - 20);

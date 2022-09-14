@@ -2,12 +2,12 @@
 var Pollmode = 'auto';
 var Info, ColorDi, Items = {}, DA = {}, Card = {}, TO = {}, Counter = { server: 0 }, Socket = null;
 var uiActivated = false, Selected, Turn, Prevturn;
-var S = {}, Z, U = null, PL, G, C, UI = {}, Users, Tables, Basepath, Serverdata = {}, Clientdata = {};
+var S = {}, Z, U = null, PL, G = null, C = null, UI = {}, Users, Tables, Basepath, Serverdata = {}, Clientdata = {};
 var dTable, dHeader, dFooter, dMessage, dPuppet, dMenu, dLeft, dCenter, dRight; //, dTitle; //, dUsers, dGames, dTables, dLogo, dLoggedIn, dPlayerNames, dInstruction, dError, dMessage, dStatus, dTableName, dGameControls, dUserControls, dMoveControls, dSubmitMove, dPlayerStats;
 var Config, Syms, SymKeys, ByGroupSubgroup, KeySets, C52, Cinno, C52Cards;
 var FORCE_REDRAW = false, TESTING = false;
 var ColorThiefObject, SelectedItem, SelectedColor;
-var CV=null, CX=null, FR = 30;
+var FR = 30, CX, CV;
 
 //#endregion
 //#region color const
@@ -503,24 +503,22 @@ function mButtonX(dParent, handler, pos = 'tr', sz = 25, color = 'white') {
 	return d2;
 }
 function mBy(id) { return document.getElementById(id); }
-function mCanvas(dParent, styles = {}) { //, center = 'w') {
+function mCanvas(dParent, styles = {}, bstyles = {}, play = null, pause = null) {
 	let cv = mCreate('canvas');
 	mAppend(toElem(dParent), cv);
-
-	// if (center == 'w') mStyle(dParent, { align: 'center' });
-	// if (nundef(styles.w)) styles.w = vw;
-	// if (nundef(styles.h)) styles.h = vh;
-
+	addKeys({ w: 500, h: 500, bg: '#222', rounding: 10 }, styles);
 	mStyle(cv, styles);
 	if (isdef(styles.w)) cv.width = styles.w;
 	if (isdef(styles.h)) cv.height = styles.h;
-
-	//cv = mSection({ bg: BLUE, position: 'absolute', left: '50%', top: '50%', transform: 'translate(-50%,-50%)' }, 'canvas1')
 	let cx = cv.getContext('2d');
-	// let w = cv.width = window.innerWidth * .8;
-	// let h = cv.height = 400; //window.innerHeight * .8;
+	if (!play) return {cv:cv,cx:cx};
 
-	return [cv, cx];
+	//add the play pause button!
+	addKeys({ fz: 28, fg: 'lightgreen', display: 'flex', ajcenter: true, w: styles.w }, bstyles)
+	let controls = mPlayPause(dParent, bstyles, play, pause);
+
+	return { cv: cv, cx: cx, div: controls.button, play: controls.play, pause: controls.pause };
+
 }
 function mCardButton(caption, handler, dParent, styles, classtr = '', id = null) {
 	let classes = toWords("card300 wb fett no_outline btn" + classtr);
@@ -1015,7 +1013,7 @@ function mPlace(elem, pos, offx, offy) {
 	elem.style[di[pos[0]]] = hor + 'px'; elem.style[di[pos[1]]] = vert + 'px';
 
 }
-function mPlayPause(dParent, styles = {}, handle_play=null, handle_pause=null) {
+function mPlayPause(dParent, styles = {}, handle_play = null, handle_pause = null) {
 	if (!handle_play) handle_play = audio_onclick_pp;
 	if (!handle_pause) handle_pause = handle_play;
 	//let fname = isdef(handler) ? handler.name : 'audio_onclick_pp';
@@ -1823,22 +1821,19 @@ function cRect(x, y, w, h, styles = null, ctx = null) {
 function cEllipse(x, y, w, h, styles = null, angle = 0, ctx = null) {
 	if (nundef(ctx)) { ctx = CX; if (!ctx) return; }
 	if (styles) cStyle(styles, ctx);
-	ctx.beginPath(); 
+	ctx.beginPath();
 	ctx.ellipse(x, y, w / 2, h / 2, -angle, 0, 2 * Math.PI);
 	if (isdef(styles.bg) || nundef(styles.fg)) ctx.fill();
-	if (isdef(styles.fg)) ctx.stroke(); 
+	if (isdef(styles.fg)) ctx.stroke();
+}
+function cStyle(styles = {}, ctx) {
+	if (nundef(ctx)) { ctx = CX; if (nundef(ctx)) { console.log('ctx undefined!!!!!!!'); return; } }
+	const di = { bg: 'fillStyle', fill: 'fillStyle', stroke: 'strokeStyle', fg: 'strokeStyle', thickness: 'lineWidth', cap: 'lineCap', ending: 'lineCap' };
+	for (const k in styles) {
+		ctx[isdef(di[k]) ? di[k] : k] = styles[k];
+	}
 }
 
-function _cEllipse(x, y, w, h, angle, ctx) {
-	//ellipse(x, y, radiusX, radiusY, rotation)
-
-	//ctx.save();
-	ctx.beginPath(); //ctx.moveTo(x,y)
-	ctx.ellipse(x, y, w / 2, h / 2, -angle, 0, 2 * Math.PI);
-	ctx.fill();
-	ctx.stroke(); //doesnt work!
-	//ctx.restore();
-}
 
 function cShadow(ctx, color, offx, offy, blur) {
 	ctx.shadowColor = color;
@@ -1859,20 +1854,6 @@ function cLine(ctx, x1, y1, x2, y2) {
 	ctx.stroke();
 }
 function cColor(fill, cvx) { if (nundef(cvx)) cvx = CX; CX.fillStyle = fill; }
-function cStyle(styles = {}, ctx) { //}, fill, stroke, wline, cap) {
-	console.log('cx', CX)
-	if (nundef(ctx)) { ctx = CX; if (nundef(ctx)) { console.log('ctx undefined!!!!!!!'); return; } }
-	const di = { bg: 'fillStyle', fill: 'fillStyle', stroke: 'strokeStyle', fg: 'strokeStyle', thickness: 'lineWidth', cap: 'lineCap', ending: 'lineCap' };
-	for (const k in styles) {
-		//let s=`hallo ich bin der ${name}`
-		//if (isdef(di[k])) styles[di[k]] = styles[k];
-		CX[isdef(di[k]) ? di[k] : k] = styles[k];
-	}
-	// cvx.fillStyle = fill;
-	// if (isdef(stroke)) cvx.strokeStyle = stroke;
-	// if (isdef(wline)) cvx.lineWidth = wline;
-	// if (isdef(cap)) cvx.lineCap = cap;
-}
 function cStyle_dep(cvx, fill, stroke, wline, cap) {
 	cvx.fillStyle = fill;
 	if (isdef(stroke)) cvx.strokeStyle = stroke;

@@ -24,7 +24,8 @@ function G_init(name) {
 	if (CV) G_clear();
 
 	[dLeft, dCenter] = mColFlex(dTable, [0, 5]);
-	[CV, CX] = mCanvas(dCenter, { w:500, h:500, bg: '#222', rounding: 10 });
+	let res = mCanvas(dCenter, { w:500, h:500, bg: '#222', rounding: 10 });
+	[CV, CX] = [res.cv,res.cx];
 
 	let bpp = _mPlayPause(dCenter, { fz: 28, fg: 'lightgreen', display: 'flex', ajcenter: true }, onclick_playpause);
 
