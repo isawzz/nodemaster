@@ -18,13 +18,13 @@ async function start() {
 	onclick_menu_item('lsys');
 }
 
-function G_clear() { gameloop_stop(); clear_timeouts(); mClear('dTable'); C = G = cv = cx = null; }
+function G_clear() { gameloop_stop(); clear_timeouts(); mClear('dTable'); C = G = CV = CX = null; }
 function G_init(name) {
 
-	if (cv) G_clear();
+	if (CV) G_clear();
 
 	[dLeft, dCenter] = mColFlex(dTable, [0, 5]);
-	[cv, cx] = mCanvas(dCenter, { w:500, h:500, bg: '#222', rounding: 10 });
+	[CV, CX] = mCanvas(dCenter, { w:500, h:500, bg: '#222', rounding: 10 });
 
 	let bpp = _mPlayPause(dCenter, { fz: 28, fg: 'lightgreen', display: 'flex', ajcenter: true }, onclick_playpause);
 
@@ -34,7 +34,7 @@ function G_init(name) {
 function C_update() { C.root.animated = true; get_func(C.name, 'add')(); }
 function C_draw() {
 	if (!C.changed) return;
-	cClear(cv, cx);
+	cClear(CV, CX);
 	//console.log('draw')
 	for (const type in C.items) { let f = get_func(type, 'draw'); for (const item of C.items[type]) { f(item); } }
 	C.changed = false;

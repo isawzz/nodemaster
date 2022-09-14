@@ -23,22 +23,22 @@ function flower_draw(x, y, color, angle = 0, petalCount = 1, lineWidth = 3, sz =
 		// count number of petals
 		// startAt is the angle of the first
 		const step = (Math.PI * 2) / count;
-		cx.setTransform(1, 0, 0, 1, x, y); // set center
-		cx.rotate(startAt);  // set start angle
+		CX.setTransform(1, 0, 0, 1, x, y); // set center
+		CX.rotate(startAt);  // set start angle
 		for (var i = 0; i < count; i += 1) {
-			cx.stroke(petal);  // draw a petal
-			cx.rotate(step);   // rotate to the next
+			CX.stroke(petal);  // draw a petal
+			CX.rotate(step);   // rotate to the next
 		}
-		cx.setTransform(1, 0, 0, 1, 0, 0);  // restore default
+		CX.setTransform(1, 0, 0, 1, 0, 0);  // restore default
 	}
-	cx.strokeStyle = color;
-	cx.lineWidth = lineWidth;
+	CX.strokeStyle = color;
+	CX.lineWidth = lineWidth;
 	const size = 50;// Math.min(cx.canvas.width, cx.canvas.height) * fitScale * 0.5;
 	drawPetals(x, y, petalCount, angle, createPetal(sz, sz * .2)); //cx.canvas.width / 2, cx.canvas.height / 2, 5, 0, createPetal(size, size * 0.2));
-	cx.beginPath();
-	cx.arc(x, y, sz * .15, 0, Math.PI * 2); //cx.canvas.width / 2, cx.canvas.height / 2, size * 0.15, 0, Math.PI * 2);
-	cx.fillStyle = color;
-	cx.fill();
+	CX.beginPath();
+	CX.arc(x, y, sz * .15, 0, Math.PI * 2); //cx.canvas.width / 2, cx.canvas.height / 2, size * 0.15, 0, Math.PI * 2);
+	CX.fillStyle = color;
+	CX.fill();
 }
 
 

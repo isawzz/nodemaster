@@ -7,7 +7,7 @@ var dTable, dHeader, dFooter, dMessage, dPuppet, dMenu, dLeft, dCenter, dRight; 
 var Config, Syms, SymKeys, ByGroupSubgroup, KeySets, C52, Cinno, C52Cards;
 var FORCE_REDRAW = false, TESTING = false;
 var ColorThiefObject, SelectedItem, SelectedColor;
-var cv, cx, FR = 30;
+var CV=null, CX=null, FR = 30;
 
 //#endregion
 //#region color const
@@ -516,7 +516,7 @@ function mCanvas(dParent, styles = {}) { //, center = 'w') {
 	if (isdef(styles.h)) cv.height = styles.h;
 
 	//cv = mSection({ bg: BLUE, position: 'absolute', left: '50%', top: '50%', transform: 'translate(-50%,-50%)' }, 'canvas1')
-	cx = cv.getContext('2d');
+	let cx = cv.getContext('2d');
 	// let w = cv.width = window.innerWidth * .8;
 	// let h = cv.height = 400; //window.innerHeight * .8;
 
@@ -1015,7 +1015,7 @@ function mPlace(elem, pos, offx, offy) {
 	elem.style[di[pos[0]]] = hor + 'px'; elem.style[di[pos[1]]] = vert + 'px';
 
 }
-function mPlayPause(dParent, styles = {}, handle_play, handle_pause) {
+function mPlayPause(dParent, styles = {}, handle_play=null, handle_pause=null) {
 	if (!handle_play) handle_play = audio_onclick_pp;
 	if (!handle_pause) handle_pause = handle_play;
 	//let fname = isdef(handler) ? handler.name : 'audio_onclick_pp';
@@ -1037,7 +1037,7 @@ function mPlayPause(dParent, styles = {}, handle_play, handle_pause) {
 	mBy('bPlay').onclick = () => { hide0('bPlay'); show0('bPause'); handle_play(); }
 	mBy('bPause').onclick = () => { hide0('bPause'); show0('bPlay'); handle_pause(); }
 
-	return { ui: pp, play: () => fireClick('bPlay'), pause: () => fireClick('bPlay') };
+	return { ui: pp, play: () => fireClick(mBy('bPlay')), pause: () => fireClick(mBy('bPause')) };
 
 }
 function mPos(d, x, y, unit = 'px') { mStyle(d, { left: x, top: y, position: 'absolute' }, unit); }
@@ -1810,10 +1810,26 @@ function aJumpby(elem, h = 40, ms = 1000) {
 //#endregion
 
 //#region canvas c prefix
-function cClear(cv, cx) {
-	cx.clearRect(0, 0, cv.width, cv.height);
+function cClear(cnv = null, ctx = null) {
+	if (nundef(cnv)) { cnv = CV; ctx = CX; if (!ctx) return; }
+	ctx.clearRect(0, 0, cnv.width, cnv.height);
 }
-function cEllipse(ctx, x, y, w, h, angle) {
+function cRect(x, y, w, h, styles = null, ctx = null) {
+	if (nundef(ctx)) { ctx = CX; if (!ctx) return; }
+	if (styles) cStyle(styles, ctx);
+	if (isdef(styles.bg) || nundef(styles.fg)) ctx.fillRect(x, y, w, h);
+	if (isdef(styles.fg)) ctx.strokeRect(x, y, w, h);
+}
+function cEllipse(x, y, w, h, styles = null, angle = 0, ctx = null) {
+	if (nundef(ctx)) { ctx = CX; if (!ctx) return; }
+	if (styles) cStyle(styles, ctx);
+	ctx.beginPath(); 
+	ctx.ellipse(x, y, w / 2, h / 2, -angle, 0, 2 * Math.PI);
+	if (isdef(styles.bg) || nundef(styles.fg)) ctx.fill();
+	if (isdef(styles.fg)) ctx.stroke(); 
+}
+
+function _cEllipse(x, y, w, h, angle, ctx) {
 	//ellipse(x, y, radiusX, radiusY, rotation)
 
 	//ctx.save();
@@ -1824,17 +1840,17 @@ function cEllipse(ctx, x, y, w, h, angle) {
 	//ctx.restore();
 }
 
-function cShadow(cx, color, offx, offy, blur) {
-	cx.shadowColor = color;
-	cx.shadowOffsetX = offx;
-	cx.shadowOffsetY = offy;
-	cx.shadowBlur = blur;
+function cShadow(ctx, color, offx, offy, blur) {
+	ctx.shadowColor = color;
+	ctx.shadowOffsetX = offx;
+	ctx.shadowOffsetY = offy;
+	ctx.shadowBlur = blur;
 }
-function cSetOrigin(cx, x, y) {
-	cx.translate(x, y);
+function cSetOrigin(ctx, x, y) {
+	ctx.translate(x, y);
 }
-function cCenterOrigin(cv, ctx) {
-	cSetOrigin(ctx, cv.width / 2, cv.height / 2);
+function cCenterOrigin(cnv, ctx) {
+	cSetOrigin(ctx, cnv.width / 2, cnv.height / 2);
 }
 function cLine(ctx, x1, y1, x2, y2) {
 	ctx.beginPath();
@@ -1842,15 +1858,15 @@ function cLine(ctx, x1, y1, x2, y2) {
 	ctx.lineTo(x2, y2)
 	ctx.stroke();
 }
-function cRect(cvx, x, y, w, h) { cvx.fillRect(x, y, w, h); }
-function cColor(fill, cvx) { if (nundef(cvx)) cvx = cx; cx.fillStyle = fill; }
-function cStyle(styles = {}, cvx) { //}, fill, stroke, wline, cap) {
-	if (nundef(cvx)) cvx = cx; if (!cx) return;
+function cColor(fill, cvx) { if (nundef(cvx)) cvx = CX; CX.fillStyle = fill; }
+function cStyle(styles = {}, ctx) { //}, fill, stroke, wline, cap) {
+	console.log('cx', CX)
+	if (nundef(ctx)) { ctx = CX; if (nundef(ctx)) { console.log('ctx undefined!!!!!!!'); return; } }
 	const di = { bg: 'fillStyle', fill: 'fillStyle', stroke: 'strokeStyle', fg: 'strokeStyle', thickness: 'lineWidth', cap: 'lineCap', ending: 'lineCap' };
 	for (const k in styles) {
 		//let s=`hallo ich bin der ${name}`
 		//if (isdef(di[k])) styles[di[k]] = styles[k];
-		cx[isdef(di[k]) ? di[k] : k] = styles[k];
+		CX[isdef(di[k]) ? di[k] : k] = styles[k];
 	}
 	// cvx.fillStyle = fill;
 	// if (isdef(stroke)) cvx.strokeStyle = stroke;

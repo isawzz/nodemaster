@@ -31,13 +31,13 @@ async function start() {
 	onclick_menu_item('lsys');
 }
 
-function G_clear() { gameloop_stop(); clear_timeouts(); mClear('dTable'); C = G = cv = cx = null; }
+function G_clear() { gameloop_stop(); clear_timeouts(); mClear('dTable'); C = G = CV = CX = null; }
 function G_init(name) {
 
-	if (cv) G_clear();
+	if (CV) G_clear();
 
 	[dLeft, dCenter] = mColFlex(dTable, [0, 5]);
-	[cv, cx] = mCanvas(dCenter, { w:500, h:500, bg: '#222', rounding: 10 });
+	[CV, CX] = mCanvas(dCenter, { w:500, h:500, bg: '#222', rounding: 10 });
 	//create_menu(dLeft, 'v');
 	//mLinebreak(dParent);
 	let bpp = _mPlayPause(dCenter, { fz: 28, fg: 'lightgreen', display: 'flex', ajcenter: true }, onclick_playpause); //, AUTOMATISCH); //uncomment to autostart
@@ -54,7 +54,7 @@ function C_draw() {
 	//#endregion
 
 	if (!C.changed) return;
-	cClear(cv, cx);
+	cClear(CV, CX);
 	console.log('draw')
 	for (const type in C.items) {
 		let f = get_func(type, 'draw');
@@ -173,7 +173,7 @@ function lsys_init(offx = 0, offy = 0, options = {}) {
 		speed: { spring: 500, summer: 100, autumn: 25, winter: 100, over: 2000 },
 		animated: false,
 		jitter: false,
-		p2: { x: cv.width / 2, y: cv.height },
+		p2: { x: CV.width / 2, y: CV.height },
 		angle: toRadian(90),
 		len: 100,
 	};
@@ -344,7 +344,7 @@ function tree_init(offx = 0, offy = 0, options = {}) {
 		done: false,
 		t: 'root',
 		age: 0,
-		p2: { x: offx + cv.width / 2, y: offy + cv.height },
+		p2: { x: offx + CV.width / 2, y: offy + CV.height },
 		// x2: offx + cv.width / 2,
 		// y2: offy + cv.height,
 		len: valf(options.len, 100),
@@ -399,7 +399,7 @@ function tree_add() {
 		root.jitter = false;
 		C.changed = true;
 		// let falling = C.items.leaf.filter(l => l.y < cv.height);
-		let falling = C.items.leaf.filter(l => l.p.y < cv.height);
+		let falling = C.items.leaf.filter(l => l.p.y < CV.height);
 		if (isEmpty(falling)) {
 			C.changed = false; root.phase = 'winter';
 		} else {
@@ -462,11 +462,11 @@ function create_branch(b, angle, root) {
 
 }
 function branch_draw(o) {
-	cStyle(cx, 'white', o.color, o.thickness, 'round');
+	cStyle(CX, 'white', o.color, o.thickness, 'round');
 	// cLine(cx, o.x1, o.y1, o.x2, o.y2);
 
-	if (C.root.jitter) cLine(cx, o.p1.x, o.p1.y, o.p2.x + Math.random() * 2 - 1, o.p2.y + Math.random() * 2 - 1);
-	else cLine(cx, o.p1.x, o.p1.y, o.p2.x, o.p2.y);
+	if (C.root.jitter) cLine(CX, o.p1.x, o.p1.y, o.p2.x + Math.random() * 2 - 1, o.p2.y + Math.random() * 2 - 1);
+	else cLine(CX, o.p1.x, o.p1.y, o.p2.x, o.p2.y);
 }
 
 function create_leaf(b, root) {
@@ -489,13 +489,13 @@ function create_leaf(b, root) {
 	return o;
 }
 function leaf_draw(o) {
-	cStyle(cx, o.color, o.color, 1, null); //o.thickness, 'round');
+	cStyle(CX, o.color, o.color, 1, null); //o.thickness, 'round');
 	// let [x, y] = [o.x, o.y];
 	let [x, y] = [o.p.x, o.p.y];
 	//console.log('angle', o.angle);
 
 	let [w, h] = [o.len * 1.5, o.len];
-	cEllipse(cx, x, y, w, h, o.angle);
+	cEllipse(CX, x, y, w, h, o.angle);
 	//draw_flower(x, y, 'hotpink', -o.angle, 5, 1);
 
 }
@@ -649,7 +649,7 @@ function ellipse4w(ctx, fill, stroke, x, y, w, h, angle) {
 
 function ellipse3(ctx, fill, stroke, x, y, w, h, angle) {
 
-	cx.save(); // save state
+	CX.save(); // save state
 	//cx.rotate(1);
 
 	const kappa = 0.5522847498,
@@ -674,7 +674,7 @@ function ellipse3(ctx, fill, stroke, x, y, w, h, angle) {
 	ctx.bezierCurveTo(xe, ym + oy, xm + ox, ye, xm, ye);
 	ctx.bezierCurveTo(xm - ox, ye, xs, ym + oy, xs, ym);
 
-	cx.restore(); // restore to original state
+	CX.restore(); // restore to original state
 
 	ctx.fill();
 	ctx.stroke();
@@ -682,7 +682,7 @@ function ellipse3(ctx, fill, stroke, x, y, w, h, angle) {
 
 function ellipse2(ctx, fill, stroke, x, y, w, h, angle) {
 
-	cx.save(); // save state
+	CX.save(); // save state
 	//cx.rotate(1);
 
 	const kappa = 0.5522847498,
@@ -702,7 +702,7 @@ function ellipse2(ctx, fill, stroke, x, y, w, h, angle) {
 	ctx.bezierCurveTo(xe, ym + oy, xm + ox, ye, xm, ye);
 	ctx.bezierCurveTo(xm - ox, ye, x, ym + oy, x, ym);
 
-	cx.restore(); // restore to original state
+	CX.restore(); // restore to original state
 
 	ctx.fill();
 	ctx.stroke();

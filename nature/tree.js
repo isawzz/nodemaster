@@ -4,7 +4,7 @@ function tree_init(offx = 0, offy = 0, options = {}) {
 		done: false,
 		t: 'root',
 		age: 0,
-		p2: { x: offx + cv.width / 2, y: offy + cv.height },
+		p2: { x: offx + CV.width / 2, y: offy + CV.height },
 		len: valf(options.len, 100), //length of stem
 		angle: toRadian(90),
 		thickness: valf(options.thick, 20), //thickness of stem
@@ -56,7 +56,7 @@ function tree_add() {
 	else if (root.phase == 'autumn') {
 		root.jitter = false;
 		C.changed = true;
-		let falling = C.items.leaf.filter(l => l.p.y < cv.height);
+		let falling = C.items.leaf.filter(l => l.p.y < CV.height);
 		if (isEmpty(falling)) {
 			C.changed = false; root.phase = 'winter';
 		} else {
@@ -99,9 +99,9 @@ function create_branch(b, angle, len, color) {
 
 }
 function branch_draw(o) {
-	cStyle_dep(cx, 'white', o.color, o.thickness, 'round');
-	if (C.root.jitter) cLine(cx, o.p1.x, o.p1.y, o.p2.x + Math.random() * 2 - 1, o.p2.y + Math.random() * 2 - 1);
-	else cLine(cx, o.p1.x, o.p1.y, o.p2.x, o.p2.y);
+	cStyle_dep(CX, 'white', o.color, o.thickness, 'round');
+	if (C.root.jitter) cLine(CX, o.p1.x, o.p1.y, o.p2.x + Math.random() * 2 - 1, o.p2.y + Math.random() * 2 - 1);
+	else cLine(CX, o.p1.x, o.p1.y, o.p2.x, o.p2.y);
 }
 
 function create_leaf(b, root) {
@@ -121,10 +121,10 @@ function create_leaf(b, root) {
 	return o;
 }
 function leaf_draw(o) {
-	cStyle_dep(cx, o.color, o.color, 1, null);
+	cStyle_dep(CX, o.color, o.color, 1, null);
 	let [x, y] = [o.p.x, o.p.y];
 	let [w, h] = [o.len * 1.5, o.len];
-	cEllipse(cx, x, y, w, h, o.angle);
+	cEllipse(CX, x, y, w, h, o.angle);
 }
 
 function mutate_colors(type, colors) {

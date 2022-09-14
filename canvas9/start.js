@@ -1,12 +1,12 @@
 onload = start;
-var cv, cx, w = 600;
+var CV, CX, w = 600;
 var sides, scale, angle, color, wline;
 function start() {
 
 	dTable = mSection({ align: 'center' }, 'dTable');
-	[cv, cx] = mCanvas(dTable, w, w, { bg: '#333', margin: 'auto' });
+	[CV, CX] = mCanvas(dTable, w, w, { bg: '#333', margin: 'auto' });
 
-	cv.onclick = onclick_generate;
+	CV.onclick = onclick_generate;
 	mLinebreak(dTable);
 	mSlider('angle', 0.1, 3.1, 0.02, 1, set_and_draw, 'toDegree', dTable, { display: 'flex', 'justify-content': 'center', gap: 10 });
 	mLinebreak(dTable);
@@ -33,7 +33,7 @@ function mSlider(label, min, max, step, val, onchange, oninput, dParent, styles,
 }
 
 function onclick_clear() {
-	cClear(cv, cx);
+	cClear(CV, CX);
 	mClear('dInfo');
 }
 function onclick_generate() {
@@ -44,11 +44,11 @@ function set_and_draw(prop, val) {
 
 	if (isdef(prop)) window[prop] = val;
 
-	cStyle(cx, 'red', color, wline, 'round');
-	cShadow(cx, 'silver', 5, 5, 10);
+	cStyle(CX, 'red', color, wline, 'round');
+	cShadow(CX, 'silver', 5, 5, 10);
 
 	//cx, sides, size, angle, branches, scale, maxlevel, x, y
-	draw_fractal(cx, sides, w / 4, angle, 2, scale, 4, w / 2, w / 2);
+	draw_fractal(CX, sides, w / 4, angle, 2, scale, 4, w / 2, w / 2);
 }
 
 function randomize_fractal() {
