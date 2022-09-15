@@ -1,5 +1,7 @@
 
 
+function set_origin() { let cx = this.cx; cx.beginPath(); cx.translate(this.origin.x, this.origin.y); }
+
 function _cEllipse(x, y, w, h, angle, ctx) {
 	//ellipse(x, y, radiusX, radiusY, rotation)
 
@@ -49,8 +51,8 @@ function G_init(name) {
 	if (CV) G_clear();
 
 	[dLeft, dCenter] = mColFlex(dTable, [0, 5]);
-	let res = mCanvas(dCenter, { w:500, h:500, bg: '#222', rounding: 10 });
-	[CV, CX] = [res.cv,res.cx];
+	let res = mCanvas(dCenter, { w: 500, h: 500, bg: '#222', rounding: 10 });
+	[CV, CX] = [res.cv, res.cx];
 	//create_menu(dLeft, 'v');
 	//mLinebreak(dParent);
 	let bpp = _mPlayPause(dCenter, { fz: 28, fg: 'lightgreen', display: 'flex', ajcenter: true }, onclick_playpause); //, AUTOMATISCH); //uncomment to autostart
@@ -508,7 +510,7 @@ function leaf_draw(o) {
 	//console.log('angle', o.angle);
 
 	let [w, h] = [o.len * 1.5, o.len];
-	cEllipse(x, y, w, h,{bg:o.color}, o.angle);
+	cEllipse(x, y, w, h, { bg: o.color }, o.angle);
 	//draw_flower(x, y, 'hotpink', -o.angle, 5, 1);
 
 }

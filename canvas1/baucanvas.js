@@ -10,7 +10,6 @@ class Canvas99 {
 		this.items = [];
 	}
 	reset_transforms(x = 0, y = 0) { this.cx.setTransform(1, 0, 0, 1, this.origin.x + x, this.origin.y + y); }
-	set_origin() { let cx = this.cx; cx.beginPath(); cx.translate(this.origin.x, this.origin.y); }
 	init_origin(origin) {
 		//origin can be a point {x,y} or any of tl,tc,tr,cl,[cc],cr,bl,bc,br
 		if (nundef(origin)) origin = 'cc';
@@ -38,8 +37,6 @@ class Canvas99 {
 			else cEllipse(item.x, item.y, item.w, item.h, { bg: item.color }, item.a, cx);
 		}
 	}
-
-
 }
 
 function draw_walker(item, canvas) {
@@ -62,15 +59,32 @@ function get_quadrant(a){
 
 
 function update_car(item){
-	let a=item.v.a; // angle of velocity
+	let a1 = item.a;
+	let a2= 100; //item.v.a; // angle of velocity
 	//say a is 45, current is 0: should be turning left
 	//say a is 270 and current is 0: should be turning right!!!
-	if (item.a != item.v.a){
+	if (a1!=a2){
 		//turn car by 1 deg at a time!
-		let qcur=get_quadrant(item.a);
-		let qvel = get_quadrant(a);
+		let q1=get_quadrant(a1);
+		let q2 = get_quadrant(a2);
 	  
-		if (item.a<a)
+		let clockw = false;
+
+		if (q1 == q2){clockw = a2<a1; }
+		else{
+			let diff=Math.abs(a2-a1);
+			console.log('diff',diff,a2>a1,diff<180);
+			if (a2>a1 && diff>180) clockw=true;
+			if (a2<a1 && diff < 180) clockw = true;
+			//clockw=(a2>a1)?(diff>180)?true:false;//:((diff>180)?true:false);
+			
+		}
+		console.log('should turn '+clockw?'counter-clockwise':'clockwise',q1,q2,a1,a2);
+
+		
+		let anew = clockw?a1- 
+		//else if (q1==1 && q2==2)
+		//if (item.a<a)
 
 
 	}

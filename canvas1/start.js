@@ -7,12 +7,15 @@ function start() {
 	C.add();
 	C.add({x:20,y:20,a:45,draw:draw_walker});
 	C.add({draw:draw_walker});
-	C.add({w:50,draw:draw_car,v:{a:0,mag:.1}});
+	C.add({w:50,draw:draw_car,v:{a:280,mag:.1}});
 
 	C.draw();
 }
 
-
+onclick = ()=>{
+	update_car(arrLast(C.items))
+	C.draw();
+};
 
 
 
