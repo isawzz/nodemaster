@@ -1,9 +1,9 @@
 class TransformationMatrix {
-	constructor() {
-		this.m = [1, 0, 0, 1, 0, 0];
-	}
+	constructor() { this.reset(); }
 	reset() {
 		this.m = [1, 0, 0, 1, 0, 0];
+		this.angle = 0;
+
 	}
 	multiply(mat) {
 		let m = this.m;
@@ -41,6 +41,7 @@ class TransformationMatrix {
 		var c = Math.cos(rAngle);
 		var s = Math.sin(rAngle);
 		var mat = [c, s, -s, c, 0, 0];
+		this.angle += rAngle;
 		this.multiply(mat);
 	}
 	scale(x, y) {
@@ -57,6 +58,7 @@ class TransformationMatrix {
 	}
 	resetContextTransform(ctx) {
 		ctx.setTransform(1, 0, 0, 1, 0, 0);
+		this.angle = 0;
 	};
 	getTransformedPoint(screenX, screenY) {
 		return this.transformedPoint(screenX, screenY);
