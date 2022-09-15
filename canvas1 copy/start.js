@@ -2,35 +2,16 @@ onload = start;
 
 function start() {
 	if (nundef(dTable)) dTable = mSection({ padding: 10, hmin: 400 }, 'dTable'); //mFlex(dTable);	//test0_fireClick();
-	C = new Canvas99(dTable);
+	C = new CCanvas(dTable,{},200);
 
-	C.add();
-	C.add({x:20,y:20,a:45,draw:draw_walker});
-	C.add({draw:draw_walker});
-	C.add({w:50,draw:draw_car,v:{a:0,mag:.1}});
+	
 
-	C.draw();
+
+
+
+
+
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 function other(){
