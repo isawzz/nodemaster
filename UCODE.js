@@ -1,4 +1,662 @@
 
+class Canvas95 {
+	constructor(dParent, styles, bstyles, play, pause, origin = 'cc', resol = null, math = false) {
+		//origin can be a point {x,y} or any of tl,tc,tr,cl,[cc],cr,bl,bc,br
+		let o = mCanvas(dParent, styles, bstyles, play, pause);
+		[this.cv, this.cx, this.play, this.pause] = [o.cv, o.cx, o.play, o.pause];
+		this.defaultsize = 10;
+		this.math = math;
+
+		if (isdef(resol)) { this.cv.width = this.cv.height = resol; this.defaultsize = resol / 20; }
+
+		this.origin = this.init_origin(origin);
+		this.cx.translate(this.origin.x, this.origin.y);
+
+		let [w, h] = [this.w, this.h] = [this.cv.width, this.cv.height];
+		this.maxx = w - this.origin.x; this.minx = this.maxx - w;
+		this.maxy = h - this.origin.y; this.miny = this.maxy - h;
+		if (this.math) { 			
+			this.cx.scale(1, -1); 
+			let h = this.maxy; this.maxy = -this.miny; this.miny = -h; 
+		}
+
+		console.log('Canvas',this.minx,this.maxx,this.miny,this.maxy)
+		this.items = [];
+	}
+	init_origin(origin) {
+		if (nundef(origin)) origin = 'cc';
+		let pt = origin;
+		if (isString(origin)) {
+			let v = origin[0], h = origin[1];
+			let y = v == 't' ? 0 : v == 'c' ? this.cv.height / 2 : this.cv.height;
+			let x = h == 'l' ? 0 : h == 'c' ? this.cv.width / 2 : this.cv.width;
+			pt = { x: x, y: y };
+		}
+		return pt;
+
+	}
+	add(o = {}) {
+		addKeys({ x: 0, y: 0, color: rColor(50), w: this.defaultsize, h: this.defaultsize, a: 0, draw: null }, o);
+		this.items.push(o);
+	}
+	update() {
+		let n = 0;
+		for (const item of this.items) { if (isdef(item.update)) { n += item.update(item, this) ? 1 : 0; } }
+		//console.log('updated', n, 'items');
+		return n > 0;
+	}
+	draw() {
+		let cx = this.cx;
+		cClear(this.cv, this.cx);
+		if (this.math){
+			cLine(this.minx,0,this.maxx,0,{fg:'white'},cx);
+			cLine(0,this.miny,0,this.maxy,{fg:'white'},cx);
+			for(let i=this.miny;i<this.maxy;i+=10){cLine(this.minx,i,this.maxx,i,{fg:'#ffffff40'},cx);}
+			for(let i=this.minx;i<this.maxx;i+=10){cLine(i,this.miny,i,this.maxy,{fg:'#ffffff40'},cx);}
+		}
+		for (const item of this.items) {
+			cx.save();
+
+			cx.translate(item.x, item.y);
+			cx.rotate(toRadian(item.a));
+			if (this.math) cx.scale(1, -1);
+
+			if (isdef(item.draw)) { item.draw(item, this); }
+			else cEllipse(item.x, item.y, item.w, item.h, { bg: item.color }, 0, cx); //default draw
+
+			cx.restore();
+		}
+	}
+	clamp(item) { item.x = clamp(item.x, this.minx, this.maxx); item.y = clamp(item.y, this.miny, this.maxy) }
+	cycle(item) { item.x = cycle(item.x, this.minx, this.maxx); item.y = cycle(item.y, this.miny, this.maxy) }
+}
+
+
+class Canvas95W {
+	constructor(dParent, styles, bstyles, play, pause, origin = 'cc', resol = null, math = false) {
+		//origin can be a point {x,y} or any of tl,tc,tr,cl,[cc],cr,bl,bc,br
+		let o = mCanvas(dParent, styles, bstyles, play, pause);
+		[this.cv, this.cx, this.play, this.pause] = [o.cv, o.cx, o.play, o.pause];
+		this.defaultsize = 10;
+		this.math = math;
+
+		if (isdef(resol)) { this.cv.width = this.cv.height = resol; this.defaultsize = resol / 20; }
+
+		this.origin = this.init_origin(origin);
+		this.cx.translate(this.origin.x, this.origin.y);
+
+		let [w, h] = [this.w, this.h] = [this.cv.width, this.cv.height];
+		this.maxx = w - this.origin.x; this.minx = this.maxx - w;
+		this.maxy = h - this.origin.y; this.miny = this.maxy - h;
+		if (this.math) { 			
+			this.cx.scale(1, -1); 
+			let h = this.maxy; this.maxy = -this.miny; this.miny = -h; 
+		}
+
+		console.log('Canvas',this)
+		this.items = [];
+	}
+	init_origin(origin) {
+		if (nundef(origin)) origin = 'cc';
+		let pt = origin;
+		if (isString(origin)) {
+			let v = origin[0], h = origin[1];
+			let y = v == 't' ? 0 : v == 'c' ? this.cv.height / 2 : this.cv.height;
+			let x = h == 'l' ? 0 : h == 'c' ? this.cv.width / 2 : this.cv.width;
+			pt = { x: x, y: y };
+		}
+		return pt;
+
+	}
+	add(o = {}) {
+		addKeys({ x: 0, y: 0, color: rColor(50), w: this.defaultsize, h: this.defaultsize, a: 0, draw: null }, o);
+		this.items.push(o);
+	}
+	update() {
+		let n = 0;
+		for (const item of this.items) { if (isdef(item.update)) { n += item.update(item, this) ? 1 : 0; } }
+		//console.log('updated', n, 'items');
+		return n > 0;
+	}
+	draw() {
+		let cx = this.cx;
+		cClear(this.cv, this.cx);
+		if (this.math){
+			cLine(this.minx,0,this.maxx,0,{fg:'white'},cx);
+			cLine(0,this.miny,0,this.maxy,{fg:'white'},cx);
+			for(let i=this.minx;i<this.maxx;i+=10){cLine(this.minx,i,this.maxx,i,{fg:'#ffffff40'},cx);}
+			for(let i=this.miny;i<this.maxy;i+=10){cLine(i,this.miny,i,this.maxy,{fg:'#ffffff40'},cx);}
+		}
+		for (const item of this.items) {
+			cx.save();
+
+			cx.translate(item.x, item.y);
+			cx.rotate(toRadian(item.a));
+			if (this.math) cx.scale(1, -1);
+
+			if (isdef(item.draw)) { item.draw(item, this); }
+			else cEllipse(item.x, item.y, item.w, item.h, { bg: item.color }, 0, cx); //default draw
+
+			cx.restore();
+		}
+	}
+	clamp(item) { item.x = clamp(item.x, this.minx, this.maxx); item.y = clamp(item.y, this.miny, this.maxy) }
+	cycle(item) { item.x = cycle(item.x, this.minx, this.maxx); item.y = cycle(item.y, this.miny, this.maxy) }
+}
+
+
+
+class Canvas96 {
+	constructor(dParent, styles, bstyles, play, pause, origin = 'cc', resol = null, math = false) {
+		//origin can be a point {x,y} or any of tl,tc,tr,cl,[cc],cr,bl,bc,br
+		let o = mCanvas(dParent, styles, bstyles, play, pause);
+		[this.cv, this.cx, this.play, this.pause] = [o.cv, o.cx, o.play, o.pause];
+		this.defaultsize = 10;
+		this.math = math;
+
+		if (isdef(resol)) { this.cv.width = this.cv.height = resol; this.defaultsize = resol / 20; }
+
+		this.origin = this.init_origin(origin);
+		this.cx.translate(this.origin.x, this.origin.y);
+
+		let [w, h] = [this.w, this.h] = [this.cv.width, this.cv.height];
+		this.maxx = w - this.origin.x; this.minx = this.maxx - w;
+		this.maxy = h - this.origin.y; this.miny = this.maxy - h;
+		if (this.math) { 			
+			this.cx.scale(1, -1); 
+			let h = this.maxy; this.maxy = -this.miny; this.miny = -h; 
+		}
+
+		console.log('Canvas',this)
+		this.items = [];
+	}
+	init_origin(origin) {
+		if (nundef(origin)) origin = 'cc';
+		let pt = origin;
+		if (isString(origin)) {
+			let v = origin[0], h = origin[1];
+			let y = v == 't' ? 0 : v == 'c' ? this.cv.height / 2 : this.cv.height;
+			let x = h == 'l' ? 0 : h == 'c' ? this.cv.width / 2 : this.cv.width;
+			pt = { x: x, y: y };
+		}
+		return pt;
+
+	}
+	add(o = {}) {
+		addKeys({ x: 0, y: 0, color: rColor(50), w: this.defaultsize, h: this.defaultsize, a: 0, draw: null }, o);
+		this.items.push(o);
+	}
+	update() {
+		let n = 0;
+		for (const item of this.items) { if (isdef(item.update)) { n += item.update(item, this) ? 1 : 0; } }
+		//console.log('updated', n, 'items');
+		return n > 0;
+	}
+	draw() {
+		let cx = this.cx;
+		cClear(this.cv, this.cx);
+		if (this.math){
+			// cx.scale(1, -1); 
+			//if (this.math) { cx.scale(1, -1); }
+			cLine(this.minx,0,this.maxx,0,{fg:'white'},cx);
+			cLine(0,this.miny,0,this.maxy,{fg:'white'},cx);
+			// cLine(0,-this.maxy,0,-this.miny,{fg:'white'},cx);
+			for(let i=this.minx;i<this.maxx;i+=10){cLine(this.minx,i,this.maxx,i,{fg:'#ffffff40'},cx);}
+			for(let i=this.miny;i<this.maxy;i+=10){cLine(i,this.miny,i,this.maxy,{fg:'#ffffff40'},cx);}
+		}
+		for (const item of this.items) {
+			cx.save();
+
+			// if (this.math) { cx.scale(1, -1); }
+			cx.translate(item.x, item.y);
+			cx.rotate(toRadian(item.a));
+			if (this.math) cx.scale(1, -1);
+
+			if (isdef(item.draw)) { item.draw(item, this); }
+			else cEllipse(item.x, item.y, item.w, item.h, { bg: item.color }, 0, cx); //default draw
+
+			cx.restore();
+		}
+	}
+	clamp(item) { item.x = clamp(item.x, this.minx, this.maxx); item.y = clamp(item.y, this.miny, this.maxy) }
+	cycle(item) { item.x = cycle(item.x, this.minx, this.maxx); item.y = cycle(item.y, this.miny, this.maxy) }
+}
+
+function cLine(ctx, x1, y1, x2, y2) {
+	ctx.beginPath();
+	ctx.moveTo(x1, y1);
+	ctx.lineTo(x2, y2)
+	ctx.stroke();
+}
+
+
+class Canvas96 {
+	constructor(dParent, styles, bstyles, play, pause, origin = 'cc', sz = null, math = false) {
+		let res = mCanvas(dParent, styles, bstyles, play, pause);
+		[this.cv, this.cx, this.play, this.pause] = [res.cv, res.cx, res.play,res.pause];
+		this.defaultsize = 25;
+		this.math = math; //if true, reverse y axis
+
+		//sz ist resolution
+		if (isdef(sz)) { this.cv.width = this.cv.height = sz; this.defaultsize = sz / 20; }
+
+		this.origin = this.init_origin(origin);
+		console.log('origin', this.origin)
+		let [w, h] = [this.cv.width, this.cv.height];
+		this.maxx = w - this.origin.x; this.minx = this.maxx - w;
+		this.maxy = h - this.origin.y; this.miny = this.maxy - h;
+		if (this.math) { let h = this.maxy; this.maxy = -this.miny; this.miny = -h; }
+		this.cx.translate(this.origin.x, this.origin.y);
+		//if (this.math) this.cx.scale(1,-1);
+		this.items = [];
+	}
+	init_origin(origin) {
+		//origin can be a point {x,y} or any of tl,tc,tr,cl,[cc],cr,bl,bc,br
+		if (nundef(origin)) origin = 'cc';
+		let pt = origin;
+		if (isString(origin)) {
+			let v = origin[0], h = origin[1];
+			let y = v == 't' ? 0 : v == 'c' ? this.cv.height / 2 : this.cv.height;
+			let x = h == 'l' ? 0 : h == 'c' ? this.cv.width / 2 : this.cv.width;
+			pt = { x: x, y: y };
+		}
+		return pt;
+
+	}
+
+	add(o = {}) {
+		addKeys({ x: 0, y: 0, color: rColor(50), w: this.defaultsize, h: this.defaultsize, a: 0, draw: null }, o);
+		this.items.push(o);
+		//if (this.math) o.y = -o.y;
+	}
+
+	update() {
+		let n = 0;
+		for (const item of this.items) {
+			if (isdef(item.update)) {
+				//let y=item.y;
+				let changed = item.update(item, this);
+				if (changed) {
+					n++;
+					//if (this.math) { let ywrong = item.y; let diff = ywrong - y; item.y = y - diff; }
+				}
+			}
+		}
+		console.log('updated', n, 'items');
+		return n > 0;
+	}
+	draw() {
+		let cx = this.cx;
+		cClear(this.cv, this.cx);
+		for (const item of this.items) {
+			cx.save();
+
+			if (this.math) {cx.scale(1,-1);} 
+			cx.translate(item.x, item.y); 
+			cx.rotate(toRadian(item.a)); 
+			// if (this.math) cx.scale(1,-1);
+			if (this.math) cx.scale(1,-1);
+			if (isdef(item.draw)) {item.draw(item, this);}
+			else cEllipse(item.x, item.y, item.w, item.h, { bg: item.color }, toRadian(item.a), cx);
+
+			cx.restore();
+		}
+	}
+	clamp(item){item.x=clamp(item.x, this.minx, this.maxx);item.y=clamp(item.y, this.miny, this.maxy)}
+	cycle(item){item.x=cycle(item.x, this.minx, this.maxx);item.y=cycle(item.y, this.miny, this.maxy)}
+}
+
+function draw_car(item, canvas) {
+	let cx = canvas.cx;
+	// cx.translate(item.x, item.y);
+	// cx.rotate(toRadian(item.a));
+	if (canvas.math) cx.scale(1,-1);
+	cRect(0 - item.w / 2, 0 - item.h / 2, item.w, item.h, { bg: item.color }, cx);
+	cRect(item.w - item.w / 2, 0 - item.h / 2, 10, item.h, { bg: 'yellow' }, cx);
+	// cRect(item.x - item.w / 2, item.y - item.h / 2, item.w, item.h, { bg: item.color }, cx);
+	// cRect(item.x+item.w - item.w / 2, item.y - item.h / 2, 10, item.h, { bg: 'yellow' }, cx);
+}
+function update_car(item, c) {
+	let di = { ArrowUp: c.math ? 90 : 270, ArrowDown: c.math ? 270 : 90, ArrowLeft: 180, ArrowRight: 0 };
+	// let di = { ArrowUp: 270, ArrowDown: 90, ArrowLeft: 180, ArrowRight: 0 };
+	for (const key in di) {
+		if (is_key_down(key)) {
+			item.v.a = di[key];
+			update_position(item);
+			return true;
+		}
+	}
+	return false;
+}
+
+function other() {
+	//console.log('C', C);
+
+	C.scaleby(.5);
+
+	let i = 0;
+	while (++i <= 3) {
+		C.moveby(100, 100);
+		C.rotateby(45);
+		C.scaleby(2);
+		drawfigure(C);
+	}
+	let m = C.get_matrix();
+	console.log('matrix', m);
+	let comp = C.decompose();
+
+	console.log('decomposed', comp.translation, toDegree(comp.rotation), comp.scale);
+
+}
+
+function xline(x1, y1, x2, y2, thick) {
+	//C.line(x+)
+}
+
+function drawfigure(c) {
+	C.rect(10, 10, 200, 100, { bg: 'red' })
+	C.ellipse(100, 100, 100, 100, { bg: 'blue' })
+	C.line(0, 0, 200, 200, { fg: GREEN, thickness: 5, cap: 'round' });
+}
+
+class CanvasItem {
+	constructor(o) {
+		addKeys(o, this);
+	}
+	draw(canvas) {
+		//default ist ein rectangle x,y,20,20,color
+	}
+}
+
+
+function draw() {
+	let cx = this.cx;
+	cClear(this.cv, this.cx);
+	//this.reset_transforms();
+	for (const item of this.items) {
+		//console.log('item', item)
+
+		cx.save();
+		//this.reset_transforms();
+		////if (this.math) cx.scale(1, -1)
+		cx.translate(item.x, item.y); //yreal);
+	
+		if (isdef(item.draw)) item.draw(item, this, this.math ? -item.y : item.y);
+		else cEllipse(item.x, item.y, item.w, item.h, { bg: item.color }, toRadian(item.a), cx);
+
+		cx.restore();
+	}
+}
+
+
+class Canvas97 {
+	constructor(dParent, styles, bstyles, play, pause, origin = 'cc', sz = null, math = false) {
+		let res = mCanvas(dParent, styles, bstyles, play, pause);
+		[this.cv, this.cx, this.play, this.pause] = [res.cv, res.cx, res.play,res.pause];
+		this.defaultsize = 25;
+		this.math = math; //if true, reverse y axis
+
+		//sz ist resolution
+		if (isdef(sz)) { this.cv.width = this.cv.height = sz; this.defaultsize = sz / 20; }
+
+		this.origin = this.init_origin(origin);
+		console.log('origin', this.origin)
+		let [w, h] = [this.cv.width, this.cv.height];
+		this.maxx = w - this.origin.x; this.minx = this.maxx - w;
+		this.maxy = h - this.origin.y; this.miny = this.maxy - h;
+		if (this.math) { let h = this.maxy; this.maxy = -this.miny; this.miny = -h; }
+		this.cx.translate(this.origin.x, this.origin.y);
+		//if (this.math) this.cx.scale(1,-1);
+		this.items = [];
+	}
+	init_origin(origin) {
+		//origin can be a point {x,y} or any of tl,tc,tr,cl,[cc],cr,bl,bc,br
+		if (nundef(origin)) origin = 'cc';
+		let pt = origin;
+		if (isString(origin)) {
+			let v = origin[0], h = origin[1];
+			let y = v == 't' ? 0 : v == 'c' ? this.cv.height / 2 : this.cv.height;
+			let x = h == 'l' ? 0 : h == 'c' ? this.cv.width / 2 : this.cv.width;
+			pt = { x: x, y: y };
+		}
+		return pt;
+
+	}
+
+	add(o = {}) {
+		addKeys({ x: 0, y: 0, color: rColor(50), w: this.defaultsize, h: this.defaultsize, a: 0, draw: null }, o);
+		this.items.push(o);
+		if (this.math) o.y = -o.y;
+	}
+
+	update() {
+		let n = 0;
+		for (const item of this.items) {
+			if (isdef(item.update)) {
+				//let y=item.y;
+				let changed = item.update(item, this);
+				if (changed) {
+					n++;
+					//if (this.math) { let ywrong = item.y; let diff = ywrong - y; item.y = y - diff; }
+				}
+			}
+		}
+		console.log('updated', n, 'items');
+		return n > 0;
+	}
+	draw() {
+		let cx = this.cx;
+		cClear(this.cv, this.cx);
+		//this.reset_transforms();
+		for (const item of this.items) {
+			//console.log('item', item)
+
+			cx.save();
+			//this.reset_transforms();
+
+			if (isdef(item.draw)) item.draw(item, this, this.math ? -item.y : item.y);
+			else cEllipse(item.x, item.y, item.w, item.h, { bg: item.color }, toRadian(item.a), cx);
+
+			cx.restore();
+		}
+	}
+}
+
+
+
+	function gety(y) {
+		if (!this.math) return y;
+		return -y;
+		//berechne den y coord im falle math
+		//beispiel:
+		//o.y ist bei cv.h/2 also in der mitte
+		//y ist 50
+		//have to return -50
+	}
+
+
+function start() {
+	if (nundef(dTable)) dTable = mSection({ padding: 10, hmin: 400 }, 'dTable'); //mFlex(dTable);	//test0_fireClick();
+
+	// C = new Canvas97(dTable, {}, {}, gameloop_start, gameloop_stop, 'cc', null, true);
+	C = new Canvas97(dTable, {}, {}, gameloop_start, gameloop_stop, 'cc',null,true);
+	
+	
+	//C.add({update: update_move});
+	// C.add({x:20,y:20,a:45,draw:draw_walker});
+	// C.add({draw:draw_walker});
+	G = { running: false };
+	// C.add({ w: 30, color: 'red', draw: draw_car, update: update_car, turn_inc: 10, v: { a: 280, mag: 5 } });
+	// C.add({ x: 30, y: -100, color: 'green', w: 35, draw: draw_car, update: update_car, v: { a: 0, mag: 3 } });
+	C.add({ color: 'red', draw:draw_point, update:movedown});
+	C.add({x:120,y:50, color: 'white', draw:draw_point});
+	//C.add({x:-200,y:100, color: 'pink', draw:draw_point});
+	//C.add({x:-200,y:-100, color: 'blue', draw:draw_point});
+	C.draw();
+	//gameloop_start();
+
+}
+
+
+function reset_transforms(x = 0, y = 0) { this.cx.setTransform(1, 0, 0, 1, this.origin.x + x, this.origin.y + y); }
+class Canvas98 {
+	constructor(dParent, styles, origin = 'cc', sz) {
+		let res = mCanvas(dParent, styles);
+		[this.cv, this.cx] = [res.cv, res.cx];
+		this.defaultsize = 25;
+		if (isdef(sz)) { this.cv.width = this.cv.height = sz; this.defaultsize = sz / 20; }
+		this.origin = this.init_origin(origin);
+		//console.log('origin', this.origin)
+		this.cx.translate(this.origin.x, this.origin.y);
+		this.items = [];
+	}
+	reset_transforms(x = 0, y = 0) { this.cx.setTransform(1, 0, 0, 1, this.origin.x + x, this.origin.y + y); }
+	init_origin(origin) {
+		//origin can be a point {x,y} or any of tl,tc,tr,cl,[cc],cr,bl,bc,br
+		if (nundef(origin)) origin = 'cc';
+		let pt = origin;
+		if (isString(origin)) {
+			let v = origin[0], h = origin[1];
+			let y = v == 't' ? 0 : v == 'c' ? this.cv.height / 2 : this.cv.height;
+			let x = h == 'l' ? 0 : h == 'c' ? this.cv.width / 2 : this.cv.width;
+			pt = { x: x, y: y };
+		}
+		return pt;
+
+	}
+
+	add(o = {}) {
+		addKeys({ x: 0, y: 0, color: rColor(50), w: this.defaultsize, h: this.defaultsize, a: 0, draw: null }, o);
+		this.items.push(o);
+	}
+
+	update(){
+		let n=0;
+		for (const item of this.items) {
+			if (isdef(item.update)) {let changed=item.update(item, this);if (changed) n++;}
+		}
+		console.log('updated',n,'items');
+		return n>0;
+	}
+	draw() {
+		let cx = this.cx;
+		cClear(this.cv,this.cx);
+		//this.reset_transforms();
+		for (const item of this.items) {
+			//console.log('item', item)
+			
+			cx.save();
+			//this.reset_transforms();
+			
+			if (isdef(item.draw)) item.draw(item, this);
+			else cEllipse(item.x, item.y, item.w, item.h, { bg: item.color }, toRadian(item.a), cx);
+			
+			cx.restore();
+		}
+	}
+}
+
+
+function draw_walker(item, canvas) {
+	let cx = canvas.cx;
+	canvas.reset_transforms(item.x, item.y);
+	cx.rotate(toRadian(item.a));
+	cRect(0 - item.w / 2, 0 - item.h / 2, item.w, item.h, { bg: item.color }, cx);
+}
+function draw_car(item, canvas) {
+	let cx = canvas.cx;
+	canvas.reset_transforms(item.x, item.y);
+	cx.rotate(toRadian(item.a));
+	cRect(0 - item.w / 2, 0 - item.h / 2, item.w, item.h, { bg: item.color }, cx);
+	cRect(item.w - item.w / 2, 0 - item.h / 2, 10, item.h, { bg: 'yellow' }, cx);
+}
+
+class Canvas99 {
+	constructor(dParent, styles, origin = 'cc', sz) {
+		let res = mCanvas(dParent, styles);
+		[this.cv, this.cx] = [res.cv, res.cx];
+		this.defaultsize = 25;
+		if (isdef(sz)) { this.cv.width = this.cv.height = sz; this.defaultsize = sz / 20; }
+		this.origin = this.init_origin(origin);
+		//console.log('origin', this.origin)
+		this.cx.translate(this.origin.x, this.origin.y);
+		this.items = [];
+	}
+	reset_transforms(x = 0, y = 0) { this.cx.setTransform(1, 0, 0, 1, this.origin.x + x, this.origin.y + y); }
+	init_origin(origin) {
+		//origin can be a point {x,y} or any of tl,tc,tr,cl,[cc],cr,bl,bc,br
+		if (nundef(origin)) origin = 'cc';
+		let pt = origin;
+		if (isString(origin)) {
+			let v = origin[0], h = origin[1];
+			let y = v == 't' ? 0 : v == 'c' ? this.cv.height / 2 : this.cv.height;
+			let x = h == 'l' ? 0 : h == 'c' ? this.cv.width / 2 : this.cv.width;
+			pt = { x: x, y: y };
+		}
+		return pt;
+
+	}
+
+	add(o = {}) {
+		addKeys({ x: 0, y: 0, color: rColor(50), w: this.defaultsize, h: this.defaultsize, a: 0, draw: null }, o);
+		this.items.push(o);
+	}
+
+	update(){
+		let n=0;
+		for (const item of this.items) {
+			if (isdef(item.update)) {let changed=item.update(item, this);if (changed) n++;}
+		}
+		console.log('updated',n,'items');
+		return n>0;
+	}
+	draw() {
+		let cx = this.cx;
+		cClear(this.cv,this.cx);
+		for (const item of this.items) {
+			//console.log('item', item)
+
+			if (isdef(item.draw)) item.draw(item, this);
+			else cEllipse(item.x, item.y, item.w, item.h, { bg: item.color }, toRadian(item.a), cx);
+		}
+	}
+}
+
+function gameloop() {
+	let di = { ArrowUp: 270, ArrowDown: 90, ArrowLeft: 180, ArrowRight: 0 };
+	for (const key in di) {
+		if (is_key_down(key)) {
+			update(di[key]);
+		}
+	}
+}
+
+
+function checkKey(e) {
+
+	e = e || window.event;
+
+	console.log('e',e.keyCode)
+	if (e.keyCode == '38') {
+		// up arrow
+		update(270);
+
+	}
+	else if (e.keyCode == '40') {
+		// down arrow
+		update(90);
+	}
+	else if (e.keyCode == '37') {
+		// left arrow
+		update(180);
+	}
+	else if (e.keyCode == '39') {
+		// right arrow
+		update(0);
+	}
+
+}
+
 
 function set_origin() { let cx = this.cx; cx.beginPath(); cx.translate(this.origin.x, this.origin.y); }
 
@@ -841,4 +1499,32 @@ function add_fork(b) {
 
 	branch_add(pt, b.angle + toRadian(25), len, thickness, color, b.age + 1);
 	branch_add(pt, b.angle - toRadian(25), len, thickness, b.age + 1);
+}
+//items
+function update_car(item, c) {
+	// let di = { ArrowUp: c.math ? 90 : 270, ArrowDown: c.math ? 270 : 90, ArrowLeft: 180, ArrowRight: 0 };
+	let di = { ArrowUp: 270, ArrowDown: 90, ArrowLeft: 180, ArrowRight: 0 };
+	for (const key in di) {
+		if (is_key_down(key)) {
+			item.v.a = di[key];
+			update_position(item);
+			return true;
+		}
+	}
+	return false;
+}
+function update_agent(item, c) {
+	//random walker
+	item.x += Math.random() * (coin() ? 1 : -1);
+	item.y += Math.random() * (coin() ? 1 : -1);
+	return true;
+
+}
+function update_move(item, c) {
+	//random walker
+	//let x=item.x+1; //if (x>c.) 
+	item.x += 1;
+	item.y += Math.random() * (coin() ? 1 : -1);
+	return true;
+
 }

@@ -7,7 +7,7 @@ var dTable, dHeader, dFooter, dMessage, dPuppet, dMenu, dLeft, dCenter, dRight; 
 var Config, Syms, SymKeys, ByGroupSubgroup, KeySets, C52, Cinno, C52Cards;
 var FORCE_REDRAW = false, TESTING = false;
 var ColorThiefObject, SelectedItem, SelectedColor;
-var FR = 30, CX, CV;
+var FR = 50, CX, CV;
 
 //#endregion
 //#region color const
@@ -511,7 +511,7 @@ function mCanvas(dParent, styles = {}, bstyles = {}, play = null, pause = null) 
 	if (isdef(styles.w)) cv.width = styles.w;
 	if (isdef(styles.h)) cv.height = styles.h;
 	let cx = cv.getContext('2d');
-	if (!play) return {cv:cv,cx:cx};
+	if (!play) return { cv: cv, cx: cx };
 
 	//add the play pause button!
 	addKeys({ fz: 28, fg: 'lightgreen', display: 'flex', ajcenter: true, w: styles.w }, bstyles)
@@ -1810,13 +1810,11 @@ function aJumpby(elem, h = 40, ms = 1000) {
 //#region canvas c prefix
 function cClear(cnv = null, ctx = null) {
 	if (nundef(cnv)) { cnv = CV; ctx = CX; if (!ctx) return; }
+	//console.log('hallo',cnv.width, cnv.height);
+	ctx.save();
+	ctx.setTransform(1, 0, 0, 1, 0, 0);
 	ctx.clearRect(0, 0, cnv.width, cnv.height);
-}
-function cRect(x, y, w, h, styles = null, ctx = null) {
-	if (nundef(ctx)) { ctx = CX; if (!ctx) return; }
-	if (styles) cStyle(styles, ctx);
-	if (isdef(styles.bg) || nundef(styles.fg)) ctx.fillRect(x, y, w, h);
-	if (isdef(styles.fg)) ctx.strokeRect(x, y, w, h);
+	ctx.restore();
 }
 function cEllipse(x, y, w, h, styles = null, angle = 0, ctx = null) {
 	if (nundef(ctx)) { ctx = CX; if (!ctx) return; }
@@ -1825,6 +1823,20 @@ function cEllipse(x, y, w, h, styles = null, angle = 0, ctx = null) {
 	ctx.ellipse(x, y, w / 2, h / 2, -angle, 0, 2 * Math.PI);
 	if (isdef(styles.bg) || nundef(styles.fg)) ctx.fill();
 	if (isdef(styles.fg)) ctx.stroke();
+}
+function cLine(x1, y1, x2, y2, styles = null, ctx = null) {
+	if (nundef(ctx)) { ctx = CX; if (!ctx) return; }
+	if (styles) cStyle(styles, ctx);
+	ctx.beginPath();
+	ctx.moveTo(x1, y1);
+	ctx.lineTo(x2, y2)
+	ctx.stroke();
+}
+function cRect(x, y, w, h, styles = null, ctx = null) {
+	if (nundef(ctx)) { ctx = CX; if (!ctx) return; }
+	if (styles) cStyle(styles, ctx);
+	if (isdef(styles.bg) || nundef(styles.fg)) ctx.fillRect(x, y, w, h);
+	if (isdef(styles.fg)) ctx.strokeRect(x, y, w, h);
 }
 function cStyle(styles = {}, ctx) {
 	if (nundef(ctx)) { ctx = CX; if (nundef(ctx)) { console.log('ctx undefined!!!!!!!'); return; } }
@@ -1846,12 +1858,6 @@ function cSetOrigin(ctx, x, y) {
 }
 function cCenterOrigin(cnv, ctx) {
 	cSetOrigin(ctx, cnv.width / 2, cnv.height / 2);
-}
-function cLine(ctx, x1, y1, x2, y2) {
-	ctx.beginPath();
-	ctx.moveTo(x1, y1);
-	ctx.lineTo(x2, y2)
-	ctx.stroke();
 }
 function cColor(fill, cvx) { if (nundef(cvx)) cvx = CX; CX.fillStyle = fill; }
 function cStyle_dep(cvx, fill, stroke, wline, cap) {

@@ -100,8 +100,8 @@ function create_branch(b, angle, len, color) {
 }
 function branch_draw(o) {
 	cStyle({fg:o.color,thickness:o.thickness,cap:'round'},CX);
-	if (C.root.jitter) cLine(CX, o.p1.x, o.p1.y, o.p2.x + Math.random() * 2 - 1, o.p2.y + Math.random() * 2 - 1);
-	else cLine(CX, o.p1.x, o.p1.y, o.p2.x, o.p2.y);
+	if (C.root.jitter) cLine(o.p1.x, o.p1.y, o.p2.x + Math.random() * 2 - 1, o.p2.y + Math.random() * 2 - 1,{},CX);
+	else cLine(o.p1.x, o.p1.y, o.p2.x, o.p2.y,{},CX);
 }
 
 function create_leaf(b, root) {
