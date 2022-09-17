@@ -1,7 +1,11 @@
 
 function test4_range_math() {
 	C = new MathCanvas(dTable, {}, {}, gameloop_start, gameloop_stop, 'cc',10);
-	C.plot(5,3);
+
+	
+	C.point(5,3);
+	C.point(10,4);
+
 	//C.add({ x: 50, y: 80, color: 'pink', draw: draw_point });
 	//C.add({ x: 50, y: -80, color: 'red', draw: draw_point });
 	C.draw();

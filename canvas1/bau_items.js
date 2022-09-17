@@ -1,5 +1,19 @@
 
 //#region point
+function plot_point(item, canvas) {
+	let cx = canvas.cx;
+	cx.font = `${valf(item.fz,16)}px Arial`;
+	cx.fillStyle = item.color;
+	if (isdef(item.label)) cx.fillText(`  ${item.label}`, 0, 0);
+	cEllipse(0, 0, 10, 10, { bg: item.color }, 0, cx);
+}
+function plot_line(item, canvas) {
+	let cx = canvas.cx;
+	cx.font = `${valf(item.fz,16)}px Arial`;
+	cx.fillStyle = item.color;
+	if (isdef(item.label)) cx.fillText(`  ${item.label}`, 0, 0);
+	cLine(item.x1,item.y1,item.x2,item.y2, { bg: item.color }, 0, cx);
+}
 function draw_point(item, canvas) {
 	let cx = canvas.cx;
 	cx.font = `${valf(item.fz,16)}px Arial`;

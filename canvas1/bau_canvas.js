@@ -65,14 +65,17 @@ class MathCanvas extends SimpleCanvas {
 		//this.minx/=ppp;this.maxx/=ppp;this.miny/=ppp;this.maxy/=ppp;
 
 	}
-	plot(x, y, x2, y2) {
-		//add point or line, draw
-		console.log('x',x,'y',y)
-		if (isdef(x2)) this.addline(...arguments); else this.addpoint(x, y);
-	}
-	addpoint(x, y) {
+	line(x1, y1, x2, y2, color, label) {
 		let f = this.ppp;
-		this.add({ x: x * f, y: y * f, color: 'green', w: 10, h: 10 });
+		this.add({ x1: x1 * f, y1: y1 * f, x2: x2 * f, y2: y2 * f, 
+			label:label, 
+		color: valf(color,'red'), thickness: 2, draw: plot_point });
+		console.log('added',arrLast(this.items));
+	}
+	point(x, y) {
+		let f = this.ppp;
+		this.add({ x: x * f, y: y * f, label:valf(label,`${x},${y}`), 
+		color: valf(color,'green'), w: 10, h: 10, draw: plot_point });
 		console.log('added',arrLast(this.items));
 	}
 	//scaler(item) { let scaled = { x: item.x * ppp, y: item.x * ppp, w: item.x * ppp, h: item.x * ppp }; if (isdef(item.v)) scaled.v = { a: item.v.a, mag: item.v.mag * ppp }; addKeys(item, scaled); return scaled; }
