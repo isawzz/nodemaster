@@ -12,7 +12,7 @@ class SimpleCanvas {
 		this.maxx = w - this.origin.x; this.minx = this.maxx - w;
 		this.maxy = h - this.origin.y; this.miny = this.maxy - h;
 
-		console.log('SimpleCanvas', this.minx, this.maxx, this.miny, this.maxy)
+		//console.log('SimpleCanvas', this.minx, this.maxx, this.miny, this.maxy)
 		this.items = [];
 	}
 	init_origin(origin) {
@@ -30,6 +30,7 @@ class SimpleCanvas {
 	add(o = {}) {
 		addKeys({ x: 0, y: 0, color: rColor(50), w: this.defaultsize, h: this.defaultsize, a: 0, draw: null }, o);
 		this.items.push(o);
+		return o;
 	}
 	update() {
 		let n = 0;
@@ -41,19 +42,63 @@ class SimpleCanvas {
 		let cx = this.cx;
 		cClear(this.cv, this.cx);
 		for (const item of this.items) {
-			cx.save();
-
-			cx.translate(item.x, item.y);
-			cx.rotate(toRadian(item.a));
-
-			if (isdef(item.draw)) { item.draw(item, this); }
-			else cEllipse(item.x, item.y, item.w, item.h, { bg: item.color }, 0, cx); //default draw
-
-			cx.restore();
+			this.draw_item(item);
+			// cx.save();
+			// cx.translate(item.x, item.y);
+			// cx.rotate(toRadian(item.a));
+			// if (isdef(item.draw)) { item.draw(item, this); }
+			// else cEllipse(item.x, item.y, item.w, item.h, { bg: item.color }, 0, cx); //default draw
+			// cx.restore();
 		}
+	}
+	draw_item(item){
+		let cx = this.cx;
+		cx.save();
+		cx.translate(item.x, item.y);
+		cx.rotate(toRadian(item.a));
+		if (isdef(item.draw)) { item.draw(item, this); }
+		else cEllipse(item.x, item.y, item.w, item.h, { bg: item.color }, 0, cx); //default draw
+		cx.restore();
+
 	}
 	clamp(item) { item.x = clamp(item.x, this.minx, this.maxx); item.y = clamp(item.y, this.miny, this.maxy) }
 	cycle(item) { item.x = cycle(item.x, this.minx, this.maxx); item.y = cycle(item.y, this.miny, this.maxy) }
+}
+class Plotter extends SimpleCanvas {
+	clear() {
+		let ctx = this.cx;
+		cClear(this.cv, ctx);
+		ctx.beginPath();
+		ctx.strokeStyle = "rgb(128,128,128)";
+		ctx.moveTo(this.minx, 0); ctx.lineTo(this.maxx, 0);  // X axis
+		ctx.moveTo(0, this.miny); ctx.lineTo(0, this.maxy);  // Y axis
+		ctx.stroke();
+	}
+	draw() {
+		this.clear();
+		for (const item of this.items) {
+			if (isdef(item.func)) this.plot(item.func, item.color, item.thickness);
+			else {
+				super.draw_item(item);
+			}
+		}
+	}
+	plot(func, color, thick) {
+		let cx = this.cx;
+		var xx, yy, dx = 4, x0 = 0, y0 = 0, scale = 40;
+		var imax = Math.round(this.maxx / dx);
+		var imin = Math.round(this.minx / dx);
+		cx.beginPath();
+		cx.lineWidth = thick;
+		cx.strokeStyle = color;
+
+		for (var i = imin; i <= imax; i++) {
+			xx = dx * i; yy = scale * func(xx / scale);
+			if (i == imin) cx.moveTo(x0 + xx, y0 - yy);
+			else cx.lineTo(x0 + xx, y0 - yy);
+		}
+		cx.stroke();
+	}
 }
 class MathCanvas extends SimpleCanvas {
 	constructor(dParent, styles, bstyles, play, pause, origin = 'cc', ppp = 1) {
@@ -61,22 +106,34 @@ class MathCanvas extends SimpleCanvas {
 		this.cx.scale(1, -1);
 		this.ppp = ppp;
 		let h = this.maxy; this.maxy = -this.miny; this.miny = -h;
-
+		this.caps = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'; this.icap = 0;
 		//this.minx/=ppp;this.maxx/=ppp;this.miny/=ppp;this.maxy/=ppp;
 
 	}
 	line(x1, y1, x2, y2, color, label) {
 		let f = this.ppp;
-		this.add({ x1: x1 * f, y1: y1 * f, x2: x2 * f, y2: y2 * f, 
-			label:label, 
-		color: valf(color,'red'), thickness: 2, draw: plot_point });
-		console.log('added',arrLast(this.items));
+		this.add({
+			x1: x1 * f, y1: y1 * f, x2: x2 * f, y2: y2 * f,
+			label: label,
+			color: valf(color, 'red'), thickness: 2, draw: plot_point
+		});
+		//console.log('added', arrLast(this.items));
 	}
-	point(x, y) {
+
+	point(x, y, color, label) {
+		//label
 		let f = this.ppp;
-		this.add({ x: x * f, y: y * f, label:valf(label,`${x},${y}`), 
-		color: valf(color,'green'), w: 10, h: 10, draw: plot_point });
-		console.log('added',arrLast(this.items));
+		let o = {
+			x: x * f, y: y * f,
+			color: valf(color, 'green'), w: 2, h: 2, draw: plot_point, ppp: this.ppp
+		}
+		if (isdef(label)) {
+			o.label = label == 'pos' ? valf(label, `${x},${y}`) : label == 'cap' ? this.caps[this.icap++] : label;
+			if (this.icap > this.caps.length - 1) this.icap = 0;
+		}
+		let item = this.add(o);
+		//console.log('added', arrLast(this.items));
+		return item;
 	}
 	//scaler(item) { let scaled = { x: item.x * ppp, y: item.x * ppp, w: item.x * ppp, h: item.x * ppp }; if (isdef(item.v)) scaled.v = { a: item.v.a, mag: item.v.mag * ppp }; addKeys(item, scaled); return scaled; }
 	draw() {
@@ -96,7 +153,7 @@ class MathCanvas extends SimpleCanvas {
 
 			if (isdef(item.draw)) { item.draw(item, this); }
 			else {
-				console.log('default draw',item.x, item.y)
+				console.log('default draw', item.x, item.y)
 				cEllipse(item.x, item.y, item.w, item.h, { bg: item.color }, 0, cx); //default draw
 			}
 

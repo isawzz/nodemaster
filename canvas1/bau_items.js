@@ -5,7 +5,7 @@ function plot_point(item, canvas) {
 	cx.font = `${valf(item.fz,16)}px Arial`;
 	cx.fillStyle = item.color;
 	if (isdef(item.label)) cx.fillText(`  ${item.label}`, 0, 0);
-	cEllipse(0, 0, 10, 10, { bg: item.color }, 0, cx);
+	cEllipse(0, 0, item.w, item.h, { bg: item.color }, 0, cx);
 }
 function plot_line(item, canvas) {
 	let cx = canvas.cx;

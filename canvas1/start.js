@@ -14,7 +14,7 @@ function start() {
 
 	//#region examples & TESTING
 	if (TESTING) {
-		test4_range_math(); //test1_car_math();  //test3_point_math(); //test2_point_nomath(); //test0_car_nomath(); 
+		test13_nerdamer(); //test12_fop(); //test11_function(); //test7_function(); //test6_func(); //test5_line(); //test4_range_math(); //test1_car_math();  //test3_point_math(); //test2_point_nomath(); //test0_car_nomath(); 
 		return;
 	}
 	//mFlex(dTable);	//test0_fireClick();

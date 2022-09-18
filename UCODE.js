@@ -1,4 +1,16 @@
 
+function muell() {
+
+
+
+
+
+	let [la, lb, lf] = [[1, 2, 3, 4, 5, 5, 5, 4, 3, 2], [0, .5, 1, 1.5, 2, 2.5, 2.5, 2.5, 2, 1.5, 1, .5], ['sin', 'cos']];
+	let [a, b, f] = [la[ia], lb[ib], lf[ifunc]];
+	[item.ia, item.ib, item.ifunc] = [(ia + 1) % la.length, (ib + 1) % lb.length, (ifunc + 1) % lf.length];
+	funGraph(ctx, axes, x => Math[f](a * x), "rgb(11,153,11)", 1);
+	return false;
+}
 class Canvas95 {
 	constructor(dParent, styles, bstyles, play, pause, origin = 'cc', resol = null, math = false) {
 		//origin can be a point {x,y} or any of tl,tc,tr,cl,[cc],cr,bl,bc,br

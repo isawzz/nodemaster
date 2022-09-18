@@ -4566,6 +4566,11 @@ function get_mouse_pos(ev) {
 	return ({ x: x, y: y });
 
 }
+function get_next_in_list(el, list) {
+	let i = list.indexOf(el);
+	let nextplayer = list[(i + 1) % list.length];
+	return nextplayer;
+}
 function getTypeOf(param) {
 	//console.log('>>>>>getTypeOf',param)
 	let type = typeof param;
@@ -4775,6 +4780,13 @@ function measure_fieldset(fs) {
 
 
 
+}
+function oscillate_between(x,min,max,step){
+
+	x+=step;
+	if (x<=min || x>=max) step=-step;
+
+	return[x,step];
 }
 function range(f, t, st = 1) {
 	if (nundef(t)) {
