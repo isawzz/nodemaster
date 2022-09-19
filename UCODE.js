@@ -1,4 +1,344 @@
 
+
+//#region canvas final
+class SimpleCanvas {
+	constructor(dParent, styles, bstyles, play, pause, origin = 'cc') {
+		//origin can be a point {x,y} or any of tl,tc,tr,cl,[cc],cr,bl,bc,br
+		let o = mCanvas(dParent, styles, bstyles, play, pause);
+		[this.cv, this.cx, this.play, this.pause] = [o.cv, o.cx, o.play, o.pause];
+		let [w, h] = [this.w, this.h] = [this.cv.width, this.cv.height];
+		this.defaultsize = 20;
+
+		this.origin = this.init_origin(origin);
+		this.cx.translate(this.origin.x, this.origin.y);
+
+		this.maxx = w - this.origin.x; this.minx = this.maxx - w;
+		this.maxy = h - this.origin.y; this.miny = this.maxy - h;
+
+		//console.log('SimpleCanvas', this.minx, this.maxx, this.miny, this.maxy)
+		this.items = [];
+	}
+	init_origin(origin) {
+		if (nundef(origin)) origin = 'cc';
+		let pt = origin;
+		if (isString(origin)) {
+			let v = origin[0], h = origin[1];
+			let y = v == 't' ? 0 : v == 'c' ? this.cv.height / 2 : this.cv.height;
+			let x = h == 'l' ? 0 : h == 'c' ? this.cv.width / 2 : this.cv.width;
+			pt = { x: x, y: y };
+		}
+		return pt;
+
+	}
+	add(o = {}) {
+		addKeys({ x: 0, y: 0, color: rColor(50), w: this.defaultsize, h: this.defaultsize, a: 0, draw: null }, o);
+		this.items.push(o);
+		return o;
+	}
+	update() {
+		let n = 0;
+		for (const item of this.items) { if (isdef(item.update)) { n += item.update(item, this) ? 1 : 0; } }
+		//console.log('updated', n, 'items');
+		return n > 0;
+	}
+	draw() {
+		let cx = this.cx;
+		cClear(this.cv, this.cx);
+		for (const item of this.items) {
+			this.draw_item(item);
+			// cx.save();
+			// cx.translate(item.x, item.y);
+			// cx.rotate(toRadian(item.a));
+			// if (isdef(item.draw)) { item.draw(item, this); }
+			// else cEllipse(item.x, item.y, item.w, item.h, { bg: item.color }, 0, cx); //default draw
+			// cx.restore();
+		}
+	}
+	draw_item(item){
+		let cx = this.cx;
+		cx.save();
+		cx.translate(item.x, item.y);
+		cx.rotate(toRadian(item.a));
+		if (isdef(item.draw)) { item.draw(item, this); }
+		else cEllipse(item.x, item.y, item.w, item.h, { bg: item.color }, 0, cx); //default draw
+		cx.restore();
+
+	}
+	clamp(item) { item.x = clamp(item.x, this.minx, this.maxx); item.y = clamp(item.y, this.miny, this.maxy) }
+	cycle(item) { item.x = cycle(item.x, this.minx, this.maxx); item.y = cycle(item.y, this.miny, this.maxy) }
+}
+class Plotter extends SimpleCanvas {
+	clear() {
+		let ctx = this.cx;
+		cClear(this.cv, ctx);
+		ctx.beginPath();
+		ctx.strokeStyle = "rgb(128,128,128)";
+		ctx.moveTo(this.minx, 0); ctx.lineTo(this.maxx, 0);  // X axis
+		ctx.moveTo(0, this.miny); ctx.lineTo(0, this.maxy);  // Y axis
+		ctx.stroke();
+	}
+	draw() {
+		this.clear();
+		for (const item of this.items) {
+			if (isdef(item.func)) this.plot(item.func, item.color, item.thickness);
+			else {
+				super.draw_item(item);
+			}
+		}
+	}
+	plot(func, color, thick) {
+		let cx = this.cx;
+		var xx, yy, dx = 4, x0 = 0, y0 = 0, scale = 40;
+		var imax = Math.round(this.maxx / dx);
+		var imin = Math.round(this.minx / dx);
+		cx.beginPath();
+		cx.lineWidth = thick;
+		cx.strokeStyle = color;
+
+		for (var i = imin; i <= imax; i++) {
+			xx = dx * i; yy = scale * func(xx / scale);
+			if (i == imin) cx.moveTo(x0 + xx, y0 - yy);
+			else cx.lineTo(x0 + xx, y0 - yy);
+		}
+		cx.stroke();
+	}
+}
+//#endregion
+
+//#region canvas classes
+class MathCanvas extends SimpleCanvas {
+	constructor(dParent, styles, bstyles, play, pause, origin = 'cc', ppp = 1) {
+		super(dParent, styles, bstyles, play, pause, origin);
+		this.cx.scale(1, -1);
+		this.ppp = ppp;
+		let h = this.maxy; this.maxy = -this.miny; this.miny = -h;
+		this.caps = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'; this.icap = 0;
+		//this.minx/=ppp;this.maxx/=ppp;this.miny/=ppp;this.maxy/=ppp;
+
+	}
+	line(x1, y1, x2, y2, color, label) {
+		let f = this.ppp;
+		this.add({
+			x1: x1 * f, y1: y1 * f, x2: x2 * f, y2: y2 * f,
+			label: label,
+			color: valf(color, 'red'), thickness: 2, draw: plot_point
+		});
+		//console.log('added', arrLast(this.items));
+	}
+
+	point(x, y, color, label) {
+		//label
+		let f = this.ppp;
+		let o = {
+			x: x * f, y: y * f,
+			color: valf(color, 'green'), w: 2, h: 2, draw: plot_point, ppp: this.ppp
+		}
+		if (isdef(label)) {
+			o.label = label == 'pos' ? valf(label, `${x},${y}`) : label == 'cap' ? this.caps[this.icap++] : label;
+			if (this.icap > this.caps.length - 1) this.icap = 0;
+		}
+		let item = this.add(o);
+		//console.log('added', arrLast(this.items));
+		return item;
+	}
+	//scaler(item) { let scaled = { x: item.x * ppp, y: item.x * ppp, w: item.x * ppp, h: item.x * ppp }; if (isdef(item.v)) scaled.v = { a: item.v.a, mag: item.v.mag * ppp }; addKeys(item, scaled); return scaled; }
+	draw() {
+		let cx = this.cx;
+		cClear(this.cv, this.cx);
+		cLine(this.minx, 0, this.maxx, 0, { fg: 'white' }, cx);
+		cLine(0, this.miny, 0, this.maxy, { fg: 'white' }, cx);
+		for (let i = this.miny; i < this.maxy; i += 10) { cLine(this.minx, i, this.maxx, i, { fg: '#ffffff40' }, cx); }
+		for (let i = this.minx; i < this.maxx; i += 10) { cLine(i, this.miny, i, this.maxy, { fg: '#ffffff40' }, cx); }
+
+		for (const item of this.items) {
+			cx.save();
+
+			cx.translate(item.x, item.y);
+			cx.rotate(toRadian(item.a));
+			cx.scale(1, -1);
+
+			if (isdef(item.draw)) { item.draw(item, this); }
+			else {
+				console.log('default draw', item.x, item.y)
+				cEllipse(item.x, item.y, item.w, item.h, { bg: item.color }, 0, cx); //default draw
+			}
+
+			cx.restore();
+		}
+	}
+
+}
+//legacy
+class Canvas95 {
+	constructor(dParent, styles, bstyles, play, pause, origin = 'cc', resol = null, math = false) {
+		//origin can be a point {x,y} or any of tl,tc,tr,cl,[cc],cr,bl,bc,br
+		let o = mCanvas(dParent, styles, bstyles, play, pause);
+		[this.cv, this.cx, this.play, this.pause] = [o.cv, o.cx, o.play, o.pause];
+		this.defaultsize = 10;
+		this.math = math;
+
+		if (isdef(resol)) { this.cv.width = this.cv.height = resol; this.defaultsize = resol / 20; }
+
+		this.origin = this.init_origin(origin);
+		this.cx.translate(this.origin.x, this.origin.y);
+
+		let [w, h] = [this.w, this.h] = [this.cv.width, this.cv.height];
+		this.maxx = w - this.origin.x; this.minx = this.maxx - w;
+		this.maxy = h - this.origin.y; this.miny = this.maxy - h;
+		if (this.math) {
+			this.cx.scale(1, -1);
+			let h = this.maxy; this.maxy = -this.miny; this.miny = -h;
+		}
+
+		console.log('Canvas', this.minx, this.maxx, this.miny, this.maxy)
+		this.items = [];
+	}
+	init_origin(origin) {
+		if (nundef(origin)) origin = 'cc';
+		let pt = origin;
+		if (isString(origin)) {
+			let v = origin[0], h = origin[1];
+			let y = v == 't' ? 0 : v == 'c' ? this.cv.height / 2 : this.cv.height;
+			let x = h == 'l' ? 0 : h == 'c' ? this.cv.width / 2 : this.cv.width;
+			pt = { x: x, y: y };
+		}
+		return pt;
+
+	}
+	add(o = {}) {
+		addKeys({ x: 0, y: 0, color: rColor(50), w: this.defaultsize, h: this.defaultsize, a: 0, draw: null }, o);
+		this.items.push(o);
+	}
+	update() {
+		let n = 0;
+		for (const item of this.items) { if (isdef(item.update)) { n += item.update(item, this) ? 1 : 0; } }
+		//console.log('updated', n, 'items');
+		return n > 0;
+	}
+	draw() {
+		let cx = this.cx;
+		cClear(this.cv, this.cx);
+		if (this.math) {
+			cLine(this.minx, 0, this.maxx, 0, { fg: 'white' }, cx);
+			cLine(0, this.miny, 0, this.maxy, { fg: 'white' }, cx);
+			for (let i = this.miny; i < this.maxy; i += 10) { cLine(this.minx, i, this.maxx, i, { fg: '#ffffff40' }, cx); }
+			for (let i = this.minx; i < this.maxx; i += 10) { cLine(i, this.miny, i, this.maxy, { fg: '#ffffff40' }, cx); }
+		}
+		for (const item of this.items) {
+			cx.save();
+
+			cx.translate(item.x, item.y);
+			cx.rotate(toRadian(item.a));
+			if (this.math) cx.scale(1, -1);
+
+			if (isdef(item.draw)) { item.draw(item, this); }
+			else cEllipse(item.x, item.y, item.w, item.h, { bg: item.color }, 0, cx); //default draw
+
+			cx.restore();
+		}
+	}
+	clamp(item) { item.x = clamp(item.x, this.minx, this.maxx); item.y = clamp(item.y, this.miny, this.maxy) }
+	cycle(item) { item.x = cycle(item.x, this.minx, this.maxx); item.y = cycle(item.y, this.miny, this.maxy) }
+}
+class CCanvas {
+	constructor(dParent, styles, sz, unit) {
+		let res = mCanvas(dParent, styles);
+		[this.cv, this.cx] = [res.cv, res.cx];
+		if (isdef(sz)) {
+			this.cv.width = this.cv.height = sz; this.cx.translate(sz / 2, sz / 2);
+			if (nundef(unit)) unit=sz/100; //all calc are in percent
+		} 
+
+		this.items = [];
+	}
+	ellipse(x, y, w, h, styles = {}, angle = 0) {
+		let ctx = this.cx;
+		if (styles) this.style(styles, ctx);
+		ctx.beginPath();
+		ctx.ellipse(x, y, w / 2, h / 2, -angle, 0, 2 * Math.PI);
+		if (isdef(styles.bg) || nundef(styles.fg)) ctx.fill();
+		if (isdef(styles.fg)) ctx.stroke();
+	}
+	rect(x, y, w, h, styles) {
+		let ctx = this.cx;
+		if (styles) this.style(styles);
+		if (isdef(styles.bg) || nundef(styles.fg)) ctx.fillRect(x, y, w, h);
+		if (isdef(styles.fg)) ctx.strokeRect(x, y, w, h);
+	}
+	line(x1, y1, x2, y2, styles = {}) {
+		let ctx = this.cx;
+		if (styles) this.style(styles);
+		ctx.beginPath();
+		ctx.moveTo(x1, y1);
+		ctx.lineTo(x2, y2)
+		ctx.stroke();
+	}
+	style(styles) {
+		let ctx = this.cx;
+		const di = { bg: 'fillStyle', fill: 'fillStyle', stroke: 'strokeStyle', fg: 'strokeStyle', thickness: 'lineWidth', cap: 'lineCap', ending: 'lineCap' };
+		for (const k in styles) {
+			ctx[isdef(di[k]) ? di[k] : k] = styles[k];
+		}
+	}
+
+	rotateby(angle) {
+		this.rotate(toRadian(angle));
+		this.sync(this.cx);
+	}
+	scaleby(x, y) {
+		if (nundef(y)) y = x;
+		this.scale(x, y);
+		this.sync(this.cx);
+	}
+	moveby(x, y) {
+		this.translate(x, y);
+		this.sync(this.cx);
+	}
+	rotateto(angle) {
+		//only reset angle! keep translate and scale!
+
+		this.rotate(toRadian(angle));
+		this.sync(this.cx);
+	}
+	scaleto(x, y) {
+		//only reset scale! keep translate and rotate!
+		if (nundef(y)) y = x;
+		this.scale(x, y);
+		this.sync(this.cx);
+	}
+	moveto(x, y) {
+		//only reset translate! keep rotate and scale!
+		this.translate(x, y);
+		this.sync(this.cx);
+	}
+
+
+	add(o) {
+		this.items.push(new CanvasItem(o));
+	}
+	draw() {
+		for (const item of this.items) {
+			item.draw(this);
+		}
+	}
+
+}
+class SimpleTransforms {
+	constructor() {
+		this.reset();
+	}
+	reset() {
+		this.a = 0;
+		this.sx = this.sy = 1;
+		this.tx = this.ty = 0;
+	}
+	rotate(a) { this.a = (this.a + a) % 360; }
+	scale(f) { this.sx += f; this.sy += f; }
+	translate(x, y) { this.tx += x; this.ty += y; }
+	get_matrix() {
+		let m=[]
+	}
+}
 function muell() {
 
 
@@ -82,8 +422,6 @@ class Canvas95 {
 	clamp(item) { item.x = clamp(item.x, this.minx, this.maxx); item.y = clamp(item.y, this.miny, this.maxy) }
 	cycle(item) { item.x = cycle(item.x, this.minx, this.maxx); item.y = cycle(item.y, this.miny, this.maxy) }
 }
-
-
 class Canvas95W {
 	constructor(dParent, styles, bstyles, play, pause, origin = 'cc', resol = null, math = false) {
 		//origin can be a point {x,y} or any of tl,tc,tr,cl,[cc],cr,bl,bc,br
@@ -155,9 +493,6 @@ class Canvas95W {
 	clamp(item) { item.x = clamp(item.x, this.minx, this.maxx); item.y = clamp(item.y, this.miny, this.maxy) }
 	cycle(item) { item.x = cycle(item.x, this.minx, this.maxx); item.y = cycle(item.y, this.miny, this.maxy) }
 }
-
-
-
 class Canvas96 {
 	constructor(dParent, styles, bstyles, play, pause, origin = 'cc', resol = null, math = false) {
 		//origin can be a point {x,y} or any of tl,tc,tr,cl,[cc],cr,bl,bc,br
@@ -233,15 +568,12 @@ class Canvas96 {
 	clamp(item) { item.x = clamp(item.x, this.minx, this.maxx); item.y = clamp(item.y, this.miny, this.maxy) }
 	cycle(item) { item.x = cycle(item.x, this.minx, this.maxx); item.y = cycle(item.y, this.miny, this.maxy) }
 }
-
 function cLine(ctx, x1, y1, x2, y2) {
 	ctx.beginPath();
 	ctx.moveTo(x1, y1);
 	ctx.lineTo(x2, y2)
 	ctx.stroke();
 }
-
-
 class Canvas96 {
 	constructor(dParent, styles, bstyles, play, pause, origin = 'cc', sz = null, math = false) {
 		let res = mCanvas(dParent, styles, bstyles, play, pause);
@@ -317,7 +649,6 @@ class Canvas96 {
 	clamp(item){item.x=clamp(item.x, this.minx, this.maxx);item.y=clamp(item.y, this.miny, this.maxy)}
 	cycle(item){item.x=cycle(item.x, this.minx, this.maxx);item.y=cycle(item.y, this.miny, this.maxy)}
 }
-
 function draw_car(item, canvas) {
 	let cx = canvas.cx;
 	// cx.translate(item.x, item.y);
@@ -340,7 +671,6 @@ function update_car(item, c) {
 	}
 	return false;
 }
-
 function other() {
 	//console.log('C', C);
 
@@ -360,17 +690,14 @@ function other() {
 	console.log('decomposed', comp.translation, toDegree(comp.rotation), comp.scale);
 
 }
-
 function xline(x1, y1, x2, y2, thick) {
 	//C.line(x+)
 }
-
 function drawfigure(c) {
 	C.rect(10, 10, 200, 100, { bg: 'red' })
 	C.ellipse(100, 100, 100, 100, { bg: 'blue' })
 	C.line(0, 0, 200, 200, { fg: GREEN, thickness: 5, cap: 'round' });
 }
-
 class CanvasItem {
 	constructor(o) {
 		addKeys(o, this);
@@ -379,8 +706,6 @@ class CanvasItem {
 		//default ist ein rectangle x,y,20,20,color
 	}
 }
-
-
 function draw() {
 	let cx = this.cx;
 	cClear(this.cv, this.cx);
@@ -399,8 +724,6 @@ function draw() {
 		cx.restore();
 	}
 }
-
-
 class Canvas97 {
 	constructor(dParent, styles, bstyles, play, pause, origin = 'cc', sz = null, math = false) {
 		let res = mCanvas(dParent, styles, bstyles, play, pause);
@@ -508,8 +831,6 @@ function start() {
 	//gameloop_start();
 
 }
-
-
 function reset_transforms(x = 0, y = 0) { this.cx.setTransform(1, 0, 0, 1, this.origin.x + x, this.origin.y + y); }
 class Canvas98 {
 	constructor(dParent, styles, origin = 'cc', sz) {
@@ -567,8 +888,6 @@ class Canvas98 {
 		}
 	}
 }
-
-
 function draw_walker(item, canvas) {
 	let cx = canvas.cx;
 	canvas.reset_transforms(item.x, item.y);
@@ -582,7 +901,6 @@ function draw_car(item, canvas) {
 	cRect(0 - item.w / 2, 0 - item.h / 2, item.w, item.h, { bg: item.color }, cx);
 	cRect(item.w - item.w / 2, 0 - item.h / 2, 10, item.h, { bg: 'yellow' }, cx);
 }
-
 class Canvas99 {
 	constructor(dParent, styles, origin = 'cc', sz) {
 		let res = mCanvas(dParent, styles);
@@ -633,6 +951,7 @@ class Canvas99 {
 		}
 	}
 }
+//#endregion
 
 function gameloop() {
 	let di = { ArrowUp: 270, ArrowDown: 90, ArrowLeft: 180, ArrowRight: 0 };
@@ -642,8 +961,6 @@ function gameloop() {
 		}
 	}
 }
-
-
 function checkKey(e) {
 
 	e = e || window.event;
@@ -668,10 +985,7 @@ function checkKey(e) {
 	}
 
 }
-
-
 function set_origin() { let cx = this.cx; cx.beginPath(); cx.translate(this.origin.x, this.origin.y); }
-
 function _cEllipse(x, y, w, h, angle, ctx) {
 	//ellipse(x, y, radiusX, radiusY, rotation)
 
@@ -682,7 +996,6 @@ function _cEllipse(x, y, w, h, angle, ctx) {
 	ctx.stroke(); //doesnt work!
 	//ctx.restore();
 }
-
 function game_update(types) {
 	//wird nur 1 mal bei game_start() aufgerufen!
 	let changed = false;
@@ -691,8 +1004,6 @@ function game_update(types) {
 	G.need_draw = changed;
 
 }
-
-
 
 //#region nature start.js
 onload = start;
@@ -942,8 +1253,6 @@ function generate() {
 
 //#endregion
 
-
-
 function lsys_add() {
 	let root = C.root; root.gen++; let len = 100; let gens = 2; C.items = {}; const damag = toRadian(25);
 	for (let i = 0; i < gens; i++) { root.len = len *= .5; root.sentence = generate(); }
@@ -970,7 +1279,6 @@ function lsys_add() {
 	}
 	C.changed = true;
 }
-
 function sentence2tree() {
 	// background(51);
 	// resetMatrix();
@@ -1219,14 +1527,12 @@ function select_pool(type, percent, layer, func) {
 	console.log('res', res.length)
 	return res;
 }
-
 function mutate_color(list, colors) {
 	for (const b of list) {
 		let icolor = colors.indexOf(b.color) + 1;
 		b.color = colors[icolor];
 	}
 }
-
 function create_component(name, cparent, x, y, options) {
 	name = replaceWhite(name);
 	let funcname = `${name}_init`;
@@ -1240,8 +1546,6 @@ function create_component(name, cparent, x, y, options) {
 
 	return c;
 }
-
-
 function mTogglew(label, dParent, styles = {}, handler, group_id, is_on) {
 	let cursor = styles.cursor; delete styles.cursor;
 	let name = replaceWhite(label);
@@ -1270,8 +1574,6 @@ function mTogglew(label, dParent, styles = {}, handler, group_id, is_on) {
 
 	return d;
 }
-
-
 function MUELL() {
 	let name = replaceWhite(s);
 	let id = name;

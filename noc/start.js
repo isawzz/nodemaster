@@ -1,40 +1,40 @@
 onload = start;
-
+FR = 50;
+TESTING = true;
 function start() {
-	if (nundef(dTable)) dTable = mSection({ padding: 10, hmin: 400 }, 'dTable'); //mFlex(dTable);	//test0_fireClick();
+	if (nundef(dTable)) dTable = mSection({ padding: 10, hmin: 400 }, 'dTable');
+	G = { running: false };
 
-	if (C) game_clear();
-	//test1_canvas(); return;
+	//#region examples & TESTING
+	if (TESTING) {
+		test1_car_math(); //test16_function(); //test12_fop(); //test11_function(); //test7_function(); //test6_func(); //test5_line(); //test4_range_math(); //test1_car_math();  //test3_point_math(); //test2_point_nomath(); //test0_car_nomath(); 
+		return;
+	}
+	//mFlex(dTable);	//test0_fireClick();
+	// C = new Canvas97(dTable, {}, {}, gameloop_start, gameloop_stop, 'cc', null, true);
+	// C.add({update: update_move});
+	// C.add({x:20,y:20,a:45,draw:draw_walker});
+	// C.add({draw:draw_walker});
+	//C.add({x:-200,y:100, color: 'pink', draw:draw_point});
+	//C.add({x:-200,y:-100, color: 'blue', draw:draw_point});
+	//gameloop_start();
+	//#endregion
 
-	let o = ui_type_canvas(dTable, gameloop_start, gameloop_stop);
-	[CV,CX]=[o.cv,o.cx];TM=createTM(CV,CX);
-	G = { running: false, agents: {}, items: {}, play: o.play, pause: o.pause, need_draw: true, root: null, draw: game_draw };
-	G.play();
-}
-function game_clear() { gameloop_stop(); mClear('dTable'); G = CV = CX = null; }
-function game_draw(types) {
-	if (!G.need_draw) return;
-	cClear();
-	console.log('draw')
-	if (nundef(types)) types = get_keys(G.items);
-	for (const type of types) { let f = get_func(type, 'draw'); for (const item of G.items[type]) { f(item); } }
-	G.need_draw = false;
-}
-function game_update() {
-	//console.log('CV',CV)
-	let o = walker_create();
-	//add_agent('walker',o);
-	add_item('walker', o);
-
-	G.need_draw = true;
+	C = new Canvas95(dTable, {}, {}, gameloop_start, gameloop_stop, {x:100,y:300}, null, true);
+	C.add({ color: 'red', draw: draw_point, update: movedown });
+	C.add({ x: 30, y: 30, color: 'white', draw: draw_point });
+	C.draw();
+	//C.play();
 
 }
-function gameloop_start() { TO.ivdraw = setInterval(game_draw, 1000 / FR); game_update(); G.running = true; }
+
+function gameloop_start() { TO.ivdraw = setInterval(gameloop, 1000 / FR); G.running = true; }
 function gameloop_stop() { clear_timeouts(); if (G) G.running = false; }
+function gameloop() {
+	let changed = C.update();
+	if (changed) C.draw();
+}
 
-function add_agent(type, o) { lookupAddToList(G.agents, [type], o); G.need_draw = true; }
-function add_item(type, o) { lookupAddToList(G.items, [type], o); G.need_draw = true; }
-function get_func(itemtype, cmd) { return window[`${itemtype}_${cmd}`]; }
 
 
 

@@ -3813,7 +3813,7 @@ function get_weekday(date) {
 }
 //#endregion
 
-//#region fire
+//#region fire & key_handlers (is_key_down)
 function fireClick(elem) {
 	const evt = new Event("click", { "bubbles": true, "cancelable": false });
 	elem.dispatchEvent(evt);
@@ -3849,6 +3849,14 @@ function fireKey(k, { control, alt, shift } = {}) {
 		node.onclick();
 	}
 }
+const is_key_down = (() => {
+	const state = {};
+	window.addEventListener('keyup', (e) => state[e.key] = false);
+	// window.addEventListener('keydown', (e) => {console.log('e.key',e.key);state[e.key] = true;});
+	window.addEventListener('keydown', (e) => { state[e.key] = true; });
+	return (key) => state.hasOwnProperty(key) && state[key] || false;
+})();
+
 //#endregion
 
 //#region fleetingMessage

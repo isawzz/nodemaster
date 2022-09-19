@@ -1,133 +1,88 @@
+class TransformationMatrix {
+	constructor() { this.reset_matrix(); }
+	get_matrix() { let m = this.m; var clone = [m[0], m[1], m[2], m[3], m[4], m[5]]; return clone; }
+	decompose(){return decompose_2d_matrix(this.m);}
+	multiply(mat) {
+		let m = this.m;
+		var m0 = m[0] * mat[0] + m[2] * mat[1];
+		var m1 = m[1] * mat[0] + m[3] * mat[1];
+		var m2 = m[0] * mat[2] + m[2] * mat[3];
+		var m3 = m[1] * mat[2] + m[3] * mat[3];
+		var m4 = m[0] * mat[4] + m[2] * mat[5] + m[4];
+		var m5 = m[1] * mat[4] + m[3] * mat[5] + m[5];
+		this.m = [m0, m1, m2, m3, m4, m5];
+	}
 
-function createTM(canvas,context){
-	// private
-	var self;
-	var m=[1,0,0,1,0,0];
-	var cv=canvas;
-	var ctx=context
-	var reset=function(){ var m=[1,0,0,1,0,0]; }
-	var multiply=function(mat){
-			var m0=m[0]*mat[0]+m[2]*mat[1];
-			var m1=m[1]*mat[0]+m[3]*mat[1];
-			var m2=m[0]*mat[2]+m[2]*mat[3];
-			var m3=m[1]*mat[2]+m[3]*mat[3];
-			var m4=m[0]*mat[4]+m[2]*mat[5]+m[4];
-			var m5=m[1]*mat[4]+m[3]*mat[5]+m[5];
-			m=[m0,m1,m2,m3,m4,m5];
+	//modify current matrix:
+	translate(x, y) { var mat = [1, 0, 0, 1, x, y]; this.multiply(mat); }
+	rotate(rAngle) {
+		var c = Math.cos(rAngle);
+		var s = Math.sin(rAngle);
+		var mat = [c, s, -s, c, 0, 0];
+		this.angle += toDegree(rAngle);
+		this.multiply(mat);
 	}
-	var screenPoint=function(transformedX,transformedY){
-			// invert
-			var d =1/(m[0]*m[3]-m[1]*m[2]);
-			im=[ m[3]*d, -m[1]*d, -m[2]*d, m[0]*d, d*(m[2]*m[5]-m[3]*m[4]), d*(m[1]*m[4]-m[0]*m[5]) ];
-			// point
-			return({
-					x:transformedX*im[0]+transformedY*im[2]+im[4],
-					y:transformedX*im[1]+transformedY*im[3]+im[5]
-			});
+	scale(x, y) { var mat = [x, 0, 0, y, 0, 0]; this.multiply(mat); }
+	skew(radianX, radianY) { var mat = [1, Math.tan(radianY), Math.tan(radianX), 1, 0, 0]; this.multiply(mat); }
+	reset_matrix() { this.m = [1, 0, 0, 1, 0, 0]; this.angle = 0; }
+	reset_all() { this.reset_matrix(); this.reset_context(); }
+	reset_context(ctx) { ctx.setTransform(1, 0, 0, 1, 0, 0); }
+	sync(ctx) { let m = this.m; ctx.setTransform(m[0], m[1], m[2], m[3], m[4], m[5]); }
+
+	//point transformation
+	get_screenpoint(transformedX, transformedY) {
+		// invert
+		let m = this.m;
+		var d = 1 / (m[0] * m[3] - m[1] * m[2]);
+		im = [m[3] * d, -m[1] * d, -m[2] * d, m[0] * d, d * (m[2] * m[5] - m[3] * m[4]), d * (m[1] * m[4] - m[0] * m[5])];
+		// point
+		return {
+			x: transformedX * im[0] + transformedY * im[2] + im[4],
+			y: transformedX * im[1] + transformedY * im[3] + im[5],
+		};
 	}
-	var transformedPoint=function(screenX,screenY){
-			return({
-					x:screenX*m[0] + screenY*m[2] + m[4],
-					y:screenX*m[1] + screenY*m[3] + m[5]
-			});    
+	get_transformedpoint(screenX, screenY) {
+		let m = this.m;
+		return {
+			x: screenX * m[0] + screenY * m[2] + m[4],
+			y: screenX * m[1] + screenY * m[3] + m[5],
+		};
 	}
-	// public
-	function TransformationMatrix(){
-			self=this;
-	}
-	// shared methods
-	TransformationMatrix.prototype.translate=function(x,y){
-			var mat=[ 1, 0, 0, 1, x, y ];
-			multiply(mat);
-	};
-	TransformationMatrix.prototype.rotate=function(rAngle){
-			var c = Math.cos(rAngle);
-			var s = Math.sin(rAngle);
-			var mat=[ c, s, -s, c, 0, 0 ];    
-			multiply(mat);
-	};
-	TransformationMatrix.prototype.scale=function(x,y){
-			var mat=[ x, 0, 0, y, 0, 0 ];        
-			multiply(mat);
-	};
-	TransformationMatrix.prototype.skew=function(radianX,radianY){
-			var mat=[ 1, Math.tan(radianY), Math.tan(radianX), 1, 0, 0 ];
-			multiply(mat);
-	};
-	TransformationMatrix.prototype.reset=function(){
-			reset();
-	}
-	TransformationMatrix.prototype.setContextTransform=function(ctx){
-			ctx.setTransform(m[0],m[1],m[2],m[3],m[4],m[5]);
-	}
-	TransformationMatrix.prototype.resetContextTransform=function(ctx){
-			ctx.setTransform(1,0,0,1,0,0);
-	}
-	TransformationMatrix.prototype.getTransformedPoint=function(screenX,screenY){
-			return(transformedPoint(screenX,screenY));
-	}
-	TransformationMatrix.prototype.getScreenPoint=function(transformedX,transformedY){
-			return(screenPoint(transformedX,transformedY));
-	}
-	TransformationMatrix.prototype.getMatrix=function(){
-			var clone=[m[0],m[1],m[2],m[3],m[4],m[5]];
-			return(clone);
-	}
-	// return public
-	return(TransformationMatrix);
 }
 
 
+function decompose_2d_matrix(mat) {
+	var a = mat[0];
+	var b = mat[1];
+	var c = mat[2];
+	var d = mat[3];
+	var e = mat[4];
+	var f = mat[5];
 
-function create_flower(){
+	var delta = a * d - b * c;
 
-}
-function flower_draw(x, y, color, angle = 0, petalCount = 1, lineWidth = 3, sz = 10) { 
-	function createPetal(length, width) {
-		const path = new Path2D();
-		path.moveTo(0, 0); // draw outer line
-		path.lineTo(length * 0.3, -width);
-		path.lineTo(length * 0.8, -width);
-		path.lineTo(length, 0);
-		path.lineTo(length * 0.8, width);
-		path.lineTo(length * 0.3, width);
-		path.closePath(); // close the path so that it goes back to start
+	let result = {
+		translation: [e, f],
+		rotation: 0,
+		scale: [0, 0],
+		skew: [0, 0],
+	};
 
-		// create the line down the middle.
-		path.moveTo(0, 0);
-		path.lineTo(length, 0);
-		return path;
+	// Apply the QR-like decomposition.
+	if (a != 0 || b != 0) {
+		var r = Math.sqrt(a * a + b * b);
+		result.rotation = b > 0 ? Math.acos(a / r) : -Math.acos(a / r);
+		result.scale = [r, delta / r];
+		result.skew = [Math.atan((a * c + b * d) / (r * r)), 0];
+	} else if (c != 0 || d != 0) {
+		var s = Math.sqrt(c * c + d * d);
+		result.rotation =
+			Math.PI / 2 - (d > 0 ? Math.acos(-c / s) : -Math.acos(c / s));
+		result.scale = [delta / s, s];
+		result.skew = [0, Math.atan((a * c + b * d) / (s * s))];
+	} else {
+		// a = b = c = d = 0
 	}
-	function drawPetals(x, y, count, startAt, petal) {
-		// x,y is center
-		// count number of petals
-		// startAt is the angle of the first
-		const step = (Math.PI * 2) / count;
-		CX.setTransform(1, 0, 0, 1, x, y); // set center
-		CX.rotate(startAt);  // set start angle
-		for (var i = 0; i < count; i += 1) {
-			CX.stroke(petal);  // draw a petal
-			CX.rotate(step);   // rotate to the next
-		}
-		CX.setTransform(1, 0, 0, 1, 0, 0);  // restore default
-	}
-	CX.strokeStyle = color;
-	CX.lineWidth = lineWidth;
-	const size = 50;// Math.min(cx.canvas.width, cx.canvas.height) * fitScale * 0.5;
-	drawPetals(x, y, petalCount, angle, createPetal(sz, sz * .2)); //cx.canvas.width / 2, cx.canvas.height / 2, 5, 0, createPetal(size, size * 0.2));
-	CX.beginPath();
-	CX.arc(x, y, sz * .15, 0, Math.PI * 2); //cx.canvas.width / 2, cx.canvas.height / 2, size * 0.15, 0, Math.PI * 2);
-	CX.fillStyle = color;
-	CX.fill();
+
+	return result;
 }
-
-
-
-
-
-
-
-
-
-
-
