@@ -11,7 +11,7 @@ function test15_function() {
 }
 function test14_function() {
 	C = new Plotter(dTable, {}, {}, gameloop_start, gameloop_stop, 'cc');
-	C.add({ astep: .1, a: 0, bstep: .1, b: 0, color: 'skyblue', thickness: 1, basefunc: x => -x * (-Math.sign(x)), func: x => Math.sin(x), update: linear_oscillator_ab });
+	C.add({ astep: .1, a: 0, bstep: .1, b: 0, color: 'skyblue', thickness: 1, basefunc: x => -x * (-Math.sign(x)), func: x => Math.sin(x), update: oscillator });
 	C.play();
 }
 function test13_nerdamer() {
@@ -183,7 +183,7 @@ function test12_fop() {
 }
 function test11_function() {
 	C = new Plotter(dTable, {}, {}, gameloop_start, gameloop_stop, 'cc');
-	C.add({ astep: .1, a: 0, bstep: .1, b: 0, color: 'skyblue', thickness: 1, basefunc: x => -x * (-Math.sign(x)), func: x => Math.sin(x), update: linear_oscillator_ab });
+	C.add({ astep: .1, a: 0, bstep: .1, b: 0, color: 'skyblue', thickness: 1, basefunc: x => -x * (-Math.sign(x)), func: x => Math.sin(x), update: oscillator });
 }
 function test10_update(item, canvas) {
 	let [astep, a, bstep, b, func] = [item.astep, item.a, item.bstep, item.b, item.func];

@@ -20,7 +20,7 @@ function start() {
 	//gameloop_start();
 	//#endregion
 
-	C = new Canvas95(dTable, {}, {}, gameloop_start, gameloop_stop, {x:100,y:300}, null, true);
+	C = new SimpleCanvas(dTable, {}, {}, gameloop_start, gameloop_stop, {x:100,y:300});
 	C.add({ color: 'red', draw: draw_point, update: movedown });
 	C.add({ x: 30, y: 30, color: 'white', draw: draw_point });
 	C.draw();
