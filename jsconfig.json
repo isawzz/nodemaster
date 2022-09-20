@@ -1,10 +1,11 @@
 {
 	"compilerOptions": {
-		"baseUrl": ".",
+		"baseUrl": "..",
 		"paths": {
-			"@/base/*": ["./base/js/*"],
+			"@/base/*": ["../base/js/*"],
 			// "@/alibs/*": ["./base/alibs/*"],
-			"@/*": ["./basejs/*"]
+			"@/*": ["../basejs/*"]
 		}
-	}
+	},
+	"exclude": ["node_modules", "_*", "temp","*UCODE*"]
 }

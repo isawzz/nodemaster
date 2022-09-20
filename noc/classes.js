@@ -1,4 +1,4 @@
-class SimpleCanvas {
+class CCanvas {
 	constructor(dParent, styles, bstyles, play, pause, origin = 'cc') {
 		//origin can be a point {x,y} or any of tl,tc,tr,cl,[cc],cr,bl,bc,br
 		let o = mCanvas(dParent, styles, bstyles, play, pause);
@@ -12,8 +12,32 @@ class SimpleCanvas {
 		this.maxx = w - this.origin.x; this.minx = this.maxx - w;
 		this.maxy = h - this.origin.y; this.miny = this.maxy - h;
 
-		//console.log('SimpleCanvas', this.minx, this.maxx, this.miny, this.maxy)
+		//console.log('CCanvas', this.minx, this.maxx, this.miny, this.maxy)
 		this.items = [];
+	}
+	add(o = {}) {
+		addKeys({ canvas: this, x: 0, y: 0, color: rColor(50), w: this.defaultsize, h: this.defaultsize, a: 0, draw: null }, o);
+		this.items.push(o);
+		return o;
+	}
+	clear(){cClear(this.cv, this.cx);}
+	clamp(item) { item.x = clamp(item.x, this.minx+item.w/2, this.maxx-item.x/2); item.y = clamp(item.y, this.miny+item.h/2, this.maxy-item.h/2) }
+	cycle(item) { item.x = cycle(item.x, this.minx, this.maxx); item.y = cycle(item.y, this.miny, this.maxy) }
+	draw() {
+		this.clear();
+		for (const item of this.items) {
+			this.draw_item(item);
+		}
+	}
+	draw_item(item){
+		let cx = this.cx;
+		cx.save();
+		cx.translate(item.x, item.y);
+		cx.rotate(toRadian(item.a));
+		if (isdef(item.draw)) { item.draw(item, this); }
+		else cEllipse(0,0, item.w, item.h, { bg: item.color }, 0, cx); //default draw
+		cx.restore();
+
 	}
 	init_origin(origin) {
 		if (nundef(origin)) origin = 'cc';
@@ -27,44 +51,17 @@ class SimpleCanvas {
 		return pt;
 
 	}
-	add(o = {}) {
-		addKeys({ x: 0, y: 0, color: rColor(50), w: this.defaultsize, h: this.defaultsize, a: 0, draw: null }, o);
-		this.items.push(o);
-		return o;
-	}
 	update() {
 		let n = 0;
 		for (const item of this.items) { if (isdef(item.update)) { n += item.update(item, this) ? 1 : 0; } }
 		//console.log('updated', n, 'items');
 		return n > 0;
 	}
-	draw() {
-		let cx = this.cx;
-		cClear(this.cv, this.cx);
-		for (const item of this.items) {
-			this.draw_item(item);
-			// cx.save();
-			// cx.translate(item.x, item.y);
-			// cx.rotate(toRadian(item.a));
-			// if (isdef(item.draw)) { item.draw(item, this); }
-			// else cEllipse(item.x, item.y, item.w, item.h, { bg: item.color }, 0, cx); //default draw
-			// cx.restore();
-		}
-	}
-	draw_item(item){
-		let cx = this.cx;
-		cx.save();
-		cx.translate(item.x, item.y);
-		cx.rotate(toRadian(item.a));
-		if (isdef(item.draw)) { item.draw(item, this); }
-		else cEllipse(item.x, item.y, item.w, item.h, { bg: item.color }, 0, cx); //default draw
-		cx.restore();
-
-	}
-	clamp(item) { item.x = clamp(item.x, this.minx, this.maxx); item.y = clamp(item.y, this.miny, this.maxy) }
-	cycle(item) { item.x = cycle(item.x, this.minx, this.maxx); item.y = cycle(item.y, this.miny, this.maxy) }
 }
-class Plotter extends SimpleCanvas {
+class CCanvasNoClear extends CCanvas{
+	clear(){}
+}
+class CCanvasPlot extends CCanvas {
 	clear() {
 		let ctx = this.cx;
 		cClear(this.cv, ctx);

@@ -1030,6 +1030,9 @@ function mPlayPause(dParent, styles = {}, handle_play = null, handle_pause = nul
 	`;
 	let pp = mCreateFrom(html);
 	mAppend(dParent, pp);
+
+	console.log('styles',styles)
+	addKeys({ fz: 28, fg: 'lightgreen', display: 'flex', ajcenter: true, w: getRect(dParent).w},styles); //getRect(dParent).w })
 	mStyle(pp, styles);
 
 	mBy('bPlay').onclick = () => { hide0('bPlay'); show0('bPause'); handle_play(); }
@@ -4135,6 +4138,7 @@ function rChoose(arr, n = 1, func = null, exceptIndices = null) {
 	return indices.slice(0, n).map(x => arr[x]);
 
 }
+function randomColor() { return rColor(); }
 function rColor(brightness) {
 	//percent (0=black), or dark,bright,medium, or a percentage, where 0 is black and 100 is white
 	if (isdef(brightness)) {
@@ -4157,7 +4161,6 @@ function rDate(before, after) {
 	return random_date;
 }
 function rDigits(n) { return rChoose(toLetters('0123456789'), n); }
-function randomColor() { return rColor(); }
 function rHue() { return (rNumber(0, 36) * 10) % 360; }
 function rLetter(except) { return rLetters(1, except)[0]; }
 function rLetters(n, except = []) {
@@ -4166,6 +4169,7 @@ function rLetters(n, except = []) {
 	console.log('all', all, except)
 	return rChoose(toLetters(all), n);
 }
+function rFloat(min = -1, max = 1) { return Math.random() * (max - min) + min; }
 function rNumber(min = 0, max = 100) {
 	return Math.floor(Math.random() * (max - min + 1)) + min; //min and max inclusive!
 }
@@ -4789,12 +4793,12 @@ function measure_fieldset(fs) {
 
 
 }
-function oscillate_between(x,min,max,step){
+function oscillate_between(x, min, max, step) {
 
-	x+=step;
-	if (x<=min || x>=max) step=-step;
+	x += step;
+	if (x <= min || x >= max) step = -step;
 
-	return[x,step];
+	return [x, step];
 }
 function range(f, t, st = 1) {
 	if (nundef(t)) {

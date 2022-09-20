@@ -35,6 +35,24 @@ function decompose_2d_matrix(mat) {
 
 	return result;
 }
+function draw_label(item,canvas){
+	let cx = canvas.cx;
+	cx.textAlign = 'center';
+	cx.font = `${valf(item.fz, 16)}px Arial`;
+	cx.fillStyle = item.color;
+	cx.fillText(`  ${item.label}`, 0, 0);
+}
+function draw_point(item, canvas) {
+	let cx = canvas.cx;
+	cx.font = `${valf(item.fz, 16)}px Arial`;
+	cx.fillStyle = item.color;
+	if (isdef(item.label)) cx.fillText(`  ${item.label}`, 0, 0);
+	cEllipse(0, 0, item.w, item.h, { bg: item.color }, 0, cx);
+}
+function draw_rect(item, canvas) {
+	let cx = canvas.cx;
+	cRect(0 - item.w / 2, 0 - item.h / 2, item.w, item.h, { bg: item.color }, cx);
+}
 function funGraph(ctx, axes, func, color, thick) {
 	var xx, yy, dx = 4, x0 = axes.x0, y0 = axes.y0, scale = axes.scale;
 	var iMax = Math.round((ctx.canvas.width - x0) / dx);
@@ -49,6 +67,21 @@ function funGraph(ctx, axes, func, color, thick) {
 		else ctx.lineTo(x0 + xx, y0 - yy);
 	}
 	ctx.stroke();
+}
+function get_with_prob(probs){
+	//probs: list of {val:p:}
+	//eg [{val:{x:-1,y:0},p:50},{val:{x:1,y:0},p:20},{val:{x:0,y:-1},p:20},{val:{x:0,y:1},p:10}];
+	//if props.p do NOT add up to 100, they will just be part of sum (im verhaeltnis!)
+	let r=Math.random()*arrSum(probs,'p');
+	console.log('r',r);
+	let np=[];let sofar=0;
+	for(const el of probs){
+		sofar+=el.p;
+		np.push({val:el.val,p:el.p,akk:sofar});
+		if (r<=sofar) return el.val;
+	}
+	return arrLast(probs.val);
+
 }
 function get_quadrant(a) { return a > 270 ? 4 : a > 180 ? 3 : a > 90 ? 2 : 1; }
 function is_turn_counter_clockwise(a1, a2) {
@@ -91,7 +124,22 @@ function lerpoint(i1, i2, frac = .5) {
 	//console.log('___________________', o.x, o.y, o.color);
 	return o;
 }
-function movedown(item, canvas) { item.y += 1; canvas.clamp(item); return true; }
+function move_down(item, canvas) { item.y += 1; canvas.clamp(item); return true; }
+function move_random(item, canvas) { item.x += rFloat(-1, 1); item.y += rFloat(-1, 1); canvas.clamp(item); return true; }
+function move_with_distribution(item, canvas) { 
+	item.x += rFloat(-1, 1); item.y += rFloat(-1, 1); 
+	
+}
+function move_clamp(item,canvas){
+	if (isdef(item.moveoptionsrandom)){
+		if (options.probabilities){
+			let pinc=get_2d_move(options.probabilities);
+			item.x += pinc.x; item.y += pinc.y;
+		}
+	}
+	canvas.clamp(item); 
+	return true; 
+}
 function oscillator(item) {
 	let [astep, a, bstep, b, basefunc] = [item.astep, item.a, item.bstep, item.b, item.basefunc];
 	[a, astep] = oscillate_between(a, 0, 5, astep);
@@ -109,6 +157,16 @@ function showAxes(ctx, axes) {
 	ctx.moveTo(xmin, y0); ctx.lineTo(w, y0);  // X axis
 	ctx.moveTo(x0, 0); ctx.lineTo(x0, h);  // Y axis
 	ctx.stroke();
+}
+function update_func(item, canvas) {
+	let [cv, ctx, ia, ib, ifunc, axes] = [canvas.cv, canvas.cx, item.ia, item.ib, item.ifunc, item.axes];
+	cClear(cv, ctx);
+	showAxes(ctx, axes);
+	let [la, lb, lf] = [[1, 2, 3, 4, 5, 5, 5, 4, 3, 2], [0, .5, 1, 1.5, 2, 2.5, 2.5, 2.5, 2, 1.5, 1, .5], ['sin', 'cos']];
+	let [a, b, f] = [la[ia], lb[ib], lf[ifunc]];
+	[item.ia, item.ib, item.ifunc] = [(ia + 1) % la.length, (ib + 1) % lb.length, (ifunc + 1) % lf.length];
+	funGraph(ctx, axes, x => Math[f](a * x), "rgb(11,153,11)", 1);
+	return false;
 }
 function update_move(item, canvas) {
 	//item.x += 1;
@@ -147,13 +205,6 @@ function update_position(item) {
 }
 
 //#region point
-function plot_point(item, canvas) {
-	let cx = canvas.cx;
-	cx.font = `${valf(item.fz, 16)}px Arial`;
-	cx.fillStyle = item.color;
-	if (isdef(item.label)) cx.fillText(`  ${item.label}`, 0, 0);
-	cEllipse(0, 0, item.w, item.h, { bg: item.color }, 0, cx);
-}
 function plot_line(item, canvas) {
 	let cx = canvas.cx;
 	cx.font = `${valf(item.fz, 16)}px Arial`;
@@ -161,27 +212,7 @@ function plot_line(item, canvas) {
 	if (isdef(item.label)) cx.fillText(`  ${item.label}`, 0, 0);
 	cLine(item.x1, item.y1, item.x2, item.y2, { bg: item.color }, 0, cx);
 }
-function draw_point(item, canvas) {
-	let cx = canvas.cx;
-	cx.font = `${valf(item.fz, 16)}px Arial`;
-	cx.fillStyle = item.color;
-	cx.fillText(`  ${item.x},${item.y}`, 0, 0);
-	cEllipse(0, 0, 10, 10, { bg: item.color }, 0, cx);
-}
 
-//#region walker
-function draw_walker(item, canvas) {
-	let cx = canvas.cx;
-	cx.translate(item.x, yreal);
-	cx.rotate(toRadian(item.a));
-	cRect(0 - item.w / 2, 0 - item.h / 2, item.w, item.h, { bg: item.color }, cx);
-}
-function update_randomwalker(item, canvas) {
-	//random walker
-	item.x += Math.random() * (coin() ? 1 : -1);
-	item.y += Math.random() * (coin() ? 1 : -1);
-	return true;
-}
 
 //#region car
 function draw_car(item, canvas) {

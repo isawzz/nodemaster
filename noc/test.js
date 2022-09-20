@@ -1,4 +1,27 @@
+//#region multiple canvases!
 
+function noc0_randomwalkers() {
+	let [c1,c2]=[G.items[0],G.items[1]];
+	c1.add({ update: move_random, w: 2, h: 2 });
+	c2.add({ label: 'tom', draw: draw_label, update: move_random });
+	c2.add(new CItemWalker('tim'));
+
+}
+
+
+
+
+
+
+
+//#region legacy SimpleCanvas, single global C
+function test17_randomwalk() {
+	C = new CCanvasNoClear(dTable, {}, {}, gameloop_start, gameloop_stop);
+	C.add({ update: move_random, w: 2, h: 2 });
+	C.add(new CItemWalker({ label: 'tom' }))
+	C.play();
+
+}
 function test16_function() {
 	C = new Plotter(dTable);
 	C.add({ color: 'skyblue', thickness: 1, func: nerdamer('integrate(x,x)').buildFunction() });
@@ -163,7 +186,7 @@ function test13_nerdamer() {
 	console.log(result.text());
 	//0.960170286650366
 
-	var result = nerdamer('cos(x)',{x:6}).evaluate();
+	var result = nerdamer('cos(x)', { x: 6 }).evaluate();
 	console.log(result.text());
 	//0.960170286650366
 
@@ -172,7 +195,7 @@ function test13_nerdamer() {
 	console.log(f(3));
 	//0.960170286650366
 
-	f=nerdamer('diff(x^3,x)').buildFunction();
+	f = nerdamer('diff(x^3,x)').buildFunction();
 	console.log(f(20));
 
 
@@ -206,16 +229,6 @@ function test10_function() {
 }
 function fun1(x) { return Math.sin(x); }
 function fun2(x) { return Math.cos(3 * x); }
-function update_func(item, canvas) {
-	let [cv, ctx, ia, ib, ifunc, axes] = [canvas.cv, canvas.cx, item.ia, item.ib, item.ifunc, item.axes];
-	cClear(cv, ctx);
-	showAxes(ctx, axes);
-	let [la, lb, lf] = [[1, 2, 3, 4, 5, 5, 5, 4, 3, 2], [0, .5, 1, 1.5, 2, 2.5, 2.5, 2.5, 2, 1.5, 1, .5], ['sin', 'cos']];
-	let [a, b, f] = [la[ia], lb[ib], lf[ifunc]];
-	[item.ia, item.ib, item.ifunc] = [(ia + 1) % la.length, (ib + 1) % lb.length, (ifunc + 1) % lf.length];
-	funGraph(ctx, axes, x => Math[f](a * x), "rgb(11,153,11)", 1);
-	return false;
-}
 function geniales_sin_ease(item, canvas) {
 	let [cv, ctx, astep, a, bstep, b, func, axes] = [canvas.cv, canvas.cx, item.astep, item.a, item.bstep, item.b, item.func, item.axes];
 	cClear(cv, ctx);
@@ -231,7 +244,7 @@ function geniales_sin_ease(item, canvas) {
 
 }
 function test9_function() {
-	C = new SimpleCanvas(dTable, {}, {}, gameloop_start, gameloop_stop, 'tl');
+	C = new CCanvas(dTable, {}, {}, gameloop_start, gameloop_stop, 'tl');
 	let canvas = C.cv;
 
 	let axes = {}, ctx = canvas.getContext("2d");
@@ -244,7 +257,7 @@ function test9_function() {
 
 }
 function test8_function() {
-	C = new SimpleCanvas(dTable, {}, {}, gameloop_start, gameloop_stop, 'tl');
+	C = new CCanvas(dTable, {}, {}, gameloop_start, gameloop_stop, 'tl');
 	//let ctx = C.cx; //canvas.getContext("2d");
 	let canvas = C.cv;
 	//var canvas = document.getElementById("canvas");
@@ -262,7 +275,7 @@ function test8_function() {
 	funGraph(ctx, axes, fun2, "rgb(66,44,255)", 2);
 }
 function test7_function() {
-	C = new SimpleCanvas(dTable, {}, {}, gameloop_start, gameloop_stop, 'cc');
+	C = new CCanvas(dTable, {}, {}, gameloop_start, gameloop_stop, 'cc');
 	let ctx = C.cx; //canvas.getContext("2d");
 	let canvas = C.cv;
 	let h = canvas.height;
@@ -331,6 +344,10 @@ function test7_function() {
 	plot(x => 5 * Math.sin(x), 'white', 2);
 	plot(x => 5 * Math.sin(x), 'white', 2);
 }
+//#endregion
+
+//#region legacy MathCanvas, Canvas96
+
 function test6_func_GEHT_NICHT() {
 	C = new MathCanvas(dTable, {}, {}, gameloop_start, gameloop_stop, 'cc', 10);
 
@@ -374,8 +391,11 @@ function test4_range_math_GEHT_NICHT() {
 
 }
 
+//#endregion
+
+//#region legacy global C mit CCanvas
 function test3_point_math() {
-	C = new SimpleCanvas(dTable, {}, {}, gameloop_start, gameloop_stop, 'cc', null, true);
+	C = new CCanvas(dTable, {}, {}, gameloop_start, gameloop_stop, 'cc', null, true);
 	C.add();
 	C.add({ x: 50, y: 80, color: 'pink', draw: draw_point, update: update_move });
 	C.add({ x: 50, y: -80, color: 'red', draw: draw_car, update: update_car, v: { a: 0, mag: 5 } });
@@ -384,7 +404,7 @@ function test3_point_math() {
 	C.play();
 }
 function test2_point_nomath() {
-	C = new SimpleCanvas(dTable, {}, {}, gameloop_start, gameloop_stop);
+	C = new CCanvas(dTable, {}, {}, gameloop_start, gameloop_stop);
 	C.add();
 	C.add({ x: -200, y: 100, color: 'pink', draw: draw_point });
 	C.draw();
@@ -392,17 +412,19 @@ function test2_point_nomath() {
 
 }
 function test1_car_math() {
-	C = new SimpleCanvas(dTable, {}, {}, gameloop_start, gameloop_stop, 'cc', null, true);
+	C = new CCanvas(dTable, {}, {}, gameloop_start, gameloop_stop, 'cc', null, true);
 	C.add({ w: 30, h: 25, color: 'red', draw: draw_car, update: update_car, turn_inc: 10, v: { a: 280, mag: 5 } });
 	C.add({ x: 30, y: -100, color: 'green', w: 35, h: 25, draw: draw_car, update: update_car, v: { a: 0, mag: 3 } });
 	C.draw();
 }
 function test0_car_nomath() {
-	C = new SimpleCanvas(dTable, {}, {}, gameloop_start, gameloop_stop);
+	C = new CCanvas(dTable, {}, {}, gameloop_start, gameloop_stop);
 	C.add({ w: 30, h: 25, color: 'red', draw: draw_car, update: update_car, turn_inc: 10, v: { a: 280, mag: 5 } });
 	C.add({ x: 30, y: -100, color: 'green', w: 35, h: 25, draw: draw_car, update: update_car, v: { a: 0, mag: 3 } });
 	C.draw();
 }
+
+//#endregion
 
 
 

@@ -875,7 +875,7 @@ function start() {
 	G = { running: false };
 	// C.add({ w: 30, color: 'red', draw: draw_car, update: update_car, turn_inc: 10, v: { a: 280, mag: 5 } });
 	// C.add({ x: 30, y: -100, color: 'green', w: 35, draw: draw_car, update: update_car, v: { a: 0, mag: 3 } });
-	C.add({ color: 'red', draw:draw_point, update:movedown});
+	C.add({ color: 'red', draw:draw_point, update:move_down});
 	C.add({x:120,y:50, color: 'white', draw:draw_point});
 	//C.add({x:-200,y:100, color: 'pink', draw:draw_point});
 	//C.add({x:-200,y:-100, color: 'blue', draw:draw_point});
@@ -940,7 +940,7 @@ class Canvas98 {
 		}
 	}
 }
-function draw_walker(item, canvas) {
+function draw_rect(item, canvas) {
 	let cx = canvas.cx;
 	canvas.reset_transforms(item.x, item.y);
 	cx.rotate(toRadian(item.a));
