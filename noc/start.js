@@ -12,7 +12,7 @@ function start() {
 	let controls = mPlayPause(dTable, {}, gameloop_start, gameloop_stop);
 	[G.play, G.pause] = [controls.play, controls.pause];
 
-	noc0_randomwalkers();
+	noc1_randomwalkers();
 
 	G.play();
 }

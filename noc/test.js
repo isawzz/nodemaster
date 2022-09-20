@@ -1,7 +1,18 @@
 //#region multiple canvases!
+//function 
 
+function noc1_randomwalkers() {
+	let [c1, c2] = [G.items[0], G.items[1]];
+
+	let probs=[{val:{x:-1,y:0},p:30},{val:{x:1,y:0},p:20},{val:{x:0,y:-1},p:20},{val:{x:0,y:1},p:10}];
+	c1.add({ probs: probs, update: move_probs, w: 2, h: 2 });
+	
+	c2.add({ label: 'tom', draw: draw_label, update: move_random });
+	//c2.add(new CItemWalker('tim'));
+
+}
 function noc0_randomwalkers() {
-	let [c1,c2]=[G.items[0],G.items[1]];
+	let [c1, c2] = [G.items[0], G.items[1]];
 	c1.add({ update: move_random, w: 2, h: 2 });
 	c2.add({ label: 'tom', draw: draw_label, update: move_random });
 	c2.add(new CItemWalker('tim'));

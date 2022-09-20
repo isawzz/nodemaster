@@ -2346,7 +2346,11 @@ function arrSplitByIndices(arr, indices) {
 	return [a1, a2];
 }
 function arrShufflip(arr) { if (isEmpty(arr)) return []; else return fisherYates(arr); }
-function arrSum(arr, props) { if (nundef(props)) return arr.reduce((a, b) => a + b); if (!isList(props)) props = [props]; return arr.reduce((a, b) => a + (lookup(b, props) || 0), 0); }
+function arrSum(arr, props) { 
+	if (nundef(props)) return arr.reduce((a, b) => a + b); 
+	if (!isList(props)) props = [props]; 
+	return arr.reduce((a, b) => a + (lookup(b, props) || 0), 0); 
+}
 function arrSwap(arr, i, j) { let h = arr[i]; arr[i] = arr[j]; arr[j] = h; }
 function arrTake(arr, n = 0, from = 0) {
 	if (isDict(arr)) {

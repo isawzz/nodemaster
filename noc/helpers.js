@@ -35,7 +35,7 @@ function decompose_2d_matrix(mat) {
 
 	return result;
 }
-function draw_label(item,canvas){
+function draw_label(item, canvas) {
 	let cx = canvas.cx;
 	cx.textAlign = 'center';
 	cx.font = `${valf(item.fz, 16)}px Arial`;
@@ -68,17 +68,17 @@ function funGraph(ctx, axes, func, color, thick) {
 	}
 	ctx.stroke();
 }
-function get_with_prob(probs){
+function get_with_prob(probs) {
 	//probs: list of {val:p:}
 	//eg [{val:{x:-1,y:0},p:50},{val:{x:1,y:0},p:20},{val:{x:0,y:-1},p:20},{val:{x:0,y:1},p:10}];
 	//if props.p do NOT add up to 100, they will just be part of sum (im verhaeltnis!)
-	let r=Math.random()*arrSum(probs,'p');
-	console.log('r',r);
-	let np=[];let sofar=0;
-	for(const el of probs){
-		sofar+=el.p;
-		np.push({val:el.val,p:el.p,akk:sofar});
-		if (r<=sofar) return el.val;
+	let r = Math.random() * arrSum(probs, 'p');
+	//console.log('r', r);
+	let np = []; let sofar = 0;
+	for (const el of probs) {
+		sofar += el.p;
+		np.push({ val: el.val, p: el.p, akk: sofar });
+		if (r <= sofar) return el.val;
 	}
 	return arrLast(probs.val);
 
@@ -126,19 +126,12 @@ function lerpoint(i1, i2, frac = .5) {
 }
 function move_down(item, canvas) { item.y += 1; canvas.clamp(item); return true; }
 function move_random(item, canvas) { item.x += rFloat(-1, 1); item.y += rFloat(-1, 1); canvas.clamp(item); return true; }
-function move_with_distribution(item, canvas) { 
-	item.x += rFloat(-1, 1); item.y += rFloat(-1, 1); 
-	
-}
-function move_clamp(item,canvas){
-	if (isdef(item.moveoptionsrandom)){
-		if (options.probabilities){
-			let pinc=get_2d_move(options.probabilities);
-			item.x += pinc.x; item.y += pinc.y;
-		}
-	}
-	canvas.clamp(item); 
-	return true; 
+function move_probs(item, canvas) {
+	let pinc = get_with_prob(item.probs);
+	item.x += pinc.x; item.y += pinc.y;
+	canvas.clamp(item);
+	return true;
+
 }
 function oscillator(item) {
 	let [astep, a, bstep, b, basefunc] = [item.astep, item.a, item.bstep, item.b, item.basefunc];
