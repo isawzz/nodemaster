@@ -79,18 +79,19 @@ function lerpoint(i1, i2, frac = .5) {
 	addKeys(i1, o);
 	let pos = lerpos(i1, i2, frac);
 	o.x = pos.x; o.y = pos.y;
-	
-	o.color = colorMix(i1.color, i2.color, frac*100); 
+
+	o.color = colorMix(i1.color, i2.color, frac * 100);
 
 	//wie kann ich ein label lerpen??? von einem point?
 	//if label has 2 numbers
-	if (isdef(i1.label)) o.label = `${(o.x/i1.ppp).toFixed(1)},${(o.y/i1.ppp).toFixed(1)}`;
+	if (isdef(i1.label)) o.label = `${(o.x / i1.ppp).toFixed(1)},${(o.y / i1.ppp).toFixed(1)}`;
 
 	// let mp=lerp(0,10,1); console.log('mp 0 10 1',mp)
 	// mp=lerp(0,10,0); console.log('mp 0 10 0',mp)
 	//console.log('___________________', o.x, o.y, o.color);
 	return o;
 }
+function movedown(item, canvas) { item.y += 1; canvas.clamp(item); return true; }
 function oscillator(item) {
 	let [astep, a, bstep, b, basefunc] = [item.astep, item.a, item.bstep, item.b, item.basefunc];
 	[a, astep] = oscillate_between(a, 0, 5, astep);
@@ -108,6 +109,12 @@ function showAxes(ctx, axes) {
 	ctx.moveTo(xmin, y0); ctx.lineTo(w, y0);  // X axis
 	ctx.moveTo(x0, 0); ctx.lineTo(x0, h);  // Y axis
 	ctx.stroke();
+}
+function update_move(item, canvas) {
+	//item.x += 1;
+	item.y += 1; //Math.random() * (coin() ? 1 : -1);
+	item.y = cycle(item.y, canvas.miny, canvas.maxy);
+	return true;
 }
 function update_position(item) {
 
@@ -142,21 +149,21 @@ function update_position(item) {
 //#region point
 function plot_point(item, canvas) {
 	let cx = canvas.cx;
-	cx.font = `${valf(item.fz,16)}px Arial`;
+	cx.font = `${valf(item.fz, 16)}px Arial`;
 	cx.fillStyle = item.color;
 	if (isdef(item.label)) cx.fillText(`  ${item.label}`, 0, 0);
 	cEllipse(0, 0, item.w, item.h, { bg: item.color }, 0, cx);
 }
 function plot_line(item, canvas) {
 	let cx = canvas.cx;
-	cx.font = `${valf(item.fz,16)}px Arial`;
+	cx.font = `${valf(item.fz, 16)}px Arial`;
 	cx.fillStyle = item.color;
 	if (isdef(item.label)) cx.fillText(`  ${item.label}`, 0, 0);
-	cLine(item.x1,item.y1,item.x2,item.y2, { bg: item.color }, 0, cx);
+	cLine(item.x1, item.y1, item.x2, item.y2, { bg: item.color }, 0, cx);
 }
 function draw_point(item, canvas) {
 	let cx = canvas.cx;
-	cx.font = `${valf(item.fz,16)}px Arial`;
+	cx.font = `${valf(item.fz, 16)}px Arial`;
 	cx.fillStyle = item.color;
 	cx.fillText(`  ${item.x},${item.y}`, 0, 0);
 	cEllipse(0, 0, 10, 10, { bg: item.color }, 0, cx);
@@ -196,14 +203,6 @@ function update_car(item, canvas) {
 	return false;
 }
 
-//#region testing update
-function movedown(item, canvas) {	item.y += 1; canvas.clamp(item); return true;}
-function update_move(item, canvas) {
-	//item.x += 1;
-	item.y += 1; //Math.random() * (coin() ? 1 : -1);
-	item.y = cycle(item.y,canvas.miny,canvas.maxy);
-	return true;
-}
 
 
 
