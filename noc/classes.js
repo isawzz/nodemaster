@@ -63,8 +63,11 @@ class CCanvasNoClear extends CCanvas{
 }
 class CCanvasPlot extends CCanvas {
 	clear() {
+		cClear(this.cv, this.cx);
+		this.draw_axes();
+	}
+	draw_axes(){
 		let ctx = this.cx;
-		cClear(this.cv, ctx);
 		ctx.beginPath();
 		ctx.strokeStyle = "rgb(128,128,128)";
 		ctx.moveTo(this.minx, 0); ctx.lineTo(this.maxx, 0);  // X axis
@@ -80,21 +83,31 @@ class CCanvasPlot extends CCanvas {
 			}
 		}
 	}
-	plot(func, color, thick) {
+	pp(x,y,sz=5,label='hallo'){
+		cEllipse(x,y, sz, sz, { bg: 'yellow' }, 0, this.cx); 
 		let cx = this.cx;
-		var xx, yy, dx = 4, x0 = 0, y0 = 0, scale = 40;
+		cx.textAlign = 'center';
+		cx.font = `16px Arial`;
+		cx.fillStyle = 'yellow';
+		cx.fillText(`${label}`, x, y+20);
+			
+	}
+	plot(func, color, thick, filled=false) {
+		let cx = this.cx;
+		var xx, yy, dx = 4, x0 = 0, y0 = 0, scale = this.scale = 40;
 		var imax = Math.round(this.maxx / dx);
 		var imin = Math.round(this.minx / dx);
 		cx.beginPath();
 		cx.lineWidth = thick;
-		cx.strokeStyle = color;
+		cx.strokeStyle = cx.fillStyle = color;
 
 		for (var i = imin; i <= imax; i++) {
 			xx = dx * i; yy = scale * func(xx / scale);
+			if (x0+xx == 0) console.log('x',x0+xx,'y',y0-yy,y0,yy,xx,func(xx));
 			if (i == imin) cx.moveTo(x0 + xx, y0 - yy);
 			else cx.lineTo(x0 + xx, y0 - yy);
 		}
-		cx.stroke();
+		cx.stroke(); if (filled) cx.fill();
 	}
 }
 

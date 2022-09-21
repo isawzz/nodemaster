@@ -7,14 +7,15 @@ function start() {
 
 	let c1 = new CCanvasNoClear(dTable, { w: 500, h: 250 }); G.items.push(c1);
 	let c2 = new CCanvas(dTable, { w: 500, h: 250 }); G.items.push(c2);
+	let c3 = new CCanvasPlot(dTable, { w: 500, h: 300 }); G.items.push(c3);
 
 	//add the play pause button!
 	let controls = mPlayPause(dTable, {}, gameloop_start, gameloop_stop);
 	[G.play, G.pause] = [controls.play, controls.pause];
 
-	noc1_randomwalkers();
+	noc3_gaussian(); //noc2_explicit_distribution(); //noc1_randomwalkers();
 
-	G.play();
+	//G.play();
 }
 
 function gameloop_start() { TO.ivdraw = setInterval(gameloop, 1000 / FR); G.items.map(x => x.draw()); G.running = true; }

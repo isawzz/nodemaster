@@ -72,8 +72,9 @@ function get_with_prob(probs) {
 	//probs: list of {val:p:}
 	//eg [{val:{x:-1,y:0},p:50},{val:{x:1,y:0},p:20},{val:{x:0,y:-1},p:20},{val:{x:0,y:1},p:10}];
 	//if props.p do NOT add up to 100, they will just be part of sum (im verhaeltnis!)
-	let r = Math.random() * arrSum(probs, 'p');
-	//console.log('r', r);
+	let sum = arrSum(probs, 'p');
+	let r = Math.random() * sum;
+	console.log('sum', sum);
 	let np = []; let sofar = 0;
 	for (const el of probs) {
 		sofar += el.p;
