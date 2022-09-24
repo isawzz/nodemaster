@@ -2,6 +2,10 @@
   font-family: 'fa';
 	src: url('./fa-regular-400.ttf') format("truetype");
 } */
+/* @font-face {
+  font-family: 'dense';
+	src: url('./dense.otf') format("truetype");
+} */
 @font-face {
   font-family: 'tangerine';
 	src: url('./tangerine.ttf') format("truetype");
@@ -11,10 +15,10 @@
 	src: url('./NotoColorEmoji.ttf') format("truetype");
   /* src: url(https://gitcdn.xyz/repo/googlefonts/noto-emoji/master/fonts/NotoColorEmoji.ttf); */
 }
-@font-face {
-	font-family: 'AlgerianRegular';
+/* @font-face {
+	font-family: 'algerian';
 	src: url('./AlgerianRegular.ttf') format("truetype");
-}
+} */
 
 @font-face{
 	font-family: 'pictoFa';

@@ -899,7 +899,7 @@ function mInput(dParent, styles, id, placeholder, classtr = 'input', tabindex = 
 }
 function mInsertAt(dParent, el, index = 0) { mInsert(dParent, el, index); }
 function mInsertFirst(dParent, el) { mInsert(dParent, el, 0); }
-function mInsert(dParent, el, index = 0) { dParent.insertBefore(el, dParent.childNodes[index]); }
+function mInsert(dParent, el, index = 0) { dParent.insertBefore(el, dParent.childNodes[index]); return el; }
 function mInsertAfter(dParent, el, index = 0) {
 	if (dParent.childNodes.length == index) mAppend(dParent, el);
 	else mInsert(dParent, el, index + 1);
@@ -1031,8 +1031,8 @@ function mPlayPause(dParent, styles = {}, handle_play = null, handle_pause = nul
 	let pp = mCreateFrom(html);
 	mAppend(dParent, pp);
 
-	console.log('styles',styles)
-	addKeys({ fz: 28, fg: 'lightgreen', display: 'flex', ajcenter: true, w: getRect(dParent).w},styles); //getRect(dParent).w })
+	//console.log('styles',styles)
+	addKeys({ fz: 28, fg: 'lightgreen', display: 'flex', ajcenter: true, w: getRect(dParent).w }, styles); //getRect(dParent).w })
 	mStyle(pp, styles);
 
 	mBy('bPlay').onclick = () => { hide0('bPlay'); show0('bPause'); handle_play(); }
@@ -1617,6 +1617,18 @@ function getTextWidth(text, font) { //mit canvas
 	var metrics = context.measureText(text);
 	return metrics.width;
 }
+function measureText(text, styles = {}, cx = null) { //mit canvas
+	// re-use canvas object for better performance
+	if (!cx) {
+		var canvas = getTextWidth.canvas || (getTextWidth.canvas = document.createElement('canvas'));
+		cx = canvas.getContext('2d');
+	}
+	cx.font = isdef(styles.font) ? styles.font : `${styles.fz}px ${styles.family}`;
+	//cx.font = `${}`; //font;
+	var metrics = cx.measureText(text);
+	//console.log('metrics:',metrics)
+	return { w: metrics.width, h: metrics.actualBoundingBoxAscent + metrics.actualBoundingBoxDescent };
+}
 function mTextArea(rows, cols, dParent, styles = {}, id) {
 	let html = `<textarea id="${id}" rows="${rows}" cols="${cols}" wrap="hard"></textarea>`;
 	let t = mCreateFrom(html);
@@ -1843,8 +1855,10 @@ function cRect(x, y, w, h, styles = null, ctx = null) {
 }
 function cStyle(styles = {}, ctx) {
 	if (nundef(ctx)) { ctx = CX; if (nundef(ctx)) { console.log('ctx undefined!!!!!!!'); return; } }
-	const di = { bg: 'fillStyle', fill: 'fillStyle', stroke: 'strokeStyle', fg: 'strokeStyle', thickness: 'lineWidth', cap: 'lineCap', ending: 'lineCap' };
+	const di = { bg: 'fillStyle', fill: 'fillStyle', stroke: 'strokeStyle', fg: 'strokeStyle', thickness: 'lineWidth', thick: 'lineWidth', cap: 'lineCap', ending: 'lineCap' };
+	
 	for (const k in styles) {
+
 		ctx[isdef(di[k]) ? di[k] : k] = styles[k];
 	}
 }
@@ -2346,10 +2360,10 @@ function arrSplitByIndices(arr, indices) {
 	return [a1, a2];
 }
 function arrShufflip(arr) { if (isEmpty(arr)) return []; else return fisherYates(arr); }
-function arrSum(arr, props) { 
-	if (nundef(props)) return arr.reduce((a, b) => a + b); 
-	if (!isList(props)) props = [props]; 
-	return arr.reduce((a, b) => a + (lookup(b, props) || 0), 0); 
+function arrSum(arr, props) {
+	if (nundef(props)) return arr.reduce((a, b) => a + b);
+	if (!isList(props)) props = [props];
+	return arr.reduce((a, b) => a + (lookup(b, props) || 0), 0);
 }
 function arrSwap(arr, i, j) { let h = arr[i]; arr[i] = arr[j]; arr[j] = h; }
 function arrTake(arr, n = 0, from = 0) {
@@ -4981,6 +4995,10 @@ function unfocusOnEnter(ev) {
 	}
 }
 function valf(val, def) { return isdef(val) ? val : def; }
+function valf(){
+	for(const arg of arguments) if (isdef(arg)) return arg;
+	return null;
+}
 
 function load_assets_direct(obj) {
 	Config = jsyaml.load(obj.config);

@@ -1,60 +1,70 @@
+//#region phantasy apps
+function a0_functions(){
+	
+	// make_input_for_math exp eg.: integral(sin(x),dx)
+	//make_input_for_operator eg.: integral 
+	//make input for operator params: sin(x) dx
+	//plot function or eval function at point
+}
+
 //#region multiple canvases!
-class WeightedSampler {
-	constructor(elements, weights) {
-		this.total = 0;
-		this.elements = Array.from(elements);
-		this.cweights = weights.map(weight => this.total += weight);
-	}
-	get() {
-		let random = Math.random() * this.total;
-		return this.elements.find((element, index) => random < this.cweights[index]);
-	}
+function noc6_simple_gaussian() {
+	let canvas = arrFirst(G.items);
+	simple_gaussian(canvas);
 }
-function gaussian(x){
-	return 12*Math.E**(-(x**2)/2)/Math.sqrt(2*Math.PI);
+function noc5_draw_text() {
+	let canvas = arrLast(G.items);
+	let d = mInsert(dTable, mCreate('div'));
+	mText('hallo', d, { fz: 40, family: 'algerian' }); //,null,`<h1>HALLO COOLES TEIL!!!!!!!!!!</h1>`);
+	draw_text(canvas, 'hallo', { family: 'algerian', fg: 'white', pos: 'tr' }); //,family:'segoe ui'});
 }
-function gaussian(x,m=0,stdev=2,amp=1){
-	let v=stdev*stdev;
-	return amp*Math.E**(-((x-m)**2)/(2*v))/Math.sqrt(v*2*Math.PI);
+function noc4_gaussian() {
+	let canvas = arrLast(G.items);
+	draw_gaussian(canvas, 100, 15, 'lime', 1, 'silver', 'IQ');
+	return;
+	canvas.draw_axes();
+	canvas.scale = 40; console.log('canvas', canvas)
+	let f = gaussian_amp(canvas, 1)
+	canvas.plot(f, 'orange', 1);
+	draw_ticks_gaussian(canvas, f, 100, 15, 'silver');
 }
-function noc3_gaussian(){
+function noc3_gaussian() {
 	let canvas = arrLast(G.items);
 
-	let[mean,stdev]=[0,1]
-	let f=x=>gaussian(x,mean,stdev);
+	let [mean, stdev] = [0, 1]
+	let f = x => gaussian1(x, mean, stdev);
 	//berechne f(0)
-	let y=f(0);
-	console.log('y',y);
+	let y = f(0);
+	console.log('y', y);
 	//ich will dass f(0) ca 140 ist
 	//40 ist bereits die scale!
 	//dh, y*40 wird represented
 	//y*40*? = 140
 	//?= 140/(40*y)
-	let amp = .9 * (-canvas.miny) / (40*y);
-	f=x=>gaussian(x,mean,stdev,amp);
+	let amp = .9 * (-canvas.miny) / (40 * y);
+	f = x => gaussian1(x, mean, stdev, amp);
 	canvas.draw_axes();
-	canvas.plot(f,'orange',1);
+	canvas.plot(f, 'orange', 1);
 
 	//1. find x with f(x)<.1, same will be for -x
 	//how to find that x?
-	let x=40*search_end_point(f,0,canvas.maxx,.1,.01);
-	console.log('point x',x, canvas.minx, canvas.maxx);
-	y = -40*f(x/40)
-	console.log('point y',x, 0, canvas.maxy);
-	console.log('scale',canvas.scale)
+	let x = 40 * search_end_point(f, 0, canvas.maxx, .1, .01);
+	console.log('point x', x, canvas.minx, canvas.maxx);
+	y = -40 * f(x / 40)
+	console.log('point y', x, 0, canvas.maxy);
+	console.log('scale', canvas.scale)
 
-	let xreal=x/40;
-	let yreal = f(xreal)/(40);
-	//canvas.pp(x,y,5,`${xreal.toFixed(1)},${yreal.toFixed(1)}`);
+	let xreal = x / 40;
+	let yreal = f(xreal) / (40);
 
-	x=0;
-	for(let i=canvas.minx;i<canvas.maxx;i+=canvas.scale){
+	x = 0;
+	for (let i = canvas.minx; i < canvas.maxx; i += canvas.scale) {
 		//500/40 = 12.5
 		//check ob ich bei einem 
-		let x1=Math.round(abaxis(x,-4,4,50,150)); 
-		let x2=Math.round(abaxis(-x,-4,4,50,150)); 
-		canvas.pp(x*40,0,3,`${x1}`); 
-		canvas.pp(-x*40,0,3,`${x2}`); x+=2;
+		let x1 = Math.round(convert_to_range(x, -4, 4, 50, 150));
+		let x2 = Math.round(convert_to_range(-x, -4, 4, 50, 150));
+		canvas.pp(x * 40, 0, `${x1}`);
+		canvas.pp(-x * 40, 0, `${x2}`); x += 2;
 	}
 
 
@@ -68,7 +78,7 @@ function noc2_explicit_distribution() {
 
 	//wie mach ich das:direkt bei update soll x mit wk80 hinauf und mit wk20 hinunnter gehen
 	//let names={x:}
-	const sampler = new WeightedSampler([{ x: 1 }, { x: -1 }, { y: 1 }, { y: -1 }], [1,2,1,2]);
+	const sampler = new WeightedSampler([{ x: 1 }, { x: -1 }, { y: 1 }, { y: -1 }], [1, 2, 1, 2]);
 	//ja das geht super schnell!
 	let randomArray = Array.apply(null, Array(100000)).map(() => sampler.get());
 	let randomArray2 = Array.apply(null, Array(100000)).map(() => sampler.get());
@@ -98,11 +108,7 @@ function noc0_randomwalkers() {
 
 }
 
-
-
-
-
-
+//#endregion
 
 //#region legacy SimpleCanvas, single global C
 function test17_randomwalk() {
@@ -298,7 +304,7 @@ function test11_function() {
 	C = new Plotter(dTable, {}, {}, gameloop_start, gameloop_stop, 'cc');
 	C.add({ astep: .1, a: 0, bstep: .1, b: 0, color: 'skyblue', thickness: 1, basefunc: x => -x * (-Math.sign(x)), func: x => Math.sin(x), update: oscillator });
 }
-function test10_update(item, canvas) {
+function test10_update(canvas, item) {
 	let [astep, a, bstep, b, func] = [item.astep, item.a, item.bstep, item.b, item.func];
 	canvas.clear();
 
@@ -319,7 +325,7 @@ function test10_function() {
 }
 function fun1(x) { return Math.sin(x); }
 function fun2(x) { return Math.cos(3 * x); }
-function geniales_sin_ease(item, canvas) {
+function geniales_sin_ease(canvas, item) {
 	let [cv, ctx, astep, a, bstep, b, func, axes] = [canvas.cv, canvas.cx, item.astep, item.a, item.bstep, item.b, item.func, item.axes];
 	cClear(cv, ctx);
 	showAxes(ctx, axes);

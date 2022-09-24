@@ -20,8 +20,8 @@ class CCanvas {
 		this.items.push(o);
 		return o;
 	}
-	clear(){cClear(this.cv, this.cx);}
-	clamp(item) { item.x = clamp(item.x, this.minx+item.w/2, this.maxx-item.x/2); item.y = clamp(item.y, this.miny+item.h/2, this.maxy-item.h/2) }
+	clear() { cClear(this.cv, this.cx); }
+	clamp(item) { item.x = clamp(item.x, this.minx + item.w / 2, this.maxx - item.x / 2); item.y = clamp(item.y, this.miny + item.h / 2, this.maxy - item.h / 2) }
 	cycle(item) { item.x = cycle(item.x, this.minx, this.maxx); item.y = cycle(item.y, this.miny, this.maxy) }
 	draw() {
 		this.clear();
@@ -29,13 +29,13 @@ class CCanvas {
 			this.draw_item(item);
 		}
 	}
-	draw_item(item){
+	draw_item(item) {
 		let cx = this.cx;
 		cx.save();
 		cx.translate(item.x, item.y);
 		cx.rotate(toRadian(item.a));
-		if (isdef(item.draw)) { item.draw(item, this); }
-		else cEllipse(0,0, item.w, item.h, { bg: item.color }, 0, cx); //default draw
+		if (isdef(item.draw)) { item.draw(this, item); }
+		else cEllipse(0, 0, item.w, item.h, { bg: item.color }, 0, cx); //default draw
 		cx.restore();
 
 	}
@@ -53,20 +53,20 @@ class CCanvas {
 	}
 	update() {
 		let n = 0;
-		for (const item of this.items) { if (isdef(item.update)) { n += item.update(item, this) ? 1 : 0; } }
+		for (const item of this.items) { if (isdef(item.update)) { n += item.update(this, item) ? 1 : 0; } }
 		//console.log('updated', n, 'items');
 		return n > 0;
 	}
 }
-class CCanvasNoClear extends CCanvas{
-	clear(){}
+class CCanvasNoClear extends CCanvas {
+	clear() { }
 }
 class CCanvasPlot extends CCanvas {
 	clear() {
 		cClear(this.cv, this.cx);
 		this.draw_axes();
 	}
-	draw_axes(){
+	draw_axes() {
 		let ctx = this.cx;
 		ctx.beginPath();
 		ctx.strokeStyle = "rgb(128,128,128)";
@@ -83,16 +83,14 @@ class CCanvasPlot extends CCanvas {
 			}
 		}
 	}
-	pp(x,y,sz=5,label='hallo'){
-		cEllipse(x,y, sz, sz, { bg: 'yellow' }, 0, this.cx); 
-		let cx = this.cx;
-		cx.textAlign = 'center';
-		cx.font = `16px Arial`;
-		cx.fillStyle = 'yellow';
-		cx.fillText(`${label}`, x, y+20);
-			
+	pp(x, y, label = 'hallo', styles = {}) {
+		addKeys({ fg:'silver', bg: 'silver', w: 3, h: 3 }, styles)
+		cEllipse(x, y, styles.w, styles.h, { bg: styles.bg }, 0, this.cx);
+		addKeys({x:x, y:y, offy: 'below 4', offx: 'center', family: 'arial narrow', fz: 20},styles);
+		draw_text(this, label, styles);
+
 	}
-	plot(func, color, thick, filled=false) {
+	plot(func, color, thick, filled = false) {
 		let cx = this.cx;
 		var xx, yy, dx = 4, x0 = 0, y0 = 0, scale = this.scale = 40;
 		var imax = Math.round(this.maxx / dx);
@@ -103,11 +101,23 @@ class CCanvasPlot extends CCanvas {
 
 		for (var i = imin; i <= imax; i++) {
 			xx = dx * i; yy = scale * func(xx / scale);
-			if (x0+xx == 0) console.log('x',x0+xx,'y',y0-yy,y0,yy,xx,func(xx));
+			//if (x0+xx == 0) console.log('x',x0+xx,'y',y0-yy,y0,yy,xx,func(xx));
 			if (i == imin) cx.moveTo(x0 + xx, y0 - yy);
 			else cx.lineTo(x0 + xx, y0 - yy);
 		}
 		cx.stroke(); if (filled) cx.fill();
+	}
+}
+
+class WeightedSampler {
+	constructor(elements, weights) {
+		this.total = 0;
+		this.elements = Array.from(elements);
+		this.cweights = weights.map(weight => this.total += weight);
+	}
+	get() {
+		let random = Math.random() * this.total;
+		return this.elements.find((element, index) => random < this.cweights[index]);
 	}
 }
 

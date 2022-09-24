@@ -7,7 +7,7 @@ class CItemWalker {
 		addKeys(options, this);
 	}
 	update() { move_random(this, this.canvas); }
-	draw() { draw_label(this, this.canvas); }
+	draw() { draw_label(this.canvas,this); }
 }
 
 
