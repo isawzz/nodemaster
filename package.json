@@ -14,6 +14,7 @@
   "dependencies": {
     "express": "^4.18.1",
     "express-fileupload": "^1.4.0",
+    "ol": "^7.1.0",
     "socket.io": "^4.5.1",
     "webwebweb": "^1.4.10",
     "webwebwebs": "^1.0.6"
