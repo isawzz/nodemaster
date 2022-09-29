@@ -79,8 +79,7 @@
 .layer-switcher li.group + li.group {
   margin-top: 0.4em;
 }
-.layer-switcher li.group + li.layer-switcher-base-group {
-}
+/* .layer-switcher li.group + li.layer-switcher-base-group {} */
 
 .layer-switcher li.group > label {
   font-weight: bold;
@@ -122,13 +121,13 @@
 }
 
 .layer-switcher.touch ::-webkit-scrollbar-track {
-  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   border-radius: 10px;
 }
 
 .layer-switcher.touch ::-webkit-scrollbar-thumb {
   border-radius: 10px;
-  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
 }
 
 li.layer-switcher-base-group > label {

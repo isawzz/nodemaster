@@ -33,6 +33,7 @@ var baseGroup = new ol.layer.Group({
 
 map.addLayer(baseGroup);
 
+//#region geoserver zeug
 // var IndiaDsTile = new ol.layer.Tile({
 //     title: "India Districts",
 //     source: new ol.source.TileWMS({
@@ -64,6 +65,7 @@ map.addLayer(baseGroup);
 // });
 
 // // map.addLayer(overlayGroup);
+//#endregion
 
 var layerSwitcher = new ol.control.LayerSwitcher({
     activationMode: 'click',

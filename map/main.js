@@ -20,6 +20,13 @@ function start() {
 	});
 	map.addLayer(osmTile);
 
+	var layerSwitcher = new ol.control.LayerSwitcher({
+		activationMode: 'click',
+		startActive: false,
+		groupSelectStyle: 'children'
+	});
+
+	map.addControl(layerSwitcher);
 	var mousePosition = new ol.control.MousePosition({
 		className: 'mousePosition',
 		projection: 'EPSG:4326',
@@ -36,23 +43,23 @@ function start() {
 	var container = document.getElementById('popup');
 	var content = document.getElementById('popup-content');
 	var closer = document.getElementById('popup-closer');
-	
+
 	var popup = new ol.Overlay({
-			element: container,
-			autoPan: true,
-			autoPanAnimation: {
-					duration: 250,
-			},
+		element: container,
+		autoPan: true,
+		autoPanAnimation: {
+			duration: 250,
+		},
 	});
-	
+
 	map.addOverlay(popup);
-	
+
 	closer.onclick = function () {
-			popup.setPosition(undefined);
-			closer.blur();
-			return false;
+		popup.setPosition(undefined);
+		closer.blur();
+		return false;
 	};
-	
+
 }
 
 
