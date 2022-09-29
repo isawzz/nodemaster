@@ -1,0 +1,140 @@
+body {
+	font-size: 100%;
+	font-family: Arial, Helvetica, sans-serif;
+	width: 640px;
+	background-image: url('../base/assets/icons/cream.png');
+}
+input {
+	border: 1px solid rgb(150, 150, 150);
+	border-radius: 2px;
+	padding: 6px;
+	background-color: rgb(240, 240, 240);
+	margin: 2px 12px 0 0;
+	width: 70px;
+}
+select {
+	margin: 2px 0px 0 0;
+}
+button {
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	border: solid 1px rgb(180, 180, 180);
+	color: rgb(80, 80, 80);
+	background-color: rgb(210, 210, 210);
+}
+
+#flip1 {
+	cursor: pointer;
+	width: 0%;
+}
+
+#panel1 {
+	display: none;
+	padding: 5px;
+	border: solid 1px rgb(200, 200, 200);
+	border-radius: 3px;
+	background-color: rgb(235, 235, 235);
+	box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.15);
+}
+
+table,
+td,
+th {
+	text-align: right;
+	margin: auto;
+}
+
+h3 {
+	text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
+	padding: 1px;
+	text-align: center;
+	background-color: rgb(235, 235, 235);
+	border: solid 1px rgb(200, 200, 200);
+	border-radius: 3px;
+	position: relative;
+	/* 	top: -10px;  */
+	margin: 0px 0px 10px 0px;
+	box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.15);
+}
+
+p.mathjaxText {
+	font-size: 100%;
+	text-align: left;
+}
+
+p {
+	color: black;
+}
+
+p.small {
+	font-size: 70%;
+	font-family: sans-serif;
+	color: grey;
+	padding: 0px;
+	margin-top: 5px;
+	margin-right: 5px;
+	margin-bottom: 5px;
+}
+
+p.mathjaxMoments {
+	font-size: 70%;
+	font-family: sans-serif;
+	margin: auto;
+	text-align: center;
+	color: rgb(120, 120, 120);
+	padding: 15px;
+}
+
+p.mathjaxCenter {
+	font-size: 90%;
+	font-family: courier;
+	margin-bottom: 0px;
+	text-align: center;
+	color: rgb(120, 120, 120);
+}
+
+p.mathjaxCI {
+	font-size: 90%;
+	font-family: courier;
+	text-align: center;
+	color: rgb(120, 120, 120);
+}
+
+div {
+	padding: 0px;
+}
+
+div#pmfPlot {
+	margin-left: 20px;
+}
+
+div#pdfPlot {
+	margin-left: 20px;
+}
+
+footer {
+	background-color: rgb(235, 235, 235);
+	border: solid 1px rgb(200, 200, 200);
+	border-radius: 3px;
+	display: block;
+	box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.15);
+}
+
+#footerleft {
+	float: left;
+	padding: 5px;
+}
+
+#footerright {
+	text-align: right;
+	padding-right: 5px;
+}
+
+ul {
+	margin-top: -5px;
+}
+
+li {
+	margin-bottom: 3px;
+}

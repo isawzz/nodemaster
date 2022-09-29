@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Normal Distribution Applet/Calculator</title>
+
+		<meta name="viewport" content="width=device-width" />
+
+		<link rel="shortcut icon" href="../favicon.png" type="image/png" />
+
+		<link type="text/css" rel="stylesheet" href="style.css" />
+
+		<script src="common.js"></script>
+		<script src="../base/alibs/jstat.min.js"></script>
+		<script src="normaldist.js"></script>
+
+		<script src='https://www.google.com/jsapi?autoload={"modules":[{"name":"visualization","version":"1","packages":["corechart"]}]}'></script>
+
+		<script type="text/x-mathjax-config">
+			  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+			//MathJax.Hub.Config({
+			//  "HTML-CSS": {
+			//    availableFonts: [], preferredFont: null, // force Web fonts
+			//    webFont: "STIX-Web"
+			//  }
+			//});
+		</script>
+		<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML.js"></script>
+
+		<script src="jquery.js"></script>
+		<script src="jquery.tools.min.js"></script>
+
+		<script>
+			// Help Panel
+			$(document).ready(function () {
+				$('#flip1').click(function () {
+					$('#panel1').slideToggle('fast');
+				});
+			});
+
+			// Tooltip
+			$(function () {
+				$('#bulb img[title]')
+					.tooltip({
+						offset: [0, 120],
+						effect: 'fade',
+						// add dynamic plugin with optional configuration for bottom edge
+					})
+					.dynamic({bottom: {direction: 'down', bounce: true}});
+			});
+
+			// Google Analytics
+			// var _gaq = _gaq || [];
+			// _gaq.push(['_setAccount', 'UA-21570114-2']);
+			// _gaq.push(['_trackPageview']);
+
+			// (function () {
+			// 	var ga = document.createElement('script');
+			// 	ga.type = 'text/javascript';
+			// 	ga.async = true;
+			// 	ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			// 	var s = document.getElementsByTagName('script')[0];
+			// 	s.parentNode.insertBefore(ga, s);
+			// })();
+
+			// Load the Visualization API
+			// google.charts.load('current', {packages: ['corechart']});
+
+			$(document).ready(function () {
+				$('input').change(function () {
+					//alert("The text has been changed.");
+				});
+			});
+		</script>
+	</head>
+
+	<body
+		onload="
+	norm = new normalDistribution(0,1);
+	norm.printPdf('','less'); 
+	norm.printMoments();"
+	>
+		<h3>
+			Normal Distribution
+			<br />
+			$X \sim N(\mu, \sigma)$
+		</h3>
+
+		<div>
+			<form name="this.form">
+				<table>
+					<tr>
+						<td>$\mu=$</td>
+						<td>
+							<input
+								type="TEXT"
+								name="mu"
+								value="0"
+								ONFOCUS="this.form.x.value = '';
+				this.form.p.value = '';"
+								ONCHANGE="
+				if(isNaN(eval(this.form.mu.value)))
+				{
+					alert('Error: Enter a numeric value');
+					this.form.mu.value = '';
+				}
+				else
+				{
+					norm = new normalDistribution(eval(this.form.mu.value), 
+						eval(this.form.si.value));
+					if(!isNaN(eval(this.form.si.value)))
+					{
+						norm.printPdf(eval(this.form.x.value), 
+							this.form.mydropdown.value); 
+						norm.printMoments();
+					};
+				};
+				if(eval(this.form.mu.value) != 0) {
+					mydropdown.options.remove(2);
+					mydropdown.options.remove(2);
+				}
+				if(eval(this.form.mu.value) == 0) {
+					mydropdown.options[2] = new Option('2P(X&thinsp;&#62;&thinsp;|x|)&thinsp;=', 'twotail');
+					mydropdown.options[3] = new Option('P(-|x|&thinsp;&#60;&thinsp;X&thinsp;&#60;&thinsp;|x|)&thinsp;=', 'twotailinside');
+				}"
+							/>
+						</td>
+
+						<td>$\sigma=$</td>
+						<td>
+							<input
+								type="TEXT"
+								name="si"
+								value="1"
+								ONFOCUS="this.form.x.value = '';
+				this.form.p.value = '';"
+								ONCHANGE="
+				if(isNaN(eval(this.form.si.value)))
+				{
+					alert('Error: Enter a sigma value > 0');
+					this.form.si.value = '';
+				}
+				else if(eval(this.form.si.value) <= 0)
+				{
+					alert('Error: Enter a sigma value > 0');
+				}
+				else
+				{
+					norm = new normalDistribution(eval(this.form.mu.value), 
+						eval(this.form.si.value));
+					if(!isNaN(eval(this.form.mu.value))) 
+					{
+						norm.printPdf(eval(this.form.x.value), this.form.mydropdown.value); 
+						norm.printMoments();
+					};
+				};"
+							/>
+						</td>
+
+						<td></td>
+					</tr>
+
+					<tr>
+						<td>$x=$</td>
+
+						<td>
+							<input
+								type="text"
+								name="x"
+								value=""
+								ONCLICK="this.form.p.value=''"
+								ONCHANGE="
+			if(isNaN(eval(this.form.x.value)))
+			{
+				alert('Error: Enter a numeric value');
+			}
+			else
+			{
+				norm = new normalDistribution(eval(this.form.mu.value), 
+					eval(this.form.si.value));
+				norm.printPdf(eval(this.form.x.value), this.form.mydropdown.value);
+				if(this.form.mydropdown.value == 'less') 
+					this.form.p.value = roundNumber(
+						norm.cdf(eval(this.form.x.value)),5);
+				if(this.form.mydropdown.value == 'greater') 
+					this.form.p.value = roundNumber(
+						1-norm.cdf(eval(this.form.x.value)),5);
+				if(this.form.mydropdown.value == 'twotail')
+					if(this.form.x.value >= 0) 
+						this.form.p.value = 2*roundNumber(
+							norm.cdf(-eval(this.form.x.value)),5);
+					else
+						this.form.p.value = 2*roundNumber(
+							norm.cdf(eval(this.form.x.value)),5);
+				if(this.form.mydropdown.value == 'twotailinside')
+						this.form.p.value = 1-2*roundNumber(
+							norm.cdf(-Math.abs(eval(this.form.x.value))),5);
+			}
+			if(this.form.x.value == '') {
+				this.form.p.value = '';
+			}
+			;"
+								style="background-color: #b2caf6"
+							/>
+						</td>
+
+						<td>
+							<select
+								name="mydropdown"
+								ONCHANGE="this.form.p.value = ''; 
+			norm = new normalDistribution(eval(this.form.mu.value), 
+				eval(this.form.si.value));
+			norm.printPdf(eval(this.form.x.value), this.form.mydropdown.value);
+			if(this.form.mydropdown.value == 'less') 
+				this.form.p.value = roundNumber(
+					norm.cdf(eval(this.form.x.value)),5);
+			if(this.form.mydropdown.value == 'greater') 
+				this.form.p.value = roundNumber(
+					1-norm.cdf(eval(this.form.x.value)),5);
+			if(this.form.mydropdown.value == 'twotail')
+				if(this.form.x.value >= 0) 
+					this.form.p.value = 2*roundNumber(
+						norm.cdf(-eval(this.form.x.value)),5);
+				else
+					this.form.p.value = 2*roundNumber(
+						norm.cdf(eval(this.form.x.value)),5);
+			if(this.form.mydropdown.value == 'twotailinside')
+				this.form.p.value = 1-2*roundNumber(
+					norm.cdf(-Math.abs(eval(this.form.x.value))),5);
+			if(this.form.x.value == '') {
+				this.form.p.value = '';
+			}"
+							>
+								<option value="greater">P(X&thinsp;&#62;&thinsp;x)&thinsp;=</option>
+								<option value="less">P(X&thinsp;&#60;&thinsp;x)&thinsp;=</option>
+								<option value="twotail">2P(X&thinsp;&#62;&thinsp;|x|)&thinsp;=</option>
+								<option value="twotailinside">P(-|x|&thinsp;&#60;&thinsp;X&thinsp;&#60;&thinsp;|x|)&thinsp;=</option>
+							</select>
+						</td>
+
+						<td>
+							<input
+								type="TEXT"
+								name="p"
+								value=""
+								ONCLICK="this.form.x.value=''"
+								ONCHANGE="
+			if((eval(this.form.p.value) <= 0) || 
+				(eval(this.form.p.value) >= 1) || 
+				isNaN(eval(this.form.p.value))) 
+			{
+				alert('Error: Probability must be between 0 and 1'); 
+				this.form.p.value = ''
+			}
+			else 
+			{
+				norm = new normalDistribution(eval(this.form.mu.value), 
+					eval(this.form.si.value));
+				if(this.form.mydropdown.value == 'less') 
+					this.form.x.value = roundNumber(
+						norm.percentile(eval(this.form.p.value)),5);
+				if(this.form.mydropdown.value == 'greater') 
+					this.form.x.value = roundNumber(
+						norm.percentile(1-eval(this.form.p.value)),5);
+				if(this.form.mydropdown.value == 'twotail') 
+					this.form.x.value = -roundNumber(
+						norm.percentile(0.5*eval(this.form.p.value)),5);
+				if(this.form.mydropdown.value == 'twotailinside') 
+					this.form.x.value = -roundNumber(
+						norm.percentile(0.5*(1-eval(this.form.p.value))),5);
+				norm.printPdf(eval(this.form.x.value), this.form.mydropdown.value);
+			};"
+								style="background-color: #e7b0b0"
+							/>
+						</td>
+					</tr>
+				</table>
+			</form>
+		</div>
+
+		<div id="pdfPlot"></div>
+
+		<div>
+			<p id="moments" class="mathjaxMoments"></p>
+		</div>
+
+		<footer>
+			<div id="footerleft">
+				<div id="flip1"><button>Help</button></div>
+			</div>
+			<div id="footerright">
+				<p class="small">
+					&copy;2021 Matt Bognar
+					<br />
+					Department of Statistics and Actuarial Science
+					<br />
+					University of Iowa
+				</p>
+			</div>
+		</footer>
+
+		<div id="panel1">
+			<p>This applet computes probabilities and percentiles for normal random variables: $$X \sim N(\mu, \sigma)$$</p>
+
+			<h4>Directions</h4>
+			<ul>
+				<li>Enter the mean $\mu$ and standard deviation $\sigma$.</li>
+				<li>
+					To compute a left-tail probability, select $P(X \lt x)$ from the drop-down box, enter a numeric $x$ value in the
+					<span style="background-color: #babaff">blue</span>
+					box and press "Tab" or "Enter" on your keyboard. The probability $P(X \lt x)$ will appear in the
+					<span style="background-color: #ffcccc">pink</span>
+					box. Select $P(X \gt x)$ from the drop-down box for a right-tail probability.
+				</li>
+				<li>
+					To determine a percentile, enter the percentile (e.g. use 0.8 for the 80th percentile) in the
+					<span style="background-color: #ffcccc">pink</span>
+					box, select $P(X \lt x)$ from the drop-down box, and press "Tab" or "Enter" on your keyboard. The percentile $x$ will appear in the
+					<span style="background-color: #babaff">blue</span>
+					box.
+				</li>
+			</ul>
+
+			<p>
+				On the graph, the $x$ value appears in
+				<span style="background-color: #babaff">blue</span>
+				while the probability is shaded in
+				<span style="background-color: #ffcccc">pink</span>
+				.
+			</p>
+
+			<h4>Details</h4>
+			<ul>
+				<li>
+					Probability density function $$f(x)=\frac{1}{\sqrt{2\pi \sigma^2}} e^{-\frac{1}{2\sigma^2}(x-\mu)^2}$$ where $-\infty \lt x \lt \infty$, $-\infty \lt
+					\mu \lt \infty$, and $\sigma \gt 0$
+				</li>
+				<li>$\mu=E(X)$</li>
+				<li>$\sigma^2=Var(X)$</li>
+				<li>$\sigma=SD(X)$</li>
+			</ul>
+		</div>
+	</body>
+</html>

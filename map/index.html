@@ -1,29 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-		<script src="../map/mb.js"></script>
-		<link href="../map/mb.css" rel="stylesheet" />
-		
-		<link href="../map/woodcut.css" rel="stylesheet" />
-		
-		<!-- <script src="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js"></script>-->
-		<!-- <link href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css" rel="stylesheet" /> -->
-		<!-- <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.js"></script>-->
-		<!-- <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.css" type="text/css" /> -->
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GIS Simplified - Web Mapping Application</title>
+    <link rel="stylesheet" href="resources/ol/ol.css">
+    <link rel="stylesheet" href="resources/layerswitcher/ol-layerswitcher.css">
+    <link rel="stylesheet" href="style.css">
+</head>
 
-		<link rel="shortcut icon" href="images/favicon.png" type="image/x-icon" />
+<body>
+    <div id="map"></div>
+    <div id="popup" class="ol-popup">
+        <a href="#" id="popup-closer" class="ol-popup-closer"></a>
+        <div id="popup-content"></div>
+    </div>
 
-		<link rel="icon" href="../base/assets/icons/belinda.png" style="height: 40px" />
-		<title>my map</title>
+    <div class="attQueryDiv" id="attQueryDiv">
+        <div class="headerDiv" id="headerDiv">
+            <label for="">Attribute Query</label>
+        </div><br>
+        <label for="">Select Layer</label>
+        <select name="selectLayer" id="selectLayer">
+        </select><br><br>
 
-		<link rel="stylesheet" href="../map/style.css" />
-		<script defer type="module" src="../map/start.js"></script>
-	</head>
+        <label for="">Select Attribute</label>
+        <select name="selectAttribute" id="selectAttribute">
+        </select><br><br>
 
-	<body>
-		<div id="map"></div>
-	</body>
+        <label for="">Select Operator</label>
+        <select name="selectOperator" id="selectOperator">
+        </select><br><br>
+
+        <label for="">Enter Value</label>
+        <input type="text" name="enterValue" id="enterValue">
+        </select><br><br>
+
+        <button type="button" id="attQryRun" class="attQryRun" onclick="attributeQuery()">Run</button>
+    </div>
+
+    <div class="attListDiv" id="attListDiv">
+    </div>
+
+    <script src="resources/ol/ol.js"></script>
+    <script src="resources/layerswitcher/ol-layerswitcher.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="main.js"></script>
+</body>
+
 </html>
