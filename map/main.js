@@ -20,6 +20,39 @@ function start() {
 	});
 	map.addLayer(osmTile);
 
+	var mousePosition = new ol.control.MousePosition({
+		className: 'mousePosition',
+		projection: 'EPSG:4326',
+		coordinateFormat: function (coordinate) { return ol.coordinate.format(coordinate, '{y} , {x}', 6); }
+	});
+	map.addControl(mousePosition);
+
+	var scaleControl = new ol.control.ScaleLine({
+		bar: true,
+		text: true
+	});
+	map.addControl(scaleControl);
+
+	var container = document.getElementById('popup');
+	var content = document.getElementById('popup-content');
+	var closer = document.getElementById('popup-closer');
+	
+	var popup = new ol.Overlay({
+			element: container,
+			autoPan: true,
+			autoPanAnimation: {
+					duration: 250,
+			},
+	});
+	
+	map.addOverlay(popup);
+	
+	closer.onclick = function () {
+			popup.setPosition(undefined);
+			closer.blur();
+			return false;
+	};
+	
 }
 
 
