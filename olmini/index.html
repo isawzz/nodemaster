@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" href="favicon.ico" type="image/x-icon" />
+		<title>HIER!!!</title>
+		<link rel="stylesheet" href="../olmini/ol.css" />
+		<link rel="stylesheet" href="../olmini/mystyles.css" />
+	</head>
+	<body>
+		<div id="map-container"></div>
+		<div id="dTools">
+			<a onclick="onclick_OSM()">street map</a>
+			<a onclick="onclick_geo()">geojson</a>
+			<a id="dClear" onclick="onclick_clear()">Clear</a>
+			<a id="dDownload" download="features.json">Download</a>
+		</div>
+		<script src="../olmini/basemin.js"></script>
+		<script src="../olmini/Mapping.js" type="module"></script>
+		<script src="../olmini/start.js"></script>
+	</body>
+</html>
