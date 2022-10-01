@@ -30,7 +30,7 @@ window.Mapping.create_map = function (type = 'OSM') {
 				new VectorLayer({
 					source: new VectorSource({
 						format: new GeoJSON(),
-						url: './data/countries.json',
+						url: '../olmini/countries.json',
 					}),
 				}),
 			],
