@@ -656,8 +656,8 @@ function mDroppable(item, handler, dragoverhandler) {
 	d.ondrop = handler;
 }
 //#region CLEANUP! edit inputs
-function unfocusOnEnter(ev) { if (ev.key === 'Enter') { ev.preventDefault(); mBy('dummy').focus(); } }
-function selectText(el) {
+function _unfocusOnEnter(ev) { if (ev.key === 'Enter') { ev.preventDefault(); mBy('dummy').focus(); } }
+function _selectText(el) {
 	var sel, range;
 	if (window.getSelection && document.createRange) { //Browser compatibility
 		sel = window.getSelection();
@@ -1169,7 +1169,7 @@ function mShield(dParent, styles = { bg: '#00000020' }, id = null, classnames = 
 	return d;
 }
 function mShieldsOff() { if (nundef(DA.shields)) return; for (const d of DA.shields) d.remove(); }
-function gCreate(tag) { return document.createElementNS('http://www.w3.org/2000/svg', tag); }
+function _gCreate(tag) { return document.createElementNS('http://www.w3.org/2000/svg', tag); }
 function gSizeToContent(svg) {
 	//muss NACH append gemacht werden damit es klappt
 	var bbox = svg.getBBox();
@@ -1178,7 +1178,7 @@ function gSizeToContent(svg) {
 	svg.setAttribute("width", bbox.x + bbox.width + bbox.x);
 	svg.setAttribute("height", bbox.y + bbox.height + bbox.y);
 }
-function mStamp(d1, text, color, sz) {
+function _mStamp(d1, text, color, sz) {
 	mStyle(d1, { position: 'relative' });
 	let r = getRect(d1);
 	let [w, h] = [r.w, r.h];
@@ -1997,7 +1997,7 @@ function drawHex(dParent, styles, classes, sizing) {
 	mStyle(d, { 'clip-path': 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)' });
 	return d;
 }
-function gSizeToContent(svg) {
+function _gSizeToContent(svg) {
 	//muss NACH append gemacht werden damit es klappt
 	var bbox = svg.getBBox();
 	//console.log('bbox', bbox);
@@ -4123,7 +4123,7 @@ function rCoin(percent = 50) {
 	r *= 100;
 	return r < percent;
 }
-function rChoose(arr, n = 1, func = null, exceptIndices = null) {
+function _rChoose(arr, n = 1, func = null, exceptIndices = null) {
 	//this does NOT work with an array of objects that contain DOM objects!!! =>use rChoose below instead
 	let arr1 = jsCopy(arr);
 	if (isdef(exceptIndices)) {
@@ -4462,7 +4462,7 @@ function countAll(s, scount) {
 function divInt(a, b) { return Math.trunc(a / b); }
 function errlog() { console.log('ERROR!', ...arguments); }
 function evNoBubble(ev) { ev.preventDefault(); ev.cancelBubble = true; }
-function evToClass(ev, className) {
+function _evToClass(ev, className) {
 	//returns first ancestor that has this class
 	let elem = findParentWithClass(ev.target, className);
 	return elem;
@@ -4994,7 +4994,7 @@ function unfocusOnEnter(ev) {
 		mBy('dummy').focus();
 	}
 }
-function valf(val, def) { return isdef(val) ? val : def; }
+function _valf(val, def) { return isdef(val) ? val : def; }
 function valf(){
 	for(const arg of arguments) if (isdef(arg)) return arg;
 	return null;
@@ -5077,6 +5077,8 @@ function intersection(arr1, arr2) {
 	}
 	return res;
 }
+function lerp(a, b, t) { return a + (b - a) * t; } //a + yb - ta = a(1-t) + bt stimmt!
+//function lerp(v0, v1, t) {	return v0*(1-t)+v1*t; } //same
 function mFlip(card, ms, callback) {
 	let a = mAnimate(iDiv(card), 'transform', [`scale(1,1)`, `scale(0,1)`],
 		() => {

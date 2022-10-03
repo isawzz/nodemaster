@@ -380,7 +380,7 @@ function is_turn_counter_clockwise(a1, a2) {
 	return cclock;
 	//console.log('should turn '+clockw?'counter-clockwise':'clockwise',q1,q2,a1,a2);
 }
-function lerp(a, b, t) { return a + (b - a) * t; }
+
 function lerpos(i1, i2, frac = .5) { return { x: lerp(i1.x, i2.x, frac), y: lerp(i1.y, i2.y, frac) }; }
 function lerpoint(i1, i2, frac = .5) {
 	//return point {x,y} lerped pos between i1 and i2
