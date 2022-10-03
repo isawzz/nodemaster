@@ -134,6 +134,7 @@ window.Mapping.add_circle = (pos, bg, size, fg) => {
 	let di = {
 		Redmond: [-122.11, 47.7],
 		Vienna: [16.5, 48.2],
+		NewYork: [-74.006111, 40.712778],
 	};
 	bg = valf(bg, 'lime');
 	fg = valf(fg, bg);

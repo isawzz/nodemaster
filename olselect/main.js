@@ -1,3 +1,14 @@
+// import GeoJSON from '../node_modules/ol/format/GeoJSON.js';
+// import Map from '../node_modules/ol/Map.js';
+// import Select from '../node_modules/ol/interaction/Select.js';
+// import VectorLayer from '../node_modules/ol/layer/Vector.js';
+// import VectorSource from '../node_modules/ol/source/Vector.js';
+// import View from '../node_modules/ol/View.js';
+// //import { Fill, Stroke, Style } from '../node_modules/ol/style';
+// import Fill from '../node_modules/ol/style/Fill.js';
+// import Stroke from '../node_modules/ol/style/Stroke.js';
+// import Style from '../node_modules/ol/style/Style.js';
+// import { altKeyOnly, click, pointerMove } from '../node_modules/ol/events/condition.js';
 
 const style = new ol.style.Style({
 	fill: new ol.style.Fill({
