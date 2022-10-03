@@ -1,0 +1,27 @@
+html, body, #map-container {
+	margin: 0;
+	height: 100%;
+	width: 100%;
+	font-family: sans-serif;
+	background-color: #04041b;
+}
+#dTools {
+	position: absolute;
+	top: 1rem;
+	right: 1rem;
+}
+#dTools a {
+	display: inline-block;
+	padding: 4px 10px 4px 10px; 
+	background: white;
+	color: dimgray;
+	cursor: pointer;
+	text-align:center;
+}
+#dTools select{
+	border-radius: 0;
+	border: none;
+	outline: none;
+	padding: 4px 10px 4px 10px;
+}
+
