@@ -17,7 +17,6 @@ function map_clear() {
 	mBy(M.options.id).innerHTML = '';
 }
 function map_init_OSM(){
-	M={};
 	M.map = new ol.Map({
 		target: 'map-container',
 		layers: [
