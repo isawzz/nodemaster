@@ -1,5 +1,13 @@
 
+api:
 
+function map_init(x,y,w,h,bg,type){
+	// x,y ... center coords lon,lat
+	// type url (null: OSM)
+	// returns map
+	//cleanup if there is a map already
+	//init new map
+}
 
 
 

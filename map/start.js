@@ -1,39 +1,42 @@
 onload = start;
 
-function start() {
-	let background = 'midnightblue';
-	M = { map: null, layer: null, source: null, style: null, feature: null, interactions: {}, };
-	let style = M.style = new ol.style.Style({
-		fill: new ol.style.Fill({
-			color: background,
-		}),
-	});
+async function start() {
 
-	let source = M.source = new ol.source.Vector({
-		url: '../base/mapdata/ecoregions.json',
-		format: new ol.format.GeoJSON(),
-	});
+	let text = await route_path_text('../base/mapdata/cities.csv');
+	let list = csv2list(text);
+	console.log('list',list);
 
-	let layer = M.layer = new ol.layer.Vector({
-		source:source,
-		background: background,
-		style: function (feature) {
-			//console.log('features',feature.values_)
-			let color = feature.get('COLOR') || background;
-			M.style.getFill().setColor(color);
-			return style;
-		},
-	});
 
-	let map = M.map = new ol.Map({
-		layers: [layer],
-		target: 'map-container',
-		view: new ol.View({
-			center: [0, 0],
-			zoom: 2,
-		}),
-	});
+	map_init_OSM();
 
-	console.log('M',M);//da sind lauter komische variables drin!!!
-
+	for(const o of arrTake(cities,10)){
+		//add a circle for these cities!
+	}
+	//map_init({url:'../base/mapdata/ecoregions.json'});
 }
+
+
+function csv2list(allText, hasHeadings = true) {
+	var numHeadings = 11;  // or however many elements there are in each row
+	var allTextLines = allText.split(/\r\n|\n/);
+	//console.log('found',allTextLines.length,'text lines!!!');
+	var headings = allTextLines[0].split(',');
+	numHeadings = headings.length;
+	//console.log('headings',numHeadings,headings);
+	let entries = allTextLines.splice(1);
+	//entries = entries.slice(0,10);
+	//entries.map(x=>console.log(x)); 
+	var records = [];
+	for (const e of entries) {
+		let o = {};
+		let values = e.split(',');
+		for (let i = 0; i < numHeadings; i++) {
+			let k = headings[i];
+			o[k] = values[i];
+		}
+		records.push(o);
+	}
+	//console.log('recordsByName',recordsByName)
+	return records;
+}
+

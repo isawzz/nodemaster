@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!-- CSS files need to be in the head section -->
+		<title>MAP</title>
+		<link rel="icon" href="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/facebook/327/red-heart_2764-fe0f.png" />
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ol@7.1.0/ol.css" />
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@opencage/ol-opencage-geosearch/ol-opencage-geosearch.css" />
+	</head>
+	<body>
+		<!-- add a map element anywhere on the map -->
+		<div id="map1" style="width: 750px; height: 500px"></div>
+
+		<!-- script can be either in the head section or anywhere below the map -->
+		<script src="https://cdn.jsdelivr.net/npm/ol@7.1.0/dist/ol.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/@opencage/geosearch-bundle"></script>
+		<script src="https://cdn.jsdelivr.net/npm/@opencage/ol-opencage-geosearch/dist/ol-opencage-geosearch.js"></script>
+		<script>
+			// wait until everything is loaded
+			document.addEventListener('DOMContentLoaded', () => {
+				// create and initialize openlayers map object
+				var map = new ol.Map({
+					target: 'map1',
+					layers: [
+						new ol.layer.Tile({
+							source: new ol.source.OSM(),
+						}),
+					],
+					view: new ol.View({
+						center: ol.proj.fromLonLat([0, 40]),
+						zoom: 0,
+					}),
+				});
+
+				// geosearch options
+				var options = {
+					key: '272acb1dd4714474a25ac4c60b588688',
+					// you will need to become a customer to get a geosearch key
+					// language: 'fr',
+					// onSelect: (params) => { console.log('hello from onSelect', params) },
+					position: 'topright',
+				};
+
+				// add geosearch to the map
+				var controlGeosearch = new OpenCageGeosearchControl(options);
+				map.addControl(controlGeosearch);
+			});
+		</script>
+	</body>
+</html>

@@ -13,6 +13,7 @@ var FR = 50, CX, CV;
 //#region color const
 const BLUE = '#4363d8';
 const BLUEGREEN = '#004054';
+const DARKBLUE = '#04041b';
 const BROWN = '#96613d';
 const GREEN = '#3cb44b';
 const FIREBRICK = '#800000';
@@ -5074,6 +5075,11 @@ async function route_path_yaml_dict(url) {
 	let text = await data.text();
 	let dict = jsyaml.load(text);
 	return dict;
+}
+async function route_path_text(url) {
+	let data = await fetch(url);
+	let text = await data.text();
+	return text;
 }
 function show(elem, isInline = false) {
 	if (isString(elem)) elem = document.getElementById(elem);
