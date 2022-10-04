@@ -4,10 +4,36 @@ onload = start;
 async function start() {
 
 	M={};
+	let info = await route_path_yaml_dict('../base/assets/lists/info.yaml');
+
 	let text = await route_path_text('../base/mapdata/cities.csv');
 	let cities = M.cities = csv2list(text);
-	M.capitals = cities.filter(x=>x.capital='primary');
 
+	let capitals = [];
+	for(const o of cities){
+		let w1=o.city_ascii.toLowerCase();
+		if (nundef(o.country)) {
+			console.log('missing country',o);
+			continue;
+		}
+		let land1=o.country.toLowerCase();
+		for(const k of info.capital){
+			let w=k.toLowerCase();
+			//let w2 = stringBefore(w,'-').trim();
+			//let land2 = stringAfter(w,'-').trim();
+			//console.log('o',w1,'k',w2);
+			if (w.includes(w1) && w.includes(land1)){
+				//console.log('found capital:',w1);
+				capitals.push(o);
+			}
+		}
+	}
+
+	M.capitals = capitals; //cities.filter(x=>['London','Madrid','Rome'].includes(x.city_ascii)); //='primary');
+	console.log('capitals',capitals);
+
+
+	return;
 	//console.log('list', cities);
 	map_init_OSM();
 
@@ -16,8 +42,8 @@ async function start() {
 }
 function chall4(){
 	let caps = M.capitals;
-	console.log('capitals',caps);
-	let list = rChoose(caps,20);
+	//console.log('capitals',caps);
+	let list = caps; // rChoose(caps,20);
 	for(const o of list){
 		map_add_city(o);
 		console.log('city',o)
