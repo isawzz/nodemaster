@@ -3,8 +3,13 @@ async function start() {
 	//test0_simulateClick();	//test1_can_I_get_new_cities();	//let cities = await test1_can_I_get_new_cities();
 	[M.cities, M.capitals] = await test2_get_cities(); //console.log('capitals', M.capitals);
 
-	M.map = map_init_OSM(); 	//test3_add_cities_layer(BLUE);
-	
+	//M.map = map_init_OSM(); 	//test3_add_cities_layer(BLUE);
+	M.map = map_init({url:'../base/mapdata/countries.json'}); 	
+	//M = { options: options, map: null, layers: {}, sources: {}, styles: {}, features: {}, interactions: {}, };
+
+	return;
+
+
 	let layer = map_add_layer({color:'orange'});
 	for(const c of rChoose(M.capitals,20)) map_add_object(M.cities[c],{layer:layer,shape:'circle',color:'random'});
 

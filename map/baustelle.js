@@ -1,4 +1,17 @@
 
+function get_style_func(func,bg,fg){
+	let res = (feature) => {
+		return new Style({
+			fill: new Fill({
+				color: colorfunc(feature),
+			}),
+			stroke: new Stroke({
+				color: 'rgba(255,255,255,0.8)',
+			}),
+		});
+	},
+
+}
 
 
 function ensure_city_layer() {
