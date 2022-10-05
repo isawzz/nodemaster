@@ -1,23 +1,42 @@
 
+function map_add_object(o, options) {
+	let layer = valf(options.layer, M.map.getLayers()[0]);
+	//console.log('layer', layer);
+	let [lon, lat] = [valf(options.lon, o.lon, 16), valf(options.lat, o.lat, 16)];
+
+	let shape = valf(options.shape, 'circle');
+
+	// var f = new ol.Feature({ geometry: new ol.geom.Point([lon, lat]).transform('EPSG:4326', viewProjection), data: o, });
+	// vectorLayer.addFeature(f);
+
+	var center = ol.proj.fromLonLat([lon, lat]);
+	let f = new ol.Feature({ geometry: new ol.geom.Circle(center, 14000), data: o });
+	let source = layer.getSource();	let x = source.addFeature(f);
+	//layer.addFeature(f);
+	//console.log('result of addFeature',f);
+	return f;
+
+}
+
 function map_set_center(pos) {
-	console.log('pos',pos);
+	console.log('pos', pos);
 	let di = {
 		Redmond: [-122.11, 47.7],
 		Vienna: [16.5, 48.2],
 		NewYork: [-74.006111, 40.712778],
 	};
-  let center = ol.proj.fromLonLat(valf(di[pos], pos, di.Vienna));
+	let center = ol.proj.fromLonLat(valf(di[pos], pos, di.Vienna));
 	M.map.getView().setCenter(center); //ol.proj.transform(pos, 'EPSG:4326', 'EPSG:3857'));
 }
-function map_set_zoom(zoom=12){
+function map_set_zoom(zoom = 12) {
 	M.map.getView().setZoom(5);
 }
 function map_clear() {
 	for (const k in M.source) { M.source[k].clear(); }
 	mBy(M.options.id).innerHTML = '';
 }
-function map_init_OSM(){
-	M.map = new ol.Map({
+function map_init_OSM() {
+	return new ol.Map({
 		target: 'map-container',
 		layers: [
 			new ol.layer.Tile({
@@ -32,7 +51,7 @@ function map_init(options = {}) {
 
 	if (M) { map_clear(); }
 
-	addKeys({ id: 'map-container', center: 'Vienna', zoom: isdef(options.url)?2:12, w: '100%', h: '100%', bg: DARKBLUE }, options);//, url: '../base/mapdata/ecoregions.json' }, options);
+	addKeys({ id: 'map-container', center: 'Vienna', zoom: isdef(options.url) ? 2 : 12, w: '100%', h: '100%', bg: DARKBLUE }, options);//, url: '../base/mapdata/ecoregions.json' }, options);
 
 	M = { options: options, map: null, layers: {}, sources: {}, styles: {}, features: {}, interactions: {}, };
 

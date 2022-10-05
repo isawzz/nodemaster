@@ -1,20 +1,42 @@
 onload = start;
-
-
 async function start() {
+	//test0_simulateClick();	//test1_can_I_get_new_cities();	//let cities = await test1_can_I_get_new_cities();
+	[M.cities, M.capitals] = await test2_get_cities(); //console.log('capitals', M.capitals);
 
-	let info = await route_path_yaml_dict('../base/assets/lists/info.yaml');
-	downloadAsYaml(info,'info');
+	M.map = map_init_OSM(); 	//test3_add_cities_layer(BLUE);
+	
+	let layer = map_add_layer({color:'orange'});
+	for(const c of rChoose(M.capitals,20)) map_add_object(M.cities[c],{layer:layer,shape:'circle',color:'random'});
+
+
+
 }
-async function muell(){
 
+function test3_add_cities_layer(color){
+	let cities = rChoose(M.capitals,20);
+	
+	for(const c of cities) map_add_city(M.cities[c]);
+}
+async function test2_get_cities() {
+	let cities = await route_path_yaml_dict('../base/mapdata/cities.yaml');
 
-	M = {};
+	//console.log('cities',cities)
+
+	let res = {}; let capitals = [];
+	for (const c in cities) {
+		let s = cities[c];
+		let ws = s.split(',').map(x => x.trim());
+		res[c] = { name: c, lon: Number(ws[0]), lat: Number(ws[1]), country: ws[2], type: ws[3], pop: Number(ws[4]) };
+
+		if (res[c].type == 'capital') capitals.push(c);
+		//`${o.lng},${o.lat},${o.country},${o.capital},${o.population}`
+	}
+	return [res, capitals];
+}
+async function test1_can_I_get_new_cities() {
 	let info = await route_path_yaml_dict('../base/assets/lists/info.yaml');
-
 	let text = await route_path_text('../base/mapdata/cities.csv');
 	let cities = M.cities = csv2list(text);
-
 	let capitals = [];
 	let new_cities = {};
 	let num = 0, min = 25000;
@@ -45,35 +67,24 @@ async function muell(){
 		}
 	}
 
-	console.log('new cities', new_cities);
-	//setTimeout(()=>downloadAsYaml(new_cities,'new_cities'),5000);
-	return;
-	//console.log('pop >', min, ':', num);
-	//M.capitals = capitals; //cities.filter(x=>['London','Madrid','Rome'].includes(x.city_ascii)); //='primary');
-	//c/onsole.log('capitals', capitals);
+	downloadAsYaml(new_cities, 'cities');
+	return new_cities;
 
-
-	//return;
-	//console.log('list', cities);
-	//map_init_OSM();
-
-	//chall4(); //cha3(cities); //challenge2(); //	challenge0();
-	//map_init({url:'../base/mapdata/ecoregions.json'});
 }
+async function test0_simulateClick() {
+	let info = await route_path_yaml_dict('../base/assets/lists/info.yaml');
+	downloadAsYaml(info, 'info');
+
+}
+
+//#region helpers
 function downloadAsYaml(o, filename) {
 	let y = jsyaml.dump(o);
-	downloadTextFile(y, filename, 'yaml');
+	downloadAsText(y, filename, 'yaml');
 }
 function downloadAsText(s, filename, ext = 'txt') {
-	downloadTextFile(s, filename, ext);
-}
-function jsonToYaml(o) {
-	let y = jsyaml.dump(o);
-	return y;
-}
-function downloadTextFile(s, filenameNoExt, ext = 'txt') {
 	saveFileAtClient(
-		filenameNoExt + "." + ext,
+		filename + "." + ext,
 		"data:application/text",
 		new Blob([s], { type: "" }));
 }
@@ -85,27 +96,42 @@ function saveFileAtClient(name, type, data) {
 	a.href = url;
 	a.download = name;
 	document.body.appendChild(a);
-	fireClick(a);
+	//fireClick(a);
+	//fireEvent(a, 'click');
+	simulateClick(a);
 	setTimeout(function () {
 		// fixes firefox html removal bug
 		window.URL.revokeObjectURL(url);
 		a.remove();
 	}, 500);
 }
-function _fireClick(node) {
+function simulateClick(elem) {
+	var evt = new MouseEvent('click', { bubbles: true, cancelable: true, view: window });// Create our event (with options)
+	var canceled = !elem.dispatchEvent(evt);// If cancelled, don't dispatch our event
+}
+function fireEvent(elem, x) {
+	const event = new Event(x);
+	elem.addEventListener(x, (e) => { console.log('fired', x, 'on', elem) }, false);// Listen for the event.
+	elem.dispatchEvent(event);// Dispatch the event.
+}
+function fireClick(elem) {
 	if (document.createEvent) {
+		console.log('erstes')
 		var evt = document.createEvent('MouseEvents');
 		evt.initEvent('click', true, false);
 		//console.log('fireClick: createEvent and node.dispatchEvent exist!!!', node)
 		//console.log('****************fireClick: node.onclick exists!!!', node)
 		//node.click();
-		node.dispatchEvent(evt);
+		elem.dispatchEvent(evt);
 	} else if (document.createEventObject) {
 		//console.log('fireClick: createEventObject and node.fireEvent exist!!!', node)
-		node.fireEvent('onclick');
-	} else if (typeof node.onclick == 'function') {
+		console.log('zweiter')
+
+		elem.fireEvent('onclick');
+	} else if (typeof elem.onclick == 'function') {
+		console.log('drittes')
 		//console.log('****************fireClick: node.onclick exists!!!', node)
-		node.onclick();
+		elem.onclick();
 	}
 }
 
@@ -169,4 +195,12 @@ function csv2list(allText, hasHeadings = true) {
 	//console.log('recordsByName',recordsByName)
 	return records;
 }
+
+
+
+
+
+
+
+
 
