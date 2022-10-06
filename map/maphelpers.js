@@ -1,39 +1,116 @@
 
-function map_add_object(o, options) {
+function color_by_area(colormap_name = 'autumn') {
+	//returns a function that sets color according to area given geojson feature object
+	const min = 1e8; // the smallest area
+	const max = 2e13; // the biggest area
+	const steps = 50;
+	const ramp = colorMap({
+		colormap: colormap_name,
+		nshades: steps,
+	});
+	//console.log('ramp', ramp)
+
+	function clamp(value, low, high) {
+		return Math.max(low, Math.min(value, high));
+	}
+
+	function getColor(feature) {
+		let geo = feature.getGeometry(); let type = geo.getType();
+		//console.log('geo',geo)
+		//let isPoly = geo instanceof Polygon;
+		//console.log('is it a Polygon?',geo.constructor.name); //,isPoly);		if (!isPoly) return '#000';
+		//if (geo.constructor.name.includes('Polygon')){console.log('YEAHHH!!!!')}
+		let isPoly = type.includes('Polygon'); // geo.constructor.name.includes('Polygon');
+		if (!isPoly) { console.log('not a poly', type); return '#ff0'; }
+		const area = ol.sphere.getArea(feature.getGeometry());
+		//console.log('area',feature._values,area)
+		const f = Math.pow(clamp((area - min) / (max - min), 0, 1), 1 / 2);
+		const index = Math.round(f * (steps - 1));
+		return ramp[index];
+	}
+	return getColor;
+}
+function capitals_in_red(feature) {
+	console.log('feature data', feature.data);
+	let type = lookup(feature, ['data', 'type']);
+	console.log('city', lookup(feature, ['data', 'name']), ':', type)
+	return type == 'capital' ? 'red' : 'yellow';
+}
+function get_style_func(func, bg, fg) {
+	let res = (feature) => {
+		return new ol.style.Style({
+			fill: new ol.style.Fill({
+				color: valf(func(feature), bg)
+			}),
+			stroke: new ol.style.Stroke({
+				color: fg,
+			}),
+		});
+	}
+	return res;
+}
+function get_style(bg, fg) {
+	let res = new ol.style.Style({
+		fill: new ol.style.Fill({ color: bg }),
+		stroke: new ol.style.Stroke({ color: fg }),
+	});
+
+	return res;
+}
+async function get_cities_and_capitals() {
+	let cities = await route_path_yaml_dict('../base/mapdata/cities.yaml');
+
+	//console.log('cities',cities)
+
+	let res = {}; let capitals = [];
+	for (const c in cities) {
+		let s = cities[c];
+		let ws = s.split(',').map(x => x.trim());
+		res[c] = { name: c, lon: Number(ws[0]), lat: Number(ws[1]), country: ws[2], type: ws[3], pop: Number(ws[4]) };
+
+		if (res[c].type == 'capital') capitals.push(c);
+		//`${o.lng},${o.lat},${o.country},${o.capital},${o.population}`
+	}
+	return [res, capitals];
+}
+function set_style_from_options(layer, options={}) {
+	let style = isdef(options.colorfunc) ? get_style_func(options.colorfunc, valf(options.bg, 'lime'), valf(options.fg, 'orange'))
+		: get_style(valf(options.bg, 'yellow'), valf(options.fg, 'yellow'));
+	layer.setStyle(style);
+
+}
+
+function map_add_object(o, options={}) {
 	let layer = valf(options.layer, M.map.getLayers()[0]);
-	//console.log('layer', layer);
-	let [lon, lat] = [valf(options.lon, o.lon, 16), valf(options.lat, o.lat, 16)];
+
+	//console.log('o',o)
+	let [lon, lat] = [valf(options.lon, o.lon, 16), valf(options.lat, o.lat, 48)];
 
 	let shape = valf(options.shape, 'circle');
+	let center = ol.proj.fromLonLat([lon, lat]);
 
-	// var f = new ol.Feature({ geometry: new ol.geom.Point([lon, lat]).transform('EPSG:4326', viewProjection), data: o, });
-	// vectorLayer.addFeature(f);
+	//circle:
+	let feature;
+	switch (shape) {
+		default: feature = new ol.Feature({ geometry: new ol.geom.Circle(center, 25000), data: o }); break;
+	}
 
-	var center = ol.proj.fromLonLat([lon, lat]);
-	let f = new ol.Feature({ geometry: new ol.geom.Circle(center, 14000), data: o });
-	let source = layer.getSource(); let x = source.addFeature(f);
-	//layer.addFeature(f);
-	//console.log('result of addFeature',f);
-	return f;
+	layer.getSource().addFeature(feature);
+	return feature;
 
 }
-
-function map_set_center(pos) {
-	console.log('pos', pos);
-	let di = {
-		Redmond: [-122.11, 47.7],
-		Vienna: [16.5, 48.2],
-		NewYork: [-74.006111, 40.712778],
-	};
-	let center = ol.proj.fromLonLat(valf(di[pos], pos, di.Vienna));
-	M.map.getView().setCenter(center); //ol.proj.transform(pos, 'EPSG:4326', 'EPSG:3857'));
-}
-function map_set_zoom(zoom = 12) {
-	M.map.getView().setZoom(5);
-}
-function map_clear() {
-	for (const k in M.source) { M.source[k].clear(); }
-	mBy(M.options.id).innerHTML = '';
+function map_add_layer(options = {}) {
+	let map = M.map;
+	var layer = new ol.layer.Vector({
+		source: new ol.source.Vector({
+			projection: 'EPSG:4326',
+			features: [],
+		}),
+	});
+	set_style_from_options(layer, options);
+	map.addLayer(layer);
+	if (isdef(options.key)) lookupSet(M, ['layers', key], layer);
+	return layer;
 }
 function map_init_OSM() {
 	return new ol.Map({
@@ -45,197 +122,30 @@ function map_init_OSM() {
 		],
 		view: new ol.View({ center: ol.proj.fromLonLat([0, 0]), zoom: 2, }),
 	});
-
 }
-
-function map_init() {
-	const style = new ol.style.Style({
-		fill: new ol.style.Fill({
-			color: '#eeeeee',
-		}),
-	});
-
-	const vector = new ol.layer.Vector({
+function map_init(options) {
+	const layer = new ol.layer.Vector({
 		source: new ol.source.Vector({
-			url: '../base/mapdata/countries.json',
+			url: valf(options.url, '../base/mapdata/countries.json'),
 			format: new ol.format.GeoJSON(),
 		}),
-		background: 'white',
-		style: function (feature) {
-			const color = feature.get('COLOR') || '#eeeeee';
-			style.getFill().setColor(color);
-			return style;
-		},
+		background: valf(options.ocean, DARKBLUE),
+		//style: get_style(BLUE,RED),
+		//style: get_style_func(color_by_area(options.colormap),valf(options.bg,'lime'),valf(options.fg,'orange')),
 	});
 
-	const map = new ol.Map({
-		layers: [vector],
+	set_style_from_options(layer, options);
+
+	return new ol.Map({
+		layers: [layer],
 		target: 'map-container',
 		view: new ol.View({
 			center: [0, 0],
-			zoom: 2,
+			zoom: valf(options.zoom, 2),
 		}),
 	});
 
 }
-function _map_init(options = {}) {
-	//addKeys({ id: 'map-container', center: 'Vienna', zoom: isdef(options.url) ? 2 : 12, w: '100%', h: '100%', bg: DARKBLUE }, options);//, url: '../base/mapdata/ecoregions.json' }, options);
-	let source = new ol.source.Vector({
-		url: valf(options.url, '../base/mapdata/ecoregions.json'),
-		format: new ol.format.GeoJSON(),
-	});
-	let style = new ol.style.Style({
-		fill: new ol.style.Fill({
-			color: valf(options.color, 'beige'),
-		}),
-		stroke: new ol.style.Stroke({
-			color: valf(options.fg, 'black'),
-		}),
-	});
-	let layer = new ol.layer.Vector({
-		source: source,
-		background: valf(options.bg, DARKBLUE),
-		style: function (feature) {
-			let color = feature.get('COLOR');
-			if (color) style.getFill().setColor(color);
-			return style;
-		},
-	});
-	return new ol.Map({
-		target: 'map-container',
-		layers: [layer],
-		view: new ol.View({ center: ol.proj.fromLonLat([valf(options.lon, 16), valf(options.lat, 48)]), zoom: valf(options.zoom, 12), }),
-	});
-}
-function muell() {
-
-	addKeys({ id: 'map-container', center: 'Vienna', zoom: isdef(options.url) ? 2 : 12, w: '100%', h: '100%', bg: DARKBLUE }, options);//, url: '../base/mapdata/ecoregions.json' }, options);
-
-	let view = new ol.View({
-		//center: ol.proj.fromLonLat([16.35, 48.22]),
-		//zoom: options.zoom
-	});
-
-
-	let style = M.styles.base = new ol.style.Style({
-		fill: new ol.style.Fill({
-			color: options.bg,
-		}),
-	});
-
-	let source, layer;
-	if (isdef(options.url)) {
-		source = new ol.source.Vector({
-			url: options.url,
-			format: new ol.format.GeoJSON(),
-		});
-		layer = new ol.layer.Vector({
-			source: source,
-			background: options.bg,
-			style: function (feature) {
-				let color = feature.get('COLOR') || 'aliceblue';
-				style.getFill().setColor(color);
-				return style;
-			},
-		});
-	} else {
-		source = new ol.source.OSM();
-		layer = new ol.layer.Tile({
-			title: 'Open Street Map',
-			visible: true,
-			type: 'base',
-			source: source,
-			background: options.bg,
-			style: function (feature) {
-				console.log('feature', feature);
-				let color = feature.get('COLOR') || 'aliceblue';
-				style.getFill().setColor(color);
-				return style;
-			},
-		});
-	}
-
-	M.layers.base = layer;
-
-	let map = M.map = new ol.Map({
-		layers: [layer],
-		target: options.id,
-		view: view
-	});
-
-
-	map_set_center(options.center);
-	map_set_zoom(options.zoom);
-
-}
-
-function _map_init(options = {}) {
-
-	if (M) { map_clear(); }
-
-	addKeys({ id: 'map-container', center: 'Vienna', zoom: isdef(options.url) ? 2 : 12, w: '100%', h: '100%', bg: DARKBLUE }, options);//, url: '../base/mapdata/ecoregions.json' }, options);
-
-	M = { options: options, map: null, layers: {}, sources: {}, styles: {}, features: {}, interactions: {}, };
-
-	let view = new ol.View({
-		//center: ol.proj.fromLonLat([16.35, 48.22]),
-		//zoom: options.zoom
-	});
-
-
-	let style = M.styles.base = new ol.style.Style({
-		fill: new ol.style.Fill({
-			color: options.bg,
-		}),
-	});
-
-	let source, layer;
-	if (isdef(options.url)) {
-		source = new ol.source.Vector({
-			url: options.url,
-			format: new ol.format.GeoJSON(),
-		});
-		layer = new ol.layer.Vector({
-			source: source,
-			background: options.bg,
-			style: function (feature) {
-				let color = feature.get('COLOR') || 'aliceblue';
-				style.getFill().setColor(color);
-				return style;
-			},
-		});
-	} else {
-		source = new ol.source.OSM();
-		layer = new ol.layer.Tile({
-			title: 'Open Street Map',
-			visible: true,
-			type: 'base',
-			source: source,
-			background: options.bg,
-			style: function (feature) {
-				console.log('feature', feature);
-				let color = feature.get('COLOR') || 'aliceblue';
-				style.getFill().setColor(color);
-				return style;
-			},
-		});
-	}
-
-	M.layers.base = layer;
-
-	let map = M.map = new ol.Map({
-		layers: [layer],
-		target: options.id,
-		view: view
-	});
-
-
-	map_set_center(options.center);
-	map_set_zoom(options.zoom);
-
-}
-
-
 
 
 
