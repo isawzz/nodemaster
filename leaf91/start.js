@@ -1,15 +1,28 @@
 onload = start;
 
 function start() {
-	var map = L.map('map').setView([39.74739, -105], 13);
+	var map = L.map('map', {
+		minZoom: 0,
+		maxZoom: 20
+	});
 
-	var tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-		maxZoom: 19,
-		attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-	}).addTo(map);
+	var cartodbAttribution = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="https://carto.com/attribution">CARTO</a>';
 
-	test1(map);
+	//maps: http://bl.ocks.org/Xatpy/raw/854297419bd7eb3421d0/
+	// var layer = L.tileLayer('https://cartocdn_{s}.global.ssl.fastly.net/base-antique/{z}/{x}/{y}.png', { attribution: cartodbAttribution }).addTo(map);
+	// var layer = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', { attribution: cartodbAttribution }).addTo(map);
+	var layer = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', { attribution: cartodbAttribution }).addTo(map);
+	//var layer = L.tileLayer('http://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}.png', { attribution: cartodbAttribution }).addTo(map);
+	//var layer = L.tileLayer('http://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png', { attribution: cartodbAttribution }).addTo(map);
+	//var layer = L.tileLayer('https://cartocdn_{s}.global.ssl.fastly.net/base-eco/{z}/{x}/{y}.png', { attribution: cartodbAttribution }).addTo(map);
+	//var layer = L.tileLayer('https://cartocdn_{s}.global.ssl.fastly.net/base-midnight/{z}/{x}/{y}.png', { attribution: cartodbAttribution }).addTo(map);
 
+	map.setView([0, 0], 0);
+
+	return;
+
+
+	//test1();
 }
 
 function test1(map) {
