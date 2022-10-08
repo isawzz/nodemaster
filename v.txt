@@ -1,8 +1,5 @@
 
-ch5: - filter out cities below 50K population
-2:21 PM 10/4/2022-
-save as yaml file 
-
+650: *
 
 
 
