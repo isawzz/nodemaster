@@ -9,6 +9,7 @@ app.use(cors());
 //const io = new Server(server);//ohne cors reicht das:
 
 app.use(express.static(__dirname + '')); //Serve root directory
+
 for (const name of ['', 'games', 'canvas9', 'tree', 'plant']) {
 	app.get('/' + name, (req, res) => {
 		res.sendFile(__dirname + '/' + name + '/index.html');

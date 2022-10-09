@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html ng-app="start">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<script src="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-leaflet-directive/0.10.0/angular-leaflet-directive.min.js"></script>
+		<script src="angular-simple-logger.min.js"></script>
+		<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+		<script src="../example/start.js" charset="UTF-8"></script>
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+		<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.css" />
+
+		<link
+			rel="stylesheet"
+			href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+			integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
+			crossorigin="anonymous"
+		/>
+		<script
+			src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
+			integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
+			crossorigin="anonymous"
+		></script>
+
+		<link rel="stylesheet" href="cwstyles.css" />
+	</head>
+
+	<body ng-controller="MapController">
+		<div id="mapArea">
+			<leaflet center="mapCenter" layers="layers" defaults="defaults" width="100%" height="100%"></leaflet>
+		</div>
+
+		<div id="controlBox">
+			<div ng-hide="showInfoBox" ng-click="showInfoBox=!showInfoBox" class="infoBoxButton"><i class="fa fa-bars fa-2x"></i></div>
+			<div ng-show="showInfoBox" ng-click="showInfoBox=!showInfoBox" class="infoBoxButton" style="text-align: right"><i class="fa fa-times fa-2x"></i></div>
+			<div ng-show="showInfoBox" class="infoBox">
+				<form ng-submit="doSearch()" class="ng-pristine ng-valid">
+					<input
+						type="search"
+						ng-model="queryText"
+						ng-model-options="{ debounce: 400 }"
+						ng-change="autoSearch()"
+						style="width: 90%"
+						placeholder="Search for a place..."
+					/>
+					<!-- <input class="btn-primary" type="submit" value="Search"> -->
+				</form>
+				<div class="list-group">
+					<div class="list-group-item" style="cursor: pointer" ng-repeat="res in searchResults | limitTo:5">
+						<div ng-click="setNewCentre(res);">{{res.display_name}}</div>
+					</div>
+				</div>
+
+				<input type="checkbox" ng-model="layers.overlays.stamen_toner.visible" />
+				<span ng-click="toggleStreets()" style="cursor: pointer; vertical-align: middle; margin-left: 3px">Show Street Names</span>
+				<div style="border-top: 1px solid #ccc; margin: 14px 0; padding: 6px">
+					<h4>About</h4>
+					<p>
+						Pretty mapping demo overlaying
+						<a href="http://www.stamen.com">Stamen</a>
+						's Toner labels map on their Watercolor map to produce a map that's both beautiful and functional.
+					</p>
+					<p>
+						Built with
+						<a href="https://angularjs.org/">AngularJS</a>
+						and
+						<a href="http://leafletjs.com/">Leaflet</a>
+						with help from the
+						<a href="https://github.com/tombatossals/angular-leaflet-directive">angular-leaflet-directive</a>
+						.
+					</p>
+				</div>
+				<div style="text-align: center; font-size: 10pt" ng-non-bindable>
+					A toy by
+					<a href="http://curlybrackets.co">{.co}</a>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
