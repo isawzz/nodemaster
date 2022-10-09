@@ -662,7 +662,25 @@ leider ist angularjs outdated und daher ist leaflet directive unbrauchbar
 - wie macht man eine map?
 711: *2:43 PM 10/9/2022-2:54 PM 10/9/2022
 712: *2:54 PM 10/9/2022-3:51 PM 10/9/2022
-713: *3:51 PM 10/9/2022-
+713: *3:51 PM 10/9/2022-3:55 PM 10/9/2022
+714: *3:56 PM 10/9/2022-3:56 PM 10/9/2022
+715: *3:57 PM 10/9/2022-4:02 PM 10/9/2022
+716: *4:02 PM 10/9/2022-4:02 PM 10/9/2022
+- L.tileLayer: https://leafletjs.com/reference.html#tilelayer
+717: *4:03 PM 10/9/2022-4:04 PM 10/9/2022
+- reuseTiles exists but has bad effect on memory (was deleted in newer leaflet version!)
+718: *4:04 PM 10/9/2022-4:05 PM 10/9/2022
+- updateWhenIdle: kommt von leaflet GridLayer!
+- check out showOnSelector do not belong to leaflet options
+719: *4:05 PM 10/9/2022-4:05 PM 10/9/2022
+- detectRetina macht einfach die schrift kleiner, eher nicht gut!
+720: *4:05 PM 10/9/2022-4:07 PM 10/9/2022
+721: *4:07 PM 10/9/2022-4:30 PM 10/9/2022
+722: *4:30 PM 10/9/2022-
+- gu essen gehen
+- was mit der opacity option?
+- ok also weiter gehts!
+
 - separate info from actual tileLayer!
 - wie add ich das overlay???
 - goto leafp
