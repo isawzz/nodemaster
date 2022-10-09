@@ -1,5 +1,657 @@
+================>ab da in nodemaster!!!!!
+1: *1:33 PM 9/30/2022-1:35 PM 9/30/2022
+2: *1:35 PM 9/30/2022-1:36 PM 9/30/2022
+3: *1:36 PM 9/30/2022-1:37 PM 9/30/2022
+4: *1:37 PM 9/30/2022-1:39 PM 9/30/2022
+5: *1:39 PM 9/30/2022-1:39 PM 9/30/2022
+6: *1:39 PM 9/30/2022-3:04 PM 9/30/2022
+1- >knoedl machen!!!
+2- hat functioniert!
+3- open a dir with a geojson file inside
+1- was soll die source sein?
+2- test
+3- einfach zurueck zu dem zeug
+7: *3:04 PM 9/30/2022-3:04 PM 9/30/2022
+8: *3:05 PM 9/30/2022-3:08 PM 9/30/2022
+9: *3:08 PM 9/30/2022-3:10 PM 9/30/2022
+10: *3:10 PM 9/30/2022-3:20 PM 9/30/2022
+11: *3:20 PM 9/30/2022-3:21 PM 9/30/2022
+1- dd popul
+2- such noch ein geojson
+3- was ist die source?
+1- modifying features
+2- weiter zum code
+3- A discord
+12: *3:21 PM 9/30/2022-3:29 PM 9/30/2022
+13: *3:29 PM 9/30/2022-3:33 PM 9/30/2022
+14: *3:33 PM 9/30/2022-3:34 PM 9/30/2022
+15: *3:34 PM 9/30/2022-3:34 PM 9/30/2022
+16: *3:35 PM 9/30/2022-3:36 PM 9/30/2022
+17: *3:36 PM 9/30/2022-3:43 PM 9/30/2022
+18: *3:43 PM 9/30/2022-3:50 PM 9/30/2022
+1- batterie wechseln
+2- es ist die region aus der all die big data info kommt!
+3- dd wien onto map
+1- restart workshop
+2- was ist das wien fuer ein file?
+3- add populated places to data
+19: *3:50 PM 9/30/2022-3:52 PM 9/30/2022
+20: *3:52 PM 9/30/2022-3:59 PM 9/30/2022
+21: *3:59 PM 9/30/2022-4:00 PM 9/30/2022
+1- draw
+2- er ersetzt eigentlich nur die source bei drop!
+3- dd genauer?
+22: *4:00 PM 9/30/2022-4:04 PM 9/30/2022
+23: *4:04 PM 9/30/2022-6:56 PM 9/30/2022
+40: *6:56 PM 9/30/2022-6:57 PM 9/30/2022
+41: *6:57 PM 9/30/2022-7:06 PM 9/30/2022
+1- download
+2- serialize
+3- cdraw interface
+42: *7:06 PM 9/30/2022-7:07 PM 9/30/2022
+43: *7:32 PM 9/30/2022-7:36 PM 9/30/2022
+1- stylesheet!
+2- ne besser noch: wie downloaded man mit basemin.js???
+3- ich moecht all die buttons als a mit href
+44: *7:36 PM 9/30/2022-8:12 PM 9/30/2022
+45: *8:13 PM 9/30/2022-
+2- versuch das ganze ohne vite zu machen!!!
+3- formatting!
+__________ sa 1.10.22 waiting at the airport... openlayers v0
+46: *6:46 AM 10/1/2022-6:57 AM 10/1/2022
+47: *6:57 AM 10/1/2022-6:58 AM 10/1/2022
+48: *6:58 AM 10/1/2022-6:59 AM 10/1/2022
+49: *6:59 AM 10/1/2022-7:03 AM 10/1/2022
+50: *7:03 AM 10/1/2022-7:05 AM 10/1/2022
+51: *7:05 AM 10/1/2022-7:09 AM 10/1/2022
+52: *7:09 AM 10/1/2022-7:12 AM 10/1/2022
+53: *7:12 AM 10/1/2022-7:16 AM 10/1/2022
+54: *7:16 AM 10/1/2022-7:18 AM 10/1/2022
+55: *7:18 AM 10/1/2022-7:22 AM 10/1/2022
+56: *7:22 AM 10/1/2022-7:28 AM 10/1/2022
+57: *7:28 AM 10/1/2022-7:29 AM 10/1/2022
+58: *7:29 AM 10/1/2022-7:34 AM 10/1/2022
+59: *7:34 AM 10/1/2022-7:38 AM 10/1/2022
+60: *7:38 AM 10/1/2022-7:39 AM 10/1/2022
+61: *7:39 AM 10/1/2022-7:40 AM 10/1/2022
+62: *7:40 AM 10/1/2022-7:45 AM 10/1/2022
+63: *7:45 AM 10/1/2022-8:00 AM 10/1/2022
+64: *8:00 AM 10/1/2022-8:03 AM 10/1/2022
+65: *8:03 AM 10/1/2022-8:11 AM 10/1/2022
+66: *8:11 AM 10/1/2022-8:22 AM 10/1/2022
+67: *8:22 AM 10/1/2022-9:50 AM 10/1/2022
+ok - brot
+ok - fa
+ok - fe discord
+ok - kges
+71: *9:50 AM 10/1/2022-10:02 AM 10/1/2022
+72: *10:02 AM 10/1/2022-10:03 AM 10/1/2022
+73: *10:03 AM 10/1/2022-1:55 PM 10/1/2022
+74: *1:55 PM 10/1/2022-1:55 PM 10/1/2022
+ok - skype
+75: *5:28 PM 10/1/2022-
+- also was will ich machen?
+__________ so 2.10.22 waiting at the airport... openlayers v0
+76: *5:59 AM 10/2/2022-6:01 AM 10/2/2022
+77: *6:01 AM 10/2/2022-6:03 AM 10/2/2022
+78: *6:03 AM 10/2/2022-6:07 AM 10/2/2022
+79: *6:07 AM 10/2/2022-6:11 AM 10/2/2022
+80: *6:11 AM 10/2/2022-6:15 AM 10/2/2022
+81: *6:15 AM 10/2/2022-6:23 AM 10/2/2022
+82: *6:23 AM 10/2/2022-6:28 AM 10/2/2022
+83: *6:28 AM 10/2/2022-6:51 AM 10/2/2022
+84: *6:51 AM 10/2/2022-7:01 AM 10/2/2022
+85: *7:01 AM 10/2/2022-7:08 AM 10/2/2022
+86: *7:08 AM 10/2/2022-7:15 AM 10/2/2022
+87: *7:15 AM 10/2/2022-7:15 AM 10/2/2022
+88: *7:16 AM 10/2/2022-7:16 AM 10/2/2022
+89: *7:16 AM 10/2/2022-7:45 AM 10/2/2022
+90: *7:45 AM 10/2/2022-7:45 AM 10/2/2022
+1- drawing
+2- spaeter wieder checken+big data loeschen!!!
+3- upload to RA
+91: *7:46 AM 10/2/2022-7:46 AM 10/2/2022 +10
+92: *7:49 AM 10/2/2022-7:50 AM 10/2/2022
+93: *7:50 AM 10/2/2022-7:52 AM 10/2/2022
+94: *7:52 AM 10/2/2022-7:54 AM 10/2/2022
+95: *7:54 AM 10/2/2022-7:55 AM 10/2/2022
+96: *7:56 AM 10/2/2022-8:06 AM 10/2/2022 +20
+1- code
+2- OpenLayers removeInteraction
+3- activate draw
+1- draw
+2- styles weg
+3- mach noch mehr tools: draw
+97: *8:06 AM 10/2/2022-8:14 AM 10/2/2022 +30
+98: *8:15 AM 10/2/2022-8:16 AM 10/2/2022
+99: *8:16 AM 10/2/2022-8:25 AM 10/2/2022
+100: *8:25 AM 10/2/2022-8:35 AM 10/2/2022
+1- deleter ramp ausgabe
+2- mach ein load tool
+3- clear soll die geojson map reloaden
+101: *8:36 AM 10/2/2022-9:12 AM 10/2/2022 +40
+2- 1- 
+3- OpenLayers restore source to original source
+104: *9:12 AM 10/2/2022- +50
+=>spaz
+105: *10:09 AM 10/2/2022-10:47 AM 10/2/2022
+106: *10:47 AM 10/2/2022-10:47 AM 10/2/2022
+107: *10:47 AM 10/2/2022-10:58 AM 10/2/2022
+108: *10:58 AM 10/2/2022-11:04 AM 10/2/2022
+109: *11:04 AM 10/2/2022-11:06 AM 10/2/2022
+110: *11:06 AM 10/2/2022-11:21 AM 10/2/2022
+111: *11:21 AM 10/2/2022-11:29 AM 10/2/2022
+112: *11:29 AM 10/2/2022-11:31 AM 10/2/2022
+113: *11:31 AM 10/2/2022-11:52 AM 10/2/2022
+P1+E
+114: *11:53 AM 10/2/2022-11:55 AM 10/2/2022
+115: *11:55 AM 10/2/2022-11:57 AM 10/2/2022
+116: *11:57 AM 10/2/2022-12:04 PM 10/2/2022
+117: *12:05 PM 10/2/2022-12:05 PM 10/2/2022
+118: *12:06 PM 10/2/2022-12:08 PM 10/2/2022
+1- bug 135!
+2- bug 132
+3- index.html: title MAP!!!
+119: *12:08 PM 10/2/2022-12:09 PM 10/2/2022
+120: *12:10 PM 10/2/2022-12:13 PM 10/2/2022
+121: *12:13 PM 10/2/2022-12:18 PM 10/2/2022
+1- find ol.coordinate.format
+2- OpenLayers format
+3- 136 bug!
+122: *12:18 PM 10/2/2022-12:31 PM 10/2/2022
+123: *12:31 PM 10/2/2022-2:31 PM 10/2/2022
+124: *2:32 PM 10/2/2022-2:57 PM 10/2/2022
+1- add a marker to current geo position openlayers
+2- wie kann ich start position mit einem pin point markieren?
+3- einfach remove format!
+125: *2:58 PM 10/2/2022-2:59 PM 10/2/2022
+126: *2:59 PM 10/2/2022-3:02 PM 10/2/2022
+127: *3:02 PM 10/2/2022-3:10 PM 10/2/2022
+128: *3:10 PM 10/2/2022-3:10 PM 10/2/2022
+1- was ist bei line 161??? das war mousepos ausgabe!
+2- bug:
+3- test: was spuckt das styling aus?
+129: *3:10 PM 10/2/2022-3:13 PM 10/2/2022
+130: *3:13 PM 10/2/2022-3:21 PM 10/2/2022
+131: *3:21 PM 10/2/2022-3:22 PM 10/2/2022
+1- test: success???
+2- add baustelle.js
+3- wo genau sollte ein punkt gezeichnet werden???
+132: *3:22 PM 10/2/2022-3:28 PM 10/2/2022
+133: *3:28 PM 10/2/2022-3:38 PM 10/2/2022
+134: *3:38 PM 10/2/2022-3:41 PM 10/2/2022
+1- download jsfiddle complete example
+2- openlayers: add an image to map at coordinates
+3- geht es wenn ich export add_marker sage???
+135: *3:42 PM 10/2/2022-3:42 PM 10/2/2022
+136: *3:56 PM 10/2/2022-4:18 PM 10/2/2022
+137: *4:18 PM 10/2/2022-4:19 PM 10/2/2022
+1- zurueck zur fiddle! copy js
+2- download jsfiddle complete example
+3- download jsfiddle
+138: *4:19 PM 10/2/2022-6:14 PM 10/2/2022
+140: *6:14 PM 10/2/2022-6:15 PM 10/2/2022
+141: *6:15 PM 10/2/2022-6:20 PM 10/2/2022
+1- goto code olex
+2- ok wieso zeichnet err den point nicht?
+3- goto fiddle and copy html code
+142: *6:20 PM 10/2/2022-6:35 PM 10/2/2022
+143: *6:36 PM 10/2/2022-6:39 PM 10/2/2022
+144: *6:39 PM 10/2/2022-8:16 PM 10/2/2022
+__________ mo 3.10.22 waiting at the airport... openlayers v0
+145: *5:30 AM 10/3/2022-5:39 AM 10/3/2022
+146: *5:39 AM 10/3/2022-6:08 AM 10/3/2022
+147: *6:08 AM 10/3/2022-6:17 AM 10/3/2022
+148: *6:20 AM 10/3/2022-6:21 AM 10/3/2022
+149: *6:21 AM 10/3/2022-6:23 AM 10/3/2022
+150: *6:23 AM 10/3/2022-6:26 AM 10/3/2022
+151: *6:26 AM 10/3/2022-6:35 AM 10/3/2022
+152: *6:35 AM 10/3/2022-6:36 AM 10/3/2022
+153: *6:36 AM 10/3/2022-6:36 AM 10/3/2022
+- versuch weiterzumachen!
+- New York [-74.006111, 40.712778]
+- https://www.geoapify.com/leaflet-vs-openlayers
+- muss mir noch leaflet anschauen!
+- back to normal stuff
+152: *6:36 AM 10/3/2022-7:09 AM 10/3/2022
+153: *7:09 AM 10/3/2022-7:11 AM 10/3/2022
+154: *7:11 AM 10/3/2022-7:23 AM 10/3/2022
+155: *7:23 AM 10/3/2022-7:25 AM 10/3/2022
+?- what is elm-pep.js fuer pointer events
+- rename map to olsimplified
+- mach neues ol7 project aus dem olmini ohne modules!
+- what does it take to make a selection tool?
+156: *7:25 AM 10/3/2022-7:26 AM 10/3/2022
+157: *7:26 AM 10/3/2022-7:28 AM 10/3/2022
+158: *7:29 AM 10/3/2022-7:29 AM 10/3/2022
+159: *7:29 AM 10/3/2022-7:33 AM 10/3/2022
+160: *7:33 AM 10/3/2022-7:46 AM 10/3/2022
+161: *7:46 AM 10/3/2022-7:51 AM 10/3/2022
+162: *7:51 AM 10/3/2022-7:51 AM 10/3/2022
+>>createColormap heisst jetzt: colorMap
+- colormap zu basemin.js
+163: *7:51 AM 10/3/2022-8:05 AM 10/3/2022
+164: *8:05 AM 10/3/2022-8:48 AM 10/3/2022
+165: *8:48 AM 10/3/2022-8:48 AM 10/3/2022
+- omg that took long!!!!!!!!!!!!!!!
+- was ist das erste tool?
+- from olmini!
+- open nodemaster
+- close all
+166: *8:49 AM 10/3/2022-8:53 AM 10/3/2022
+167: *8:53 AM 10/3/2022-8:55 AM 10/3/2022
+- brauch ich ein ol.css.map??? NEIN!
+168: *8:55 AM 10/3/2022-9:16 AM 10/3/2022
+169: *9:16 AM 10/3/2022-11:27 AM 10/3/2022
+ok - skype
+ok - fgu
+ok - spz
+175: *11:28 AM 10/3/2022-11:28 AM 10/3/2022
+sam call- tel sam 100#
+275: *11:28 AM 10/3/2022-11:32 AM 10/3/2022
+276: *11:32 AM 10/3/2022-11:35 AM 10/3/2022
+277: *11:35 AM 10/3/2022-11:40 AM 10/3/2022
+278: *11:40 AM 10/3/2022-1:42 PM 10/3/2022
+279: *1:42 PM 10/3/2022-1:43 PM 10/3/2022
+280: *1:44 PM 10/3/2022-1:46 PM 10/3/2022
+281: *1:46 PM 10/3/2022-1:49 PM 10/3/2022
+282: *1:49 PM 10/3/2022-2:10 PM 10/3/2022
+1- was ist anders bei eine OSM map?
+2- bg
+3- make map irgendwie
+- check guggi!
+1- hol mir den schoenen dunkelblauen bg!
+2- add_layer(key,options)
+3- map_init api
+- how to make a map?
+283: *2:10 PM 10/3/2022-5:05 PM 10/3/2022
+284: *5:05 PM 10/3/2022-5:20 PM 10/3/2022
+285: *5:20 PM 10/3/2022-5:26 PM 10/3/2022
+286: *5:26 PM 10/3/2022-5:30 PM 10/3/2022
+287: *5:30 PM 10/3/2022-5:34 PM 10/3/2022
+288: *5:34 PM 10/3/2022-5:40 PM 10/3/2022
+289: *5:40 PM 10/3/2022-5:49 PM 10/3/2022
+290: *5:49 PM 10/3/2022-5:52 PM 10/3/2022
+291: *5:52 PM 10/3/2022-5:53 PM 10/3/2022
+292: *5:53 PM 10/3/2022-6:46 PM 10/3/2022
+ok - gusp
+ok - essen
+ok - kit cl
+ok - saft
+ok - pfirsich
+data:moecht aus world city nur lat,long,country,population
+1- look at world cities csv
+2- cities longitude latitude
+3- center dictionary
+1- init ecoregions map
+2- center?
+3- wie mach ich eine OSM source?
+?-was ist mit dem style?
+297: *6:46 PM 10/3/2022-6:49 PM 10/3/2022
+298: *6:49 PM 10/3/2022-6:52 PM 10/3/2022
+299: *6:52 PM 10/3/2022-6:53 PM 10/3/2022
+300: *6:53 PM 10/3/2022-7:07 PM 10/3/2022
+1- how can I get specific information out of OSM map?
+2- countries und capitals hab ich
+3- was hab ich denn schon an daten?
+301: *7:07 PM 10/3/2022-7:25 PM 10/3/2022
+302: *7:26 PM 10/3/2022-7:28 PM 10/3/2022
+1- test opencagedata
+2- opencagedata https://opencagedata.com/dashboard#geocoding google login
+3- bug
+303: *7:28 PM 10/3/2022-7:33 PM 10/3/2022
+304: *7:33 PM 10/3/2022-7:37 PM 10/3/2022
+1- versuch ein href
+2- wie sende ich 
+3- https://api.opencagedata.com/geocode/v1/json?key=272acb1dd4714474a25ac4c60b588688&q=52.3877830%2C+9.7334394&pretty=1&no_annotations=1
+305: *7:41 PM 10/3/2022-8:12 PM 10/3/2022
+306: *8:13 PM 10/3/2022-8:13 PM 10/3/2022
+307: *8:13 PM 10/3/2022-8:13 PM 10/3/2022
+__________ di 4.10.22 waiting at the airport... openlayers v0
+308: *8:13 PM 10/3/2022-6:59 AM 10/4/2022
+309: *6:59 AM 10/4/2022-7:03 AM 10/4/2022
+310: *7:03 AM 10/4/2022-7:04 AM 10/4/2022
+311: *7:04 AM 10/4/2022-7:05 AM 10/4/2022
+312: *7:05 AM 10/4/2022-7:09 AM 10/4/2022
+313: *7:09 AM 10/4/2022-7:17 AM 10/4/2022
+314: *7:17 AM 10/4/2022-7:55 AM 10/4/2022
+315: *7:55 AM 10/4/2022-7:59 AM 10/4/2022
+316: *8:00 AM 10/4/2022-8:00 AM 10/4/2022
+317: *8:00 AM 10/4/2022-8:08 AM 10/4/2022
+318: *8:08 AM 10/4/2022-8:32 AM 10/4/2022
+319: *8:32 AM 10/4/2022-8:32 AM 10/4/2022
+320: *8:32 AM 10/4/2022-8:33 AM 10/4/2022
+321: *8:33 AM 10/4/2022-8:43 AM 10/4/2022
+322: *8:43 AM 10/4/2022-8:45 AM 10/4/2022
+323: *8:45 AM 10/4/2022-8:45 AM 10/4/2022
+324: *8:46 AM 10/4/2022-8:53 AM 10/4/2022
+325: *8:53 AM 10/4/2022-9:03 AM 10/4/2022
+10'- challenge: add point to coordinates
+326: *9:03 AM 10/4/2022-9:04 AM 10/4/2022
+327: *9:04 AM 10/4/2022-9:05 AM 10/4/2022
+328: *9:05 AM 10/4/2022-9:06 AM 10/4/2022
+329: *9:06 AM 10/4/2022-9:16 AM 10/4/2022
+7' - challenge: create a city layer, add to that!
+330: *9:16 AM 10/4/2022-9:17 AM 10/4/2022
+331: *9:17 AM 10/4/2022-9:25 AM 10/4/2022
+332: *9:25 AM 10/4/2022-9:27 AM 10/4/2022
+333: *9:27 AM 10/4/2022-9:31 AM 10/4/2022
+334: *9:31 AM 10/4/2022-9:32 AM 10/4/2022
+335: *9:32 AM 10/4/2022-10:08 AM 10/4/2022
+336: *10:08 AM 10/4/2022-10:11 AM 10/4/2022
+337: *10:11 AM 10/4/2022-10:20 AM 10/4/2022
+338: *10:27 AM 10/4/2022-10:32 AM 10/4/2022
+5;- cha3: add 20 random cities to city layer
+339: *10:32 AM 10/4/2022-10:39 AM 10/4/2022
+340: *10:39 AM 10/4/2022-12:44 PM 10/4/2022
+341: *12:49 PM 10/4/2022-12:50 PM 10/4/2022
+342: *12:50 PM 10/4/2022-12:54 PM 10/4/2022
+343: *12:54 PM 10/4/2022-12:58 PM 10/4/2022
+344: *12:58 PM 10/4/2022-1:00 PM 10/4/2022
+345: *1:00 PM 10/4/2022-1:02 PM 10/4/2022
+346: *1:02 PM 10/4/2022-1:14 PM 10/4/2022
+347: *1:15 PM 10/4/2022-1:38 PM 10/4/2022
+348: *1:38 PM 10/4/2022-1:39 PM 10/4/2022
+349: *1:39 PM 10/4/2022-1:48 PM 10/4/2022
+1- was ist los mit country France?
+2- info.capital
+3- jsyaml include!
+1- load info
+2- open base.assets
+3- schau was bei paris steht
+350: *1:48 PM 10/4/2022-1:52 PM 10/4/2022
+351: *1:52 PM 10/4/2022-5:44 PM 10/4/2022
+352: *5:44 PM 10/4/2022-5:46 PM 10/4/2022
+1- nix hilft wirklich!
+2- challenge: save cities in a yaml dict
+3- schreib einfach: capital
+353: *5:51 PM 10/4/2022-7:42 PM 10/4/2022
+__________ mi 5.10.22 waiting at the airport... 
+354: *6:02 AM 10/5/2022-6:06 AM 10/5/2022
+355: *6:06 AM 10/5/2022-6:06 AM 10/5/2022
+356: *6:07 AM 10/5/2022-6:10 AM 10/5/2022
+357: *6:10 AM 10/5/2022-6:12 AM 10/5/2022
+358: *6:13 AM 10/5/2022-6:19 AM 10/5/2022
+359: *6:19 AM 10/5/2022-6:20 AM 10/5/2022
+360: *6:20 AM 10/5/2022-6:21 AM 10/5/2022
+361: *6:22 AM 10/5/2022-6:22 AM 10/5/2022
+- click() exists but does NOT work on <a>!!!!!!!!!!!!!
+362: *6:22 AM 10/5/2022-6:24 AM 10/5/2022
+363: *6:24 AM 10/5/2022-6:32 AM 10/5/2022
+364: *6:32 AM 10/5/2022-6:35 AM 10/5/2022
+365: *6:35 AM 10/5/2022-6:35 AM 10/5/2022
+366: *6:35 AM 10/5/2022-7:21 AM 10/5/2022
+heft
+386: *7:21 AM 10/5/2022- 7:21 AM 10/5/2022
+- save cities!
+387: *7:22 AM 10/5/2022-7:28 AM 10/5/2022
+388: *7:29 AM 10/5/2022-7:30 AM 10/5/2022
+389: *7:30 AM 10/5/2022-7:31 AM 10/5/2022
+390: *7:31 AM 10/5/2022-7:33 AM 10/5/2022
+391: *7:34 AM 10/5/2022-8:08 AM 10/5/2022
+- 10'
+- heft weiter!
+- moechte M.map = map_init_OSM
+- rem cons
+- geht garnicht!
+- process cities: 
+- init M to {}
+- test0_simulateClick
+- simulateClick
+- other
+- fire click programmatically
+- loasung
+- js what to use instead of initEvent
+- welchese davon wird gemacht?
+- fireClick does not work!!!
+- ich moecht einfach nur ein file downloaden!!!
+392: *8:08 AM 10/5/20220-8:15 AM 10/5/2022
+393: *8:15 AM 10/5/2022-8:25 AM 10/5/2022
+394: *8:25 AM 10/5/2022-8:29 AM 10/5/2022
+395: *8:29 AM 10/5/2022-8:32 AM 10/5/2022
+396: *8:32 AM 10/5/2022-8:55 AM 10/5/2022
+406: *8:55 AM 10/5/2022-9:01 AM 10/5/2022
+407: *9:01 AM 10/5/2022-9:02 AM 10/5/2022
+408: *9:02 AM 10/5/2022-9:04 AM 10/5/2022
+409: *9:04 AM 10/5/2022-9:12 AM 10/5/2022
+410: *9:12 AM 10/5/2022-9:47 AM 10/5/2022
+411: *9:47 AM 10/5/2022-10:06 AM 10/5/2022
+412: *10:06 AM 10/5/2022-1:30 PM 10/5/2022
+ok - auto, sam
+452: *1:30 PM 10/5/2022-1:53 PM 10/5/2022
+453: *1:54 PM 10/5/2022-2:26 PM 10/5/2022
+454: *2:26 PM 10/5/2022-2:46 PM 10/5/2022
+- color_by_area
+- bug maphelpers 63 goto
+455: *2:46 PM 10/5/2022-2:48 PM 10/5/2022
+456: *2:48 PM 10/5/2022-2:59 PM 10/5/2022
+- color_by_area bekommt einen param 
+457: *2:59 PM 10/5/2022-3:13 PM 10/5/2022
+458: *3:13 PM 10/5/2022-3:30 PM 10/5/2022
+459: *3:30 PM 10/5/2022-3:36 PM 10/5/2022
+460: *3:36 PM 10/5/2022-3:53 PM 10/5/2022
+461: *3:53 PM 10/5/2022-3:57 PM 10/5/2022
+462: *3:57 PM 10/5/2022-4:12 PM 10/5/2022
+463: *4:12 PM 10/5/2022-6:35 PM 10/5/2022
+464: *6:35 PM 10/5/2022-6:35 PM 10/5/2022
+ok - spaz
+ok - egu
+ok - kit cl
+ok - spaz gu
+470: *6:35 PM 10/5/2022-6:43 PM 10/5/2022
+471: *6:43 PM 10/5/2022-6:51 PM 10/5/2022
+472: *6:51 PM 10/5/2022-7:04 PM 10/5/2022
+473: *7:04 PM 10/5/2022-7:05 PM 10/5/2022
+474: *7:05 PM 10/5/2022-7:18 PM 10/5/2022
+475: *7:18 PM 10/5/2022-7:30 PM 10/5/2022
+476: *7:30 PM 10/5/2022-8:26 PM 10/5/2022
+__________ do 6.10.22 waiting at the airport... 
+477: *4:19 AM 10/6/2022-4:23 AM 10/6/2022
+478: *4:23 AM 10/6/2022-4:24 AM 10/6/2022
+479: *4:24 AM 10/6/2022-4:48 AM 10/6/2022
+480: *4:49 AM 10/6/2022-5:00 AM 10/6/2022
+481: *5:01 AM 10/6/2022-5:14 AM 10/6/2022
+482: *5:14 AM 10/6/2022-5:16 AM 10/6/2022
+483: *5:16 AM 10/6/2022-5:28 AM 10/6/2022
+484: *5:28 AM 10/6/2022-5:29 AM 10/6/2022
+485: *5:29 AM 10/6/2022-5:59 AM 10/6/2022
+486: *5:59 AM 10/6/2022-6:34 AM 10/6/2022
+487: *6:34 AM 10/6/2022-7:18 AM 10/6/2022
+488: *7:18 AM 10/6/2022-7:36 AM 10/6/2022
+489: *7:36 AM 10/6/2022-7:36 AM 10/6/2022
+490: *7:36 AM 10/6/2022-7:44 AM 10/6/2022
+491: *7:44 AM 10/6/2022-8:05 AM 10/6/2022
+492: *8:06 AM 10/6/2022-8:09 AM 10/6/2022
+493: *8:09 AM 10/6/2022-8:24 AM 10/6/2022
+494: *8:24 AM 10/6/2022-8:24 AM 10/6/2022
+495: *8:25 AM 10/6/2022-8:33 AM 10/6/2022
+496: *8:33 AM 10/6/2022-9:03 AM 10/6/2022
+497: *9:04 AM 10/6/2022-9:31 AM 10/6/2022
+498: *9:31 AM 10/6/2022-9:35 AM 10/6/2022
+499: *9:35 AM 10/6/2022-9:39 AM 10/6/2022
+500: *9:40 AM 10/6/2022-2:47 PM 10/6/2022
+spjes
+540: *2:48 PM 10/6/2022-4:38 PM 10/6/2022
+- post gescanned
+550: *4:38 PM 10/6/2022-4:38 PM 10/6/2022
+551: *4:38 PM 10/6/2022-7:44 PM 10/6/2022
+http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png
+http://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png
+http://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}.png
+http://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png
+https://cartocdn_{s}.global.ssl.fastly.net/base-antique/{z}/{x}/{y}.png
+https://cartocdn_{s}.global.ssl.fastly.net/base-eco/{z}/{x}/{y}.png
+__________ fr 7.10.22 waiting at the airport... mar23
+TODAY IS THERAPY DAY!!!!
+552: *7:04 AM 10/7/2022-7:09 AM 10/7/2022
+553: *7:10 AM 10/7/2022-7:32 AM 10/7/2022
+554: *7:32 AM 10/7/2022-8:06 AM 10/7/2022
+555: *8:06 AM 10/7/2022-8:17 AM 10/7/2022
+556: *8:17 AM 10/7/2022-8:19 AM 10/7/2022
+557: *8:19 AM 10/7/2022-8:20 AM 10/7/2022
+558: *8:20 AM 10/7/2022-8:21 AM 10/7/2022
+559: *8:21 AM 10/7/2022-8:40 AM 10/7/2022
+560: *8:40 AM 10/7/2022-10:20 AM 10/7/2022
+hzeug
+580: *10:20 AM 10/7/2022-10:21 AM 10/7/2022
+581: *10:21 AM 10/7/2022-10:22 AM 10/7/2022
+582: *10:22 AM 10/7/2022-10:24 AM 10/7/2022
+583: *10:24 AM 10/7/2022-10:25 AM 10/7/2022
+584: *10:25 AM 10/7/2022-10:28 AM 10/7/2022
+585: *10:28 AM 10/7/2022-10:35 AM 10/7/2022
+586: *10:35 AM 10/7/2022-10:38 AM 10/7/2022
+587: *10:38 AM 10/7/2022-10:39 AM 10/7/2022
+588: *10:39 AM 10/7/2022-10:41 AM 10/7/2022
+589: *10:41 AM 10/7/2022-10:43 AM 10/7/2022
+590: *10:43 AM 10/7/2022-10:45 AM 10/7/2022
+591: *10:45 AM 10/7/2022-10:48 AM 10/7/2022
+- read what are subdomains!
+subdomains: speed up loading by loading from multiple server in parallell - also a technicality
+592: *10:48 AM 10/7/2022-10:53 AM 10/7/2022
+593: *10:53 AM 10/7/2022-10:56 AM 10/7/2022
+594: *10:56 AM 10/7/2022-11:05 AM 10/7/2022
+595: *11:05 AM 10/7/2022-11:10 AM 10/7/2022
+- gu erinnern: schwimmen
+596: *11:10 AM 10/7/2022-11:11 AM 10/7/2022
+597: *11:11 AM 10/7/2022-11:14 AM 10/7/2022
+598: *11:14 AM 10/7/2022-11:15 AM 10/7/2022
+599: *11:15 AM 10/7/2022-11:15 AM 10/7/2022
+600: *11:16 AM 10/7/2022-11:19 AM 10/7/2022
+601: *11:19 AM 10/7/2022-11:20 AM 10/7/2022
+602: *11:20 AM 10/7/2022-11:24 AM 10/7/2022
+603: *11:24 AM 10/7/2022-11:27 AM 10/7/2022
+- such das beispiel mit den layers ich glaub in layers.html
+604: *11:27 AM 10/7/2022-12:33 PM 10/7/2022
+605: *12:33 PM 10/7/2022-12:38 PM 10/7/2022
+606: *12:38 PM 10/7/2022-12:39 PM 10/7/2022
+607: *12:39 PM 10/7/2022-12:45 PM 10/7/2022
+608: *12:45 PM 10/7/2022-12:46 PM 10/7/2022
+609: *12:46 PM 10/7/2022-12:54 PM 10/7/2022
+610: *12:54 PM 10/7/2022-12:54 PM 10/7/2022
+611: *12:54 PM 10/7/2022-12:56 PM 10/7/2022
+612: *12:56 PM 10/7/2022-12:59 PM 10/7/2022
+613: *12:59 PM 10/7/2022-1:12 PM 10/7/2022
+614: *1:12 PM 10/7/2022-1:13 PM 10/7/2022
+615: *1:13 PM 10/7/2022-1:18 PM 10/7/2022
+616: *1:18 PM 10/7/2022-4:52 PM 10/7/2022
+__________ sa 8.10.22 waiting at the airport... mar23
+617: *4:52 PM 10/7/2022-5:29 AM 10/8/2022
+618: *5:29 AM 10/8/2022-5:44 AM 10/8/2022
+619: *5:44 AM 10/8/2022-5:48 AM 10/8/2022
+620: *5:48 AM 10/8/2022-5:51 AM 10/8/2022
+621: *5:51 AM 10/8/2022-5:55 AM 10/8/2022
+622: *5:55 AM 10/8/2022-6:00 AM 10/8/2022
+623: *6:00 AM 10/8/2022-6:07 AM 10/8/2022
+624: *6:07 AM 10/8/2022-6:18 AM 10/8/2022
+625: *6:18 AM 10/8/2022-6:40 AM 10/8/2022
+626: *6:40 AM 10/8/2022-6:52 AM 10/8/2022
+627: *6:52 AM 10/8/2022-7:00 AM 10/8/2022
+628: *7:00 AM 10/8/2022-7:03 AM 10/8/2022
+629: *7:04 AM 10/8/2022-7:04 AM 10/8/2022
+630: *7:04 AM 10/8/2022-7:06 AM 10/8/2022
+631: *7:06 AM 10/8/2022-7:17 AM 10/8/2022
+632: *7:17 AM 10/8/2022-7:21 AM 10/8/2022
+633: *7:21 AM 10/8/2022-7:24 AM 10/8/2022
+634: *7:24 AM 10/8/2022-8:19 AM 10/8/2022
+atlas: https://tile.thunderforest.com/atlas/{z}/{x}/{y}.png?apikey=87e7668535754c798ef4870cadbeb2ab
+635: *8:19 AM 10/8/2022-9:26 AM 10/8/2022
+ok - fgu
+ok - wae
+636: *10:11 AM 10/8/2022-10:22 AM 10/8/2022
+637: *10:22 AM 10/8/2022-10:23 AM 10/8/2022
+638: *10:23 AM 10/8/2022-10:24 AM 10/8/2022
+639: *10:24 AM 10/8/2022-10:26 AM 10/8/2022
+mood swings description of emotion! =>mach eine app!
+640: *10:27 AM 10/8/2022-5:58 PM 10/8/2022
+herd geputzt
+650: *5:58 PM 10/8/2022-6:02 PM 10/8/2022
+651: *6:11 PM 10/8/2022-7:46 PM 10/8/2022
+__________ so 9.10.22 waiting at the airport... <200
+652: *6:05 AM 10/9/2022-6:07 AM 10/9/2022
+653: *6:07 AM 10/9/2022-6:08 AM 10/9/2022
+654: *6:08 AM 10/9/2022-6:09 AM 10/9/2022
+- liste fertig durchgehen!
+655: *6:10 AM 10/9/2022-6:15 AM 10/9/2022
+656: *6:15 AM 10/9/2022-6:15 AM 10/9/2022
+657: *6:15 AM 10/9/2022-6:26 AM 10/9/2022
+658: *6:26 AM 10/9/2022-6:34 AM 10/9/2022
+659: *6:35 AM 10/9/2022-6:37 AM 10/9/2022
+660: *6:37 AM 10/9/2022-6:44 AM 10/9/2022
+661: *6:44 AM 10/9/2022-6:46 AM 10/9/2022
+- goto code layers
+- wie mach ich ein ganz schwaches overlay layer?
+- HERE maps
+- beispiel: imagery als baselayer und 
+- wie mach ich eine overlaymap?
+- schneller durchgehen! alle ESRI weg
+- das ist ja nur fuer die basemap, stay und mach weiter!
+- goto code providers
+- wie find ich heraus ob esri map eine id braucht?
+Esri WorldTerrain
+- location kann ich eigentlich aus M.cities nehmen!!!
+662: *6:47 AM 10/9/2022-6:52 AM 10/9/2022
+663: *6:52 AM 10/9/2022-6:53 AM 10/9/2022
+664: *6:53 AM 10/9/2022-6:55 AM 10/9/2022
+- open close layers control! collapsed parameter!
+L.control.layers(baseLayers, overlayLayers, { collapsed: false }).addTo(map);
+var layerControl = L.control.layers(baseLayers, overlays).addTo(map);
+665: *6:55 AM 10/9/2022-7:00 AM 10/9/2022
+666: *7:00 AM 10/9/2022-7:32 AM 10/9/2022
+667: *7:32 AM 10/9/2022-7:38 AM 10/9/2022
+668: *7:38 AM 10/9/2022-7:42 AM 10/9/2022
+669: *7:42 AM 10/9/2022-7:47 AM 10/9/2022
+=>https://leafletjs.com/reference.html#control-layers
+use layercontrol.expand() and layercontrol.collapse
+670: *7:47 AM 10/9/2022-7:58 AM 10/9/2022
+671: *7:58 AM 10/9/2022-8:12 AM 10/9/2022
+672: *8:12 AM 10/9/2022-8:22 AM 10/9/2022
+673: *8:22 AM 10/9/2022-8:37 AM 10/9/2022
+674: *8:37 AM 10/9/2022-8:39 AM 10/9/2022
+675: *8:39 AM 10/9/2022-8:49 AM 10/9/2022
+676: *8:49 AM 10/9/2022-9:04 AM 10/9/2022
+- jetzt gibt es schon wieder ein problem: das bloede layers control mag nicht mehr!
+- mach die tools rechts!
+- was ist da los?
+- remove a layers control from map leaflet
+- hol mir basemin!
+677: *9:04 AM 10/9/2022-9:44 AM 10/9/2022
+678: *9:44 AM 10/9/2022-9:44 AM 10/9/2022
+679: *9:44 AM 10/9/2022-9:57 AM 10/9/2022
+680: *9:57 AM 10/9/2022-9:59 AM 10/9/2022
+681: *9:59 AM 10/9/2022-11:04 AM 10/9/2022
+spa
+691: *11:04 AM 10/9/2022-11:07 AM 10/9/2022
+692: *11:07 AM 10/9/2022-11:09 AM 10/9/2022
+693: *11:09 AM 10/9/2022-
+angular tutorial traversy: https://www.youtube.com/watch?v=3dHNOWTI7H8
+github: https://github.com/bradtraversy/angular-crash-2021
+angular apps are 1 page apps
+npm install -g @angular/cli
+ng new angularcrash
+cd angularcrash
+open angularcrash w/ vs code
+ng serve (produziert ein bundle aber wo?)
+=>open browser to localhost:4200
+694: *11:10 AM 10/9/2022-11:11 AM 10/9/2022
+695: *11:12 AM 10/9/2022-11:19 AM 10/9/2022
+challenge1: create new angular app ...passed!
+696: *11:19 AM 10/9/2022-11:20 AM 10/9/2022
+697: *11:20 AM 10/9/2022-11:21 AM 10/9/2022
+- wie gross ist das zeug? 330MB!!!! NE NIEMALS!!!
+698: *11:21 AM 10/9/2022-11:28 AM 10/9/2022
+kurze pause: bga
+ok - reis abdrehen + peanuts holen!
+699: *11:32 AM 10/9/2022-12:00 PM 10/9/2022
+700: *12:00 PM 10/9/2022-12:01 PM 10/9/2022
+701: *12:01 PM 10/9/2022-12:17 PM 10/9/2022
+702: *12:17 PM 10/9/2022-12:31 PM 10/9/2022
+703: *12:31 PM 10/9/2022-12:38 PM 10/9/2022
+704: *12:38 PM 10/9/2022-
+was will ich eigentlich machen???
+leider ist angularjs outdated und daher ist leaflet directive unbrauchbar
+- mach angular project in nodemaster
+- was ist das????????????
 
-650: *
 
 
 
@@ -24,6 +676,573 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+wie hab ich vorher layers gemacht?
+challenge 1- ich moecht das layer control pinnable machen
+
+
+- layer control: switch between satellite and map
+setView(center, zoom); // which also sets the map center
+flyTo(center, zoom); // like setView but with a smooth animation
+zoomIn() / zoomIn(delta); // zooms in delta zoom levels, 1 by default
+zoomOut() / zoomOut(delta); // zooms out delta zoom levels, 1 by default
+setZoomAround(fixedPoint, zoom); // sets the zoom level while keeping a point fixed(what scrollwheel zooming does)
+fitBounds(bounds);  //automatically calculates the zoom to fit a rectangular area on the map
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+quinoa lentils yogurt peas pumpkin seeds peanuts beans mushrooms
+
+___________easy tv:
+1- mach ein layerdict from https://bl.ocks.org/Xatpy/raw/854297419bd7eb3421d0/
+2- Notions all about leaflet
+3- HERE maps account machen
+4- explore weitere providers und test providers interface!
+5- zeichne style in jawg und upload!
+6- add bookmark fuer jawg
+7- sort bookmarks to e8=maps
+8- angular course + challenges => OneNote
+
+
+
+
+
+
+
+
+
+
+
+
+- map meeds a layer to display!
+- maphelpers
+- load yaml dict	
+- goto base/mapdata
+- jetzt lies wieder die city data ein!
+- close all others!
+- how to create OSM map in leaflet
+- update to leaf
+- mach ein dir: leaf
+- mach mal ein map_init_OSM
+- create_map url
+- wie wuerde eine leaflet app fuer nodemaster ausschauen?
+choices: =>therapy!!!!!!!
+1. leaflet app fuer nodemaster
+2. start online python training
+3. weiter mit meinem noc
+
+- I need to stay recluse 
+beantworte keine fragen mehr
+stelle keine fragen mehr
+default: just counting
+
+- dann brauch ich auch noch das mit den arrows!
+- leaflet-topography ist das richtige tool!
+- schau mir topography an!
+- what are the data in heatmap?
+- heatmap.js
+- center map at ?
+
+
+liebe familie!
+
+allerliebster fe, please disregard alles was ich gestern gesagt habe, alles ist ok und Du selbst bist weit besser als ich in entscheidungen treffen.
+
+liebes maedi, bitte auch Du: entscheide frei so wie du willst und lass dich nicht von mir beeinflussen. ich weiss nicht wie wo was fuer wen am besten ist weil ich einfach nur verwirrt bin
+
+lieber guggi: auch Du, bitte geh deinen weg und handle die dinge wie Du halt kannst und willst aber ohne mit meinem input zu rechnen denn ich kann keinen sinnvollen input geben
+
+wenn ich ploetzlich sterben wuerde wuerdet ihr ja auch alle gut zurecht kommen. damit meine ich nicht dass ich vorhabe zu sterben aber geistig schon, das heisst ich will die negativen auswirkungen die ich dauernd auf alle habe einfach nur minimieren und mich zurueckziehen. simplify und einfach alles streichen was zu kompliziert ist.
+
+was ich NICHT kann:
+1. ich kann finanzen und alles was damit zu tun hat nicht handlen es ist zuviel stress und komplikationen damit involviert.
+2. ich kann nicht mehr als 1 boss haben, und weil der guggi selbst probleme hat kann er nicht der boss sein und also muss es felix sein.
+3. ich kann keine entscheidungen treffen. alle meine denkmoeglichkeiten sind verwirrend und ich habe von nichts eine ahnung 
+4. ich kann nicht negotiaten, weder mit Dir guggi noch mit anderen menschen
+5. ich versteh keine legalen sachen
+
+meine skills:
+1. brot backen. 
+2. super einfache haushaltstaetigkeiten sowie kochen oder staubsaugen, aber auch das nur ab und zu.
+3. im umkreis Redmond auto fahren aber nicht bei dunkelheit und nicht auf autobahn
+4. gehen (ist das schon ein skill?)
+5. ich kann simple taetigkeiten machen unter close supervision aber nichts das mit geld zu tun hat
+6. wenn wir kein geld haben kann ich in wien sicher einen job finden. also fuer mich werd ich sorgen koennen aber wahrscheinlich nicht mehr als das.
+7. den guggi betreuen im sinne von notwendige taetigkeiten die entweder fuer mich obvious sind (kochen) oder was der felix sagt (eg., post scannen)
+
+sonst hab ich keine skills leider die brauchbar sind
+
+ich declare jetzt dass der felix der boss ist und im augenblick am besten ueber diese familie entscheiden kann. ich selbst hab zuviel zweifel an allem. der guggi ist irgendwie schwer einzuschaetzen wenn ich auch weiss, der echte guggi ist sehr sehr wohlmeinend und gut. das maedi hat soviel eigene dinge am plate dass man sie derzeit eher nicht belasten sollte in meiner view.
+
+fe du hast soviel gutes schon gemacht und kontinuierlich hilfst du allen um dich herum und wer hilft dir? auch du, und weil es einfach so ist dass wir zu handicalled sind dir zu helfen, ist das scheinbar schon as good as it gets. 
+
+
+
+
+
+
+
+
+
+9h20 fgu
+9h40 Jeslyn!!!!!!!
+=>post einscannen wenn geht!(oder morgen)
+
+
+- restart mit leaflet!
+slow down!!!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+- do I have to pay for using maptiler? cant find that out!!!
+- tiff map download
+- ok ich versuch leaflet
+- noch besser: mach einen map folder in nodemodules
+- darin install everything mit dem scheiss vite
+- eine idee waere: in testlocal mach ich ein extra maps folder
+=>nimm eh den todo folder!
+- mach den todo folder auch fuer online
+- das meiste zeug von assets brauch ich eh nicht
+- aber leider brauch ich basemin!
+- stackblitz.com
+- write text on the map
+- how to write text on the map?
+- ab einem bestimmten zoom level moecht ich den namen der stadt auch sehen
+
+
+N'Djamena capital of Chad
+- das problem ist: 
+New Prague ueberschreibt Prague
+- open cities
+- Prag fehlt!
+
+- bug 86
+- wieso seh ich keine cities?
+
+
+
+- try add city to base layer
+- mach das 
+- impl: map_add_object(M.cities[c],options)
+- how to set layer color?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+- es muss irgendwie herausgefunden werden wie man am besten da durch kommt?
+1. nicht reden garnix tun
+2. viel gehen
+3. strictly nach plan essen und arbeiten
+4. beobachten
+wissen dass aendern der aeusseren umstaende NICHTS verbessert! es lindert die symptome, jedoch sobald die wirkung aufhoert kommt die entzugserscheinung!!! wie eine droge, garnicht anders
+und auch die sucht ist so stark wie bei einer droge
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+- these are NOT capitals!!!
+
+
+
+
+
+- gu auto
+- chall4: only capitals
+3- 
+- map_add_city(data,map)
+
+
+- API entscheidung!
+- das geht!!!!!!
+- chall2 openlayers add values to a feature
+- was wird bei addFeature returned?
+?- soll ich create_style sagen und dann aus den styles immer einen waehlen
+0der
+jedes layer hat schon seinen eigenen style
+- chall2: map_set_layer_style(key,style)
+- color
+- can I add these points to the same layer???????
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+- read text file
+- zuerst brauch ich den text!!!
+- read csv file into db: wo hatte ich sowas???
+- try sorting in excel!
+- open testlocal
+- open cities and save as
+- heut ist frei: flugtag!!!
+- ignore
+
+- does ARCgis API for javascript cost something?
+- npx
+- welches?
+favicon and title
+finde heraus wie ich eine query zu arcgis machen kann?
+- cleanup
+- arcgis zeug
+- was fuer eine query kann ich bei opencagedata machen?
+
+
+
+
+
+
+
+
+
+
+===>aggregate features from:
+- ol-layerswitcher-master
+- olmini
+- olex
+- olselect
+- olsimplified
+
+
+
+
+
+
+
+
+
+1- select
+2- onclick
+3- mach eine function add_circle(pos,color,size)
+
+
+
+
+
+
+
+
+
+
+
+- wie bekomm ich die lon lat von countries geojson
+- what is EPSG:4326
+- wo war das beispiel mit den running coords???
+
+- set to 3'
+???
+- test
+- what next?
+- check mal nach???
+
+- check spaeter wieder ob das alles geklappt hat
+calc_areas
+
+?- how to convert geogson to shp or tiff
+==>- alle maps auf RA geben!
+- brauch ein reset tool: select source
+- create v0.js
+- mach next version!
+- vesuch vector examples : style
+- vielleicht bei den examples?
+- araxis basemin.js
+- was soll es wirklich sein?
+- find lerp
+- createColormap
+- mach colormap utility
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+heavy stuff:
+https://www.youtube.com/watch?v=l05GRJcHWgE
+https://www.youtube.com/watch?v=Ix-4L2dRmRg
+https://www.youtube.com/watch?v=IE_5oBATJT0
+https://www.youtube.com/watch?v=7Xk4FoDZAIo
+
+lighter stuff:
+tiff tutorial workshop weiter
+
+middle:
+sehr langes tutorial aber vielleicht lern ich was davon!
+https://www.youtube.com/watch?v=J61mpJV6hAI
+
+erklaert colormap: https://javascript.hotexamples.com/examples/colormap/-/default/javascript-default-function-examples.html
+
+mach einfach statt colormap eine haendische colormap von 50 colors
+
+zuerst die colormaps: look at colorScale.js!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+- dynamically change favicon
+- dynamically modify favicon
+
+- kann ich irgendwie die data auf meinem server als directory haben und serven?
+- such ein geojson online
+1. link zu vidulusludorum.com/olmini
+2. link zu
+- fe vorbereiten!
+- geojson fehlt!!!
+- html paste emoji character directly into favicon
+Head to https://emojipedia.org/
+Find your emoji.
+Right-Click on the emoji style you prefer (I'm an Apple person)
+Copy the link and insert into your <head> tag like so: <link rel="icon" href="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/apple/155/books_1f4da.png">
+
+nur das favicon und title
+- braowse to https://www.vidulusludorum.com/olmini
+===>JA NIE MEHR DAS GANZE NODEMASTER UPLOADEN!!!!!!!!!!!!!!!!!!
+- upload das zeug
+- olmini muss in den nodemaster
+- olmini auf den server spielen und testen!
+- test
+- skypack imports
+- mach minimized version mit skypack olmini
+- wie mach ich eine minimale app?
+- ok, leave it as is, versuch das ganze zu server rueber
+- problem muss immer noch import verwenden!!!
+- versuch skypack
+- stop das andere
+- 
+probier es aus! goto ohnenode
+
+
+
+
+
+
+?- wie kann ich zu einer source weitere daten DAZUGEBEN bei dd?
+
+
+
+
+
+
+
+
+
+
+
+- hol mir noch eine url mit zB
+- oben button leiste!
+- nein, garnicht also sollt ich es auch anders machne koennen!
+- finde heraus ob diese imports irgendwas spezielles sind
+
+- was brauch t er von dims? basemin.css
+- favicon brauch ich
+wie lade ich von geojson?
+
+
+kopfhoerer wie A
+
+
+- try this workshop
+- what kind of sources gibt es?
+- workshop how to?
+
+- map
+- nodemaster cleanup
+ok- das functioniert!
+wie kann ich das testen?
+- test ob ausfuehren kann!
+- alles weg
+
+
+
+
+
+
+10:11 AM 10/4/2022
+es fuehlt sich schrecklich an jedoch wie genau?
+bisschen wie eine klammer um den kopf und in der herzgegend eine art flattern sowie von zuviel kaffein. stress halt.
+das ist der koerper der in grossem stress ist.
+die gedanken passen dazu: sie drehen sich um eine beobachtung die nicht in meiner kontrolle liegt und meine interpretation ist dass es eine persoenliche niederlage ist.
+in wirklichkeit, wenn ich es hoeren wuerde zB von guggi dass ihm sowas passiert ist, dann wuerd ich sofort sagen: ist ja kein problem, das ist alles nur abstrakt. fact is, dass es 0 auswirkung auf uns hat weder jetzt noch in der zukunft.
+irgenwie krank diese gedanken die ebenfalls ausserhalb meiner kontrolle liegen
+was liegt eigentlich INNERHALB meinie kontrolle?
+wenn ich in so einem turmoil - ja, so wuerd ich es nennen - bin sollte ich wahrscheinlich nur zaehlen denn zahlen haben schon immer geholfen!
 
 
 
