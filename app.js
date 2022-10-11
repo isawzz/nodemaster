@@ -10,7 +10,7 @@ app.use(cors());
 
 app.use(express.static(__dirname + '')); //Serve root directory
 
-for (const name of ['', 'games', 'canvas9', 'tree', 'plant']) {
+for (const name of ['games', 'MAP99', 'mapgame']) {
 	app.get('/' + name, (req, res) => {
 		res.sendFile(__dirname + '/' + name + '/index.html');
 	});
