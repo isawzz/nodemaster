@@ -8,13 +8,12 @@ const cors = require('cors');
 app.use(cors());
 //const io = new Server(server);//ohne cors reicht das:
 
-app.use(express.static(__dirname + '')); //Serve root directory
+app.use(express.static(__dirname + '/..')); //Serve root directory
 
-for (const name of ['games', 'MAP99', 'mapgame']) {
-	app.get('/' + name, (req, res) => {
-		res.sendFile(__dirname + '/' + name + '/index.html');
-	});
-}
+app.get('/', (req, res) => {
+	res.sendFile(__dirname + '/index.html');
+});
+
 
 const io = new Server(server, { cors: { origins: '*', } });//live-server: brauch ich cors!
 io.on('connection', (socket) => {
