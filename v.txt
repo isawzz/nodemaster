@@ -814,12 +814,26 @@ sp
 816: *9:37 AM 10/11/2022-9:38 AM 10/11/2022
 817: *9:38 AM 10/11/2022-9:40 AM 10/11/2022
 818: *9:40 AM 10/11/2022-9:42 AM 10/11/2022
-819: *9:42 AM 10/11/2022-
+819: *9:42 AM 10/11/2022-9:47 AM 10/11/2022
 - test draggable option!
 - add other markerr options!
 - weiter tut!!!
 - weiter tutorial!
-
+820: *9:47 AM 10/11/2022-9:58 AM 10/11/2022
+- mach einen button: where is nasi
+821: *9:58 AM 10/11/2022-10:02 AM 10/11/2022
+- wie kann ich so ein spiel machen: wer als erstes beim ziel ist
+geo spiele:
+1. jeder user startet irgendwo auf der map
+2. minZoom ist auf 10
+3. irgendwo auf der map ist ein ziel
+4. muss das ziel finden
+5. sobald einer das ziel erreicht ist das spiel aus
+==>brauch sockets!
+==>ann ich das auf telecave spielen??? sollte schon gehen
+treasure hunt game
+822: *10:02 AM 10/11/2022-
+- wie geht der mechanism um 
 
 
 
