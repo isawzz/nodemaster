@@ -363,7 +363,7 @@ function get_playmode(uname) { return Z.fen.players[uname].playmode; }
 function get_img_html(path,styles,classes){
 	let img = mImage(path, null, styles, classes);
 	let x = img.outerHTML;
-	console.log('x',x)
+	//console.log('x',x)
 	return img.outerHTML;
 }
 function get_user_color(uname) { let u = firstCond(Serverdata.users, x => x.name == uname); return colorFrom(u.color); }

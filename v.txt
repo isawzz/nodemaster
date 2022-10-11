@@ -832,7 +832,15 @@ geo spiele:
 ==>brauch sockets!
 ==>ann ich das auf telecave spielen??? sollte schon gehen
 treasure hunt game
-822: *10:02 AM 10/11/2022-
+822: *10:02 AM 10/11/2022-12:05 PM 10/11/2022
+823: *12:06 PM 10/11/2022-12:13 PM 10/11/2022
+824: *12:13 PM 10/11/2022-12:43 PM 10/11/2022
+825: *12:43 PM 10/11/2022-1:00 PM 10/11/2022
+826: *1:00 PM 10/11/2022-
+
+- socket? bei client
+- wie geht es beim client?
+- chatApp
 - wie geht der mechanism um 
 
 
