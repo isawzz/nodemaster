@@ -2,6 +2,9 @@ onload = start;
 
 async function start() {
 
+	Socket = TESTING == 'live' ? io('http://127.0.0.1:3000') : TESTING == 'nginx'? io('http://216.250.112.218:3000') : io(); 
+
+
 	let [cities, capitals] = await get_cities_and_capitals();
 
 	let center = cities.Paris.center; //[47.5951,-122.1535]; //cities.Vienna.center;
