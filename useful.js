@@ -1,3 +1,8 @@
+
+//test loading google satellite map
+//let layer = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', { maxZoom: 22, subdomains: ['mt0', 'mt1', 'mt2', 'mt3'] }); layer.addTo(map); return;
+
+
 async function start() {
 	map = L.map('map').setView([37.42, -122.05], 12);
 	attrLink = 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a href="http://openstreetmap.org">OpenStreetMap</a>, under <a href="http://creativecommons.org/licenses/by-sa/3.0">CC BY SA</a>.'
@@ -211,7 +216,7 @@ function map_add_shape(options) {
 	});
 }
 
-function map_add_circle_to_layer(longitude, latitude, layer) {
+function ol_add_circle_to_layer(longitude, latitude, layer) {
 	var centerLongitudeLatitude = ol.proj.fromLonLat([longitude, latitude]);
 	let source = layer.getSource();
 	//console.log('source',source);
@@ -221,7 +226,7 @@ function map_add_circle_to_layer(longitude, latitude, layer) {
 	return f;
 }
 
-function add_circle(longitude, latitude, map) {
+function ol_add_circle(longitude, latitude, map) {
 	var centerLongitudeLatitude = ol.proj.fromLonLat([longitude, latitude]);
 	var layer = new ol.layer.Vector({
 		source: new ol.source.Vector({

@@ -676,16 +676,74 @@ leider ist angularjs outdated und daher ist leaflet directive unbrauchbar
 - detectRetina macht einfach die schrift kleiner, eher nicht gut!
 720: *4:05 PM 10/9/2022-4:07 PM 10/9/2022
 721: *4:07 PM 10/9/2022-4:30 PM 10/9/2022
-722: *4:30 PM 10/9/2022-
-- gu essen gehen
-- was mit der opacity option?
-- ok also weiter gehts!
+722: *4:30 PM 10/9/2022-6:26 PM 10/9/2022
+723: *6:26 PM 10/9/2022-6:33 PM 10/9/2022
+schon wieder fail! you need to let go!
+724: *6:33 PM 10/9/2022-6:34 PM 10/9/2022
+ok - was mit der opacity option? ja, gibt es!
+725: *6:34 PM 10/9/2022-6:37 PM 10/9/2022
+726: *6:37 PM 10/9/2022-6:38 PM 10/9/2022
+727: *6:38 PM 10/9/2022-6:39 PM 10/9/2022
+ok - schau ob es Geo auch in basemin gibt! NEIN
+728: *6:40 PM 10/9/2022-6:41 PM 10/9/2022
+729: *6:41 PM 10/9/2022-6:49 PM 10/9/2022
+730: *6:49 PM 10/9/2022-6:55 PM 10/9/2022
+731: *6:55 PM 10/9/2022-7:04 PM 10/9/2022
+732: *7:04 PM 10/9/2022-7:05 PM 10/9/2022
+733: *7:05 PM 10/9/2022-7:07 PM 10/9/2022
+__________ mo 10.10.22 waiting at the airport... <200
+734: *7:07 PM 10/9/2022-8:03 PM 10/9/2022
+735: *8:03 PM 10/9/2022-6:35 AM 10/10/2022
+736: *6:36 AM 10/10/2022-6:36 AM 10/10/2022
+737: *6:36 AM 10/10/2022-6:37 AM 10/10/2022
+738: *6:38 AM 10/10/2022-6:39 AM 10/10/2022
+- ist arrAdd schon in basemin? JA
+739: *6:39 AM 10/10/2022-6:40 AM 10/10/2022
+var circle = L.circle(
+	loc.map(x => x + 0.05),
+	{ color: 'yellow', fillColor: '#f03', fillOpacity: 0.5, radius: 500, }
+).addTo(map);
+740: *6:40 AM 10/10/2022-6:44 AM 10/10/2022
+741: *6:44 AM 10/10/2022-6:45 AM 10/10/2022
+- alle leaf files ab leaf93 processen => library!
+742: *6:45 AM 10/10/2022-6:46 AM 10/10/2022
+743: *6:46 AM 10/10/2022-6:46 AM 10/10/2022
+744: *6:46 AM 10/10/2022-6:55 AM 10/10/2022
+745: 86:55 AM 10/10/2022-7:05 AM 10/10/2022
+746: *7:05 AM 10/10/2022-7:09 AM 10/10/2022
+747: *7:09 AM 10/10/2022-7:19 AM 10/10/2022
+748: *7:19 AM 10/10/2022-7:22 AM 10/10/2022
+749: *7:22 AM 10/10/2022-7:24 AM 10/10/2022
+750: *7:24 AM 10/10/2022-7:25 AM 10/10/2022
+751: *7:25 AM 10/10/2022-7:30 AM 10/10/2022
+752: *7:30 AM 10/10/2022-7:31 AM 10/10/2022
+753: *7:31 AM 10/10/2022-8:45 AM 10/10/2022
+754: *8:45 AM 10/10/2022-8:57 AM 10/10/2022
+755: *8:57 AM 10/10/2022-10:09 AM 10/10/2022
+756: *10:09 AM 10/10/2022-10:10 AM 10/10/2022
+757: *10:10 AM 10/10/2022-10:15 AM 10/10/2022
+758: *10:15 AM 10/10/2022-10:31 AM 10/10/2022
+759: *10:31 AM 10/10/2022-10:33 AM 10/10/2022
+WMS: Web Map Service
+TMS Tile Map Service can be used as basemaps: OSM Mapbox Bing, raster
+WFS: Web Feature Service
+760: *10:33 AM 10/10/2022-10:43 AM 10/10/2022
+761: *10:43 AM 10/10/2022-10:48 AM 10/10/2022
+762: *10:48 AM 10/10/2022-10:50 AM 10/10/2022
+763: *10:50 AM 10/10/2022-10:51 AM 10/10/2022
+764: *10:51 AM 10/10/2022-10:59 AM 10/10/2022
+765: *10:59 AM 10/10/2022-11:10 AM 10/10/2022
+766: *11:11 AM 10/10/2022-11:11 AM 10/10/2022
+767: *11:11 AM 10/10/2022-1:20 PM 10/10/2022
+768: *1:20 PM 10/10/2022-7:04 PM 10/10/2022
+__________ di 11.10.22 waiting at the airport... <200
+769: *7:04 PM 10/10/2022-4:55 AM 10/11/2022
+770: *4:55 AM 10/11/2022-5:01 AM 10/11/2022
+771: *5:01 AM 10/11/2022-
+- was gibt es noch fuer eine satellite map?
+was fuer ein spiel kann man mit einer map machen?
+1. 
 
-- separate info from actual tileLayer!
-- wie add ich das overlay???
-- goto leafp
-- mach ein nees project in 99 mit index.html aus?
-- open all leaf in anderem vs code!
 
 
 
@@ -710,6 +768,48 @@ leider ist angularjs outdated und daher ist leaflet directive unbrauchbar
 
 
 
+MS info
+URL: https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}
+Z min: 0
+Z max: 19
+Y origin top: True
+==>gu schwimmen!!!
+- es gilt ja NUR FUER DIE OVERLAYS!!!!!!!!!!!!!!!
+- brauch einen showlayers button!!!!!
+
+- add a slider to layers control leaflet
+- ich moecht einen slider unterdem overlay zu sagen wie opacity sein soll!
+- empty baselayer option
+- stamen terrain background???
+- on map click
+- load other maps!
+
+kompletter bloedsinn!!!
+- free imagery world map leaflet
+- onclick map add feature at that point with category: 
+leaflet add feature to specific layer
+leaflet how to get the layer where features have been added?
+=>features added to map are added directly to map!
+- if I say: should be 10px at zoomlevel 15
+- how can I add features independently of zoom level?
+WAY SHORTER!!!!!!!!!!!!!!!!!!!
+- nicht ganz
+- api call
+D! name 1 leaflet circle option and how I would call this property
+- api: L.circle(center,options
+- how to add a circle at lat lon?
+- goto code leaf93
+
+add a vector layer
+- suche bei code
+- create a cities layer add all capitals and add it as vektor layer
+- jump to other city!
+>>>- darf nicht mehr reden garnicht mehr meine ich!
+
+
+
+schwimmen um 11:20
+Asp 20	
 
 
 
@@ -729,8 +829,17 @@ leider ist angularjs outdated und daher ist leaflet directive unbrauchbar
 
 
 
-wie hab ich vorher layers gemacht?
-challenge 1- ich moecht das layer control pinnable machen
+
+
+___________easy tv:
+1- mach ein layerdict from https://bl.ocks.org/Xatpy/raw/854297419bd7eb3421d0/
+2- Notions all about leaflet
+3- HERE maps account machen
+4- explore weitere providers und test providers interface!
+5- zeichne style in jawg und upload!
+6- add bookmark fuer jawg
+7- sort bookmarks to e8=maps
+8- angular course + challenges => OneNote
 
 
 - layer control: switch between satellite and map
@@ -780,15 +889,6 @@ fitBounds(bounds);  //automatically calculates the zoom to fit a rectangular are
 
 quinoa lentils yogurt peas pumpkin seeds peanuts beans mushrooms
 
-___________easy tv:
-1- mach ein layerdict from https://bl.ocks.org/Xatpy/raw/854297419bd7eb3421d0/
-2- Notions all about leaflet
-3- HERE maps account machen
-4- explore weitere providers und test providers interface!
-5- zeichne style in jawg und upload!
-6- add bookmark fuer jawg
-7- sort bookmarks to e8=maps
-8- angular course + challenges => OneNote
 
 
 
