@@ -4,7 +4,7 @@ async function start() {
 
 	let [cities, capitals] = await get_cities_and_capitals();
 
-	let center = [47.5951,-122.1535]; //cities.Vienna.center;
+	let center = cities.Paris.center; //[47.5951,-122.1535]; //cities.Vienna.center;
 	let map = L.map('map').setView(center, 17);
 
 	let baseLayers = {}, overlays = {};
@@ -15,6 +15,7 @@ async function start() {
 		overlays[k] = get_layer(k, { opacity: .5 }); //.addTo(map);
 	}
 
+
 	M.control = L.control.layers(baseLayers, overlays).addTo(map);
 	baseLayers.satellite.addTo(map);
 
@@ -22,9 +23,12 @@ async function start() {
 	var circle = get_circle(center, { sz: 1000 }); circle.addTo(map);
 
 	M.map = map;
+	get_layers();
+}
 
+function res(){
 	L.Control.Layers.include({
-		getOverlays: function () {
+		get_overlays: function () {
 			// create hash to hold all layers
 			var control, layers;
 			layers = {};
@@ -33,7 +37,7 @@ async function start() {
 			// loop thru all layers in control
 			control._layers.forEach(function (obj) {
 				var layerName;
-
+				console.log('obj',obj)
 				// check if layer is an overlay
 				if (obj.overlay) {
 					// get name of overlay
@@ -49,8 +53,9 @@ async function start() {
 
 }
 
-function updateOpacity(value) {
-	let x = M.control.getOverlays(); // { Truck 1: true, Truck 2: false, Truck 3: false }
+
+function update_opacity(value) {
+	let x = M.control.get_overlays(); // { Truck 1: true, Truck 2: false, Truck 3: false }
 	console.log('layers',x)
 
 

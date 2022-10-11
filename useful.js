@@ -1,4 +1,34 @@
 
+function leaflet_marker_code_samples() {
+
+	// let marker = L.marker(center);
+	//how to add my own marker: https://www.geoapify.com/create-custom-map-marker-icon
+	// var myIcon = L.icon({
+	// 	iconUrl: '../base/assets/users/felix.jpg',
+	// 	iconSize: [30, 30],
+	// 	iconAnchor: [0, 0], //x,y offset relative to top left corner of image - for tooltip
+	// 	popupAnchor: [15, 0], //x,y offset relative to top left corner of image - for popup
+	// 	//shadowUrl: 'my-icon-shadow.png',
+	// 	//shadowSize: [68, 95],
+	// 	//shadowAnchor: [22, 94]
+	// });
+	let sz = 25;
+	myIcon = L.divIcon({
+		className: 'custom-div-icon',
+		html: get_img_html('../base/assets/icons/palm.png', { bg: 'red', w: sz, h: sz, border: 'solid medium yellow', rounding: '50%', box: true }),
+		//html: get_user_pic_html('felix', sz, 'red solid medium'), //"<div style='background-color:#c30b82;' class='marker-pin'></div><i class='material-icons'>weekend</i>",
+		//iconSize: [sz, sz],
+		//iconAnchor: [2, 10],
+		tooltipAnchor: [5, sz / 2 - 5],
+		popupAnchor: [sz / 2 - 5, -5],
+	});
+	let marker = L.marker(center, { icon: myIcon }).addTo(map);
+
+	// let tt = marker.bindTooltip('hallo!').openTooltip(); tt.addTo(map);
+	let tt = marker.bindTooltip('hallo felix!!').openTooltip(); tt.addTo(map);
+	let popup = marker.bindPopup('this is your start city!').openPopup(); popup.addTo(map);
+}
+
 //test loading google satellite map
 //let layer = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', { maxZoom: 22, subdomains: ['mt0', 'mt1', 'mt2', 'mt3'] }); layer.addTo(map); return;
 

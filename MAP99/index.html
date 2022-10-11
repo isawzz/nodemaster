@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<base target="_top" />
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>LEAF</title>
+		<link rel="icon" href="../base/assets/icons/belinda.png" style="height: 40px" />
+		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css" />
+		<link rel="stylesheet" href="../MAP99/styles.css" />
+	</head>
+	<body>
+		<div id="dInfo" class="topline">
+			<button onclick="onclick_where()">where?</button>
+			<!-- <input id="slide" type="range" min="0" max="1" step="0.1" value="1" onchange="update_opacity(this.value)" /> -->
+		</div>
+		<div id="map" class="map"></div>
+
+		<script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js" integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg=" crossorigin=""></script>
+		<script src="../base/alibs/jsyaml.js"></script>
+		<script src="../basejs/basemin.js"></script>
+		<script src="../basejs/gamehelpers.js"></script>
+		<script src="../MAP99/maphelpers.js"></script>
+		<script src="../MAP99/baustelle.js"></script>
+		<script src="../MAP99/start.js"></script>
+	</body>
+</html>

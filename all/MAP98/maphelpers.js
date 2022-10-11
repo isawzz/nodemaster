@@ -13,7 +13,6 @@ const Geo = {
 
 		//esri
 		satellite: {
-			//url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'
 			url: 'http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
 			options: { maxZoom: 19, attribution: '&copy; <a href="http://www.esri.com/">Esri</a>, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community' }
 		},
@@ -77,7 +76,7 @@ const Geo = {
 	}
 };
 
-function to_leaflet_options(o) {
+function styles_to_leaflet_options(o) {
 	let res = {};
 	let di = {
 		fg: 'color', bg: 'fillColor', opacity: 'fillOpacity', sz: 'radius'
@@ -90,7 +89,7 @@ function to_leaflet_options(o) {
 }
 function get_circle(center, styles = {}) {
 	addKeys({ opacity: isdef(styles.bg) ? 1 : 0, sz: 10, fg: 'black' }, styles)
-	styles = to_leaflet_options(styles);
+	styles = styles_to_leaflet_options(styles);
 	console.log(styles)
 	styles.x = center.lon; styles.y = center.lat; styles.center = center;
 	return L.circle(center, styles); //{fillOpacity:0,radius:500});

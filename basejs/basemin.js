@@ -880,7 +880,7 @@ function mImg(path, dParent, styles, classes, callback) {
 	let d = mCreate('img');
 	if (isdef(callback)) d.onload = callback;
 	d.src = path;
-	mAppend(dParent, d);
+	if (isdef(dParent)) mAppend(dParent, d);
 	if (isdef(styles)) mStyle(d, styles);
 	if (isdef(classes)) mClass(d, classes);
 

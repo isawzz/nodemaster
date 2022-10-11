@@ -739,10 +739,156 @@ WFS: Web Feature Service
 __________ di 11.10.22 waiting at the airport... <200
 769: *7:04 PM 10/10/2022-4:55 AM 10/11/2022
 770: *4:55 AM 10/11/2022-5:01 AM 10/11/2022
-771: *5:01 AM 10/11/2022-
+771: *5:01 AM 10/11/2022-5:05 AM 10/11/2022
 - was gibt es noch fuer eine satellite map?
 was fuer ein spiel kann man mit einer map machen?
-1. 
+772: *5:05 AM 10/11/2022-5:07 AM 10/11/2022
+773: *5:08 AM 10/11/2022-5:15 AM 10/11/2022
+774: *5:15 AM 10/11/2022-5:19 AM 10/11/2022
+775: *5:19 AM 10/11/2022-5:21 AM 10/11/2022
+776: *5:21 AM 10/11/2022-5:25 AM 10/11/2022
+777: *5:25 AM 10/11/2022-5:30 AM 10/11/2022
+778: *5:30 AM 10/11/2022-5:30 AM 10/11/2022
+=>leaflet tutorials! start: https://www.youtube.com/watch?v=ls_Eue1xUtY&list=PLyWyQBSWLw1NH1wsA0wkSMTlQ45P0AqCj
+779: *5:31 AM 10/11/2022-5:35 AM 10/11/2022
+780: *5:35 AM 10/11/2022-5:38 AM 10/11/2022
+781: *5:38 AM 10/11/2022-5:38 AM 10/11/2022
+782: *5:39 AM 10/11/2022-5:40 AM 10/11/2022
+- slow down!!!: oktober NUR LEAFLET TUTORIALS!
+MAP99 - mach ein dir MAP99
+https://www.youtube.com/c/iamtekson GENAU WAS WIR BRAUCHEN!!!
+783: *5:40 AM 10/11/2022-5:46 AM 10/11/2022
+784: *5:46 AM 10/11/2022-5:52 AM 10/11/2022
+785: *5:52 AM 10/11/2022-5:54 AM 10/11/2022
+786: *5:54 AM 10/11/2022-6:05 AM 10/11/2022
+787: *6:05 AM 10/11/2022-6:11 AM 10/11/2022
+788: *6:11 AM 10/11/2022-6:15 AM 10/11/2022
+- shorter!!!!!!!
+- test
+=> leaflet providers project local!
+=>how to quickly get new map for leaflet: 
+1. goto https://leaflet-extras.github.io/leaflet-providers/preview/
+2. load map from list, copy code L.tileLayer
+goto leaflet docs: https://leafletjs.com/index.html
+789: *6:15 AM 10/11/2022-6:16 AM 10/11/2022
+790: *6:16 AM 10/11/2022-6:19 AM 10/11/2022
+791: *6:19 AM 10/11/2022-6:28 AM 10/11/2022
+- add a circle, marker, popup, tooltip, icon =>see code MAP99 start.js
+792: *6:28 AM 10/11/2022-6:29 AM 10/11/2022
+793: *6:29 AM 10/11/2022-6:34 AM 10/11/2022
+794: *6:34 AM 10/11/2022-6:37 AM 10/11/2022
+795: *6:38 AM 10/11/2022-6:40 AM 10/11/2022
+796: *6:40 AM 10/11/2022-6:41 AM 10/11/2022
+797: *6:41 AM 10/11/2022-7:20 AM 10/11/2022
+sp
+802: *7:20 AM 10/11/2022-7:24 AM 10/11/2022
+- get_user_image
+803: *7:24 AM 10/11/2022-7:26 AM 10/11/2022
+804: *7:26 AM 10/11/2022-7:29 AM 10/11/2022
+805: *7:29 AM 10/11/2022-7:29 AM 10/11/2022
+806: *7:29 AM 10/11/2022-7:43 AM 10/11/2022
+807: *7:43 AM 10/11/2022-7:48 AM 10/11/2022
+808: *7:49 AM 10/11/2022-7:50 AM 10/11/2022
+809: *7:50 AM 10/11/2022-8:06 AM 10/11/2022
+810: *8:07 AM 10/11/2022-8:07 AM 10/11/2022
+- die markers sind super weil sie ihre groesse beibehalten independent of zoom!!!!!
+811: *8:07 AM 10/11/2022-8:17 AM 10/11/2022
+812: *8:17 AM 10/11/2022-9:23 AM 10/11/2022
+813: *9:23 AM 10/11/2022-9:28 AM 10/11/2022
+814: *9:28 AM 10/11/2022-9:31 AM 10/11/2022
+815: *9:31 AM 10/11/2022-9:37 AM 10/11/2022
+- check ob es ein unicorn.png gibt
+- test get_marker, dann weiter tutorial!!!
+- weiter get_marker
+- mach ein getmarker shortcut
+- open images
+- wo sind images
+- dafuer brauch ich ein
+- inspect
+- remove tooltip
+- dafuer brauch ich eine class!
+- just include gamhelpers.js dann kann ich get_user_pic_html machen!
+- open aroot!
+- wie war nochmal mein user image code???
+- leaflet icon styling: https://www.geoapify.com/create-custom-map-marker-icon
+816: *9:37 AM 10/11/2022-9:38 AM 10/11/2022
+817: *9:38 AM 10/11/2022-9:40 AM 10/11/2022
+818: *9:40 AM 10/11/2022-9:42 AM 10/11/2022
+819: *9:42 AM 10/11/2022-
+- test draggable option!
+- add other markerr options!
+- weiter tut!!!
+- weiter tutorial!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+?- brauch ich wirklich ein vectorLayer?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

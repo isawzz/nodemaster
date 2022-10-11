@@ -12,17 +12,18 @@
 			integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14="
 			crossorigin=""
 		/>
-		<link rel="stylesheet" href="../98/styles.css" />
+		<link rel="stylesheet" href="../MAP98/styles.css" />
 		<script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js" integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg=" crossorigin=""></script>
 	</head>
 	<body>
 		<div id="dInfo" class="topline">
-			<input id="slide" type="range" min="0" max="1" step="0.1" value="1" onchange="updateOpacity(this.value)">
+			<input id="slide" type="range" min="0" max="1" step="0.1" value="1" onchange="update_opacity(this.value)">
 		</div>
 		<div id="map" class="map"></div>
 		<script src="../base/alibs/jsyaml.js"></script>
 		<script src="../basejs/basemin.js"></script>
-		<script src="../98/maphelpers.js"></script>
-		<script src="../98/start.js"></script>
+		<script src="../MAP98/maphelpers.js"></script>
+		<script src="../MAP98/baustelle.js"></script>
+		<script src="../MAP98/start.js"></script>
 	</body>
 </html>
