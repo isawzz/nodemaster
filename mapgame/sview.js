@@ -53,7 +53,7 @@ L.StreetView = L.Control.extend({
 	},
 
 	_addProvider: function (provider) {
-		console.log('provide',provider,'options',this.options)
+		console.log('provider',provider,'options',this.options)
 		if (!this.options[provider[0]])
 			return;
 		if (provider[0] == 'mapillary' && !this.options.mapillaryId)

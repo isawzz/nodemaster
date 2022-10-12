@@ -924,7 +924,78 @@ mapillary ist zu kompliziert
 874: *10:03 AM 10/12/2022-10:04 AM 10/12/2022
 875: *10:04 AM 10/12/2022-10:32 AM 10/12/2022
 876: *10:32 AM 10/12/2022-12:40 PM 10/12/2022
-877: *12:40 PM 10/12/2022-
+877: *12:40 PM 10/12/2022-2:11 PM 10/12/2022
+___
+878: *2:11 PM 10/12/2022-2:13 PM 10/12/2022
+879: *2:14 PM 10/12/2022-2:17 PM 10/12/2022
+880: *2:17 PM 10/12/2022-2:17 PM 10/12/2022
+881: *2:17 PM 10/12/2022-2:18 PM 10/12/2022
+882: *2:18 PM 10/12/2022-2:20 PM 10/12/2022
+883: *2:20 PM 10/12/2022-2:21 PM 10/12/2022
+884: *2:21 PM 10/12/2022-2:39 PM 10/12/2022
+885: *2:39 PM 10/12/2022-2:44 PM 10/12/2022
+886: *2:44 PM 10/12/2022-2:45 PM 10/12/2022
+- weiter tutorial!
+- oder soll ich sagen mapget mapset 
+- mach ein mget_map(center,zoom)
+- mget_, mset_, fuer map get und map set using M
+- code cleanup
+- tutorial wo bin ich?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+- kl
+
 - schlafen dann aufwachen und nochmal dasselbe wie in der frueh?
 =>back to something NORMAL!!!! oder ein tutorial!!!
 - simplify code!

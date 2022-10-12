@@ -143,7 +143,7 @@ function get_layer(key, options) {
 	return L.tileLayer(o.url, o.options);
 }
 
-function set_map_bounds(map) {
+function mset_bounds(map) {
 	map.options.minZoom = 2;
 	map.options.maxZoom = 15;
 	var southWest = L.latLng(-89.98155760646617, -180),

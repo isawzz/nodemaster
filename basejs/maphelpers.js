@@ -82,6 +82,47 @@ const Geo = {
 
 	}
 };
+function mget_map(center=Geo.places.tuerkenschanzpark,zoom=17){
+	M.center = center;
+	M.zoom = zoom;
+	let map = M.map = L.map('map').setView(center, zoom);
+	return map;
+}
+function mset_bounds(minzoom=0,maxzoom=20) {
+	console.log('map',M.map)
+	let map = M.map;
+	map.options.minZoom = Math.min(minzoom,M.zoom);
+	map.options.maxZoom = Math.max(maxzoom,M.zoom);
+	var southWest = L.latLng(-89.98155760646617, -180),
+		northEast = L.latLng(89.99346179538875, 180);
+	var bounds = L.latLngBounds(southWest, northEast);
+	map.setMaxBounds(bounds);
+	map.on('drag', function () {
+		map.panInsideBounds(bounds, { animate: false });
+	});
+}
+function mset_layers(base,overlay){
+	let map = M.map;
+	[base,overlay] = [toWords(base),toWords(overlay)];
+	let baseLayers = {}, overlays = {};
+	M.layers = {};
+	for (const k of base) { // ['empty', 'terrainbg', 'watercolor', 'osm', 'topo', 'satellite', 'gsatellite', 'gterrain']) {
+		let l = get_layer(k, { opacity: 1 });
+		l.overlay = false;
+		M.layers[k] = baseLayers[k] = l;
+	}
+	for (const k of overlay){ // ['labels', 'osm']) {
+		let l = get_layer(k, { opacity: .5 });
+		l.overlay = true;
+		M.layers['ov_' + k] = overlays[k] = l;
+	}
+
+	M.layer_control = L.control.layers(baseLayers, overlays).addTo(map);
+	baseLayers[base[0]].addTo(map);
+	overlays[overlay[0]].addTo(map);
+	//console.log('layers', M.layers);
+
+}
 
 function styles_to_leaflet_options(o) {
 	let res = {};
@@ -150,19 +191,23 @@ function get_layer(key, options) {
 	return L.tileLayer(o.url, o.options);
 }
 
-function set_map_bounds(map) {
-	map.options.minZoom = 2;
-	map.options.maxZoom = 15;
-	var southWest = L.latLng(-89.98155760646617, -180),
-		northEast = L.latLng(89.99346179538875, 180);
-	var bounds = L.latLngBounds(southWest, northEast);
-	map.setMaxBounds(bounds);
-	map.on('drag', function () {
-		map.panInsideBounds(bounds, { animate: false });
+function mapzeug_sample_code(){
+	//#region sample code marker, circle and on drag handler
+	//sample code: add marker, add circle, signal when marker goes out of circle!
+	M.markers.nasi = get_marker(map, center, { user: 'nasi', draggable: true });
+	M.shapes = {};
+	M.shapes.nasi = get_circle(center, { sz: 1000, bg: GREEN }).addTo(map);
+	// how to check where nasi marker is and if nasi marker is inside nasi shape?
+	M.markers.nasi.on('drag', function (e) {
+		var d = map.distance(e.latlng, M.shapes.nasi.getLatLng()); // distance between the current position of the marker and the center of the circle
+		var isInside = d < M.shapes.nasi.getRadius();// the marker is inside the circle when the distance is inferior to the radius
+		console.log('inside?', isInside ? 'YES' : 'NO');
+		M.shapes.nasi.setStyle({ fillColor: isInside ? 'green' : '#f03' }); // let's manifest this by toggling the color
 	});
+	//#endregion
+
+
 }
-
-
 
 
 
