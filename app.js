@@ -28,5 +28,5 @@ function handle_disconnect(x) { console.log('disconnected', x); io.emit('message
 function handle_message(x) { console.log('got message', x); io.emit('message', x); }
 function handle_update(x){ console.log('got update', x); io.emit('update',x);}
 
-let port = 2121;
+let port = 3000;
 server.listen(port, () => console.log('listening on port ' + port));

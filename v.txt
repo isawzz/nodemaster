@@ -852,7 +852,129 @@ treasure hunt game
 - chatApp
 - wie geht der mechanism um 
 833: *2:06 PM 10/11/2022-2:13 PM 10/11/2022
+834: *2:13 PM 10/11/2022-5:46 PM 10/11/2022
+835: *5:46 PM 10/11/2022-5:55 PM 10/11/2022
+836: *5:55 PM 10/11/2022-6:12 PM 10/11/2022
+837: *6:21 PM 10/11/2022-6:30 PM 10/11/2022
+838: *6:30 PM 10/11/2022-
+__________ mi 12.10.22 waiting at the airport... <200 vok
+839: *8:38 PM 10/11/2022-6:03 AM 10/12/2022
+840: *6:03 AM 10/12/2022-6:06 AM 10/12/2022
+- toGeoJson fuer features
+841: *6:15 AM 10/12/2022-6:19 AM 10/12/2022
+842: *6:19 AM 10/12/2022-6:20 AM 10/12/2022
+- schau ob load_sym geht! ja geht und path ist: ../base
+- how to live-server AND nodemon!!!
+843: *6:21 AM 10/12/2022-6:35 AM 10/12/2022
+844: *6:35 AM 10/12/2022-6:45 AM 10/12/2022
+845: *6:45 AM 10/12/2022-6:46 AM 10/12/2022
+846: *6:46 AM 10/12/2022-6:48 AM 10/12/2022
+wie war nochmal das onclick?
+map.on('click', function (e) {
+		document.getElementById('dInfo').innerHTML =
+			"Lat, Lon : " + e.latlng.lat + ", " + e.latlng.lng + '<br>Zoom: ' + map.getZoom();
+	});
+847: *6:51 AM 10/12/2022-6:56 AM 10/12/2022
+848: *6:56 AM 10/12/2022-6:57 AM 10/12/2022
+849: *6:58 AM 10/12/2022-7:08 AM 10/12/2022
+850: *7:08 AM 10/12/2022-7:17 AM 10/12/2022
+- kenn mich nicht aus!!!
+851: *7:17 AM 10/12/2022-7:23 AM 10/12/2022
+852: *7:23 AM 10/12/2022-7:32 AM 10/12/2022
+853: *7:32 AM 10/12/2022-7:32 AM 10/12/2022
+mapillary: https://www.mapillary.com/app/?lat=48&lng=16&z=4
+854: *7:38 AM 10/12/2022-7:38 AM 10/12/2022
+client access token: MLY|5475723545838786|022f5aa19bef4c5e02668905c14ede93
+ok - alles moegliche kueche und spazier
+860: *9:04 AM 10/12/2022-9:04 AM 10/12/2022
+861: *9:04 AM 10/12/2022-9:07 AM 10/12/2022
+862: *9:07 AM 10/12/2022-9:08 AM 10/12/2022
+863: *9:08 AM 10/12/2022-9:09 AM 10/12/2022
+864: *9:09 AM 10/12/2022-9:11 AM 10/12/2022
+865: *9:11 AM 10/12/2022-9:12 AM 10/12/2022
+866: *9:12 AM 10/12/2022-9:13 AM 10/12/2022
+- check ob er mapillary included! NEIN?!?
+- start mapgame w/o socket.io
+867: *9:14 AM 10/12/2022-9:18 AM 10/12/2022
+868: *9:18 AM 10/12/2022-9:23 AM 10/12/2022
+869: *9:23 AM 10/12/2022-9:25 AM 10/12/2022
+870: *9:25 AM 10/12/2022-9:51 AM 10/12/2022
+- what is the mapillary image ID for initializing the Viewe
+- try Client ID - NEIN das ist es nicht!!!
+- was ist image ID?
+- mapillary getting startet
+- mach eigenen test
+- add CDN:
+<script src="https://unpkg.com/mapillary-js@4.1.0/dist/mapillary.js"></script>
+<link
+  href="https://unpkg.com/mapillary-js@4.1.0/dist/mapillary.css"
+  rel="stylesheet"
+/>
+- open mapillary
+?- wo war ich?
+871: *9:51 AM 10/12/2022-9:57 AM 10/12/2022
+https://www.mapillary.com/app/?lat=20&lng=0&z=1.5 
+MLY|5475723545838786|022f5aa19bef4c5e02668905c14ede93
+client secret: MLY|5475723545838786|20c27724938a6b4d2abfa0af2f7bdb7a
+authorization url : https://www.mapillary.com/connect?client_id=5475723545838786
+(das geht zu vidulusludorum.com?!?!?!?)
+872: *9:57 AM 10/12/2022-10:01 AM 10/12/2022
+mapillary ist zu kompliziert
+873: *10:03 AM 10/12/2022-10:03 AM 10/12/2022
+874: *10:03 AM 10/12/2022-10:04 AM 10/12/2022
+875: *10:04 AM 10/12/2022-10:32 AM 10/12/2022
+876: *10:32 AM 10/12/2022-
+=>back to something NORMAL!!!! oder ein tutorial!!!
+- simplify code!
+- wozu hab ich mapillary ueberhaupt gemacht???
 
+- try to find out more about mapillary
+
+
+
+
+
+
+
+
+
+
+
+
+
+- where is Bing streetside available?
+- start setView: 
+- copier es rueber mit bing!
+- mach eine streetview von vegagasse
+integrate
+
+- plaetze! onclick, add to dictionary: lat lng name
+- mach eine streetview!
+
+
+
+what about looking inside and disregarding? warum bringt es mich immer noch auf? 
+kann ich nicht einfach davon ausgehen dass es nur zahlen sind?
+it is pure fear and greed it is just fear and greed and nothing else
+i will not support fear and greed
+i need to let it be for now but not feed it by acting on it or reinforcing those thoughts
+all the narratives about fear and greed should be let go
+
+- 
+- this is exactly what I am talking about!!!
+- wie geht das spiel?
+- vielleicht kann man wuerfeln?
+phantom turn actions:
+1. take airplane to a different continent - you can do that no more than once within the game
+2. take train to a different city on same continent
+3. reveal yourself to bind one letter in player's city name
+4. take a guess
+turn:
+which person would you like t
+
+- was fuer hints koennte es geben?
+- gibt es irgendwas super leichtes was man machen koennte?
+- start animation!
 - 
 
 

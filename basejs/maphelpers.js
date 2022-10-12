@@ -73,6 +73,13 @@ const Geo = {
 				attribution: 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
 			}
 		}
+	},
+	places: {
+		tuerkenschanzpark: [48.23562171298636, 16.337871551513675],
+		sievering: [48.245368124489204, 16.342549324035648],
+		zehenthofgasse: [48.24522522864384, 16.34572505950928],
+		vegagasse: [48.23413529351023, 16.346755027771],
+
 	}
 };
 

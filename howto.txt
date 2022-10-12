@@ -1,11 +1,12 @@
-start server: npx nodemon dir/app.js
+start server: npx nodemon app.js (or nodemon dir/app.js)
 
 start with live: npx live-server, navi to dir
 
 index paths: (work for both live and localhost, w/ sockets)
-		<link rel="icon" href="./base/assets/icons/belinda.png" style="height: 40px" />
-		<link rel="stylesheet" href="./base/assets/fonts/fonts.css" />
-		<script src="./base/alibs/anime.min.js"></script>
+		<link rel="icon" href="../base/assets/icons/belinda.png" style="height: 40px" />
+		<link rel="stylesheet" href="../base/assets/fonts/fonts.css" />
+		<script src="../base/alibs/anime.min.js"></script>
+		<script src="../DIR/start.js"></script>
 
 load assets: await load_syms(); await load_cards(); ...
 
