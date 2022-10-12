@@ -923,7 +923,9 @@ mapillary ist zu kompliziert
 873: *10:03 AM 10/12/2022-10:03 AM 10/12/2022
 874: *10:03 AM 10/12/2022-10:04 AM 10/12/2022
 875: *10:04 AM 10/12/2022-10:32 AM 10/12/2022
-876: *10:32 AM 10/12/2022-
+876: *10:32 AM 10/12/2022-12:40 PM 10/12/2022
+877: *12:40 PM 10/12/2022-
+- schlafen dann aufwachen und nochmal dasselbe wie in der frueh?
 =>back to something NORMAL!!!! oder ein tutorial!!!
 - simplify code!
 - wozu hab ich mapillary ueberhaupt gemacht???
