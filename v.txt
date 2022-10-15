@@ -935,6 +935,328 @@ ___
 884: *2:21 PM 10/12/2022-2:39 PM 10/12/2022
 885: *2:39 PM 10/12/2022-2:44 PM 10/12/2022
 886: *2:44 PM 10/12/2022-2:45 PM 10/12/2022
+887: *2:50 PM 10/12/2022-2:52 PM 10/12/2022
+- ein empty tileLayer sollte eigentlich einfach eines das nicht im dict aufscheint sein!
+- die auftraege bei denen ich dieses bett verlassen muss sind schwieriger
+- ich koennte auch ab sofort alles was nichts mit friede=spiel=mir zu tun hat nur noch beim gehen machen!
+- ich bekomm uebrigens noch #10 fuer POST scannen
+897: *2:52 PM 10/12/2022-2:54 PM 10/12/2022
+898: *2:54 PM 10/12/2022-3:20 PM 10/12/2022
+899: *3:20 PM 10/12/2022-5:27 PM 10/12/2022
+- WAY SHORTER!!!! geh dem guggi essen machen! geh spazieren mit dem guggi!
+900: *5:27 PM 10/12/2022-5:33 PM 10/12/2022
+901: *5:33 PM 10/12/2022-5:38 PM 10/12/2022
+902: *5:39 PM 10/12/2022-5:41 PM 10/12/2022
+903: *5:41 PM 10/12/2022-5:44 PM 10/12/2022
+904: *5:44 PM 10/12/2022-5:59 PM 10/12/2022
+905: *5:59 PM 10/12/2022-6:09 PM 10/12/2022
+906: *6:09 PM 10/12/2022-6:10 PM 10/12/2022
+907: *6:10 PM 10/12/2022-6:11 PM 10/12/2022
+908: *6:11 PM 10/12/2022-6:12 PM 10/12/2022
+909: *6:12 PM 10/12/2022-6:30 PM 10/12/2022
+910: *6:31 PM 10/12/2022-6:39 PM 10/12/2022
+911: *6:39 PM 10/12/2022-7:38 PM 10/12/2022
+912: *7:38 PM 10/12/2022-7:00 AM 10/13/2022
+__________ do 13.10.22 waiting at the airport... <200 vok
+913: *7:00 AM 10/13/2022-7:02 AM 10/13/2022
+914: *7:02 AM 10/13/2022-7:04 AM 10/13/2022
+915: *7:04 AM 10/13/2022-7:06 AM 10/13/2022
+916: *7:06 AM 10/13/2022-7:09 AM 10/13/2022
+917: *7:10 AM 10/13/2022-7:11 AM 10/13/2022
+918: *7:11 AM 10/13/2022-7:13 AM 10/13/2022
+919: *7:13 AM 10/13/2022-7:14 AM 10/13/2022
+920: *7:14 AM 10/13/2022-7:18 AM 10/13/2022
+921: *7:18 AM 10/13/2022-7:19 AM 10/13/2022
+922: *7:19 AM 10/13/2022-7:21 AM 10/13/2022
+923: *7:21 AM 10/13/2022-7:22 AM 10/13/2022
+924: *7:22 AM 10/13/2022-7:23 AM 10/13/2022
+925: *7:23 AM 10/13/2022-7:27 AM 10/13/2022
+926: *7:27 AM 10/13/2022-7:44 AM 10/13/2022
+927: *7:44 AM 10/13/2022-7:57 AM 10/13/2022
+928: *7:57 AM 10/13/2022-7:59 AM 10/13/2022
+929: *7:59 AM 10/13/2022-8:02 AM 10/13/2022
+930: *8:04 AM 10/13/2022-8:11 AM 10/13/2022
+931: *8:11 AM 10/13/2022-8:18 AM 10/13/2022
+932: *8:18 AM 10/13/2022-8:21 AM 10/13/2022
+933: *8:21 AM 10/13/2022-9:29 AM 10/13/2022
+ok - sp karotten
+938: *9:29 AM 10/13/2022-9:32 AM 10/13/2022
+ok - wieso fehlt london???
+ok - hol mit den coolen a style von openlayers!!! olmini
+939: *9:32 AM 10/13/2022-10:13 AM 10/13/2022
+940: *10:13 AM 10/13/2022-10:17 AM 10/13/2022
+941: *10:18 AM 10/13/2022-12:13 PM 10/13/2022
+ok - gu email
+ok - linsen
+ok - skype
+944: *12:14 PM 10/13/2022-12:16 PM 10/13/2022
+945: *12:16 PM 10/13/2022-12:20 PM 10/13/2022
+946: *12:20 PM 10/13/2022-12:22 PM 10/13/2022
+947: *12:22 PM 10/13/2022-7:06 PM 10/13/2022
+970: *7:06 PM 10/13/2022-
+__________ fr 14.10.22 waiting at the airport... <200 vok
+971: *5:35 AM 10/14/2022-5:41 AM 10/14/2022
+972: *5:44 AM 10/14/2022-5:49 AM 10/14/2022
+973: *5:49 AM 10/14/2022-5:56 AM 10/14/2022
+974: *5:57 AM 10/14/2022-6:01 AM 10/14/2022
+975: *6:01 AM 10/14/2022-6:04 AM 10/14/2022
+976: *6:04 AM 10/14/2022-6:07 AM 10/14/2022
+977: *6:07 AM 10/14/2022-6:07 AM 10/14/2022
+to add geoJSON layer: var myLayer = L.geoJSON().addTo(map);
+myLayer.addData(geojsonFeature);
+- L.geoJSON
+978: *6:08 AM 10/14/2022-6:13 AM 10/14/2022
+979: *6:13 AM 10/14/2022-6:13 AM 10/14/2022
+___ analysiere features aus populated.geojson
+980: *6:14 AM 10/14/2022-6:16 AM 10/14/2022
+981: *6:16 AM 10/14/2022-6:18 AM 10/14/2022
+- wie lade ich ein json file in ein js object? route_path_json(url)
+982: *6:18 AM 10/14/2022-6:30 AM 10/14/2022
+983: *6:31 AM 10/14/2022-6:45 AM 10/14/2022
+984: *6:45 AM 10/14/2022-6:58 AM 10/14/2022
+985: *6:58 AM 10/14/2022-6:59 AM 10/14/2022
+986: *6:59 AM 10/14/2022-7:09 AM 10/14/2022
+987: *7:09 AM 10/14/2022-7:22 AM 10/14/2022
+988: *7:22 AM 10/14/2022-7:32 AM 10/14/2022
+989: *7:32 AM 10/14/2022-7:34 AM 10/14/2022
+990: *7:34 AM 10/14/2022-7:36 AM 10/14/2022
+991: *7:36 AM 10/14/2022-7:37 AM 10/14/2022
+992: *7:37 AM 10/14/2022-7:40 AM 10/14/2022
+993: *7:40 AM 10/14/2022-7:46 AM 10/14/2022
+994: *7:46 AM 10/14/2022-7:48 AM 10/14/2022
+995: *7:48 AM 10/14/2022-7:52 AM 10/14/2022
+- leaflet convert geometry from feature into polygon
+- ich will rausfinden wie man aus geometry data von feature ein polygon macht in leaflet
+996: *7:52 AM 10/14/2022-7:56 AM 10/14/2022
+997: *7:56 AM 10/14/2022-8:06 AM 10/14/2022
+998: *8:07 AM 10/14/2022-8:28 AM 10/14/2022
+999: *8:28 AM 10/14/2022-8:30 AM 10/14/2022
+1000: *8:30 AM 10/14/2022-8:38 AM 10/14/2022
+- add css to prev beispiel mit den tt
+polygon.bindTooltip("My polygon",
+   {permanent: true, direction:"center"}
+  ).openTooltip()
+- nein tooltip ist ganz schlecht!!!
+- wie mach ich einen markerr?
+- next: write text on map coordinate lat lng leaflet
+- was will ich grad?
+- leaflet get center of polygon
+- challenge2: how to write on map?
+- hab ich auch die namen???
+- ich hab schon all die admin 2 von europa!
+- lade mal das grosse lau
+- file muss gesplittet werden!!!
+- challenge1 30' load lau1.geojson zoom 5 center in Vienna
+- versuchs zu laden!!!
+- simplify geojson file
+- geojson admin 1 boundaries
+- search geojson admon 1 regions world
+- first enrich city data mit pop data
+- then, enrich geojson mit city data
+- lade das file
+1: *8:38 AM 10/14/2022-8:41 AM 10/14/2022
+2: *8:41 AM 10/14/2022-9:07 AM 10/14/2022
+3: *9:07 AM 10/14/2022-9:23 AM 10/14/2022
+4: *9:23 AM 10/14/2022-9:24 AM 10/14/2022
+5: *9:24 AM 10/14/2022-9:39 AM 10/14/2022
+6: *9:39 AM 10/14/2022-9:42 AM 10/14/2022
+7: *9:42 AM 10/14/2022-9:47 AM 10/14/2022
+8: *9:47 AM 10/14/2022-10:51 AM 10/14/2022
+9: *10:51 AM 10/14/2022-10:54 AM 10/14/2022
+10: *10:54 AM 10/14/2022-10:55 AM 10/14/2022
+- downloaded turf.min.js for geospacial calc
+11: *10:55 AM 10/14/2022-11:07 AM 10/14/2022
+12: *11:07 AM 10/14/2022-11:10 AM 10/14/2022
+13: *11:10 AM 10/14/2022-1:11 PM 10/14/2022
+14: *1:12 PM 10/14/2022-6:13 PM 10/14/2022
+22: *6:13 PM 10/14/2022-6:32 PM 10/14/2022
+das mit den maps ist eine sackgasse
+ich moecht etwas machen das spass macht!
+irgendein kleines spiel mit maps?
+23: *6:33 PM 10/14/2022-
+__________ sa 15.10.22 waiting at the airport... <200 vok
+24: *6:27 AM 10/15/2022-6:31 AM 10/15/2022
+25: *6:32 AM 10/15/2022-6:42 AM 10/15/2022
+26: *6:42 AM 10/15/2022-6:46 AM 10/15/2022
+27: *6:46 AM 10/15/2022-6:51 AM 10/15/2022
+28: *6:51 AM 10/15/2022-6:55 AM 10/15/2022
+29: *6:55 AM 10/15/2022-6:56 AM 10/15/2022
+30: *6:56 AM 10/15/2022-7:01 AM 10/15/2022
+- schreib einfach wunschcode
+- ich koennte einen walker machen
+- i can do whatever i want even, especially if its useless
+- rename sview to streetview.js
+- delete 2 files
+- it needs 
+- noc tutorial starten
+- tutorial js web scraping
+____>> random walker on a map!
+31: *7:01 AM 10/15/2022-7:07 AM 10/15/2022
+32: *7:07 AM 10/15/2022-7:30 AM 10/15/2022
+33: *7:30 AM 10/15/2022-7:32 AM 10/15/2022
+34: *7:32 AM 10/15/2022-7:38 AM 10/15/2022
+35: *7:38 AM 10/15/2022-7:56 AM 10/15/2022
+36: *7:56 AM 10/15/2022-8:12 AM 10/15/2022
+37: *8:12 AM 10/15/2022-8:13 AM 10/15/2022
+WAY SHORTER!!!!!!!!!!!!!!!!!!!
+=>aber zeit vertroedeln ist SEHR GUT!!!!!!!!!!!!!!!!!!
+gehen ewew alles ist nur ein traum 5
+1- what should be the default map style? satellite or osm?
+2- create_map(o)
+3- create_board create_map create_agent create_
+38: *8:13 AM 10/15/2022-8:19 AM 10/15/2022
+39: *8:19 AM 10/15/2022-8:46 AM 10/15/2022
+1- das geht! cleanup code!!!
+2- probier das aus!
+3- leaflet get map canvas
+mymap.createPane("customPane");
+var canvasRenderer = L.canvas({pane:"customPane"});
+var marker = new L.marker([0,0],{renderer:canvasRenderer});
+40: *8:46 AM 10/15/2022-8:47 AM 10/15/2022
+heft
+50: *10:49 AM 10/15/2022-10:50 AM 10/15/2022
+51: *10:50 AM 10/15/2022-10:57 AM 10/15/2022
+52: *10:57 AM 10/15/2022-10:58 AM 10/15/2022
+53: *10:58 AM 10/15/2022-11:09 AM 10/15/2022
+54: *11:09 AM 10/15/2022-
+2- hier ist was ich moechte: ich moechte eine normalverteilte random variable bekommen die meistens einen gewissen durchschnitt liefert aber manchmal davon weiter abweicht
+3- move_agent(agent,posgetter,dirf,speedf,possetter)
+- move on map or on canvas
+?- was genau hab ich da gemacht???
+?- wieviel langsamer ist es wenn ich es NICHT mit dem canvas renderer mache???
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+- was will ich ueberhaupt machen???
+was war das neue polygon?
+- rote punkte sind besser!
+
+- make a polygon out of a Multipolygon
+- fgu(5)
+- was ist s???
+- check nach was bei Amstetten mit dem poly los ist!!!
+- function my_poly_center(f)
+- how to add acircle?
+- mach einen circle im center von poly!
+- show x,y
+- get center of a convex polygon
+
+
+open base mapdata
+
+- map.fitBounds(feature.getBounds())
+- add us data to leaf92
+- load this example!
+choropleth countries per population
+
+- bottom empty
+
+- bottom line startet spaeter
+
+
+
+var scaleControl = L.control.scale({maxWidth: 150}).addTo(map);
+
+- leaflet controls scale control, zoom control
+- leaflet custom control
+- leaflet distance measure control
+
+- dTop darf nicht 100% width haben!
+stop browsing!!!!!!!!!!!!!!!!!!!!!!!!
+- aber height ist falsch!!!
+- find dInfo
+- remove schierchen grauen rand!!!!
+- M.map muss zugewiesen werden!!!
+- set_bounds
+- osm data von Geo!
+- satellite and satellite streets
+- mapbox geh hin!
+- cartonolabels
+- providers!
+- hol mit cartoDB positron labels
+- schau zu providers mapbox
+- add mapbox data to Geo
+- na gut, dann ist es eh gut!
+- check ob das mein mapbox id ist NEIN!
+- start 18 bug
+- center 0,0
+- wie genau erzeugt err den marker?
+- alle cities hol list
+- goto code
+
+
+
+
+
+
+
+
+- ich bin so muede und kaputt
+- rename cities citylist
+- 3' pause
+- neustart!!!
+- nein, vielleicht ist der fehler bei get_layer!
+- schau ob irgendwo minZoom ist!
+- just copy from example!
+- ich lern immer noch die sprache!
+- ne das ist ein layergroup!!!
+- krabbeln: goto get_marker
+- jetzt krabbel ich nur noch herum
+- ich bin extrem traurig aber dann wieder doch nicht
+ich bin traurig weil ich den fe vermisse aber ich bin froh weil der fe mich nicht vermisst
+- get cities w/ more than 1 million population
+
+- kann es auch anders machen: mget_layers(...)
+danach mget_map(center,zoom,layer,overlay)
+mshow_layercontrol
+mhide
+- anstatt layergroup mach ich empty overlay: geht das?
 - weiter tutorial!
 - oder soll ich sagen mapget mapset 
 - mach ein mget_map(center,zoom)
@@ -1304,39 +1626,6 @@ default: just counting
 - what are the data in heatmap?
 - heatmap.js
 - center map at ?
-
-
-liebe familie!
-
-allerliebster fe, please disregard alles was ich gestern gesagt habe, alles ist ok und Du selbst bist weit besser als ich in entscheidungen treffen.
-
-liebes maedi, bitte auch Du: entscheide frei so wie du willst und lass dich nicht von mir beeinflussen. ich weiss nicht wie wo was fuer wen am besten ist weil ich einfach nur verwirrt bin
-
-lieber guggi: auch Du, bitte geh deinen weg und handle die dinge wie Du halt kannst und willst aber ohne mit meinem input zu rechnen denn ich kann keinen sinnvollen input geben
-
-wenn ich ploetzlich sterben wuerde wuerdet ihr ja auch alle gut zurecht kommen. damit meine ich nicht dass ich vorhabe zu sterben aber geistig schon, das heisst ich will die negativen auswirkungen die ich dauernd auf alle habe einfach nur minimieren und mich zurueckziehen. simplify und einfach alles streichen was zu kompliziert ist.
-
-was ich NICHT kann:
-1. ich kann finanzen und alles was damit zu tun hat nicht handlen es ist zuviel stress und komplikationen damit involviert.
-2. ich kann nicht mehr als 1 boss haben, und weil der guggi selbst probleme hat kann er nicht der boss sein und also muss es felix sein.
-3. ich kann keine entscheidungen treffen. alle meine denkmoeglichkeiten sind verwirrend und ich habe von nichts eine ahnung 
-4. ich kann nicht negotiaten, weder mit Dir guggi noch mit anderen menschen
-5. ich versteh keine legalen sachen
-
-meine skills:
-1. brot backen. 
-2. super einfache haushaltstaetigkeiten sowie kochen oder staubsaugen, aber auch das nur ab und zu.
-3. im umkreis Redmond auto fahren aber nicht bei dunkelheit und nicht auf autobahn
-4. gehen (ist das schon ein skill?)
-5. ich kann simple taetigkeiten machen unter close supervision aber nichts das mit geld zu tun hat
-6. wenn wir kein geld haben kann ich in wien sicher einen job finden. also fuer mich werd ich sorgen koennen aber wahrscheinlich nicht mehr als das.
-7. den guggi betreuen im sinne von notwendige taetigkeiten die entweder fuer mich obvious sind (kochen) oder was der felix sagt (eg., post scannen)
-
-sonst hab ich keine skills leider die brauchbar sind
-
-ich declare jetzt dass der felix der boss ist und im augenblick am besten ueber diese familie entscheiden kann. ich selbst hab zuviel zweifel an allem. der guggi ist irgendwie schwer einzuschaetzen wenn ich auch weiss, der echte guggi ist sehr sehr wohlmeinend und gut. das maedi hat soviel eigene dinge am plate dass man sie derzeit eher nicht belasten sollte in meiner view.
-
-fe du hast soviel gutes schon gemacht und kontinuierlich hilfst du allen um dich herum und wer hilft dir? auch du, und weil es einfach so ist dass wir zu handicalled sind dir zu helfen, ist das scheinbar schon as good as it gets. 
 
 
 
@@ -1744,7 +2033,7 @@ wie kann ich das testen?
 
 
 
-10:11 AM 10/4/2022
+___________________________ 10:11 AM 10/4/2022
 es fuehlt sich schrecklich an jedoch wie genau?
 bisschen wie eine klammer um den kopf und in der herzgegend eine art flattern sowie von zuviel kaffein. stress halt.
 das ist der koerper der in grossem stress ist.
@@ -1754,6 +2043,66 @@ irgenwie krank diese gedanken die ebenfalls ausserhalb meiner kontrolle liegen
 was liegt eigentlich INNERHALB meinie kontrolle?
 wenn ich in so einem turmoil - ja, so wuerd ich es nennen - bin sollte ich wahrscheinlich nur zaehlen denn zahlen haben schon immer geholfen!
 
+________________________ 10/5/2022
+liebe familie!
+
+allerliebster fe, please disregard alles was ich gestern gesagt habe, alles ist ok und Du selbst bist weit besser als ich in entscheidungen treffen.
+
+liebes maedi, bitte auch Du: entscheide frei so wie du willst und lass dich nicht von mir beeinflussen. ich weiss nicht wie wo was fuer wen am besten ist weil ich einfach nur verwirrt bin
+
+lieber guggi: auch Du, bitte geh deinen weg und handle die dinge wie Du halt kannst und willst aber ohne mit meinem input zu rechnen denn ich kann keinen sinnvollen input geben
+
+wenn ich ploetzlich sterben wuerde wuerdet ihr ja auch alle gut zurecht kommen. damit meine ich nicht dass ich vorhabe zu sterben aber geistig schon, das heisst ich will die negativen auswirkungen die ich dauernd auf alle habe einfach nur minimieren und mich zurueckziehen. simplify und einfach alles streichen was zu kompliziert ist.
+
+was ich NICHT kann:
+1. ich kann finanzen und alles was damit zu tun hat nicht handlen es ist zuviel stress und komplikationen damit involviert.
+2. ich kann nicht mehr als 1 boss haben, und weil der guggi selbst probleme hat kann er nicht der boss sein und also muss es felix sein.
+3. ich kann keine entscheidungen treffen. alle meine denkmoeglichkeiten sind verwirrend und ich habe von nichts eine ahnung 
+4. ich kann nicht negotiaten, weder mit Dir guggi noch mit anderen menschen
+5. ich versteh keine legalen sachen
+
+meine skills:
+1. brot backen. 
+2. super einfache haushaltstaetigkeiten sowie kochen oder staubsaugen, aber auch das nur ab und zu.
+3. im umkreis Redmond auto fahren aber nicht bei dunkelheit und nicht auf autobahn
+4. gehen (ist das schon ein skill?)
+5. ich kann simple taetigkeiten machen unter close supervision aber nichts das mit geld zu tun hat
+6. wenn wir kein geld haben kann ich in wien sicher einen job finden. also fuer mich werd ich sorgen koennen aber wahrscheinlich nicht mehr als das.
+7. den guggi betreuen im sinne von notwendige taetigkeiten die entweder fuer mich obvious sind (kochen) oder was der felix sagt (eg., post scannen)
+
+sonst hab ich keine skills leider die brauchbar sind
+
+ich declare jetzt dass der felix der boss ist und im augenblick am besten ueber diese familie entscheiden kann. ich selbst hab zuviel zweifel an allem. der guggi ist irgendwie schwer einzuschaetzen wenn ich auch weiss, der echte guggi ist sehr sehr wohlmeinend und gut. das maedi hat soviel eigene dinge am plate dass man sie derzeit eher nicht belasten sollte in meiner view.
+
+fe du hast soviel gutes schon gemacht und kontinuierlich hilfst du allen um dich herum und wer hilft dir? auch du, und weil es einfach so ist dass wir zu handicalled sind dir zu helfen, ist das scheinbar schon as good as it gets. 
+
+___________________________ 7:04 PM 10/13/2022
+die boese frau
+
+sie war sehr intelligent. sie wusste ganz genau wie sie all die aufmerksamkeit, das mitgefuehl, die bewunderung auf sich ziehen konnte. Mit einer grausamen Leichtigkeit schaffte sie es die Menschen genau in die Rolle zu draengen, die sie ihnen zugedacht hatte.
+
+mir war die rolle der blitzableiter zugedacht. Das erste Mal, dass diese blinde, quaelende, ueberwaeltigende Wut sich durch eine ganz einfache Handlung an einem Kind, das garnichts verstand, in befreiendes Nichts aufloeste, lernte sie es dieses Mittel zu kultivieren.
+
+Anfangs waren es offene Wutanfaelle, kleine Grobheiten oder einfach Gleichgueltigkeit, mit denen sie mich verletzte. Mit der Zeit, als sie die Tiefe meiner Empfindungsfaehigkeit, und die vollkommen filterlose Verletzlichkeit in mir entdeckte, perfektionierte sie die Kunst mich nur mit ein paar harmlosen Worten da und dort tief in mein Herz zu treffen, ohne dass irgendjemand etwas gegen sie anfuehren konnte. Es war ein teuflisches Spiel, dass jedesmal damit begann, dass sie mir schmeichelte und wenn ich hungernd nach Mutterliebe mein kleines Herz ihr wieder oeffnete, dann setzte sie zum naechsten vernichtungsschlag, der zugleich fuer sie Befreiungsschlag war, an. (ich schreibe das in der vergangenheit, das Spiel geht allerdings auch jetzt noch weiter so wie eh und je, und ich leide weiter, dumm wie ich bin)
+
+ich wuchs heran, isoliert, blind, verletzt, verstoert, und verzweifelt und suchte nach einem schutz vor dieser harschen Welt.
+
+ich kompensierte die qualen meiner kindheit indem ich eine eigene heile glueckliche familie in der die kinder geborgenheit und liebe fuehlen sollten anstrebte.
+
+dabei war mir jedoch nicht klar, dass die verletzungen in meinem unbewussten mich zu einem psychisch kranken Krueppel gemacht hatten und die waerme die mir nie zuteil geworden war einfach auch mit dem groessten bemuehen nicht herzustellen war.
+
+mein kleines kind verhungerte vielleicht an meiner unreife, und an meiner unfaehigkeit, geborgenheit zu vermitteln.
+
+unendliches leid ist ueber mich gekommen, als ich langsam erkannte was ich selbst an meinem kind das ich so sehr und ueber alles zu lieben glaubte verbrochen hatte.
+
+und mein anderes, robustes kind, es musste ebenfalls leiden unter dem mangel einer reifen verantwortungsvollen mutter die halt und fuehrung geben kann.
+
+es ist ein glueck dass ich nur 50% war. doch nun sind auch die anderen 50% halb weg und diese beiden kinder, die selbst noch schutz und rueckhalt braeuchten, sind ganz allein auf sich gestellt - zwei waisenkinder - ja, zwei Engel -  die so tapfer und voller weisheit sich ihren weg aus diesem schlamassel ganz alleine ebnen muessen.
+
+was kann man aus dieser geschichte lernen?
+1. fuettere das boese nicht mehr - NIE mehr mit ihr reden, weil dann  kannst du langsam heilen auch wenn es sehr sehr lange dauern kann - du brauchst NICHTS von ihr 
+2. fuettere das boese in dir selbst nicht mehr - nicht mehr mit den kindern reden weil dann kein verstecktes hinterhaeltiges boeses auf diesem wege sie erreichen kann
+3. sei wie tot und lass alles sein solange du so krank bist. wenn du aber etwas tust oder sagst, dann tue nur etwas dass nichts mit irgendeiner emotion zu tun hat - sowie eine neutrale handlung ein opfer fuer den gott der allein mich heilen kann und uns allen armen menschenkindern  helfen kann.
 
 
 

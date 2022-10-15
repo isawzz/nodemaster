@@ -1,4 +1,232 @@
 
+function move_agent(a,posgetter,postransformer,possetter){
+	let pos = posgetter(a);
+	pos = postransformer(a,pos);
+	possetter(a,pos);
+}
+
+
+async function challenge1() {
+	let data = await route_path_json('../base/mapdata/gadm36_AUT_2.json');
+	var mapOptions = {
+		center: [48.3, 16.3],
+		zoom: 10
+	}
+	var map = new L.map('map', mapOptions);
+	var layer = new L.TileLayer(''); //http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
+	map.addLayer(layer);
+	// var marker = L.marker([48.3, 16.3]); marker.addTo(map);// Adding marker to the map
+	geojson = L.geoJson(data, {}).addTo(map);
+	for (const f of data.features) {
+		let name = f.properties.NAME_2;
+
+		var polygon = extract_polygon(f);
+
+		let bounds = polygon.getBounds();
+		let center = bounds.getCenter();
+		center = [center.lng, center.lat]; //for some reason vertauscht er die coords!!!
+
+		let c2=my_poly_center(f);
+		if (c2){
+			get_circle(c2,{fg:'red'}).addTo(map); //continue;
+		}
+		// if (name == 'Amstetten' || data.features.indexOf(f) == 0){
+		// 	console.log('f.geometry',f.geometry)
+		// 	console.log('poly', polygon, bounds, center,center.lat,center.lng);
+		// 	console.log('center', center.lat, center.lng);
+		// 	console.log('c2',c2)
+		// }
+	
+
+		let p = get_circle(center).addTo(map); //continue;
+
+
+		var marker = L.marker(center, { opacity: 0 }); //[48.2, 16.2]);
+		marker.addTo(map);
+		marker.bindTooltip(f.properties.NAME_2, { direction: 'center', permanent: true, className: 'mylabel',offset: L.point({x: -30, y: 30}) }); //, className: "my-label"
+	}
+}
+
+function get_polygon_centroid(pts) {
+	var first = pts[0], last = pts[pts.length - 1];
+	if (first.x != last.x || first.y != last.y) pts.push(first);
+	var twicearea = 0,
+		x = 0, y = 0,
+		nPts = pts.length,
+		p1, p2, f;
+	for (var i = 0, j = nPts - 1; i < nPts; j = i++) {
+		p1 = pts[i]; p2 = pts[j];
+		f = p1.x * p2.y - p2.x * p1.y;
+		twicearea += f;
+		x += (p1.x + p2.x) * f;
+		y += (p1.y + p2.y) * f;
+	}
+	f = twicearea * 3;
+	return { x: x / f, y: y / f };
+}
+
+async function challenge1() {
+
+	let data = await route_path_json('../base/mapdata/gadm36_AUT_2.json');
+	// Creating map options
+	var mapOptions = {
+		center: [48.3, 16.3],
+		zoom: 10
+	}
+	// Creating a map object
+	var map = new L.map('map', mapOptions);
+
+	// Creating a Layer object
+	var layer = new L.TileLayer(''); //http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
+
+	// Adding layer to the map
+	map.addLayer(layer);
+
+
+	// var marker = L.marker([48.3, 16.3]);// Creating a marker
+	// marker.addTo(map);// Adding marker to the map
+
+	geojson = L.geoJson(data, {}).addTo(map);
+
+
+	for (const f of data.features) {
+
+		var polygon = L.polygon(f.geometry.coordinates);
+		//polygon.bindTooltip("My polygon", { permanent: true, direction: "center" }).addTo(map); //.openTooltip()		//break;
+		let bounds = polygon.getBounds();
+		let center = bounds.getCenter();
+
+		let pts = points_from_feature(f);
+		let c2 = get_polygon_centroid(pts);
+		// console.log('c2', c2);
+		if (isNaN(c2.x) || isNaN(c2.y)) continue;
+		center = [c2.y, c2.x];
+		console.log('c2', center);
+
+		// continue;
+		// console.log('poly', poly, bounds, center,center.lat,center.lng);
+		// console.log('center', center.lat, center.lng);
+		// center = [center.lng, center.lat]; //for some reason vertauscht er die coords!!!
+		var marker = L.marker(center, { opacity: 0 }); //[48.2, 16.2]);
+		// var marker = L.marker(c2, { opacity: 0 }); //[48.2, 16.2]);
+		marker.addTo(map);
+		//console.log(f.properties); //let text = f.properties.NAME_2;
+		marker.bindTooltip(f.properties.NAME_2, { direction: 'center', permanent: true, className: 'mylabel' }); //, className: "my-label"
+		// break;
+	}
+
+}
+
+async function _challenge1() {
+
+	// Creating map options
+	var mapOptions = {
+		center: [17.385044, 78.486671],
+		zoom: 10
+	}
+	// Creating a map object
+	var map = new L.map('map', mapOptions);
+
+	// Creating a Layer object
+	var layer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
+
+	// Adding layer to the map
+	map.addLayer(layer);
+
+	// Creating a marker
+	var marker = L.marker([17.385044, 78.486671]);
+
+	// Adding marker to the map
+	marker.addTo(map);
+
+}
+async function _challenge1() {
+
+	// Creating map options
+	var mapOptions = {
+		center: [48.3, 16.3],
+		zoom: 5
+	}
+	// Creating a map object
+	var map = new L.map('map', mapOptions);
+
+	// Creating a Layer object
+	var layer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
+
+	// Adding layer to the map
+	map.addLayer(layer);
+
+	// Creating a marker
+	var marker = L.marker([48.3, 16.3]);
+
+	// Adding marker to the map
+	marker.addTo(map);
+
+}
+
+async function chal2() {
+	let data = await route_path_json('../base/mapdata/gadm36_AUT_2.json');
+	var map = L.map('map').setView([48.3, 16.3], 5);
+
+	// var tiles = L.tileLayer('').addTo(map);
+	var tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+		maxZoom: 19,
+		attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+	}).addTo(map);
+
+	let m = L.marker([16.3, 48.3]).addTo(map);
+	return;
+
+
+	geojson = L.geoJson(data, {
+		// style: style,
+		//onEachFeature: onEachFeature,
+	}).addTo(map);
+
+	for (const f of data.features) {
+		var poly = L.polygon(f.geometry.coordinates);
+		let bounds = poly.getBounds();
+		let center = bounds.getCenter();
+		console.log('poly', poly, bounds, center);
+
+		var marker = new L.marker(center).addTo(map); //opacity may be set to zero
+		console.log(f.properties); //let text = f.properties.NAME_2;
+		//marker.bindTooltip("hallo", { permanent: true, offset: [0, 0] }); //, className: "my-label"
+		break;
+	}
+	//console.log('data',data.features)
+	return;
+	data.features.forEach(onEachFeature);
+	return;
+	states.forEach(function (state) {
+		var polygon = L.polygon(state.geometry.coordinates, {
+			weight: 1,
+			fillOpacity: 0.7,
+			color: 'white',
+			dashArray: '3'
+		}).addTo(map);
+	});
+
+}
+function _onEachFeature(f) {
+	console.log('f', f);
+
+	//how to convert feature to polygon
+	var poly = L.polygon(f.geometry.coordinates);
+	let bounds = poly.getBounds();
+	let center = bounds.getCenter();
+	console.log('poly', poly, bounds, center);
+
+
+	//how to write text only on map
+	var marker = new L.marker(center, { opacity: 0 }); //opacity may be set to zero
+	let text = f.properties.NAME_2;
+	marker.bindTooltip("hallo", { permanent: true, offset: [0, 0] }); //, className: "my-label"
+	//marker.addTo(M.map);
+}
+
+
+
 function leaflet_marker_code_samples() {
 
 	// let marker = L.marker(center);

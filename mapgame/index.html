@@ -10,22 +10,29 @@
 		<link rel="stylesheet" href="../mapgame/styles.css" />
 	</head>
 	<body>
-		<div id="dInfo" class="topline">
-			<span id="dPosition"></span>
-			<span id="dZoom"></span>
-			<button onclick="onclick_where()">where?</button>
+		<div id="map" class="mapfixed"></div>
+		<div id="dTop" class="top">
+			<!-- <span id="dPosition"></span> -->
+			<!-- <span id="dZoom"></span> -->
+			<!-- <a onclick="onclick_where()">where?</a> -->
 			<!-- <input id="slide" type="range" min="0" max="1" step="0.1" value="1" onchange="update_opacity(this.value)" /> -->
 		</div>
-		<div id="map" class="map"></div>
+		<div id="dBottom" class="bottom">
+			<span id="dPosition"></span>
+			<span id="dZoom"></span>
+			<!-- <a onclick="onclick_where()">where?</a> -->
+			<!-- <input id="slide" type="range" min="0" max="1" step="0.1" value="1" onchange="update_opacity(this.value)" /> -->
+		</div>
 
 		<script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js" integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg=" crossorigin=""></script>
 		<script src="../base/alibs/socket.io.js"></script>
 		<script src="../base/alibs/jsyaml.js"></script>
 		<script src="../basejs/basemin.js"></script>
 		<script src="../basejs/gamehelpers.js"></script>
-		<script src="../basejs/maphelpers.js"></script>
+		<script src="../mapgame/turf.min.js"></script>
+		<script src="../mapgame/maphelpers.js"></script>
 		<script src="../mapgame/baustelle.js"></script>
-		<script src="../mapgame/sview.js"></script>
+		<script src="../mapgame/streetview.js"></script>
 		<script src="../mapgame/start.js"></script>
 	</body>
 </html>

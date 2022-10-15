@@ -386,6 +386,126 @@ const NATURE = {
 		},
 	]
 };
+const Geo = {
+	layerInfo: {
+
+		//test
+		empty: {
+			url: '',
+			options: { maxZoom: 22 }
+		},
+		ru: {
+			url: 'https://core-sat.maps.yandex.net/tiles?l=sat&v=3.1025.0&x={x}&y={y}&z={z}&scale=1&lang=ru_RU',
+			options: { minZoom: 0, maxZoom: 19, }
+		},
+
+		//esri
+		satellite: {
+			url: 'http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+			options: { maxZoom: 19, attribution: '&copy; <a href="http://www.esri.com/">Esri</a>, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community' }
+		},
+
+		//google
+		gsatellite: {
+			url: 'http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',
+			options: { maxZoom: 22, subdomains: ['mt0', 'mt1', 'mt2', 'mt3'] }
+		},
+		gstreets: {
+			url: 'http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}',
+			options: { maxZoom: 22, subdomains: ['mt0', 'mt1', 'mt2', 'mt3'] }
+		},
+		ghybrid: {
+			url: 'http://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}',
+			options: { maxZoom: 22, subdomains: ['mt0', 'mt1', 'mt2', 'mt3'] }
+		},
+		gterrain: {
+			url: 'http://{s}.google.com/vt/lyrs=p&x={x}&y={y}&z={z}',
+			options: { maxZoom: 22, subdomains: ['mt0', 'mt1', 'mt2', 'mt3'] }
+		},
+
+		//mapbox
+		mbsat: {
+			url: 'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw',
+			options: { attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>', id: 'mapbox/satellite-v9', tileSize: 512, zoomOffset: -1 }
+
+		},
+		mbstreets: {
+			url: 'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw',
+			options: { attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>', id: 'mapbox/streets-v11', tileSize: 512, zoomOffset: -1 }
+
+		},
+		mb1:{ //NOPE!
+			url: 'https://api.mapbox.com/styles/v1/mapbox-map-design/cl4whev1w002w16s9mgoliotw/static/-90,35,2.5,0/840x464?access_token=pk.eyJ1IjoibWFwYm94LW1hcC1kZXNpZ24iLCJhIjoiY2syeHpiaHlrMDJvODNidDR5azU5NWcwdiJ9.x0uSqSWGXdoFKuHZC5Eo_Q',
+			options: { attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>', tileSize: 512, zoomOffset: -1 }
+
+		},
+
+		cartolabels: {
+			url: 'https://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}{r}.png',
+			options: {
+				attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+				subdomains: 'abcd',
+				maxZoom: 20
+			}
+		},
+		cartonolabels: {
+			url: 'https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png',
+			options: {
+				attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+				subdomains: 'abcd',
+				maxZoom: 20
+			}
+		},
+		cartodark: {
+			url: 'https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png', 
+			options: {
+				attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+				subdomains: 'abcd',
+				maxZoom: 20
+			}
+		},
+
+		osm: {
+			url: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+			options: { attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>', subdomains: ['a', 'b', 'c'] }
+		},
+
+		//stamen
+		watercolor: {
+			url: 'http://{s}.tile.stamen.com/watercolor/{z}/{x}/{y}.jpg',
+			options: { attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a href="http://openstreetmap.org">OpenStreetMap</a>, under <a href="http://creativecommons.org/licenses/by-sa/3.0">CC BY SA</a>.', maxZoom: 18, subdomains: 'abcd', }
+		},
+		labels: {
+			url: "http://tile.stamen.com/toner-labels/{z}/{x}/{y}.png",
+			options: { attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a href="http://openstreetmap.org">OpenStreetMap</a>, under <a href="http://www.openstreetmap.org/copyright">ODbL</a>.', maxZoom: 18 } //, detectRetina: true,}
+		},
+		terrain: {
+			url: 'http://{s}.tile.stamen.com/terrain/{z}/{x}/{y}.jpg',
+			options: { attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a href="http://openstreetmap.org">OpenStreetMap</a>, under <a href="http://creativecommons.org/licenses/by-sa/3.0">CC BY SA</a>.', maxZoom: 18, }
+		},
+		terrainbg: {
+			url: 'http://{s}.tile.stamen.com/terrain-background/{z}/{x}/{y}.jpg',
+			options: { attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a href="http://openstreetmap.org">OpenStreetMap</a>, under <a href="http://creativecommons.org/licenses/by-sa/3.0">CC BY SA</a>.', maxZoom: 18, }
+		},
+
+
+		topo: {
+			url: 'https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png',
+			options: {
+				maxZoom: 17,
+				attribution: 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
+			}
+		}
+	},
+	places: {
+		tuerkenschanzpark: [48.23562171298636, 16.337871551513675],
+		sievering: [48.245368124489204, 16.342549324035648],
+		zehenthofgasse: [48.24522522864384, 16.34572505950928],
+		vegagasse: [48.23413529351023, 16.346755027771],
+
+	}
+};
+
 const SHERIFF = {
 	color: {
 		legal: GREEN, //'lime',
@@ -5094,6 +5214,11 @@ async function route_path_text(url) {
 	let data = await fetch(url);
 	let text = await data.text();
 	return text;
+}
+async function route_path_json(url) {
+	let data = await fetch(url);
+	let o = await data.json();
+	return o;
 }
 function show(elem, isInline = false) {
 	if (isString(elem)) elem = document.getElementById(elem);

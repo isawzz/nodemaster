@@ -1,0 +1,71 @@
+html,
+body {
+	height: 100%;
+	margin: 0;
+}
+.top {
+	z-index: 1000;
+	position: fixed;
+	display: flex;
+	gap: 10px;
+	top: 10px;
+	box-sizing: border-box;
+	align-content: baseline;
+	justify-content: start;
+	left: 60px;
+	width: calc(100% - 260px);
+	/* background: red; */
+}
+.bottom {
+	z-index: 1000;
+	position: fixed;
+	display: flex;
+	gap: 10px;
+	bottom: 20px;
+	box-sizing: border-box;
+	align-content: baseline;
+	justify-content: start;
+	left: 260px;
+	width: 100%;
+}
+.top a,
+.bottom a {
+	display: inline-block;
+	padding: 0.5rem;
+	background: white;
+	cursor: pointer;
+}
+.top span,
+.bottom span {
+	display: inline-block;
+	padding: 0.5rem;
+	background: white;
+	color: dimgray;
+	min-width: 106px;
+	text-align: center;
+}
+.map {
+	height: calc(100% - 30px);
+	width: 100%;
+}
+.mapfixed {
+	height: 100%;
+	width: 100%;
+}
+.img_person {
+	border: solid medium white;
+	border-radius: 50%;
+	margin: 10px;
+	object-fit: cover;
+	box-sizing: border-box;
+}
+.custom-div-icon {
+	border: none;
+	background: transparent;
+}
+
+.mylabel {
+	background-color: transparent;
+	border: transparent;
+	box-shadow: none;
+}

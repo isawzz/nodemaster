@@ -1,5 +1,33 @@
+//buttons
+function onclick_where() {
+	let m = M.markers.nasi;
+	console.log('m', m.getLatLng());
+	console.log('nasi haus:', M.shapes.nasi)
+}
 
 
+function mcreate_layers(base,overlay){
+	//let map = M.map;
+	[base,overlay] = [toWords(base),toWords(overlay)];
+	let baseLayers = {}, overlays = {};
+	M.layers = {};
+	for (const k of base) { // ['empty', 'terrainbg', 'watercolor', 'osm', 'topo', 'satellite', 'gsatellite', 'gterrain']) {
+		let l = get_layer(k, { opacity: 1 });
+		l.overlay = false;
+		M.layers[k] = baseLayers[k] = l;
+	}
+	for (const k of overlay){ // ['labels', 'osm']) {
+		let l = get_layer(k, { opacity: .5 });
+		l.overlay = true;
+		M.layers['ov_' + k] = overlays[k] = l;
+	}
+
+	M.layer_control = L.control.layers(baseLayers, overlays).addTo(map);
+	baseLayers[base[0]].addTo(map);
+	overlays[overlay[0]].addTo(map);
+	//console.log('layers', M.layers);
+
+}
 
 
 async function NOPE() {

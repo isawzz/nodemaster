@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<base target="_top" />
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>LEAF</title>
+		<link rel="icon" href="../base/assets/icons/belinda.png" style="height: 40px" />
+		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css" />
+		<link rel="stylesheet" href="../caba/styles.css" />
+	</head>
+	<body>
+		<div id="map" class="mapfixed" style="height:480px"></div>
+		<div id="dTop" class="top">
+			<!-- <span id="dPosition"></span> -->
+			<!-- <span id="dZoom"></span> -->
+			<!-- <a onclick="onclick_where()">where?</a> -->
+			<!-- <input id="slide" type="range" min="0" max="1" step="0.1" value="1" onchange="update_opacity(this.value)" /> -->
+		</div>
+		<div id="dBottom" class="bottom">
+			<!-- <span id="dPosition"></span> -->
+			<!-- <span id="dZoom"></span> -->
+			<!-- <a onclick="onclick_where()">where?</a> -->
+			<!-- <input id="slide" type="range" min="0" max="1" step="0.1" value="1" onchange="update_opacity(this.value)" /> -->
+		</div>
+
+		<script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js" integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg=" crossorigin=""></script>
+		<script src="../base/alibs/socket.io.js"></script>
+		<script src="../base/alibs/jsyaml.js"></script>
+		<script src="../base/alibs/turf.min.js"></script>
+		<script src="../basejs/basemin.js"></script>
+		<script src="../basejs/gamehelpers.js"></script>
+		<script src="../mapgame/streetview.js"></script>
+
+		<script src="../caba/maphelpers.js"></script>
+		<script src="../caba/baustelle.js"></script>
+		<script src="../caba/dream.js"></script>
+		<script src="../caba/start.js"></script>
+	</body>
+</html>
