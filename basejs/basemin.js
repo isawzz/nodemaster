@@ -2,7 +2,7 @@
 var Pollmode = 'auto';
 var Info, ColorDi, Items = {}, DA = {}, Card = {}, TO = {}, Counter = { server: 0 }, Socket = null;
 var uiActivated = false, Selected, Turn, Prevturn;
-var M={}, S = {}, Z, U = null, PL, G = null, C = null, UI = {}, Users, Tables, Basepath, Serverdata = {}, Clientdata = {};
+var M = {}, S = {}, Z, U = null, PL, G = null, C = null, UI = {}, Users, Tables, Basepath, Serverdata = {}, Clientdata = {};
 var dTable, dMap, dHeader, dFooter, dMessage, dPuppet, dMenu, dLeft, dCenter, dRight; //, dTitle; //, dUsers, dGames, dTables, dLogo, dLoggedIn, dPlayerNames, dInstruction, dError, dMessage, dStatus, dTableName, dGameControls, dUserControls, dMoveControls, dSubmitMove, dPlayerStats;
 var Config, Syms, SymKeys, ByGroupSubgroup, KeySets, C52, Cinno, C52Cards;
 var FORCE_REDRAW = false, TESTING = false;
@@ -434,7 +434,7 @@ const Geo = {
 			options: { attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>', id: 'mapbox/streets-v11', tileSize: 512, zoomOffset: -1 }
 
 		},
-		mb1:{ //NOPE!
+		mb1: { //NOPE!
 			url: 'https://api.mapbox.com/styles/v1/mapbox-map-design/cl4whev1w002w16s9mgoliotw/static/-90,35,2.5,0/840x464?access_token=pk.eyJ1IjoibWFwYm94LW1hcC1kZXNpZ24iLCJhIjoiY2syeHpiaHlrMDJvODNidDR5azU5NWcwdiJ9.x0uSqSWGXdoFKuHZC5Eo_Q',
 			options: { attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>', tileSize: 512, zoomOffset: -1 }
 
@@ -457,7 +457,7 @@ const Geo = {
 			}
 		},
 		cartodark: {
-			url: 'https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png', 
+			url: 'https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png',
 			options: {
 				attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
 				subdomains: 'abcd',
@@ -1977,7 +1977,7 @@ function cRect(x, y, w, h, styles = null, ctx = null) {
 function cStyle(styles = {}, ctx) {
 	if (nundef(ctx)) { ctx = CX; if (nundef(ctx)) { console.log('ctx undefined!!!!!!!'); return; } }
 	const di = { bg: 'fillStyle', fill: 'fillStyle', stroke: 'strokeStyle', fg: 'strokeStyle', thickness: 'lineWidth', thick: 'lineWidth', cap: 'lineCap', ending: 'lineCap' };
-	
+
 	for (const k in styles) {
 
 		ctx[isdef(di[k]) ? di[k] : k] = styles[k];
@@ -4460,6 +4460,9 @@ function setKeys({ allowDuplicates, nMin = 25, lang, key, keySets, filterFunc, p
 function choose(arr, n, excepti) { return rChoose(arr, n, null, excepti); }
 function chooseRandom(arr) { return rChoose(arr); }
 function coin(percent = 50) { return Math.random() * 100 < percent; }
+function rAdd(dmin = -1, dmax = 1) { return x => x + dmin + Math.random() * (dmax - dmin); }
+function rAddSub(d) { return x => x + (coin() ? d : -d); }
+function rAddSubRange(d) { return x => x + (Math.random() * 2 * d - d); }
 function rAlphanums(n) { return rChoose(toLetters('0123456789abcdefghijklmnopq'), n); }
 function rCard(postfix = 'n', ranks = '*A23456789TJQK', suits = 'HSDC') { return rChoose(ranks) + rChoose(suits) + postfix; }
 function rRank(ranks = 'A23456789TJQK') { return rChoose(ranks); }
@@ -4526,6 +4529,14 @@ function rDate(before, after) {
 	return random_date;
 }
 function rDigits(n) { return rChoose(toLetters('0123456789'), n); }
+function rGaussian(min, max, int = false) {
+	function rGauss() {
+		var rand = 0;
+		for (var i = 0; i < 6; i += 1) { rand += Math.random(); }
+		return rand / 6;
+	}
+	return int ? Math.floor(min + rGauss() * (max - min + 1)) : min + rGauss() * (max - min);
+}
 function rHue() { return (rNumber(0, 36) * 10) % 360; }
 function rLetter(except) { return rLetters(1, except)[0]; }
 function rLetters(n, except = []) {
@@ -5352,8 +5363,8 @@ function unfocusOnEnter(ev) {
 	}
 }
 function _valf(val, def) { return isdef(val) ? val : def; }
-function valf(){
-	for(const arg of arguments) if (isdef(arg)) return arg;
+function valf() {
+	for (const arg of arguments) if (isdef(arg)) return arg;
 	return null;
 }
 
@@ -5467,4 +5478,11 @@ function simpleCompare(o1, o2) {
 }
 function get_now() { return Date.now(); }
 function get_timestamp() { return Date.now(); }
+function run_for_seconds(secs, f, interval = 50) {
+	function doit(secs, f, interval) {
+		if (get_now() - DA.start < secs * 1000) setTimeout(() => { f(); doit(secs, f, interval); }, interval);
+		else console.log('DONE!!!');
+	}
+	DA.start = get_now(); doit(secs, f, interval);
+}
 

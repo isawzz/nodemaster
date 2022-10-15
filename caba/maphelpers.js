@@ -8,7 +8,12 @@ function create_map(o = {}) {
 
 	return map;
 }
-
+function map_moveby(pin, fx, fy) {
+	let pos = pin.getLatLng();
+	let lat = fx(pos.lat);
+	let lng = fy(pos.lng);
+	pin.setLatLng([lat, lng]);
+}
 
 
 

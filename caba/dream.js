@@ -1,29 +1,9 @@
 
-
-
-function run_for_seconds(secs, f, interval = 50) {
-	function doit(secs, f, interval) {
-		if (get_now() - DA.start < secs * 1000) setTimeout(() => { f(); doit(secs, f, interval); }, interval);
-		else console.log('DONE!!!');
-	}
-	DA.start = get_now(); doit(secs, f, interval);
-}
-function movepin(pin) {
-	let pos = pin.getLatLng();
-	pin.setLatLng([pos.lat + (coin() ? .01 : -.02), pos.lng + (coin() ? .02 : -.01)]);
-}
-function map_moveby(pin,f) {
-	let pos = pin.getLatLng();
-	let newpos = f(pos.lng,pos.lat);
-	pin.setLatLng([pos.lat + (coin() ? .01 : -.02), pos.lng + (coin() ? .02 : -.01)]);
-}
-
 function dream0() {
-
 	let pin = fiddle();
 
-
-	run_for_seconds(2, () => map_moveby(pin,))
+	let f = x => x + rGaussian(-.01, .02); //-.1,.1);  //rAddSubRange(.01);
+	run_for_seconds(2, () => map_moveby(pin, f, f))
 
 	return;
 
@@ -70,7 +50,7 @@ function fiddle() {
 
 	// markerpin example
 	L.Canvas.include({
-		_updateMarkerPin: function (layer) {
+		_updateMarkerPin0: function (layer) {
 			if (!this._drawing || layer._empty()) {
 				return;
 			}
@@ -82,13 +62,50 @@ function fiddle() {
 			//console.log('layer', layer, this)
 			//this._drawnLayers[layer._leaflet_id] = layer;
 
+			//cEllipse(0, 0, 2*r, 2*r, {}, 0, ctx);
+			ctx.beginPath();
+			ctx.fillStyle = 'blue';
+			ctx.moveTo(p.x, p.y);
+			ctx.ellipse(p.x, p.y, r, r, 0, 0, 2 * Math.PI);
+			// ctx.lineTo(p.x - 0.58 * r, p.y - r);
+			//ctx.arc(p.x, p.y - 2 * r, r, -Math.PI * 1.161, Math.PI * 0.161);
+			ctx.closePath();
+			ctx.fill();
+			// this._fill(ctx, layer);
+			//this._fillStroke(ctx, layer);
+		},
+		_updateMarkerPin_orig: function (layer) {
+			if (!this._drawing || layer._empty()) {
+				return;
+			}
+
+			var p = layer._point,
+				ctx = this._ctx,
+				r = layer._radius;
+
+			//console.log('layer', layer, this)
+			//this._drawnLayers[layer._leaflet_id] = layer;
+
+			//cEllipse(0, 0, 2*r, 2*r, {}, 0, ctx);
 			ctx.beginPath();
 			ctx.moveTo(p.x, p.y);
 			ctx.lineTo(p.x - 0.58 * r, p.y - r);
 			ctx.arc(p.x, p.y - 2 * r, r, -Math.PI * 1.161, Math.PI * 0.161);
 			ctx.closePath();
 			this._fillStroke(ctx, layer);
+		},
+		_updateMarkerPin: function (layer) {
+			if (!this._drawing || layer._empty()) { return; }
+			var p = layer._point, ctx = this._ctx, r = layer._radius;
+			cEllipse(p.x, p.y, 2*r,2*r, { bg: 'orange' }, 0, ctx);
+			// ctx.beginPath();
+			// ctx.moveTo(p.x, p.y);
+			// ctx.lineTo(p.x - 0.58 * r, p.y - r);
+			// ctx.arc(p.x, p.y - 2 * r, r, -Math.PI * 1.161, Math.PI * 0.161);
+			// ctx.closePath();
+			// this._fillStroke(ctx, layer);
 		}
+
 	});
 
 

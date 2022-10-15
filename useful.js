@@ -1,4 +1,10 @@
 
+
+function movepin(pin) {
+	let pos = pin.getLatLng();
+	pin.setLatLng([pos.lat + (coin() ? .01 : -.02), pos.lng + (coin() ? .02 : -.01)]);
+}
+
 function move_agent(a,posgetter,postransformer,possetter){
 	let pos = posgetter(a);
 	pos = postransformer(a,pos);

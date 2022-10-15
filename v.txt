@@ -1118,14 +1118,24 @@ heft
 51: *10:50 AM 10/15/2022-10:57 AM 10/15/2022
 52: *10:57 AM 10/15/2022-10:58 AM 10/15/2022
 53: *10:58 AM 10/15/2022-11:09 AM 10/15/2022
-54: *11:09 AM 10/15/2022-
+54: *11:09 AM 10/15/2022-12:00 PM 10/15/2022
 2- hier ist was ich moechte: ich moechte eine normalverteilte random variable bekommen die meistens einen gewissen durchschnitt liefert aber manchmal davon weiter abweicht
 3- move_agent(agent,posgetter,dirf,speedf,possetter)
 - move on map or on canvas
 ?- was genau hab ich da gemacht???
 ?- wieviel langsamer ist es wenn ich es NICHT mit dem canvas renderer mache???
-
-
+60: *12:00 PM 10/15/2022-12:06 PM 10/15/2022
+61: *12:06 PM 10/15/2022-12:18 PM 10/15/2022
+62: *12:18 PM 10/15/2022-12:18 PM 10/15/2022
+63: *12:18 PM 10/15/2022-12:18 PM 10/15/2022
+1- run for seconds
+2- rGaussian
+3- goto noc helpers!
+64: *12:19 PM 10/15/2022-12:38 PM 10/15/2022
+65: *12:39 PM 10/15/2022-12:39 PM 10/15/2022
+1- code noch weiter vereinfachen!
+2- updateMarkerPin simplify
+3- fiddle analyse!
 
 
 
