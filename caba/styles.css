@@ -59,11 +59,11 @@ body {
 	object-fit: cover;
 	box-sizing: border-box;
 }
+
 .custom-div-icon {
 	border: none;
 	background: transparent;
 }
-
 .mylabel {
 	background-color: transparent;
 	border: transparent;

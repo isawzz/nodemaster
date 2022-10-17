@@ -1136,6 +1136,137 @@ heft
 1- code noch weiter vereinfachen!
 2- updateMarkerPin simplify
 3- fiddle analyse!
+66: *1:18 PM 10/15/2022-1:29 PM 10/15/2022
+67: *1:29 PM 10/15/2022-6:17 AM 10/16/2022
+2- mouse coord controls anschauen! + tv
+3- mach es mal auf die simple art!
+__________ sa 16.10.22 waiting at the airport... <200 vok
+68: *6:18 AM 10/16/2022-6:22 AM 10/16/2022
+69: *6:22 AM 10/16/2022-6:23 AM 10/16/2022
+- gibt es ein rFloat? JA
+70: *6:23 AM 10/16/2022-6:26 AM 10/16/2022
+- change to canvas
+run for seconds
+71: *6:26 AM 10/16/2022-6:34 AM 10/16/2022
+72: *6:34 AM 10/16/2022-6:35 AM 10/16/2022
+73: *6:35 AM 10/16/2022-6:36 AM 10/16/2022
+74: *6:36 AM 10/16/2022-6:40 AM 10/16/2022
+75: *6:40 AM 10/16/2022-6:48 AM 10/16/2022
+76: *6:49 AM 10/16/2022-6:52 AM 10/16/2022
+77: *6:52 AM 10/16/2022-7:01 AM 10/16/2022
+78: *7:01 AM 10/16/2022-7:03 AM 10/16/2022
+79: *7:04 AM 10/16/2022-7:07 AM 10/16/2022
+80: *7:07 AM 10/16/2022-7:15 AM 10/16/2022
+81: *7:15 AM 10/16/2022-7:17 AM 10/16/2022
+- svg rendering ist gut genug!!!
+- create_map soll automatisch maxBounds setzen!
+- L.map options
+- nur noch das f
+- osm soll default sein, ausserdem soll es kay geben
+- NO GLOBALS in maphelpers!!!
+- can I make 2 maps? leaflet?
+- transit from dream0 to fiddle
+- mach in fiddle den marker anders
+- ohne preferCanvas
+- mit canvas geht es VIEL schneller!
+82: *7:16 AM 10/16/2022-7:18 AM 10/16/2022
+Etv einschraenken
+G min 10K
+Pg >= 1x1'
+83: *7:18 AM 10/16/2022-7:20 AM 10/16/2022
+84: *7:20 AM 10/16/2022-7:27 AM 10/16/2022
+85: *7:27 AM 10/16/2022-9:32 AM 10/16/2022
+gehen
+95: *9:32 AM 10/16/2022-10:37 AM 10/16/2022
+96: *10:37 AM 10/16/2022-10:40 AM 10/16/2022
+97: *10:41 AM 10/16/2022-10:43 AM 10/16/2022
+1- was ist: leaflet createPane
+2- customlayer 3-zeiler
+3- back to code!
+- code inspect!
+- code cleanup: baustelle
+99: *10:43 AM 10/16/2022-10:45 AM 10/16/2022
+100: *10:45 AM 10/16/2022-10:49 AM 10/16/2022
+101: *10:49 AM 10/16/2022-10:52 AM 10/16/2022
+1- import from alibs leaflet css
+2- hol mir das leaflet css file
+3- leaflet z-index demistified!!!
+=> see leaflet.css
+.leaflet-pane         { z-index: 400; }
+.leaflet-tile-pane    { z-index: 200; }
+.leaflet-overlay-pane { z-index: 400; }
+.leaflet-shadow-pane  { z-index: 500; }
+.leaflet-marker-pane  { z-index: 600; }
+.leaflet-tooltip-pane   { z-index: 650; }
+.leaflet-popup-pane   { z-index: 700; }
+.leaflet-map-pane canvas { z-index: 100; }
+.leaflet-map-pane svg    { z-index: 200; }
+.leaflet-control { z-index: 800; }
+102: *10:52 AM 10/16/2022-10:54 AM 10/16/2022
+103: *10:54 AM 10/16/2022-11:01 AM 10/16/2022
+104: *11:01 AM 10/16/2022-11:31 AM 10/16/2022
+105: *11:31 AM 10/16/2022-12:01 PM 10/16/2022
+1- gut was jetzt mit dedr pane?
+2- hol mir die images!
+3- goto leaflet
+106: *12:02 PM 10/16/2022-3:04 PM 10/16/2022
+120: *3:04 PM 10/16/2022-3:25 PM 10/16/2022
+25 mr park email
+145: *3:25 PM 10/16/2022-4:00 PM 10/16/2022
+25 jeslyn email
+170: *4:00 PM 10/16/2022-4:00 PM 10/16/2022
+10 post und checks
+180: *4:00 PM 10/16/2022-5:26 PM 10/16/2022
+Array(6).fill(8); // [8, 8, 8, 8, 8, 8]
+181: *5:26 PM 10/16/2022-6:11 PM 10/16/2022
+- gu essen
+- gu spazier
+- kit cl
+185: *6:11 PM 10/16/2022-8:00 PM 10/16/2022
+- done!
+3- huge files auf RA geben!
+2- check mal wieviel gig meine kleine HD hat
+__________ mo 17.10.22 waiting at the airport... <200 vok
+186: *7:59 PM 10/16/2022-5:44 AM 10/17/2022
+187: *5:44 AM 10/17/2022-6:34 AM 10/17/2022
+188: *6:34 AM 10/17/2022-6:34 AM 10/17/2022
+=>>> heute: extreme dev => RA cut all to dev
+- von extreme => RA und von Nil => extreme
+189: *6:35 AM 10/17/2022-6:38 AM 10/17/2022
+190: *6:38 AM 10/17/2022-6:40 AM 10/17/2022
+191: *6:40 AM 10/17/2022-
+- test
+- rename fiddle to canvas_overlay
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

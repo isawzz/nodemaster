@@ -1,20 +1,19 @@
 
 function dream0() {
-	let pin = fiddle();
+	let map = create_map({ center: [51.505, -0.09], zoom: 7, preferCanvas: true, baselayer:'osm' });
 
-	let f = x => x + rGaussian(-.01, .02); //-.1,.1);  //rAddSubRange(.01);
-	run_for_seconds(2, () => map_moveby(pin, f, f))
-
-	return;
-
-	create_map({ center: [0, 0], zoom: 5 });
-
-	create_agent(M.map);
+	let a = create_agent(map);
+	let f = x => x + rGaussian(-.01, .05); //-.1,.1);  //rAddSubRange(.01);
+	run_for_seconds(2,() => map_moveby(a, f, f));
 
 }
+function dream1() {
+	let pin = canvas_overlay();
 
-
-function fiddle() {
+	let f = x => x + rGaussian(-.01, .04); //-.1,.1);  //rAddSubRange(.01);
+	run_for_seconds(2, () => map_moveby(pin, f, f))
+}
+function canvas_overlay() {
 	var map = L.map('map', {
 		maxZoom: 18,
 		preferCanvas: true
@@ -97,7 +96,7 @@ function fiddle() {
 		_updateMarkerPin: function (layer) {
 			if (!this._drawing || layer._empty()) { return; }
 			var p = layer._point, ctx = this._ctx, r = layer._radius;
-			cEllipse(p.x, p.y, 2*r,2*r, { bg: 'orange' }, 0, ctx);
+			cEllipse(p.x, p.y, 2 * r, 2 * r, { bg: 'orange' }, 0, ctx);
 			// ctx.beginPath();
 			// ctx.moveTo(p.x, p.y);
 			// ctx.lineTo(p.x - 0.58 * r, p.y - r);
@@ -151,6 +150,7 @@ function fiddle() {
 
 	return pin;
 }
+
 
 
 
