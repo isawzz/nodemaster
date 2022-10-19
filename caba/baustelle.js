@@ -1,42 +1,55 @@
 
+async function parse_xml() {
+
+	let url='https://api.openstreetmap.org/api/0.6/map?bbox=11.54,48.14,11.543,48.145';
+	route_path_text
+
+	var el = xml.nodeType === 9 ? xml.documentElement : xml
+	var h = { name: el.nodeName }
+	h.content = Array.from(el.childNodes || []).filter(e => e.nodeType === 3).map(e => e.textContent).join('').trim()
+	h.attributes = Array.from(el.attributes || []).filter(a => a).reduce((h, a) => { h[a.name] = a.value; return h }, {})
+	h.children = Array.from(el.childNodes || []).filter(e => e.nodeType === 1).map(c => h[c.nodeName] = xml2json(c))
+	return h
+}  	
+
 function create_map(o = {}) {
 	addKeys({ maxBounds: [[-89.98155760646617, -180], [89.99346179538875, 180]], key: 'osm', center: Geo.places.tuerkenschanzpark, zoom: 17, id: 'map' }, o);
-	let info = Geo.layerInfo[o.key]; 
+	let info = Geo.layerInfo[o.key];
 	o.layers = [isdef(info) ? L.tileLayer(info.url, info.options) : L.tileLayer('')];
 	let map = L.map(o.id, o);
 	return map;
 }
-function create_toolbar(map, key = 'hallo', styles={}) {
-	addKeys({ cursor:'pointer', box:true, padding:14, w:200, display:'flex', position:'topleft' },styles);
+function create_toolbar(map, key = 'hallo', styles = {}) {
+	addKeys({ cursor: 'pointer', box: true, padding: 14, w: 200, display: 'flex', position: 'topleft' }, styles);
 	d = mDiv(null, styles);
-	
+
 	L.Control[key] = L.Control.extend({
 		onAdd: function (map) { return d; },
-		onRemove: function (map) {  }
+		onRemove: function (map) { }
 	});
 
 	return new L.Control[key](styles).addTo(map);
 
 	L.control[key] = function (opts) { return new L.Control[key](opts); }
-	return  L.control[key]({ position: 'bottomleft',  }).addTo(map);
+	return L.control[key]({ position: 'bottomleft', }).addTo(map);
 }
 
 
 function create_button(map, key = 'hallo', handler, styles, d) {
 	if (nundef(d)) d = mDiv(null, { bg: 'random', w: 25, h: 25 });
 	if (nundef(handler)) handler = e => console.log('clicked', e.target);
-	if (nundef(styles)) styles = {cursor:'pointer'};
-	if (isdef(styles)) mStyle(d,styles);
-	
+	if (nundef(styles)) styles = { cursor: 'pointer' };
+	if (isdef(styles)) mStyle(d, styles);
+
 	L.Control[key] = L.Control.extend({
 		onAdd: function (map) { L.DomEvent.on(d, 'click', handler); return d; },
 		onRemove: function (map) { L.DomEvent.off(d, 'click', handler) }
 	});
 
-	return new L.Control[key]({position: 'bottomleft'}).addTo(map);
+	return new L.Control[key]({ position: 'bottomleft' }).addTo(map);
 
 	L.control[key] = function (opts) { return new L.Control[key](opts); }
-	return  L.control[key]({ position: 'bottomleft',  }).addTo(map);
+	return L.control[key]({ position: 'bottomleft', }).addTo(map);
 }
 
 function create_control(map, key) {

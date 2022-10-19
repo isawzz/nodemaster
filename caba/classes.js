@@ -2,9 +2,10 @@ class Agent {
 	constructor(home, speed, zackig, aussehen, startpos) {
 		this.home = home; //map | parent div | canvas
 		this.isMap = is_map(home);
+		console.log('is_map?',this.isMap);
 		this.speed = speed;
 		this.rGen = zackig ? rFloat : rGaussian;
-		this.ui = create_agent(home,aussehen);
+		this.ui = create_agent(home, aussehen);
 		if (isdef(startpos)) this.moveto(startpos);
 		this.movefor(3);
 	}

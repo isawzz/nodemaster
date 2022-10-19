@@ -20,10 +20,10 @@ function test4_tools() {
 	let d = map._controlContainer; //document.getElementsByClassName('leaflet-control-container')[0];
 	console.log('control container', d);
 
-	dMap = mDiv(d, { position: 'absolute', top: 0, left: 0, w: '100%', h: '100%' });
+	dMap = mDiv(d, { position: 'absolute', top: 0, left: 50, w: '100%', h: '100%' });
 	dMap.style.zIndex = 12000;
 
-	dTop = mDiv(dMap, { hmargin: 50, padding: 10, cursor: 'pointer' }, null, null, 'top'); mFlexWrap(dTop);
+	dTop = mDiv(dMap, { hmargin: 10, padding: 10, cursor: 'pointer' }, null, null, 'top'); mFlexWrap(dTop);
 	let b = mButton('hallo', dummy_reaction, dTop);
 	b = mButton('download', () => downloadJson({ hallo: 4343 }, '__test'), dTop);
 	let a = mLink("http://duckduckgo.com", dTop, { color: 'dimgray' }, null, 'ein link');
@@ -31,6 +31,8 @@ function test4_tools() {
 	a.onclick = dummy_reaction;
 	b = mButton('Paris', () => map.setView(M.cities.Paris.center), dTop);
 	b = mButton('London', () => map.flyTo(M.cities.London.center), dTop);//YEAH!!!!!
+
+	let agent = new Agent(map, .0001, false); //create_agent(map);
 
 	//<a href="javascript:void(0)" class="closebtn">×</a>
 	//jetzt 

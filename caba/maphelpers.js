@@ -1,7 +1,7 @@
 function create_agent(where, o = {}) {
 	let res;
 	if (is_map(where)) {
-		res = L.marker(where.center).addTo(where.map);
+		res = L.marker(where.options.center).addTo(where);
 	} else {
 		res = mDiv(where, o);
 	}
@@ -23,7 +23,7 @@ async function get_cities_and_capitals() {
 	}
 	return [res, capitals];
 }
-function is_map(o) { return isdef(o.map); }
+function is_map(o) { return isdef(o.map) || isdef(o._panes); }
 function map_moveby(pin, fx, fy) {
 	let pos = pin.getLatLng();
 	let lat = fx(pos.lat);
