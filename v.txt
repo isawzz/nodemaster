@@ -1234,10 +1234,184 @@ __________ mo 17.10.22 waiting at the airport... <200 vok
 - von extreme => RA und von Nil => extreme
 189: *6:35 AM 10/17/2022-6:38 AM 10/17/2022
 190: *6:38 AM 10/17/2022-6:40 AM 10/17/2022
-191: *6:40 AM 10/17/2022-
+191: *6:40 AM 10/17/2022-6:43 AM 10/17/2022
 - test
-- rename fiddle to canvas_overlay
+- rename fiddle to canvas_overlay =>lextensions.js
+192: *6:43 AM 10/17/2022-6:45 AM 10/17/2022
+193: *6:45 AM 10/17/2022-6:46 AM 10/17/2022
+>fazit: rGaussian macht etwas smoother das movement!
+194: *6:46 AM 10/17/2022-6:49 AM 10/17/2022
+195: *6:49 AM 10/17/2022-6:51 AM 10/17/2022
+ok - calls berichtigen!
+196: *6:51 AM 10/17/2022-6:58 AM 10/17/2022
+?-welches canvas_overlay wird geladen?
+ok - code cleanup!
+197: *6:58 AM 10/17/2022-7:14 AM 10/17/2022
+198: *7:14 AM 10/17/2022-7:15 AM 10/17/2022
+199: *7:15 AM 10/17/2022-8:37 AM 10/17/2022
+spa10
+209: *8:38 AM 10/17/2022-8:55 AM 10/17/2022
+210: *8:55 AM 10/17/2022-9:11 AM 10/17/2022
+211: *9:11 AM 10/17/2022-9:18 AM 10/17/2022
+212: *9:18 AM 10/17/2022-9:59 AM 10/17/2022
+215: *9:59 AM 10/17/2022-10:04 AM 10/17/2022
+216: *10:04 AM 10/17/2022-10:20 AM 10/17/2022
+217: *10:20 AM 10/17/2022-10:28 AM 10/17/2022
+1- versuch das activate_arrow_move
+2- gefunden: update_car in noc, basemin:is_key_down
+3- finde wo ich das on key pressed gemacht habe???
+218: *10:28 AM 10/17/2022-11:59 AM 10/17/2022
+ok - spa gu schwi
+__________ di 18.10.22 waiting at the airport... <200 vok
+228: *11:59 AM 10/17/2022-5:34 AM 10/18/2022
+229: *5:36 AM 10/18/2022-5:38 AM 10/18/2022
+230: *5:38 AM 10/18/2022-5:43 AM 10/18/2022
+231: *5:43 AM 10/18/2022-5:43 AM 10/18/2022
+232: *5:43 AM 10/18/2022-5:47 AM 10/18/2022
+mm1 und mm2 sind: math.min.js ->kann man loeschen!
+233: *5:47 AM 10/18/2022-5:49 AM 10/18/2022
+- einfach testen ob das geht!!!
+234: *5:53 AM 10/18/2022-6:12 AM 10/18/2022
+235: *6:12 AM 10/18/2022-6:15 AM 10/18/2022
+236: *6:15 AM 10/18/2022-6:15 AM 10/18/2022
+237: *6:15 AM 10/18/2022-6:19 AM 10/18/2022
+238: *6:19 AM 10/18/2022-6:21 AM 10/18/2022
+239: *6:21 AM 10/18/2022-6:26 AM 10/18/2022
+240: *6:26 AM 10/18/2022-6:28 AM 10/18/2022
+241: *6:28 AM 10/18/2022-6:36 AM 10/18/2022
+242: *6:36 AM 10/18/2022-6:53 AM 10/18/2022
+243: *6:53 AM 10/18/2022-7:04 AM 10/18/2022
+244: *7:04 AM 10/18/2022-7:07 AM 10/18/2022
+245: *7:07 AM 10/18/2022-7:20 AM 10/18/2022
+246: *7:20 AM 10/18/2022-7:41 AM 10/18/2022
+247: *7:41 AM 10/18/2022-7:41 AM 10/18/2022
+248: *7:41 AM 10/18/2022-7:42 AM 10/18/2022
+__________ di 18.10.22 waiting at the airport... <200 vok
+300: *7:42 AM 10/18/2022-7:53 PM 10/18/2022
+301: *6:04 AM 10/19/2022-6:05 AM 10/19/2022 scham
+302: *6:06 AM 10/19/2022-6:12 AM 10/19/2022
+303: *6:12 AM 10/19/2022-6:20 AM 10/19/2022
+304: *6:20 AM 10/19/2022-6:20 AM 10/19/2022 unsicherheit
+305: *6:21 AM 10/19/2022-6:30 AM 10/19/2022 
+306: *6:30 AM 10/19/2022-6:31 AM 10/19/2022 wut?
+307: *6:32 AM 10/19/2022-6:36 AM 10/19/2022
+308: *6:36 AM 10/19/2022-6:37 AM 10/19/2022 schuldzuweisung?
+es schnuert mir den bauch irgendwie zu
+309: *6:38 AM 10/19/2022-6:40 AM 10/19/2022
+310: *6:40 AM 10/19/2022-6:41 AM 10/19/2022 enttaeuschung aber immer noch etwas scham?
+311: *7:07 AM 10/19/2022-7:13 AM 10/19/2022
+312: *7:13 AM 10/19/2022-7:15 AM 10/19/2022 frustration: so ein zigzag feeling von unbequemlichkeit im hinterkopf
+313: *7:15 AM 10/19/2022-7:34 AM 10/19/2022
+314: *7:34 AM 10/19/2022-7:34 AM 10/19/2022
+315: *7:35 AM 10/19/2022-7:37 AM 10/19/2022
+316: *7:37 AM 10/19/2022-7:39 AM 10/19/2022
+317: *7:39 AM 10/19/2022-7:43 AM 10/19/2022
+318: *7:43 AM 10/19/2022-7:58 AM 10/19/2022
+319: *7:58 AM 10/19/2022-8:10 AM 10/19/2022
+320: *8:10 AM 10/19/2022-8:10 AM 10/19/2022 number
+-  myLayer!!!! dMap
+- aendere das .mapfixed
+- jetzt mach ich da drin ein 
+- das ist jetzt die neue toolbar
+- ich moecht den parent node von class leaflet-control-zoom
+- redesign leaflet control styles!
+- leaflet L.control position 
+- cursor soll pointer sein, 
+- mach eine 100% height map
+- flex not defined
+- create_map ist schlecht! es soll die map selbst sein!
+- mach ein ganzes control field das wirklich in der unteren linken ecke ist
+- L.control
+321: *8:11 AM 10/19/2022-8:12 AM 10/19/2022
+322: *8:12 AM 10/19/2022-8:13 AM 10/19/2022
+323: *8:15 AM 10/19/2022-8:15 AM 10/19/2022 ok
+1- gibt es ein dToolbar?
+2- erstmal eine top toolbar ab 60px
+3- was mach ich jetzt auf meinem layer?
+324: *8:15 AM 10/19/2022-8:24 AM 10/19/2022
+325: *8:29 AM 10/19/2022-8:29 AM 10/19/2022
+326: *8:29 AM 10/19/2022-8:40 AM 10/19/2022
+1- warum hat der link kein href???
+2- dazeischen einen padding buffer!!!
+3- minimize
+327: *8:40 AM 10/19/2022-8:45 AM 10/19/2022
+328: *8:46 AM 10/19/2022-8:47 AM 10/19/2022
+1- geht das auch mit subdir??? NEIN! er aendert filename!
+2- mach ein downloadJson(o,filename)
+3- download href machen!!!!
+329: *8:47 AM 10/19/2022-9:29 AM 10/19/2022
+ok - spa
+339: *9:29 AM 10/19/2022-9:29 AM 10/19/2022
+340: *9:29 AM 10/19/2022-9:40 AM 10/19/2022
+341: *9:40 AM 10/19/2022-9:43 AM 10/19/2022
+1- basemin: downloadJson
+2- mach eine function downloadJson
+3- spazier anfrage
+342: *9:43 AM 10/19/2022-9:47 AM 10/19/2022
+sam wait until tomorrow 5pm then it will be posted
+352: *9:48 AM 10/19/2022-9:49 AM 10/19/2022 slightly stressed, frustration irritation ungeduld!
+353: *9:49 AM 10/19/2022-9:51 AM 10/19/2022
+354: *9:51 AM 10/19/2022-9:52 AM 10/19/2022
+355: *9:52 AM 10/19/2022-9:55 AM 10/19/2022
+1- find void
+2- open aroot
+3- mach einen download button
+356: *9:56 AM 10/19/2022-9:59 AM 10/19/2022
+357: *9:59 AM 10/19/2022-10:02 AM 10/19/2022
+358: *10:02 AM 10/19/2022-10:04 AM 10/19/2022
+1- olmini ist richtig
+2- a style soll genau wie button style aussehen!!! olmini?
+3- find .closebtn 
+359: *10:04 AM 10/19/2022-10:05 AM 10/19/2022
+360: *10:05 AM 10/19/2022-10:13 AM 10/19/2022
+361: *10:16 AM 10/19/2022-10:16 AM 10/19/2022
+1- ich muss a:link color:dimgray setzen!
+2- color!
+3- css: text-decoration: none (hilft gegen unterstrichen bei a)
+362: *10:16 AM 10/19/2022-10:19 AM 10/19/2022
+363: *10:19 AM 10/19/2022-10:20 AM 10/19/2022
+364: *10:20 AM 10/19/2022-10:22 AM 10/19/2022
+365L *10:22 AM 10/19/2022-10:23 AM 10/19/2022
+1- versuch ein flyTo
+2- link to paris
+3- css filter brightness
+366: *10:23 AM 10/19/2022-
+fgu
 
+
+
+
+
+
+neuro abfahrt: 11h30
+
+- control pin w/ arrow keys!
+- zuerst einen ampel button
+==>next will ich auf einem button toggle on off arrow keys!
+- walk + finalize M
+- noch immer nix!!!
+- schau wie die das macht
+- andres example suchen!!!
+
+- html entities list
+- list of html symbols
+- look at example!
+- include leaflet toolbar source
+- install vs code
+- schau mir den code an!
+- zuerst brauche leaflet toolbar
+- how to make a leaflet custom control?
+
+- start RA uploads!
+- goto noc gameloop
+- wunsch code?
+
+- derzeitiges ziel: 
+- classes
+- map_moveto([lat,lng])
+WAY SHORTER!!!!!!!
+- eigentlich bin ich zufrieden!
+- der agent is ready, eigentlich kann ich zurueck zu yt gehen
 
 
 

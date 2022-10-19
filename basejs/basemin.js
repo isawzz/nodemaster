@@ -3,7 +3,7 @@ var Pollmode = 'auto';
 var Info, ColorDi, Items = {}, DA = {}, Card = {}, TO = {}, Counter = { server: 0 }, Socket = null;
 var uiActivated = false, Selected, Turn, Prevturn;
 var M = {}, S = {}, Z, U = null, PL, G = null, C = null, UI = {}, Users, Tables, Basepath, Serverdata = {}, Clientdata = {};
-var dTable, dMap, dHeader, dFooter, dMessage, dPuppet, dMenu, dLeft, dCenter, dRight; //, dTitle; //, dUsers, dGames, dTables, dLogo, dLoggedIn, dPlayerNames, dInstruction, dError, dMessage, dStatus, dTableName, dGameControls, dUserControls, dMoveControls, dSubmitMove, dPlayerStats;
+var dTable, dMap, dHeader, dFooter, dMessage, dPuppet, dMenu, dLeft, dCenter, dRight, dTop, dBottom; //, dTitle; //, dUsers, dGames, dTables, dLogo, dLoggedIn, dPlayerNames, dInstruction, dError, dMessage, dStatus, dTableName, dGameControls, dUserControls, dMoveControls, dSubmitMove, dPlayerStats;
 var Config, Syms, SymKeys, ByGroupSubgroup, KeySets, C52, Cinno, C52Cards;
 var FORCE_REDRAW = false, TESTING = false;
 var ColorThiefObject, SelectedItem, SelectedColor;
@@ -1039,9 +1039,10 @@ function mItem(id, diDOM, di = {}, addSizing = false) {
 	return item;
 }
 function mLine(dParent, styles) { return mDiv(dParent, styles, null, '<hr>'); }
-function mLink(dParent, styles, id, inner, classes, sizing) {
+function mLink(href,dParent, styles, id, inner, classes, sizing) {
 	let d = mCreate('a');
 	if (dParent) mAppend(dParent, d);
+	d.href = valf(href,'#');
 	if (isdef(styles)) mStyle(d, styles);
 	if (isdef(classes)) mClass(d, classes);
 	if (isdef(id)) d.id = id;
@@ -4223,6 +4224,18 @@ function csv2list(allText, hasHeadings = true) {
 	}
 	//console.log('recordsByName',recordsByName)
 	return records;
+}
+function downloadJson(o,filename){
+	//usage: downloadJson({hallo:3},'_aaa');
+	//usage w/ button: b = mButton('download', () => downloadJson({ hallo: 4343 }, '__test'), dTop);
+	if (filename.indexOf('.')<0) filename = filename.json;
+	let txt=(typeof o == 'object') ?encodeURIComponent(JSON.stringify(o)):o;
+	let dl = document.getElementById('downloadAnchorElement');
+	if (nundef(dl)) dl= mCreateFrom(`<a id="downloadAnchorElem" style="display:none"></a>`);
+	var dataStr = "data:text/json;charset=utf-8," + txt;
+	dl.setAttribute("href", dataStr);
+	dl.setAttribute("download", "_aaa\\scene.json");
+	dl.click();
 }
 
 //#endregion
