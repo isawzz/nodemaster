@@ -1375,12 +1375,48 @@ sam wait until tomorrow 5pm then it will be posted
 1- versuch ein flyTo
 2- link to paris
 3- css filter brightness
-366: *10:23 AM 10/19/2022-11:02 AM 10/19/2022
-ok - karotten
-ok - fgu
-ok - muell
-ok - park
-380: *11:02 AM 10/19/2022-
+366: *10:23 AM 10/19/2022-5:59 AM 10/20/2022
+__________ do 20.10.22 waiting at the airport... <200 vok
+400: *5:59 AM 10/20/2022-6:02 AM 10/20/2022
+401: *6:02 AM 10/20/2022-6:29 AM 10/20/2022
+402: *6:29 AM 10/20/2022-6:37 AM 10/20/2022
+- wenn das geht waer das INSANELY COOL!!!!!!!
+403: *6:37 AM 10/20/2022-6:37 AM 10/20/2022
+404: *6:37 AM 10/20/2022-6:38 AM 10/20/2022
+405: *6:38 AM 10/20/2022-6:41 AM 10/20/2022
+406: *6:41 AM 10/20/2022-6:47 AM 10/20/2022
+407: *6:47 AM 10/20/2022-6:55 AM 10/20/2022
+408: *6:55 AM 10/20/2022-6:58 AM 10/20/2022
+409: *6:58 AM 10/20/2022-6:59 AM 10/20/2022
+410: *6:59 AM 10/20/2022-7:02 AM 10/20/2022
+411: *7:02 AM 10/20/2022-7:07 AM 10/20/2022
+412: *7:07 AM 10/20/2022-7:21 AM 10/20/2022
+413: *7:22 AM 10/20/2022-7:32 AM 10/20/2022
+414: *7:32 AM 10/20/2022-7:37 AM 10/20/2022
+415: *7:37 AM 10/20/2022-7:38 AM 10/20/2022
+1- center map in the middle point!
+2- p1 p2 wie unten!
+3- leaflet rounting machine get polyline 
+=>spazier unlocked!!!
+416: *7:38 AM 10/20/2022-7:43 AM 10/20/2022
+417: *7:43 AM 10/20/2022-
+2- ich bekomm nur die von mir gesetzten waypoints!!!
+3- setView middlepoint,16
+
+
+
+- maphelpers shortcut for osm center zoom
+- map.getBounds
+- leaflet how do I get the top left and bottom right points LatLng of map?
+- randompoints
+- now follow get the data (polyline)
+- add lat longs
+- hol mir basemin!
+- ok nimm die pointes
+- get the pixel data in a circle of radius 25 round current position
+- find white or yellow
+- move towards that point
+- how can I move my agent along a street in vienna?
 
 
 

@@ -1,8 +1,9 @@
 
+
 async function parse_xml() {
 
 	let url='https://api.openstreetmap.org/api/0.6/map?bbox=11.54,48.14,11.543,48.145';
-	route_path_text
+	//route_path_text
 
 	var el = xml.nodeType === 9 ? xml.documentElement : xml
 	var h = { name: el.nodeName }
