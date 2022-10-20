@@ -4,41 +4,57 @@ function start() {
 	let map = just_map();
 	let [p1, p2] = just_points(map);
 	map.setView(get_middle_point(p1, p2), 16);
-	let data = test4_get_waypoints(map, p1, p2); //test3_mapbounds();	//test2_waypointfallback();	//test0_orig();	//test1_basic();
-	hallo(data,map);
-	
 
-	console.log('M', M)
+	test6(map,p1,p2); //test5(map, p1, p2);//test3_mapbounds();	//test2_waypointfallback();	//test0_orig();	//test1_basic();	
+
+
+
 
 }
-function getInstrGeoJson(instr,coord) {
-  var formatter = new L.Routing.Formatter();
-  var instrPts = {
-    type: "FeatureCollection",
-    features: []
-  };
-  for (var i = 0; i < instr.length; ++i) {
-    var g = {
-      "type": "Point",
-      "coordinates": [coord[instr[i].index].lng, coord[instr[i].index].lat]
-    };
-    var p = {
-      "instruction": formatter.formatInstruction(instr[i])
-    };
-    instrPts.features.push({
-      "geometry": g,
-      "type": "Feature",
-      "properties": p
-    });
-  }
-  return instrPts;
+function test6(map, p1, p2) {
+	//was macht test6?
 }
-function hallo(control,map){
-	control.on('routeselected', function(e) {
+function test5(map, p1, p2) {
+	let control = test4_get_waypoints(map, p1, p2);
+
+	// hallo(control,map);
+	M.coords = [];
+	control.on('routeselected', function (e) {
+		//console.log('routeselected event: ',e.route);
+		arrExtend(M.coords, e.route.coordinates);
+		console.log('M', M)
+	});
+
+}
+function getInstrGeoJson(instr, coord) {
+	console.log('instr', instr, 'coord', coord);
+	var formatter = new L.Routing.Formatter();
+	var instrPts = {
+		type: "FeatureCollection",
+		features: []
+	};
+	for (var i = 0; i < instr.length; ++i) {
+		var g = {
+			"type": "Point",
+			"coordinates": [coord[instr[i].index].lng, coord[instr[i].index].lat]
+		};
+		var p = {
+			"instruction": formatter.formatInstruction(instr[i])
+		};
+		instrPts.features.push({
+			"geometry": g,
+			"type": "Feature",
+			"properties": p
+		});
+	}
+	return instrPts;
+}
+function hallo(control, map) {
+	control.on('routeselected', function (e) {
 		var coord = e.route.coordinates;
 		var instr = e.route.instructions;
-		L.geoJson(getInstrGeoJson(instr,coord)).addTo(map);
-	});	
+		L.geoJson(getInstrGeoJson(instr, coord)).addTo(map);
+	});
 }
 function points_to_waypoints(p1, p2) {
 	return [

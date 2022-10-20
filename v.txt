@@ -1399,10 +1399,23 @@ __________ do 20.10.22 waiting at the airport... <200 vok
 3- leaflet rounting machine get polyline 
 =>spazier unlocked!!!
 416: *7:38 AM 10/20/2022-7:43 AM 10/20/2022
-417: *7:43 AM 10/20/2022-
+417: *7:43 AM 10/20/2022-10:22 AM 10/20/2022
+418: *10:22 AM 10/20/2022-10:24 AM 10/20/2022
+1- start
 2- ich bekomm nur die von mir gesetzten waypoints!!!
 3- setView middlepoint,16
-
+419: *10:24 AM 10/20/2022-10:26 AM 10/20/2022
+420: *10:26 AM 10/20/2022-10:29 AM 10/20/2022
+421: *10:29 AM 10/20/2022-10:34 AM 10/20/2022
+422: *10:34 AM 10/20/2022-10:36 AM 10/20/2022
+1- mach ein get_coordinates
+2- instr anschauen!
+3- wo macht er die markers?
+423: *10:36 AM 10/20/2022-10:38 AM 10/20/2022
+424: *10:42 AM 10/20/2022-
+1- fgu
+2- get top left corner of map!
+3- matrix points ueberlege algo
 
 
 - maphelpers shortcut for osm center zoom
