@@ -1412,59 +1412,253 @@ __________ do 20.10.22 waiting at the airport... <200 vok
 2- instr anschauen!
 3- wo macht er die markers?
 423: *10:36 AM 10/20/2022-10:38 AM 10/20/2022
-424: *10:42 AM 10/20/2022-
+424: *10:42 AM 10/20/2022-6:34 PM 10/20/2022
 1- fgu
 2- get top left corner of map!
 3- matrix points ueberlege algo
+450: *6:34 PM 10/20/2022-
+__________ fr 21.10.22 waiting at the airport... <200 vok
+451: *4:56 AM 10/21/2022-4:58 AM 10/21/2022
+452: *4:58 AM 10/21/2022-5:02 AM 10/21/2022
+453: *5:02 AM 10/21/2022-5:07 AM 10/21/2022
+454: *5:07 AM 10/21/2022-5:12 AM 10/21/2022
+455: *5:12 AM 10/21/2022-5:19 AM 10/21/2022
+456: *5:19 AM 10/21/2022-5:21 AM 10/21/2022
+457: *5:21 AM 10/21/2022-5:23 AM 10/21/2022
+- frag einfach: does using leaflet rounting machine API cost something? NEIN!
+- gut wie uebernehme ich das jetzt und kostet das jetzt was oder nicht?
+- kann ich es mit await machen? NEIN!
+- test4 muss anders sein!
+- wie wuerde so ein aufrud aussehen?
+- was ist control?
+458: *5:23 AM 10/21/2022-5:25 AM 10/21/2022
+459: *5:26 AM 10/21/2022-5:26 AM 10/21/2022
+460: *5:26 AM 10/21/2022-5:26 AM 10/21/2022
+461: *5:27 AM 10/21/2022-5:34 AM 10/21/2022
+462: *5:34 AM 10/21/2022-5:36 AM 10/21/2022
+463: *5:36 AM 10/21/2022-5:36 AM 10/21/2022
+464: *5:36 AM 10/21/2022-5:38 AM 10/21/2022
+++++>>>>walk from to
+465: *5:38 AM 10/21/2022-5:40 AM 10/21/2022
+466: *5:40 AM 10/21/2022-5:46 AM 10/21/2022
+467: *5:46 AM 10/21/2022-6:10 AM 10/21/2022
+468: *6:10 AM 10/21/2022-6:10 AM 10/21/2022
+ok - create_router
+- includes
+- agent should be quiet!!!
+- back to caba!
+- mach ein file code.js fuer unsorted helpers
+- vielleicht auch noch in maphelpers
+- am ende soll nur in lib und start was stehen
+- minimalistic version integrate in caba
+469: *6:10 AM 10/21/2022-6:11 AM 10/21/2022
+470: *6:12 AM 10/21/2022-7:05 AM 10/21/2022
+471: *7:06 AM 10/21/2022-7:09 AM 10/21/2022
+472: *7:10 AM 10/21/2022-7:10 AM 10/21/2022
+473: *7:10 AM 10/21/2022-7:11 AM 10/21/2022
+474: *7:11 AM 10/21/2022-7:11 AM 10/21/2022
+475: *7:11 AM 10/21/2022-7:14 AM 10/21/2022
+1- mach einen button: path 
+2- ibaef das hier ist nur eine zwischenstation!
+3- how to show path?
+- WAY SHORTER!!!!!!!!!!!!! make sure entire path is visible!!!
+- WAY SHORTER!!! output
+- teste wann genau das routesfound getriggert wird?
+- back to routning
+476: *7:15 AM 10/21/2022-7:15 AM 10/21/2022
+477: *7:15 AM 10/21/2022-7:17 AM 10/21/2022
+478: *7:17 AM 10/21/2022-7:20 AM 10/21/2022
+1- goto code test4
+2- unused code WEG
+3- create_toolbar
+479: *7:21 AM 10/21/2022-7:23 AM 10/21/2022
+480: *7:23 AM 10/21/2022-7:25 AM 10/21/2022
+481: *7:25 AM 10/21/2022-7:29 AM 10/21/2022
+1- wenn ich keine waypoints adde macht er dann trotzdem einen aufruf zu routesfound???
+2- how to show a path?
+3- add buttons to tollbar
+482: *7:29 AM 10/21/2022-7:32 AM 10/21/2022
+483: *7:32 AM 10/21/2022-7:36 AM 10/21/2022
+484: *7:36 AM 10/21/2022-7:40 AM 10/21/2022
+1- ja er sendet 1 request!
+2- shorter
+3- mach ein onclick
+485: *7:40 AM 10/21/2022-8:15 AM 10/21/2022
+D:walk!M!
+490: *10:11 AM 10/21/2022-10:16 AM 10/21/2022 =>321>20-
+491: *10:16 AM 10/21/2022-10:18 AM 10/21/2022
+492: *10:18 AM 10/21/2022-10:20 AM 10/21/2022
+1- goal? leaflet setbounds to fit lat long
+2- code 61
+3- find setBounds
+493: *10:21 AM 10/21/2022-10:22 AM 10/21/2022
+494: *10:22 AM 10/21/2022-10:43 AM 10/21/2022
+495: *10:43 AM 10/21/2022-10:48 AM 10/21/2022
+1- zuruec zu code!
+2- zurueck zum beispiel
+3- bau1
+496: *10:48 AM 10/21/2022-10:48 AM 10/21/2022
+497: *10:50 AM 10/21/2022-10:51 AM 10/21/2022 +
+1- fgu
+2- add a padding around it!
+3- fit_points(map,pts)
+500: *11:19 AM 10/21/2022-11:25 AM 10/21/2022
+501: *11:25 AM 10/21/2022-11:26 AM 10/21/2022
+502: *11:26 AM 10/21/2022-11:29 AM 10/21/2022 ++
+1- simple distance!
+2- muesst es geben!
+3- leaflet: distance between 2 points (lat lng)
+503: *11:29 AM 10/21/2022-11:30 AM 10/21/2022
+502: *11:30 AM 10/21/2022-11:31 AM 10/21/2022
+501: *11:31 AM 10/21/2022-12:04 PM 10/21/2022 +++
+1- was will ich? gu!
+2- ergebnis: 600m
+3- test
+502: *12:04 PM 10/21/2022-12:11 PM 10/21/2022
+503: *12:12 PM 10/21/2022-12:35 PM 10/21/2022 +++
+1- test
+2- latlngBounds 
+3- leaflet find leftmost point in list of coordinates
+504: *12:37 PM 10/21/2022-12:43 PM 10/21/2022 +++
+1- correct!
+2- east ist right!!!!!
+3- get_bounding_box(pts)
+505: *12:47 PM 10/21/2022-12:48 PM 10/21/2022
+506: *12:48 PM 10/21/2022-12:52 PM 10/21/2022
+507: *12:52 PM 10/21/2022-5:27 PM 10/21/2022
+508: *5:27 PM 10/21/2022-5:31 PM 10/21/2022
+509: *5:31 PM 10/21/2022-5:33 PM 10/21/2022 +
+1- test
+2- alles falsch!!!! x muss longitude sein!!!
+3- wie berechne ich dlat ( 1 + xpercent )
+510: *5:33 PM 10/21/2022-5:40 PM 10/21/2022
+511: *5:40 PM 10/21/2022-5:43 PM 10/21/2022
+512: *5:43 PM 10/21/2022-5:44 PM 10/21/2022 ++
+1- something else 
+2- was ist los?
+3- irgendwas stimmt nicht!
+513: *5:44 PM 10/21/2022-5:46 PM 10/21/2022
+514: *5:46 PM 10/21/2022-5:51 PM 10/21/2022
+515: *5:51 PM 10/21/2022-5:52 PM 10/21/2022 +++
+1- erstmal ein output!!!
+2- pp
+3- correct
+516: *5:52 PM 10/21/2022-6:02 PM 10/21/2022
+517: *6:02 PM 10/21/2022-6:20 PM 10/21/2022
+518: *6:20 PM 10/21/2022-6:27 PM 10/21/2022
+519: *6:27 PM 10/21/2022-6:30 PM 10/21/2022 +++
+1- leaflet map.fitBounds example
+2- was jetzt?
+3- heisse limo machen!
+520: *6:30 PM 10/21/2022-6:43 PM 10/21/2022
+521: *6:44 PM 10/21/2022-6:50 PM 10/21/2022
+522: *6:50 PM 10/21/2022-6:56 PM 10/21/2022 +++
+1- alles was nicht verwendet wird soll cleaned up werden!
+2- cleanup test6!
+3- test!
+523: *6:56 PM 10/21/2022-7:01 PM 10/21/2022
+524: *7:01 PM 10/21/2022-7:11 PM 10/21/2022
+525: *7:11 PM 10/21/2022-7:13 PM 10/21/2022
+526: *7:13 PM 10/21/2022-7:15 PM 10/21/2022 +
+1- click on map to set agent
+2- das show_route geb ich jetzt ins code
+3- was will ich jetzt? erstmal: kit cl! aber es ist zurechtgerueckt!
+527: *7:15 PM 10/21/2022-7:17 PM 10/21/2022
+528: *7:17 PM 10/21/2022-7:22 PM 10/21/2022
+529: *7:26 PM 10/21/2022-7:30 PM 10/21/2022
+1- noch ein test
+2- show route through the agents toolbar button!
+3- map.on('click', function(e) {
+    alert("Lat, Lon : " + e.latlng.lat + ", " + e.latlng.lng)
+});
+530: *7:30 PM 10/21/2022-7:33 PM 10/21/2022
+531: *7:33 PM 10/21/2022-7:36 PM 10/21/2022
+532: *7:36 PM 10/21/2022-7:38 PM 10/21/2022
+1- try map.off('click');
+2- leaflet remove click handler on map map.on('click')
+3- irgendwas stimmt ueberhaupt nicht!!! er macht extre punkte!
+533: *7:38 PM 10/21/2022-7:43 PM 10/21/2022
+534: *7:46 PM 10/21/2022-7:49 PM 10/21/2022
+535: *7:49 PM 10/21/2022-7:53 PM 10/21/2022
+1- last one!
+2- scale control unten links
+3- danach das click wieder activieren!
+560 guter tag!
+__________ sa 22.10.22 waiting at the airport... <200 vok
+560: *7:55 PM 10/21/2022-5:44 AM 10/22/2022
+561: *5:44 AM 10/22/2022-5:53 AM 10/22/2022
+562: *5:53 AM 10/22/2022-6:00 AM 10/22/2022
+563: *6:00 AM 10/22/2022-6:01 AM 10/22/2022
+564: *6:01 AM 10/22/2022-6:03 AM 10/22/2022
+565: *6:03 AM 10/22/2022-6:04 AM 10/22/2022 hoffnungsvoll >optimistisch
+566: *6:04 AM 10/22/2022-6:08 AM 10/22/2022
+ok - add button to remove router! YES route is being removed as well!!
+567: *6:08 AM 10/22/2022-6:11 AM 10/22/2022
+568: *6:17 AM 10/22/2022-6:28 AM 10/22/2022
+569: *6:28 AM 10/22/2022-6:40 AM 10/22/2022
+570: *6:40 AM 10/22/2022-6:40 AM 10/22/2022
+571: *6:40 AM 10/22/2022-6:41 AM 10/22/2022
+572: *6:41 AM 10/22/2022-6:45 AM 10/22/2022
+573: *6:46 AM 10/22/2022-6:46 AM 10/22/2022
+574: *6:46 AM 10/22/2022-6:49 AM 10/22/2022
+575: *6:49 AM 10/22/2022-6:51 AM 10/22/2022
+576: *6:51 AM 10/22/2022-6:55 AM 10/22/2022
+577: *6:55 AM 10/22/2022-7:01 AM 10/22/2022
+578: *7:01 AM 10/22/2022-7:03 AM 10/22/2022
+579: *7:03 AM 10/22/2022-7:06 AM 10/22/2022
+580: *7:06 AM 10/22/2022-8:10 AM 10/22/2022
+ok - spa
+585: *8:10 AM 10/22/2022-8:12 AM 10/22/2022
+3- email termin auf 26 oder 27 verlegen!
+590: *8:12 AM 10/22/2022-8:16 AM 10/22/2022
+2- gu portal: mo, fr
+591: *8:16 AM 10/22/2022-8:21 AM 10/22/2022
+1- fe im
+592: *8:22 AM 10/22/2022-8:23 AM 10/22/2022
+- now, detach using 321
+- M.dims soll es immer geben! wenn zoom aendere, calc dims
+- gibt es ein map.getContainer()?
+- get_map_dims_in_pixel()
+- output of southEast?
+- get_map_dims_in_lat_long()
+- why did I just do that?
+- test
+- get_map_dims_in_meters()
+- leaflet zoom levels meters per pixel
+593: *8:23 AM 10/22/2022-8:26 AM 10/22/2022
+594: *8:26 AM 10/22/2022-8:28 AM 10/22/2022
+1- spielregeln!
+2- test7: was soll jetzt passieren?
+3- test
+setup:
+ok 1. die landkarte wird in die mitte des tisches gelegt
+2- players choose a city
+595: *8:31 AM 10/22/2022-8:32 AM 10/22/2022
+596: *8:32 AM 10/22/2022-8:36 AM 10/22/2022
+597: *8:36 AM 10/22/2022-8:37 AM 10/22/2022
+1- leaflet flyTo event completed?
+2- fly to city center!
+3- players choose a city!
+598: *8:37 AM 10/22/2022-8:41 AM 10/22/2022
+599: *8:41 AM 10/22/2022-8:42 AM 10/22/2022
+600: *8:42 AM 10/22/2022-8:44 AM 10/22/2022
+1- continent info? hab ich das irgendwo?
+2- output map dims
+3- handle moveend event
+601: *8:44 AM 10/22/2022-8:46 AM 10/22/2022
+602: *8:46 AM 10/22/2022-8:53 AM 10/22/2022
+603: *8:53 AM 10/22/2022-8:58 AM 10/22/2022
+1- Korea
+2- web search: list of countries per continent
+3- countries per continent => info.yaml
+604: *8:58 AM 10/22/2022-9:29 AM 10/22/2022
+605: *9:29 AM 10/22/2022-9:30 AM 10/22/2022
+606: *9:30 AM 10/22/2022-
+1- was kommt jetzt als naechstes?
+2- putzen
+3- continents csv
 
 
-- maphelpers shortcut for osm center zoom
-- map.getBounds
-- leaflet how do I get the top left and bottom right points LatLng of map?
-- randompoints
-- now follow get the data (polyline)
-- add lat longs
-- hol mir basemin!
-- ok nimm die pointes
-- get the pixel data in a circle of radius 25 round current position
-- find white or yellow
-- move towards that point
-- how can I move my agent along a street in vienna?
-
-
-
-
-
-
-neuro abfahrt: 11h30
-
-- control pin w/ arrow keys!
-- zuerst einen ampel button
-==>next will ich auf einem button toggle on off arrow keys!
-- walk + finalize M
-- noch immer nix!!!
-- schau wie die das macht
-- andres example suchen!!!
-
-- html entities list
-- list of html symbols
-- look at example!
-- include leaflet toolbar source
-- install vs code
-- schau mir den code an!
-- zuerst brauche leaflet toolbar
-- how to make a leaflet custom control?
-
-- start RA uploads!
-- goto noc gameloop
-- wunsch code?
-
-- derzeitiges ziel: 
-- classes
-- map_moveto([lat,lng])
-WAY SHORTER!!!!!!!
-- eigentlich bin ich zufrieden!
-- der agent is ready, eigentlich kann ich zurueck zu yt gehen
 
 
 
@@ -1478,6 +1672,32 @@ WAY SHORTER!!!!!!!
 
 
 
+
+
+
+
+
+
+
+
+
+- WAY SHORTER!!!
+- WAY SHORTER!!!
+- weiter
+- leaflet remove marker
+
+
+
+- eigentlich will ich einen graph mit nodes!
+- sort coordinates
+- 
+add_agent_at
+=>call click map handler: set_agent
+=>call route button handler: show_route_through_agents
+
+
+>> ibaef das hier ist nur eine zwischenstation!
+>> I just have to be radical enough
 
 
 

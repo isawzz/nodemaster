@@ -12,10 +12,31 @@ function start() {
 
 }
 function test6(map, p1, p2) {
-	//was macht test6?
+	let control = M.control = L.Routing.control({
+		waypoints: points_to_waypoints(p1, p2),
+		lineOptions: { styles: [{ color: '#006a4e', opacity: 1, weight: 5 }], },
+		draggableWaypoints: false,
+		createMarker: function () { return false; },
+		show: false,
+	}).addTo(map);
+
+	M.coords = [];
+	control.on('routesfound', function (e) {
+		//console.log('routesfound event: ',e);
+		M.routes = e.routes;
+		M.num_requests = e.target._requestCount;
+		M.coords = arrExtend(M.coords, e.routes[0].coordinates);
+		console.log('M', M)
+	});
+
+
+	//control.addTo(map);
+	//console.log('control',control);
+	//let routes = control._routes;
+	//console.log('routes',_routes);
 }
 function test5(map, p1, p2) {
-	let control = test4_get_waypoints(map, p1, p2);
+	let control = M.control = test4_get_waypoints(map, p1, p2);
 
 	// hallo(control,map);
 	M.coords = [];
@@ -25,59 +46,6 @@ function test5(map, p1, p2) {
 		console.log('M', M)
 	});
 
-}
-function getInstrGeoJson(instr, coord) {
-	console.log('instr', instr, 'coord', coord);
-	var formatter = new L.Routing.Formatter();
-	var instrPts = {
-		type: "FeatureCollection",
-		features: []
-	};
-	for (var i = 0; i < instr.length; ++i) {
-		var g = {
-			"type": "Point",
-			"coordinates": [coord[instr[i].index].lng, coord[instr[i].index].lat]
-		};
-		var p = {
-			"instruction": formatter.formatInstruction(instr[i])
-		};
-		instrPts.features.push({
-			"geometry": g,
-			"type": "Feature",
-			"properties": p
-		});
-	}
-	return instrPts;
-}
-function hallo(control, map) {
-	control.on('routeselected', function (e) {
-		var coord = e.route.coordinates;
-		var instr = e.route.instructions;
-		L.geoJson(getInstrGeoJson(instr, coord)).addTo(map);
-	});
-}
-function points_to_waypoints(p1, p2) {
-	return [
-		L.latLng(p1[0], p1[1]),
-		L.latLng(p2[0], p2[1])
-	];
-}
-function get_middle_point(p1, p2) {
-	return [(p1[0] + p2[0]) / 2, (p1[1] + p2[1]) / 2];
-}
-function just_points(map) {
-	console.log('geo', Geo)
-	let [p1, p2] = [Geo.places.tuerkenschanzpark, Geo.places.vegagasse];
-	return [p1, p2];
-}
-function just_map() {
-	var map = L.map('map');
-
-	L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-		attribution: '© OpenStreetMap contributors'
-	}).addTo(map);
-
-	return map;
 }
 function test4_get_waypoints(mymap, p1, p2) {
 	// Draw route

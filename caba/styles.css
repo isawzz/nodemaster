@@ -3,6 +3,13 @@ body {
 	height: 100%;
 	margin: 0;
 }
+.flat{
+	border: none;
+	outline: none;
+	text-decoration: none;
+	padding:10px;
+	box-sizing: border-box;
+}
 .top {
 	display: flex;
 	gap: 10px;
