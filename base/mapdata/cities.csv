@@ -78,7 +78,7 @@ Abertillery,51.73,-3.13,United Kingdom,GB,GBR,Blaenau Gwent,,11601,1826675845
 Aberystwyth,52.414,-4.081,United Kingdom,GB,GBR,Ceredigion,,12250,1826420477
 Abha,18.2167,42.5,Saudi Arabia,SA,SAU,‘Asīr,admin,236157,1682759151
 Abhar,36.1467,49.2181,Iran,IR,IRN,Zanjān,minor,99285,1364688687
-Abidjan,5.3364,-4.0267,Cote d'Ivoire,CI,CIV,Abidjan,primary,4980000,1384207980
+Abidjan,5.3364,-4.0267,Ivory Coast,CI,CIV,Abidjan,primary,4980000,1384207980
 Abiko,35.8642,140.0282,Japan,JP,JPN,Chiba,,130290,1392000342
 Abilene,32.4543,-99.7384,United States,US,USA,Texas,,123420,1840019476
 Abilene,38.9229,-97.2251,United States,US,USA,Kansas,,6390,1840001629
@@ -422,7 +422,7 @@ Aigues-Mortes,43.5667,4.1925,France,FR,FRA,Occitanie,,8456,1250061893
 Aihua,24.4629,100.135,China,CN,CHN,Yunnan,minor,106054,1156317956
 Aiken,33.531,-81.7268,United States,US,USA,South Carolina,,30869,1840013722
 Ailan Mubage,43.9167,81.3167,China,CN,CHN,Xinjiang,minor,526745,1156279608
-Aileu,-8.7281,125.5664,Timor-Leste,TL,TLS,Aileu,admin,,1626766880
+Aileu,-8.7281,125.5664,East Timor,TL,TLS,Aileu,admin,,1626766880
 Aimargues,43.6847,4.2086,France,FR,FRA,Occitanie,,5682,1250399058
 Aimores,-19.4958,-41.0639,Brazil,BR,BRA,Minas Gerais,,25141,1076798379
 'Ain Abessa,36.3,5.295,Algeria,DZ,DZA,Sétif,,16770,1012074116
@@ -451,7 +451,7 @@ Ain Temouchent,35.3044,-1.14,Algeria,DZ,DZA,Aïn Temouchent,admin,,1012763655
 Ain Zaouia,36.5483,3.8942,Algeria,DZ,DZA,Tizi Ouzou,,17320,1012695288
 Ain Zora,34.6575,-3.5331,Morocco,MA,MAR,Oriental,,10601,1504442402
 Ainan,32.9622,132.5833,Japan,JP,JPN,Ehime,,19131,1392003348
-Ainaro,-8.9833,125.5,Timor-Leste,TL,TLS,Ainaro,admin,3085,1626118494
+Ainaro,-8.9833,125.5,East Timor,TL,TLS,Ainaro,admin,3085,1626118494
 Aine Draham,36.7833,8.7,Tunisia,TN,TUN,Jendouba,,35400,1788027300
 Ainring,47.8136,12.9428,Germany,DE,DEU,Bavaria,,9908,1276077892
 Aintree,53.4793,-2.9373,United Kingdom,GB,GBR,Liverpool,,6689,1826876428
@@ -535,7 +535,7 @@ Akcaabat,41.0167,39.5833,Turkey,TR,TUR,Trabzon,minor,7600,1792536331
 Akcadag,38.3442,37.9742,Turkey,TR,TUR,Malatya,minor,5995,1792886616
 Akcakoca,41.0806,31.1297,Turkey,TR,TUR,Düzce,minor,22416,1792736613
 Ak-Dovurak,51.1667,90.6,Russia,RU,RUS,Tyva,,13580,1643785448
-Aketi,2.7405,23.78,Congo (Kinshasa),CD,COD,Bas-Uélé,,58601,1180273302
+Aketi,2.7405,23.78,Congo,CD,COD,Bas-Uélé,,58601,1180273302
 Akhalkalaki,41.4056,43.4861,Georgia,GE,GEO,Samtskhe-Javakheti,minor,8295,1268261654
 Akhaltsikhe,41.6389,42.9861,Georgia,GE,GEO,Samtskhe-Javakheti,admin,14000,1268352935
 Akhisar,38.9167,27.8333,Turkey,TR,TUR,Manisa,minor,46167,1792301869
@@ -2686,7 +2686,7 @@ Bafq,31.6053,55.4028,Iran,IR,IRN,Yazd,minor,45453,1364201689
 Bafra,41.5682,35.9069,Turkey,TR,TUR,Samsun,minor,97452,1792560571
 Bafru'iyeh,32.2767,53.9942,Iran,IR,IRN,Yazd,,6939,1364682175
 Baft,29.2331,56.6022,Iran,IR,IRN,Kermān,minor,34517,1364013464
-Bafwasende,1.0838,27.2666,Congo (Kinshasa),CD,COD,Tshopo,,149,1180841746
+Bafwasende,1.0838,27.2666,Congo,CD,COD,Tshopo,,149,1180841746
 Bagabag,16.6044,121.2521,Philippines,PH,PHL,Nueva Vizcaya,,37985,1608331162
 Bagac,14.5951,120.3918,Philippines,PH,PHL,Bataan,,31365,1608665049
 Bagalvad,16.0528,76.8877,India,IN,IND,Karnātaka,,8682,1356983749
@@ -3122,7 +3122,7 @@ Bandjoun,5.35,10.4,Cameroon,CM,CMR,Ouest,,6872,1120913349
 Bandlaguda,17.3543,78.3853,India,IN,IND,Telangana,,12734,1356134351
 Bando,36.0483,139.8889,Japan,JP,JPN,Ibaraki,,51511,1392946585
 Bandol,43.1364,5.7533,France,FR,FRA,Provence-Alpes-Côte d’Azur,,8404,1250049792
-Bandundu,-3.31,17.38,Congo (Kinshasa),CD,COD,Kwilu,admin,118211,1180219776
+Bandundu,-3.31,17.38,Congo,CD,COD,Kwilu,admin,118211,1180219776
 Bandung,-6.95,107.5667,Indonesia,ID,IDN,Jawa Barat,admin,2875673,1360313023
 Baneh,35.9975,45.8853,Iran,IR,IRN,Kordestān,minor,110218,1364786972
 Banes,20.9697,-75.7117,Cuba,CU,CUB,Holguin,minor,34452,1192981466
@@ -3427,7 +3427,7 @@ Baryshevo,54.9561,83.1854,Russia,RU,RUS,Novosibirskaya Oblast’,,5195,164346350
 Baryshivka,50.3703,31.3286,Ukraine,UA,UKR,Kyyivs’ka Oblast’,,10783,1804157251
 Barzano,45.7333,9.3167,Italy,IT,ITA,Lombardy,,5101,1380374958
 Basalt,39.3663,-107.0414,United States,US,USA,Colorado,,9193,1840020195
-Basankusu,1.2222,19.8028,Congo (Kinshasa),CD,COD,Équateur,,52216,1180515335
+Basankusu,1.2222,19.8028,Congo,CD,COD,Équateur,,52216,1180515335
 Basarabeasca,46.3333,28.9667,Moldova,MD,MDA,Basarabeasca,admin,8471,1498894118
 Basavakalyan,17.87,76.95,India,IN,IND,Karnātaka,,69717,1356923425
 Basay,9.4167,122.6333,Philippines,PH,PHL,Negros Oriental,,28531,1608826752
@@ -3448,7 +3448,7 @@ Basirhat,22.6572,88.8942,India,IN,IND,West Bengal,,125254,1356109985
 Basista,15.8524,120.3976,Philippines,PH,PHL,Pangasinan,,37679,1608619317
 Baskil,38.5674,38.8236,Turkey,TR,TUR,Elazığ,minor,5002,1792261115
 Basmakci,37.8973,30.0101,Turkey,TR,TUR,Afyonkarahisar,minor,5034,1792537292
-Basoko,1.2333,23.6,Congo (Kinshasa),CD,COD,Tshopo,,43709,1180509801
+Basoko,1.2333,23.6,Congo,CD,COD,Tshopo,,43709,1180509801
 Bassano del Grappa,45.7667,11.7342,Italy,IT,ITA,Veneto,,43481,1380653190
 Bassar,9.25,0.7833,Togo,TG,TGO,Kara,,23181,1768050143
 Basse Santa Su,13.31,-14.223,The Gambia,GM,GMB,Upper River,admin,14380,1270820759
@@ -3537,7 +3537,7 @@ Baturite,-4.3289,-38.885,Brazil,BR,BRA,Ceará,,33321,1076144455
 Bauan,13.7917,121.0085,Philippines,PH,PHL,Batangas,,90819,1608547248
 Bauang,16.5333,120.3333,Philippines,PH,PHL,La Union,,78449,1608237333
 Baubau,-5.4667,122.633,Indonesia,ID,IDN,Sulawesi Tenggara,,152143,1360789994
-Baucau,-8.4667,126.45,Timor-Leste,TL,TLS,Baucau,admin,14961,1626835210
+Baucau,-8.4667,126.45,East Timor,TL,TLS,Baucau,admin,14961,1626835210
 Bauchi,10.3158,9.8442,Nigeria,NG,NGA,Bauchi,admin,693700,1566483284
 Baud,47.8756,-3.0189,France,FR,FRA,Bretagne,,6247,1250499803
 Bauko,16.9833,120.8667,Philippines,PH,PHL,Mountain,,32021,1608534033
@@ -3981,7 +3981,7 @@ Bengkulu,-3.7956,102.2592,Indonesia,ID,IDN,Bengkulu,admin,360495,1360191448
 Bengonbeyene,1.6931,11.0342,Equatorial Guinea,GQ,GNQ,Wele-Nzas,,15644,1226996248
 Benguela,-12.55,13.4167,Angola,AO,AGO,Benguela,admin,561775,1024141961
 Benhao,18.6122,109.9587,China,CN,CHN,Hainan,,29295,1156834292
-Beni,0.4911,29.4731,Congo (Kinshasa),CD,COD,Nord-Kivu,,332903,1180325051
+Beni,0.4911,29.4731,Congo,CD,COD,Nord-Kivu,,332903,1180325051
 Beni Abbes,30.08,-2.1,Algeria,DZ,DZA,Béchar,admin,10885,1012633792
 Beni Aissi,29.6,0.25,Algeria,DZ,DZA,Adrar,,7628,1012574444
 Beni Amrane,36.6686,3.5922,Algeria,DZ,DZA,Boumerdes,,23621,1012420167
@@ -4453,7 +4453,7 @@ Bindura,-17.3,31.3333,Zimbabwe,ZW,ZWE,Mashonaland Central,admin,46275,1716331687
 Bine Al Widane,32.1083,-6.475,Morocco,MA,MAR,Béni Mellal-Khénifra,,5421,1504956807
 Binefar,41.85,0.3,Spain,ES,ESP,Aragon,,9888,1724991956
 Binfield,51.432,-0.792,United Kingdom,GB,GBR,Bracknell Forest,,8689,1826891094
-Binga,2.3834,20.42,Congo (Kinshasa),CD,COD,Mongala,,64639,1180236070
+Binga,2.3834,20.42,Congo,CD,COD,Mongala,,64639,1180236070
 Bingawan,11.2333,122.5667,Philippines,PH,PHL,Iloilo,,16164,1608856667
 Bingen am Rhein,49.9669,7.895,Germany,DE,DEU,Rhineland-Palatinate,,25659,1276879617
 Binghamton,42.1014,-75.9093,United States,US,USA,New York,,148145,1840000460
@@ -4764,7 +4764,7 @@ Bodupal,17.4139,78.5783,India,IN,IND,Telangana,,43692,1356074103
 Boe,44.1597,0.6286,France,FR,FRA,Nouvelle-Aquitaine,,5589,1250418274
 Boechout,51.1636,4.4964,Belgium,BE,BEL,Flanders,,13120,1056225265
 Boekel,51.6011,5.6742,Netherlands,NL,NLD,Noord-Brabant,minor,10588,1528471312
-Boende,-0.2817,20.8806,Congo (Kinshasa),CD,COD,Tshuapa,admin,32091,1180688906
+Boende,-0.2817,20.8806,Congo,CD,COD,Tshuapa,admin,32091,1180688906
 Boerne,29.7844,-98.7289,United States,US,USA,Texas,,18232,1840019623
 Bofete,-23.1022,-48.2578,Brazil,BR,BRA,São Paulo,,10879,1076000023
 Boffa,10.185,-14.043,Guinea,GN,GIN,Boké,minor,2332,1324801511
@@ -4854,12 +4854,12 @@ Bollnas,61.3484,16.3883,Sweden,SE,SWE,Gävleborg,minor,13398,1752287863
 Bollullos de la Mitacion,37.3333,-6.1333,Spain,ES,ESP,Andalusia,,11099,1724782674
 Bollullos par del Condado,37.3358,-6.5364,Spain,ES,ESP,Andalusia,,14392,1724227724
 Bolnisi,41.45,44.5333,Georgia,GE,GEO,Kvemo Kartli,minor,8967,1268256910
-Bolobo,-2.16,16.24,Congo (Kinshasa),CD,COD,Mai-Ndombe,,27862,1180723089
+Bolobo,-2.16,16.24,Congo,CD,COD,Mai-Ndombe,,27862,1180723089
 Bologna,44.4939,11.3428,Italy,IT,ITA,Emilia-Romagna,admin,389261,1380202039
 Bologoye,57.8787,34.0789,Russia,RU,RUS,Tverskaya Oblast’,minor,21158,1643381656
 Bolokhovo,54.0833,37.8167,Russia,RU,RUS,Tul’skaya Oblast’,,9043,1643953673
 Bolongongo,-8.4667,15.25,Angola,AO,AGO,Kwanza Norte,,13019,1024319966
-Boloso,2.0337,15.2167,Congo (Brazzaville),CG,COG,Sangha,,12244,1178777874
+Boloso,2.0337,15.2167,Democratic Republic of the Congo,CG,COG,Sangha,,12244,1178777874
 Bolotnoye,55.6667,84.4,Russia,RU,RUS,Novosibirskaya Oblast’,,15629,1643828761
 Bolpur,23.67,87.72,India,IN,IND,West Bengal,,80210,1356123985
 Bol'shaya Chernigovka,52.0983,50.8667,Russia,RU,RUS,Samarskaya Oblast’,,6693,1643656735
@@ -4902,7 +4902,7 @@ Bom Retiro do Sul,-29.6089,-51.9428,Brazil,BR,BRA,Rio Grande do Sul,,11472,10767
 Bom Sucesso,-21.0328,-44.7578,Brazil,BR,BRA,Minas Gerais,,17243,1076350360
 Bom Sucesso,-23.71,-51.7639,Brazil,BR,BRA,Paraná,,6561,1076743154
 Bom Sucesso,-6.445,-37.9289,Brazil,BR,BRA,Paraiba,,5007,1076785235
-Boma,-5.85,13.05,Congo (Kinshasa),CD,COD,Kongo Central,,178638,1180611452
+Boma,-5.85,13.05,Congo,CD,COD,Kongo Central,,178638,1180611452
 Bomaderry,-34.848,150.605,Australia,AU,AUS,New South Wales,,6661,1036102200
 Bomareddipalli,18.7044,79.1568,India,IN,IND,Telangana,,9998,1356564798
 Bombarral,39.2667,-9.15,Portugal,PT,PRT,Leiria,minor,13193,1620112554
@@ -4922,7 +4922,7 @@ Bonate di Sopra,45.6819,9.5586,Italy,IT,ITA,Lombardy,,10020,1380392086
 Bonchamp-les-Laval,48.0742,-0.7014,France,FR,FRA,Pays de la Loire,,6087,1250650083
 Bondapalle,18.2418,83.3489,India,IN,IND,Andhra Pradesh,,6657,1356074564
 Bondeno,44.8894,11.4154,Italy,IT,ITA,Emilia-Romagna,,14217,1380410103
-Bondo,3.81,23.67,Congo (Kinshasa),CD,COD,Bas-Uélé,,23517,1180786691
+Bondo,3.81,23.67,Congo,CD,COD,Bas-Uélé,,23517,1180786691
 Bondorf,48.5167,8.8333,Germany,DE,DEU,Baden-Württemberg,,6002,1276992984
 Bondoufle,48.6133,2.3806,France,FR,FRA,Île-de-France,,9765,1250320835
 Bondoukou,8.0304,-2.8,Côte d'Ivoire,CI,CIV,Zanzan,admin,58297,1384649653
@@ -4936,7 +4936,7 @@ Bonfim,-20.3269,-44.2389,Brazil,BR,BRA,Minas Gerais,,6818,1076721482
 Bonfinopolis,-16.6178,-48.9628,Brazil,BR,BRA,Goiás,,7536,1076282296
 Bongabon,15.6321,121.1448,Philippines,PH,PHL,Nueva Ecija,,66839,1608482440
 Bongabong,12.7167,121.3667,Philippines,PH,PHL,Oriental Mindoro,,76973,1608784210
-Bongandanga,1.5104,21.05,Congo (Kinshasa),CD,COD,Mongala,,4105,1180746434
+Bongandanga,1.5104,21.05,Congo,CD,COD,Mongala,,4105,1180746434
 Bongao,5.0292,119.7731,Philippines,PH,PHL,Tawi-Tawi,admin,116118,1608490585
 Bongaree,-27.0813,153.1636,Australia,AU,AUS,Queensland,,13649,1036269345
 Bongor,10.2806,15.3722,Chad,TD,TCD,Mayo-Kébbi Est,admin,27770,1148833900
@@ -5085,7 +5085,7 @@ Bosilegrad,42.5005,22.4728,Serbia,RS,SRB,Bosilegrad,admin,,1688870763
 Bosilovo,41.4406,22.7278,Macedonia,MK,MKD,Bosilovo,admin,1069,1807868218
 Boskoop,52.0667,4.6333,Netherlands,NL,NLD,Zuid-Holland,minor,15045,1528548722
 Boskovice,49.4875,16.66,Czechia,CZ,CZE,Jihomoravský Kraj,,11726,1203299524
-Bosobolo,4.1904,19.88,Congo (Kinshasa),CD,COD,Nord-Ubangi,,14553,1180318544
+Bosobolo,4.1904,19.88,Congo,CD,COD,Nord-Ubangi,,14553,1180318544
 Bossangoa,6.4833,17.45,Central African Republic,CF,CAF,Ouham,admin,36478,1140523604
 Bossembele,5.267,17.65,Central African Republic,CF,CAF,Ombella-Mpoko,,7287,1140955210
 Bossier City,32.5227,-93.6666,United States,US,USA,Louisiana,,68159,1840013790
@@ -5329,7 +5329,7 @@ Brawley,32.9783,-115.5287,United States,US,USA,California,,26309,1840019378
 Brayton,53.7682,-1.0907,United Kingdom,GB,GBR,North Yorkshire,,5299,1826840707
 Brazil,39.5226,-87.124,United States,US,USA,Indiana,,7993,1840005744
 Brazopolis,-22.4739,-45.6078,Brazil,BR,BRA,Minas Gerais,,14410,1076311905
-Brazzaville,-4.2667,15.2833,Congo (Brazzaville),CG,COG,Brazzaville,primary,1827000,1178340306
+Brazzaville,-4.2667,15.2833,Democratic Republic of the Congo,CG,COG,Brazzaville,primary,1827000,1178340306
 Brcko,44.8783,18.8092,Bosnia And Herzegovina,BA,BIH,Brcko District,admin,39893,1070370826
 Brea,33.9254,-117.8656,United States,US,USA,California,,43255,1840019323
 Breal-sous-Montfort,48.0478,-1.8667,France,FR,FRA,Bretagne,,6262,1250739296
@@ -5769,9 +5769,9 @@ Bujor,45.8667,27.9,Romania,RO,ROU,Galaţi,,6299,1642660151
 Bujumbura,-3.3825,29.3611,Burundi,BI,BDI,Bujumbura Mairie,primary,658859,1108101689
 Buka,-5.4219,154.6728,Papua New Guinea,PG,PNG,Bougainville,admin,,1598000066
 Bukachacha,52.9833,116.9166,Russia,RU,RUS,Zabaykal’skiy Kray,,3372,1643741623
-Bukama,-9.2,25.8333,Congo (Kinshasa),CD,COD,Haut-Lomami,,38770,1180047354
+Bukama,-9.2,25.8333,Congo,CD,COD,Haut-Lomami,,38770,1180047354
 Bukan,36.5211,46.2089,Iran,IR,IRN,Āz̄arbāyjān-e Gharbī,minor,193501,1364530447
-Bukavu,-2.4908,28.8428,Congo (Kinshasa),CD,COD,Sud-Kivu,admin,436779,1180475821
+Bukavu,-2.4908,28.8428,Congo,CD,COD,Sud-Kivu,admin,436779,1180475821
 Bukedea,1.3169,34.0506,Uganda,UG,UGA,Bukedea,admin,,1800687979
 Bukhara,39.7747,64.4286,Uzbekistan,UZ,UZB,Buxoro,admin,280187,1860523678
 Bukit Mertajam,5.3631,100.4667,Malaysia,MY,MYS,Pulau Pinang,,210000,1458619046
@@ -5810,12 +5810,12 @@ Bully-les-Mines,50.4419,2.7244,France,FR,FRA,Hauts-de-France,,12117,1250064948
 Bulnes,-36.7333,-72.3,Chile,CL,CHL,Ñuble,,20595,1152653950
 Bulqize,41.5,20.2167,Albania,AL,ALB,Dibër,,8177,1008809272
 Buluan,6.7154,124.7854,Philippines,PH,PHL,Maguindanao,,57406,1608130728
-Buluko,-0.757,28.528,Congo (Kinshasa),CD,COD,Nord-Kivu,,1192,1180000569
-Bulungu,-4.5496,18.6,Congo (Kinshasa),CD,COD,Kwilu,,48344,1180342743
+Buluko,-0.757,28.528,Congo,CD,COD,Nord-Kivu,,1192,1180000569
+Bulungu,-4.5496,18.6,Congo,CD,COD,Kwilu,,48344,1180342743
 Bulusan,12.75,124.1167,Philippines,PH,PHL,Sorsogon,,23932,1608161228
 Bulverde,29.7744,-98.4364,United States,US,USA,Texas,,5300,1840019628
 Bumahen,35.7297,51.8619,Iran,IR,IRN,Tehrān,,79034,1364656518
-Bumba,2.19,22.46,Congo (Kinshasa),CD,COD,Mongala,,103328,1180549980
+Bumba,2.19,22.46,Congo,CD,COD,Mongala,,103328,1180549980
 Bumbesti-Jiu,45.1786,23.3814,Romania,RO,ROU,Gorj,,8932,1642000047
 Bunawan,8.1781,125.9935,Philippines,PH,PHL,Agusan del Sur,,47512,1608342650
 Bunbury,-33.3272,115.6369,Australia,AU,AUS,Western Australia,,71090,1036561011
@@ -5828,7 +5828,7 @@ Bungoma,0.5666,34.5666,Kenya,KE,KEN,Bungoma,admin,55857,1404689847
 Bungoono,32.9781,131.585,Japan,JP,JPN,Ōita,,33066,1392003478
 Bungotakada,33.5757,131.5069,Japan,JP,JPN,Ōita,,21901,1392003392
 Bunhe,48.2206,38.2739,Ukraine,UA,UKR,Donets’ka Oblast’,,13633,1804980165
-Bunia,1.5604,30.24,Congo (Kinshasa),CD,COD,Ituri,admin,96764,1180006418
+Bunia,1.5604,30.24,Congo,CD,COD,Ituri,admin,96764,1180006418
 Bunkyo-ku,35.7167,139.75,Japan,JP,JPN,Tōkyō,,235981,1392003059
 Bunnik,52.0672,5.1969,Netherlands,NL,NLD,Utrecht,,15192,1528719790
 Bunol,39.4194,-0.7906,Spain,ES,ESP,Valencia,,9438,1724376022
@@ -5953,7 +5953,7 @@ Bushkill,40.7976,-75.3281,United States,US,USA,Pennsylvania,,8466,1840144379
 Bushtyno,48.0503,23.4894,Ukraine,UA,UKR,Zakarpats’ka Oblast’,,8562,1804233916
 Busia,0.4669,34.09,Uganda,UG,UGA,Busia,admin,47100,1800460306
 Busia,0.4608,34.1108,Kenya,KE,KEN,Busia,admin,30777,1404250734
-Businga,3.3404,20.87,Congo (Kinshasa),CD,COD,Nord-Ubangi,,34247,1180719970
+Businga,3.3404,20.87,Congo,CD,COD,Nord-Ubangi,,34247,1180719970
 Busk,49.9667,24.6167,Ukraine,UA,UKR,L’vivs’ka Oblast’,,8624,1804314944
 Busra al Harir,32.8425,36.34,Syria,SY,SYR,Dar‘ā,,13315,1760065014
 Busra ash Sham,32.5167,36.4833,Syria,SY,SYR,Dar‘ā,minor,19683,1760158105
@@ -5970,12 +5970,12 @@ Busto Arsizio,45.612,8.8518,Italy,IT,ITA,Lombardy,,83045,1380033378
 Busto Garolfo,45.5478,8.8867,Italy,IT,ITA,Lombardy,,13851,1380073256
 Bustos,14.95,120.9167,Philippines,PH,PHL,Bulacan,,77199,1608938758
 Busuanga,12.1335,119.9363,Philippines,PH,PHL,Palawan,,25617,1608290614
-Buta,2.82,24.74,Congo (Kinshasa),CD,COD,Bas-Uélé,admin,45677,1180712204
+Buta,2.82,24.74,Congo,CD,COD,Bas-Uélé,admin,45677,1180712204
 Butalangu,0.7011,32.2481,Uganda,UG,UGA,Nakaseke,admin,,1800001908
 Butaleja,0.9166,33.9563,Uganda,UG,UGA,Butaleja,admin,,1800859767
 Butare,-2.6,29.75,Rwanda,RW,RWA,Southern Province,,50220,1646348441
 Butebo,1.1942,33.9222,Uganda,UG,UGA,Pallisa,admin,,1800710436
-Butembo,0.1251,29.299,Congo (Kinshasa),CD,COD,Nord-Kivu,,217625,1180446432
+Butembo,0.1251,29.299,Congo,CD,COD,Nord-Kivu,,217625,1180446432
 Butgenbach,50.4262,6.2041,Belgium,BE,BEL,Wallonia,,5605,1056669684
 Butha-Buthe,-28.7833,28.2333,Lesotho,LS,LSO,Butha-Buthe,admin,10000,1426574356
 Buti,43.7297,10.5867,Italy,IT,ITA,Tuscany,,5644,1380821860
@@ -9833,7 +9833,7 @@ Delta,49.0847,-123.0586,Canada,CA,CAN,British Columbia,,102238,1124001200
 Delta,38.756,-108.0772,United States,US,USA,Colorado,,8995,1840018820
 Deltona,28.905,-81.2137,United States,US,USA,Florida,,198361,1840015072
 Delvine,39.9494,20.0958,Albania,AL,ALB,Vlorë,,5754,1008273800
-Demba,-5.5096,22.26,Congo (Kinshasa),CD,COD,Kasaï Central,,22263,1180021198
+Demba,-5.5096,22.26,Congo,CD,COD,Kasaï Central,,22263,1180021198
 Dembi Dolo,8.5333,34.8,Ethiopia,ET,ETH,Oromīya,,27780,1231620291
 Demerval Lobao,-5.3578,-42.6758,Brazil,BR,BRA,Piaui,,13278,1076667213
 Demidov,55.2667,31.5167,Russia,RU,RUS,Smolenskaya Oblast’,,6213,1643626996
@@ -10011,7 +10011,7 @@ Diapaga,12.0667,1.7833,Burkina Faso,BF,BFA,Est,minor,26013,1854687079
 Diari,9.8452,-0.8655,Ghana,GH,GHA,Northern,,12666,1288997321
 Dias d'Avila,-12.6128,-38.2969,Brazil,BR,BRA,Bahia,,78058,1076290338
 Diavata,40.6883,22.8583,Greece,GR,GRC,Kentriki Makedonia,,9890,1300787037
-Dibaya,-6.5095,22.87,Congo (Kinshasa),CD,COD,Kasaï Central,,603,1180985189
+Dibaya,-6.5095,22.87,Congo,CD,COD,Kasaï Central,,603,1180985189
 D'Iberville,30.4709,-88.9011,United States,US,USA,Mississippi,,14012,1840015023
 Diboll,31.1881,-94.783,United States,US,USA,Texas,,5204,1840019549
 Dibrugarh,27.4833,95,India,IN,IND,Assam,,154019,1356100193
@@ -10076,13 +10076,13 @@ Dikson,73.507,80.5451,Russia,RU,RUS,Krasnoyarskiy Kray,,1113,1643554430
 Dila,6.4104,38.31,Ethiopia,ET,ETH,YeDebub Bihēroch Bihēreseboch na Hizboch,,47021,1231393325
 Dilasag,16.4,122.2167,Philippines,PH,PHL,Aurora,,17102,1608348381
 Dilbeek,50.8333,4.25,Belgium,BE,BEL,Flanders,,42434,1056357068
-Dili,-8.5536,125.5783,Timor-Leste,TL,TLS,Dili,primary,222323,1626308942
+Dili,-8.5536,125.5783,East Timor,TL,TLS,Dili,primary,222323,1626308942
 Dilijan,40.7408,44.8631,Armenia,AM,ARM,Tavush,,16600,1051278149
 Dillenburg,50.7333,8.2833,Germany,DE,DEU,Hesse,,23365,1276583007
 Dillingen,49.35,6.7333,Germany,DE,DEU,Saarland,,20048,1276001038
 Dillingen,48.5667,10.4667,Germany,DE,DEU,Bavaria,minor,18978,1276506212
 Dillon,34.4233,-79.3689,United States,US,USA,South Carolina,,9089,1840014676
-Dilolo,-10.6833,22.3333,Congo (Kinshasa),CD,COD,Lualaba,,7854,1180154207
+Dilolo,-10.6833,22.3333,Congo,CD,COD,Lualaba,,7854,1180154207
 Dimasalang,12.1923,123.8592,Philippines,PH,PHL,Masbate,,24909,1608843461
 Dimataling,7.5333,123.3667,Philippines,PH,PHL,Zamboanga del Sur,,31340,1608315903
 Dimbokro,6.6505,-4.71,Côte d'Ivoire,CI,CIV,Lacs,admin,67349,1384235566
@@ -10167,7 +10167,7 @@ Dixon,41.8439,-89.4794,United States,US,USA,Illinois,,16195,1840007051
 Diyarbakir,37.9108,40.2367,Turkey,TR,TUR,Diyarbakır,admin,102653,1792536241
 Dizicheh,32.3833,51.5147,Iran,IR,IRN,Eşfahān,,17966,1364315138
 Djado,21.015,12.3075,Niger,NE,NER,Agadez,,10,1562138807
-Djambala,-2.55,14.75,Congo (Brazzaville),CG,COG,Plateaux,admin,9651,1178834249
+Djambala,-2.55,14.75,Democratic Republic of the Congo,CG,COG,Plateaux,admin,9651,1178834249
 Djanet,24.555,9.4853,Algeria,DZ,DZA,Illizi,admin,14655,1012827195
 Djelfa,34.6667,3.25,Algeria,DZ,DZA,Djelfa,admin,265833,1012268984
 Djemmal,35.64,10.76,Tunisia,TN,TUN,Monastir,,70587,1788132714
@@ -10246,7 +10246,7 @@ Dolgoprudnyy,55.9333,37.5,Russia,RU,RUS,Moskovskaya Oblast’,,108861,1643283176
 Dolhasca,47.4303,26.6094,Romania,RO,ROU,Suceava,,10298,1642508577
 Dolianova,39.3785,9.1784,Italy,IT,ITA,Sardegna,,9696,1380728725
 Dolinsk,47.3167,142.8,Russia,RU,RUS,Sakhalinskaya Oblast’,,11685,1643206913
-Dolisie,-4.1961,12.6731,Congo (Brazzaville),CG,COG,Niari,admin,103894,1178045241
+Dolisie,-4.1961,12.6731,Democratic Republic of the Congo,CG,COG,Niari,admin,103894,1178045241
 Doljevac,43.1968,21.8334,Serbia,RS,SRB,Doljevac,admin,,1688354392
 Dollard-des-Ormeaux,45.4833,-73.8167,Canada,CA,CAN,Quebec,,49637,1124902278
 Dolneni,41.4264,21.4536,Macedonia,MK,MKD,Dolneni,admin,375,1807169470
@@ -10988,7 +10988,7 @@ Edina,44.8914,-93.3602,United States,US,USA,Minnesota,,52857,1840007822
 Edinboro,41.8762,-80.1246,United States,US,USA,Pennsylvania,,6222,1840000476
 Edinburg,26.3197,-98.1596,United States,US,USA,Texas,,101170,1840021020
 Edinburgh,55.953,-3.189,United Kingdom,GB,GBR,"Edinburgh, City of",,488050,1826492520
-Edinburgh of the Seven Seas,-37.0675,-12.3105,"Saint Helena, Ascension, And Tristan Da Cunha",SH,SHN,Tristan da Cunha,admin,,1654661876
+Edinburgh of the Seven Seas,-37.0675,-12.3105,Saint Helena, Ascension, And Tristan Da Cunha",SH,SHN,Tristan da Cunha,admin,,1654661876
 Edinet,48.1681,27.305,Moldova,MD,MDA,Edineţ,admin,15520,1498114952
 Edingen-Neckarhausen,49.4469,8.6094,Germany,DE,DEU,Baden-Württemberg,,14238,1276673287
 Edingerhof,49.4483,8.6121,Germany,DE,DEU,Baden-Württemberg,,8128,1276180422
@@ -11742,7 +11742,7 @@ Ewa Gentry,21.3344,-158.0262,United States,US,USA,Hawaii,,25641,1840029577
 Ewa Villages,21.3418,-158.039,United States,US,USA,Hawaii,,6585,1840029578
 Ewell,51.35,-0.249,United Kingdom,GB,GBR,Surrey,,34872,1826318947
 Ewing,40.265,-74.8005,United States,US,USA,New Jersey,,36037,1840081658
-Ewo,-0.8667,14.8167,Congo (Brazzaville),CG,COG,Cuvette-Ouest,admin,9062,1178339407
+Ewo,-0.8667,14.8167,Democratic Republic of the Congo,CG,COG,Cuvette-Ouest,admin,9062,1178339407
 Excelsior Springs,39.339,-94.24,United States,US,USA,Missouri,,11731,1840008495
 Exeter,50.7167,-3.5333,United Kingdom,GB,GBR,Devon,,124180,1826840903
 Exeter,40.3139,-75.834,United States,US,USA,Pennsylvania,,25689,1840144085
@@ -12881,7 +12881,7 @@ Gamba,-2.65,10,Gabon,GA,GAB,Ogooué-Maritime,,9928,1266236988
 Gambela,8.25,34.5833,Ethiopia,ET,ETH,Gambēla Hizboch,admin,,1231698892
 Gambettola,44.1167,12.3333,Italy,IT,ITA,Emilia-Romagna,,10704,1380865769
 Gambolo,45.2586,8.8647,Italy,IT,ITA,Lombardy,,9916,1380760813
-Gamboma,-1.8764,15.8644,Congo (Brazzaville),CG,COG,Plateaux,,20877,1178991023
+Gamboma,-1.8764,15.8644,Democratic Republic of the Congo,CG,COG,Plateaux,,20877,1178991023
 Gameleira,-8.5844,-35.3867,Brazil,BR,BRA,Pernambuco,,27912,1076789377
 Gameleiras,-15.0819,-43.1239,Brazil,BR,BRA,Minas Gerais,,5096,1076042220
 Gammasa,31.4175,-8.4117,Morocco,MA,MAR,Marrakech-Safi,,9388,1504310079
@@ -12899,7 +12899,7 @@ Ganapavaram,16.4314,80.0515,India,IN,IND,Andhra Pradesh,,10029,1356636651
 Ganassi,7.8269,124.1034,Philippines,PH,PHL,Lanao del Sur,,30802,1608113357
 Ganca,40.6828,46.3606,Azerbaijan,AZ,AZE,Gəncə,admin,331400,1031197327
 Ganda,-13.0167,14.6333,Angola,AO,AGO,Benguela,,235486,1024320952
-Gandajika,-6.75,23.9667,Congo (Kinshasa),CD,COD,Lomami,,154425,1180466776
+Gandajika,-6.75,23.9667,Congo,CD,COD,Lomami,,154425,1180466776
 Gandara,12.013,124.8118,Philippines,PH,PHL,Samar,,35242,1608802493
 Gandasamou,14.1938,6.0669,Niger,NE,NER,Tahoua,,5279,1562704292
 Gander,48.9569,-54.6089,Canada,CA,CAN,Newfoundland and Labrador,,11688,1124310517
@@ -13075,7 +13075,7 @@ Gazojak,41.1875,61.4036,Turkmenistan,TM,TKM,Lebap,,24251,1795672645
 Gazulmandiyam,13.6,79.52,India,IN,IND,Andhra Pradesh,,5042,1356078276
 Gazzaniga,45.8,9.8333,Italy,IT,ITA,Lombardy,,5058,1380376033
 Gazzo Veronese,45.15,11.0833,Italy,IT,ITA,Veneto,,5347,1380154816
-Gbadolite,4.275,21,Congo (Kinshasa),CD,COD,Nord-Ubangi,admin,50493,1180674224
+Gbadolite,4.275,21,Congo,CD,COD,Nord-Ubangi,admin,50493,1180674224
 Gbarnga,7.0104,-9.49,Liberia,LR,LBR,Bong,admin,45835,1430269323
 Gbely,48.7175,17.115,Slovakia,SK,SVK,Trnavský,,5155,1703229235
 Gdansk,54.3667,18.6333,Poland,PL,POL,Pomorskie,admin,464254,1616406372
@@ -13119,7 +13119,7 @@ Geltendorf,48.1222,11.0278,Germany,DE,DEU,Bavaria,,5577,1276375717
 Gelterkinden,47.4653,7.8528,Switzerland,CH,CHE,Basel-Landschaft,,6200,1756602206
 Gelves,37.3333,-6.0167,Spain,ES,ESP,Andalusia,,10295,1724803534
 Gembloux,50.5594,4.6922,Belgium,BE,BEL,Wallonia,,25933,1056071343
-Gemena,3.25,19.7667,Congo (Kinshasa),CD,COD,Sud-Ubangi,admin,198056,1180000163
+Gemena,3.25,19.7667,Congo,CD,COD,Sud-Ubangi,admin,198056,1180000163
 Gemenos,43.2961,5.6269,France,FR,FRA,Provence-Alpes-Côte d’Azur,,6551,1250513459
 Gemmingen,49.15,8.9833,Germany,DE,DEU,Baden-Württemberg,,5145,1276826746
 Gemona del Friuli,46.2741,13.1224,Italy,IT,ITA,Friuli-Venezia Giulia,,10869,1380484180
@@ -13182,7 +13182,7 @@ George Town,5.4145,100.3292,Malaysia,MY,MYS,Pulau Pinang,admin,708127,1458236750
 Georgensgmund,49.1833,11,Germany,DE,DEU,Bavaria,,6706,1276121709
 Georges,39.8135,-79.7617,United States,US,USA,Pennsylvania,,6318,1840142198
 Georgetown,6.7833,-58.1667,Guyana,GY,GUY,Demerara-Mahaica,primary,200500,1328160906
-Georgetown,-7.9286,-14.4119,"Saint Helena, Ascension, And Tristan Da Cunha",SH,SHN,Ascension,admin,,1654363572
+Georgetown,-7.9286,-14.4119,Saint Helena, Ascension, And Tristan Da Cunha",SH,SHN,Ascension,admin,,1654363572
 Georgetown,30.6668,-97.6953,United States,US,USA,Texas,,79604,1840020875
 Georgetown,38.2249,-84.5482,United States,US,USA,Kentucky,,36994,1840013197
 Georgetown,31.9849,-81.226,United States,US,USA,Georgia,,12951,1840134450
@@ -13455,7 +13455,7 @@ Glenmont,39.0698,-77.0467,United States,US,USA,Maryland,,16659,1840024490
 Glenn Dale,38.9833,-76.804,United States,US,USA,Maryland,,13361,1840005955
 Glenn Heights,32.5506,-96.8548,United States,US,USA,Texas,,13377,1840020708
 Glennville,31.9382,-81.9305,United States,US,USA,Georgia,,5020,1840013832
-Gleno,-8.7239,125.4361,Timor-Leste,TL,TLS,Ermera,admin,8133,1626143485
+Gleno,-8.7239,125.4361,East Timor,TL,TLS,Ermera,admin,8133,1626143485
 Glenolden,39.8996,-75.292,United States,US,USA,Pennsylvania,,7164,1840000699
 Glenpool,35.9485,-96.0052,United States,US,USA,Oklahoma,,13936,1840020384
 Glenrothes,56.198,-3.178,United Kingdom,GB,GBR,Fife,,38510,1826270044
@@ -13589,7 +13589,7 @@ Golubac,44.653,21.632,Serbia,RS,SRB,Golubac,admin,,1688460377
 Golub-Dobrzyn,53.1,19.05,Poland,PL,POL,Kujawsko-Pomorskie,minor,12546,1616198300
 Golugonda,17.6793,82.4678,India,IN,IND,Andhra Pradesh,,5770,1356907409
 Golyshmanovo,56.3819,68.3715,Russia,RU,RUS,Tyumenskaya Oblast’,,13424,1643817304
-Goma,-1.6794,29.2336,Congo (Kinshasa),CD,COD,Nord-Kivu,admin,249862,1180805022
+Goma,-1.6794,29.2336,Congo,CD,COD,Nord-Kivu,admin,249862,1180805022
 Gomaringen,48.4519,9.0997,Germany,DE,DEU,Baden-Württemberg,,9001,1276119838
 Gombe,10.2904,11.17,Nigeria,NG,NGA,Gombe,admin,270366,1566855445
 Gombe,0.1818,32.1158,Uganda,UG,UGA,Butambala,admin,,1800068643
@@ -16045,7 +16045,7 @@ Idar-Oberstein,49.7019,7.3253,Germany,DE,DEU,Rhineland-Palatinate,,28323,1276902
 Ide,34.7986,135.8033,Japan,JP,JPN,Kyōto,,7453,1392428784
 Idfu,24.9781,32.8789,Egypt,EG,EGY,Aswān,,133772,1818755693
 Idil,37.3347,41.8894,Turkey,TR,TUR,Şırnak,minor,12905,1792618230
-Idiofa,-4.9596,19.5986,Congo (Kinshasa),CD,COD,Kwilu,,61056,1180986517
+Idiofa,-4.9596,19.5986,Congo,CD,COD,Kwilu,,61056,1180986517
 Idlib,35.9333,36.6333,Syria,SY,SYR,Idlib,admin,165000,1760305230
 Idri,27.4471,13.0517,Libya,LY,LBY,Wādī ash Shāţi’,admin,,1434443323
 Idrija,46.0025,14.0275,Slovenia,SI,SVN,Idrija,admin,5886,1705472042
@@ -16140,7 +16140,7 @@ Ikeda,34.8167,135.4333,Japan,JP,JPN,Hyōgo,,104148,1392188564
 Ikeda,35.4422,136.5731,Japan,JP,JPN,Gifu,,23310,1392003225
 Ikeda,36.4214,137.8747,Japan,JP,JPN,Nagano,,9292,1392276481
 Ikeja,6.6186,3.3426,Nigeria,NG,NGA,Lagos,admin,861300,1566486388
-Ikela,-1.1833,23.2667,Congo (Kinshasa),CD,COD,Tshuapa,,291,1180365335
+Ikela,-1.1833,23.2667,Congo,CD,COD,Tshuapa,,291,1180365335
 Iki,33.7489,129.6939,Japan,JP,JPN,Nagasaki,,24873,1392003437
 Iklin,35.9042,14.4544,Malta,MT,MLT,Iklin,admin,3130,1470330332
 Ikniwn,31.1717,-5.6489,Morocco,MA,MAR,Drâa-Tafilalet,,18235,1504281850
@@ -16159,7 +16159,7 @@ Ilava,48.9994,18.2361,Slovakia,SK,SVK,Nitriansky,minor,5485,1703643289
 Ilave,-16.0866,-69.6354,Peru,PE,PER,Puno,,16033,1604815838
 Ilawa,53.5964,19.5656,Poland,PL,POL,Warmińsko-Mazurskie,minor,33322,1616033026
 Ilchester,39.2187,-76.7684,United States,US,USA,Maryland,,26974,1840024482
-Ilebo,-4.3167,20.6,Congo (Kinshasa),CD,COD,Kasaï,,107093,1180788280
+Ilebo,-4.3167,20.6,Congo,CD,COD,Kasaï,,107093,1180788280
 Ile-Ife,7.4667,4.5667,Nigeria,NG,NGA,Osun,minor,501952,1566756897
 Iles,0.9706,-77.5208,Colombia,CO,COL,Nariño,minor,8701,1170251090
 Ilha das Flores,-10.4358,-36.54,Brazil,BR,BRA,Sergipe,,8348,1076754534
@@ -16239,7 +16239,7 @@ Imperatriz,-5.5258,-47.4758,Brazil,BR,BRA,Maranhão,,247505,1076486025
 Imperia,43.8865,8.0297,Italy,IT,ITA,Liguria,minor,42602,1380075952
 Imperial,32.839,-115.5719,United States,US,USA,California,,18120,1840019381
 Imperial Beach,32.5689,-117.1184,United States,US,USA,California,,27440,1840019353
-Impfondo,1.6333,18.0667,Congo (Brazzaville),CG,COG,Likouala,admin,20859,1178021926
+Impfondo,1.6333,18.0667,Democratic Republic of the Congo,CG,COG,Likouala,admin,20859,1178021926
 Imphal,24.82,93.95,India,IN,IND,Manipur,admin,264986,1356107172
 Impruneta,43.6854,11.2544,Italy,IT,ITA,Tuscany,,14618,1380948118
 Imqabba,35.8442,14.4669,Malta,MT,MLT,Imqabba,admin,3315,1470934982
@@ -16359,7 +16359,7 @@ Innsbrook,37.6552,-77.5775,United States,US,USA,Virginia,,8888,1840042829
 Innsbruck,47.2683,11.3933,Austria,AT,AUT,Tirol,admin,132493,1040038924
 Ino,33.55,133.4333,Japan,JP,JPN,Kōchi,,20750,1392013071
 Inocencia,-19.7258,-51.93,Brazil,BR,BRA,Mato Grosso do Sul,,7641,1076499697
-Inongo,-1.94,18.28,Congo (Kinshasa),CD,COD,Mai-Ndombe,admin,40113,1180194164
+Inongo,-1.94,18.28,Congo,CD,COD,Mai-Ndombe,admin,40113,1180194164
 Inopacan,10.5,124.75,Philippines,PH,PHL,Leyte,,21389,1608108768
 Inowroclaw,52.7958,18.2611,Poland,PL,POL,Kujawsko-Pomorskie,minor,72561,1616606592
 I-n-Salah,27.1936,2.4606,Algeria,DZ,DZA,Tamanrasset,admin,32518,1012201146
@@ -16526,7 +16526,7 @@ Isidro Casanova,-34.7,-58.5833,Argentina,AR,ARG,Buenos Aires,,190696,1032715964
 Isilkul,54.9089,71.2606,Russia,RU,RUS,Omskaya Oblast’,,22903,1643502986
 Isingiro,-0.8686,30.8302,Uganda,UG,UGA,Isingiro,admin,,1800843586
 Isiolo,0.35,37.5833,Kenya,KE,KEN,Isiolo,admin,45989,1404771203
-Isiro,2.7833,27.6167,Congo (Kinshasa),CD,COD,Haut-Uélé,admin,157196,1180183850
+Isiro,2.7833,27.6167,Congo,CD,COD,Haut-Uélé,admin,157196,1180183850
 Iskandar,41.5507,69.6807,Uzbekistan,UZ,UZB,Toshkent,,195633,1860285858
 Iskenderun,36.5804,36.17,Turkey,TR,TUR,Hatay,minor,297943,1792962911
 Iskitim,54.6333,83.3,Russia,RU,RUS,Novosibirskaya Oblast’,,56602,1643924276
@@ -16949,7 +16949,7 @@ Jambriji,13.407,9.4426,Niger,NE,NER,Zinder,,5304,1562462682
 James City,35.0592,-77.02,United States,US,USA,North Carolina,,5354,1840013471
 James Island,32.7353,-79.9396,United States,US,USA,South Carolina,,12109,1840043446
 Jamesburg,40.3494,-74.44,United States,US,USA,New Jersey,,5885,1840003637
-Jamestown,-15.9251,-5.7179,"Saint Helena, Ascension, And Tristan Da Cunha",SH,SHN,Saint Helena,primary,714,1654761576
+Jamestown,-15.9251,-5.7179,Saint Helena, Ascension, And Tristan Da Cunha",SH,SHN,Saint Helena,primary,714,1654761576
 Jamestown,42.0975,-79.2366,United States,US,USA,New York,,40493,1840000446
 Jamestown,46.9063,-98.6936,United States,US,USA,North Dakota,,15084,1840000153
 Jamestown,41.5149,-71.377,United States,US,USA,Rhode Island,,5494,1840066118
@@ -17491,7 +17491,7 @@ Kaarst,51.2278,6.6273,Germany,DE,DEU,North Rhine-Westphalia,,43433,1276322915
 Kaba,47.3557,21.2742,Hungary,HU,HUN,Hajdú-Bihar,,5878,1348576656
 Kabacan,7.1167,124.8167,Philippines,PH,PHL,Cotabato,,93822,1608578355
 Kabale,-1.2496,29.98,Uganda,UG,UGA,Kabale,admin,44600,1800408751
-Kabalo,-6.0525,26.9142,Congo (Kinshasa),CD,COD,Tanganyika,,29833,1180905835
+Kabalo,-6.0525,26.9142,Congo,CD,COD,Tanganyika,,29833,1180905835
 Kabankalan,9.9833,122.8167,Philippines,PH,PHL,Negros Occidental,,200198,1608697923
 Kabansk,52.0414,106.6531,Russia,RU,RUS,Buryatiya,,6038,1643497687
 Kabardinka,44.6511,37.9386,Russia,RU,RUS,Krasnodarskiy Kray,,7550,1643588464
@@ -17499,7 +17499,7 @@ Kabarnet,0.4919,35.743,Kenya,KE,KEN,Baringo,admin,,1404620707
 Kabasalan,7.7968,122.7627,Philippines,PH,PHL,Zamboanga Sibugay,minor,46884,1608527751
 Kabayan,16.6167,120.8333,Philippines,PH,PHL,Benguet,,15806,1608199009
 Kaberamaido,1.7389,33.1594,Uganda,UG,UGA,Kaberamaido,admin,3400,1800845749
-Kabinda,-6.1296,24.48,Congo (Kinshasa),CD,COD,Lomami,admin,59004,1180751831
+Kabinda,-6.1296,24.48,Congo,CD,COD,Lomami,admin,59004,1180751831
 Kabirwala,30.4053,71.8681,Pakistan,PK,PAK,Punjab,,70123,1586254267
 Kabo,7.6994,18.6292,Central African Republic,CF,CAF,Ouham,,16279,1140386370
 Kabud Gonbad,36.9953,59.7608,Iran,IR,IRN,Khorāsān-e Raẕavī,,7687,1364706859
@@ -17551,7 +17551,7 @@ Kagoshima,31.58,130.5281,Japan,JP,JPN,Kagoshima,admin,593754,1392120675
 Kahaluu-Keauhou,19.5726,-155.958,United States,US,USA,Hawaii,,5291,1840075021
 Kahama,-3.84,32.6,Tanzania,TZ,TZA,Shinyanga,,36014,1834043034
 Kaharlyk,49.8522,30.8092,Ukraine,UA,UKR,Kyyivs’ka Oblast’,minor,13544,1804596715
-Kahemba,-7.2829,19,Congo (Kinshasa),CD,COD,Kwango,,50000,1180689417
+Kahemba,-7.2829,19,Congo,CD,COD,Kwango,,50000,1180689417
 Kahl am Main,50.0681,9.0067,Germany,DE,DEU,Bavaria,,7877,1276382316
 Kahla,50.8008,11.5875,Germany,DE,DEU,Thuringia,,6822,1276126902
 Kahoku,36.72,136.7067,Japan,JP,JPN,Ishikawa,,34936,1392426434
@@ -17633,7 +17633,7 @@ Kalbarri,-27.71,114.16,Australia,AU,AUS,Western Australia,,1557,1036429141
 Kaldhari,16.8362,81.6744,India,IN,IND,Andhra Pradesh,,5529,1356667734
 Kale,16.0961,97.8989,Myanmar,MM,MMR,Kayin State,,5355,1104139363
 Kalefeld,51.7981,10.035,Germany,DE,DEU,Lower Saxony,,6270,1276746093
-Kalemie,-5.9475,29.1947,Congo (Kinshasa),CD,COD,Tanganyika,admin,206257,1180574233
+Kalemie,-5.9475,29.1947,Congo,CD,COD,Tanganyika,admin,206257,1180574233
 Kaleybar,38.8667,47.0333,Iran,IR,IRN,Āz̄arbāyjān-e Sharqī,minor,9324,1364048675
 Kalfou,10.284,14.9298,Cameroon,CM,CMR,Extrême-Nord,,26223,1120297396
 Kalgoorlie,-30.7489,121.4658,Australia,AU,AUS,Western Australia,,30841,1036087904
@@ -17644,7 +17644,7 @@ Kaliganj,23.7348,88.2293,India,IN,IND,West Bengal,,8575,1356538008
 Kaligiri,14.8333,79.7,India,IN,IND,Andhra Pradesh,,8068,1356669171
 Kalikiri,13.6333,78.8,India,IN,IND,Andhra Pradesh,,13065,1356592994
 Kalilangan,7.75,124.75,Philippines,PH,PHL,Bukidnon,,43711,1608709843
-Kalima,-2.5096,26.43,Congo (Kinshasa),CD,COD,Maniema,,194,1180335450
+Kalima,-2.5096,26.43,Congo,CD,COD,Maniema,,194,1180335450
 Kalimpong,27.06,88.47,India,IN,IND,West Bengal,,40143,1356392969
 Kalinagar,22.4383,88.115,India,IN,IND,West Bengal,,11358,1356809062
 Kalinagar,22.4206,88.8655,India,IN,IND,West Bengal,,8679,1356171774
@@ -17707,7 +17707,7 @@ Kamavarapukota,17.0033,81.1953,India,IN,IND,Andhra Pradesh,,16790,1356057733
 Kambaduru,14.3575,77.2186,India,IN,IND,Andhra Pradesh,,15441,1356132175
 Kambar,27.5868,68.001,Pakistan,PK,PAK,Sindh,,97691,1586424773
 Kambarka,56.2667,54.2,Russia,RU,RUS,Udmurtiya,,10276,1643279946
-Kambove,-10.87,26.6,Congo (Kinshasa),CD,COD,Haut-Katanga,,36702,1180986023
+Kambove,-10.87,26.6,Congo,CD,COD,Haut-Katanga,,36702,1180986023
 Kamen,51.5917,7.6653,Germany,DE,DEU,North Rhine-Westphalia,,42971,1276465116
 Kamenice,42.5839,21.575,Kosovo,XK,XKS,Kamenicë,admin,36085,1901851592
 Kamenka,53.1833,44.05,Russia,RU,RUS,Penzenskaya Oblast’,,35929,1643795205
@@ -17738,7 +17738,7 @@ Kamiita,34.1214,134.405,Japan,JP,JPN,Tokushima,,11370,1392003439
 Kamikawa,36.2139,139.1019,Japan,JP,JPN,Saitama,,13077,1392003364
 Kamikawa,35.0642,134.7394,Japan,JP,JPN,Hyōgo,,10557,1392003365
 Kami-kawabe,35.4867,137.0706,Japan,JP,JPN,Gifu,,9784,1392777604
-Kamina,-8.7351,24.998,Congo (Kinshasa),CD,COD,Haut-Lomami,admin,128803,1180363197
+Kamina,-8.7351,24.998,Congo,CD,COD,Haut-Lomami,admin,128803,1180363197
 Kamin-Kashyrskyi,51.6242,24.9606,Ukraine,UA,UKR,Volyns’ka Oblast’,minor,12489,1804718360
 Kaminokawa,36.4333,139.9167,Japan,JP,JPN,Tochigi,,30886,1392906156
 Kaminoyama,38.1497,140.2678,Japan,JP,JPN,Yamagata,,29141,1392003302
@@ -17751,7 +17751,7 @@ Kamnik,46.225,14.6097,Slovenia,SI,SVN,Kamnik,admin,13880,1705864078
 Kamo,37.6667,139.0333,Japan,JP,JPN,Niigata,,25086,1392480203
 Kampala,0.3136,32.5811,Uganda,UG,UGA,Kampala,primary,1659600,1800406299
 Kampen,52.55,5.9,Netherlands,NL,NLD,Overijssel,minor,53779,1528270646
-Kampene,-3.5968,26.6671,Congo (Kinshasa),CD,COD,Maniema,,37034,1180064621
+Kampene,-3.5968,26.6671,Congo,CD,COD,Maniema,,37034,1180064621
 Kampenhout,50.95,4.55,Belgium,BE,BEL,Flanders,,11898,1056286425
 Kamphaeng Phet,16.4811,99.5222,Thailand,TH,THA,Kamphaeng Phet,admin,29178,1764367755
 Kamp-Lintfort,51.5,6.5333,Germany,DE,DEU,North Rhine-Westphalia,,37391,1276081102
@@ -17780,7 +17780,7 @@ Kanakpur,24.4976,88.0361,India,IN,IND,West Bengal,,8865,1356972843
 Kanal,46.0886,13.6397,Slovenia,SI,SVN,Kanal,admin,,1705955833
 Kanamarlapudi,16.1,79.8,India,IN,IND,Andhra Pradesh,,6222,1356116115
 Kanan,34.4917,135.6297,Japan,JP,JPN,Ōsaka,,15497,1392003300
-Kananga,-5.8961,22.4167,Congo (Kinshasa),CD,COD,Kasaï Central,admin,1971704,1180172460
+Kananga,-5.8961,22.4167,Congo,CD,COD,Kasaï Central,admin,1971704,1180172460
 Kananya,11.1833,124.5667,Philippines,PH,PHL,Leyte,,59696,1608771995
 Kanash,55.5167,47.5,Russia,RU,RUS,Chuvashiya,,45482,1643340791
 Kanasin,20.9344,-89.5578,Mexico,MX,MEX,Yucatán,minor,139753,1484390572
@@ -17818,7 +17818,7 @@ Kangersuatsiaq,72.3796,-55.5491,Greenland,GL,GRL,Qaasuitsup,,200,1304939198
 Kanggye,40.9667,126.6,North Korea,KP,PRK,Chagang,admin,251971,1408728939
 Kangning,38.0176,102.352,China,CN,CHN,Gansu,,10300,1156030066
 Kani,35.4258,137.0611,Japan,JP,JPN,Gifu,,99545,1392198191
-Kaniama,-7.5696,24.17,Congo (Kinshasa),CD,COD,Haut-Lomami,,36481,1180770775
+Kaniama,-7.5696,24.17,Congo,CD,COD,Haut-Lomami,,36481,1180770775
 Kanie,35.1333,136.8,Japan,JP,JPN,Aichi,,36782,1392146454
 Kanifing,13.45,-16.6667,The Gambia,GM,GMB,Banjul,admin,,1270000000
 Kanigiri,15.4,79.5166,India,IN,IND,Andhra Pradesh,,37420,1356020350
@@ -17991,13 +17991,13 @@ Kasaali,-0.6167,31.55,Uganda,UG,UGA,Rakai,admin,,1800217765
 Kasagi,34.2964,135.5042,Japan,JP,JPN,Wakayama,,15565,1392507322
 Kasai,34.9278,134.8419,Japan,JP,JPN,Hyōgo,,42290,1392003357
 Kasaishi,37.2528,140.3436,Japan,JP,JPN,Fukushima,,12282,1392964767
-Kasaji,-10.3662,23.45,Congo (Kinshasa),CD,COD,Lualaba,,11969,1180795640
+Kasaji,-10.3662,23.45,Congo,CD,COD,Lualaba,,11969,1180795640
 Kasama,-10.1996,31.1799,Zambia,ZM,ZMB,Northern,admin,200000,1894305215
 Kasama,36.345,140.3042,Japan,JP,JPN,Ibaraki,,73521,1392308767
 Kasamatsucho,35.3667,136.7667,Japan,JP,JPN,Gifu,,22415,1392337002
 Kasanda,0.5567,31.8022,Uganda,UG,UGA,Mubende,admin,,1800794590
 Kasane,-17.7983,25.1536,Botswana,BW,BWA,Chobe,admin,9250,1072217316
-Kasangulu,-4.5796,15.18,Congo (Kinshasa),CD,COD,Kongo Central,,27961,1180582533
+Kasangulu,-4.5796,15.18,Congo,CD,COD,Kongo Central,,27961,1180582533
 Kasaoka,34.5072,133.5072,Japan,JP,JPN,Okayama,,46080,1392085500
 Kasba,25.5856,88.1122,India,IN,IND,Bihār,,10067,1356834956
 Kasba Tanora,32.475,-6.1497,Morocco,MA,MAR,Béni Mellal-Khénifra,,12783,1504367360
@@ -18024,8 +18024,8 @@ Kasimov,54.9583,41.3972,Russia,RU,RUS,Ryazanskaya Oblast’,,30243,1643283044
 Kasimpur,22.765,88.5136,India,IN,IND,West Bengal,,5427,1356415399
 Kasipet,19.0333,79.4667,India,IN,IND,Telangana,,5133,1356392578
 Kasli,55.8833,60.75,Russia,RU,RUS,Chelyabinskaya Oblast’,,16013,1643483987
-Kasongo,-4.45,26.66,Congo (Kinshasa),CD,COD,Maniema,,63000,1180000473
-Kasongo-Lunda,-6.4796,16.83,Congo (Kinshasa),CD,COD,Kwango,,20060,1180706751
+Kasongo,-4.45,26.66,Congo,CD,COD,Maniema,,63000,1180000473
+Kasongo-Lunda,-6.4796,16.83,Congo,CD,COD,Kwango,,20060,1180706751
 Kaspi,41.925,44.4222,Georgia,GE,GEO,Shida Kartli,minor,13423,1268997310
 Kaspiysk,42.8833,47.6333,Russia,RU,RUS,Dagestan,,123988,1643020514
 Kaspiyskiy,45.3833,47.3667,Russia,RU,RUS,Kalmykiya,,13125,1643395852
@@ -18140,7 +18140,7 @@ Kayapa,16.4167,120.9167,Philippines,PH,PHL,Nueva Vizcaya,,26469,1608843014
 Kayapinar,37.94,40.19,Turkey,TR,TUR,Diyarbakır,minor,185626,1792910994
 Kayenta,36.7144,-110.2589,United States,US,USA,Arizona,,5512,1840017658
 Kayes,14.45,-11.4167,Mali,ML,MLI,Kayes,admin,77207,1466546429
-Kayes,-4.1806,13.2889,Congo (Brazzaville),CG,COG,Bouenza,,62521,1178012015
+Kayes,-4.1806,13.2889,Democratic Republic of the Congo,CG,COG,Bouenza,,62521,1178012015
 Kayl,49.4864,6.0392,Luxembourg,LU,LUX,Esch-sur-Alzette,minor,5658,1442304367
 Kayseri,38.7225,35.4875,Turkey,TR,TUR,Kayseri,admin,126653,1792945815
 Kaysville,41.029,-111.9456,United States,US,USA,Utah,,32390,1840018738
@@ -18230,7 +18230,7 @@ Kendari,-3.9675,122.5947,Indonesia,ID,IDN,Sulawesi Tenggara,admin,331013,1360992
 Kendu Bay,-0.3596,34.64,Kenya,KE,KEN,Homa Bay,,91248,1404600696
 Kenedy,28.8176,-97.8518,United States,US,USA,Texas,,6223,1840019684
 Kenema,7.8833,-11.1833,Sierra Leone,SL,SLE,Eastern,admin,188463,1694780903
-Kenge,-4.8296,16.8999,Congo (Kinshasa),CD,COD,Kwango,admin,241,1180158365
+Kenge,-4.8296,16.8999,Congo,CD,COD,Kwango,admin,241,1180158365
 Kengtung,21.2914,99.6039,Myanmar,MM,MMR,Shan State,,75865,1104395820
 Kenilworth,40.6781,-74.2889,United States,US,USA,New Jersey,,8191,1840003616
 Kenitra,34.25,-6.5833,Morocco,MA,MAR,Rabat-Salé-Kénitra,,431282,1504534876
@@ -18473,7 +18473,7 @@ Kikinda,45.8244,20.4592,Serbia,RS,SRB,Kikinda,admin,38065,1688358284
 Kikuchi,32.9794,130.8133,Japan,JP,JPN,Kumamoto,,45971,1392999989
 Kikugawa,34.7578,138.0842,Japan,JP,JPN,Shizuoka,,47194,1392787606
 Kikuyo,32.8625,130.8286,Japan,JP,JPN,Kumamoto,,43443,1392003170
-Kikwit,-5.0333,18.8167,Congo (Kinshasa),CD,COD,Kwilu,,637736,1180518247
+Kikwit,-5.0333,18.8167,Congo,CD,COD,Kwilu,,637736,1180518247
 Kilbirnie,55.755,-4.686,United Kingdom,GB,GBR,North Ayrshire,,7340,1826853483
 Kilchberg,47.3247,8.5492,Switzerland,CH,CHE,Zürich,,8437,1756715308
 Kildare,53.1569,-6.909,Ireland,IE,IRL,Kildare,,7538,1372940357
@@ -18504,7 +18504,7 @@ Kimberley,49.6697,-115.9775,Canada,CA,CAN,British Columbia,,7425,1124170837
 Kimberly,44.267,-88.3377,United States,US,USA,Wisconsin,,6802,1840002404
 Kimitsu,35.3306,139.9025,Japan,JP,JPN,Chiba,,81355,1392801760
 Kimovsk,53.9667,38.5333,Russia,RU,RUS,Tul’skaya Oblast’,,25951,1643483377
-Kimpese,-5.55,14.43,Congo (Kinshasa),CD,COD,Kongo Central,,10578,1180273961
+Kimpese,-5.55,14.43,Congo,CD,COD,Kongo Central,,10578,1180273961
 Kimry,56.8667,37.35,Russia,RU,RUS,Tverskaya Oblast’,,44743,1643056082
 Kin,26.4561,127.9261,Japan,JP,JPN,Okinawa,,11252,1392554480
 Kincardine,44.1667,-81.6333,Canada,CA,CAN,Ontario,,11389,1124781881
@@ -18512,7 +18512,7 @@ Kinchil,20.9161,-89.9469,Mexico,MX,MEX,Yucatán,,6307,1484602892
 Kindberg,47.5044,15.4489,Austria,AT,AUT,Steiermark,,8047,1040311420
 Kinderhook,42.4116,-73.6823,United States,US,USA,New York,,8271,1840004630
 Kindia,10.06,-12.87,Guinea,GN,GIN,Kindia,admin,117062,1324348910
-Kindu,-2.95,25.9167,Congo (Kinshasa),CD,COD,Maniema,admin,172321,1180106925
+Kindu,-2.95,25.9167,Congo,CD,COD,Maniema,admin,172321,1180106925
 Kinel,53.2333,50.6167,Russia,RU,RUS,Samarskaya Oblast’,,35675,1643467753
 Kinel'-Cherkassy,53.45,51.4333,Russia,RU,RUS,Samarskaya Oblast’,,17252,1643695991
 Kineshma,57.45,42.15,Russia,RU,RUS,Ivanovskaya Oblast’,,83871,1643014487
@@ -18563,7 +18563,7 @@ Kingsville,42.1,-82.7167,Canada,CA,CAN,Ontario,,21552,1124616034
 Kingswood,51.46,-2.505,United Kingdom,GB,GBR,South Gloucestershire,,40734,1826616515
 Kinhalu,15.4431,76.1397,India,IN,IND,Karnātaka,,9802,1356502789
 Kinik,39.0872,27.3833,Turkey,TR,TUR,İzmir,minor,7718,1792776515
-Kinkala,-4.35,14.76,Congo (Brazzaville),CG,COG,Pool,admin,16132,1178867565
+Kinkala,-4.35,14.76,Democratic Republic of the Congo,CG,COG,Pool,admin,16132,1178867565
 Kinmel,53.31,-3.519,United Kingdom,GB,GBR,Denbighshire,,7864,1826173712
 Kinna,57.4954,12.6805,Sweden,SE,SWE,Västra Götaland,minor,15448,1752953604
 Kinnelon,40.9847,-74.3862,United States,US,USA,New Jersey,,9896,1840000952
@@ -18571,13 +18571,13 @@ Kinogitan,8.9855,124.7937,Philippines,PH,PHL,Misamis Oriental,,14091,1608778669
 Kinoni,-0.6583,30.4581,Uganda,UG,UGA,Sheema,admin,,1800009674
 Kinrooi,51.145,5.7403,Belgium,BE,BEL,Flanders,,12233,1056406187
 Kinross,56.205,-3.423,United Kingdom,GB,GBR,Perth and Kinross,,5120,1826912793
-Kinshasa,-4.3317,15.3139,Congo (Kinshasa),CD,COD,Kinshasa,primary,15056000,1180000363
+Kinshasa,-4.3317,15.3139,Congo,CD,COD,Kinshasa,primary,15056000,1180000363
 Kinston,35.2748,-77.5936,United States,US,USA,North Carolina,,26889,1840014585
 Kipfenberg,48.9494,11.395,Germany,DE,DEU,Bavaria,,5838,1276878749
 Kipili,-7.4329,30.6,Tanzania,TZ,TZA,Rukwa,,1533,1834589411
 Kippax,53.7669,-1.3705,United Kingdom,GB,GBR,Leeds,,9785,1826981453
 Kippenheim,48.2947,7.8214,Germany,DE,DEU,Baden-Württemberg,,5545,1276570346
-Kipushi,-11.76,27.25,Congo (Kinshasa),CD,COD,Haut-Katanga,,113347,1180810333
+Kipushi,-11.76,27.25,Congo,CD,COD,Haut-Katanga,,113347,1180810333
 Kirakira,-10.4544,161.9205,Solomon Islands,SB,SLB,Makira and Ulawa,admin,,1090349580
 Kirawsk,53.2686,29.4736,Belarus,BY,BLR,Mahilyowskaya Voblasts’,minor,8178,1112908122
 Kirby,29.4611,-98.3861,United States,US,USA,Texas,,8723,1840020962
@@ -18650,7 +18650,7 @@ Kiryas Joel,41.3406,-74.166,United States,US,USA,New York,,26813,1840004872
 Kiryu,36.4053,139.3306,Japan,JP,JPN,Gunma,,105465,1392003445
 Kirzhach,56.15,38.8667,Russia,RU,RUS,Vladimirskaya Oblast’,,26676,1643096892
 Kis,41.2594,47.1881,Azerbaijan,AZ,AZE,Şəki,,6244,1031669390
-Kisangani,0.5153,25.1911,Congo (Kinshasa),CD,COD,Tshopo,admin,935977,1180478201
+Kisangani,0.5153,25.1911,Congo,CD,COD,Tshopo,admin,935977,1180478201
 Kisanpur,26.9333,85.5833,Nepal,NP,NPL,Janakpur,,5506,1524001267
 Kisanuki,31.3447,130.9453,Japan,JP,JPN,Kagoshima,,14114,1392204633
 Kisarazu,35.3761,139.9169,Japan,JP,JPN,Chiba,,136118,1392821453
@@ -18887,7 +18887,7 @@ Kolonia,6.9639,158.2081,Federated States of Micronesia,FM,FSM,Pohnpei,admin,6074
 Kolosovka,56.4644,73.6114,Russia,RU,RUS,Omskaya Oblast’,,5313,1643405968
 Kolpashevo,58.3167,82.9167,Russia,RU,RUS,Tomskaya Oblast’,,23209,1643773170
 Kolpino,59.73,30.65,Russia,RU,RUS,Sankt-Peterburg,,225801,1643448070
-Kolwezi,-10.7167,25.4667,Congo (Kinshasa),CD,COD,Lualaba,admin,418000,1180380965
+Kolwezi,-10.7167,25.4667,Congo,CD,COD,Lualaba,admin,418000,1180380965
 Komadi,47,21.5,Hungary,HU,HUN,Hajdú-Bihar,,5421,1348286958
 Komae,35.6347,139.5786,Japan,JP,JPN,Tōkyō,,83677,1392000109
 Komagane,35.7289,137.9339,Japan,JP,JPN,Nagano,,31763,1392438911
@@ -18939,7 +18939,7 @@ Koneurgench,42.3167,59.1586,Turkmenistan,TM,TKM,Daşoguz,,36754,1795588005
 Kongal,16.944,79.216,India,IN,IND,Telangana,,7010,1356208229
 Kongen,48.6819,9.3667,Germany,DE,DEU,Baden-Württemberg,,9975,1276029285
 Kongjiazhuang,40.7536,114.7237,China,CN,CHN,Hebei,minor,81909,1156144576
-Kongolo,-5.3795,26.98,Congo (Kinshasa),CD,COD,Tanganyika,,105202,1180814807
+Kongolo,-5.3795,26.98,Congo,CD,COD,Tanganyika,,105202,1180814807
 Kongoussi,13.3333,-1.5333,Burkina Faso,BF,BFA,Centre-Nord,minor,53641,1854493633
 Kongsberg,59.665,9.6464,Norway,NO,NOR,Buskerud,minor,27694,1578035378
 Kongsvinger,60.1912,11.9992,Norway,NO,NOR,Hedmark,minor,17851,1578097529
@@ -20829,7 +20829,7 @@ Liaoyuan,42.8976,125.1381,China,CN,CHN,Jilin,,1176239,1156249772
 Libacao,11.4833,122.3,Philippines,PH,PHL,Aklan,,28272,1608816911
 Libagon,10.3,125.05,Philippines,PH,PHL,Southern Leyte,,15244,1608224039
 Libano,4.9206,-75.0611,Colombia,CO,COL,Tolima,minor,39665,1170994564
-Libenge,3.6604,18.62,Congo (Kinshasa),CD,COD,Sud-Ubangi,,27053,1180325896
+Libenge,3.6604,18.62,Congo,CD,COD,Sud-Ubangi,,27053,1180325896
 Liberal,37.0466,-100.9295,United States,US,USA,Kansas,,19174,1840001704
 Liberato Salzano,-27.6,-53.0728,Brazil,BR,BRA,Rio Grande do Sul,,5152,1076875872
 Libercourt,50.4839,3.0139,France,FR,FRA,Hauts-de-France,,8337,1250452337
@@ -20911,7 +20911,7 @@ Lihue,21.9728,-159.3541,United States,US,USA,Hawaii,,7267,1840029519
 Lihuzhuang,39.652,117.8649,China,CN,CHN,Hebei,,21844,1156775869
 Lija,35.9014,14.4472,Malta,MT,MLT,Lija,admin,3070,1470862409
 Lijiacha,37.2467,109.4061,China,CN,CHN,Shaanxi,,11381,1156627939
-Likasi,-10.9833,26.7333,Congo (Kinshasa),CD,COD,Haut-Katanga,,422535,1180978192
+Likasi,-10.9833,26.7333,Congo,CD,COD,Haut-Katanga,,422535,1180978192
 Likhoslavl,57.1167,35.4667,Russia,RU,RUS,Tverskaya Oblast’,,11594,1643616895
 Likino-Dulevo,55.7,38.95,Russia,RU,RUS,Moskovskaya Oblast’,,29376,1643014243
 Likiskiai,54.395,23.997,Lithuania,LT,LTU,Alytus,,10489,1440824158
@@ -21067,10 +21067,10 @@ Lippstadt,51.6667,8.35,Germany,DE,DEU,North Rhine-Westphalia,,67901,1276820778
 Liptovsky Hradok,49.0394,19.7244,Slovakia,SK,SVK,Žilinský,,7528,1703762165
 Liptovsky Mikulas,49.0811,19.6181,Slovakia,SK,SVK,Žilinský,minor,32593,1703155005
 Liqizhuang,39.9703,117.0013,China,CN,CHN,Hebei,,26667,1156069739
-Liquica,-8.5935,125.3273,Timor-Leste,TL,TLS,Liquiçá,admin,5152,1626054379
+Liquica,-8.5935,125.3273,East Timor,TL,TLS,Liquiçá,admin,5152,1626054379
 Lira,2.2489,32.9,Uganda,UG,UGA,Lira,admin,135445,1800877735
 Liria,39.6258,-0.5961,Spain,ES,ESP,Valencia,,23648,1724728759
-Lisala,2.14,21.51,Congo (Kinshasa),CD,COD,Mongala,admin,79235,1180477995
+Lisala,2.14,21.51,Congo,CD,COD,Mongala,admin,79235,1180477995
 Lisbon,38.708,-9.139,Portugal,PT,PRT,Lisboa,primary,506654,1620619017
 Lisbon,44.0265,-70.09,United States,US,USA,Maine,,8906,1840066320
 Lisbon,40.7752,-80.7628,United States,US,USA,Ohio,,5372,1840011932
@@ -21201,7 +21201,7 @@ Lluchmayor,39.49,2.8915,Spain,ES,ESP,Balearic Islands,,38224,1724033667
 Lo Barnechea,-33.35,-70.5167,Chile,CL,CHL,Región Metropolitana,,105833,1152490874
 Lo Miranda,-34.1957,-70.8891,Chile,CL,CHL,Libertador General Bernardo O’Higgins,,9000,1152468313
 Loanda,-22.9228,-53.1369,Brazil,BR,BRA,Paraná,,21201,1076974194
-Loango,-4.6519,11.8125,Congo (Brazzaville),CG,COG,Kouilou,admin,,1178836764
+Loango,-4.6519,11.8125,Democratic Republic of the Congo,CG,COG,Kouilou,admin,,1178836764
 Loanhead,55.878,-3.148,United Kingdom,GB,GBR,Midlothian,,6440,1826339213
 Loano,44.129,8.2598,Italy,IT,ITA,Liguria,,11224,1380950847
 Loay,9.6,124.0167,Philippines,PH,PHL,Bohol,,17855,1608763593
@@ -21242,7 +21242,7 @@ Lodi,40.8784,-74.0814,United States,US,USA,New Jersey,,24347,1840003535
 Lodi,38.1218,-121.2932,United States,US,USA,California,,74773,1840020263
 Lodi,45.3167,9.5,Italy,IT,ITA,Lombardy,minor,45252,1380406529
 Lodi Vecchio,45.3033,9.4186,Italy,IT,ITA,Lombardy,,7570,1380932168
-Lodja,-3.5242,23.5964,Congo (Kinshasa),CD,COD,Sankuru,,68244,1180001261
+Lodja,-3.5242,23.5964,Congo,CD,COD,Sankuru,,68244,1180001261
 Lodwar,3.1167,35.6,Kenya,KE,KEN,Turkana,admin,16981,1404993573
 Lodz,51.7769,19.4547,Poland,PL,POL,Łódzkie,admin,690422,1616832750
 Loeches,40.3833,-3.4,Spain,ES,ESP,Madrid,,8860,1724742454
@@ -21474,7 +21474,7 @@ Los Vilos,-31.9,-71.5167,Chile,CL,CHL,Coquimbo,,21382,1152593219
 Los Yebenes,39.5667,-3.8833,Spain,ES,ESP,Castille-La Mancha,,5796,1724755632
 Losino-Petrovskiy,55.8667,38.2,Russia,RU,RUS,Moskovskaya Oblast’,,25424,1643294187
 Losone,46.1689,8.7421,Switzerland,CH,CHE,Ticino,,6701,1756643030
-Lospalos,-8.5167,127.0333,Timor-Leste,TL,TLS,Lautém,admin,,1626878399
+Lospalos,-8.5167,127.0333,East Timor,TL,TLS,Lautém,admin,,1626878399
 Lossa,51.3992,12.8736,Germany,DE,DEU,Saxony,,5984,1276473461
 Lossburg,48.4111,8.4514,Germany,DE,DEU,Baden-Württemberg,,7442,1276152923
 Losser,52.2617,7.0044,Netherlands,NL,NLD,Overijssel,minor,22622,1528246399
@@ -21574,7 +21574,7 @@ Luancheng,37.8846,114.6523,China,CN,CHN,Hebei,,84068,1156272160
 Luanco,43.61,-5.79,Spain,ES,ESP,Asturias,,10412,1724203007
 Luanda,-8.8383,13.2344,Angola,AO,AGO,Luanda,primary,8883000,1024949724
 Luanshya,-13.1333,28.4,Zambia,ZM,ZMB,Copperbelt,,117579,1894410334
-Luanza,-8.6996,28.7,Congo (Kinshasa),CD,COD,Haut-Katanga,,861,1180293709
+Luanza,-8.6996,28.7,Congo,CD,COD,Haut-Katanga,,861,1180293709
 Luanzhou,39.7396,118.6978,China,CN,CHN,Hebei,minor,554315,1156092104
 Luau,-10.7,22.2333,Angola,AO,AGO,Moxico,,90000,1024699465
 Luba,3.45,8.55,Equatorial Guinea,GQ,GNQ,Bioko Sur,admin,7739,1226278217
@@ -21584,7 +21584,7 @@ Lubalo,-9.15,19.2833,Angola,AO,AGO,Lunda Norte,,20631,1024568664
 Lubang,13.8,120.15,Philippines,PH,PHL,Occidental Mindoro,,17437,1608630434
 Lubango,-14.9167,13.5,Angola,AO,AGO,Huila,admin,776249,1024669127
 Lubao,14.9333,120.6,Philippines,PH,PHL,Pampanga,,173502,1608215915
-Lubao,-5.3896,25.75,Congo (Kinshasa),CD,COD,Lomami,,43068,1180891619
+Lubao,-5.3896,25.75,Congo,CD,COD,Lomami,,43068,1180891619
 Lubartow,51.4667,22.6,Poland,PL,POL,Lubelskie,minor,22138,1616620144
 Lubbecke,52.3081,8.6231,Germany,DE,DEU,North Rhine-Westphalia,,25490,1276934438
 Lubbeek,50.8817,4.8414,Belgium,BE,BEL,Flanders,,14393,1056043837
@@ -21599,8 +21599,8 @@ Lubon,52.3333,16.8833,Poland,PL,POL,Wielkopolskie,,27000,1616642403
 Lubsko,51.7877,14.9724,Poland,PL,POL,Lubuskie,,14182,1616174794
 Lubuagan,17.35,121.1833,Philippines,PH,PHL,Kalinga,,9323,1608300636
 Lubuklinggau,-3.2967,102.8617,Indonesia,ID,IDN,Sumatera Selatan,,208225,1360359449
-Lubumbashi,-11.6697,27.4581,Congo (Kinshasa),CD,COD,Haut-Katanga,admin,1786397,1180506234
-Lubutu,-0.7329,26.5833,Congo (Kinshasa),CD,COD,Maniema,,1313,1180330836
+Lubumbashi,-11.6697,27.4581,Congo,CD,COD,Haut-Katanga,admin,1786397,1180506234
+Lubutu,-0.7329,26.5833,Congo,CD,COD,Maniema,,1313,1180330836
 Lubz,53.4631,12.0283,Germany,DE,DEU,Mecklenburg-Western Pomerania,,6342,1276808728
 Lucani,43.8667,20.1333,Serbia,RS,SRB,Lučani,admin,,1688437278
 Lucapa,-8.4228,20.7393,Angola,AO,AGO,Lunda Norte,,154305,1024056286
@@ -21644,7 +21644,7 @@ Ludwigsfelde,52.2997,13.2667,Germany,DE,DEU,Brandenburg,,24044,1276940684
 Ludwigshafen,49.4811,8.4353,Germany,DE,DEU,Rhineland-Palatinate,minor,172557,1276912330
 Ludwigslust,53.3332,11.5023,Germany,DE,DEU,Mecklenburg-Western Pomerania,,12233,1276582763
 Ludza,56.5439,27.7211,Latvia,LV,LVA,Ludzas Novads,admin,7473,1428976928
-Luebo,-5.3495,21.41,Congo (Kinshasa),CD,COD,Kasaï,admin,35183,1180012250
+Luebo,-5.3495,21.41,Congo,CD,COD,Kasaï,admin,35183,1180012250
 Luena,-11.79,19.9,Angola,AO,AGO,Moxico,admin,21115,1024283760
 Lufeng,24.5738,103.113,China,CN,CHN,Yunnan,,27731,1156933878
 Lufilufi,-13.8745,-171.5986,Samoa,WS,WSM,Atua,admin,,1882092632
@@ -21730,8 +21730,8 @@ Lurate Caccivio,45.7667,9,Italy,IT,ITA,Lombardy,,9847,1380759371
 Lure,47.6831,6.4967,France,FR,FRA,Bourgogne-Franche-Comté,minor,8131,1250564502
 Luruaco,10.6083,-75.1417,Colombia,CO,COL,Atlántico,minor,22878,1170268775
 Lusaka,-15.4167,28.2833,Zambia,ZM,ZMB,Lusaka,primary,1742979,1894157390
-Lusambo,-4.9696,23.43,Congo (Kinshasa),CD,COD,Sankuru,admin,41416,1180127290
-Lusanga,-5.5829,16.5167,Congo (Kinshasa),CD,COD,Kwango,,177,1180423801
+Lusambo,-4.9696,23.43,Congo,CD,COD,Sankuru,admin,41416,1180127290
+Lusanga,-5.5829,16.5167,Congo,CD,COD,Kwango,,177,1180423801
 Luserna San Giovanni,44.8167,7.25,Italy,IT,ITA,Piedmont,,7297,1380242484
 Lushar,36.4971,101.564,China,CN,CHN,Qinghai,minor,67153,1156481548
 Lushnje,40.9333,19.7,Albania,AL,ALB,Fier,,31105,1008790888
@@ -21936,7 +21936,7 @@ Madinat as Sadis min Uktubar,29.9361,30.9269,Egypt,EG,EGY,Al Jīzah,,154093,1818
 Madinat ash Shamal,26.14,51.22,Qatar,QA,QAT,Ash Shamāl,admin,,1634762661
 Madinat Hamad,26.1128,50.5139,Bahrain,BH,BHR,Ash Shamālīyah,,52700,1048909146
 Madinat Zayid,23.6522,53.6536,United Arab Emirates,AE,ARE,Abū Z̧aby,,29095,1784810704
-Madingou,-4.1536,13.55,Congo (Brazzaville),CG,COG,Bouenza,admin,22760,1178057279
+Madingou,-4.1536,13.55,Democratic Republic of the Congo,CG,COG,Bouenza,admin,22760,1178057279
 Madison,43.0826,-89.3931,United States,US,USA,Wisconsin,admin,447245,1840002915
 Madison,34.7114,-86.7626,United States,US,USA,Alabama,,51593,1840015524
 Madison,32.4738,-90.13,United States,US,USA,Mississippi,,25661,1840015782
@@ -22156,7 +22156,7 @@ Makkuva,18.6667,83.2667,India,IN,IND,Andhra Pradesh,,8272,1356724170
 Mako,46.22,20.4789,Hungary,HU,HUN,Csongrád,minor,22514,1348716786
 Makokou,0.5667,12.8667,Gabon,GA,GAB,Ogooué-Ivindo,admin,17070,1266939354
 Makole,46.3172,15.6672,Slovenia,SI,SVN,Makole,admin,,1705304446
-Makoua,-0.0047,15.6228,Congo (Brazzaville),CG,COG,Cuvette,,11355,1178500492
+Makoua,-0.0047,15.6228,Democratic Republic of the Congo,CG,COG,Cuvette,,11355,1178500492
 Makouda,36.7909,4.0669,Algeria,DZ,DZA,Boumerdes,,23388,1012786926
 Maktar,35.85,9.2,Tunisia,TN,TUN,Siliana,,12942,1788602708
 Makubetsu,42.9083,143.3561,Japan,JP,JPN,Hokkaidō,,26444,1392003307
@@ -22222,7 +22222,7 @@ Mali,23.1277,104.7029,China,CN,CHN,Yunnan,minor,54511,1156201370
 Mali,12.084,-12.301,Guinea,GN,GIN,Labé,minor,5479,1324065197
 Mali Idos,45.7069,19.6644,Serbia,RS,SRB,Mali Iđoš,admin,,1688501809
 Mali Zvornik,44.3992,19.1214,Serbia,RS,SRB,Mali Zvornik,admin,,1688513998
-Maliana,-8.9917,125.2197,Timor-Leste,TL,TLS,Bobonaro,admin,15800,1626637884
+Maliana,-8.9917,125.2197,East Timor,TL,TLS,Bobonaro,admin,15800,1626637884
 Maliara,23.475,87.223,India,IN,IND,West Bengal,,7918,1356836132
 Malibu,34.0368,-118.7845,United States,US,USA,California,,11820,1840028310
 Malilipot,13.3167,123.7333,Philippines,PH,PHL,Albay,,40857,1608138791
@@ -22316,7 +22316,7 @@ Manassas,38.7479,-77.4839,United States,US,USA,Virginia,,41085,1840003839
 Manassas Park,38.7719,-77.445,United States,US,USA,Virginia,,17478,1840003838
 Manati,18.4283,-66.4823,Puerto Rico,PR,PRI,Puerto Rico,,12683,1630023562
 Manati,10.4481,-74.9592,Colombia,CO,COL,Atlántico,minor,13456,1170827497
-Manatuto,-8.5167,126.0167,Timor-Leste,TL,TLS,Manatuto,admin,9022,1626115337
+Manatuto,-8.5167,126.0167,East Timor,TL,TLS,Manatuto,admin,9022,1626115337
 Manaure,11.775,-72.4444,Colombia,CO,COL,La Guajira,minor,67584,1170534927
 Manaus,-3.1,-60.0167,Brazil,BR,BRA,Amazonas,admin,1802014,1076607274
 Manavgat,36.7913,31.4415,Turkey,TR,TUR,Antalya,minor,6308,1792832111
@@ -22377,7 +22377,7 @@ Manfredonia,41.6333,15.9167,Italy,IT,ITA,Puglia,,56906,1380398261
 Mang La,14.3838,107.9833,Vietnam,VN,VNM,Kon Tum,,105489,1704178922
 Manga,11.6667,-1.0667,Burkina Faso,BF,BFA,Centre-Sud,admin,28612,1854485968
 Manga,-14.7558,-43.9319,Brazil,BR,BRA,Minas Gerais,,18226,1076922718
-Mangai,-4.0396,19.53,Congo (Kinshasa),CD,COD,Kwilu,,37188,1180224936
+Mangai,-4.0396,19.53,Congo,CD,COD,Kwilu,,37188,1180224936
 Mangalagiri,16.43,80.55,India,IN,IND,Andhra Pradesh,,73613,1356861607
 Mangaldan,16.07,120.4025,Philippines,PH,PHL,Pangasinan,,113185,1608105622
 Mangalia,43.8172,28.5828,Romania,RO,ROU,Constanţa,,36364,1642499663
@@ -22385,7 +22385,7 @@ Mangalkot,23.5213,87.9119,India,IN,IND,West Bengal,,11537,1356908397
 Mangalore,12.8703,74.8806,India,IN,IND,Karnātaka,,623841,1356972351
 Mangaratiba,-22.96,-44.0408,Brazil,BR,BRA,Rio de Janeiro,,40779,1076292553
 Mangatarem,15.7874,120.2921,Philippines,PH,PHL,Pangasinan,,79323,1608841442
-Mangbwalu,1.9504,30.0333,Congo (Kinshasa),CD,COD,Ituri,,2819,1180299514
+Mangbwalu,1.9504,30.0333,Congo,CD,COD,Ituri,,2819,1180299514
 Mangdongshan,24.1169,98.3085,China,CN,CHN,Yunnan,,29587,1156290976
 Mangghystau,43.6905,51.1417,Kazakhstan,KZ,KAZ,Mangghystaū,,147443,1398790140
 Mangha,23.37,98.9892,China,CN,CHN,Yunnan,,13689,1156812685
@@ -22437,7 +22437,7 @@ Manoel Vitorino,-14.145,-40.2428,Brazil,BR,BRA,Bahia,,14488,1076783361
 Manoharpur,22.121,88.2333,India,IN,IND,West Bengal,,5206,1356122980
 Manokwari,-0.8711,134.0693,Indonesia,ID,IDN,Papua Barat,admin,74504,1360451991
 Manolo Fortich,8.3697,124.8644,Philippines,PH,PHL,Bukidnon,,113200,1608811201
-Manono,-7.2947,27.4545,Congo (Kinshasa),CD,COD,Tanganyika,,46111,1180968800
+Manono,-7.2947,27.4545,Congo,CD,COD,Tanganyika,,46111,1180968800
 Manoppello,42.2578,14.0597,Italy,IT,ITA,Abruzzo,,6920,1380111241
 Manor,39.9849,-76.4216,United States,US,USA,Pennsylvania,,20832,1840147751
 Manor,30.3562,-97.5228,United States,US,USA,Texas,,14642,1840020890
@@ -22952,7 +22952,7 @@ Mata Roma,-3.625,-43.1108,Brazil,BR,BRA,Maranhão,,15150,1076418048
 Mata Verde,-15.6858,-40.7408,Brazil,BR,BRA,Minas Gerais,,7874,1076682336
 Mataas Na Kahoy,13.9667,121.0833,Philippines,PH,PHL,Batangas,,30621,1608270985
 Matadepera,41.6036,2.0244,Spain,ES,ESP,Catalonia,,9672,1724902635
-Matadi,-5.8167,13.4833,Congo (Kinshasa),CD,COD,Kongo Central,admin,306053,1180529604
+Matadi,-5.8167,13.4833,Congo,CD,COD,Kongo Central,admin,306053,1180529604
 Matagalpa,12.9167,-85.9167,Nicaragua,NI,NIC,Matagalpa,admin,133416,1558728443
 Matagob,11.1167,124.4667,Philippines,PH,PHL,Leyte,,17522,1608448233
 Matalam,7.0833,124.9,Philippines,PH,PHL,Cotabato,,81355,1608220278
@@ -23126,13 +23126,13 @@ Mbala,-8.84,31.37,Zambia,ZM,ZMB,Northern,,20570,1894671312
 Mbale,1.0806,34.175,Uganda,UG,UGA,Mbale,admin,402368,1800265900
 Mbalmayo,3.52,11.5122,Cameroon,CM,CMR,Centre,,80206,1120049681
 Mbamba Bay,-11.2833,34.7667,Tanzania,TZ,TZA,Ruvuma,,8997,1834067294
-Mbandaka,0.0486,18.2603,Congo (Kinshasa),CD,COD,Équateur,admin,274996,1180720887
+Mbandaka,0.0486,18.2603,Congo,CD,COD,Équateur,admin,274996,1180720887
 Mbanza Kongo,-6.2667,14.25,Angola,AO,AGO,Zaire,admin,148000,1024532464
-Mbanza-Ngungu,-5.25,14.8667,Congo (Kinshasa),CD,COD,Kongo Central,,197545,1180474388
+Mbanza-Ngungu,-5.25,14.8667,Congo,CD,COD,Kongo Central,,197545,1180474388
 Mbarara,-0.5996,30.65,Uganda,UG,UGA,Mbarara,admin,83700,1800554483
 Mbe,7.8504,13.6,Cameroon,CM,CMR,Nord,,3950,1120400000
 Mbeya,-8.9,33.45,Tanzania,TZ,TZA,Mbeya,admin,291649,1834396594
-Mbuji-Mayi,-6.1209,23.5967,Congo (Kinshasa),CD,COD,Kasaï Oriental,admin,1559073,1180399586
+Mbuji-Mayi,-6.1209,23.5967,Congo,CD,COD,Kasaï Oriental,admin,1559073,1180399586
 Mbulu,-3.8496,35.53,Tanzania,TZ,TZA,Manyara,,13430,1834497748
 McAlester,34.9262,-95.7698,United States,US,USA,Oklahoma,,18896,1840020457
 McAllen,26.2273,-98.2471,United States,US,USA,Texas,,804114,1840021024
@@ -24025,11 +24025,11 @@ Moa,20.6556,-74.9417,Cuba,CU,CUB,Holguin,minor,73053,1192288426
 Moab,38.5701,-109.5477,United States,US,USA,Utah,,7278,1840020227
 Moalboal,9.95,123.4,Philippines,PH,PHL,Cebu,,36930,1608515460
 Moana,42.2833,-8.75,Spain,ES,ESP,Galicia,,19496,1724505635
-Moanda,-5.9229,12.355,Congo (Kinshasa),CD,COD,Kongo Central,,153915,1180108441
+Moanda,-5.9229,12.355,Congo,CD,COD,Kongo Central,,153915,1180108441
 Moanda,-1.5655,13.2,Gabon,GA,GAB,Haut-Ogooué,,30151,1266295581
 Moapa Valley,36.6078,-114.4566,United States,US,USA,Nevada,,7213,1840033831
 Moatize,-16.1167,33.75,Mozambique,MZ,MOZ,Tete,,42000,1508074512
-Moba,-7.0596,29.72,Congo (Kinshasa),CD,COD,Tanganyika,,10006,1180776583
+Moba,-7.0596,29.72,Congo,CD,COD,Tanganyika,,10006,1180776583
 Mobara,35.4283,140.2881,Japan,JP,JPN,Chiba,,86446,1392225442
 Mobarakeh,32.3464,51.5044,Iran,IR,IRN,Eşfahān,minor,62454,1364110841
 Mobaye,4.3167,21.1833,Central African Republic,CF,CAF,Basse-Kotto,admin,7176,1140935252
@@ -24634,7 +24634,7 @@ Moss Bluff,30.3039,-93.2051,United States,US,USA,Louisiana,,11055,1840013962
 Moss Point,30.424,-88.5289,United States,US,USA,Mississippi,,13350,1840015016
 Moss Vale,-34.55,150.3833,Australia,AU,AUS,New South Wales,,8579,1036872626
 Mossel Bay,-34.1833,22.1333,South Africa,ZA,ZAF,Western Cape,,59031,1710597106
-Mossendjo,-2.9458,12.7147,Congo (Brazzaville),CG,COG,Niari,,30936,1178679314
+Mossendjo,-2.9458,12.7147,Democratic Republic of the Congo,CG,COG,Niari,,30936,1178679314
 Mossingen,48.4064,9.0575,Germany,DE,DEU,Baden-Württemberg,,20480,1276236369
 Mossoro,-5.1878,-37.3439,Brazil,BR,BRA,Rio Grande do Norte,,259815,1076461194
 Most,50.5031,13.6367,Czechia,CZ,CZE,Ústecký Kraj,,65341,1203813984
@@ -24865,7 +24865,7 @@ Mullheim,47.8083,7.6308,Germany,DE,DEU,Baden-Württemberg,,19127,1276925185
 Mullica,39.6018,-74.6805,United States,US,USA,New Jersey,,5925,1840081584
 Mullingar,53.5333,-7.35,Ireland,IE,IRL,Westmeath,admin,,1372969205
 Mullins,34.2042,-79.2535,United States,US,USA,South Carolina,,5010,1840014719
-Mulongo,-7.8349,26.9985,Congo (Kinshasa),CD,COD,Haut-Lomami,,51603,1180171787
+Mulongo,-7.8349,26.9985,Congo,CD,COD,Haut-Lomami,,51603,1180171787
 Mulsanne,47.9117,0.2489,France,FR,FRA,Pays de la Loire,,5232,1250091689
 Mulsen,50.7447,12.5747,Germany,DE,DEU,Saxony,,11113,1276902814
 Multan,30.1978,71.4711,Pakistan,PK,PAK,Punjab,minor,1871843,1586256291
@@ -24988,7 +24988,7 @@ Muscatine,41.4196,-91.068,United States,US,USA,Iowa,,26168,1840008202
 Muscle Shoals,34.7436,-87.6344,United States,US,USA,Alabama,,14575,1840014657
 Muscoy,34.155,-117.3477,United States,US,USA,California,,12562,1840028097
 Museros,39.5658,-0.3411,Spain,ES,ESP,Valencia,,6618,1724127317
-Mushie,-3.0196,16.92,Congo (Kinshasa),CD,COD,Mai-Ndombe,,33062,1180240809
+Mushie,-3.0196,16.92,Congo,CD,COD,Mai-Ndombe,,33062,1180240809
 Musile di Piave,45.6178,12.565,Italy,IT,ITA,Veneto,,11461,1380177737
 Musina,-22.3381,30.0417,South Africa,ZA,ZAF,Limpopo,,42678,1710956370
 Muskego,42.886,-88.1291,United States,US,USA,Wisconsin,,25127,1840003023
@@ -25034,9 +25034,9 @@ Mwaline al Oued,33.4467,-7.3283,Morocco,MA,MAR,Casablanca-Settat,,9129,150400194
 Mwanza,-2.5167,32.9,Tanzania,TZ,TZA,Mwanza,admin,385810,1834011288
 Mwanza,-15.6167,34.5167,Malawi,MW,MWI,Mwanza,admin,11379,1454451365
 Mwatate,-3.505,38.3772,Kenya,KE,KEN,Taita/Taveta,admin,,1404648092
-Mweka,-4.84,21.57,Congo (Kinshasa),CD,COD,Kasaï,,50675,1180140663
-Mwene-Ditu,-7,23.45,Congo (Kinshasa),CD,COD,Lomami,,189177,1180134137
-Mwenga,-3.0382,28.4325,Congo (Kinshasa),CD,COD,Sud-Kivu,,2216,1180606289
+Mweka,-4.84,21.57,Congo,CD,COD,Kasaï,,50675,1180140663
+Mwene-Ditu,-7,23.45,Congo,CD,COD,Lomami,,189177,1180134137
+Mwenga,-3.0382,28.4325,Congo,CD,COD,Sud-Kivu,,2216,1180606289
 Mwingi,-0.9296,38.07,Kenya,KE,KEN,Kitui,,11219,1404312666
 Mwinilunga,-11.7396,24.44,Zambia,ZM,ZMB,North-Western,,13798,1894210586
 My Tho,10.3543,106.364,Vietnam,VN,VNM,Tiền Giang,admin,124143,1704000376
@@ -26671,7 +26671,7 @@ Nyons,44.3608,5.1406,France,FR,FRA,Auvergne-Rhône-Alpes,minor,6782,1250119333
 Nyrany,49.7116,13.2119,Czechia,CZ,CZE,Plzeňský Kraj,,6979,1203749733
 Nysa,50.4714,17.3339,Poland,PL,POL,Opolskie,minor,46841,1616093801
 Nytva,57.9333,55.3333,Russia,RU,RUS,Permskiy Kray,minor,18366,1643014234
-Nyunzu,-5.95,28.0167,Congo (Kinshasa),CD,COD,Tanganyika,,15397,1180921995
+Nyunzu,-5.95,28.0167,Congo,CD,COD,Tanganyika,,15397,1180921995
 Nyurba,63.2833,118.3333,Russia,RU,RUS,Sakha (Yakutiya),,9786,1643555326
 Nyuzen,36.9333,137.5,Japan,JP,JPN,Toyama,,23537,1392959152
 Nyyazow,41.8383,60.1333,Turkmenistan,TM,TKM,Daşoguz,,7291,1795860636
@@ -27524,7 +27524,7 @@ Oued Jdida,33.9333,-5.3667,Morocco,MA,MAR,Fès-Meknès,,14935,1504052620
 Oued Laou,35.45,-5.0833,Morocco,MA,MAR,Tanger-Tétouan-Al Hoceïma,,9665,1504708598
 Oued Naanaa,33.0167,-7.3333,Morocco,MA,MAR,Casablanca-Settat,,6991,1504436165
 Oued Zem,32.86,-6.56,Morocco,MA,MAR,Béni Mellal-Khénifra,,95267,1504098746
-Ouesso,1.6167,16.05,Congo (Brazzaville),CG,COG,Sangha,admin,28179,1178364266
+Ouesso,1.6167,16.05,Democratic Republic of the Congo,CG,COG,Sangha,admin,28179,1178364266
 Ouezzane,34.8,-5.6,Morocco,MA,MAR,Tanger-Tétouan-Al Hoceïma,,59606,1504736892
 Ouidah,6.3604,2.09,Benin,BJ,BEN,Atlantique,admin,83503,1204541753
 Ouirgane,31.1755,-8.0782,Morocco,MA,MAR,Marrakech-Safi,,7727,1504309994
@@ -27628,7 +27628,7 @@ Oviedo,43.36,-5.845,Spain,ES,ESP,Asturias,admin,217552,1724090743
 Oviedo,28.658,-81.1872,United States,US,USA,Florida,,41860,1840015089
 Oviedo,17.78,-71.37,Dominican Republic,DO,DOM,Enriquillo,,7296,1214038751
 Ovruch,51.3244,28.8081,Ukraine,UA,UKR,Zhytomyrs’ka Oblast’,,15795,1804670823
-Owando,-0.4833,15.9,Congo (Brazzaville),CG,COG,Cuvette,admin,23952,1178298042
+Owando,-0.4833,15.9,Democratic Republic of the Congo,CG,COG,Cuvette,admin,23952,1178298042
 Owani,40.5183,140.5678,Japan,JP,JPN,Aomori,,8442,1392282662
 Owariasahi,35.2167,137.0333,Japan,JP,JPN,Aichi,,82336,1392703321
 Owase,34.0667,136.1833,Japan,JP,JPN,Mie,,16079,1392003455
@@ -28021,7 +28021,7 @@ Pantanal,18.5103,-68.3694,Dominican Republic,DO,DOM,Yuma,,43982,1214144437
 Pantano Grande,-30.1908,-52.3739,Brazil,BR,BRA,Rio Grande do Sul,,9083,1076467088
 Pantao-Ragat,8.05,124.15,Philippines,PH,PHL,Lanao del Norte,,30247,1608760882
 Pantar,8.0667,124.2667,Philippines,PH,PHL,Lanao del Norte,,26599,1608597402
-Pante Macassar,-9.2,124.3833,Timor-Leste,TL,TLS,Oecussi-Ambeno,admin,,1626175417
+Pante Macassar,-9.2,124.3833,East Timor,TL,TLS,Oecussi-Ambeno,admin,,1626175417
 Pantelimon,44.4528,26.2036,Romania,RO,ROU,Ilfov,,25596,1642982115
 Pantelleria,36.7875,11.9925,Italy,IT,ITA,Trapani,,7759,1380052255
 Panthersville,33.7059,-84.2764,United States,US,USA,Georgia,,10800,1840013705
@@ -29333,7 +29333,7 @@ Point Vernon,-25.2538,152.8177,Australia,AU,AUS,Queensland,,5699,1036205903
 Pointe-a-Pitre,16.2415,-61.533,Guadeloupe,GP,GLP,,,145511,1312460524
 Pointe-Calumet,45.5,-73.97,Canada,CA,CAN,Quebec,,6396,1124629762
 Pointe-Claire,45.45,-73.8167,Canada,CA,CAN,Quebec,,31380,1124470650
-Pointe-Noire,-4.7889,11.8653,Congo (Brazzaville),CG,COG,Pointe-Noire,admin,829134,1178411563
+Pointe-Noire,-4.7889,11.8653,Democratic Republic of the Congo,CG,COG,Pointe-Noire,admin,829134,1178411563
 Poirino,44.9167,7.85,Italy,IT,ITA,Piedmont,,10576,1380649865
 Poissy,48.9294,2.0456,France,FR,FRA,Île-de-France,,38313,1250776265
 Poisy,45.9222,6.0631,France,FR,FRA,Auvergne-Rhône-Alpes,,8109,1250096090
@@ -32494,7 +32494,7 @@ Sambrial,32.475,74.3522,Pakistan,PK,PAK,Punjab,,71766,1586539893
 Sambuca di Sicilia,37.6478,13.1111,Italy,IT,ITA,Sicilia,,5834,1380304239
 Samch'ok,37.4406,129.1708,South Korea,KR,KOR,Gangwon,,69509,1410438648
 Samdrup Jongkhar,26.8007,91.5052,Bhutan,BT,BTN,Samdrup Jongkhar,admin,,1064656050
-Same,-9,125.65,Timor-Leste,TL,TLS,Manufahi,admin,2100,1626402267
+Same,-9,125.65,East Timor,TL,TLS,Manufahi,admin,2100,1626402267
 Same,-4.0696,37.72,Tanzania,TZ,TZA,Kilimanjaro,,17455,1834888088
 Samga-ri,38.878,125.5871,North Korea,KP,PRK,P’yŏngyang,admin,,1408680975
 Samkir,40.8297,46.0189,Azerbaijan,AZ,AZE,Şəmkir,admin,40600,1031776445
@@ -34423,7 +34423,7 @@ Sem,59.28,10.3308,Norway,NO,NOR,Vestfold,,21948,1578156342
 Semara,26.7333,-11.6833,Morocco,MA,MAR,Laâyoune-Sakia El Hamra,,48149,1504999984
 Semarang,-6.9667,110.4167,Indonesia,ID,IDN,Jawa Tengah,admin,1621384,1360745537
 Sembabule,-0.0772,31.4567,Uganda,UG,UGA,Sembabule,admin,,1800497536
-Sembe,1.6481,14.5806,Congo (Brazzaville),CG,COG,Sangha,,9679,1178118997
+Sembe,1.6481,14.5806,Democratic Republic of the Congo,CG,COG,Sangha,,9679,1178118997
 Semeac,43.2281,0.1067,France,FR,FRA,Occitanie,,5005,1250925748
 Semenivka,52.1772,32.5797,Ukraine,UA,UKR,Chernihivs’ka Oblast’,minor,8052,1804777306
 Semenov,56.8,44.5,Russia,RU,RUS,Nizhegorodskaya Oblast’,,24067,1643525669
@@ -35061,7 +35061,7 @@ Sibbesse,52.05,9.9,Germany,DE,DEU,Lower Saxony,,5744,1276906978
 Sibenik,43.7339,15.8956,Croatia,HR,HRV,Šibensko-Kninska Županija,admin,46332,1191444936
 Sibilia,15,-91.6167,Guatemala,GT,GTM,Quetzaltenango,minor,7954,1320074499
 Sibinal,15.1333,-92.05,Guatemala,GT,GTM,San Marcos,minor,27171,1320990586
-Sibiti,-3.6819,13.3498,Congo (Brazzaville),CG,COG,Lékoumou,admin,22811,1178867178
+Sibiti,-3.6819,13.3498,Democratic Republic of the Congo,CG,COG,Lékoumou,admin,22811,1178867178
 Sibiu,45.8,24.15,Romania,RO,ROU,Sibiu,admin,147245,1642393086
 Sibkalinagar,21.9288,88.178,India,IN,IND,West Bengal,,6674,1356020625
 Sibolga,1.7425,98.7792,Indonesia,ID,IDN,Sumatera Utara,,94971,1360021193
@@ -36465,7 +36465,7 @@ Sturry,51.3036,1.1211,United Kingdom,GB,GBR,Kent,,6820,1826679931
 Sturtevant,42.6995,-87.9019,United States,US,USA,Wisconsin,,6652,1840002486
 Stuttgart,48.7761,9.1775,Germany,DE,DEU,Baden-Württemberg,admin,630305,1276171358
 Stuttgart,34.495,-91.5485,United States,US,USA,Arkansas,,8490,1840015556
-Suai,-9.3129,125.2565,Timor-Leste,TL,TLS,Cova Lima,admin,,1626458227
+Suai,-9.3129,125.2565,East Timor,TL,TLS,Cova Lima,admin,,1626458227
 Suaita,6.1019,-73.4406,Colombia,CO,COL,Santander,minor,10006,1170125417
 Sual,16.0667,120.1,Philippines,PH,PHL,Pangasinan,,39091,1608276228
 Suamico,44.6352,-88.0664,United States,US,USA,Wisconsin,,13052,1840000309
@@ -38715,8 +38715,8 @@ Tsavo,-2.9828,38.4666,Kenya,KE,KEN,Taita/Taveta,,414,1404321644
 Tseri,35.0725,33.3243,Cyprus,CY,CYP,Lefkosia,,7035,1196695842
 Tsetserleg,47.4769,101.4503,Mongolia,MN,MNG,Arhangay,admin,18519,1496397451
 Tshabong,-26.02,22.4056,Botswana,BW,BWA,Kgalagadi,admin,9679,1072830877
-Tshela,-4.9696,12.93,Congo (Kinshasa),CD,COD,Kongo Central,,38845,1180377922
-Tshikapa,-6.4167,20.8,Congo (Kinshasa),CD,COD,Kasaï,,267462,1180581239
+Tshela,-4.9696,12.93,Congo,CD,COD,Kongo Central,,38845,1180377922
+Tshikapa,-6.4167,20.8,Congo,CD,COD,Kasaï,,267462,1180581239
 Tsibanobalka,44.9803,37.3439,Russia,RU,RUS,Krasnodarskiy Kray,,5370,1643052957
 Tsimasham,27.0989,89.536,Bhutan,BT,BTN,Chhukha,admin,,1064167489
 Tsimlyansk,47.6467,42.0947,Russia,RU,RUS,Rostovskaya Oblast’,minor,14528,1643104941
@@ -39414,7 +39414,7 @@ Uvaly,50.074,14.7309,Czechia,CZ,CZE,Středočeský Kraj,,7023,1203453685
 Uvarovo,51.9833,42.2667,Russia,RU,RUS,Tambovskaya Oblast’,,23987,1643354757
 Uvat,59.1423,68.8888,Russia,RU,RUS,Tyumenskaya Oblast’,,5031,1643431482
 Uvinza,-5.1036,30.3911,Tanzania,TZ,TZA,Kigoma,,80350,1834561245
-Uvira,-3.3953,29.1378,Congo (Kinshasa),CD,COD,Sud-Kivu,,170391,1180205443
+Uvira,-3.3953,29.1378,Congo,CD,COD,Sud-Kivu,,170391,1180205443
 Uwajima,33.2233,132.5606,Japan,JP,JPN,Ehime,,69639,1392682766
 Uwchlan,40.0522,-75.6679,United States,US,USA,Pennsylvania,,18934,1840145647
 Uxbridge,44.1167,-79.1333,Canada,CA,CAN,Ontario,,21176,1124829638
@@ -40363,7 +40363,7 @@ Viola,41.1287,-74.0855,United States,US,USA,New York,,6898,1840004972
 Violet,29.8962,-89.892,United States,US,USA,Louisiana,,5755,1840014002
 Vipava,45.8463,13.9622,Slovenia,SI,SVN,Vipava,admin,2049,1705864633
 Vipiteno,46.8931,11.4296,Italy,IT,ITA,Trentino-Alto Adige,,6956,1380153774
-Viqueque,-8.85,126.3667,Timor-Leste,TL,TLS,Viqueque,admin,6078,1626768340
+Viqueque,-8.85,126.3667,East Timor,TL,TLS,Viqueque,admin,6078,1626768340
 Virac,13.5833,124.2333,Philippines,PH,PHL,Catanduanes,admin,76520,1608265120
 Viradouro,-20.8728,-48.2969,Brazil,BR,BRA,São Paulo,,18428,1076583585
 Viraghattam,18.6833,83.6,India,IN,IND,Andhra Pradesh,,14315,1356596508
@@ -40750,7 +40750,7 @@ Walton upon Thames,51.3868,-0.4133,United Kingdom,GB,GBR,Surrey,,66566,182652887
 Waltrop,51.6236,7.3972,Germany,DE,DEU,North Rhine-Westphalia,,29345,1276333081
 Walvisbaai,-22.9494,14.5069,Namibia,NA,NAM,Erongo,,85000,1516267898
 Walworth,43.1633,-77.3132,United States,US,USA,New York,,9228,1840058571
-Wamba,2.1404,27.99,Congo (Kinshasa),CD,COD,Haut-Uélé,,146871,1180866253
+Wamba,2.1404,27.99,Congo,CD,COD,Haut-Uélé,,146871,1180866253
 Wambrechies,50.6853,3.0486,France,FR,FRA,Hauts-de-France,,10857,1250280781
 Wanaka,-44.7081,169.1239,New Zealand,NZ,NZL,Otago,,8900,1554152950
 Wanaque,41.044,-74.29,United States,US,USA,New Jersey,,11762,1840000840
@@ -40914,7 +40914,7 @@ Watervliet,42.7243,-73.7068,United States,US,USA,New York,,9900,1840002495
 Watford,51.655,-0.3957,United Kingdom,GB,GBR,Hertfordshire,,90301,1826570072
 Watford City,47.8028,-103.2678,United States,US,USA,North Dakota,,7835,1840001892
 Wathlingen,52.5333,10.15,Germany,DE,DEU,Lower Saxony,,6208,1276161862
-Watsa,3.04,29.53,Congo (Kinshasa),CD,COD,Haut-Uélé,,24516,1180367451
+Watsa,3.04,29.53,Congo,CD,COD,Haut-Uélé,,24516,1180367451
 Watsonville,36.9206,-121.7706,United States,US,USA,California,,77352,1840021581
 Wattens,47.2914,11.5925,Austria,AT,AUT,Tirol,,7881,1040802000
 Wattignies,50.585,3.0431,France,FR,FRA,Hauts-de-France,,14736,1250089700
@@ -42036,7 +42036,7 @@ Yanbu`,24.0943,38.0493,Saudi Arabia,SA,SAU,Al Madīnah al Munawwarah,,267590,168
 Yancheng,33.3936,120.1339,China,CN,CHN,Jiangsu,minor,7260240,1156995410
 Yanchep,-31.55,115.634,Australia,AU,AUS,Western Australia,,8859,1036796651
 Yang Talat,16.3997,103.3678,Thailand,TH,THA,Kalasin,minor,8666,1764746980
-Yangambi,0.7675,24.4414,Congo (Kinshasa),CD,COD,Tshopo,,35531,1180077706
+Yangambi,0.7675,24.4414,Congo,CD,COD,Tshopo,,35531,1180077706
 Yangchun,22.1717,111.7846,China,CN,CHN,Guangdong,,891800,1156787307
 Yangcunzai,23.4338,114.4664,China,CN,CHN,Guangdong,,41958,1156087224
 Yangfang,40.5723,115.0301,China,CN,CHN,Hebei,,38922,1156841476
@@ -42804,7 +42804,7 @@ Zomba,-15.3833,35.3333,Malawi,MW,MWI,Zomba,admin,101140,1454072947
 Zombo,2.5135,30.9091,Uganda,UG,UGA,Zombo,admin,,1800293674
 Zomergem,51.1167,3.5667,Belgium,BE,BEL,Flanders,,8466,1056975482
 Zongdi,25.5909,106.3163,China,CN,CHN,Guizhou,,27651,1156725646
-Zongo,4.35,18.6,Congo (Kinshasa),CD,COD,Sud-Ubangi,,17667,1180165321
+Zongo,4.35,18.6,Congo,CD,COD,Sud-Ubangi,,17667,1180165321
 Zongolica,18.6642,-97.0011,Mexico,MX,MEX,Veracruz,minor,43871,1484604711
 Zongshizhuang,37.8615,115.0575,China,CN,CHN,Hebei,,49014,1156309619
 Zonguldak,41.45,31.7833,Turkey,TR,TUR,Zonguldak,admin,17879,1792410633

@@ -1,4 +1,30 @@
 
+async function cities_add_continent() {
+	let info = await route_path_yaml_dict('../base/assets/lists/info.yaml');
+	let cities = await route_path_yaml_dict('../base/mapdata/cities.yaml');
+	let new_cities = {};
+
+	console.log('cities',arrTake(dict2list(cities),25));
+	return;
+	//mach einen reverse index von  country zu continent
+	let di = {};
+	for (const continent in Geo.continents) {
+		for (const country of Geo.continents[continent]) {
+			di[country] = continent;
+		}
+	}
+
+
+	for (const name in cities) {
+		let o = cities[name];
+		new_cities[name] = `${o.lng},${o.lat},${o.country},${o.capital},${o.population},${o.continent}`;
+	}
+
+	downloadAsYaml(new_cities, 'cities');
+	return new_cities;
+
+}
+
 function _create_router(map,color,callback){
 	console.log('haaaaaaaaaaaaaaaaaaaaaa')
 	let control = M.router = L.Routing.control({

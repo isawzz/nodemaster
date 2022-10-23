@@ -1,7 +1,19 @@
 
+function test10_autocomplete() {
+	let map = M.map = create_map({ zoom: 16 });
+	map.on('moveend', function (e) { calc_map_dims(); console.log("dims", M.dims); });
 
+	let tb = M.toolbar = create_toolbar(map);
+	mButton('Dummy', dummy_reaction, tb);
+	mAutocomplete(tb);	
 
-function test9() {
+	// let city = rChoose(M.capitals);
+	// console.log('city has been chosen:', city);
+
+	// map.flyTo(Geo.cities[city].center);
+}
+
+function test9_google() {
 	mBy('map').innerHTML = `
 	<iframe class='flat' id="gmap" src="http://maps.google.com/maps?z=15&t=m&q=loc:48.25+16.3&output=embed" width="100%" height="${window.innerWidth}"></iframe>	
 	`;
@@ -10,7 +22,6 @@ function test9() {
 	mStyle(x, { bg: 'blue' });
 
 }
-
 function test8_load_googlemap_in_iframe() {
 
 	var iDiv = document.createElement('iframe');
@@ -27,11 +38,10 @@ function test7_display_dims_on_moveend() {
 	let city = rChoose(M.capitals);
 	console.log('city has been chosen:', city);
 
-	map.flyTo(M.cities[city].center);
+	map.flyTo(Geo.cities[city].center);
 
 
 }
-
 function test6_click() {
 	let map = M.map = create_map({ zoom: 16 });
 
@@ -86,8 +96,8 @@ function test4_tools() {
 	let a = mLink("http://duckduckgo.com", dTop, { color: 'dimgray' }, null, 'ein link');
 	a = mLink("javascript:void(0)", dTop, { color: 'dimgray' }, null, 'ein link');
 	a.onclick = dummy_reaction;
-	b = mButton('Paris', () => map.setView(M.cities.Paris.center), dTop);
-	b = mButton('London', () => map.flyTo(M.cities.London.center), dTop);//YEAH!!!!!
+	b = mButton('Paris', () => map.setView(Geo.cities.Paris.center), dTop);
+	b = mButton('London', () => map.flyTo(Geo.cities.London.center), dTop);//YEAH!!!!!
 
 	let agent = new Agent(map, .0001, false); //create_agent(map);
 

@@ -77,17 +77,26 @@ async function get_cities_and_capitals() {
 	let cities = await route_path_yaml_dict('../base/mapdata/cities.yaml');
 
 	//console.log('cities',cities)
+	let cont_by_country = {};
+	for (const continent in Geo.continents) {
+		for (const country of Geo.continents[continent]) {
+			cont_by_country[country] = continent;
+		}
+	}
 
-	let res = {}; let capitals = [];
+	let res = {}; let capitals = []; 
 	for (const c in cities) {
 		let s = cities[c];
 		let ws = s.split(',').map(x => x.trim());
 		let o = { name: c, lon: Number(ws[0]), lat: Number(ws[1]), country: ws[2], type: ws[3], pop: Number(ws[4]) };
 		o.center = [o.lat, o.lon];
 		if (o.type == 'capital') capitals.push(c);
+		o.continent=cont_by_country[o.country];
+		if (nundef(o.continent)) {console.log('no continent for',o.country); break; }
 		res[c] = o;
 	}
-	return [res, capitals];
+	Geo.cities = res;
+	Geo.capitals = capitals;
 }
 function get_distance(from, to) {
 	var fromLatLng = L.latLng(from);

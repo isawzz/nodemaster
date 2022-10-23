@@ -16,7 +16,7 @@ body {
 	box-sizing: border-box;
 	justify-content: start;
 }
-.top * {
+.top a,.top button,.top input,.top span {
 	display: inline-block;
 	margin: 0;
 	padding: 0.5rem;
@@ -27,8 +27,11 @@ body {
 	outline: none;
 	text-decoration: none;
 }
-.top *:hover {
+.top a:hover,.top button:hover,.top input:hover {
 	filter: brightness(0.8);
+}
+.form{
+	display: inline-block;
 }
 a:link,
 a:visited {

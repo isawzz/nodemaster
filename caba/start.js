@@ -6,8 +6,9 @@ async function start() {
 		Socket.on('disconnect', x => console.log('got disconnect', x));
 		Socket.on('update', x => console.log('got update', x));
 	}
-	[M.cities, M.capitals] = await get_cities_and_capitals();
-	test9(); //test8_load_googlemap_in_iframe(); //test7(); //test6_click(); //test5_showroute(); //test4_tools(); //test3_better_agent(); // test2_two_maps | test0_canvas_overlay
+
+	await get_cities_and_capitals();
+	test10_autocomplete(); //test9_google(); //test8_load_googlemap_in_iframe(); //test7(); //test6_click(); //test5_showroute(); //test4_tools(); //test3_better_agent(); // test2_two_maps | test0_canvas_overlay
 }
 
 

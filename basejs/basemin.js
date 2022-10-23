@@ -10,7 +10,7 @@ var ColorThiefObject, SelectedItem, SelectedColor;
 var FR = 50, CX, CV;
 
 //#endregion
-//#region color const
+//#region color constMyanmar
 const BLUE = '#4363d8';
 const BLUEGREEN = '#004054';
 const DARKBLUE = '#04041b';
@@ -503,6 +503,14 @@ const Geo = {
 		zehenthofgasse: [48.24522522864384, 16.34572505950928],
 		vegagasse: [48.23413529351023, 16.346755027771],
 
+	},
+	continents: {
+		Africa: ['Algeria', 'Angola', 'Benin', 'Botswana', 'Burkina Faso', 'Burundi', 'Cameroon', 'Cape Verde', 'Central African Republic', 'Chad', 'Comoros', 'Congo', 'Democratic Republic of the Congo', "Cote d'Ivoire", 'Djibouti', 'Egypt', 'Equatorial Guinea', 'Eritrea', 'Ethiopia', 'Gabon', 'Gambia', 'Ghana', 'Guinea', 'Guinea-Bissau', 'Ivory Coast', 'Kenya', 'Lesotho', 'Liberia', 'Libya', 'Madagascar', 'Malawi', 'Mali', 'Mauritania', 'Mauritius', 'Morocco', 'Mozambique', 'Namibia', 'Niger', 'Nigeria', 'Rwanda', 'Sao Tome and Principe', 'Senegal', 'Seychelles', 'Sierra Leone', 'Somalia', 'South Africa', 'South Sudan', 'Saint Helena', 'Sudan', 'Swaziland', 'Tanzania', 'Togo', 'Tunisia', 'Uganda', 'Zambia', 'Zimbabwe'],
+		Asia: ['Afghanistan', 'Bahrain', 'Bangladesh', 'Bhutan', 'Brunei', 'Myanmar', 'Cambodia', 'China', 'East Timor', 'India', 'Indonesia', 'Iran', 'Iraq', 'Israel', 'Japan', 'Jordan', 'Kazakhstan', 'North Korea', 'South Korea', 'Kuwait', 'Kyrgyzstan', 'Laos', 'Lebanon', 'Malaysia', 'Maldives', 'Mongolia', 'Nepal', 'Oman', 'Pakistan', 'Philippines', 'Qatar', 'Russia', 'Saudi Arabia', 'Singapore', 'Sri Lanka', 'Syria', 'Taiwan', 'Tajikistan', 'Thailand', 'Turkey', 'Turkmenistan', 'United Arab Emirates', 'Uzbekistan', 'Vietnam', 'Yemen'],
+		Europe: ['Albania', 'Andorra', 'Armenia', 'Austria', 'Azerbaijan', 'Belarus', 'Belgium', 'Bosnia And Herzegovina', 'Bulgaria', 'Croatia', 'Cyprus', 'Czechia', 'Denmark', 'Estonia', 'Finland', 'France', 'Georgia', 'Germany', 'Greece', 'Hungary', 'Iceland', 'Ireland','Isle Of Man', 'Italy', 'Latvia', 'Liechtenstein', 'Lithuania', 'Luxembourg', 'Macedonia', 'Malta', 'Moldova', 'Monaco', 'Montenegro', 'Netherlands', 'Norway', 'Poland', 'Portugal', 'Romania', 'San Marino', 'Serbia', 'Slovakia', 'Slovenia', 'Spain', 'Sweden', 'Switzerland', 'Ukraine', 'United Kingdom', 'Vatican City'],
+		'North America': ['Antigua and Barbuda', 'Bahamas', 'Barbados', 'Belize', 'Canada', 'Costa Rica', 'Cuba', 'Dominica', 'Dominican Republic', 'El Salvador', 'Grenada', 'Guatemala', 'Haiti', 'Honduras', 'Jamaica', 'Mexico', 'Nicaragua', 'Panama', 'Puerto Rico', 'Saint Kitts and Nevis', 'Saint Lucia', 'Saint Vincent and the Grenadines', 'Trinidad And Tobago', 'United States'],
+		Oceania: ['Australia', 'Fiji', 'Kiribati', 'Marshall Islands', 'Micronesia', 'Nauru', 'New Zealand', 'Palau', 'Papua New Guinea', 'Samoa', 'Solomon Islands', 'Tonga', 'Tuvalu', 'Vanuatu'],
+		'South America': ['Argentina', 'Bolivia', 'Brazil', 'Chile', 'Colombia', 'Ecuador', 'French Guiana', 'Guyana', 'Paraguay', 'Peru', 'Suriname', 'Uruguay', 'Venezuela']
 	}
 };
 
@@ -1039,10 +1047,10 @@ function mItem(id, diDOM, di = {}, addSizing = false) {
 	return item;
 }
 function mLine(dParent, styles) { return mDiv(dParent, styles, null, '<hr>'); }
-function mLink(href,dParent, styles, id, inner, classes, sizing) {
+function mLink(href, dParent, styles, id, inner, classes, sizing) {
 	let d = mCreate('a');
 	if (dParent) mAppend(dParent, d);
-	d.href = valf(href,'#');
+	d.href = valf(href, '#');
 	if (isdef(styles)) mStyle(d, styles);
 	if (isdef(classes)) mClass(d, classes);
 	if (isdef(id)) d.id = id;
@@ -4225,13 +4233,13 @@ function csv2list(allText, hasHeadings = true) {
 	//console.log('recordsByName',recordsByName)
 	return records;
 }
-function downloadJson(o,filename){
+function downloadJson(o, filename) {
 	//usage: downloadJson({hallo:3},'_aaa');
 	//usage w/ button: b = mButton('download', () => downloadJson({ hallo: 4343 }, '__test'), dTop);
-	if (filename.indexOf('.')<0) filename = filename.json;
-	let txt=(typeof o == 'object') ?encodeURIComponent(JSON.stringify(o)):o;
+	if (filename.indexOf('.') < 0) filename = filename.json;
+	let txt = (typeof o == 'object') ? encodeURIComponent(JSON.stringify(o)) : o;
 	let dl = document.getElementById('downloadAnchorElement');
-	if (nundef(dl)) dl= mCreateFrom(`<a id="downloadAnchorElem" style="display:none"></a>`);
+	if (nundef(dl)) dl = mCreateFrom(`<a id="downloadAnchorElem" style="display:none"></a>`);
 	var dataStr = "data:text/json;charset=utf-8," + txt;
 	dl.setAttribute("href", dataStr);
 	dl.setAttribute("download", "_aaa\\scene.json");

@@ -1653,10 +1653,142 @@ ok 1. die landkarte wird in die mitte des tisches gelegt
 3- countries per continent => info.yaml
 604: *8:58 AM 10/22/2022-9:29 AM 10/22/2022
 605: *9:29 AM 10/22/2022-9:30 AM 10/22/2022
-606: *9:30 AM 10/22/2022-
+606: *9:30 AM 10/22/2022-9:32 AM 10/22/2022
 1- was kommt jetzt als naechstes?
 2- putzen
 3- continents csv
+607: *9:32 AM 10/22/2022-9:43 AM 10/22/2022
+608: *9:43 AM 10/22/2022-9:45 AM 10/22/2022
+609: *9:45 AM 10/22/2022-9:52 AM 10/22/2022
+610: *9:52 AM 10/22/2022-9:58 AM 10/22/2022
+1- mach eine flat class!
+2- js embed google map in iframe: zoom doesn't work!
+3- nochmal
+611: *9:58 AM 10/22/2022-10:00 AM 10/22/2022
+=>pause
+612: *11:14 AM 10/22/2022-11:21 AM 10/22/2022
+613: *11:21 AM 10/22/2022-11:39 AM 10/22/2022
+1- mach noch europe!
+2- test nur mit 2 ob es geht
+3- info soll ein abteil by continent bekommen
+614: *11:40 AM 10/22/2022-11:42 AM 10/22/2022
+615: *11:56 AM 10/22/2022-11:59 AM 10/22/2022
+616: *11:59 AM 10/22/2022-12:00 PM 10/22/2022
+617: *12:00 PM 10/22/2022-12:03 PM 10/22/2022
+618: *12:06 PM 10/22/2022-12:06 PM 10/22/2022
+619: *12:06 PM 10/22/2022-12:29 PM 10/22/2022
+620: *12:29 PM 10/22/2022-12:32 PM 10/22/2022
+621: *12:32 PM 10/22/2022-12:33 PM 10/22/2022
+622: *12:34 PM 10/22/2022-12:35 PM 10/22/2022
+623: *12:35 PM 10/22/2022-12:36 PM 10/22/2022
+1- bug!
+2- include databuilder
+3- gib mal die cities aus!
+4- WAY SHORTER!!!
+5- ...
+6- get cities and capitals soll machen: Geo.cities,Geo.di, Geo.capitals
+7- wie waers wenn ich einen index haette: continent:{country:[city...]
+8- wenn ich die cities einlese soll ich zu jeder cityein continent geben?
+9- hab jetzt Geo.continents
+10- was will ich jetzt machen? code?
+=>davor: 1 runde gehen mit music fuer 10# + 1 dessert!
+__________ sa 22.10.22 waiting at the airport... <200 vok
+=>next 10: continue working on cities_add_continent
+630: *5:57 AM 10/23/2022-5:59 AM 10/23/2022
+?- sind continents nicht jetzt in Geo? JA
+631: *5:59 AM 10/23/2022-6:00 AM 10/23/2022
+632: *6:00 AM 10/23/2022-6:02 AM 10/23/2022
+633: *6:03 AM 10/23/2022-6:04 AM 10/23/2022
+- hol code aus dem andern und dann ==>useful
+- open get_cities
+- dann kann ich doch einfach aus Geo das di machen 
+634: *6:04 AM 10/23/2022-6:06 AM 10/23/2022
+635: *6:06 AM 10/23/2022-6:08 AM 10/23/2022
+636: *6:08 AM 10/23/2022-6:09 AM 10/23/2022
+- wie hiess das andre control? route und clear
+==>heute plan: mach ein autocomplete auswahl fuer city control
+- fly to mit auswahl
+- auswahl mit autocomplete von cities
+- bug! start.js
+637: *6:09 AM 10/23/2022-6:26 AM 10/23/2022
+638: *6:27 AM 10/23/2022-6:29 AM 10/23/2022
+639: *6:29 AM 10/23/2022-6:31 AM 10/23/2022
+640: *6:31 AM 10/23/2022-6:36 AM 10/23/2022
+641: *6:36 AM 10/23/2022-6:38 AM 10/23/2022
+642: *6:38 AM 10/23/2022-6:40 AM 10/23/2022
+643: *6:40 AM 10/23/2022-6:41 AM 10/23/2022
+- how to: action="javascript in einer form?
+<form action="javascript:void(0);" onsubmit="make_payments_challenge_eval(this.elements[0]);return false;">
+<form action="javascript:unfocusOnEnter(event);">
+- erstmal eigenes example machen!!!
+- nix gefunden! goto w3school beispiel!
+- aroot find autcomplete
+- mach die form zuerst
+- js input with autocomplete from a list of words	
+644: *6:44 AM 10/23/2022-6:44 AM 10/23/2022
+ok - restart npx live-server
+645: *6:44 AM 10/23/2022-6:44 AM 10/23/2022
+646: *6:45 AM 10/23/2022-6:45 AM 10/23/2022
+==> aus dem example mach ich jetzt ein control
+647: *6:45 AM 10/23/2022-6:49 AM 10/23/2022
+648: *6:49 AM 10/23/2022-6:53 AM 10/23/2022
+649: *6:53 AM 10/23/2022-6:54 AM 10/23/2022
+650: *6:54 AM 10/23/2022-6:59 AM 10/23/2022
+651: *7:00 AM 10/23/2022-7:01 AM 10/23/2022
+652: *7:01 AM 10/23/2022-7:04 AM 10/23/2022
+- woher nehm ich den button?
+- hol mit route button als dummy button
+- goto styles.css
+- achtung .top class ist recursiv!!!!
+- create tb and append autocomplete form
+653: *7:04 AM 10/23/2022-7:18 AM 10/23/2022
+654: *7:18 AM 10/23/2022-7:24 AM 10/23/2022
+655: *7:24 AM 10/23/2022-7:25 AM 10/23/2022
+656: *7:25 AM 10/23/2022-
+- wo find ich russia?
+- WAY SHORTER!!!!!!!
+- wann wird autocomplete aufgerufen???
+- set the list!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+?mit A posters machen
+
+*** ratschlag ***: halte dich im himmel auf nicht in der hoelle!
+1. minimalistischer himmel: bei sonnenschein auf einer wiese unter einem baum liegen und in den himmel schauen
+2. minimalistischer himmel bei eiseskaelte: irgendwo schlafen egal wo bis es wieder warm ist und dann goto 1
+==>radical heaven:
+plan a: be the unicorn 
+plan b: do what has to be done to be the unicorn
+no need to fear for anything really. it starts and end with the unicorn
+
+himmel: bunte kinderwelt, mathe, spiele, programmieren, music, backen, kochen, haushalt, spazierengehen, library, klavier, violine, gu, a, fe, di, mac, tage, die menschen allgemein, yt prog, philo oder sunshine, flughafen, farben, zahlen, worte, fractals, zaubern, maerchen, unicorn, lernen
+
+hoelle: schwarz-graue erwachsenenwelt, ALLES andere auf dieser welt! speziell aber: nasi(!!!), skype, geld, besitzt, post, haus, wohnung, wien, redmond, seattle, nachrichten oder yt/sonstige ueber great reset oae, medizin, biologie, auto, staedte, kaufen von sachen, einzelne menschen und ihre themen, gesellschaft, politik, reisen, planen, geschaeftliche gespraeche, fast alles in tv,yt,netflix... oder andere platforms, strategizing, angst, greed
+
+
+alles mit geld, menschen, zeit, orte ist schmerzhaft!
+greif nicht hin! es ist alles hoellenfeuer!
+
+naomi wolf
+julian huxley
+rainer fuellmich
+john o'loony
+
 
 
 
