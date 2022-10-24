@@ -27,7 +27,7 @@ body {
 	outline: none;
 	text-decoration: none;
 }
-.top a:hover,.top button:hover,.top input:hover {
+.top a:hover,.top button:hover {
 	filter: brightness(0.8);
 }
 .form{
@@ -54,3 +54,35 @@ a:visited {
 	border: transparent;
 	box-shadow: none;
 }
+
+/* #region autocomplete */
+.autocomplete {
+	position: relative;
+	display: inline-block;
+}
+.autocomplete-items {
+	position: absolute;
+	border: 1px solid #d4d4d4;
+	border-bottom: none;
+	border-top: none;
+	/* z-index: 99; */
+	top: 100%;
+	left: 0;
+	right: 0;
+}
+.autocomplete-items div {
+	padding: 10px;
+	cursor: pointer;
+	background-color: #fff;
+	border-bottom: 1px solid #d4d4d4;
+}
+.autocomplete-items div:hover {
+	background-color: #e9e9e9;
+}
+.autocomplete-active {
+	background-color: DodgerBlue !important;
+	color: #ffffff;
+}
+/* #endregion autocomplete */
+
+

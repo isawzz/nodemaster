@@ -20,9 +20,6 @@ async function cities_from_csv_and_info(min = 25000) {
 		let land1 = o.country.toLowerCase();
 		for (const k of info.capital) {
 			let w = k.toLowerCase();
-			//let w2 = stringBefore(w,'-').trim();
-			//let land2 = stringAfter(w,'-').trim();
-			//console.log('o',w1,'k',w2);
 			if (w.includes(w1) && w.includes(land1)) {
 				//console.log('found capital:',w1);
 				capitals.push(o);
@@ -30,6 +27,7 @@ async function cities_from_csv_and_info(min = 25000) {
 			}
 			let name = o.name = o.city_ascii;
 			if (isdef(new_cities[name]) && new_cities[name].includes('capital')) continue; // do NOT override capitals!!!
+			else if (isdef(new_cities[name]) && Number(stringAfterLast(new_cities[name],','))>n) continue; // do NOT override larger cities!!!!
 			new_cities[name] = `${o.lng},${o.lat},${o.country},${o.capital},${o.population}`;
 		}
 	}

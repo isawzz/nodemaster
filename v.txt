@@ -1757,22 +1757,43 @@ ok - bank payments erledigt!
 674: *6:06 PM 10/23/2022-6:06 PM 10/23/2022
 675: *6:06 PM 10/23/2022-6:12 PM 10/23/2022
 676: *6:12 PM 10/23/2022-6:13 PM 10/23/2022
-677: *6:13 PM 10/23/2022-
-- open autocomplete beispiel
-- hab alle laender
-- Jersey
-- Guadeloupe
-- Cabo Verde => Cape Verde
-- Bermuda
-- Gibraltar
-- Cayman Islands
-- Kosovo
-- next city! Martinique North America
+677: *6:13 PM 10/23/2022-7:05 PM 10/23/2022
+50 fuer 20K+
+30 fuer E richtig
+__________ mo 24.10.22 waiting at the airport...  vok
+757: *7:06 PM 10/23/2022-5:28 AM 10/24/2022
+758: *5:28 AM 10/24/2022-5:31 AM 10/24/2022
+759: *5:31 AM 10/24/2022-5:33 AM 10/24/2022
+760: *5:33 AM 10/24/20220-5:37 AM 10/24/2022
+761: *5:37 AM 10/24/2022-5:41 AM 10/24/2022
+762: *5:41 AM 10/24/2022-5:47 AM 10/24/2022
+763: *5:47 AM 10/24/2022-5:51 AM 10/24/2022
+764: *5:51 AM 10/24/2022-5:52 AM 10/24/2022
+765: *5:52 AM 10/24/2022-5:55 AM 10/24/2022
+766: *5:55 AM 10/24/2022-6:00 AM 10/24/2022
+767: *6:00 AM 10/24/2022-6:04 AM 10/24/2022
+768: *6:04 AM 10/24/2022-6:07 AM 10/24/2022
+769: *6:08 AM 10/24/2022-6:10 AM 10/24/2022
+770: *6:10 AM 10/24/2022-6:10 AM 10/24/2022
+771: *6:10 AM 10/24/2022-6:11 AM 10/24/2022
+772: *6:12 AM 10/24/2022-6:16 AM 10/24/2022
+773: *6:16 AM 10/24/2022-6:26 AM 10/24/2022
+774: *6:26 AM 10/24/2022-6:33 AM 10/24/2022
+775: *6:33 AM 10/24/2022-6:45 AM 10/24/2022
+776: *6:46 AM 10/24/2022-6:46 AM 10/24/2022
+777: *6:47 AM 10/24/2022-6:48 AM 10/24/2022
+778: *6:49 AM 10/24/2022-6:50 AM 10/24/2022
+779: *6:50 AM 10/24/2022-6:53 AM 10/24/2022
+780: *6:53 AM 10/24/2022-6:57 AM 10/24/2022
+781: *6:57 AM 10/24/2022-7:00 AM 10/24/2022
+782: *7:01 AM 10/24/2022-7:01 AM 10/24/2022
+783: *7:02 AM 10/24/2022-7:06 AM 10/24/2022
+784: *7:08 AM 10/24/2022-7:08 AM 10/24/2022
+ok - autocomplete is done!
+785: *7:09 AM 10/24/2022-7:10 AM 10/24/2022
+786: *7:10 AM 10/24/2022-
+- was jetzt?
 
-- wo find ich russia?
-- WAY SHORTER!!!!!!!
-- wann wird autocomplete aufgerufen???
-- set the list!
 
 
 
@@ -1790,7 +1811,24 @@ ok - bank payments erledigt!
 
 
 
-?mit A posters machen
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 *** ratschlag ***: halte dich im himmel auf nicht in der hoelle!
 1. minimalistischer himmel: bei sonnenschein auf einer wiese unter einem baum liegen und in den himmel schauen
@@ -1812,6 +1850,7 @@ naomi wolf
 julian huxley
 rainer fuellmich
 john o'loony
+steve kirsch
 
 
 

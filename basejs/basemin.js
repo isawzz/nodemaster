@@ -469,6 +469,10 @@ const Geo = {
 			url: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
 			options: { attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>', subdomains: ['a', 'b', 'c'] }
 		},
+		osmg: {
+			url: 'https://{s}.tile.openstreetmap.de/tiles/osmde/{z}/{x}/{y}.png',
+			options: { attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>', subdomains: ['a', 'b', 'c'] }
+		},
 
 		//stamen
 		watercolor: {
@@ -506,8 +510,8 @@ const Geo = {
 	},
 	continents: {
 		Africa: ['Algeria', 'Angola', 'Benin', 'Botswana', 'Burkina Faso', 'Burundi', 'Cameroon', 'Cape Verde', 'Central African Republic', 'Chad', 'Comoros', 'Congo', 'Democratic Republic of the Congo', 'Djibouti', 'Egypt', 'Equatorial Guinea', 'Eritrea', 'Ethiopia', 'Gabon', 'Gambia', 'Ghana', 'Guinea', 'Guinea-Bissau', 'Ivory Coast', 'Kenya', 'Lesotho', 'Liberia', 'Libya', 'Madagascar', 'Malawi', 'Mali', 'Mauritania', 'Mauritius', 'Mayotte', 'Morocco', 'Mozambique', 'Namibia', 'Niger', 'Nigeria', 'Reunion', 'Rwanda', 'Sao Tome And Principe', 'Senegal', 'Seychelles', 'Sierra Leone', 'Somalia', 'South Africa', 'South Sudan', 'Saint Helena', 'Sudan', 'Swaziland', 'Tanzania', 'Togo', 'Tunisia', 'Uganda', 'Zambia', 'Zimbabwe'],
-		Asia: ['Afghanistan', 'Bahrain', 'Bangladesh', 'Bhutan', 'Brunei', 'Myanmar', 'Cambodia', 'China', 'East Timor', 'Hong Kong', 'India', 'Indonesia', 'Iran', 'Iraq', 'Israel', 'Japan', 'Jordan', 'Kazakhstan', 'North Korea', 'South Korea', 'Kuwait', 'Kyrgyzstan', 'Laos', 'Lebanon', 'Malaysia', 'Maldives', 'Mongolia', 'Nepal', 'Oman', 'Pakistan', 'Philippines', 'Qatar', 'Russia', 'Saudi Arabia', 'Singapore', 'Sri Lanka', 'Syria', 'Taiwan', 'Tajikistan', 'Thailand', 'Turkey', 'Turkmenistan', 'United Arab Emirates', 'Uzbekistan', 'Vietnam', 'Yemen'],
-		Europe: ['Albania', 'Andorra', 'Armenia', 'Austria', 'Azerbaijan', 'Belarus', 'Belgium', 'Bosnia And Herzegovina', 'Bulgaria', 'Croatia', 'Cyprus', 'Czechia', 'Denmark', 'Estonia', 'Finland', 'France', 'Georgia', 'Germany', 'Gibraltar', 'Greece', 'Hungary', 'Iceland', 'Ireland','Isle Of Man', 'Italy', 'Jersey', 'Kosovo', 'Latvia', 'Liechtenstein', 'Lithuania', 'Luxembourg', 'Macedonia', 'Malta', 'Moldova', 'Monaco', 'Montenegro', 'Netherlands', 'Norway', 'Poland', 'Portugal', 'Romania', 'San Marino', 'Serbia', 'Slovakia', 'Slovenia', 'Spain', 'Sweden', 'Switzerland', 'Ukraine', 'United Kingdom', 'Vatican City'],
+		Asia: ['Afghanistan', 'Bahrain', 'Bangladesh', 'Bhutan', 'Brunei', 'Myanmar', 'Cambodia', 'China', 'East Timor', 'Hong Kong', 'India', 'Indonesia', 'Iran', 'Iraq', 'Israel', 'Japan', 'Jordan', 'Kazakhstan', 'Macau', 'North Korea', 'South Korea', 'Kuwait', 'Kyrgyzstan', 'Laos', 'Lebanon', 'Malaysia', 'Maldives', 'Mongolia', 'Nepal', 'Oman', 'Pakistan', 'Philippines', 'Qatar', 'Russia', 'Saudi Arabia', 'Singapore', 'Sri Lanka', 'Syria', 'Taiwan', 'Tajikistan', 'Thailand', 'Turkey', 'Turkmenistan', 'United Arab Emirates', 'Uzbekistan', 'Vietnam', 'Yemen'],
+		Europe: ['Albania', 'Andorra', 'Armenia', 'Austria', 'Azerbaijan', 'Belarus', 'Belgium', 'Bosnia And Herzegovina', 'Bulgaria', 'Croatia', 'Cyprus', 'Czechia', 'Denmark', 'Estonia', 'Finland', 'France', 'Georgia', 'Germany', 'Gibraltar', 'Greece', 'Hungary', 'Iceland', 'Ireland', 'Isle Of Man', 'Italy', 'Jersey', 'Kosovo', 'Latvia', 'Liechtenstein', 'Lithuania', 'Luxembourg', 'Macedonia', 'Malta', 'Moldova', 'Monaco', 'Montenegro', 'Netherlands', 'Norway', 'Poland', 'Portugal', 'Romania', 'San Marino', 'Serbia', 'Slovakia', 'Slovenia', 'Spain', 'Sweden', 'Switzerland', 'Ukraine', 'United Kingdom', 'Vatican City'],
 		'North America': ['Antigua and Barbuda', 'Bahamas', 'Barbados', 'Belize', 'Bermuda', 'Cayman Islands', 'Canada', 'Costa Rica', 'Cuba', 'Dominica', 'Dominican Republic', 'El Salvador', 'Grenada', 'Guadeloupe', 'Guatemala', 'Haiti', 'Honduras', 'Jamaica', 'Martinique', 'Mexico', 'Nicaragua', 'Panama', 'Puerto Rico', 'Saint Kitts and Nevis', 'Saint Lucia', 'Saint Vincent And The Grenadines', 'Trinidad And Tobago', 'United States'],
 		Oceania: ['Australia', 'Fiji', 'French Polynesia', 'Kiribati', 'Marshall Islands', 'Micronesia', 'Nauru', 'New Caledonia', 'New Zealand', 'Palau', 'Papua New Guinea', 'Samoa', 'Solomon Islands', 'Tonga', 'Tuvalu', 'Vanuatu'],
 		'South America': ['Argentina', 'Aruba', 'Bolivia', 'Brazil', 'Chile', 'Colombia', 'Curacao', 'Ecuador', 'French Guiana', 'Guam', 'Guyana', 'Paraguay', 'Peru', 'Suriname', 'Uruguay', 'Venezuela']
@@ -598,6 +602,100 @@ function mAnimateList(elem, ogoal, callback, msDuration = 1000, easing = 'cubic-
 	// DA.anim = a; return a;
 }
 function mAppend(d, child) { toElem(d).appendChild(child); return child; }
+function mAutocomplete(dParent) {
+	let form = mCreateFrom(`
+		<form class='form' autocomplete="off" action="javascript:void(0);">
+			<div class="autocomplete" style="width: 200px">
+				<input id="myInput" type="text" name="myCity" placeholder="City" onclick="select()" />
+			</div>
+			<input style="margin-left:-15px" type="submit" value="Go!" />
+		</form>
+	`	);
+	form.onsubmit = () => {
+		let c = mBy('myInput').value.toLowerCase();
+		let o = Geo.cities[c];
+		if (nundef(o)) { c = toUmlaut(c); o = Geo.cities[c]; }
+		console.log('c', c);
+		let center = o.center;
+		M.map.flyTo(center, M.map.getZoom(), { animate: false })
+		//console.log('chose city',c,o);
+		//M.map.flyTo(Geo.cities[mBy('myInput').value.toLowercase()].center); //dummy_reaction; //das funktioniert!!! YEAH!!!
+	}
+	let d = mAppend(dParent, form);
+	//console.log('cities',get_keys(Geo.cities));
+	function autocomplete(inp, arr) {
+		/* inp...input element, arr...array of possible autocompleted values:*/
+		var currentFocus;
+		inp = toElem(inp);
+		inp.addEventListener('input', function (e) { /*execute a function when someone writes in the text field:*/
+			var a, b, i, val = this.value;		/*close any already open lists of autocompleted values*/
+			closeAllLists();
+			if (!val) { return false; }
+			currentFocus = -1;
+			a = document.createElement('DIV'); /*create a DIV element that will contain the items (values):*/
+			a.setAttribute('id', this.id + 'autocomplete-list');
+			a.setAttribute('class', 'autocomplete-items');
+			this.parentNode.appendChild(a); /*append the DIV element as a child of the autocomplete container:*/
+			for (i = 0; i < arr.length; i++) {
+				if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+					b = document.createElement('DIV'); /*create a DIV element for each matching element:*/
+					b.innerHTML = '<strong>' + arr[i].substr(0, val.length) + '</strong>'; /*make the matching letters bold:*/
+					b.innerHTML += arr[i].substr(val.length);
+					b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>"; /*insert a input field that will hold the current array item's value:*/
+					b.addEventListener('click', function (e) {
+						inp.value = this.getElementsByTagName('input')[0].value; /*insert the value for the autocomplete text field:*/
+						closeAllLists();
+					});
+					a.appendChild(b);
+				}
+			}
+		});
+		inp.addEventListener('keydown', function (e) {
+			var x = document.getElementById(this.id + 'autocomplete-list');
+			if (x) x = x.getElementsByTagName('div');
+			if (e.keyCode == 40) { // arrow DOWN
+				currentFocus++;
+				addActive(x);
+			} else if (e.keyCode == 38) { //arrow UP
+				currentFocus--;
+				addActive(x);
+			} else if (e.keyCode == 13) { // ENTER
+				e.preventDefault();  // if the ENTER key is pressed, prevent the form from being submitted
+				if (currentFocus > -1) {
+					if (x) x[currentFocus].click(); // simulate a click on the "active" item:
+				}
+			}
+		});
+		inp.addEventListener('dblclick', function (e) { evNoBubble(e); });
+
+		function addActive(x) {
+			// works with classes from styles.css
+			if (!x) return false;
+			removeActive(x);
+			if (currentFocus >= x.length) currentFocus = 0;
+			if (currentFocus < 0) currentFocus = x.length - 1;
+			x[currentFocus].classList.add('autocomplete-active');
+		}
+		function removeActive(x) {
+			for (var i = 0; i < x.length; i++) {
+				x[i].classList.remove('autocomplete-active');
+			}
+		}
+		function closeAllLists(elmnt) {
+			var x = document.getElementsByClassName('autocomplete-items');
+			for (var i = 0; i < x.length; i++) {
+				if (elmnt != x[i] && elmnt != inp) {
+					x[i].parentNode.removeChild(x[i]);
+				}
+			}
+		}
+
+		document.addEventListener('click', function (e) {
+			closeAllLists(e.target);
+		});
+	}
+	autocomplete('myInput', get_values(Geo.cities).map(x => x.name));
+}
 function mButton(caption, handler, dParent, styles, classes, id) {
 	let x = mCreate('button');
 	x.innerHTML = caption;
@@ -2589,7 +2687,7 @@ function fisherYates(arr) {
 		arr[i] = arr[rnd];
 		arr[rnd] = temp;
 	}
-	//assertion(arr.length!=2 || last == arr[arr.length-1],'fisher yates does NOT always push 0 to last place',last,arr);
+	//assertion(arr.length!=2 || last == arr[arr.length-1],'fisher yates do NOT always push 0 to last place',last,arr);
 	return arr;
 }
 function firstCond(arr, func) {
@@ -3082,7 +3180,7 @@ function colorFrom(cAny, a, allowHsl = false) {
 		}
 	} else if (typeof cAny == 'object') {
 		//console.log('anyColorToStandardString: cAny is object!!!', cAny);
-		//koennte {h: ,s: , l:} oder {r: ,g: ,b:} sein
+		//could {h: ,s: , l:} oder {r: ,g: ,b:} sein
 		if ('h' in cAny) {
 			//hsl object
 			let hslString = '';
@@ -3910,7 +4008,7 @@ function RGBToHex7(c) {
 } //ok
 function rgbToHex(rgbStr) { return rgbStr && '#' + rgbStr.slice(4, -1).split(',').map(x => (+x).toString(16).padStart(2, '0')).join(''); }
 function RGBAToHex9(rgba) {
-	let n = allNumbers(rgba); //allNumbers does not catch .5 as float!
+	let n = allNumbers(rgba); //allNumbers do not catch .5 as float!
 	//console.log('all numbers:', n);
 	if (n.length < 3) {
 		//console.log('RGBAToHex ERROR!', rgba);
@@ -4458,7 +4556,7 @@ function setKeys({ allowDuplicates, nMin = 25, lang, key, keySets, filterFunc, p
 	}
 
 	if (isdef(nMin)) {
-		//if result does not have enough elements, take randomly from other
+		//if result do not have enough elements, take randomly from other
 		let len = primary.length;
 		let nMissing = nMin - len;
 		if (nMissing > 0) { let list = choose(spare, nMissing); spare = arrMinus(spare, list); primary = primary.concat(list); }
@@ -4495,7 +4593,7 @@ function rCoin(percent = 50) {
 	return r < percent;
 }
 function _rChoose(arr, n = 1, func = null, exceptIndices = null) {
-	//this does NOT work with an array of objects that contain DOM objects!!! =>use rChoose below instead
+	//this do NOT work with an array of objects that contain DOM objects!!! =>use rChoose below instead
 	let arr1 = jsCopy(arr);
 	if (isdef(exceptIndices)) {
 		for (const i of exceptIndices) removeInPlace(arr1, arr[i]);
@@ -4689,6 +4787,38 @@ function toLetters(s) { return [...s]; }
 function toWords(s) {
 	let arr = s.split(/(?:,|\s|!)+/);
 	return arr.filter(x => !isEmpty(x));
+}
+function toUmlaut(w) {
+	//ue ü, ae ä, oe ö
+	if (isList(w)) {
+		let res = [];
+		for (const w1 of w) res.push(toUmlaut(w1));
+		return res;
+	} else {
+		w = replaceAll(w, 'ue', 'ü');
+		w = replaceAll(w, 'ae', 'ä');
+		w = replaceAll(w, 'oe', 'ö');
+		w = replaceAll(w, 'UE', 'Ü');
+		w = replaceAll(w, 'AE', 'Ä');
+		w = replaceAll(w, 'OE', 'Ö');
+		return w;
+	}
+}
+function fromUmlaut(w) {
+	if (isList(w)) {
+		let res = [];
+		for (const w1 of w) res.push(fromUmlaut(w1));
+		return res;
+	} else {
+		//ue ü, ae ä, oe ö
+		w = replaceAll(w, 'ü', 'ue');
+		w = replaceAll(w, 'ä', 'ae');
+		w = replaceAll(w, 'ö', 'oe');
+		w = replaceAll(w, 'Ü', 'UE');
+		w = replaceAll(w, 'Ä', 'AE');
+		w = replaceAll(w, 'Ö', 'OE');
+		return w;
+	}
 }
 
 

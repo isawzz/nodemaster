@@ -74,7 +74,7 @@ function fit_points(map, pts, padding = true) {
 function from_lat_lng(p) { return [p.lat, p.lng]; }
 function from_lat_long(p) { return from_lat_lng(p); }
 async function get_cities_and_capitals() {
-	let cities = await route_path_yaml_dict('../base/mapdata/cities.yaml');
+	let cities = await route_path_yaml_dict('../base/assets/cities.yaml');
 
 	//console.log('cities',cities)
 	let cont_by_country = {};
@@ -93,7 +93,7 @@ async function get_cities_and_capitals() {
 		if (o.type == 'capital') capitals.push(c);
 		o.continent=cont_by_country[o.country];
 		if (nundef(o.continent)) {console.log('no continent for',o.country); break; }
-		res[c] = o;
+		res[c.toLowerCase()] = o;
 	}
 	Geo.cities = res;
 	Geo.capitals = capitals;
