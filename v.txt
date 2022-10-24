@@ -1744,7 +1744,31 @@ ok - restart npx live-server
 653: *7:04 AM 10/23/2022-7:18 AM 10/23/2022
 654: *7:18 AM 10/23/2022-7:24 AM 10/23/2022
 655: *7:24 AM 10/23/2022-7:25 AM 10/23/2022
-656: *7:25 AM 10/23/2022-
+656: *7:25 AM 10/23/2022-8:07 AM 10/23/2022
+ok - bank payments erledigt!
+666: *2:51 PM 10/23/2022-5:46 PM 10/23/2022
+667: *5:46 PM 10/23/2022-5:48 PM 10/23/2022
+668: *5:48 PM 10/23/2022-5:50 PM 10/23/2022
+669: *5:50 PM 10/23/2022-5:52 PM 10/23/2022
+670: *5:52 PM 10/23/2022-5:54 PM 10/23/2022
+671: *5:54 PM 10/23/2022-5:56 PM 10/23/2022
+672: *5:56 PM 10/23/2022-6:02 PM 10/23/2022
+673: *6:02 PM 10/23/2022-6:05 PM 10/23/2022
+674: *6:06 PM 10/23/2022-6:06 PM 10/23/2022
+675: *6:06 PM 10/23/2022-6:12 PM 10/23/2022
+676: *6:12 PM 10/23/2022-6:13 PM 10/23/2022
+677: *6:13 PM 10/23/2022-
+- open autocomplete beispiel
+- hab alle laender
+- Jersey
+- Guadeloupe
+- Cabo Verde => Cape Verde
+- Bermuda
+- Gibraltar
+- Cayman Islands
+- Kosovo
+- next city! Martinique North America
+
 - wo find ich russia?
 - WAY SHORTER!!!!!!!
 - wann wird autocomplete aufgerufen???

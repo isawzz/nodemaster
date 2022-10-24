@@ -9,7 +9,6 @@ function mAutocomplete(dParent) {
 	form.onsubmit=dummy_reaction; //das funktioniert!!! YEAH!!!
 	let d=mAppend(dParent, form);
 	console.log('cities',get_keys(Geo.cities));
-	return;
 	autocomplete(d.firstChild,get_keys(Geo.cities));
 }
 
