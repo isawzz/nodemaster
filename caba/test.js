@@ -1,11 +1,29 @@
 
+function test11_gengraph() {
+	//let items = nodes_on_div('map',30,50);	shake_and_sieve(items);
+	//let space = create_space('map',)
+	let items = create_nodes({x:0,y:0,w:500,h:500},20,120);
+	console.log('items',items,items[120]);
+
+	dTable = toElem('map');
+
+	// plot_on_canvas(dTable,items);
+	plot_on_div(dTable,items);
+
+	adjacency_init(items);
+
+	//let items = nodes_on_canvas('map',30,50);	shake_and_sieve(items);
+}
+
+
+// #region map tests 0
 function test10_autocomplete() {
 	let map = M.map = create_map({ zoom: 16 });
 	map.on('moveend', function (e) { calc_map_dims(); console.log("dims", M.dims); });
 
 	let tb = M.toolbar = create_toolbar(map);
 	mButton('Dummy', dummy_reaction, tb);
-	mAutocomplete(tb);	
+	mAutocomplete(tb);
 
 	// let city = rChoose(M.capitals);
 	// console.log('city has been chosen:', city);
@@ -150,5 +168,5 @@ function test0_canvas_overlay() {
 	run_for_seconds(2, () => map_moveby(pin, f, f))
 }
 
-
+//#endregion
 

@@ -1,4 +1,80 @@
 
+function pos_div(elem,x,y){	mStyle(elem,{x:x,y:y});}
+function pos_canvas(elem,x,y){	mStyle(elem,{x:x,y:y});}
+function nodes_on_canvas(dParent,n=10,dmin=25){
+	dTable = toElem(dParent);
+	let r = getRect(dTable);
+	let [w, h] = [r.w, r.h];
+	console.log('r', r.w, 'x', r.h);
+	let c = mCanvas(dParent,{w:r.w,h:r.h,rounding:0,bg:'white'}); let[cv,cx]=[c.cv,c.cx];
+
+	let gran = dmin;
+	let [xoffset, yoffset] = [Math.floor((w % gran) / 2), Math.floor((h % gran) / 2)];
+	let [xstart, ystart] = [gran / 2, gran / 2];
+	let [x, y] = [xstart, ystart];
+	let items = []; let [rows,cols]=[0,0];
+	while (y < h) {
+		while (x < w - gran / 2) {
+			//draw point on x,y
+			let styles = { w: 5, h: 5, bg: 'blue', position: 'absolute', x: x, y: y };
+			let d = cRect(x,y,styles.w,styles.h,styles,cx); //cEllipse(x,y,styles.w,styles.h,styles,0,cx);
+			x += gran;
+			let item = { div: d }; copyKeys(styles, item, { position: true });
+			items.push(item);
+			cols++;
+		}
+		rows++;
+		x = xstart;
+		y += gran;
+	}
+
+
+}
+function nodes_on_div(dParent,n=10,dmin=35){
+	dTable = toElem(dParent); mStyle(dTable, { position: 'relative' });
+	let r = getRect(dTable);
+	console.log('r', r.w, 'x', r.h);
+
+	//how to generate n random positions on a rectangle?
+	let [w, h] = [r.w, r.h];
+	let w2h = w / h;
+	console.log('w2h', w2h);
+	let a = w * h / 1000;
+	let pv = a / n;
+	console.log('area', a, pv, 'pro vertex');
+
+	let l = Math.sqrt(pv);
+
+	//eq w*h=10]
+	//h=600,w=900
+	//h=
+	//ein field ist 100x100
+	//first point auf 50,50
+	let gran = dmin;
+	let [xoffset, yoffset] = [Math.floor((w % gran) / 2), Math.floor((h % gran) / 2)];
+	let [xstart, ystart] = [gran / 2, gran / 2];
+	let [x, y] = [xstart, ystart];
+	let items = []; let [rows,cols]=[0,0];
+	while (y < h) {
+		while (x < w - gran / 2) {
+			//draw point on x,y
+			let styles = { w: 5, h: 5, bg: 'blue', position: 'absolute', x: x, y: y };
+			let d = mDiv(dTable, styles);
+			x += gran;
+			let item = { div: d }; copyKeys(styles, item, { position: true });
+			items.push(item);
+			cols++;
+		}
+		rows++;
+		x = xstart;
+		y += gran;
+	}
+
+	console.log('items', items,cols/rows,rows)
+
+
+}
+
 function _mAutocomplete(dParent){
 
 	let d=mDiv(dParent,{},null,`<form autocomplete="off" action="javascript:void(0);">

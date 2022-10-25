@@ -1791,7 +1791,69 @@ __________ mo 24.10.22 waiting at the airport...  vok
 784: *7:08 AM 10/24/2022-7:08 AM 10/24/2022
 ok - autocomplete is done!
 785: *7:09 AM 10/24/2022-7:10 AM 10/24/2022
-786: *7:10 AM 10/24/2022-
+786: *7:10 AM 10/24/2022-7:32 AM 10/24/2022
+787: *7:32 AM 10/24/2022-7:49 AM 10/24/2022
+788: *7:49 AM 10/24/2022-9:55 AM 10/24/2022
+808: *9:55 AM 10/24/2022-10:33 AM 10/24/2022
+=>create a ticket-to-ride map
+810: *10:34 AM 10/24/2022-10:50 AM 10/24/2022
+811: *10:50 AM 10/24/2022-10:51 AM 10/24/2022
+812: *10:51 AM 10/24/2022-10:52 AM 10/24/2022
+813: *10:52 AM 10/24/2022-10:53 AM 10/24/2022
+814: *11:11 AM 10/24/2022-11:11 AM 10/24/2022
+815: *11:11 AM 10/24/2022-11:13 AM 10/24/2022
+816: *11:13 AM 10/24/2022-11:14 AM 10/24/2022
+817: *11:14 AM 10/24/2022-5:12 AM 10/25/2022
+__________ di 25.10.22 waiting at the airport...  
+818: *5:13 AM 10/25/2022-5:14 AM 10/25/2022
+819: *5:14 AM 10/25/2022-5:24 AM 10/25/2022
+820: *5:24 AM 10/25/2022-5:25 AM 10/25/2022
+821: *5:25 AM 10/25/2022-5:26 AM 10/25/2022
+822: *5:26 AM 10/25/2022-5:32 AM 10/25/2022
+823: *5:32 AM 10/25/2022-5:46 AM 10/25/2022
+824: *5:46 AM 10/25/2022-5:53 AM 10/25/2022
+825: *5:53 AM 10/25/2022-5:59 AM 10/25/2022
+826: *5:59 AM 10/25/2022-6:31 AM 10/25/2022
+827: *6:31 AM 10/25/2022-6:31 AM 10/25/2022
+828: *6:31 AM 10/25/2022-8:20 AM 10/25/2022
+5 spa 5 kla 5 knoe
+840: *8:20 AM 10/25/2022-
+
+
+
+- WAY SHORTER!!!!!!!!!!!!!!!!!!!!!!!
+- adjacency!
+- w3school canvas
+- alles klar: auf einem canvas KANN MAN DIE POS VON EINEM ELEMENT NICHT VERAENDERN!!! der ganze canvas wird gezeichnet as is!
+- create a full size canvas =>goto code wo ich das overlay mach!
+- do the same thing on a canvas
+- jetzt kommen die mini-rules
+- hat das mStyle ein x,y?
+- erstmal NUR vertices
+algo: make a grid
+remove randomly nodes+ all their edges!
+while
+- neue test serie: graphs
+- simplest: draw graph on div
+- draw a graph on a canvas or div or map
+
+
+
+- next bstp???? 
+
+
+
+plan: gehen und bei jedem abschnitt 1 schritt planen
+- schritte koennen sein: 
+a) bstplan machen
+b) 
+- idee: make my own ttr map or generate one
+- generate public transportation graph from osm 
+- wie waers mit enie function 'road_network' die mir einen graphen ueber die map zeichnet
+- graph zwischen cities ist einfach
+- kann ich eigentlich ganz leicht so ein ticket to ride machen?
+- mit cities schon
+- aber was ist innerhalb von 1 city?
 - was jetzt?
 
 

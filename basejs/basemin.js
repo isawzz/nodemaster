@@ -1513,6 +1513,8 @@ const STYLE_PARAMS = {
 	fz: 'font-size',
 	family: 'font-family',
 	weight: 'font-weight',
+	x: 'left',
+	y: 'top',
 	z: 'z-index'
 };
 function getStyleProp(elem, prop) { return getComputedStyle(elem).getPropertyValue(prop); }
@@ -2086,7 +2088,6 @@ function cStyle(styles = {}, ctx) {
 	const di = { bg: 'fillStyle', fill: 'fillStyle', stroke: 'strokeStyle', fg: 'strokeStyle', thickness: 'lineWidth', thick: 'lineWidth', cap: 'lineCap', ending: 'lineCap' };
 
 	for (const k in styles) {
-
 		ctx[isdef(di[k]) ? di[k] : k] = styles[k];
 	}
 }
