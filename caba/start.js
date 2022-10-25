@@ -7,8 +7,8 @@ async function start() {
 		Socket.on('update', x => console.log('got update', x));
 	}
 	//await get_cities_and_capitals(); //cities_from_csv_and_info();	return;
-
-	test11_gengraph();//test10_autocomplete(); //test9_google(); //test8_load_googlemap_in_iframe(); //test7(); //test6_click(); //test5_showroute(); //test4_tools(); //test3_better_agent(); // test2_two_maps | test0_canvas_overlay
+	gTest13(); //test6_click(); //test5_showroute();
+	//gTest05(); //test11_gengraph();//test10_autocomplete(); //test9_google(); //test8_load_googlemap_in_iframe(); //test7(); //test6_click(); //test5_showroute(); //test4_tools(); //test3_better_agent(); // test2_two_maps | test0_canvas_overlay
 }
 
 

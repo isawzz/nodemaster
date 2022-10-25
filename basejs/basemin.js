@@ -5172,6 +5172,14 @@ function getUID(pref = '') {
 	UIDCounter += 1;
 	return pref + '_' + UIDCounter;
 }
+var FRUIDCounter = -1;
+function getFruid(pref = '') {
+	const alpha = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+	FRUIDCounter += 1;
+	if (FRUIDCounter < alpha.length) return pref + alpha[FRUIDCounter];
+	return pref + FRUIDCounter - alpha.length;
+}
+function resetUIDs() { UIDCounter = 0; FRUIDCounter = -1; }
 function hasWhiteSpace(s) { return /\s/g.test(s); }
 function jsCopy(o) { return JSON.parse(JSON.stringify(o)); }
 function jsCopySafe(o) { return JSON.parse(JSON.stringify(jsClean(o))); }
