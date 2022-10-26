@@ -1,3 +1,77 @@
+function test14_factory(){
+	let d=mSym('frog','map');
+
+}
+
+function test13_get_the_div(){
+	let map = M.map = create_map({ zoom: 5, center:Geo.cities.stuttgart });
+	let dmap=document.getElementById('map');
+	let dtiles=dmap.firstChild.firstChild;
+	console.log('dtiles',dtiles); //insteressabt nuetzt aber garnix
+
+}
+
+function test12_europe(){
+	let map = M.map = create_map({ zoom: 5, center:Geo.cities.stuttgart });
+
+	//get all cities within mapbounds
+	//
+	let list= get_values(Geo.cities).filter(x=>x.continent == 'Europe' && x.pop >= 1000000 && x.country == 'Austria');
+	console.log('list',list);
+
+
+
+	for(const c of list){
+		// let d1=mSym('horse');
+		// let res = L.marker(c.center, {icon: L.divIcon({iconAnchor:[136,150],className: 'custom-div-icon large semitrans',html:d1.innerHTML})}).addTo(map);
+
+		let m = create_fa(map, 'helicopter', c.center);
+
+		break;
+		// let icon = L.divIcon();
+		// let d=mCreate('div');
+		// //mSym('city',d);
+		// let html = d.outerHTML;
+		// console.log('res',res);
+		// let d1=res.getIcon();
+
+
+		// break;
+		// //create_agent(map,c);
+	}
+	
+}
+function test11_oest(){
+	let map = M.map = create_map({ zoom: 7, center:Geo.cities.salzburg });
+
+	//get all cities within mapbounds
+	//
+	let list= get_values(Geo.cities).filter(x=>x.country == 'Austria');
+	console.log('list',list);
+
+	for(const c of list){
+		create_agent(map,c);
+	}
+	
+}
+
+//#region cytograph und board tests
+function test14(){
+	initTable();
+
+	//eigentlich moecht ich die neighbors von einem ganz normalen quad board haben!
+	// schau mal zu board!
+	let [dx,dy]=[20,20];
+	let centers = quadCenters(20,20,dx,dy)[0];
+
+	let i=0;centers.forEach(x=>{x.idx=i++;x.irow=divInt(x.y,dy),x.icol=divInt(x.x,dx)});
+	console.log('centers',centers[30]);
+
+	//centers sind jetzt die items;
+	//wie krieg ich neighbors incl diagonal neighbors?
+
+
+}
 
 function gTest13() {
 	let g = createSampleHex1(5, 3, 100, 100); let ids = g.getNodeIds(); let id = ids[0]; g.showExtent();
@@ -257,7 +331,7 @@ function test11_gengraph() {
 
 	//let items = nodes_on_canvas('map',30,50);	shake_and_sieve(items);
 }
-
+//#endregion
 
 // #region map tests 0
 function test10_autocomplete() {

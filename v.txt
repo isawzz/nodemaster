@@ -1818,7 +1818,132 @@ __________ di 25.10.22 waiting at the airport...
 828: *6:31 AM 10/25/2022-8:20 AM 10/25/2022
 5 spa 5 kla 5 knoe
 840: *8:20 AM 10/25/2022-9:08 AM 10/25/2022
-841: *9:08 AM 10/25/2022-
+841: *9:08 AM 10/25/2022-5:28 PM 10/25/2022
+842: *5:28 PM 10/25/2022-5:51 PM 10/25/2022
+843: *5:51 PM 10/25/2022-5:56 PM 10/25/2022
+844: *5:56 PM 10/25/2022-5:48 AM 10/26/2022
+__________ mi 26.10.22 waiting at the airport...  
+845: *5:48 AM 10/26/2022-5:49 AM 10/26/2022
+846: *5:49 AM 10/26/2022-5:51 AM 10/26/2022
+847: *5:51 AM 10/26/2022-5:51 AM 10/26/2022
+848: *5:51 AM 10/26/2022-5:55 AM 10/26/2022
+849: *5:55 AM 10/26/2022-6:00 AM 10/26/2022
+850: *6:00 AM 10/26/2022-6:05 AM 10/26/2022
+851: *6:05 AM 10/26/2022-6:06 AM 10/26/2022
+852: *6:06 AM 10/26/2022-6:13 AM 10/26/2022
+853: *6:13 AM 10/26/2022-6:16 AM 10/26/2022
+854: *6:16 AM 10/26/2022-6:17 AM 10/26/2022
+855: *6:17 AM 10/26/2022-6:21 AM 10/26/2022
+856: *6:21 AM 10/26/2022-6:31 AM 10/26/2022
+857: *6:31 AM 10/26/2022-6:35 AM 10/26/2022
+858: *6:35 AM 10/26/2022-6:36 AM 10/26/2022
+859: *6:37 AM 10/26/2022-6:46 AM 10/26/2022
+860: *6:46 AM 10/26/2022-6:51 AM 10/26/2022
+861: *6:51 AM 10/26/2022-6:57 AM 10/26/2022
+862: *6:58 AM 10/26/2022-7:15 AM 10/26/2022
+863: *7:16 AM 10/26/2022-7:28 AM 10/26/2022
+864: *7:28 AM 10/26/2022-7:48 AM 10/26/2022
+muell
+874: *7:48 AM 10/26/2022-7:52 AM 10/26/2022
+875: *7:52 AM 10/26/2022-7:53 AM 10/26/2022
+876: *7:53 AM 10/26/2022-7:56 AM 10/26/2022
+877: *7:56 AM 10/26/2022-8:00 AM 10/26/2022
+878: *8:00 AM 10/26/2022-8:01 AM 10/26/2022
+879: *8:01 AM 10/26/2022-8:02 AM 10/26/2022
+880: *8:03 AM 10/26/2022-8:04 AM 10/26/2022
+881: *8:04 AM 10/26/2022-8:11 AM 10/26/2022
+882: *8:11 AM 10/26/2022-8:15 AM 10/26/2022
+883: *8:15 AM 10/26/2022-8:38 AM 10/26/2022
+884: *8:38 AM 10/26/2022-8:51 AM 10/26/2022
+885: *8:51 AM 10/26/2022-9:40 AM 10/26/2022
+1- spa
+2- try helicopter
+3- andre files anschauen
+1- list of fa icon names!
+2- wieso verhaelt sich das so weird???
+3- fa size
+1- versuch fa fa-house
+2- open w3school font awesome
+3- location-dot
+1- such so ein fa beispiel!
+2- beim fa ist die spitze falsch!!!
+3- test create_fa: make sure use symbol
+890: *9:40 AM 10/26/2022-9:46 AM 10/26/2022
+891: *9:46 AM 10/26/2022-9:50 AM 10/26/2022
+892: *9:52 AM 10/26/2022-9:57 AM 10/26/2022
+1- how to open a file???
+2- delete all die fa downloads und caba zeug, fa.min.css in alibs ist uptodate!!!
+3- schau ob desktop was andres hat!
+- fa anschauen ist eh dasgleiche!
+
+- create_div_marker => alles renamen!!!
+- probiere fa icon
+- WAY SHORTER!!!
+- size of icon on map! leaflet L.point(50,50)
+- goto 1717
+- zuerst in einer factory prepariere das div
+- danach add it to map
+
+
+
+5- unclog waschbecken
+100- fej
+50- ash
+5- gu check meds
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+- leaflet create empty layer access its div
+- wie mach ich mir meinen eigenen layer?
+- get the div!
+- set url
+- leaflet marker icon image 
+- als erstes mach ein andres icon! (city icon)
+- 
+- european capitals
+- sieht nicht so gut aus!
+- cities within austria
+- wie macht man eine map?
+- test11_oest
+- map tests weiter:
+- beispiel 1: random 30 capitals in europe
+- kochen!
+- js call function foreach element in array
+
 
 
 

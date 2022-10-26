@@ -49,6 +49,24 @@ a:visited {
 	border: none;
 	background: transparent;
 }
+.large{
+	width: 200px;
+	height: 200px;
+	font-size: 200px;
+}
+.medium{
+	width: 50px;
+	height: 50px;
+	font-size: 50px;
+}
+.small{
+	width: 25px;
+	height: 25px;
+	font-size: 25px;
+}
+.semitrans{
+	opacity:.5;
+}
 .mylabel {
 	background-color: transparent;
 	border: transparent;
