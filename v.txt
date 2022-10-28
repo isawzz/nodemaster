@@ -1964,7 +1964,11 @@ test 15 test ob ani performed? NEIN, alles klar, gib ihm fa-${an}
 mach 1 div und gib ihm coolpulse class
 - WAY SHORTER
 70: *1:41 PM 10/28/2022-1:47 PM 10/28/2022
-71: *1:47 PM 10/28/2022-
+71: *1:47 PM 10/28/2022-4:26 PM 10/28/2022
+72: *4:26 PM 10/28/2022-4:50 PM 10/28/2022
+73: *4:50 PM 10/28/2022-
+- kleine animation library
+- wie kann ich fa-bounce fuer ein ganzes div machen?
 - was ist da los????
 - test16 jetzt
 - encapsulate animation

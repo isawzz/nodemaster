@@ -3,11 +3,22 @@ function test16_fa_animation() {
 
 	let fa = rChoose(Info.fa);
 
-	mCenterCenterFlex(dTable); mStyle(dTable, { bg: 'black' })
-	let d0 = mDiv(dTable); mClass(d0, 'coolpulse'); mStyle(d0, { rounding: '50%', align: 'center', bg: 'blue', fg: 'white', display: 'inline-block' })
-	let dfa = mDiv(d0, { padding: 40, }, null, `<i class="fa fa-${fa} fa-3x"></i>`);
+	mCenterCenterFlex(dTable); mStyle(dTable, { bg: 'white', position:'relative' });
+	let d0 = mDiv(dTable); mStyle(d0, { rounding: '50%', align: 'center', bg: 'blue', fg: 'white', display: 'inline-block' })
+	let dfa = mDiv(d0, { padding: 40, }, null, `<i class="fa fa-${fa} fa-2x"></i>`);
 
-	//let animations=['beat','bounce','fade','flip','pulse','shake','spin'];//,'beat-fade','spin-pulse']
+	mClass(dTable,'fa-flip');
+	//mClass(dfa, 'coolpulse pulselightbg'); 
+
+	//just for 
+
+	// let animations=['beat','bounce','fade','flip','pulse','shake','spin'].map(x=>'fa-'+x);
+	// animations = animations.concat(['coolpulse pulselightbg','coolpulse pulsedarkbg'])
+	// let ani = rChoose(animations);
+	// mClass(dfa, ani); 
+	// console.log('anim',ani)
+
+
 }
 function test15_fa_list() {
 	dTable = mBy('map');

@@ -171,17 +171,24 @@ a:visited {
 }
 
 
-/* #region coolpulse */
+/* #region coolpulse pulsedarkbg or pulselightbg */
 .coolpulse {
 	--pulse-width: 15px;
-	--pulse-color: rgba(135, 200, 235, 0.5);
 	position: relative;
 }
-.coolpulse * {
-
+.pulsedarkbg{
+	--pulse-color: rgba(135, 200, 235, 0.5);
+}
+.pulselightbg{
+	--pulse-color: rgba(15, 35, 40, 0.6);
+}
+.coolpulselight {
+	--pulse-width: 15px;
 	position: relative;
-	/* width: 200px; */
-	/* height: 200px; */
+}
+
+.coolpulse * {
+	position: relative;
 	border-radius: 50%;
 	z-index: 2;
 }
@@ -239,6 +246,32 @@ a:visited {
 }
 /* #endregion */
 
+.bounce {
+	animation: bounce 1s infinite cubic-bezier(0.28, 0.84, 0.42, 1);
+}
+@keyframes bounce {
+	0% {
+		transform: scale(1) translateY(0);
+	}
+	10% {
+		transform: scale(1.07, .93) translateY(0);
+	}
+	30% {
+		transform: scale(.93, 1.07) translateY(-80px);
+	}
+	50% {
+		transform: scale(1.05, 0.95) translateY(-0);
+	}
+	57% {
+		transform: scale(1) translateY(-0.325em);
+	}
+	64% {
+		transform: scale(1) translateY(0);
+	}
+	to {
+		transform: scale(1) translateY(0);
+	}
+}
 
 
 
