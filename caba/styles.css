@@ -169,3 +169,84 @@ a:visited {
 		box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
 	}
 }
+
+
+/* #region coolpulse */
+.coolpulse {
+	--pulse-width: 15px;
+	--pulse-color: rgba(135, 200, 235, 0.5);
+	position: relative;
+}
+.coolpulse * {
+
+	position: relative;
+	/* width: 200px; */
+	/* height: 200px; */
+	border-radius: 50%;
+	z-index: 2;
+}
+.coolpulse::after,
+.coolpulse::before {
+	content: ' ';
+	position: absolute;
+	width: 140%;
+	height: 140%;
+	top: -20%;
+	left: -20%;
+	right: -20%;
+	bottom: -20%;
+	box-sizing: border-box;
+	border-style: solid;
+	border-color: var(--pulse-color);
+	border-width: var(--pulse-width);
+	border-radius: 50%;
+	z-index: 1;
+	transform: scale(0.7);
+	animation: cpulse 2s linear infinite;
+}
+.coolpulse::after {
+	animation-delay: 1s;
+}
+.coolpulse:hover::after,
+.coolpulse:hover::before {
+	animation: cpulse 1s linear infinite, pulse-hover 5s linear infinite;
+}
+.coolpulse:hover::after {
+	animation-delay: 0.5s;
+}
+@keyframes cpulse {
+	to {
+		opacity: 0;
+		transform: scale(1);
+	}
+}
+@keyframes pulse-hover {
+	0% {
+		border-color: red;
+	}
+	25% {
+		border-color: #80ff00;
+	}
+	50% {
+		border-color: aqua;
+	}
+	75% {
+		border-color: #8000ff;
+	}
+	100% {
+		border-color: red;
+	}
+}
+/* #endregion */
+
+
+
+
+
+
+
+
+
+
+
+

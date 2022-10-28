@@ -1901,13 +1901,154 @@ __________ fr 28.10.22 waiting at the airport...
 16: *4:53 AM 10/28/2022-4:55 AM 10/28/2022
 17: *4:55 AM 10/28/2022-5:24 AM 10/28/2022
 18: *5:24 AM 10/28/2022-5:28 AM 10/28/2022
-19: *5:28 AM 10/28/2022-
+19: *5:28 AM 10/28/2022-6:03 AM 10/28/2022
+20: *6:03 AM 10/28/2022-6:09 AM 10/28/2022
+21: *6:09 AM 10/28/2022-6:10 AM 10/28/2022
+22: *6:10 AM 10/28/2022-6:11 AM 10/28/2022
+23: *6:11 AM 10/28/2022-6:22 AM 10/28/2022
+24: *6:23 AM 10/28/2022-6:32 AM 10/28/2022
+5- zahlen boa zeug
+- was wuerde helfen einfach das Spiel zu spielen ohne nachzudenken ueber IRGENDWAS weil alles nur ein dummer sinnloser traum ist
+- wie geb ich dem boss eine authoritaet?
+- ticker
 - WAY SHORTER!!!
 - WAY SHORTER
 - alternatively: ang+=
-- 
 - draw the numbers
 - das beste ist wirklich wenn ich mich in einen robot verwandle
+29: *6:32 AM 10/28/2022-6:32 AM 10/28/2022
+- kann ich das zeug irgendwie einbauen? not really
+30: *6:33 AM 10/28/2022-6:51 AM 10/28/2022
+31: *6:51 AM 10/28/2022-9:14 AM 10/28/2022
+spa 5
+brot 3
+- ok ueber 1h gewasted! lets do something! spazier mit music vorher brot machen?
+- was kann ich eigentlich machen? choices aufschreiben
+- ausserdem: ich friere!
+- was jetzt schon wieder nix zu tun
+39: *9:15 AM 10/28/2022-9:15 AM 10/28/2022
+40: *9:16 AM 10/28/2022-9:17 AM 10/28/2022
+41: *9:17 AM 10/28/2022-9:19 AM 10/28/2022
+- frage ist _old in .gitignre? JA
+- copy caba to caba_versions in _old
+42: *9:19 AM 10/28/2022-9:22 AM 10/28/2022
+43: *9:22 AM 10/28/2022-9:24 AM 10/28/2022
+44: *9:24 AM 10/28/2022-9:31 AM 10/28/2022
+45: *9:31 AM 10/28/2022-9:32 AM 10/28/2022
+46: *9:32 AM 10/28/2022-9:37 AM 10/28/2022
+47: *9:37 AM 10/28/2022-9:43 AM 10/28/2022
+48: *9:43 AM 10/28/2022-9:58 AM 10/28/2022
+3 brot in den ofen
+ok - fgu
+50: *9:58 AM 10/28/2022-10:33 AM 10/28/2022
+51: *10:33 AM 10/28/2022-10:50 AM 10/28/2022
+52: *10:50 AM 10/28/2022-10:57 AM 10/28/2022
+53: *10:57 AM 10/28/2022-10:57 AM 10/28/2022
+54: *10:58 AM 10/28/2022-11:26 AM 10/28/2022
+55: *11:26 AM 10/28/2022-12:11 PM 10/28/2022
+- guggi abmarsch!!!
+60: *12:11 PM 10/28/2022-1:28 PM 10/28/2022
+61: *1:28 PM 10/28/2022-1:28 PM 10/28/2022
+- wie gross ist das info.yaml file? 39KB nicht arg
+- back to code!
+62: *1:28 PM 10/28/2022-1:30 PM 10/28/2022
+63: *1:30 PM 10/28/2022-1:31 PM 10/28/2022
+64: *1:31 PM 10/28/2022-1:32 PM 10/28/2022
+65: *1:32 PM 10/28/2022-1:32 PM 10/28/2022
+- es ist das coolpulse.html example!
+66: *1:32 PM 10/28/2022-1:36 PM 10/28/2022
+67: *1:36 PM 10/28/2022-1:37 PM 10/28/2022
+68: *1:37 PM 10/28/2022-1:39 PM 10/28/2022
+69: *1:39 PM 10/28/2022-1:41 PM 10/28/2022
+test 15 test ob ani performed? NEIN, alles klar, gib ihm fa-${an}
+mach 1 div und gib ihm coolpulse class
+- WAY SHORTER
+70: *1:41 PM 10/28/2022-1:47 PM 10/28/2022
+71: *1:47 PM 10/28/2022-
+- was ist da los????
+- test16 jetzt
+- encapsulate animation
+- goto animation code
+- test16_fa_animation
+- goto code
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+- remove fa muell
+- open info.yaml
+- versuch fa-brands
+- fa accessible-icon does not show correctly
+- brauch eine zaesur vor fa-sr-only bis fa-monero
+- telecave iconviewer
+- WAY SHORTER!!!
+- schneide alles ab vor fa-0
+- geht nicht und warum???
+- versuche das fa viewer ding mit dem base/alibs/fa.min.css zu machen!
+- loesch all die fa dinger aus dem caba raus
+- random fa zeichen
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+choices:
+- die eine anim mit fa + rundes div around it
+
 
 
 

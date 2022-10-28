@@ -5271,6 +5271,7 @@ async function load_syms(path) {
 	SymKeys = Object.keys(Syms);
 	ByGroupSubgroup = await route_path_yaml_dict(path + 'symGSG.yaml');
 	KeySets = getKeySets();
+	Info = await route_path_yaml_dict(path + 'lists/info.yaml');
 
 }
 function loader_on() { let d = mBy('loader_holder'); if (isdef(d)) d.className = 'loader_on'; }

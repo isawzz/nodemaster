@@ -1,27 +1,51 @@
-function test14_factory(){
-	let d=mSym('frog','map');
+function test16_fa_animation() {
+	dTable = mBy('map');
+
+	let fa = rChoose(Info.fa);
+
+	mCenterCenterFlex(dTable); mStyle(dTable, { bg: 'black' })
+	let d0 = mDiv(dTable); mClass(d0, 'coolpulse'); mStyle(d0, { rounding: '50%', align: 'center', bg: 'blue', fg: 'white', display: 'inline-block' })
+	let dfa = mDiv(d0, { padding: 40, }, null, `<i class="fa fa-${fa} fa-3x"></i>`);
+
+	//let animations=['beat','bounce','fade','flip','pulse','shake','spin'];//,'beat-fade','spin-pulse']
+}
+function test15_fa_list() {
+	dTable = mBy('map');
+	let animations = ['beat', 'bounce', 'fade', 'flip', 'pulse', 'shake', 'spin'];//,'beat-fade','spin-pulse']
+	let iani = 0;
+	let list = Info.fa;
+	for (const w of arrTake(list, 25)) {
+
+		let an = 'pulse';// animations[iani++]; if (iani>animations.length) iani=0; // rChoose(animations);
+		let d = mDiv(dTable, { align: 'center', bg: 'blue', margin: 8, fg: 'white', display: 'inline-block', padding: 10 }, null, `<i class="fa fa-${w} fa-${an} fa-3x"></i><br>${w}`);
+
+	}
+
+}
+function test14_factory() {
+	let d = mSym('frog', 'map');
 
 }
 
-function test13_get_the_div(){
-	let map = M.map = create_map({ zoom: 5, center:Geo.cities.stuttgart });
-	let dmap=document.getElementById('map');
-	let dtiles=dmap.firstChild.firstChild;
-	console.log('dtiles',dtiles); //insteressabt nuetzt aber garnix
+function test13_get_the_div() {
+	let map = M.map = create_map({ zoom: 5, center: Geo.cities.stuttgart });
+	let dmap = document.getElementById('map');
+	let dtiles = dmap.firstChild.firstChild;
+	console.log('dtiles', dtiles); //insteressabt nuetzt aber garnix
 
 }
 
-function test12_europe(){
-	let map = M.map = create_map({ zoom: 5, center:Geo.cities.stuttgart });
+function test12_europe() {
+	let map = M.map = create_map({ zoom: 5, center: Geo.cities.stuttgart });
 
 	//get all cities within mapbounds
 	//
-	let list= get_values(Geo.cities).filter(x=>x.continent == 'Europe' && x.pop >= 1000000 && x.country == 'Austria');
-	console.log('list',list);
+	let list = get_values(Geo.cities).filter(x => x.continent == 'Europe' && x.pop >= 1000000 && x.country == 'Austria');
+	console.log('list', list);
 
 
 
-	for(const c of list){
+	for (const c of list) {
 		// let d1=mSym('horse');
 		// let res = L.marker(c.center, {icon: L.divIcon({iconAnchor:[136,150],className: 'custom-div-icon large semitrans',html:d1.innerHTML})}).addTo(map);
 
@@ -39,33 +63,33 @@ function test12_europe(){
 		// break;
 		// //create_agent(map,c);
 	}
-	
+
 }
-function test11_oest(){
-	let map = M.map = create_map({ zoom: 7, center:Geo.cities.salzburg });
+function test11_oest() {
+	let map = M.map = create_map({ zoom: 7, center: Geo.cities.salzburg });
 
 	//get all cities within mapbounds
 	//
-	let list= get_values(Geo.cities).filter(x=>x.country == 'Austria');
-	console.log('list',list);
+	let list = get_values(Geo.cities).filter(x => x.country == 'Austria');
+	console.log('list', list);
 
-	for(const c of list){
-		create_agent(map,c);
+	for (const c of list) {
+		create_agent(map, c);
 	}
-	
+
 }
 
 //#region cytograph und board tests
-function test14(){
+function test14() {
 	initTable();
 
 	//eigentlich moecht ich die neighbors von einem ganz normalen quad board haben!
 	// schau mal zu board!
-	let [dx,dy]=[20,20];
-	let centers = quadCenters(20,20,dx,dy)[0];
+	let [dx, dy] = [20, 20];
+	let centers = quadCenters(20, 20, dx, dy)[0];
 
-	let i=0;centers.forEach(x=>{x.idx=i++;x.irow=divInt(x.y,dy),x.icol=divInt(x.x,dx)});
-	console.log('centers',centers[30]);
+	let i = 0; centers.forEach(x => { x.idx = i++; x.irow = divInt(x.y, dy), x.icol = divInt(x.x, dx) });
+	console.log('centers', centers[30]);
 
 	//centers sind jetzt die items;
 	//wie krieg ich neighbors incl diagonal neighbors?
