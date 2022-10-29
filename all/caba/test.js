@@ -7,7 +7,7 @@ function test16_fa_animation() {
 	let d0 = mDiv(dTable); mStyle(d0, { rounding: '50%', align: 'center', bg: 'blue', fg: 'white', display: 'inline-block' })
 	let dfa = mDiv(d0, { padding: 40, }, null, `<i class="fa fa-${fa} fa-2x"></i>`);
 
-	mClass(dTable,'fa-flip');
+	//mClass(dTable,'fa-flip');
 	//mClass(dfa, 'coolpulse pulselightbg'); 
 
 	//just for 

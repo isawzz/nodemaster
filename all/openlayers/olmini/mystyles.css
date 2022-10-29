@@ -4,6 +4,7 @@ html, body, #map-container {
 	width: 100%;
 	font-family: sans-serif;
 	background-color: #04041b;
+	color: dimgray;
 }
 /*! [tools] */
 #dTools {
