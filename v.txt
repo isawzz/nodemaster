@@ -1984,7 +1984,69 @@ __________ sa 29.10.22 waiting at the airport...
 95: *6:13 AM 10/29/2022-6:15 AM 10/29/2022
 96: *6:15 AM 10/29/2022-6:19 AM 10/29/2022
 97: *6:19 AM 10/29/2022-6:39 AM 10/29/2022
-98: *6:39 AM 10/29/2022-
+98: *6:39 AM 10/29/2022-7:42 AM 10/29/2022
+ok spa
+103: *7:42 AM 10/29/2022-9:42 AM 10/29/2022
+104: *9:42 AM 10/29/2022-9:44 AM 10/29/2022
+p0:123
+105: *9:46 AM 10/29/2022-9:48 AM 10/29/2022
+1- kann ich es nicht generell so machen dass FR hat?
+2- wozu brauch ich einen canvas?
+3- was ist das simpelste spiel?
+106: *9:48 AM 10/29/2022-9:48 AM 10/29/2022
+107: *9:49 AM 10/29/2022-9:54 AM 10/29/2022
+1- examples
+2- kann ich auch den canvas event driven machen?
+3- es kann event driven sein oder dauerupdate
+108: *9:55 AM 10/29/2022-10:21 AM 10/29/2022
+109: *10:21 AM 10/29/2022-10:25 AM 10/29/2022
+110: *10:25 AM 10/29/2022-10:30 AM 10/29/2022
+111: *10:30 AM 10/29/2022-10:30 AM 10/29/2022
+1- ich brauch die key codes in einem dict! in basemin!
+2- what is a gist?
+3- code von example all in ja
+- spiel mit ai
+112: *10:31 AM 10/29/2022-11:00 AM 10/29/2022
+113: *11:00 AM 10/29/2022-11:39 AM 10/29/2022
+3- fgu mach was ohne was zu machen
+2 1- spa
+119: *11:39 AM 10/29/2022-
+3- save-lg
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 - way shorter!!!!!!!
 - check wie gross das caba jetzt ist?
 - rename cframe index.html to googlemapframe.html in examples

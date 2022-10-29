@@ -1,38 +1,69 @@
-
-function create_sym(map, key, center, sz, styles) {
-	let d1 = mSym(key,null,styles);
-	let html = d1.innerHTML;
-	let [xoff, yoff] = sz == 'large' ? [136, 150] : sz == 'medium' ? [36, 40] : [16, 18];
-	let offset = [xoff,yoff];
-	return create_div_marker(map,html,center,sz,offset);
+function component(width, height, color, x, y, type) {
+	this.type = type;
+	this.score = 0;
+	this.width = width;
+	this.height = height;
+	this.speedX = 0;
+	this.speedY = 0;
+	this.x = x;
+	this.y = y;
+	this.gravity = 0;
+	this.gravitySpeed = 0;
+	this.draw = function () {
+		ctx = myGameArea.context;
+		if (this.type == 'text') {
+			ctx.font = this.width + ' ' + this.height;
+			ctx.fillStyle = color;
+			ctx.fillText(this.text, this.x, this.y);
+		} else {
+			ctx.fillStyle = color;
+			ctx.fillRect(this.x, this.y, this.width, this.height);
+		}
+	};
+	this.newPos = function () {
+		this.gravitySpeed += this.gravity;
+		this.x += this.speedX;
+		this.y += this.speedY + this.gravitySpeed;
+		this.hitBottom();
+	};
+	this.hitBottom = function () {
+		var rockbottom = myGameArea.canvas.height - this.height;
+		if (this.y > rockbottom) {
+			this.y = rockbottom;
+			this.gravitySpeed = 0;
+		}
+	};
+	this.crashWith = function (otherobj) {
+		var myleft = this.x;
+		var myright = this.x + this.width;
+		var mytop = this.y;
+		var mybottom = this.y + this.height;
+		var otherleft = otherobj.x;
+		var otherright = otherobj.x + otherobj.width;
+		var othertop = otherobj.y;
+		var otherbottom = otherobj.y + otherobj.height;
+		var crash = true;
+		if (mybottom < othertop || mytop > otherbottom || myright < otherleft || myleft > otherright) {
+			crash = false;
+		}
+		return crash;
+	};
 }
-function create_fa(map, key, center, styles={}) {
-	// let html = `<i class="fa fa-house fa-${sz=='large'?4:1}x"></i>`;
-	addKeys({fz:30},styles);
-	let d=mCreate('i');
-	mStyle(d,styles);
-	mClass(d,`fa fa-${key}`);
-	let dp=mCreate('div');
-	mAppend(dp,d);
 
-	let html = dp.innerHTML; // `<i class="fa fa-${key}" style="font-size:60px;color:red;"></i>`;
-	// let html = `<i class="fa fa-house fa-${sz=='large'?4:1}x"></i>`;
-	// let html = `<i class="fa fa-house fa-${sz=='large'?4:1}x"></i>`;
-	// let html = `<i class="fa fa-house fa-${sz=='large'?4:1}x"></i>`;
-	// let html = `<i class="fa fa-house fa-${sz=='large'?4:1}x"></i>`;
-	//let [xoff, yoff] = sz == 'large' ? [136, 150] : sz == 'medium' ? [36, 40] : [16, 18];
-	let offset=[styles.fz/2,styles.fz/3];
-	let className = `custom-div-icon`;
 
-	let res = L.marker(center, { icon: L.divIcon({ iconAnchor: offset, className: className, html: html }) }).addTo(map);
-	return res; //create_div_marker(map,html,center,sz,[xoff,yoff]);
-}
-function create_div_marker(map,html,center,sz,offset){
-	
-	let res = L.marker(center, { icon: L.divIcon({ iconAnchor: offset, className: `custom-div-icon ${sz}`, html: html }) }).addTo(map);
-	return res;
 
-}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
