@@ -3,14 +3,14 @@ var Pollmode = 'auto';
 var Info, ColorDi, Items = {}, DA = {}, Card = {}, TO = {}, Counter = { server: 0 }, Socket = null;
 var uiActivated = false, Selected, Turn, Prevturn;
 var M = {}, S = {}, Z, U = null, PL, G = null, C = null, UI = {}, Users, Tables, Basepath, Serverdata = {}, Clientdata = {};
-var dTable, dMap, dHeader, dFooter, dMessage, dPuppet, dMenu, dLeft, dCenter, dRight, dTop, dBottom; //, dTitle; //, dUsers, dGames, dTables, dLogo, dLoggedIn, dPlayerNames, dInstruction, dError, dMessage, dStatus, dTableName, dGameControls, dUserControls, dMoveControls, dSubmitMove, dPlayerStats;
+var dTable, dPage, dMap, dHeader, dFooter, dMessage, dPuppet, dMenu, dLeft, dCenter, dRight, dTop, dBottom; //, dTitle; //, dUsers, dGames, dTables, dLogo, dLoggedIn, dPlayerNames, dInstruction, dError, dMessage, dStatus, dTableName, dGameControls, dUserControls, dMoveControls, dSubmitMove, dPlayerStats;
 var Config, Syms, SymKeys, ByGroupSubgroup, KeySets, C52, Cinno, C52Cards;
 var FORCE_REDRAW = false, TESTING = false;
 var ColorThiefObject, SelectedItem, SelectedColor;
 var FR = 50, CX, CV;
 
 //#endregion
-//#region color constMyanmar
+//#region color const
 const BLUE = '#4363d8';
 const BLUEGREEN = '#004054';
 const DARKBLUE = '#04041b';
@@ -850,6 +850,13 @@ function mDiv(dParent, styles, id, inner, classes, sizing) {
 
 	return d;
 }
+function mDivLine(dParent, styles={}, id=null, innerlist=['','',''], classes=null) {
+	addKeys({w:'100%',box:true,padding:4},styles);
+	//if (!isList(innerlist)||innerlist.length<3) innerlist=
+	let d = mDiv(dParent, styles, id, `<div>${innerlist[0]}</div><div>${innerlist[1]}</div><div>${innerlist[2]}</div>`, classes);
+	mStyle(d, { display: 'flex', 'justify-content': 'space-between', 'align-items': 'center' });
+	return d;
+}
 function mDivLR(dParent, styles, id, innerlist, classes) {
 	let d = mDiv(dParent, styles, id, `<div>${innerlist[0]}</div><div>${innerlist[1]}</div>`, classes);
 	mStyle(d, { display: 'flex', 'justify-content': 'space-between', 'align-items': 'center' });
@@ -1168,6 +1175,7 @@ function mLinebreak(dParent, gap) {
 	let d;
 	let display = getComputedStyle(dParent).display;
 	if (display == 'flex') {
+		//console.log('ja es ist flex')
 		d = mDiv(dParent, { fz: 2, 'flex-basis': '100%', h: 0, w: '100%' }, null, ' &nbsp; ');
 	} else {
 		d = mDiv(dParent, {}, null, '<br>');
@@ -1677,6 +1685,136 @@ function mStyleRemove(elem, prop) {
 	if (isdef(STYLE_PARAMS[prop])) prop = STYLE_PARAMS[prop];
 	elem.style.removeProperty(prop);
 }
+
+function mStyle(elem, styles, unit = 'px') {
+
+	elem = toElem(elem);
+	let bg,fg;
+	if (isdef(styles.bg) || isdef(styles.fg)) {
+		[bg,fg] = colorsFromBFA(styles.bg, styles.fg, styles.alpha);
+	}
+	if (isdef(styles.upperRounding) || isdef(styles.lowerRounding)) {
+		let rtop = '' + valf(styles.upperRounding, 0) + unit;
+		let rbot = '' + valf(styles.lowerRounding, 0) + unit;
+		styles['border-radius'] = rtop + ' ' + rtop + ' ' + rbot + ' ' + rbot;
+	} 
+	if (isdef(styles.box)) styles['box-sizing'] = 'border-box';
+	if (isdef(styles.round)) styles['border-radius'] = '50%';
+
+	for (const k in styles) {
+		let val = styles[k];
+		if (k == 'vmargin') styles.mabottom = styles.matop = val;
+		else if (k == 'hmargin') styles.maleft = styles.maright = val;
+		else if (k == 'vpadding') styles.pabottom = styles.patop = val;
+		else if (k == 'hpadding') styles.paleft = styles.paright = val;
+	}
+
+	for (const k in styles) {
+		let val = styles[k];
+		let key = k;
+		//console.log('key',key)
+		if (isdef(STYLE_PARAMS[k])) key = STYLE_PARAMS[k];
+		else if (k == 'font' && !isString(val)) {
+			//font would be specified as an object w/ size,family,variant,bold,italic
+			// NOTE: size and family MUST be present!!!!!!! in order to use font param!!!!
+			let fz = f.size; if (isNumber(fz)) fz = '' + fz + 'px';
+			let ff = f.family;
+			let fv = f.variant;
+			let fw = isdef(f.bold) ? 'bold' : isdef(f.light) ? 'light' : f.weight;
+			let fs = isdef(f.italic) ? 'italic' : f.style;
+			if (nundef(fz) || nundef(ff)) return null;
+			let s = fz + ' ' + ff;
+			if (isdef(fw)) s = fw + ' ' + s;
+			if (isdef(fv)) s = fv + ' ' + s;
+			if (isdef(fs)) s = fs + ' ' + s;
+			elem.style.setProperty(k, s);
+			continue;
+		} else if (k.toLowerCase() == 'classname') {
+			mClass(elem, styles[k]);
+		} else if (k == 'border') {
+			//console.log('________________________YES!')
+			if (isNumber(val)) val = `solid ${val}px ${isdef(styles.fg) ? styles.fg : '#ffffff80'}`;
+			if (val.indexOf(' ') < 0) val = 'solid 1px ' + val;
+		} else if (k == 'ajcenter') {
+			elem.style.setProperty('justify-content', 'center');
+			elem.style.setProperty('align-items', 'center');
+		} else if (k == 'layout') {
+			if (val[0] == 'f') {
+				//console.log('sssssssssssssssssssssssssssssssssssssssssssss')
+				val = val.slice(1);
+				elem.style.setProperty('display', 'flex');
+				elem.style.setProperty('flex-wrap', 'wrap');
+				let hor, vert;
+				if (val.length == 1) hor = vert = 'center';
+				else {
+					let di = { c: 'center', s: 'start', e: 'end' };
+					hor = di[val[1]];
+					vert = di[val[2]];
+
+				}
+				let justStyle = val[0] == 'v' ? vert : hor;
+				let alignStyle = val[0] == 'v' ? hor : vert;
+				elem.style.setProperty('justify-content', justStyle);
+				elem.style.setProperty('align-items', alignStyle);
+				switch (val[0]) {
+					case 'v': elem.style.setProperty('flex-direction', 'column'); break;
+					case 'h': elem.style.setProperty('flex-direction', 'row'); break;
+				}
+			} else if (val[0] == 'g') {
+				//layout:'g_15_240' 15 columns, each col 240 pixels wide
+				//console.log('sssssssssssssssssssssssssssssssssssssssssssss')
+				val = val.slice(1);
+				elem.style.setProperty('display', 'grid');
+				let n = allNumbers(val);
+				let cols = n[0];
+				let w = n.length > 1 ? '' + n[1] + 'px' : 'auto';
+				elem.style.setProperty('grid-template-columns', `repeat(${cols}, ${w})`);
+				elem.style.setProperty('place-content', 'center');
+			}
+		} else if (k == 'layflex') {
+			elem.style.setProperty('display', 'flex');
+			elem.style.setProperty('flex', '0 1 auto');
+			elem.style.setProperty('flex-wrap', 'wrap');
+			if (val == 'v') { elem.style.setProperty('writing-mode', 'vertical-lr'); }
+		} else if (k == 'laygrid') {
+			elem.style.setProperty('display', 'grid');
+			let n = allNumbers(val);
+			let cols = n[0];
+			let w = n.length > 1 ? '' + n[1] + 'px' : 'auto';
+			elem.style.setProperty('grid-template-columns', `repeat(${cols}, ${w})`);
+			elem.style.setProperty('place-content', 'center');
+		}
+
+		//console.log(key,val,isNaN(val));if (isNaN(val) && key!='font-size') continue;
+		//if (k == 'bg') console.log('style', k, key, val, bg)
+
+		if (key == 'font-weight') { elem.style.setProperty(key, val); continue; }
+		else if (key == 'background-color') elem.style.background = bg;
+		else if (key == 'color') elem.style.color = fg;
+		else if (key == 'opacity') elem.style.opacity = val;
+		else if (key == 'wrap') elem.style.flexWrap = 'wrap';
+		else if (startsWith(k, 'dir')) {
+			//console.log('.................................................!!!!!!!!!!!!!!!!!!!!!!!')
+			//console.log('val',val);
+			isCol = val[0] == 'c';
+			elem.style.setProperty('flex-direction', 'column'); //flexDirection = isCol ? 'column' : 'row';
+			//in order for this to work, HAVE TO set wmax or hmax!!!!!!!!!!!!!
+			// if (isCol && nundef(styles.hmax)) { //?????????????? WTF??????????????????
+			// 	let rect = getRect(elem.parentNode); //console.log('rect', rect);
+			// 	elem.style.maxHeight = rect.h * .9;
+			// 	elem.style.alignContent = 'start';
+			// } else if (nundef(styles.wmax)) elem.style.maxWidth = '90%';
+		} else if (key == 'flex') {
+			if (isNumber(val)) val = '' + val + ' 1 0%';
+			elem.style.setProperty(key, makeUnitString(val, unit));
+		} else {
+			//console.log('set property',key,makeUnitString(val,unit),val,isNaN(val));
+			//if ()
+			elem.style.setProperty(key, makeUnitString(val, unit));
+		}
+	}
+}
+
 function miPic(item, dParent, styles, classes) {
 	let info = isString(item) ? Syms[item] : isdef(item.info) ? item.info : item;
 	let d = mDiv(dParent);
@@ -2642,6 +2780,7 @@ function copyKeys(ofrom, oto, except = {}, only) {
 		if (isdef(except[k])) continue;
 		oto[k] = ofrom[k];
 	}
+	return oto;
 }
 function dict2list(d, keyName = 'id') {
 	let res = [];
@@ -4344,6 +4483,8 @@ function downloadJson(o, filename) {
 	dl.setAttribute("download", "_aaa\\scene.json");
 	dl.click();
 }
+function fromLocalStorage(name='_all'){return JSON.parse(localStorage.getItem(name));}
+function toLocalStorage(o,name='_all'){localStorage.setItem(name,JSON.stringify(o));}
 
 //#endregion
 
@@ -4394,6 +4535,191 @@ function getFunctionsNameThatCalledThisFunction() {
 	if (nundef(c2)) return 'no caller!';
 	return c2.name;
 }
+//#endregion
+
+//#region geo helpers
+function correctPolys(polys, approx = 10) {
+	//console.log('citySize', citySize, 'approx', approx);
+	let clusters = [];
+	for (const p of polys) {
+		//console.log(p.map(pt => '(' + pt.x + ',' + pt.y + ') ').toString());
+		for (const pt of p) {
+			let found = false;
+			for (const cl of clusters) {
+				for (const v of cl) {
+					let dx = Math.abs(v.x - pt.x);
+					let dy = Math.abs(v.y - pt.y);
+					//console.log('diff', dx, dy);
+					if (dx < approx && dy < approx) {
+						//console.log('FOUND X!!!', dx,dy);
+						cl.push(pt);
+						found = true;
+						break;
+					}
+				}
+				if (found) break;
+			}
+			if (!found) {
+				//make new cluster with this point
+				clusters.push([pt]);
+			}
+		}
+	}
+
+	//now all points of all polys are in clusters
+	//go through clusters, computer mean for all points in a clusters
+	let vertices = [];
+	for (const cl of clusters) {
+		let sumx = 0;
+		let sumy = 0;
+		let len = cl.length;
+		for (const pt of cl) {
+			sumx += pt.x;
+			sumy += pt.y;
+		}
+		vertices.push({ x: Math.round(sumx / len), y: Math.round(sumy / len) });
+	}
+
+	for (const p of polys) {
+		for (const pt of p) {
+			let found = false;
+			for (const v of vertices) {
+				let dx = Math.abs(v.x - pt.x);
+				let dy = Math.abs(v.y - pt.y);
+				if (dx < approx && dy < approx) {
+					if (dx != 0 || dy != 0) {
+						pt.x = v.x;
+						pt.y = v.y;
+					}
+					found = true;
+				}
+				if (found) break;
+			}
+			if (!found) {
+				//make new cluster with this point
+				error('point not found in vertices!!! ' + pt.x + ' ' + pt.y);
+			}
+		}
+	}
+	return vertices;
+}
+function dSquare(pos1, pos2) {
+	let dx = pos1.x - pos2.x;
+	dx *= dx;
+	let dy = pos1.y - pos2.y;
+	dy *= dy;
+	return dx + dy;
+}
+function distance(x1, y1, x2, y2) { return Math.sqrt(dSquare({ x: x1, y: y1 }, { x: x2, y: y2 })); }
+function isCloseTo(n, m, acc = 10) { return Math.abs(n - m) <= acc + 1; }
+function getCirclePoints(rad, n, disp = 0) {
+	let pts = [];
+	let i = 0;
+	let da = 360 / n;
+	let angle = disp;
+	while (i < n) {
+		let px = rad * Math.cos(toRadian(angle));
+		let py = rad * Math.sin(toRadian(angle));
+		pts.push({ X: px, Y: py });
+		angle += da;
+		i++;
+	}
+	return pts;
+}
+function getEllipsePoints(radx, rady, n, disp = 0) {
+	let pts = [];
+	let i = 0;
+	let da = 360 / n;
+	let angle = disp;
+	while (i < n) {
+		let px = radx * Math.cos(toRadian(angle));
+		let py = rady * Math.sin(toRadian(angle));
+		pts.push({ X: px, Y: py });
+		angle += da;
+		i++;
+	}
+	return pts;
+}
+function getPoly(offsets, x, y, w, h) {
+	//, modulo) {
+	let poly = [];
+	for (let p of offsets) {
+		let px = Math.round(x + p[0] * w); //  %modulo;
+		//px -= px%modulo;
+		//if (px % modulo != 0) px =px % modulo; //-= 1;
+		let py = Math.round(y + p[1] * h); //%modulo;
+		//py -= py%modulo;
+		//if (py % modulo != 0) py -= 1;
+		poly.push({ x: px, y: py });
+	}
+	return poly;
+}
+function getHexPoly(x, y, w, h) {
+	// returns hex poly points around center x,y
+	let hex = [[0, -0.5], [0.5, -0.25], [0.5, 0.25], [0, 0.5], [-0.5, 0.25], [-0.5, -0.25]];
+	return getPoly(hex, x, y, w, h);
+}
+function getQuadPoly(x, y, w, h) {
+	// returns hex poly points around center x,y
+	q = [[0.5, -0.5], [0.5, 0.5], [-0.5, 0.5], [-0.5, -0.5]];
+	return getPoly(q, x, y, w, h);
+}
+function getTriangleUpPoly(x, y, w, h) {
+	// returns hex poly points around center x,y
+	let triup = [[0, -0.5], [0.5, 0.5], [-0.5, 0.5]];
+	return getPoly(triup, x, y, w, h);
+}
+function getTriangleDownPoly(x, y, w, h) {
+	// returns hex poly points around center x,y
+	let tridown = [[-0.5, 0.5], [0.5, 0.5], [-0.5, 0.5]];
+	return getPoly(tridown, x, y, w, h);
+}
+function polyPointsFrom(w, h, x, y, pointArr) {
+
+	x -= w / 2;
+	y -= h / 2;
+
+	let pts = pointArr.map(p => [p.X * w + x, p.Y * h + y]);
+	let newpts = [];
+	for (const p of pts) {
+		newp = { X: p[0], Y: Math.round(p[1]) };
+		newpts.push(newp);
+	}
+	pts = newpts;
+	let sPoints = pts.map(p => '' + p.X + ',' + p.Y).join(' '); //'0,0 100,0 50,80',
+	//testHexgrid(x, y, pts, sPoints);
+	return sPoints;
+}
+function size2hex(w = 100, h = 0, x = 0, y = 0) {
+	//returns sPoints for polygon svg
+	//from center of poly and w (possibly h), calculate hex poly points and return as string!
+	//TODO: add options to return as point list!
+	//if h is omitted, a regular hex of width w is produced
+	//starting from N:
+	let hexPoints = [{ X: 0.5, Y: 0 }, { X: 1, Y: 0.25 }, { X: 1, Y: 0.75 }, { X: 0.5, Y: 1 }, { X: 0, Y: 0.75 }, { X: 0, Y: 0.25 }];
+
+	if (h == 0) {
+		h = (2 * w) / 1.73;
+	}
+	return polyPointsFrom(w, h, x, y, hexPoints);
+}
+function size2triup(w = 100, h = 0, x = 0, y = 0) {
+	//returns sPoints for polygon svg starting from N:
+	let triPoints = [{ X: 0.5, Y: 0 }, { X: 1, Y: 1 }, { X: 0, Y: 1 }];
+	if (h == 0) { h = w; }
+	return polyPointsFrom(w, h, x, y, triPoints);
+
+}
+function size2tridown(w = 100, h = 0, x = 0, y = 0) {
+	//returns sPoints for polygon svg starting from N:
+	let triPoints = [{ X: 1, Y: 0 }, { X: 0.5, Y: 1 }, { X: 0, Y: 0 }];
+	if (h == 0) { h = w; }
+	return polyPointsFrom(w, h, x, y, triPoints);
+
+}
+function toRadian(deg) { return deg * (Math.PI / 180); }
+function toDegree(rad) { return Math.floor(180 * rad / Math.PI); }
+
 //#endregion
 
 //#region keys.js
@@ -5463,8 +5789,6 @@ function setRect(elem, options) {
 	return r;
 }
 function toElem(d) { return isString(d) ? mBy(d) : d; }
-function toRadian(deg) { return deg * (Math.PI / 180); }
-function toDegree(rad) { return Math.floor(180 * rad / Math.PI); }
 function toggleSelection(pic, selected, clSelected = 'framedPicture', clUnselected = null) {
 	//if selected is a list, pic is added or removed from it
 	//if selected is an object, it is unselected

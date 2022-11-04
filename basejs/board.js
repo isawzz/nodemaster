@@ -588,19 +588,26 @@ function checkWinnerC4(arr, rows = 6, cols = 7, stride = 4) {
 }
 //#endregion
 
-//#region Board classes
+//#region _Board classes
 class Board {
-	constructor(rows, cols, handler, cellStyle) {
+	constructor(dParent, rows, cols, handler, cellStyle) {
 		let styles = isdef(cellStyle) ? cellStyle : { margin: 4, w: 150, h: 150, bg: 'white', fg: 'black' };
-		this.rows = rows;
-		this.cols = cols;
-		let items = this.items = iGrid(this.rows, this.cols, dTable, styles);
-		items.map(x => {
-			let d = iDiv(x);
-			mCenterFlex(d);
-			d.onclick = handler;
-		});
-		//console.log(this.items)
+		this.rows = valf(rows, 3);
+		this.cols = valf(cols, 3);
+		let dgrid = this.div = mGrid(this.rows, this.cols, dParent);
+		this.items = [];
+		let index = 0;
+		for (let i = 0; i < this.rows; i++) {
+			for (let j = 0; j < this.cols; j++) {
+				let item = { row: i, col: j, index: index };
+				let d = mDiv(dgrid, styles);
+				mCenterCenterFlex(d);
+				d.onclick = valf(handler, ev => console.log('clicked on item', item));
+				iAdd(item, { div: d });
+				this.items.push(item);
+				index += 1;
+			}
+		}
 	}
 	get(ir, c) {
 		if (isdef(c)) {
@@ -642,8 +649,8 @@ class Board2D {
 	constructor(rows, cols, dParent, cellStyles, boardStyles, handler) {
 		cellStyles = this.cellStyles = isdef(cellStyles) ? cellStyles : { margin: 4, w: 150, h: 150, bg: 'white', fg: 'black' };
 		boardStyles = this.boardStyles = isdef(boardStyles) ? boardStyles : { bg: 'silver', fg: 'black' };
-		this.rows = rows;
-		this.cols = cols;
+		this.rows = valf(rows, 3);
+		this.cols = valf(cols, 5);
 		this.dParent = dParent;
 		//let dGridParent = this.dGridParent = mDiv(dParent,{bg:'green'});
 		let dBoard = this.dBoard = mDiv(dParent);//, boardStyles);

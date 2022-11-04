@@ -1,7 +1,16 @@
+.wood {
+	/* background-color: #BA8C63; */
+	background-repeat: repeat;
+	background-image: url('../base/assets/textures/Melamine-wood-001.png');
+}
+
 html,
 body {
 	height: 100%;
 	margin: 0;
+}
+canvas{
+	vertical-align:bottom;
 }
 .flat{
 	border: none;
@@ -44,7 +53,6 @@ a:visited {
 	object-fit: cover;
 	box-sizing: border-box;
 }
-
 .custom-div-icon {
 	border: none;
 	background: transparent;

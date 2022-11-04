@@ -2010,8 +2010,283 @@ p0:123
 113: *11:00 AM 10/29/2022-11:39 AM 10/29/2022
 3- fgu mach was ohne was zu machen
 2 1- spa
-119: *11:39 AM 10/29/2022-
-3- save-lg
+119: *11:39 AM 10/29/2022-7:20 AM 10/30/2022
+__________ so 30.10.22 waiting at the airport...  
+120: *7:20 AM 10/30/2022-7:23 AM 10/30/2022
+121: *7:23 AM 10/30/2022-7:26 AM 10/30/2022
+122: *7:26 AM 10/30/2022-7:29 AM 10/30/2022
+123: *7:29 AM 10/30/2022-7:30 AM 10/30/2022
+124: *7:30 AM 10/30/2022-7:36 AM 10/30/2022
+125: *7:36 AM 10/30/2022-7:37 AM 10/30/2022
+126: *7:37 AM 10/30/2022-7:43 AM 10/30/2022
+- einfachste art fuer eine gute database
+- ich will etwas mit zahlen eigentlich will ich was verstehen!
+- eigentlich will ich was lernen und was ueben!
+- dazu kann ich gut die keysets verwenden!
+- stadt land waer eigentlich ganz lustig
+- es wuerd kein spiel geben das er mit mir spielen will
+- i am dead the best outcome is when i am dead - for everyone
+- was will ich fuer ein game haben?
+- es muss leicht sein ein game zu machen
+- start nodemaster
+127: *7:43 AM 10/30/2022-7:46 AM 10/30/2022
+ok - gu schwimmen!
+128: *7:46 AM 10/30/2022-7:52 AM 10/30/2022
+129: *7:52 AM 10/30/2022-7:55 AM 10/30/2022
+- wenn es egal ist was ist das simpelste?
+draw continuously at 50hz: draw all game objects
+update on event: handle events when they happen: mae changes to game objects but do NOT draw them! 
+130: *7:55 AM 10/30/2022-8:00 AM 10/30/2022
+- dh ich brauche ein draw interval und einen event handler
+131: *7:56 AM 10/30/2022-8:00 AM 10/30/2022
+- diese operieren UNABHAENGIG VONEINANDER!!!
+132: *8:00 AM 10/30/2022-8:00 AM 10/30/2022
+133: *8:00 AM 10/30/2022-8:07 AM 10/30/2022
+134: *8:07 AM 10/30/2022-8:24 AM 10/30/2022
+- js mouse position of click event ev.clientX ev.clientY
+- open basemin
+- G soll ein dict sein, ne weil G is null
+135: *8:25 AM 10/30/2022-8:26 AM 10/30/2022
+136: *8:26 AM 10/30/2022-8:31 AM 10/30/2022
+item behaviors (each behavior has properties):
+drag:
+1. where can this item be dropped?
+2. what happens when it is dropped?
+drop: 
+1. what can be dropped here?
+2. what happens to items dropped here?
+move:
+1. direction?
+2. speed?
+3. what happens when colliding?
+4. stopping conditions?
+5. starting conditions?
+6. continuous or just step?
+select: 
+1. shat happens when selecting this item?
+ok - spab
+ok - fgu
+147: *10:17 AM 10/30/2022-10:47 AM 10/30/2022
+148: *10:47 AM 10/30/2022-10:52 AM 10/30/2022
+149: *10:52 AM 10/30/2022-11:16 AM 10/30/2022
+150: *11:16 AM 10/30/2022-1:44 PM 10/30/2022
+ok - post
+ok - ae
+ok - spa
+175: *1:44 PM 10/30/2022-
+1- fgu, dann spazier
+2- create_board
+3- unterschied behavior - eventhandler
+event handler ist eigentlich ein spezifisches behavior
+behavior ist: cond - func pair
+2- ttt 
+__________ mo 31.10.22 waiting at the airport...  
+175: *6:36 AM 10/31/2022-6:37 AM 10/31/2022
+176: *6:37 AM 10/31/2022-6:39 AM 10/31/2022
+177: *6:39 AM 10/31/2022-6:42 AM 10/31/2022
+178: *6:42 AM 10/31/2022-6:52 AM 10/31/2022
+179: *6:52 AM 10/31/2022-6:55 AM 10/31/2022
+180: *6:55 AM 10/31/2022-6:56 AM 10/31/2022
+181: *6:56 AM 10/31/2022-7:00 AM 10/31/2022
+182: *7:00 AM 10/31/2022-7:11 AM 10/31/2022
+183: *7:11 AM 10/31/2022-7:18 AM 10/31/2022
+184: *7:18 AM 10/31/2022-7:19 AM 10/31/2022
+185: *7:19 AM 10/31/2022-7:20 AM 10/31/2022
+item property can be immutable | mutable
+item property can be serializable | transient | reconstructable | defaulting
+186: *7:20 AM 10/31/2022-7:21 AM 10/31/2022
+transient geht verloren wenn serialize
+reconstructable wird automatisch reconstructed when loading
+defaulting ist wie transient, geht zu einem default bei laden! (eg. anim)
+187: *7:21 AM 10/31/2022-7:22 AM 10/31/2022
+=>zB when serialized, do not save init and refresh
+=>when load item: set init=refresh=false;
+=>in init/refresh werden alle reconstructable props gesetzt fuer live item
+188: *7:23 AM 10/31/2022-7:24 AM 10/31/2022
+189: *7:24 AM 10/31/2022-7:26 AM 10/31/2022
+190: *7:26 AM 10/31/2022-7:28 AM 10/31/2022
+191: *7:28 AM 10/31/2022-7:28 AM 10/31/2022
+192: *7:29 AM 10/31/2022-7:30 AM 10/31/2022
+193: *7:30 AM 10/31/2022-7:31 AM 10/31/2022
+194: *7:31 AM 10/31/2022-7:34 AM 10/31/2022
+195: *7:34 AM 10/31/2022-7:35 AM 10/31/2022
+196: *7:35 AM 10/31/2022-7:37 AM 10/31/2022
+197: *7:37 AM 10/31/2022-7:38 AM 10/31/2022
+198: *7:38 AM 10/31/2022-7:40 AM 10/31/2022
+199: *7:40 AM 10/31/2022-7:41 AM 10/31/2022
+200: *7:41 AM 10/31/2022-7:42 AM 10/31/2022
+201: *7:42 AM 10/31/2022-7:42 AM 10/31/2022
+202: *7:42 AM 10/31/2022-7:44 AM 10/31/2022
+203: *7:45 AM 10/31/2022-7:48 AM 10/31/2022
+204: *7:48 AM 10/31/2022-7:49 AM 10/31/2022
+205: *7:49 AM 10/31/2022-7:50 AM 10/31/2022
+206: *7:50 AM 10/31/2022-7:50 AM 10/31/2022
+207: *7:50 AM 10/31/2022-7:56 AM 10/31/2022
+208: *7:56 AM 10/31/2022-8:00 AM 10/31/2022
+289: *8:00 AM 10/31/2022-9:27 AM 10/31/2022
+ok - spa
+300: *9:28 AM 10/31/2022-9:28 AM 10/31/2022
+ok - 50 sam1
+350: *9:28 AM 10/31/2022-9:35 AM 10/31/2022
+351: *9:35 AM 10/31/2022-9:41 AM 10/31/2022
+352: *9:41 AM 10/31/2022-9:48 AM 10/31/2022
+353: *9:50 AM 10/31/2022-9:52 AM 10/31/2022
+354: *9:52 AM 10/31/2022-9:53 AM 10/31/2022
+355: *9:53 AM 10/31/2022-9:56 AM 10/31/2022
+356: *9:56 AM 10/31/2022-9:58 AM 10/31/2022
+357: *9:58 AM 10/31/2022-10:03 AM 10/31/2022
+358: *10:08 AM 10/31/2022-10:09 AM 10/31/2022
+359: *10:09 AM 10/31/2022-10:16 AM 10/31/2022
+360: *10:16 AM 10/31/2022-10:23 AM 10/31/2022
+361: *10:23 AM 10/31/2022-10:24 AM 10/31/2022
+362: *10:24 AM 10/31/2022-10:27 AM 10/31/2022
+1- rounding:'50%' wird jetzt round:true
+2- test draw_on_div dTable
+3- wo war ich?
+4- der unterschied ist dass ein canvas item nicht in Items existiert!!! (es existiert nur als item!) und hat auch keine id!
+5- 10:08 AM 10/31/2022
+6- canvas styles soll auch bg fg handlen koennen!!!
+7- h: 300
+1- brauch init_origin!!!
+2- test ob func geht!
+3- besseren canvas???
+4- test
+ok 7- shorter 
+ok 6- find draw_item
+ok 5- dcode way shorter!!!
+363: *10:27 AM 10/31/2022-10:55 AM 10/31/2022
+364: *10:55 AM 10/31/2022-11:09 AM 10/31/2022
+365: *11:09 AM 10/31/2022-11:23 AM 10/31/2022
+366: *11:24 AM 10/31/2022-11:24 AM 10/31/2022
+367: *11:24 AM 10/31/2022-12:43 PM 10/31/2022
+1- gu schwimmen!!!!!!
+2- weiter styles!
+3- not too complicated
+4- besseres mStyle!!!!!
+407: *1:00 PM 10/31/2022-1:14 PM 10/31/2022
+1- weiter styles!
+408: *1:14 PM 10/31/2022-1:14 PM 10/31/2022
+3- lassen wir es!
+ok - add round:true to mstyle
+ok - spall 15
+ok - ba 25
+409: *1:14 PM 10/31/2022-1:24 PM 10/31/2022
+__________ di 1.11.22 waiting at the airport...  
+410: *1:24 PM 10/31/2022-8:44 PM 10/31/2022
+411: *6:00 AM 11/1/2022-6:05 AM 11/1/2022
+412: *6:05 AM 11/1/2022-6:08 AM 11/1/2022
+413: *6:05 AM 11/1/2022-6:08 AM 11/1/2022
+414: *6:08 AM 11/1/2022-6:39 AM 11/1/2022
+415: *6:39 AM 11/1/2022-6:51 AM 11/1/2022
+416: *6:51 AM 11/1/2022-6:56 AM 11/1/2022
+417: *6:56 AM 11/1/2022-6:56 AM 11/1/2022
+418: *6:56 AM 11/1/2022-6:57 AM 11/1/2022
+419: *6:57 AM 11/1/2022-6:58 AM 11/1/2022
+420: *6:58 AM 11/1/2022-7:01 AM 11/1/2022
+421: *7:01 AM 11/1/2022-7:06 AM 11/1/2022
+422: *7:06 AM 11/1/2022-7:08 AM 11/1/2022
+423: *7:08 AM 11/1/2022-7:08 AM 11/1/2022
+424: *7:08 AM 11/1/2022-7:09 AM 11/1/2022
+425: *7:09 AM 11/1/2022-7:54 AM 11/1/2022
+426: *7:55 AM 11/1/2022-11:37 AM 11/1/2022
+427: *11:37 AM 11/1/2022-12:52 PM 11/1/2022
+428: *12:52 PM 11/1/2022-6:25 AM 11/2/2022
+__________ mi 2.11.22 waiting at the airport...  
+429: *6:25 AM 11/2/2022-6:28 AM 11/2/2022
+430: *6:28 AM 11/2/2022-6:34 AM 11/2/2022
+431: *6:34 AM 11/2/2022-6:41 AM 11/2/2022
+432: *6:41 AM 11/2/2022-6:56 AM 11/2/2022
+433: *6:56 AM 11/2/2022-6:58 AM 11/2/2022
+434: *6:58 AM 11/2/2022-7:09 AM 11/2/2022
+435: *7:09 AM 11/2/2022-7:23 AM 11/2/2022
+436: *7:23 AM 11/2/2022-7:33 AM 11/2/2022
+437: *7:33 AM 11/2/2022-7:35 AM 11/2/2022
+438: *7:35 AM 11/2/2022-7:50 AM 11/2/2022
+439: *7:50 AM 11/2/2022-8:07 AM 11/2/2022
+440: *8:07 AM 11/2/2022-7:57 PM 11/2/2022
+470: *7:57 PM 11/2/2022-7:57 PM 11/2/2022
+__________ do 3.11.22 waiting at the airport...  
+470: *7:57 PM 11/2/2022-6:25 AM 11/3/2022
+471: *6:25 AM 11/3/2022-6:40 AM 11/3/2022
+472: *6:40 AM 11/3/2022-6:45 AM 11/3/2022
+473: *6:46 AM 11/3/2022-6:51 AM 11/3/2022
+474: *6:51 AM 11/3/2022-7:16 AM 11/3/2022
+475: *7:16 AM 11/3/2022-7:22 AM 11/3/2022
+476: *7:22 AM 11/3/2022-7:29 AM 11/3/2022
+477: *7:29 AM 11/3/2022-7:34 AM 11/3/2022
+478: *7:34 AM 11/3/2022-7:35 AM 11/3/2022
+479: *7:35 AM 11/3/2022-7:37 AM 11/3/2022
+480: *7:37 AM 11/3/2022-7:38 AM 11/3/2022
+481: *7:38 AM 11/3/2022-7:42 AM 11/3/2022
+482: *7:42 AM 11/3/2022-7:45 AM 11/3/2022
+483: *7:45 AM 11/3/2022-7:46 AM 11/3/2022
+484: *7:48 AM 11/3/2022-7:50 AM 11/3/2022
+485: *7:50 AM 11/3/2022-7:53 AM 11/3/2022
+486: *7:53 AM 11/3/2022-7:54 AM 11/3/2022
+487: *7:54 AM 11/3/2022-8:23 AM 11/3/2022
+488: *8:23 AM 11/3/2022-10:17 AM 11/3/2022
+489: *10:20 AM 11/3/2022-10:21 AM 11/3/2022
+540: *7:40 PM 11/3/2022-7:40 PM 11/3/2022
+oasis,post,spazier,sam
+__________ fr 4.11.22 waiting at the airport...  
+540: *7:41 PM 11/3/2022-
+
+
+
+2- if an item has a x,y it is positioned absolutely (das ist eh in styles drin!
+3- mach ein 2D board 3x3
+
+Selected Vehicle
+2007 HOND CIVIC
+Plate: BVY2379
+VIN: 1HGFA16877L016829
+Current expiration date: Dec 12, 2022
+Fee detail: $104.25
+Show fee details
+
+
+
+50- alle docs ausdrucken
+10- sam tel
+10- spaz
+- eine runde gehen dann karotten machen
+
+aber beides homogeneity und heterogeneity sind aspekte des spiels
+=>hier kommt: pure view of the mind vs pure view of the heart
+heart macht aus allem eine riesen passierte suppe, homogen
+- das alles ist es was ein spiel ausmacht
+
+- das coolste ist: reproduction of types: wie entwickeln sich generations? das ist das interessanteste: rules und learning
+inheritance rules und learned behavior
+=>hierr kommt das environment dazu und die goals (eg survival in presence of predators...)
+
+- wie sehr sind die verschiedenen aspekte eines type interrelated?
+can I just wildly mix and match them???? das waer ja grad das lustige!
+
+
+type kann sein: structure of information (list,formula,matrix,...)
+type kann sein: sources of information (url, english dictionary...)
+type kann sein: unstructured content (text, symbols,...)
+type kann sein: positioned content (text+pos, shape+position...)
+type kann sein: default behaviors und functions (get_neighbors in board)
+type kann sein: ein trait (inheritable abstract property, zB 'dark')
+
+
+- was sind das fuer types? list,matrix,
+=>diese types sind es eigentlich die eine lib implementiert
+- kann auch einen type haben den es schon gibt!
+(zB card52)...
+
+
+
+
+was ist ein generic game item?
+- es hat styles (includes classname!)
+- sollte haben children
+- kann haben parent
+- kann haben text
+- kann behaviors sowie draggable, onclick, anim... haben
+- kann info fuer seine children haben (board zB)
 
 
 
@@ -2047,23 +2322,29 @@ p0:123
 
 
 
-- way shorter!!!!!!!
-- check wie gross das caba jetzt ist?
-- rename cframe index.html to googlemapframe.html in examples
-- copy games into games_versions
-- mach ein games_versions in _old
-- in games.js, update socket init
-- hab ich ein basemin?
-- wie und wo sind die players?
-- components can react to click or keys or they are ais
-- mach ein game0.js als beispiel
-- wie mach ich das geruest von so einem game?
-goto tutorial
-- mach ein examples.canvasgame
+
+
+- wie wird ein go created?
+- way shorter the wound is bleeding 
+- localStorage.getItem
+- something else...
+- stringify
+
+
+
 choices:
-=> HTML game
-- noc
-- other
+- make a function out of it!
+- what now?????
+- sit down! by clicking on a place
+- html canvas: arched door
+=>seniorcenter
+- mTexture?
+- sit n players around table
+- getEllipsePoints 
+- das dParent muss pos relative haben!
+- jetzt moecht ich circle centers von board
+- 
+- basemin was fuer divs gibt es?
 
 
 
@@ -2076,30 +2357,51 @@ choices:
 
 
 
-- kleine animation library
-- wie kann ich fa-bounce fuer ein ganzes div machen?
-- was ist da los????
-- test16 jetzt
-- encapsulate animation
-- goto animation code
-- test16_fa_animation
-- goto code
 
 
 
 
 
 
+=>vermeide vergleiche und vermeide judgements
+- was fuer divs gibt es in globals?
+- 2 players each has its space and there is a common space
+- first live game: 
+- life games - just my world
+- mimo game a random life game
+- hover => activate player (test: all players visible)
+- wie fang ich an? 4 player game mit ich,ai,2random players
+- was spielen die? 
+choices fuer spiel:
+lost cities (2 player)
+ticket to ride
+snake
+spotit
+stadtland
+catan
+repair the world
+psychotherapy (dazu brauch ich wahrscheinlich web scraping?)
+=> behavioral therapy: bt
+so ein spiel:
+ein spiel bei dem man punkte bekommt fuer real life stuff
+what are the rewards? 
 
+https://www.youtube.com/watch?v=vc0_cJs3Rmg
+https://www.youtube.com/channel/UCKHteH3r5M6WSqXibRcch_Q/videos
 
+ja, das ist ganz schoen zutreffend. eindeutig so funktioniert das nasi. das eine laengere komentar drunter sind auch zutreffend mit dieser alten frau im altersheim und wir muessen einfach echt mal realizen dass man da keine aenderung erwarten kann. ich glaub dazu funktioniert der mechanismus fuer sie einfach zu gut. 
 
+das mit dem koedern hab ich voll so ein gefuehl.
 
+ich hab ueberhaupt permanent zu tun mit massiven schuldgefuehlen und kann garnichtmehr unterscheiden ob ich jetzt was falsches gemacht / gesagt/ ... habe oder nicht. echt schwierig.
 
-David Martin
-Übersterblichkeit Israel
+wir koennten irgendwann wieder mal skypen wenn du lust / zeit hast
 
+diese Christina Junge ist auch unsre generation. sicher ist das sehr weit verbreitet in unsrer gen. oder ist das einfach so bei allen menschen?
 
+ich schau auch viel interessantes in diesem channel an: https://www.youtube.com/channel/UCPkjivIYL5XhVBYEnJwG9Gw/videos
 
+-Angelika
 
 
 
@@ -2111,31 +2413,56 @@ David Martin
 
 
 
-- remove fa muell
-- open info.yaml
-- versuch fa-brands
-- fa accessible-icon does not show correctly
-- brauch eine zaesur vor fa-sr-only bis fa-monero
-- telecave iconviewer
-- WAY SHORTER!!!
-- schneide alles ab vor fa-0
-- geht nicht und warum???
-- versuche das fa viewer ding mit dem base/alibs/fa.min.css zu machen!
-- loesch all die fa dinger aus dem caba raus
-- random fa zeichen
 
 
 
 
+- eigentlich will ich so ein spiel wo ich 2,3, oder 4 spieler sehe und 1 davon ist ich die anderen ais und ich kann die ais live onscreen steuern. all das zeug laeuft nur im browser!
+- ich sollte mit nosockets starten koennen aber schnell auch local spawn multiple players and ais wo ich dann die alle spielen sehen kann
+- nosockets heisst einfach nur: static website just client code is all!
+- kann ich nicht einfach ein json file nehmen??? vorlaeufig mit client download??? 
+- ein game ist nichts andres als fen speichern
+- wenn sockets habe brauch ich ja auch keinen trick mehr
+- schau mal in welcher reihenfolge die messages abgearbeitet werden
+- der server muss schon existieren bei sockets!!!
+-
 
+- was wollt ich eigentlich?
+- wo bin ich da gelandet?!?!?
+- simplest human readable database?
+- mach es nach dem fen prinzip!
+how about this: obj has an id, and uids, Items has id (same as div)
+obj can also have name (ser)
+when loaded: all new ids are created!
+when saved: 
 
+- unique id is better!
+- html is it ok to have multiple elements with same id but different parent nodes
 
 
+- wie mach ich das mit items und ids???
 
+- item can have: draw, autoupdate, onevent
+- im uebrigen: auch all die ids werden NICHT stimmen wenn getUID verwende!!!! also brauch ich die auch nicht serializen!!!
+fuer iDiv und iGet brauch ich live!
+aber iDiv geht nicht mehr!!!! weil es live voraussetzt!!!
+1 und 2 untersccheiden sich nicht wirklich: in beiden faellen brauch ich eine indirection! 2 ist slightly more flexible find ich
+choice:
+1. alles was nicht serializable ist MUSS in item.live sein
+=>2. alles was nicht serializable ist wird NUR in Items[item.id] 
+gesaved
+3. es gibt bestimmte standards fuer welche props serializable sind und welche nicht
 
 
 
+ich kann auch safe serialiation haben 
+was das heisst ist: serialize G ganz einfach!
+wie waers wenn ich die gesamten daten download unter: cai.yaml???
+- saven ann ich entweder localStorage (wenig daten, unreliable) oder client download(beliebig, muss aber laden!)
+- if TESTING == nosockets muss alles genauso functionieren! halt am client locally
 
+deshalb muss client code transparent to whether server is running or not sein!
+- problem: db und sockets geht nur mit server
 
 
 
@@ -2147,8 +2474,26 @@ David Martin
 
 
 
+- leider brauch ich eine database!
+- das init ist so aehnlich wie das ui_get_...
+...und wenn G auch ein item ist
+- wie waers wenn ein item hat: iInit iRefresh iLoad iSave
+- dann brauch ich ein init und ein refresh! 
+- kann ich nicht fuerr item creation das new function verwenden???
+item impl sollte in iAdd, iRegister... sein!
+idealerweise sollte im item selbst nur serializable, init, refresh, live sein
+wie soll ich wissen was ana einem item serializable ist?
 
 
+- unterscheide bei jedem game object: reconstructable, serializable, transient properties
+- was ist da los?
+was soll das extra zeug?
+- iGrid geht weg!
+- iGrid soll in Board gehen
+- way shorter!!!
+- hol mir iGrid
+- will immer noch ein start, stop, set FR
+- random walker wie will ich starten???
 
 
 
@@ -2159,8 +2504,6 @@ David Martin
 
 
 
-choices:
-- die eine anim mit fa + rundes div around it
 
 
 
@@ -2173,87 +2516,6 @@ choices:
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-11h30=>schwimmen gu
-
-choices:
-- animation library
-- cleanup basemin animations
-- versioning von basejs lib
-- noc video weiter
-- zeug auf RA moven
-- HD zeug
-- other
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-something else is relevant
-
-- mach magnifying lense!
-- pulse spin-reverse, spin-pulse, beat-fade
-- zB fa-beat-fade
-
-weiter mit noc video
-schools: clock, danach HTML game
-fa animations!!! kann ich auch sonst verwenden!
 
 
 

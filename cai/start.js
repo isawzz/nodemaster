@@ -6,16 +6,27 @@ async function start() {
 		Socket.on('disconnect', x => console.log('got disconnect', x));
 		Socket.on('update', x => console.log('got update', x));
 	}
-
-	test0();
+	//test4_save();	
+	test5_load();
 }
 
-function test0(){
+function test6_init(){
 
-	//items werden mit iRegister oder iAdd
+	let item = { styles: { bg: 'orange', w: 30, h: 30, round: true } };
 
+	iInit(c1, item);
+	iInit(c2, item);
+	iInit(dTable, item);
+
+	start_loop();
+
+	//jetzt soll sich irgendwas an dem item aendern! zB die color
+	setTimeout(() => item.styles.bg = BLUE, 2000);
 
 }
+
+
+
 
 
 
