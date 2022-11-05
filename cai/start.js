@@ -14,8 +14,9 @@ async function start() {
 
 }
 function show_emos(){
+	//
 	dTable = mBy('map');
-	
+
 }
 function test7_uploadfile() {
 	let o = { filename: 'ex', data: { text: 'aber geh jaaaa', id: 78912 } };
