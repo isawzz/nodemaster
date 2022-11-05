@@ -1,23 +1,174 @@
 
-function pos_div(elem,x,y){	mStyle(elem,{x:x,y:y});}
-function pos_canvas(elem,x,y){	mStyle(elem,{x:x,y:y});}
-function nodes_on_canvas(dParent,n=10,dmin=25){
+function _sayYES() {
+	if ('speechSynthesis' in window) {
+		speechSynthesis.onvoiceschanged = function () {
+			DA.voicelist = speechSynthesis.getVoices();
+			console.log('voices loaded...');
+			return;
+			if (nundef(DA.voicelist)) {
+				DA.voicelist = [];
+				speechSynthesis.getVoices().forEach(function (voice, index) { DA.voicelist.push({ name: voice.name, index: index, voice: voice }); });
+			}
+		}
+
+		var text = 'Hello, world!';
+		var msg = new SpeechSynthesisUtterance();
+		var voices = window.speechSynthesis.getVoices();
+		//voices.map(x=>console.log('voice',x.name,x))
+		msg.voice = rChoose(voices);
+		console.log('________es spricht', DA.voicelist)
+		msg.rate = 1;
+		msg.pitch = 1;
+		msg.text = text;
+
+		msg.onend = function (e) {
+			console.log('ENDE', e, 'Finished in ' + event.elapsedTime + ' seconds.');
+			console.log('voicelist', DA.voicelist)
+		};
+
+		speechSynthesis.speak(msg);
+	}
+}
+
+function sayYES() {
+	if ('speechSynthesis' in window) {
+		speechSynthesis.onvoiceschanged = function () {
+			if (nundef(DA.voicelist)) {
+				DA.voicelist = [];
+				speechSynthesis.getVoices().forEach(function (voice, index) { DA.voicelist.push(voice.name); });
+			}
+		}
+
+		var text = 'Hello, world!'
+		var msg = new SpeechSynthesisUtterance();
+		var voices = window.speechSynthesis.getVoices();
+		msg.voice = rChoose(voices);
+		msg.rate = 1;
+		msg.pitch = 1;
+		msg.text = text;
+
+		msg.onend = function (e) {
+			console.log('Finished in ' + event.elapsedTime + ' seconds.');
+		};
+
+		speechSynthesis.speak(msg);
+	}
+}
+
+function _say(text) {
+
+	Speech.say(text);
+
+	//let sp=new Speaker('D');
+	//setTimeout(()=>sp.say('hallo wie gehts'),2000);
+
+
+	return;
+	'speechSynthesis' in window ? console.log("Web Speech API supported!") : console.log("Web Speech API not supported :-(")
+
+	const synth = window.speechSynthesis;
+	let ourText = "Hey there what's up!!!!"
+	const utterThis = new SpeechSynthesisUtterance();
+
+	utterThis.text = ourText
+	synth.speak(utterThis)
+}
+function say_form() {
+	synth.speak(utterThis)
+	const textInputField = document.querySelector("#text-input")
+	const form = document.querySelector("#form")
+	const utterThis = new SpeechSynthesisUtterance()
+	const synth = window.speechSynthesis
+	let ourText = ""
+
+	const checkBrowserCompatibility = () => {
+		"speechSynthesis" in window
+			? console.log("Web Speech API supported!")
+			: console.log("Web Speech API not supported :-(")
+	}
+
+	checkBrowserCompatibility()
+
+	form.onsubmit = (event) => {
+		event.preventDefault()
+		ourText = textInputField.value
+		utterThis.text = ourText
+		synth.speak(utterThis)
+		textInputField.value = ""
+	}
+}
+
+
+
+//#region node js server
+//file uploading POST routes
+const multer = require('multer');
+const storage = multer.diskStorage({
+	destination: function (req, file, callback) {
+		callback(null, './y/' + file.fieldname + '/');
+	},
+	filename: function (req, file, callback) { callback(null, file.originalname); }
+});
+var upload = multer({ storage: storage });
+
+app.post('/perlen', upload.array('perlen'), (req, res) => {
+	res.redirect('/');
+	console.log('#files', Object.keys(req.files));
+	// //console.log(Object.keys(req.files[0]));
+	// req.files.map(x => simple.addPerle(x.filename, false)); //console.log(x.filename));
+	// console.log('perlen#', Object.keys(simple.perlenDict).length);
+});
+//#endregion
+
+class FileUploadForm {
+	constructor(dParent, title, route, onSubmit) {
+		this.dParent = dParent;
+		this.title = title;
+		this.route = route;
+		this.onSubmit = onSubmit;
+		let id = this.id = getUID();
+		//this.uploadUrl = SERVERURL + route;
+		this.createHtml(route)
+	}
+
+	// bretter(){this.createHtml('bretter');}
+	// perlen(){this.createHtml('perlen');}
+	createHtml(route){
+			// <p>${this.title}!</p>
+			let elem = mCreateFrom(`
+		<div>
+			<form action="https://localhost:3000${route}" enctype="multipart/form-data" method="post">
+				<input type="file" name="${route}" accept='*' multiple>
+				<input type="submit" value="Upload">
+			</form>  
+		</div>
+		`);
+		mAppend(this.dParent,elem);
+	}
+
+}
+
+
+
+function pos_div(elem, x, y) { mStyle(elem, { x: x, y: y }); }
+function pos_canvas(elem, x, y) { mStyle(elem, { x: x, y: y }); }
+function nodes_on_canvas(dParent, n = 10, dmin = 25) {
 	dTable = toElem(dParent);
 	let r = getRect(dTable);
 	let [w, h] = [r.w, r.h];
 	console.log('r', r.w, 'x', r.h);
-	let c = mCanvas(dParent,{w:r.w,h:r.h,rounding:0,bg:'white'}); let[cv,cx]=[c.cv,c.cx];
+	let c = mCanvas(dParent, { w: r.w, h: r.h, rounding: 0, bg: 'white' }); let [cv, cx] = [c.cv, c.cx];
 
 	let gran = dmin;
 	let [xoffset, yoffset] = [Math.floor((w % gran) / 2), Math.floor((h % gran) / 2)];
 	let [xstart, ystart] = [gran / 2, gran / 2];
 	let [x, y] = [xstart, ystart];
-	let items = []; let [rows,cols]=[0,0];
+	let items = []; let [rows, cols] = [0, 0];
 	while (y < h) {
 		while (x < w - gran / 2) {
 			//draw point on x,y
 			let styles = { w: 5, h: 5, bg: 'blue', position: 'absolute', x: x, y: y };
-			let d = cRect(x,y,styles.w,styles.h,styles,cx); //cEllipse(x,y,styles.w,styles.h,styles,0,cx);
+			let d = cRect(x, y, styles.w, styles.h, styles, cx); //cEllipse(x,y,styles.w,styles.h,styles,0,cx);
 			x += gran;
 			let item = { div: d }; copyKeys(styles, item, { position: true });
 			items.push(item);
@@ -30,7 +181,7 @@ function nodes_on_canvas(dParent,n=10,dmin=25){
 
 
 }
-function nodes_on_div(dParent,n=10,dmin=35){
+function nodes_on_div(dParent, n = 10, dmin = 35) {
 	dTable = toElem(dParent); mStyle(dTable, { position: 'relative' });
 	let r = getRect(dTable);
 	console.log('r', r.w, 'x', r.h);
@@ -54,7 +205,7 @@ function nodes_on_div(dParent,n=10,dmin=35){
 	let [xoffset, yoffset] = [Math.floor((w % gran) / 2), Math.floor((h % gran) / 2)];
 	let [xstart, ystart] = [gran / 2, gran / 2];
 	let [x, y] = [xstart, ystart];
-	let items = []; let [rows,cols]=[0,0];
+	let items = []; let [rows, cols] = [0, 0];
 	while (y < h) {
 		while (x < w - gran / 2) {
 			//draw point on x,y
@@ -70,14 +221,14 @@ function nodes_on_div(dParent,n=10,dmin=35){
 		y += gran;
 	}
 
-	console.log('items', items,cols/rows,rows)
+	console.log('items', items, cols / rows, rows)
 
 
 }
 
-function _mAutocomplete(dParent){
+function _mAutocomplete(dParent) {
 
-	let d=mDiv(dParent,{},null,`<form autocomplete="off" action="javascript:void(0);">
+	let d = mDiv(dParent, {}, null, `<form autocomplete="off" action="javascript:void(0);">
 			<div class="autocomplete" style="width: 300px">
 				<input id="myInput" type="text" name="myCountry" placeholder="Country" />
 			</div>
@@ -422,7 +573,7 @@ async function cities_add_continent() {
 	let cities = await route_path_yaml_dict('../base/mapdata/cities.yaml');
 	let new_cities = {};
 
-	console.log('cities',arrTake(dict2list(cities),25));
+	console.log('cities', arrTake(dict2list(cities), 25));
 	return;
 	//mach einen reverse index von  country zu continent
 	let di = {};
@@ -443,7 +594,7 @@ async function cities_add_continent() {
 
 }
 
-function _create_router(map,color,callback){
+function _create_router(map, color, callback) {
 	console.log('haaaaaaaaaaaaaaaaaaaaaa')
 	let control = M.router = L.Routing.control({
 		// waypoints: points_to_waypoints(pts),
@@ -452,38 +603,38 @@ function _create_router(map,color,callback){
 		createMarker: function () { return false; },
 		show: false,
 	}).addTo(map);
-	console.log('control',control)
+	console.log('control', control)
 	control.on('routesfound', callback);
 }
 
 
 
-function walk_path(a,pts=[]){
+function walk_path(a, pts = []) {
 	if (isEmpty(pts)) return;
-	let p0=pts[0];
-	if (is_lat_lng(p0)){pts=pts.map(x=>from_lat_lng(x))}
-	console.log('pts',pts);
+	let p0 = pts[0];
+	if (is_lat_lng(p0)) { pts = pts.map(x => from_lat_lng(x)) }
+	console.log('pts', pts);
 
 	let map = a.home;
-	create_path(map,pts,'blue',e=>dowalk(a,e))
+	create_path(map, pts, 'blue', e => dowalk(a, e))
 }
-function dowalk(a,result){
-	let coords = result.routes[0].coordinates.map(x=>from_lat_lng(x));
+function dowalk(a, result) {
+	let coords = result.routes[0].coordinates.map(x => from_lat_lng(x));
 	// console.log('need to walk',a,'from',a.pos,'to',coords[0]);
-	console.log('need to walk along',coords);
-	movealong(a,coords)
+	console.log('need to walk along', coords);
+	movealong(a, coords)
 
 }
-function movealong(a,coords){
-	if (isEmpty(coords)) {console.log('ARRIVED!');return;}
-	console.log('shifted',coords.slice(1))
-	a.moveto(coords[0]);setTimeout(()=>movealong(a,coords.slice(1)),500);
+function movealong(a, coords) {
+	if (isEmpty(coords)) { console.log('ARRIVED!'); return; }
+	console.log('shifted', coords.slice(1))
+	a.moveto(coords[0]); setTimeout(() => movealong(a, coords.slice(1)), 500);
 }
 function create_path(map, pts, color, callback) {
 	if (nundef(M.router)) M.router = create_router(map, pts, color, callback);
 	else M.router.setWaypoints(points_to_waypoints(pts));
 }
-function create_router(map, pts = [], color = 'transparent', callback=null) {
+function create_router(map, pts = [], color = 'transparent', callback = null) {
 
 	if (isdef(M.router)) return;
 
@@ -495,8 +646,8 @@ function create_router(map, pts = [], color = 'transparent', callback=null) {
 		show: false,
 	}).addTo(map);
 	//M.coords = [];
-	if (callback)	control.on('routesfound', callback);
-	
+	if (callback) control.on('routesfound', callback);
+
 	// control.on('routesfound') = e=> { 
 	// 	//console.log('routesfound event: ',e);
 	// 	M.routes = e.routes;
@@ -552,26 +703,26 @@ function get_bounding_box(pts) {
 	let latlngs = to_lat_lng(pts); //pts.map(marker => point_to_marker.getLatLng())
 	let o = L.latLngBounds(latlngs);
 	console.log('latlngBounds', o)
-	let res={l:o._southWest.lng,t:o._northEast.lat,r:o._northEast.lng,b:o._southWest.lat};
+	let res = { l: o._southWest.lng, t: o._northEast.lat, r: o._northEast.lng, b: o._southWest.lat };
 	return res;
 }
-function _fit_points(map, pts, padpercent=10) {
+function _fit_points(map, pts, padpercent = 10) {
 	//let markers = [marker1, marker2, marker3]
 
-	let box=get_bounding_box(pts);
+	let box = get_bounding_box(pts);
 	// let latlngs = to_lat_lng(pts); //pts.map(marker => point_to_marker.getLatLng())
 	// let latlngBounds = L.latLngBounds(latlngs);
 	// console.log('latlngBounds', latlngBounds)
 
-	let dlng=Math.abs(box.l-box.r);
-	let dlat=Math.abs(box.t-box.b);
+	let dlng = Math.abs(box.l - box.r);
+	let dlat = Math.abs(box.t - box.b);
 
-	let vpad=dlat*padpercent*.01;
-	let hpad=dlng*padpercent*.01;
+	let vpad = dlat * padpercent * .01;
+	let hpad = dlng * padpercent * .01;
 
-	let newbox={l:box.l-hpad,t:box.t+vpad,r:box.r+hpad,b:box.b-vpad};
+	let newbox = { l: box.l - hpad, t: box.t + vpad, r: box.r + hpad, b: box.b - vpad };
 
-	map.fitBounds(to_lat_lng([[newbox.t,newbox.l],[newbox.b,newbox.r]])); //latlngBounds);
+	map.fitBounds(to_lat_lng([[newbox.t, newbox.l], [newbox.b, newbox.r]])); //latlngBounds);
 	// OR with a smooth animation
 	// map.flyToBounds(latlngBounds)	
 }
@@ -613,7 +764,7 @@ function test6_toolbar() {
 		createMarker: function () { return false; },
 		show: false,
 	}).addTo(map);
-	control.on('routesfound', e => { fit_points(map,pts); });
+	control.on('routesfound', e => { fit_points(map, pts); });
 	return;
 
 	//M.coords = [];
@@ -1264,7 +1415,7 @@ function map_toolbutton(map, color, handler) {
 }
 async function parse_xml() {
 
-	let url='https://api.openstreetmap.org/api/0.6/map?bbox=11.54,48.14,11.543,48.145';
+	let url = 'https://api.openstreetmap.org/api/0.6/map?bbox=11.54,48.14,11.543,48.145';
 	//route_path_text
 
 	var el = xml.nodeType === 9 ? xml.documentElement : xml
@@ -1273,7 +1424,7 @@ async function parse_xml() {
 	h.attributes = Array.from(el.attributes || []).filter(a => a).reduce((h, a) => { h[a.name] = a.value; return h }, {})
 	h.children = Array.from(el.childNodes || []).filter(e => e.nodeType === 1).map(c => h[c.nodeName] = xml2json(c))
 	return h
-}  	
+}
 function test_control0(map) {
 	L.Control.Watermark = L.Control.extend({
 		control: null,
@@ -1394,7 +1545,7 @@ function toolbartest(map) {
 
 //#endregion
 
-async function _start(){
+async function _start() {
 	let pop = await route_path_json('../base/mapdata/populated.geojson');
 	console.log('pop', pop);
 	let arr = sortByFunc(pop.features, x => x.properties.nameascii);
@@ -1501,10 +1652,10 @@ function movepin(pin) {
 	pin.setLatLng([pos.lat + (coin() ? .01 : -.02), pos.lng + (coin() ? .02 : -.01)]);
 }
 
-function move_agent(a,posgetter,postransformer,possetter){
+function move_agent(a, posgetter, postransformer, possetter) {
 	let pos = posgetter(a);
-	pos = postransformer(a,pos);
-	possetter(a,pos);
+	pos = postransformer(a, pos);
+	possetter(a, pos);
 }
 
 
@@ -1528,9 +1679,9 @@ async function challenge1() {
 		let center = bounds.getCenter();
 		center = [center.lng, center.lat]; //for some reason vertauscht er die coords!!!
 
-		let c2=my_poly_center(f);
-		if (c2){
-			get_circle(c2,{fg:'red'}).addTo(map); //continue;
+		let c2 = my_poly_center(f);
+		if (c2) {
+			get_circle(c2, { fg: 'red' }).addTo(map); //continue;
 		}
 		// if (name == 'Amstetten' || data.features.indexOf(f) == 0){
 		// 	console.log('f.geometry',f.geometry)
@@ -1538,14 +1689,14 @@ async function challenge1() {
 		// 	console.log('center', center.lat, center.lng);
 		// 	console.log('c2',c2)
 		// }
-	
+
 
 		let p = get_circle(center).addTo(map); //continue;
 
 
 		var marker = L.marker(center, { opacity: 0 }); //[48.2, 16.2]);
 		marker.addTo(map);
-		marker.bindTooltip(f.properties.NAME_2, { direction: 'center', permanent: true, className: 'mylabel',offset: L.point({x: -30, y: 30}) }); //, className: "my-label"
+		marker.bindTooltip(f.properties.NAME_2, { direction: 'center', permanent: true, className: 'mylabel', offset: L.point({ x: -30, y: 30 }) }); //, className: "my-label"
 	}
 }
 

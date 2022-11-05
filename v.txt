@@ -2229,27 +2229,166 @@ __________ do 3.11.22 waiting at the airport...
 540: *7:40 PM 11/3/2022-7:40 PM 11/3/2022
 oasis,post,spazier,sam
 __________ fr 4.11.22 waiting at the airport...  
-540: *7:41 PM 11/3/2022-
+540: *7:41 PM 11/3/2022-5:18 AM 11/4/2022
+541: *5:19 AM 11/4/2022-5:34 AM 11/4/2022
+542: *5:34 AM 11/4/2022-5:38 AM 11/4/2022
+543: *5:38 AM 11/4/2022-5:39 AM 11/4/2022
+544: *5:39 AM 11/4/2022-5:42 AM 11/4/2022
+545: *5:42 AM 11/4/2022-5:51 AM 11/4/2022
+546: *5:51 AM 11/4/2022-5:52 AM 11/4/2022
+547: *5:53 AM 11/4/2022-6:35 AM 11/4/2022
+548: *6:35 AM 11/4/2022-6:57 AM 11/4/2022
+549: *6:57 AM 11/4/2022-6:58 AM 11/4/2022
+550: *6:58 AM 11/4/2022-7:01 AM 11/4/2022
+551: *7:01 AM 11/4/2022-7:09 AM 11/4/2022
+552: *7:09 AM 11/4/2022-7:19 AM 11/4/2022
+553: *7:19 AM 11/4/2022-7:21 AM 11/4/2022
+554: *7:21 AM 11/4/2022-7:22 AM 11/4/2022
+555: *7:22 AM 11/4/2022-7:22 AM 11/4/2022
+556: *7:22 AM 11/4/2022-7:26 AM 11/4/2022
+557: *7:26 AM 11/4/2022-7:27 AM 11/4/2022
+558: *7:27 AM 11/4/2022-7:40 AM 11/4/2022
+559: *7:40 AM 11/4/2022-7:49 AM 11/4/2022
+560: *7:49 AM 11/4/2022-7:50 AM 11/4/2022
+561: *7:50 AM 11/4/2022-7:58 AM 11/4/2022
+562: *7:58 AM 11/4/2022-8:09 AM 11/4/2022
+563: *8:09 AM 11/4/2022-10:56 AM 11/4/2022
+583: *10:56 AM 11/4/2022-11:04 AM 11/4/2022
+584: *11:04 AM 11/4/2022-11:05 AM 11/4/2022
+585: *11:05 AM 11/4/2022-11:06 AM 11/4/2022
+586: *11:06 AM 11/4/2022-6:36 AM 11/5/2022
+__________ sa 5.11.22 waiting at the airport...  
+587: *6:36 AM 11/5/2022-6:56 AM 11/5/2022
+588: *6:56 AM 11/5/2022-7:14 AM 11/5/2022
+589: *7:14 AM 11/5/2022-7:47 AM 11/5/2022
+590: *7:47 AM 11/5/2022-8:07 AM 11/5/2022
+591: *8:07 AM 11/5/2022-8:09 AM 11/5/2022
+592: *8:09 AM 11/5/2022-8:26 AM 11/5/2022
+593: *8:26 AM 11/5/2022-8:54 AM 11/5/2022
+594: *8:54 AM 11/5/2022-
+- iconviewer
+- volume
+- pitch 0 [1] 2
+- lang
+- $ => mBy
+- geht ja garnicht!!!
+irgendeine spielregel
+bee game: be what you want to see
+aber NOW
+kala meets your consciousness NOW, NOW, NOW
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+- super simples beispiel duckduckgoose: geht so: spieler der dran ist clickt auf irgendeinen anderen spieler. sobald das passiert
+bekommen beide gleichzeitige eine frage und der erste der sie richtig beantwortet gewinnt. wenn spieler gewinnt muss ein neuer 
+- mach das ganze mal nur mit dem pollen
+- 85/100 ganz generell halten!
+- 86/100 wenn es 
+ich frier mich tot ich muss mich bewegen!!!!!!!
+- 87/100 
+- 88/100 er sendet ein post/json wenn es nicht ein filename ist,
+was ist es dann? save in memory G object
+- 89/100 toYamlFile
+- 90/100 dazu brauch ich fs und yaml
+- 91/100 need utils from chatApp
+- 92/100 freeze server solution!
+- 93/100 test route_post_json
+- 94/100 dazu noch ein route_post_json
+- 95/100 freeze post_json
+- 96/100 hat geklappt! jetzt muss ich es freezen!
+- 97/100: client side
+- 98/100: simplest!!!
+- 99/100: fail
+=>9. post json save as yaml file node js 1/10
+
+
+
+choices what to do next?
+1. brot starten
+2. walk+music
+3. kartoffel kochen
+4. gu fleisch einfrieren
+5. brot einfrieren
+6. TK ordnen
+7. schlafen
+8. file upload node js solve
+=>9. post&save as yaml file node js 1/10
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+- suche wo so ein post gemacht wird
+krank
+PERLEN_DATA_PATH
+- utils
+- was macht addPerle
+- einfach nur ein file am server saven in node js
+- wie hab ich files am server gesaved?
 
 
 
 2- if an item has a x,y it is positioned absolutely (das ist eh in styles drin!
 3- mach ein 2D board 3x3
 
-Selected Vehicle
-2007 HOND CIVIC
-Plate: BVY2379
-VIN: 1HGFA16877L016829
-Current expiration date: Dec 12, 2022
-Fee detail: $104.25
-Show fee details
-
-
-
-50- alle docs ausdrucken
-10- sam tel
-10- spaz
-- eine runde gehen dann karotten machen
 
 aber beides homogeneity und heterogeneity sind aspekte des spiels
 =>hier kommt: pure view of the mind vs pure view of the heart

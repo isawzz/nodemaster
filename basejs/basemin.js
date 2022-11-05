@@ -5024,6 +5024,7 @@ function firstNumber(s) {
 	}
 	return null;
 }
+function germanize(s){return toUmlaut(s);}
 function normalize_string(s, sep = '_') {
 	s = s.toLowerCase().trim();
 	let res = '';
@@ -5663,6 +5664,17 @@ function oscillate_between(x, min, max, step) {
 
 	return [x, step];
 }
+function post_json(url, o, callback) {
+	//usage: post_json('http://localhost:3000/post/json',o,r=>console.log('resp',r);
+	fetch(url, {
+		method: 'POST',
+		headers: {
+			'Accept': 'application/json',
+			'Content-Type': 'application/json'
+		},
+		body: JSON.stringify(o)
+	}).then(response => response.json()).then(response => callback(response));
+}
 function range(f, t, st = 1) {
 	if (nundef(t)) {
 		//if only 1 arg, will return numbers 0..f-1 
@@ -5702,6 +5714,7 @@ function recConvertLists(o, maxlen = 25) {
 		} else if (isDict(val)) recConvertLists(val);
 	}
 }
+function route_post_json(url,o,callback){post_json(url,o,callback);}
 async function route_path_yaml_dict(url) {
 	let data = await fetch(url);
 	let text = await data.text();
@@ -5955,6 +5968,42 @@ function object2string(o, props = [], except_props = []) {
 		}
 	}
 	return s;
+}
+function say(text, lang, callback, volume, rate, pitch) {
+	// lang: en de es fr hi id it ja ko nl pl pt ru zh, david michael mark zira deutsch english
+	// volume: 0 (lowest) and [1] (highest and default)
+	// rate: 0.1 (lowest) and 10 (highest), default 1 (.1 waer 1/10 von geschwindigkeit)
+	// pitch: pitch 0 [1] 2
+
+	function sayit(text, lang, callback, volume, rate, pitch) {
+		var text = valf(text, 'Hello, world!');
+		var msg = new SpeechSynthesisUtterance();
+		var voices = DA.voicelist;
+		voices.map(x => console.log('voice', x.name, x.lang));
+
+		let voice = voices.filter(x => x.lang.includes(lang));
+		if (isEmpty(voice)) voice = voices.filter(x=>x.name.toLowerCase().includes(lang));
+		console.log('voice',voice.map(x=>x.name))
+		msg.voice = valf(rChoose(voice), rChoose(voices));
+		console.log('________es spricht', msg.voice.name);
+		if (isdef(volume)) msg.volume = volume;
+		if (isdef(rate)) msg.rate = rate;
+		if (isdef(pitch)) msg.pitch = pitch;
+		msg.text = text;
+
+		msg.onend = e => {
+			if (callback) callback(); else console.log('ENDE', e.utterance, 'Finished in ' + e.elapsedTime + ' seconds.');
+		};
+
+		speechSynthesis.speak(msg);
+	}
+	if (!('speechSynthesis' in window)) { alert('speech not supported!!! connect to internet?'); return; }
+	if (nundef(DA.voicelist)) {
+		speechSynthesis.onvoiceschanged = function () {
+			DA.voicelist = speechSynthesis.getVoices();
+			sayit(text, lang, callback, volume, rate, pitch);
+		}
+	} else sayit(text, lang, callback, volume, rate, pitch);
 }
 function simpleCompare(o1, o2) {
 	let s1 = object2string(o1);

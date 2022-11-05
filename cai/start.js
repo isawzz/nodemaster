@@ -6,11 +6,27 @@ async function start() {
 		Socket.on('disconnect', x => console.log('got disconnect', x));
 		Socket.on('update', x => console.log('got update', x));
 	}
-	//test4_save();	
-	test5_load();
+	//test4_save();	test5_load();	test7_uploadfile();
+
+	//Speech = new SpeechAPI('D');
+	//await load_syms();
+	say(germanize('wie fuehlst du dich gerade?'),'pl',show_emos(),1,.8,.8);
+
+}
+function show_emos(){
+	dTable = mBy('map');
+	
+}
+function test7_uploadfile() {
+	let o = { filename: 'ex', data: { text: 'aber geh jaaaa', id: 78912 } };
+
+	route_post_json('http://localhost:3000/post/json', o, r => {
+		dTable.children[0].innerHTML = r.checked;
+		console.log(JSON.stringify(r))
+	});
 }
 
-function test6_init(){
+function test6_init() {
 
 	let item = { styles: { bg: 'orange', w: 30, h: 30, round: true } };
 
