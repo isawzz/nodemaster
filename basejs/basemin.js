@@ -5407,7 +5407,7 @@ function findChildrenOfType(type, parentElem) {
 	}
 	return res;
 }
-function findKeys(s) { return SymKeys.filter(x => contains(x, s) || contains(Syms[x].E) || contains(Syms[x].D), s); }
+function findKeys(s) { return SymKeys.filter(x => contains(x, s) || contains(Syms[x].E,s) || isdef(Syms[x].D) && contains(Syms[x].D,s)); }
 function format_currency(num) {
 	//num should be presented with 2 decimals and a $ sign in front
 	return '$' + num.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");

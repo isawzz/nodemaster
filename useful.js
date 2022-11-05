@@ -1,4 +1,10 @@
 
+function show_emos() {
+	//
+	dTable = mBy('map');
+
+}
+
 function _sayYES() {
 	if ('speechSynthesis' in window) {
 		speechSynthesis.onvoiceschanged = function () {
@@ -133,9 +139,9 @@ class FileUploadForm {
 
 	// bretter(){this.createHtml('bretter');}
 	// perlen(){this.createHtml('perlen');}
-	createHtml(route){
-			// <p>${this.title}!</p>
-			let elem = mCreateFrom(`
+	createHtml(route) {
+		// <p>${this.title}!</p>
+		let elem = mCreateFrom(`
 		<div>
 			<form action="https://localhost:3000${route}" enctype="multipart/form-data" method="post">
 				<input type="file" name="${route}" accept='*' multiple>
@@ -143,7 +149,7 @@ class FileUploadForm {
 			</form>  
 		</div>
 		`);
-		mAppend(this.dParent,elem);
+		mAppend(this.dParent, elem);
 	}
 
 }

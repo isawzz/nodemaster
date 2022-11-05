@@ -9,15 +9,42 @@ async function start() {
 	//test4_save();	test5_load();	test7_uploadfile();
 
 	//Speech = new SpeechAPI('D');
-	//await load_syms();
-	say(germanize('wie fuehlst du dich gerade?'),'pl',show_emos(),1,.8,.8);
+	await load_syms();
 
-}
-function show_emos(){
-	//
+	console.log('SymKeys', SymKeys);
+	let items = findKeys('face').map(x => Syms[x]); // filter keys
+	items = KeySets['smileys-emotion'].map(x => Syms[x]);
+	
+
+	items = Info.emotion.map(x => ({ key: x, E: x, family: 'opensans', text: '' }));
+	sortBy(items, 'key');
+	console.log('items', items[0])
 	dTable = mBy('map');
+	for (const item of items) ui_type_item(dTable, item, {}, null, true);
+	//dTable.innerHTML = createViewerContent(items, [], true);
+
+	//say(germanize('wie fuehlst du dich gerade?'),'pl',show_emos(),1,.8,.8);
 
 }
+function mSpan(dParent, styles, innerHTML) {
+	let d = mCreate('span');
+	if (isdef(styles)) mStyle(d, styles);
+	if (isdef(innerHTML)) d.innerHTML = innerHTML;
+	if (isdef(dParent)) mAppend(dParent, d);
+	return d;
+}
+function ui_type_item(dParent, item, styles = {}, handler = null, show_key = false) {
+	addKeys({ align: 'center', overflow: 'hidden', cursor: 'pointer', rounding: 10, margin: 10, padding: 5, w: 120, wmin: 90, display: 'inline-block', bg: 'random', fg: 'contrast' }, styles);
+
+	let d = mDiv(dParent, styles);
+	if (!isEmptyOrWhiteSpace(item.text)) mSpan(d, { family: item.family, fz: 50 }, item.text);
+	if (show_key) mSpan(d, { family: 'opensans' }, item.key);
+
+	if (isdef(handler)) d.onclick = handler;
+
+	return d;
+}
+
 function test7_uploadfile() {
 	let o = { filename: 'ex', data: { text: 'aber geh jaaaa', id: 78912 } };
 
