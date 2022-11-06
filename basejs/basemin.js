@@ -4833,6 +4833,16 @@ function genCats(n) {
 }
 function oneWordKeys(keys) { return keys.filter(x => !x.includes(' ')); }
 
+function arrRemoveDuplicates(items, prop) {
+	let di = {};
+	let res = [];
+	for (const item of items) {
+		if (isdef(di[item[prop].toLowerCase()])) { continue; }
+		res.push(item);
+		di[item[prop].toLowerCase()] = true;
+	}
+	return res;
+}
 function removeDuplicates(keys, prop) {
 	let di = {};
 	let res = [];

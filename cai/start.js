@@ -14,11 +14,13 @@ async function start() {
 	console.log('SymKeys', SymKeys);
 	let items = findKeys('face').map(x => Syms[x]); // filter keys
 	items = KeySets['smileys-emotion'].map(x => Syms[x]);
-	
+	items = items.map(x=>({key:x.key,text:x.text,E:x.E,D:x.D,family:x.family}));
+	let items2 = Info.emotion.map(x => ({ key: x, E: x, D:'', family: 'opensans', text: '' }));
+	sortBy(items2, 'key');
+	items2 = arrRemoveDuplicates(items2,'E');
+	//console.log('items', items2[0])
+	items=items.concat(items2);
 
-	items = Info.emotion.map(x => ({ key: x, E: x, family: 'opensans', text: '' }));
-	sortBy(items, 'key');
-	console.log('items', items[0])
 	dTable = mBy('map');
 	for (const item of items) ui_type_item(dTable, item, {}, null, true);
 	//dTable.innerHTML = createViewerContent(items, [], true);
@@ -38,7 +40,11 @@ function ui_type_item(dParent, item, styles = {}, handler = null, show_key = fal
 
 	let d = mDiv(dParent, styles);
 	if (!isEmptyOrWhiteSpace(item.text)) mSpan(d, { family: item.family, fz: 50 }, item.text);
-	if (show_key) mSpan(d, { family: 'opensans' }, item.key);
+	if (show_key) {
+		mSpan(d, { family: 'opensans' }, `key:${item.key}`);
+		if (isdef(item.E)) mSpan(d, { family: 'opensans' }, `<br>E:${item.E}`);
+		if (isdef(item.D)) mSpan(d, { family: 'opensans' }, `<br>D:${item.D}`);
+	}
 
 	if (isdef(handler)) d.onclick = handler;
 

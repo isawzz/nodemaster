@@ -2270,7 +2270,51 @@ __________ sa 5.11.22 waiting at the airport...
 596: *11:59 AM 11/5/2022-2:18 PM 11/5/2022
 640: *8:10 PM 11/5/2022-8:10 PM 11/5/2022
 __________ so 6.11.22 waiting at the airport...  
-641: *8:10 PM 11/5/2022-
+641: *8:10 PM 11/5/2022-5:08 AM 11/6/2022
+642: *5:09 AM 11/6/2022-5:12 AM 11/6/2022
+643: *5:12 AM 11/6/2022-5:14 AM 11/6/2022
+644: *5:14 AM 11/6/2022-5:28 AM 11/6/2022
+645: *5:28 AM 11/6/2022-5:31 AM 11/6/2022
+646: *5:31 AM 11/6/2022-5:36 AM 11/6/2022
+647: *5:37 AM 11/6/2022-5:38 AM 11/6/2022
+648: *5:38 AM 11/6/2022-5:44 AM 11/6/2022
+649: *5:44 AM 11/6/2022-5:50 AM 11/6/2022
+650: *5:50 AM 11/6/2022-5:53 AM 11/6/2022
+651: *5:53 AM 11/6/2022-6:35 AM 11/6/2022
+655: *6:35 AM 11/6/2022-7:51 AM 11/6/2022
+656: *7:51 AM 11/6/2022-7:51 AM 11/6/2022
+666: *7:52 AM 11/6/2022-7:58 AM 11/6/2022
+667: *7:58 AM 11/6/2022-
+- overwhelmed
+
+- weiter scales!
+- match faces mit emos
+- bored
+- ok, back to code!, scale
+- schau ob ich die perlen habe
+- zurueck zur emo scale!
+- perlen idee!!!!! vorlaeufig ehm ich mal das emoticons
+- geh zurueck zu den emos
+- open one note
+- test!
+remove duplicates from array
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+125# oasis
 airport 
 
 
