@@ -1,7 +1,69 @@
 
+function test13_load_yt_in_iframe() {
 
+	var iDiv = document.createElement('iframe');
+	iDiv.id = 'iframe1';
+	mStyle(iDiv, { w: 500, h: 300 })
+	document.getElementById("map").appendChild(iDiv);
+	iDiv.src = "https://www.youtube.com/embed/3pNpHZ1yv3I"; //YES!
+	//iDiv.src = "https://www.youtube.com/embed/3pNpHZ1yv3I?autoplay=1";
 
+}
+async function test12_iconviewer(){
+	
+	//let x=12+13, y='13';console.log(Number(y),x.toFixed(3), Number('12').toFixed(2)); return; //4.toFixed(2) geht NICHT!!!
+	//test4_save();	test5_load();	test7_uploadfile();
 
+	//Speech = new SpeechAPI('D');
+
+	//console.log('SymKeys', SymKeys);
+	let items = findKeys('face').map(x => Syms[x]); // filter keys
+	items = KeySets['smileys-emotion'].map(x => Syms[x]);
+	items = items.map(x=>({key:x.key,text:x.text,E:x.E,D:x.D,family:x.family}));
+	let items2 = Info.emotion.map(x => ({ key: x, E: x, D:'', family: 'opensans', text: '' }));
+	sortBy(items2, 'key');
+	items2 = arrRemoveDuplicates(items2,'E');
+	//console.log('items', items2[0])
+	items=items.concat(items2);
+
+	dTable = mBy('map');
+	for (const item of items) ui_type_item(dTable, item, {}, null, true);
+	//dTable.innerHTML = createViewerContent(items, [], true);
+}
+async function test11_say(){
+	say(germanize('wie fuehlst du dich gerade?'),'pl',test12_iconviewer,1,.8,.8);
+}
+function test10_autocomplete() {
+	let map = M.map = create_map({ zoom: 16 });
+	map.on('moveend', function (e) { calc_map_dims(); console.log("dims", M.dims); });
+
+	let tb = M.toolbar = create_toolbar(map);
+	mButton('Dummy', dummy_reaction, tb);
+	mAutocomplete(tb);
+
+	// let city = rChoose(M.capitals);
+	// console.log('city has been chosen:', city);
+
+	// map.flyTo(Geo.cities[city].center);
+}
+function test9_google() {
+	mBy('map').innerHTML = `
+	<iframe class='flat' id="gmap" src="http://maps.google.com/maps?z=15&t=m&q=loc:48.25+16.3&output=embed" width="100%" height="${window.innerWidth}"></iframe>	
+	`;
+	let x = document.getElementById('gmap');
+	console.log('x', x);
+	mStyle(x, { bg: 'blue' });
+
+}
+function test8_load_googlemap_in_iframe() {
+
+	var iDiv = document.createElement('iframe');
+	iDiv.id = 'iframe1';
+	mStyle(iDiv, { w: '100%', h: '100%' })
+	document.getElementById("map").appendChild(iDiv);
+	iDiv.src = 'https://maps.google.com/maps?q=48.2,16.3&output=embed';
+	// iDiv.src = 'https://maps.google.com/maps?q=48.2,16.3&hl=fa;z=5&ie=UTF8&output=embed&hl=en';
+}
 function test5_load(){
 	dTable = mDiv('map');
 	load_all();

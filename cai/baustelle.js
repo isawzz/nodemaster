@@ -91,6 +91,11 @@ function serialize_all() {
 	downloadAsYaml(list, '_all');
 	toLocalStorage(list);
 }
+function show_emos() {
+	//
+	dTable = mBy('map');
+
+}
 
 
 //unused

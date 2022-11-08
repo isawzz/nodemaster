@@ -6,26 +6,9 @@ async function start() {
 		Socket.on('disconnect', x => console.log('got disconnect', x));
 		Socket.on('update', x => console.log('got update', x));
 	}
-	//test4_save();	test5_load();	test7_uploadfile();
-
-	//Speech = new SpeechAPI('D');
 	await load_syms();
 
-	console.log('SymKeys', SymKeys);
-	let items = findKeys('face').map(x => Syms[x]); // filter keys
-	items = KeySets['smileys-emotion'].map(x => Syms[x]);
-	items = items.map(x=>({key:x.key,text:x.text,E:x.E,D:x.D,family:x.family}));
-	let items2 = Info.emotion.map(x => ({ key: x, E: x, D:'', family: 'opensans', text: '' }));
-	sortBy(items2, 'key');
-	items2 = arrRemoveDuplicates(items2,'E');
-	//console.log('items', items2[0])
-	items=items.concat(items2);
-
-	dTable = mBy('map');
-	for (const item of items) ui_type_item(dTable, item, {}, null, true);
-	//dTable.innerHTML = createViewerContent(items, [], true);
-
-	//say(germanize('wie fuehlst du dich gerade?'),'pl',show_emos(),1,.8,.8);
+	test13_load_yt_in_iframe(); //test11_say();
 
 }
 function mSpan(dParent, styles, innerHTML) {

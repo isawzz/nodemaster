@@ -2286,7 +2286,135 @@ __________ so 6.11.22 waiting at the airport...
 666: *7:52 AM 11/6/2022-7:58 AM 11/6/2022
 667: *7:58 AM 11/6/2022-2:13 PM 11/6/2022
 792: *2:13 PM 11/6/2022-2:40 PM 11/6/2022
-793: *2:40 PM 11/6/2022-
+793: *2:40 PM 11/6/2022-6:05 AM 11/7/2022
+__________ mo 7.11.22 waiting at the airport...  
+794: *6:05 AM 11/7/2022-6:05 AM 11/7/2022
+795: *6:06 AM 11/7/2022-6:13 AM 11/7/2022
+796: *6:13 AM 11/7/2022-6:36 AM 11/7/2022
+797: *6:36 AM 11/7/2022-11:57 AM 11/7/2022
+ok - backen
+ok - email jeslyn
+ok - gu schwimmen
+825: *11:57 AM 11/7/2022-11:59 AM 11/7/2022
+826: *11:59 AM 11/7/2022-2:25 PM 11/7/2022
+827: *2:25 PM 11/7/2022-2:28 PM 11/7/2022
+828: *2:28 PM 11/7/2022-2:28 PM 11/7/2022
+- this is really for beginners but it is still cool
+- py course
+829: *2:28 PM 11/7/2022-2:51 PM 11/7/2022
+830: *2:51 PM 11/7/2022-2:54 PM 11/7/2022
+ich koennte testen was 12.toFixed(3) outputted
+831: *3:05 PM 11/7/2022-4:17 PM 11/7/2022
+832: *4:17 PM 11/7/2022-5:45 PM 11/7/2022
+837: *5:45 PM 11/7/2022-5:45 PM 11/7/2022
+ok - spa gu
+842: *5:46 PM 11/7/2022-6:40 PM 11/7/2022
+843: *6:40 PM 11/7/2022-6:57 PM 11/7/2022
+__________ di 8.11.22 waiting at the airport...  
+844: *6:58 PM 11/7/2022-5:58 AM 11/8/2022
+845: *5:58 AM 11/8/2022-6:02 AM 11/8/2022
+846: *6:02 AM 11/8/2022-6:09 AM 11/8/2022
+847: *6:09 AM 11/8/2022-6:11 AM 11/8/2022
+848: *6:11 AM 11/8/2022-6:11 AM 11/8/2022
+849: *6:11 AM 11/8/2022-6:15 AM 11/8/2022
+850: *6:16 AM 11/8/2022-6:18 AM 11/8/2022
+- =>caba tests sind auch sehr gut!!! hab ich leaflet noch? JA
+851: *6:18 AM 11/8/2022-6:19 AM 11/8/2022
+852: *6:19 AM 11/8/2022-6:23 AM 11/8/2022
+853: *6:23 AM 11/8/2022-6:29 AM 11/8/2022
+ok - next: iframe mit yt
+854: *6:29 AM 11/8/2022-6:30 AM 11/8/2022
+855: *6:30 AM 11/8/2022-6:35 AM 11/8/2022
+856: *6:35 AM 11/8/2022-6:36 AM 11/8/2022
+857: *6:36 AM 11/8/2022-6:37 AM 11/8/2022
+858: *6:37 AM 11/8/2022-6:38 AM 11/8/2022
+859: *6:38 AM 11/8/2022-6:44 AM 11/8/2022
+860: *6:44 AM 11/8/2022-6:50 AM 11/8/2022
+- versuch es anders
+- nisargadatta detachment!
+https://www.youtube.com/watch?v=Kopr6Q3oGHw
+- example 2
+- try example in examples
+- js automatically start a youtube playing in iframe ?autoplay=1
+861: *6:50 AM 11/8/2022-6:50 AM 11/8/2022
+862: *6:50 AM 11/8/2022-6:51 AM 11/8/2022
+https://www.youtube.com/embed/Kopr6Q3oGHw?
+&loop=1&controls=0&mute=1&autoplay=1
+863: *6:51 AM 11/8/2022-7:01 AM 11/8/2022
+864: *7:01 AM 11/8/2022-7:08 AM 11/8/2022
+865: *7:08 AM 11/8/2022-7:11 AM 11/8/2022
+866: *7:11 AM 11/8/2022-7:13 AM 11/8/2022
+867: *7:13 AM 11/8/2022-7:16 AM 11/8/2022
+868: *7:16 AM 11/8/2022-7:28 AM 11/8/2022
+869: *7:28 AM 11/8/2022-7:37 AM 11/8/2022
+870: *7:37 AM 11/8/2022-
+- es muss so simpel sein wie fitbit und ein gutes feedback geben!
+==>mach ein besseres example!!!
+- alle params die aendern kann!!!
+1. wie aendere ich minute?
+mach ein onclick event
+- youtube does not start autoplay unless mute=1
+- read yt embed zeug!
+- start yt at a certain place (from ... to)
+
+
+Puget Sound Energy
+1-888-225-5773
+Hours: Mon-Fri 7:30 a.m. - 6:30 p.m.
+address von apartment: 701 122nd Ave NE #405 Bellevue 98005
+701 122nd Ave NE #405 98005 Bellevue WA
+
+Julia phone: 4256917683
+Julia email: ladyjkh@gmail.com
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+- kann ich ein yt von meinem program aus starten? in einem frame?
+- einen assistant will ich auch
+- work on the library
+- waers nicht cool wenn ich einfach tools haette ein game wirklich schnell zu definieren? und dann eine ai dazu
+und dann ais gegeneinander spielen lassen
+
+
+
+
+
+
+- at this point something else is relevant
+
+- hole mir das heft / materialund gehe es durch
+
+
+
+- emotion scale colors
+- add colors
 
 
 

@@ -369,6 +369,9 @@ function test11_gengraph() {
 //#endregion
 
 // #region map tests 0
+
+
+
 function test10_autocomplete() {
 	let map = M.map = create_map({ zoom: 16 });
 	map.on('moveend', function (e) { calc_map_dims(); console.log("dims", M.dims); });
@@ -382,7 +385,6 @@ function test10_autocomplete() {
 
 	// map.flyTo(Geo.cities[city].center);
 }
-
 function test9_google() {
 	mBy('map').innerHTML = `
 	<iframe class='flat' id="gmap" src="http://maps.google.com/maps?z=15&t=m&q=loc:48.25+16.3&output=embed" width="100%" height="${window.innerWidth}"></iframe>	
