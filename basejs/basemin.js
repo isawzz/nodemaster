@@ -219,6 +219,38 @@ const DIBOA = {
 
 	}
 };
+const EMO = {
+	emoscale: {
+		freedom: { list: 'love, joy, freedom', n: 7, color: 'skyblue', syn: 'joy,appreciation,empowerment,love', rem: 'let go', key: 'smiling face with hearts', E: 'joy', D: 'freiheit', stage: 'open heart', danger: 'arrogance', advice: 'be quiet', loc: 'airport', locd: 'flughafen' },
+		flow: { list: "I'm in the zone", n: 6, color: 'lightblue', syn: 'passion', rem: 'remain watchful', key: 'smiling face with smiling eyes', E: 'energy', D: 'energie', stage: 'constant flow', danger: 'greed', advice: 'now', loc: 'airport', locd: 'flughafen' },
+		enthusiasm: { list: 'enthusiasm', n: 5, color: 'indigo', syn: 'eagerness,happiness', rem: 'stick to plan', key: 'cowboy hat face', E: 'energy', D: 'energie', stage: 'energy', danger: 'planlos verpuffen lassen, being overly confident', advice: 'make a plan, stick to the plan', loc: 'airport', locd: 'flughafen' },
+		belief: { list: '', n: 4, color: 'violet', syn: 'positive expectation', rem: 'make plan', key: 'relieved face', E: 'calm', D: 'ruhig', stage: 'inner peace', danger: 'turning outside', advice: 'stay centered', loc: 'airport', locd: 'flughafen' },
+		optimism: { list: '', n: 3, color: 'pink', rem: 'playful', key: 'slightly smiling face', E: 'spark', D: 'froehlich', stage: 'potential', danger: 'turning outside', advice: 'stay centered', loc: 'airport', locd: 'flughafen' },
+		hopefulness: { list: '', n: 2, color: 'skyblue', rem: 'playful', key: 'relieved face', E: 'hopeful', D: 'hoffnungsvoll', stage: 'creativity', danger: 'rushing into mania', advice: 'remain playful', loc: 'airport', locd: 'flughafen' },
+		contentment: { list: '', n: 1, color: 'skyblue', rem: 'abide', key: 'yawning face', E: 'serene', D: 'zufriedenheit', stage: 'gelassenheit', danger: 'passivity', advice: 'stay active', loc: 'airport', locd: 'flughafen' },
+		boredom: { list: '', n: 0, color: 'grey', rem: 'oracle', key: 'pensive face', E: 'bored', D: 'langeweile', stage: 'gelassenheit', danger: 'passivity', advice: 'stay active', loc: 'airport', locd: 'flughafen' },
+		pessimism: { list: '', n: -1, color: 'skyblue', rem: 'last day', key: 'expressionless face', E: 'serene', D: 'langeweile', stage: 'gelassenheit', danger: 'passivity', advice: 'stay active', loc: 'airport', locd: 'flughafen' },
+		frustration: { list: '', n: -2, color: 'skyblue', syn: 'irritation,impatience', rem: 'retreat', key: 'worried face', E: 'irritated', D: 'irritiert', stage: 'damage control', danger: 'losing contenance', advice: 'retreat', loc: 'airport', locd: 'flughafen' },
+		overwhelm: { list: '', n: -3, color: 'lime', rem: 'pause', key: 'worried face', E: 'irritated', D: 'irritiert', stage: 'damage control', danger: 'losing contenance', advice: 'retreat', loc: 'airport', locd: 'flughafen' },
+		disappointment: { list: '', n: -4, color: 'yellow', rem: 'pause', key: 'disappointed face', E: 'disappointed', D: 'enttaeuscht', stage: 'damage control', danger: 'toxicity', advice: 'retreat', loc: 'airport', locd: 'flughafen' },
+		doubt: { list: '', n: -5, color: 'skyblue', syn: 'worry', rem: 'robot', key: 'worried face', E: 'worried', D: 'besorgt', stage: 'damage control', danger: 'toxicity', advice: 'surrender', loc: 'airport', locd: 'flughafen' },
+		blame: { list: '', n: -6, color: 'orangered', syn: 'discouragement,anger,revenge', rem: 'robot', key: 'face with symbols on mouth', E: 'blaming', D: 'schuld zuweisend', stage: 'damage control', danger: 'toxicity', advice: 'surrender', loc: 'airport', locd: 'flughafen' },
+		hatred: { list: '', n: -7, color: 'red', syn: 'rage,jealousy', rem: 'robot', key: 'black heart', E: 'hatful', D: 'hass', stage: 'damage control', danger: 'toxicity', advice: 'surrender', loc: 'airport', locd: 'flughafen' },
+		guilt: { list: '', n: -8, color: 'firebrick', syn: 'insecurity,unworthiness', rem: 'robot', key: 'worried face', E: 'guilty', D: 'wertlos', stage: 'damage control', danger: 'toxicity', advice: 'surrender', loc: 'airport', locd: 'flughafen' },
+		fear: { list: '', n: -9, color: 'red', syn: 'grief,desperation,despair,powerlessness', rem: 'robot', key: 'anxious face with sweat', E: 'powerless', D: 'ohnmacht', stage: 'damage control', danger: 'toxicity', advice: 'surrender', loc: 'airport', locd: 'flughafen' }
+	},
+	myscale: {
+		disziplin: { max: 1 },
+		gelassenheit: { min: 1, max: 4 },
+		energie: { min: 3, max: 5 },
+		ausgelassenheit: { min: 5, max: 7 },
+		friede: { min: 5, max: 7 },
+		freude: { min: 5, max: 7 },
+		freiheit: { min: 5, max: 7 },
+		liebe: { min: 5, max: 7 },
+	}
+};
+
 const INNO = {
 	color: { blue: '#89aad7', red: '#da7887', green: '#72b964', yellow: '#e2e57a', purple: '#9b58ba' },
 	sym: {
@@ -850,8 +882,8 @@ function mDiv(dParent, styles, id, inner, classes, sizing) {
 
 	return d;
 }
-function mDivLine(dParent, styles={}, id=null, innerlist=['','',''], classes=null) {
-	addKeys({w:'100%',box:true,padding:4},styles);
+function mDivLine(dParent, styles = {}, id = null, innerlist = ['', '', ''], classes = null) {
+	addKeys({ w: '100%', box: true, padding: 4 }, styles);
 	//if (!isList(innerlist)||innerlist.length<3) innerlist=
 	let d = mDiv(dParent, styles, id, `<div>${innerlist[0]}</div><div>${innerlist[1]}</div><div>${innerlist[2]}</div>`, classes);
 	mStyle(d, { display: 'flex', 'justify-content': 'space-between', 'align-items': 'center' });
@@ -1489,6 +1521,13 @@ function mSuit(ckey, sz = 20, color = null) {
 
 }
 function mSize(d, w, h, unit = 'px', sizing) { if (nundef(h)) h = w; mStyle(d, { width: w, height: h }, unit); if (isdef(sizing)) setRect(d, sizing); }
+function mSpan(dParent, styles, innerHTML) {
+	let d = mCreate('span');
+	if (isdef(styles)) mStyle(d, styles);
+	if (isdef(innerHTML)) d.innerHTML = innerHTML;
+	if (isdef(dParent)) mAppend(dParent, d);
+	return d;
+}
 const STYLE_PARAMS = {
 	align: 'text-align',
 	bg: 'background-color',
@@ -1689,15 +1728,15 @@ function mStyleRemove(elem, prop) {
 function mStyle(elem, styles, unit = 'px') {
 
 	elem = toElem(elem);
-	let bg,fg;
+	let bg, fg;
 	if (isdef(styles.bg) || isdef(styles.fg)) {
-		[bg,fg] = colorsFromBFA(styles.bg, styles.fg, styles.alpha);
+		[bg, fg] = colorsFromBFA(styles.bg, styles.fg, styles.alpha);
 	}
 	if (isdef(styles.upperRounding) || isdef(styles.lowerRounding)) {
 		let rtop = '' + valf(styles.upperRounding, 0) + unit;
 		let rbot = '' + valf(styles.lowerRounding, 0) + unit;
 		styles['border-radius'] = rtop + ' ' + rtop + ' ' + rbot + ' ' + rbot;
-	} 
+	}
 	if (isdef(styles.box)) styles['box-sizing'] = 'border-box';
 	if (isdef(styles.round)) styles['border-radius'] = '50%';
 
@@ -4483,8 +4522,8 @@ function downloadJson(o, filename) {
 	dl.setAttribute("download", "_aaa\\scene.json");
 	dl.click();
 }
-function fromLocalStorage(name='_all'){return JSON.parse(localStorage.getItem(name));}
-function toLocalStorage(o,name='_all'){localStorage.setItem(name,JSON.stringify(o));}
+function fromLocalStorage(name = '_all') { return JSON.parse(localStorage.getItem(name)); }
+function toLocalStorage(o, name = '_all') { localStorage.setItem(name, JSON.stringify(o)); }
 
 //#endregion
 
@@ -5034,7 +5073,7 @@ function firstNumber(s) {
 	}
 	return null;
 }
-function germanize(s){return toUmlaut(s);}
+function germanize(s) { return toUmlaut(s); }
 function normalize_string(s, sep = '_') {
 	s = s.toLowerCase().trim();
 	let res = '';
@@ -5417,7 +5456,7 @@ function findChildrenOfType(type, parentElem) {
 	}
 	return res;
 }
-function findKeys(s) { return SymKeys.filter(x => contains(x, s) || contains(Syms[x].E,s) || isdef(Syms[x].D) && contains(Syms[x].D,s)); }
+function findKeys(s) { return SymKeys.filter(x => contains(x, s) || contains(Syms[x].E, s) || isdef(Syms[x].D) && contains(Syms[x].D, s)); }
 function format_currency(num) {
 	//num should be presented with 2 decimals and a $ sign in front
 	return '$' + num.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -5724,7 +5763,7 @@ function recConvertLists(o, maxlen = 25) {
 		} else if (isDict(val)) recConvertLists(val);
 	}
 }
-function route_post_json(url,o,callback){post_json(url,o,callback);}
+function route_post_json(url, o, callback) { post_json(url, o, callback); }
 async function route_path_yaml_dict(url) {
 	let data = await fetch(url);
 	let text = await data.text();
@@ -5992,8 +6031,8 @@ function say(text, lang, callback, volume, rate, pitch) {
 		voices.map(x => console.log('voice', x.name, x.lang));
 
 		let voice = voices.filter(x => x.lang.includes(lang));
-		if (isEmpty(voice)) voice = voices.filter(x=>x.name.toLowerCase().includes(lang));
-		console.log('voice',voice.map(x=>x.name))
+		if (isEmpty(voice)) voice = voices.filter(x => x.name.toLowerCase().includes(lang));
+		console.log('voice', voice.map(x => x.name))
 		msg.voice = valf(rChoose(voice), rChoose(voices));
 		console.log('________es spricht', msg.voice.name);
 		if (isdef(volume)) msg.volume = volume;

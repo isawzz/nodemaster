@@ -1,4 +1,23 @@
 
+function test14() {
+	dTable = mBy('map');
+
+	//let speech = new Speaker();
+	//console.log('EMO',EMO);
+	//say('how are you feeling???', 'david', show_emos, 1, .75);
+	//say('how are you feeling???', 'zira', () => { ui_type_item(dTable, Syms[rChoose(SymKeys)]); }, 1, .8);
+	say('which emotions do you feel right now???', 'zira', () => {
+		console.log('!!!', EMO);
+		for (const k in EMO.emoscale) {
+			let emo = EMO.emoscale[k];
+			let item = Syms[emo.key];
+			console.log('item', item, emo.key);
+			ui_type_item(dTable, item,{},null,emo.E); //,{bg:emo.color,padding:10})
+		}
+	}, 1, .8);
+
+}
+
 function test13_load_yt_in_iframe() {
 
 	var iDiv = document.createElement('iframe');
@@ -9,8 +28,8 @@ function test13_load_yt_in_iframe() {
 	//iDiv.src = "https://www.youtube.com/embed/3pNpHZ1yv3I?autoplay=1";
 
 }
-async function test12_iconviewer(){
-	
+async function test12_iconviewer() {
+
 	//let x=12+13, y='13';console.log(Number(y),x.toFixed(3), Number('12').toFixed(2)); return; //4.toFixed(2) geht NICHT!!!
 	//test4_save();	test5_load();	test7_uploadfile();
 
@@ -19,19 +38,19 @@ async function test12_iconviewer(){
 	//console.log('SymKeys', SymKeys);
 	let items = findKeys('face').map(x => Syms[x]); // filter keys
 	items = KeySets['smileys-emotion'].map(x => Syms[x]);
-	items = items.map(x=>({key:x.key,text:x.text,E:x.E,D:x.D,family:x.family}));
-	let items2 = Info.emotion.map(x => ({ key: x, E: x, D:'', family: 'opensans', text: '' }));
+	items = items.map(x => ({ key: x.key, text: x.text, E: x.E, D: x.D, family: x.family }));
+	let items2 = Info.emotion.map(x => ({ key: x, E: x, D: '', family: 'opensans', text: '' }));
 	sortBy(items2, 'key');
-	items2 = arrRemoveDuplicates(items2,'E');
+	items2 = arrRemoveDuplicates(items2, 'E');
 	//console.log('items', items2[0])
-	items=items.concat(items2);
+	items = items.concat(items2);
 
 	dTable = mBy('map');
 	for (const item of items) ui_type_item(dTable, item, {}, null, true);
 	//dTable.innerHTML = createViewerContent(items, [], true);
 }
-async function test11_say(){
-	say(germanize('wie fuehlst du dich gerade?'),'pl',test12_iconviewer,1,.8,.8);
+async function test11_say() {
+	say(germanize('wie fuehlst du dich gerade?'), 'pl', test12_iconviewer, 1, .8, .8);
 }
 function test10_autocomplete() {
 	let map = M.map = create_map({ zoom: 16 });
@@ -64,11 +83,11 @@ function test8_load_googlemap_in_iframe() {
 	iDiv.src = 'https://maps.google.com/maps?q=48.2,16.3&output=embed';
 	// iDiv.src = 'https://maps.google.com/maps?q=48.2,16.3&hl=fa;z=5&ie=UTF8&output=embed&hl=en';
 }
-function test5_load(){
+function test5_load() {
 	dTable = mDiv('map');
 	load_all();
 }
-function test4_save(){
+function test4_save() {
 	let [table, players] = test3_sit_around_table(3); //tests1_canvas_vs_dom(); //tests0_table_drawloop();function mStyle
 	serialize_all();
 }
@@ -80,7 +99,7 @@ function test3_sit_around_table(n = 4) {
 	let mindim = Math.min(w, h);
 	let [szTable, szPlayer] = [mindim / 2, mindim / 4];
 	let pTable = { x: offx + w / 2 - szTable / 2, y: offy + h / 2 - szTable / 2 };
-	let styles = { round: true, x: pTable.x, y: pTable.y, position: 'absolute', w: szTable, h: szTable, classname:'wood' };
+	let styles = { round: true, x: pTable.x, y: pTable.y, position: 'absolute', w: szTable, h: szTable, classname: 'wood' };
 	let d = mDiv(dTable, styles); //, null, null, 'wood');
 	let table = iAdd({ numplayers: n, styles: styles }, { div: d })
 
