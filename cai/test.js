@@ -1,20 +1,25 @@
 
-function test14() {
-	dTable = mBy('map');
 
-	//let speech = new Speaker();
-	//console.log('EMO',EMO);
-	//say('how are you feeling???', 'david', show_emos, 1, .75);
-	//say('how are you feeling???', 'zira', () => { ui_type_item(dTable, Syms[rChoose(SymKeys)]); }, 1, .8);
-	say('which emotions do you feel right now???', 'zira', () => {
-		console.log('!!!', EMO);
-		for (const k in EMO.emoscale) {
-			let emo = EMO.emoscale[k];
-			let item = Syms[emo.key];
-			console.log('item', item, emo.key);
-			ui_type_item(dTable, item,{},null,emo.E); //,{bg:emo.color,padding:10})
-		}
-	}, 1, .8);
+
+function test14() {
+	show_emos();
+	say('what do you feel right now???','uk',null,.5,.8);
+}
+
+function question2(ev){
+	//console.log('target',ev.target)
+	let id = evToId(ev);
+	let item = Items[id];
+
+	// ev.stopPropagation();
+	// let d=ev.target;
+	// let item = JSON.parse(d.getAttribute('item'));
+	console.log('item',item);
+	say(`why do you feel ${item.list}???`,'uk',show_reasons,.5,.8);
+
+	// let d1=d.lastChild;
+	// let list = d1.innerHTML;
+	// console.log('list',d,d.id); //,d1,list);
 
 }
 
@@ -46,7 +51,7 @@ async function test12_iconviewer() {
 	items = items.concat(items2);
 
 	dTable = mBy('map');
-	for (const item of items) ui_type_item(dTable, item, {}, null, true);
+	for (const item of items) ui_type_item(dTable, item, {}, null, item.key);
 	//dTable.innerHTML = createViewerContent(items, [], true);
 }
 async function test11_say() {
@@ -82,6 +87,28 @@ function test8_load_googlemap_in_iframe() {
 	document.getElementById("map").appendChild(iDiv);
 	iDiv.src = 'https://maps.google.com/maps?q=48.2,16.3&output=embed';
 	// iDiv.src = 'https://maps.google.com/maps?q=48.2,16.3&hl=fa;z=5&ie=UTF8&output=embed&hl=en';
+}
+function test7_uploadfile() {
+	let o = { filename: 'ex', data: { text: 'aber geh jaaaa', id: 78912 } };
+
+	route_post_json('http://localhost:3000/post/json', o, r => {
+		dTable.children[0].innerHTML = r.checked;
+		console.log(JSON.stringify(r))
+	});
+}
+function test6_init() {
+
+	let item = { styles: { bg: 'orange', w: 30, h: 30, round: true } };
+
+	iInit(c1, item);
+	iInit(c2, item);
+	iInit(dTable, item);
+
+	start_loop();
+
+	//jetzt soll sich irgendwas an dem item aendern! zB die color
+	setTimeout(() => item.styles.bg = BLUE, 2000);
+
 }
 function test5_load() {
 	dTable = mDiv('map');
@@ -124,7 +151,6 @@ function test3_sit_around_table(n = 4) {
 
 	return [table, players];
 }
-
 function test2_sit_around_table() {
 	dTable = mBy('map');
 	let r = getRect(dTable);
@@ -160,7 +186,6 @@ function tests0_table_drawloop() {
 	TO.running = setInterval(drawloop, 100);
 	test1ttt(); //test0();
 }
-
 function test1ttt() {
 	let board = new Board(dTable, 4, 4, ev => {
 		let field = Items[ev.target.id];

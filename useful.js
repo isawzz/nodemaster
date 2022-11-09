@@ -1,3 +1,24 @@
+function test14() {
+	say('what do you feel right now???','uk',show_emos,.5,.8);
+	//show_emos();
+
+	// dTable = mBy('map');
+	// //let speech = new Speaker();
+	// //console.log('EMO',EMO);
+	// //say('how are you feeling???', 'david', show_emos, 1, .75);
+	// //say('how are you feeling???', 'zira', () => { ui_type_item(dTable, Syms[rChoose(SymKeys)]); }, 1, .8);
+	// say('which emotions do you feel right now???', 'zira', () => {
+	// 	console.log('!!!', EMO);
+	// 	for (const k in EMO.emoscale) {
+	// 		let emo = EMO.emoscale[k];
+	// 		let item = Syms[emo.key];
+	// 		console.log('item', item, emo.key);
+	// 		ui_type_item(dTable, item,{},null,emo.E); //,{bg:emo.color,padding:10})
+	// 	}
+	// }, 1, .8);
+
+}
+
 function createViewerContent(mygames, tables = [], show_key = false) {
 	let mydata = uiGetViewerStylesAndStart();
 	mydata += uiGetViewer(mygames, tables, show_key);

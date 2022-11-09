@@ -29,9 +29,9 @@ function cv_init_origin(canvas, origin) {
 	return pt;
 
 }
-function default_item_serializer(o) {return copyKeys(o, {}, { live: true });}
-function detect_size_from_styles(st={},defsize=50){
-	return [valf(st.w,st.sz,defsize),valf(st.w,st.sz,defsize)];
+function default_item_serializer(o) { return copyKeys(o, {}, { live: true }); }
+function detect_size_from_styles(st = {}, defsize = 50) {
+	return [valf(st.w, st.sz, defsize), valf(st.w, st.sz, defsize)];
 }
 function draw_on_canvas(cx, item) {
 	if (isdef(item.draw)) { item.draw(cx, item); }
@@ -49,8 +49,8 @@ function draw_on_canvas(cx, item) {
 function draw_on_div(dParent, item) {
 	if (isdef(item.draw)) { item.draw(dParent, item); }
 	else {
-		let d= mDiv(dParent,item.styles);
-		iAdd(item,{div:d});
+		let d = mDiv(dParent, item.styles);
+		iAdd(item, { div: d });
 	}
 
 }
@@ -67,18 +67,18 @@ function game_add_item(item) {
 	addKeys({ init: true, refresh: true, draw: draw_dom }, item);
 	G.items.push(item);
 }
-function get_center(d){let r=getRect(d);return [r.w/2,r.h/2];}
+function get_center(d) { let r = getRect(d); return [r.w / 2, r.h / 2]; }
 function iInit(dParent, item) {
 	if (is_canvas(dParent)) draw_on_canvas(dParent.cx, item);
-	else draw_on_div(dParent,item);
+	else draw_on_div(dParent, item);
 }
 function is_canvas(item) { return isdef(item.cx) && isdef(item.cv); }
-function load_all(){
-	dTable.innerHTML='';
-	Items=[];
+function load_all() {
+	dTable.innerHTML = '';
+	Items = [];
 	let list = fromLocalStorage();
-	for(const l of list){
-		iAdd(l,{div:mDiv(dTable,l.styles,l.id)});
+	for (const l of list) {
+		iAdd(l, { div: mDiv(dTable, l.styles, l.id) });
 	}
 }
 function serialize_all() {
@@ -87,14 +87,62 @@ function serialize_all() {
 		let res = default_item_serializer(Items[id]);
 		list.push(res);
 	}
-	console.log('list',list)
+	console.log('list', list)
 	downloadAsYaml(list, '_all');
 	toLocalStorage(list);
 }
 function show_emos() {
-	//
-	dTable = mBy('map');
 
+	dTable = mBy('map'); mCenterCenterFlex(dTable);
+	let d = mDiv(dTable, { box: true, padding: 20, opacity: 0, w: '80%' });
+	//console.log('!!!', EMO);
+	for (const k in EMO.emoscale) {
+		let emo = EMO.emoscale[k];
+		//old code
+		//let item = Syms[emo.key];
+		//ui_type_item(dTable, item, { bg: emo.color }, null, emo.list.split(',').join('<br>')); //,{bg:emo.color,padding:10})
+
+		//new code
+		let sym = Syms[emo.key];
+		let item = { name:k, key:emo.key, text: sym.text, color: emo.color, family: sym.family, list: emo.list };
+		//mDiv(dTable, { bg:'red', family: family, fz:fz }, item[p]);	break;
+		//console.log('item',item)
+		let handler = question2; // ev => { evNoBubble(ev); question2(ev) };
+		let d1=ui_type_item_line(d, item, { cursor:'pointer', aitems: 'center', padding: 6, gap: 4, margin: 6, rounding: 12, bg: item.color, fg: 'contrast' }, handler, ['text', 'list']); // emo.list.split(',').join('<br>')); //,{bg:emo.color,padding:10})
+
+		iAdd(item,{div:d1});
+		//mLinebreak(d)
+	}
+	mAppear(d,2500)
+}
+
+function ui_type_item_line(dParent, item, styles = {}, handler = null, props = []) {
+	//addKeys({ align: 'center', overflow: 'hidden', cursor: 'pointer', rounding: 10, margin: 10, padding: 5, w: 120, wmin: 90, display: 'inline-block', bg: 'random', fg: 'contrast' }, styles);
+	let d = mDiv(dParent, styles, `d_${item.key}`); mFlex(d);
+	for (const p of props) {
+		let family = p == 'text' ? item.family : 'arial';
+		let fz = p == 'text' ? 50 : 20;
+		//console.log('content',item[p])
+		mDiv(d, { family: family, fz: fz, bg: styles.bg, fg: styles.fg }, null, item[p]);
+	}
+	if (isdef(handler)) {d.onclick = handler; d.setAttribute('item',JSON.stringify(item));}
+	return d;
+}
+function ui_type_item(dParent, item, styles = {}, handler = null, show_key = null) {
+	addKeys({ align: 'center', overflow: 'hidden', cursor: 'pointer', rounding: 10, margin: 10, padding: 5, w: 120, wmin: 90, display: 'inline-block', bg: 'random', fg: 'contrast' }, styles);
+
+	let d = mDiv(dParent, styles);
+	if (!isEmptyOrWhiteSpace(item.text)) mSpan(d, { family: item.family, fz: 50 }, item.text);
+	if (show_key) {
+		mSpan(d, { family: 'opensans' }, '<br>' + show_key);
+		// mSpan(d, { family: 'opensans' }, `key:${item.key}`);
+		// if (isdef(item.E)) mSpan(d, { family: 'opensans' }, `<br>E:${item.E}`);
+		// if (isdef(item.D)) mSpan(d, { family: 'opensans' }, `<br>D:${item.D}`);
+	}
+
+	if (isdef(handler)) d.onclick = handler;
+
+	return d;
 }
 
 
@@ -116,12 +164,12 @@ function draw_canvas(item) {
 	}
 }
 function drawloop() { G.items.map(x => { if (isdef(x.draw)) x.draw(x); }); }
-function mDivCenteredAt(pt,dParent,styles={},id,inner,classes){
+function mDivCenteredAt(pt, dParent, styles = {}, id, inner, classes) {
 	//add a default size if none:
-	[w,h]=detect_size_from_styles(styles);
-	addKeys({position:'relative'},dParent);
-	copyKeys({position:'absolute',x:w / 2, y:h / 2},styles);
-	return mDiv(dParent,styles,id,inner,classes);
+	[w, h] = detect_size_from_styles(styles);
+	addKeys({ position: 'relative' }, dParent);
+	copyKeys({ position: 'absolute', x: w / 2, y: h / 2 }, styles);
+	return mDiv(dParent, styles, id, inner, classes);
 }
 function start_loop() {
 	TO.running = setInterval(() => {

@@ -221,25 +221,37 @@ const DIBOA = {
 };
 const EMO = {
 	emoscale: {
-		freedom: { list: 'love, joy, freedom', n: 7, color: 'skyblue', syn: 'joy,appreciation,empowerment,love', rem: 'let go', key: 'smiling face with hearts', E: 'joy', D: 'freiheit', stage: 'open heart', danger: 'arrogance', advice: 'be quiet', loc: 'airport', locd: 'flughafen' },
-		flow: { list: "I'm in the zone", n: 6, color: 'lightblue', syn: 'passion', rem: 'remain watchful', key: 'smiling face with smiling eyes', E: 'energy', D: 'energie', stage: 'constant flow', danger: 'greed', advice: 'now', loc: 'airport', locd: 'flughafen' },
-		enthusiasm: { list: 'enthusiasm', n: 5, color: 'indigo', syn: 'eagerness,happiness', rem: 'stick to plan', key: 'cowboy hat face', E: 'energy', D: 'energie', stage: 'energy', danger: 'planlos verpuffen lassen, being overly confident', advice: 'make a plan, stick to the plan', loc: 'airport', locd: 'flughafen' },
-		belief: { list: '', n: 4, color: 'violet', syn: 'positive expectation', rem: 'make plan', key: 'relieved face', E: 'calm', D: 'ruhig', stage: 'inner peace', danger: 'turning outside', advice: 'stay centered', loc: 'airport', locd: 'flughafen' },
-		optimism: { list: '', n: 3, color: 'pink', rem: 'playful', key: 'slightly smiling face', E: 'spark', D: 'froehlich', stage: 'potential', danger: 'turning outside', advice: 'stay centered', loc: 'airport', locd: 'flughafen' },
-		hopefulness: { list: '', n: 2, color: 'skyblue', rem: 'playful', key: 'relieved face', E: 'hopeful', D: 'hoffnungsvoll', stage: 'creativity', danger: 'rushing into mania', advice: 'remain playful', loc: 'airport', locd: 'flughafen' },
-		contentment: { list: '', n: 1, color: 'skyblue', rem: 'abide', key: 'yawning face', E: 'serene', D: 'zufriedenheit', stage: 'gelassenheit', danger: 'passivity', advice: 'stay active', loc: 'airport', locd: 'flughafen' },
-		boredom: { list: '', n: 0, color: 'grey', rem: 'oracle', key: 'pensive face', E: 'bored', D: 'langeweile', stage: 'gelassenheit', danger: 'passivity', advice: 'stay active', loc: 'airport', locd: 'flughafen' },
-		pessimism: { list: '', n: -1, color: 'skyblue', rem: 'last day', key: 'expressionless face', E: 'serene', D: 'langeweile', stage: 'gelassenheit', danger: 'passivity', advice: 'stay active', loc: 'airport', locd: 'flughafen' },
-		frustration: { list: '', n: -2, color: 'skyblue', syn: 'irritation,impatience', rem: 'retreat', key: 'worried face', E: 'irritated', D: 'irritiert', stage: 'damage control', danger: 'losing contenance', advice: 'retreat', loc: 'airport', locd: 'flughafen' },
-		overwhelm: { list: '', n: -3, color: 'lime', rem: 'pause', key: 'worried face', E: 'irritated', D: 'irritiert', stage: 'damage control', danger: 'losing contenance', advice: 'retreat', loc: 'airport', locd: 'flughafen' },
-		disappointment: { list: '', n: -4, color: 'yellow', rem: 'pause', key: 'disappointed face', E: 'disappointed', D: 'enttaeuscht', stage: 'damage control', danger: 'toxicity', advice: 'retreat', loc: 'airport', locd: 'flughafen' },
-		doubt: { list: '', n: -5, color: 'skyblue', syn: 'worry', rem: 'robot', key: 'worried face', E: 'worried', D: 'besorgt', stage: 'damage control', danger: 'toxicity', advice: 'surrender', loc: 'airport', locd: 'flughafen' },
-		blame: { list: '', n: -6, color: 'orangered', syn: 'discouragement,anger,revenge', rem: 'robot', key: 'face with symbols on mouth', E: 'blaming', D: 'schuld zuweisend', stage: 'damage control', danger: 'toxicity', advice: 'surrender', loc: 'airport', locd: 'flughafen' },
-		hatred: { list: '', n: -7, color: 'red', syn: 'rage,jealousy', rem: 'robot', key: 'black heart', E: 'hatful', D: 'hass', stage: 'damage control', danger: 'toxicity', advice: 'surrender', loc: 'airport', locd: 'flughafen' },
-		guilt: { list: '', n: -8, color: 'firebrick', syn: 'insecurity,unworthiness', rem: 'robot', key: 'worried face', E: 'guilty', D: 'wertlos', stage: 'damage control', danger: 'toxicity', advice: 'surrender', loc: 'airport', locd: 'flughafen' },
-		fear: { list: '', n: -9, color: 'red', syn: 'grief,desperation,despair,powerlessness', rem: 'robot', key: 'anxious face with sweat', E: 'powerless', D: 'ohnmacht', stage: 'damage control', danger: 'toxicity', advice: 'surrender', loc: 'airport', locd: 'flughafen' }
+		freedom: { list: 'freedom, love, joy, empowerment', key: 'smiling face with hearts', n: 4, color: 'violet', E: 'joy', D: 'freiheit', stage: 'open heart', danger: 'arrogance', advice: 'be quiet', loc: 'airport', locd: 'flughafen', syn: 'joy,appreciation,empowerment,love', rem: 'let go' },
+		zone: { list: "enthusiasm, in the zone, creative", key: 'nerd face', n: 3, color: 'indigo', E: 'energy', D: 'energie', stage: 'constant flow', danger: 'greed', advice: 'now', loc: 'airport', locd: 'flughafen', syn: 'passion', rem: 'remain watchful' },
+		grateful: { list: 'grateful, happy, playful', key: 'smiling face with halo', n: 2, color: 'blue', syn: 'eagerness,happiness', rem: 'stick to plan', E: 'energy', D: 'energie', stage: 'energy', danger: 'planlos verpuffen lassen, being overly confident', advice: 'make a plan, stick to the plan', loc: 'airport', locd: 'flughafen' },
+		contentment: { list: 'calm, centered, content, trusting', key: 'relieved face', n: 1, color: 'green', rem: 'abide', E: 'serene', D: 'zufriedenheit', stage: 'gelassenheit', danger: 'passivity', advice: 'stay active', loc: 'airport', locd: 'flughafen' },
+		boredom: { list: 'bored, empty, aimless, tired', key: 'slightly frowning face', n: 0, color: 'sienna', rem: 'oracle', E: 'bored', D: 'langeweile', stage: 'gelassenheit', danger: 'passivity', advice: 'stay active', loc: 'airport', locd: 'flughafen' },
+		pessimism: { list: 'worried, doubting, indecisive', key: 'worried face', n: -1, color: 'yellow', rem: 'last day', E: 'serene', D: 'langeweile', stage: 'gelassenheit', danger: 'passivity', advice: 'stay active', loc: 'airport', locd: 'flughafen' },
+		overwhelm: { list: 'overwhelmed, anxious, irritated', key: 'anxious face with sweat', n: -2, color: 'orange', rem: 'pause', E: 'irritated', D: 'irritiert', stage: 'damage control', danger: 'losing contenance', advice: 'retreat', loc: 'airport', locd: 'flughafen' },
+		blame: { list: 'anger, blame, resentment', key: 'face with symbols on mouth', n: -3, color: 'red', syn: 'discouragement,anger,revenge', rem: 'robot', E: 'blaming', D: 'schuld zuweisend', stage: 'damage control', danger: 'toxicity', advice: 'surrender', loc: 'airport', locd: 'flughafen' },
+		hatred: { list: 'jealousy, hatred, aggressive', key: 'black heart', n: -4, color: 'black', syn: 'rage,jealousy', rem: 'robot', E: 'hateful', D: 'hass', stage: 'damage control', danger: 'toxicity', advice: 'surrender', loc: 'airport', locd: 'flughafen' },
+		guilt: { list: 'guilty, powerless, frozen, suicidal', key: 'cold face', n: -5, color: 'grey', syn: 'insecurity,unworthiness', rem: 'robot', E: 'guilty', D: 'wertlos', stage: 'damage control', danger: 'toxicity', advice: 'surrender', loc: 'airport', locd: 'flughafen' },
+		// belief: { list: 'hopeful,', n: 4, color: 'violet', syn: 'positive expectation', rem: 'make plan', key: 'relieved face', E: 'calm', D: 'ruhig', stage: 'inner peace', danger: 'turning outside', advice: 'stay centered', loc: 'airport', locd: 'flughafen' },
+		// optimism: { list: '', n: 3, color: 'pink', rem: 'playful', key: 'slightly smiling face', E: 'spark', D: 'froehlich', stage: 'potential', danger: 'turning outside', advice: 'stay centered', loc: 'airport', locd: 'flughafen' },
+		// hopefulness: { list: '', n: 2, color: 'skyblue', rem: 'playful', key: 'relieved face', E: 'hopeful', D: 'hoffnungsvoll', stage: 'creativity', danger: 'rushing into mania', advice: 'remain playful', loc: 'airport', locd: 'flughafen' },
+		// frustration: { list: '', n: -2, color: 'skyblue', syn: 'irritation,impatience', rem: 'retreat', key: 'worried face', E: 'irritated', D: 'irritiert', stage: 'damage control', danger: 'losing contenance', advice: 'retreat', loc: 'airport', locd: 'flughafen' },
+		//disappointment: { list: '', n: -4, color: 'yellow', rem: 'pause', key: 'disappointed face', E: 'disappointed', D: 'enttaeuscht', stage: 'damage control', danger: 'toxicity', advice: 'retreat', loc: 'airport', locd: 'flughafen' },
+		//doubt: { list: '', n: -5, color: 'skyblue', syn: 'worry', rem: 'robot', key: 'worried face', E: 'worried', D: 'besorgt', stage: 'damage control', danger: 'toxicity', advice: 'surrender', loc: 'airport', locd: 'flughafen' },
+		//fear: { list: '', n: -9, color: 'red', syn: 'grief,desperation,despair,powerlessness', rem: 'robot', key: 'anxious face with sweat', E: 'powerless', D: 'ohnmacht', stage: 'damage control', danger: 'toxicity', advice: 'surrender', loc: 'airport', locd: 'flughafen' }
 	},
-	myscale: {
+	remedy: {
+		sleep: { list: 'rest, close your eyes, deep breath' },
+		distraction: { list: 'read, movie, docu, audiobook' },
+		walk: { list: 'music, tm, library, walk' },
+		babystep: { list: 'veggies,fruit,haushalt,wae,wasser,tee' },
+		work: { list: 'post, box, shelf, people, todolist' },
+		action: { list: 'piano, violin, game' },
+		choices: { list: 'dice, todolist, openlist, choices' },
+		retreat: { list: 'flight, dimension change' },
+		cafe: { list: 'renew, plan' },
+		inside: { list: 'watch, freeze, meditate' }
+	},
+	attitude: {
 		disziplin: { max: 1 },
 		gelassenheit: { min: 1, max: 4 },
 		energie: { min: 3, max: 5 },
@@ -6028,13 +6040,13 @@ function say(text, lang, callback, volume, rate, pitch) {
 		var text = valf(text, 'Hello, world!');
 		var msg = new SpeechSynthesisUtterance();
 		var voices = DA.voicelist;
-		voices.map(x => console.log('voice', x.name, x.lang));
+		//voices.map(x => console.log('voice', x.name, x.lang));
 
 		let voice = voices.filter(x => x.lang.includes(lang));
 		if (isEmpty(voice)) voice = voices.filter(x => x.name.toLowerCase().includes(lang));
-		console.log('voice', voice.map(x => x.name))
+		//console.log('voice', voice.map(x => x.name))
 		msg.voice = valf(rChoose(voice), rChoose(voices));
-		console.log('________es spricht', msg.voice.name);
+		//console.log('________es spricht', msg.voice.name);
 		if (isdef(volume)) msg.volume = volume;
 		if (isdef(rate)) msg.rate = rate;
 		if (isdef(pitch)) msg.pitch = pitch;
