@@ -1,3 +1,5 @@
+const { optionsFromCapabilities } = require("ol/source/WMTS");
+
 onload = start; TESTING = 'nosockets'; // live | nosockets | nginx | null
 async function start() {
 	if (TESTING != 'nosockets') {
@@ -7,19 +9,20 @@ async function start() {
 		Socket.on('update', x => console.log('got update', x));
 	}
 	await load_syms();
+	dTable = mBy('map');mCenterFlex(dTable);
 	test15_qa(); //test12_iconviewer(); //	test13_load_yt_in_iframe(); //test11_say();
 
 }
 function test15_qa(){
 	show_available_voices();
   prompt('how are you feeling right now?',)
-
+	show_emos();
 }
 function show_available_voices(){
 	say('hallo','english male',()=>console.log(DA.voicelist.map(x=>x.name)));
 }
-function prompt(s){
-
+function prompt(s,styles,id){
+	mDivLine(dTable,styles,id,['',s,'']);
 }
 
 
