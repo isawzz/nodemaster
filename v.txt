@@ -2484,9 +2484,21 @@ Join Zoom Meeting
 https://us02web.zoom.us/j/85476168711?pwd=QlBxZk8yMHp1SVd3K0tLQ3hqdEhWZz09
 961: *8:24 AM 11/10/2022-10:51 AM 11/10/2022
 987: *10:57 AM 11/10/2022-11:18 AM 11/10/2022
-988: *11:18 AM 11/10/2022-
+988: *11:18 AM 11/10/2022-11:23 AM 11/10/2022
+989: *11:23 AM 11/10/2022-
+- abfahrt
 - 
 
+1500 pro monat wenn zuviel =>1400... 1000 ist minimum
+auto 50
+essen 500
+ausgehen 100
+katzen 200
+anschaffungen 150
+========
+=1000 min - 1500 max
+
++vet+edu/sport
 aktiv
 
 - dict_remove(di,keys)
