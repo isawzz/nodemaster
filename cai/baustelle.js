@@ -33,6 +33,10 @@ function default_item_serializer(o) { return copyKeys(o, {}, { live: true }); }
 function detect_size_from_styles(st = {}, defsize = 50) {
 	return [valf(st.w, st.sz, defsize), valf(st.w, st.sz, defsize)];
 }
+function dict_augment(di,o){addKeys(o,di); return di;}
+function dict_remove(di,keys){
+	//except sollte auch als list funktionieren!!!
+}
 function draw_on_canvas(cx, item) {
 	if (isdef(item.draw)) { item.draw(cx, item); }
 	else {
@@ -91,37 +95,13 @@ function serialize_all() {
 	downloadAsYaml(list, '_all');
 	toLocalStorage(list);
 }
-function show_emos() {
-
-	dTable = mBy('map'); mCenterCenterFlex(dTable);
-	let d = mDiv(dTable, { box: true, padding: 20, opacity: 0, w: '80%' });
-	//console.log('!!!', EMO);
-	for (const k in EMO.emoscale) {
-		let emo = EMO.emoscale[k];
-		//old code
-		//let item = Syms[emo.key];
-		//ui_type_item(dTable, item, { bg: emo.color }, null, emo.list.split(',').join('<br>')); //,{bg:emo.color,padding:10})
-
-		//new code
-		let sym = Syms[emo.key];
-		let item = { name:k, key:emo.key, text: sym.text, color: emo.color, family: sym.family, list: emo.list };
-		//mDiv(dTable, { bg:'red', family: family, fz:fz }, item[p]);	break;
-		//console.log('item',item)
-		let handler = question2; // ev => { evNoBubble(ev); question2(ev) };
-		let d1=ui_type_item_line(d, item, { cursor:'pointer', aitems: 'center', padding: 6, gap: 4, margin: 6, rounding: 12, bg: item.color, fg: 'contrast' }, handler, ['text', 'list']); // emo.list.split(',').join('<br>')); //,{bg:emo.color,padding:10})
-
-		iAdd(item,{div:d1});
-		//mLinebreak(d)
-	}
-	mAppear(d,2500)
-}
-
+function show_available_voices() { say('', 'english male', () => console.log(DA.voicelist.map(x => x.name))); }
 function ui_type_item_line(dParent, item, styles = {}, handler = null, props = []) {
 	//addKeys({ align: 'center', overflow: 'hidden', cursor: 'pointer', rounding: 10, margin: 10, padding: 5, w: 120, wmin: 90, display: 'inline-block', bg: 'random', fg: 'contrast' }, styles);
 	let d = mDiv(dParent, styles, `d_${item.key}`); mFlex(d);
 	for (const p of props) {
 		let family = p == 'text' ? item.family : 'arial';
-		let fz = p == 'text' ? 50 : 20;
+		let fz = p == 'text' ? 40 : 20;
 		//console.log('content',item[p])
 		mDiv(d, { family: family, fz: fz, bg: styles.bg, fg: styles.fg }, null, item[p]);
 	}

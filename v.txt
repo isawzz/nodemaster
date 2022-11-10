@@ -2450,7 +2450,93 @@ __________ mi 9.11.22 waiting at the airport...
 1- name, key
 2- stopPropagation
 3- muss alles noch refined werden!!!
-940: *11:23 AM 11/9/2022-12:56 PM 11/9/2022
+__________ do 10.11.22 waiting at the airport...  
+940: *11:23 AM 11/9/2022-6:29 AM 11/10/2022
+941: *6:29 AM 11/10/2022-6:39 AM 11/10/2022
+942: *6:39 AM 11/10/2022-6:41 AM 11/10/2022
+943: *6:41 AM 11/10/2022-7:03 AM 11/10/2022
+944: *7:03 AM 11/10/2022-7:09 AM 11/10/2022
+945: *7:09 AM 11/10/2022-7:22 AM 11/10/2022
+946: *7:22 AM 11/10/2022-7:22 AM 11/10/2022
+947: *7:22 AM 11/10/2022-7:33 AM 11/10/2022
+948: *7:33 AM 11/10/2022-7:34 AM 11/10/2022
+949: *7:34 AM 11/10/2022-7:35 AM 11/10/2022
+950: *7:35 AM 11/10/2022-7:41 AM 11/10/2022
+951: *7:41 AM 11/10/2022-7:44 AM 11/10/2022
+ok - dict_augment(d,o)
+- WAY SHORTER!
+- WAY SHORTER!!!!
+- prompt!
+steps recorden: q,div,options mit divs,selected
+when clicking on an option
+952: *7:44 AM 11/10/2022-7:45 AM 11/10/2022
+953: *7:45 AM 11/10/2022-7:51 AM 11/10/2022
+954: *7:51 AM 11/10/2022-7:59 AM 11/10/2022
+955: *7:59 AM 11/10/2022-8:06 AM 11/10/2022
+956: *8:06 AM 11/10/2022-8:08 AM 11/10/2022
+957: *8:08 AM 11/10/2022-8:09 AM 11/10/2022
+958: *8:09 AM 11/10/2022-8:17 AM 11/10/2022
+959: *8:17 AM 11/10/2022-8:23 AM 11/10/2022
+ok - email check
+960: *8:23 AM 11/10/2022-8:23 AM 11/10/2022
+ok - sms zoom link
+Join Zoom Meeting
+https://us02web.zoom.us/j/85476168711?pwd=QlBxZk8yMHp1SVd3K0tLQ3hqdEhWZz09
+961: *8:24 AM 11/10/2022-10:51 AM 11/10/2022
+987: *10:57 AM 11/10/2022-11:18 AM 11/10/2022
+988: *11:18 AM 11/10/2022-
+- 
+
+aktiv
+
+- dict_remove(di,keys)
+- iStrip entfernt live!
+- wie sieht G aus?
+
+- weiter
+- bug sta 40
+- ui_type_sym_text_line
+
+
+
+
+
+
+lets play the game of life!
+- earned: ernte!!!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+___________________ game: 'real world' restrict to 8h max!
+20 / spa
+10 / eink kochen
+40 oasis putz
+100 4 zoom
+- deep cleaning?
+- repair drawer?
+10 TKD
+
+
+
+
+
+
+something else is relevant all this is not real it is a dream
+
+die seele 
 liste
 =>prompt, loop muss besser werden!!!
 
@@ -2459,7 +2545,30 @@ liste
 13150 102nd Lane Northeast, Unit 2
 kirkland 98034
 
+toilet seat                      ...  $39
+shower head                      ...  $30
+handyman repair kitchen,bathroom ... $200
+professional cleaning            ... $390
+days Nov 1-5 (pro-rated)         ... $340 
+total ----------------               $999
+1999-999 => 1000
 
+
+
+Julia, please: here is a list of things that I found after thoroughly going through the apartment:
+1. a terribly dirty tile on the balcony has to be cleaned
+2. the toilet is not flushing well and the seat is extremely dirty (clean or replace)
+3. the bathtub is very dirty, needs to be cleaned inside and around
+4. in the kitchen there is a drawer that is detached: needs to be fixed
+5. the windows and especially screens are very dirty
+6. appliances have to be cleaned inside! (microwave, dishwasher)
+7. fireplace: I am not sure if this is supposed to be like this (loose on the top)
+8. tiles in entrance are very dirty
+9. plus general cleaning of floors, etc.
+
+all these items show as ok on our last inspection list, so please try and clean/fix whatever you can.
+
+When you are done please tell me and I will inspect again. Ideally you should be present!
 
 
 

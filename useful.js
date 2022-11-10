@@ -1,3 +1,27 @@
+function show_emos() {
+
+	//dTable = mBy('map'); mCenterCenterFlex(dTable);
+	let d = mDiv(dTable, { box: true, padding: 20, wmin:600 });
+	//console.log('!!!', EMO);
+	for (const k in EMO.emoscale) {
+		let emo = EMO.emoscale[k];
+		//old code
+		//let item = Syms[emo.key];
+		//ui_type_item(dTable, item, { bg: emo.color }, null, emo.list.split(',').join('<br>')); //,{bg:emo.color,padding:10})
+
+		//new code
+		let sym = Syms[emo.key];
+		let item = { name:k, key:emo.key, text: sym.text, color: emo.color, family: sym.family, list: emo.list };
+		//mDiv(dTable, { bg:'red', family: family, fz:fz }, item[p]);	break;
+		//console.log('item',item)
+		let handler = question2; // ev => { evNoBubble(ev); question2(ev) };
+		let d1=ui_type_item_line(d, item, { cursor:'pointer', aitems: 'center', vpadding: 6, hpadding:12, gap: 4, margin: 6, rounding: 12, bg: item.color, fg: 'contrast' }, handler, ['text', 'list']); // emo.list.split(',').join('<br>')); //,{bg:emo.color,padding:10})
+
+		iAdd(item,{div:d1});
+		//mLinebreak(d)
+	}
+	//mFall(d); //mAppear(d,2500)
+}
 function test14() {
 	say('what do you feel right now???','uk',show_emos,.5,.8);
 	//show_emos();

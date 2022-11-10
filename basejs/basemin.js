@@ -2326,6 +2326,7 @@ function iAdd(item, props) {
 			lookupAddIfToList(val, ['memberOf'], id);
 		}
 	}
+	return item;
 }
 function iDiv(i) { return isdef(i.live) ? i.live.div : isdef(i.div) ? i.div : i; }
 function iMeasure(item, sizingOptions) {
