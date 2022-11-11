@@ -2494,8 +2494,58 @@ __________ fr 11.11.22 waiting at the airport...
 - test transition style
 3: *7:28 AM 11/11/2022-8:40 AM 11/11/2022
 4: *8:40 AM 11/11/2022-8:55 AM 11/11/2022
-5: *8:55 AM 11/11/2022-
-- activ: 8:57 AM 11/11/2022-
+5: *8:55 AM 11/11/2022-11:00 AM 11/11/2022
+6: *11:00 AM 11/11/2022-11:03 AM 11/11/2022
+-yt: notion api
+- activ: 8:57 AM 11/11/2022-11:02 AM 11/11/2022
+secret token for notions_app_1 integration: secret_ggpkeeMbAvBFhb4CMlr1QwR23jOuYeHlSwedcWBl7CK
+7- *11:03 AM 11/11/2022-11:08 AM 11/11/2022
+ok - save integration notion_app_1
+8: *11:08 AM 11/11/2022-11:09 AM 11/11/2022
+ok - create new page in Isabel Morel's Notion: test_page_1
+9: *11:09 AM 11/11/2022-11:10 AM 11/11/2022
+ok - share, select the new integration (gorgonzola irgendwas)
+10: *11:10 AM 11/11/2022-11:11 AM 11/11/2022
+ok - data source: new database
+- retrieve a database
+11: *11:11 AM 11/11/2022-11:24 AM 11/11/2022
+12: *11:24 AM 11/11/2022-11:24 AM 11/11/2022
+13: *11:24 AM 11/11/2022-1:43 PM 11/11/2022
+14: *1:43 PM 11/11/2022-1:44 PM 11/11/2022
+15: *1:44 PM 11/11/2022-1:54 PM 11/11/2022
+16: *1:54 PM 11/11/2022-1:55 PM 11/11/2022
+>npm i express @notionhq/client
+17: *1:55 PM 11/11/2022-1:56 PM 11/11/2022
+>npm init -y
+18: *1:57 PM 11/11/2022-1:58 PM 11/11/2022
+>npm i --save-dev nodemon
+19: *1:58 PM 11/11/2022-1:59 PM 11/11/2022
+>npm i dotenv
+20: *1:59 PM 11/11/2022-2:03 PM 11/11/2022
+>npm i ejs
+21: *2:03 PM 11/11/2022-2:04 PM 11/11/2022
+server.js
+>npm run devstart
+22: *2:04 PM 11/11/2022-2:06 PM 11/11/2022
+add PORT to .env
+browse to localhost:PORT
+23: *2:06 PM 11/11/2022-3:26 PM 11/11/2022
+24: *3:26 PM 11/11/2022-
+- mach eine app:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
