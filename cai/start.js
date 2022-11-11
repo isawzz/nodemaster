@@ -26,14 +26,16 @@ function test15_qa() {
 	q1();
 }
 function q1() {
-	let list0 = dict2list(EMO.emoscale, 'k'); console.log('list', list0)
+	let list0 = dict2list(EMO.emoscale, 'k'); //console.log('list', list0)
 	let list = dict2list(EMO.emoscale, 'k').map(x => ({ name: x.k, key: x.key, color: x.color, text: x.list })); //console.log('list', list)
 	prompt('what are you feeling right now?', list, q2);
 
 }
 function q2(ev) { 
 	let id = evToId(ev); console.log('selected', id); 
-
+	G.a = id;
+	let item = Items[id];
+	console.log('item',item);
 }
 function prompt(q, list, handler) {
 	let dqcont = mDiv(dTable, G.stcont);
@@ -45,12 +47,14 @@ function prompt(q, list, handler) {
 		//console.log('color',x.color)
 		let da = ui_type_sym_text_line(dacont, x, dict_augment({ bg: x.color, fg: 'contrast' },G.sta), handler, ['text', 'list']); // emo.list.split(',').join('<br>')); //,{bg:emo.color,padding:10})
 		let item = iAdd(x, { div: da });
-		console.log('item',item)
+		//console.log('item',item)
 		aslist.push(item.id);
 	});
 	G.q.push(qitem.id);
 	G.as.push(aslist);
 	G.i++;
+	//dTable['transition-style']="in:wipe:up";
+	dTable.setAttribute('transition-style',"in:wipe:bottom-right");
 }
 function iStrip(item){ }
 function ui_type_sym_text_line(dParent, item, styles = {}, handler = null) {

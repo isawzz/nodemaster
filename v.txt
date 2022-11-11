@@ -2486,7 +2486,53 @@ https://us02web.zoom.us/j/85476168711?pwd=QlBxZk8yMHp1SVd3K0tLQ3hqdEhWZz09
 987: *10:57 AM 11/10/2022-11:18 AM 11/10/2022
 988: *11:18 AM 11/10/2022-11:23 AM 11/10/2022
 __________ fr 11.11.22 waiting at the airport...  
-989: *11:23 AM 11/10/2022-
+989: *11:23 AM 11/10/2022-6:39 AM 11/11/2022
+1000: *7:01 AM 11/11/2022-7:08 AM 11/11/2022
+1: *7:08 AM 11/11/2022-7:10 AM 11/11/2022
+2: *7:10 AM 11/11/2022-7:28 AM 11/11/2022
+- test it
+- test transition style
+3: *7:28 AM 11/11/2022-8:40 AM 11/11/2022
+4: *8:40 AM 11/11/2022-8:55 AM 11/11/2022
+5: *8:55 AM 11/11/2022-
+- activ: 8:57 AM 11/11/2022-
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+- 
+- simple steps!
+- developers.notion.com/docs
+- open gui-challenges
+
+- rem cons
 - abfahrt
 
 
