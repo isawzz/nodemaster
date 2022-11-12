@@ -2530,17 +2530,132 @@ server.js
 add PORT to .env
 browse to localhost:PORT
 23: *2:06 PM 11/11/2022-3:26 PM 11/11/2022
-24: *3:26 PM 11/11/2022-
 - mach eine app:
-
-
-
-
-
-
-
-
-
+24: *3:26 PM 11/11/2022-4:39 AM 11/12/2022
+__________ sa 12.11.22 waiting at the airport...  
+75: *4:39 AM 11/12/2022-4:42 AM 11/12/2022
+create fie notion.js
+76: *4:42 AM 11/12/2022-4:43 AM 11/12/2022
+code
+77: *4:44 AM 11/12/2022-4:45 AM 11/12/2022
+get secret key
+78: *4:45 AM 11/12/2022-4:47 AM 11/12/2022
+- goto retrieve a db: https://developers.notion.com/reference/retrieve-a-database
+79: *4:47 AM 11/12/2022-4:48 AM 11/12/2022
+- mach ein async getDatabase
+80: *4:48 AM 11/12/2022-4:53 AM 11/12/2022
+81: *4:53 AM 11/12/2022-4:54 AM 11/12/2022
+>npm run devstart
+82: *4:54 AM 11/12/2022-5:11 AM 11/12/2022
+83: *5:11 AM 11/12/2022-5:20 AM 11/12/2022
+- do I have admin access?
+1. log in to https://www.notion.so/
+2. click settings and members in sidebar
+- bug: database not found
+84: *5:20 AM 11/12/2022-5:20 AM 11/12/2022
+85: *5:21 AM 11/12/2022-5:24 AM 11/12/2022
+86: *5:24 AM 11/12/2022-5:28 AM 11/12/2022
+- restart
+- find out why?
+- ich kann das mit der integration nicht machen
+87: *5:28 AM 11/12/2022-5:28 AM 11/12/2022
+____COURSE: - database in notion: https://www.youtube.com/watch?v=mAJOpO73d8Y
+88: *5:28 AM 11/12/2022-5:34 AM 11/12/2022
+89: *5:34 AM 11/12/2022-5:36 AM 11/12/2022
+- what is a database: collection of records, in notion each record is a page
+90: *5:36 AM 11/12/2022-5:39 AM 11/12/2022
+how to create a database in notion:
+1. create a notions page: test0
+2. type /data and select Database inline
+=>makes a table
+3*. add name: db0
+91: *5:39 AM 11/12/2022-5:40 AM 11/12/2022
+how to turn a inline database to a full database:
+1. click auf die 6 punkte neben 'Table', Turn into page
+(can make this back by: Turn into inline)
+92: *5:41 AM 11/12/2022-5:48 AM 11/12/2022
+(weiter bei 3*):
+4. if starting with /table need to specify table Database!
+93: *5:48 AM 11/12/2022-5:55 AM 11/12/2022
+ok - notion no limit on blocks for personal account
+94: *5:56 AM 11/12/2022-5:56 AM 11/12/2022
+____RECAP tutorial 1:
+1. goto https://developers.notion.com/docs
+=>zurueck zum andern tutorial
+95: *5:56 AM 11/12/2022-5:58 AM 11/12/2022
+2. oben im eck: my integrations =>open in new window
+96: *5:58 AM 11/12/2022-6:16 AM 11/12/2022
+3. da ist eine test-_integration
+97: *6:17 AM 11/12/2022-6:30 AM 11/12/2022
+___TRAVERSY: https://www.youtube.com/watch?v=9JdP-S3crt8
+1. add calendar database: https://www.notion.so/isabel-workspace/268cc832d7bd4c229fa725f7e733eea5?v=9077adb5d7954aaa9c00a6874adf08d1
+2. update database id in .env
+98: *6:30 AM 11/12/2022-6:32 AM 11/12/2022
+3. goto developers.notion.com/reference/intro
+https://developers.notion.com/reference/intro
+99: *6:32 AM 11/12/2022-6:33 AM 11/12/2022
+4. click on list databases (leider deprecated!) aber try it!
+100: *6:34 AM 11/12/2022-6:36 AM 11/12/2022
+5. open Postman: https://winter-desert-141632.postman.co/home (google acct)
+101: *6:36 AM 11/12/2022-6:37 AM 11/12/2022
+6. from https://developers.notion.com/reference/get-databases, copy GET url on top: https://api.notion.com/v1/databases
+102: *6:37 AM 11/12/2022-6:37 AM 11/12/2022
+7. in postman, click on shortcut to GET request, and enter this url
+103: *6:38 AM 11/12/2022-6:38 AM 11/12/2022
+=>will result in error:
+{
+    "object": "error",
+    "status": 401,
+    "code": "unauthorized",
+    "message": "API token is invalid."
+}
+104: *6:38 AM 11/12/2022-7:17 AM 11/12/2022
+105: *7:17 AM 11/12/2022-7:19 AM 11/12/2022
+106: *7:20 AM 11/12/2022-7:20 AM 11/12/2022
+107: *7:21 AM 11/12/2022-7:22 AM 11/12/2022
+108: *7:22 AM 11/12/2022-7:22 AM 11/12/2022
+109: *7:22 AM 11/12/2022-7:24 AM 11/12/2022
+110: *7:24 AM 11/12/2022-7:25 AM 11/12/2022
+1 2 3- weiter traversy
+1 2 3- weiter traversy!
+8. goto https://developers.notion.com/reference/authentication
+9. click my integrations open in new tab
+10. create new integration internal, test0_int workspace Isabel
+11. submit, secret: secret_XV4JSBzujmE9V8ANyUg8642kTyJNLHpFXzn9Tc0kkOG
+111: *7:25 AM 11/12/2022-7:27 AM 11/12/2022
+112: *7:27 AM 11/12/2022-7:28 AM 11/12/2022
+113: *7:28 AM 11/12/2022-7:28 AM 11/12/2022
+1- click field and enter secret key
+2- select type: Bearer Token
+3- in postman, authorization bearer token: enter secret key
+114: *7:31 AM 11/12/2022-7:31 AM 11/12/2022
+12. in postman, authorization bearer token: enter secret key
+13. select type: Bearer Token
+14. click field and enter secret key
+15. Send 
+=>code is now: missing version 400 error (anders als im yt!)
+115: *7:31 AM 11/12/2022-7:32 AM 11/12/2022
+116: *7:32 AM 11/12/2022-7:34 AM 11/12/2022
+117: *7:34 AM 11/12/2022-7:35 AM 11/12/2022
+1 2 3- error! research fix
+16. in postman, click on Headers
+17. add key Notion-Version
+18. add value 2021-05-13
+19. Send 
+=>diesmal geht es!
+118: *7:35 AM 11/12/2022-7:35 AM 11/12/2022
+119: *7:35 AM 11/12/2022-7:36 AM 11/12/2022
+120: *7:36 AM 11/12/2022-7:43 AM 11/12/2022
+2 3- weiter traverrsy
+20. go back to page w/ calendar: https://www.notion.so/isabel-workspace/268cc832d7bd4c229fa725f7e733eea5?v=9077adb5d7954aaa9c00a6874adf08d1
+21. click share
+secret_XV4JSBzujmE9V8ANyUg8642kTyJNLHpFXzn9Tc0kkOG
+121: *7:43 AM 11/12/2022-8:09 AM 11/12/2022
+122: *8:09 AM 11/12/2022-
+- could not find database with
+268cc832-d7bd-4c22-9fa7-25f7e733eea5
+id
+- immer noch gleicher error: ich kann nicht share integration!!!
 
 
 
