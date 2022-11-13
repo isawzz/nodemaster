@@ -2656,7 +2656,91 @@ secret_XV4JSBzujmE9V8ANyUg8642kTyJNLHpFXzn9Tc0kkOG
 268cc832-d7bd-4c22-9fa7-25f7e733eea5
 id
 - immer noch gleicher error: ich kann nicht share integration!!!
+__________ so 13.11.22 waiting at the airport...  
+150: *5:46 AM 11/13/2022-5:58 AM 11/13/2022
+151: *5:59 AM 11/13/2022-5:59 AM 11/13/2022
+152: *5:59 AM 11/13/2022-6:01 AM 11/13/2022
+153: *6:02 AM 11/13/2022-6:11 AM 11/13/2022
+154: *6:11 AM 11/13/2022-6:23 AM 11/13/2022
+155: *6:23 AM 11/13/2022-6:28 AM 11/13/2022
+156: *6:28 AM 11/13/2022-6:29 AM 11/13/2022
+157: *6:29 AM 11/13/2022-6:30 AM 11/13/2022
+158: *6:30 AM 11/13/2022-6:40 AM 11/13/2022
+159: *6:40 AM 11/13/2022-6:40 AM 11/13/2022
+160: *6:40 AM 11/13/2022-6:44 AM 11/13/2022
+161: *6:44 AM 11/13/2022-6:44 AM 11/13/2022
+162: *6:44 AM 11/13/2022-6:45 AM 11/13/2022
+163: *6:45 AM 11/13/2022-6:46 AM 11/13/2022
+164: *6:46 AM 11/13/2022-6:51 AM 11/13/2022
+165: *6:51 AM 11/13/2022-7:13 AM 11/13/2022
+ok - email jeslyn
+166: *7:13 AM 11/13/2022-9:19 AM 11/13/2022
+action: 7:16 AM 11/13/2022-9:19 AM 11/13/2022
+167: *9:25 AM 11/13/2022-10:37 AM 11/13/2022
+action: 10:38 AM 11/13/2022-11:37 AM 11/13/2022
+170: *11:37 AM 11/13/2022-11:46 AM 11/13/2022
+171: *11:46 AM 11/13/2022-11:47 AM 11/13/2022
+172: *11:47 AM 11/13/2022-12:00 PM 11/13/2022
+173: *12:00 PM 11/13/2022-12:01 PM 11/13/2022
+1- open codepen
+2- watch yt video webdevsimplified postcss
+3- open gui challenges
+174: *12:01 PM 11/13/2022-12:15 PM 11/13/2022
+aktiv
+176: *12:15 PM 11/13/2022-12:53 PM 11/13/2022
+ok - pay utility
+ok - scanning
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+- fragen jeslyn
+- costco?
+- spa
+
+
+- finde ein anderes gelb fuer worried OR mach all die farben blasser
+- JA GEHT!!!!!
+- try !important at end of css rule
+- js how to make class more important than set style
+- ja das ist der fall!!!!
+- do NOT set background in styles!
+- wahrscheinlich weil ich den style setze! teste das!
+- selected class soll bg setzen
+- mClass
+- noch krasser
+- baustelle toggleSelection
+- toggleSelection ?
+- wenn das prompt eine list hat und einen handler, 
+= line break
+- back to my soul place though!
+- cd timer: soul place ann auch heissen: edu yt paar minuten!
+- back to my soul place
 
 
 

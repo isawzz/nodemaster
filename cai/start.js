@@ -36,16 +36,27 @@ function q2(ev) {
 	G.a = id;
 	let item = Items[id];
 	console.log('item',item);
+	if (nundef(DA.selist)) DA.selist = [];
+	toggle_select(item,DA.selist,'selected')
+	//das prompt kann ja eine form sein!
 }
 function prompt(q, list, handler) {
 	let dqcont = mDiv(dTable, G.stcont);
+	mLinebreak(dTable);
 	let dq = mDiv(dqcont, G.stq, `q_${G.i}`, q);
+
 	let qitem = iAdd({type:'q',index:G.i,text:q},{cont:dqcont,div:dq});
 	let dacont = mDiv(dTable, G.stcont);
 	let aslist = [];
 	list.map(x => {
 		//console.log('color',x.color)
-		let da = ui_type_sym_text_line(dacont, x, dict_augment({ bg: x.color, fg: 'contrast' },G.sta), handler, ['text', 'list']); // emo.list.split(',').join('<br>')); //,{bg:emo.color,padding:10})
+
+		//depending on list elements, use different ui_types: 
+		//1. if {key: sym: text: color:} use ui_type_sym_text_line
+		let da = ui_type_sym_text_line(dacont, x, dict_augment({ bg: colorTrans(x.color,.5), fg: 'contrast' },G.sta), handler); 
+
+		//2. if multiselect - kann ich das ueber den handler abdecken??? sollte ja
+
 		let item = iAdd(x, { div: da });
 		//console.log('item',item)
 		aslist.push(item.id);

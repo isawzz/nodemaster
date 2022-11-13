@@ -816,8 +816,16 @@ function mClass(d) {
 	d = toElem(d);
 	if (arguments.length == 2) {
 		let arg = arguments[1];
-		if (isString(arg)) { arg = toWords(arg); }
-		if (isList(arg)) for (let i = 0; i < arg.length; i++) d.classList.add(arg[i]);
+		if (isString(arg) && arg.indexOf(' ')>0) { arg = [toWords(arg)]; }
+		else if (isString(arg)) arg=[arg];
+		console.log('arg',arg);
+		if (isList(arg)) {
+			for (let i = 0; i < arg.length; i++) {
+				console.log('adding',arg[i],'to classList');
+				d.classList.add(arg[i]);
+			}
+			console.log('d',d,'\nclassList',d.classList);
+		}
 	} else for (let i = 1; i < arguments.length; i++) d.classList.add(arguments[i]);
 }
 function mClassRemove(d) { d = toElem(d); for (let i = 1; i < arguments.length; i++) d.classList.remove(arguments[i]); }
@@ -5870,6 +5878,7 @@ function toggleSelection(pic, selected, clSelected = 'framedPicture', clUnselect
 	//if selected is not defined or null, ignore
 	//	console.log(pic)
 	let ui = iDiv(pic);
+	//console.log('div',ui)
 	pic.isSelected = !pic.isSelected;
 	if (pic.isSelected) {
 		if (isdef(clUnselected)) mClassRemove(ui, clUnselected);

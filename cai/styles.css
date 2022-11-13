@@ -1,23 +1,17 @@
-.wood {
-	/* background-color: #BA8C63; */
-	background-repeat: repeat;
-	background-image: url('../base/assets/textures/Melamine-wood-001.png');
-}
-
 html,
 body {
 	height: 100%;
 	margin: 0;
-	overflow:hidden;
+	overflow: hidden;
 }
-canvas{
-	vertical-align:bottom;
+canvas {
+	vertical-align: bottom;
 }
-.flat{
+.flat {
 	border: none;
 	outline: none;
 	text-decoration: none;
-	padding:10px;
+	padding: 10px;
 	box-sizing: border-box;
 }
 .top {
@@ -26,7 +20,10 @@ canvas{
 	box-sizing: border-box;
 	justify-content: start;
 }
-.top a,.top button,.top input,.top span {
+.top a,
+.top button,
+.top input,
+.top span {
 	display: inline-block;
 	margin: 0;
 	padding: 0.5rem;
@@ -37,10 +34,11 @@ canvas{
 	outline: none;
 	text-decoration: none;
 }
-.top a:hover,.top button:hover {
+.top a:hover,
+.top button:hover {
 	filter: brightness(0.8);
 }
-.form{
+.form {
 	display: inline-block;
 }
 a:link,
@@ -58,28 +56,38 @@ a:visited {
 	border: none;
 	background: transparent;
 }
-.large{
+.large {
 	width: 200px;
 	height: 200px;
 	font-size: 200px;
 }
-.medium{
+.medium {
 	width: 50px;
 	height: 50px;
 	font-size: 50px;
 }
-.small{
+.small {
 	width: 25px;
 	height: 25px;
 	font-size: 25px;
 }
-.semitrans{
-	opacity:.5;
+.semitrans {
+	opacity: 0.5;
 }
 .mylabel {
 	background-color: transparent;
 	border: transparent;
 	box-shadow: none;
+}
+.wood {
+	background-repeat: repeat;
+	background-image: url('../base/assets/textures/Melamine-wood-001.png');
+}
+.selected {
+	/* color: white !important;
+	background-color: #8000ff !important; */
+	outline: solid 8px yellow !important;
+	outline-offset: -6px !important;
 }
 
 /* #region autocomplete */
@@ -111,6 +119,8 @@ a:visited {
 	color: #ffffff;
 }
 /* #endregion autocomplete */
+
+/* #region animation add-ons to fa */
 
 .fa-pulse {
 	animation: pulse_animation 1s ease infinite;
@@ -150,7 +160,8 @@ a:visited {
 		/* color: red; */
 	}
 }
-.blob, .fa-blob {
+.blob,
+.fa-blob {
 	/* background: black; */
 	border-radius: 50%;
 	margin: 10px;
@@ -179,16 +190,15 @@ a:visited {
 	}
 }
 
-
-/* #region coolpulse pulsedarkbg or pulselightbg */
+/* coolpulse pulsedarkbg or pulselightbg */
 .coolpulse {
 	--pulse-width: 15px;
 	position: relative;
 }
-.pulsedarkbg{
+.pulsedarkbg {
 	--pulse-color: rgba(135, 200, 235, 0.5);
 }
-.pulselightbg{
+.pulselightbg {
 	--pulse-color: rgba(15, 35, 40, 0.6);
 }
 .coolpulselight {
@@ -253,7 +263,6 @@ a:visited {
 		border-color: red;
 	}
 }
-/* #endregion */
 
 .bounce {
 	animation: bounce 1s infinite cubic-bezier(0.28, 0.84, 0.42, 1);
@@ -263,10 +272,10 @@ a:visited {
 		transform: scale(1) translateY(0);
 	}
 	10% {
-		transform: scale(1.07, .93) translateY(0);
+		transform: scale(1.07, 0.93) translateY(0);
 	}
 	30% {
-		transform: scale(.93, 1.07) translateY(-80px);
+		transform: scale(0.93, 1.07) translateY(-80px);
 	}
 	50% {
 		transform: scale(1.05, 0.95) translateY(-0);
@@ -281,14 +290,4 @@ a:visited {
 		transform: scale(1) translateY(0);
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
+/* #endregion */
