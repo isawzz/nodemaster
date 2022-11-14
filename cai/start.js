@@ -12,48 +12,83 @@ async function start() {
 	test15_qa(); //test12_iconviewer(); //	test13_load_yt_in_iframe(); //test11_say();
 
 }
+function inc_g_index() { set_g_index(G.i + 1); }
+function dec_g_index(i) { set_g_index(G.i - 1); }
+function set_g_index(i) { G.i = i; call_question(i); }
+function call_answer(i) { call_func('a' + i); }
+function call_question(i) { call_func('q' + i); }
+function call_func(name) { console.log('name', name); let f = window[name]; f(); }
+
 function test15_qa() {
 	G = {
 		i: 0,
-		q: [],
-		as: [],
-		a: null,
-		hist: [],
+		q: null, //current question object
+		alist: null, // current answers list
+		selist: null, //current answers selected
+		hist: [], // tuples [{i,q,as,selist} ...]
 		stcont: { box: true, wmin: 600 },
 		sta: { cursor: 'pointer', aitems: 'center', vpadding: 6, hpadding: 12, gap: 4, margin: 6, rounding: 12, fg: 'contrast' },
 		stq: { padding: 12, weight: 'bold', family: 'opensans', fz: 28 },
 	};
-	q1();
+	q0();
 }
-function q1() {
-	let list0 = dict2list(EMO.emoscale, 'k'); //console.log('list', list0)
+function q0() {
+	//let list0 = dict2list(EMO.emoscale, 'k'); //console.log('list', list0)
 	let list = dict2list(EMO.emoscale, 'k').map(x => ({ name: x.k, key: x.key, color: x.color, text: x.list })); //console.log('list', list)
-	prompt('how are you feeling right now?', list, q2);
+	show_prompt('how are you feeling right now?', list, a0);
 
 }
-function q2(ev) {
-	let id = evToId(ev); console.log('selected', id);
-	G.a = id;
-	let item = Items[id];
-	console.log('item', item);
-	if (nundef(DA.selist)) DA.selist = [];
-	toggle_select(item, DA.selist, {fg:'red'})
-	//das prompt kann ja eine form sein!
+function show_answer() {
+
 }
-function prompt(q, list, handler) {
+function a0(ev) {
+	//assertion(G.selist.length>0,'NOTHING SELECTED IN a0!!!')
+	toggle_select(evToItem(ev), G.selist);
+	toolbar_check();
+}
+function q1() {
+	let list = [];
+	for (const item of G.selist) {
+		let alpha = 1;
+		for (const w of arrReverse(item.list)) {
+			let o = { name: w, key: item.key, color: colorTrans(item.color, alpha), text: w };
+			alpha -= .2;
+			list.push(o);
+		}
+	}
+	show_prompt('select the 3 dominant feelings', list, a1);
+
+}
+function handle_command(cmd) {
+	console.log('handle command', cmd);
+	switch (cmd) {
+		case 'clear': G.selist = clear_select(G.selist); toolbar_check(); break;
+		case 'next': inc_g_index(); break;
+		case 'back': dec_g_index(); break;
+		default: console.log('do not know how to handle ***', cmd, '***'); break;
+	}
+	//let func = get_func(itemtype, cmd);	func();
+}
+function show_prompt(q, list, handler) {
+
 	let dqcont = mDiv(dTable, G.stcont);
 	mLinebreak(dTable);
 	let dq = mDiv(dqcont, G.stq, `q_${G.i}`, q);
 
 	let qitem = iAdd({ type: 'q', index: G.i, text: q }, { cont: dqcont, div: dq });
 	let dacont = mDiv(dTable, G.stcont);
+
+	mLinebreak(dTable);
+	let tb=mToolbar(['back', 'clear', 'next'], handle_command, dTable, { align: 'center' }, { margin: 8, fz: 30, cursor: 'pointer' });
+	G.buttons=tb.children;
+
 	let aslist = [];
 	list.map(x => {
 		//console.log('color',x.color)
 
 		//depending on list elements, use different ui_types: 
 		//1. if {key: sym: text: color:} use ui_type_sym_text_line
-		let da = ui_type_sym_text_line(dacont, x, dict_augment({ bg: colorTrans(x.color, .5), fg: 'contrast' }, G.sta), handler);
+		let da = ui_type_sym_text_line(dacont, x, dict_augment({ bg: colorTrans(x.color, .75) }, G.sta), handler);
 
 		//2. if multiselect - kann ich das ueber den handler abdecken??? sollte ja
 
@@ -61,17 +96,22 @@ function prompt(q, list, handler) {
 		//console.log('item',item)
 		aslist.push(item.id);
 	});
-	G.q.push(qitem.id);
-	G.as.push(aslist);
-	G.i++;
+	G.q=qitem.id;
+	G.alist=aslist;
+	G.selist=[];
 	//dTable['transition-style']="in:wipe:up";
 	dTable.setAttribute('transition-style', "in:wipe:bottom-right");
+	toolbar_check();
 }
 function iStrip(item) { }
+function toolbar_check(){
+	if (isEmpty(G.selist)) {mDisable('bclear');mDisable('bnext')}	else {mEnable('bclear');mEnable('bnext')}
+	if (isEmpty(G.hist)) {mDisable('bback');}	else {mEnable('bback');}
+}
 function ui_type_sym_text_line(dParent, item, styles = {}, handler = null) {
 	//item must have a sym (or a key w/ exists Syms[key]) and a text
 	//console.log('styles',styles)
-	item.style = styles;
+	//item.style = styles;
 	let d = mDiv(dParent, styles, `d_${item.key}`); mFlex(d);
 	let sym = valf(item.sym, Syms[item.key]);
 	mDiv(d, { family: sym.family, fz: 40 }, null, sym.text);

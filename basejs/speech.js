@@ -332,7 +332,7 @@ function convertTimesAndNumbersToWords(w) {
 		}
 	}
 	if (isNumber(w)) {
-		let res = toWords(w);
+		let res = toWordsSpeechS(w);
 		//console.log('D','got number:', w, '=>', res)
 		return res;
 	}
@@ -489,7 +489,7 @@ function stringAfterLeadingConsonants(s) {
 	let x = s.match(regexpcons);
 	return x ? s.substring(x[0].length) : s;
 }
-function toWords(s) {
+function toWordsSpeech(s) {
 	// American Numbering System
 	var th = ['', 'thousand', 'million', 'billion', 'trillion'];
 	// uncomment this line for English Number System

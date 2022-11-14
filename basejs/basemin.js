@@ -816,15 +816,15 @@ function mClass(d) {
 	d = toElem(d);
 	if (arguments.length == 2) {
 		let arg = arguments[1];
-		if (isString(arg) && arg.indexOf(' ')>0) { arg = [toWords(arg)]; }
-		else if (isString(arg)) arg=[arg];
-		console.log('arg',arg);
+		if (isString(arg) && arg.indexOf(' ') > 0) { arg = [toWords(arg)]; }
+		else if (isString(arg)) arg = [arg];
+		console.log('arg', arg);
 		if (isList(arg)) {
 			for (let i = 0; i < arg.length; i++) {
-				console.log('adding',arg[i],'to classList');
+				console.log('adding', arg[i], 'to classList');
 				d.classList.add(arg[i]);
 			}
-			console.log('d',d,'\nclassList',d.classList);
+			console.log('d', d, '\nclassList', d.classList);
 		}
 	} else for (let i = 1; i < arguments.length; i++) d.classList.add(arguments[i]);
 }
@@ -1608,8 +1608,6 @@ function mGetStyle(elem, prop) {
 function mStyle(elem, styles, unit = 'px') {
 	//if (styles.bg == '#00000000') console.log('mStyle',getFunctionsNameThatCalledThisFunction(), styles.bg,styles.fg)
 	elem = toElem(elem);
-	if (isdef(styles.vmargin)) { styles.mabottom = styles.matop = styles.vmargin; }
-	if (isdef(styles.hmargin)) { styles.maleft = styles.maright = styles.hmargin; }
 
 	//console.log(':::::::::styles',styles)
 	let bg, fg;
@@ -1619,6 +1617,11 @@ function mStyle(elem, styles, unit = 'px') {
 	if (isdef(styles.vpadding) || isdef(styles.hpadding)) {
 
 		styles.padding = valf(styles.vpadding, 0) + unit + ' ' + valf(styles.hpadding, 0) + unit;
+		//console.log('::::::::::::::', styles.vpadding, styles.hpadding)
+	}
+	if (isdef(styles.vmargin) || isdef(styles.hmargin)) {
+
+		styles.margin = valf(styles.vmargin, 0) + unit + ' ' + valf(styles.hmargin, 0) + unit;
 		//console.log('::::::::::::::', styles.vpadding, styles.hpadding)
 	}
 	if (isdef(styles.upperRounding)) {
@@ -1873,6 +1876,13 @@ function mStyle(elem, styles, unit = 'px') {
 		}
 	}
 }
+function mStyleUndo(ui, styles = {}) {
+	for (const k in styles) {
+		let key = valf(STYLE_PARAMS[k], k);
+		ui.style[key] = null;
+	}
+}
+function mStyleOrClass(elem, st) { if (isString(st)) mClass(elem, st); else mStyle(elem, st); }
 
 function miPic(item, dParent, styles, classes) {
 	let info = isString(item) ? Syms[item] : isdef(item.info) ? item.info : item;
@@ -2103,6 +2113,7 @@ function mToolbar(buttons, handler, dParent, styles = {}, bstyles = {}, id = nul
 	let d = mDiv(dParent, styles, id, classes);
 	//mStyle(d, { bg: 'blue' })
 	for (const arg of buttons) {
+		//console.log('arg',arg); //continue;
 		let funcname = replaceWhite(arg);
 		mButton(arg, () => handler(arg), d, bstyles, bclasses, `b${funcname}`);
 	}
@@ -5183,7 +5194,9 @@ function stringBetweenLast(sFull, sStart, sEnd) {
 }
 function toLetters(s) { return [...s]; }
 function toWords(s) {
+	//console.log('s',s);
 	let arr = s.split(/(?:,|\s|!)+/);
+	//console.log('arr',arr);
 	return arr.filter(x => !isEmpty(x));
 }
 function toUmlaut(w) {
@@ -5382,6 +5395,11 @@ function evToClosestId(ev) {
 function evToId(ev) {
 	let elem = findParentWithId(ev.target);
 	return elem.id;
+}
+function evToItem(ev) {
+	let id = evToId(ev); //console.log('selected', id);	
+	let item = Items[id];	//console.log('item', item); 
+	return item;
 }
 function evToProp(ev, prop) {
 	let x = ev.target;
@@ -5923,6 +5941,54 @@ function toggleSelectionOfPicture(pic, selectedPics, className = 'framedPicture'
 			removeInPlace(selectedPics, pic);
 		}
 	}
+}
+function clear_select(selected, selstyle = 'selected') {
+	for (const item of selected) {
+		item.isSelected = false;
+		let ui = iDiv(item);
+		if (isString(selstyle)) {
+			mClassRemove(ui, selstyle);
+		} else if (isdef(item.style)) {
+			mStyle(ui, item.style);
+		} else {
+			mStyleUndo(ui, selstyle);
+		}
+	}
+	return [];
+}
+function toggle_select(item, selected, selstyle = 'selected') {
+	//if selected is a list, pic is added or removed from it
+	//if selected is an object, it is unselected
+	//if selected is not defined or null, ignore
+	let ui = iDiv(item);
+	item.isSelected = !item.isSelected;
+	if (item.isSelected) {
+		mStyleOrClass(ui, selstyle); //mStyle(ui, selstyle);
+	} else if (isString(selstyle)) {
+		mClassRemove(ui, selstyle);
+	} else if (isdef(item.style)) {
+		mStyle(ui, item.style);
+	} else {
+		mStyleUndo(ui, selstyle);
+	}
+
+	if (isdef(selected)) {
+		if (isList(selected)) { // (multi-selection)
+			//if piclist is given, add or remove pic according to selection state
+			if (item.isSelected) {
+				console.assert(!selected.includes(item), 'UNSELECTED PIC IN PICLIST!!!!!!!!!!!!')
+				selected.push(item);
+			} else {
+				console.assert(selected.includes(item), 'PIC NOT IN PICLIST BUT HAS BEEN SELECTED!!!!!!!!!!!!')
+				removeInPlace(selected, item);
+			}
+		} else {
+			//if previous selected is not a list, unselect it! (single selection)
+			mStyle(iDiv(selected), selected.style);
+			selected.isSelected = false;
+		}
+	}
+	return item.isSelected ? item : null;
 }
 function unfocusOnEnter(ev) {
 	if (ev.key === 'Enter') {

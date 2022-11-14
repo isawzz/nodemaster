@@ -84,11 +84,21 @@ a:visited {
 	background-image: url('../base/assets/textures/Melamine-wood-001.png');
 }
 .selected {
+	/* box-shadow: [inset] x-offset y-offset blur spread color [!important]; */
+	/* box-shadow: inset 0 0 0 30px #ffff0c40; */
+	transition: all .3s ease;
+	box-shadow: 0 0 5px 2px deepskyblue;
+
+	/* outline: 2px solid lime;
+	outline-offset: -1px; */
+	/* box-sizing: border-box; */
 	/* color: white !important; */
 	/* background-color: #8000ff !important; */
 	/* outline: solid 8px yellow !important; */
-	/* outline-offset: -6px !important; */
-	box-shadow: inset 20px 0px 0px 6px #ffffff80;
+	/* box-shadow: inset 0px 0px 0px 6px #ffffff80; */
+	/* box-shadow: inset 0 $shadow-depth $shadow-blur $shadow-spread $blue, */
+	/* box-shadow: inset 0 0 0 30px red,inset 0 0 0 300px blue, */
+	/* box-shadow: inset 0 0 0 30px red,inset 0 0 0 300px blue; */
 }
 
 /* #region autocomplete */
