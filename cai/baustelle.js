@@ -39,6 +39,36 @@ function toggle_select(pic, selected, clSelected = 'selected', clUnselected = nu
 	return pic.isSelected ? pic : null;
 }
 
+function toggle_select(item, selected, selstyle) {
+	//if selected is a list, pic is added or removed from it
+	//if selected is an object, it is unselected
+	//if selected is not defined or null, ignore
+	//	console.log(pic)
+	let ui = iDiv(item);
+	item.isSelected = !item.isSelected;
+	if (item.isSelected) {
+		mStyle(ui,selstyle);
+	} else {
+		mStyle(ui,item.style);
+	}
+
+	//if piclist is given, add or remove pic according to selection state
+	if (isdef(selected)) {
+		if (isList(selected)) {
+			if (item.isSelected) {
+				console.assert(!selected.includes(item), 'UNSELECTED PIC IN PICLIST!!!!!!!!!!!!')
+				selected.push(item);
+			} else {
+				console.assert(selected.includes(item), 'PIC NOT IN PICLIST BUT HAS BEEN SELECTED!!!!!!!!!!!!')
+				removeInPlace(selected, item);
+			}
+		} else {
+			mStyle(iDiv(selected),selected.style);
+			selected.isSelected = false;
+		}
+	}
+	return item.isSelected ? item : null;
+}
 
 
 

@@ -28,16 +28,16 @@ function test15_qa() {
 function q1() {
 	let list0 = dict2list(EMO.emoscale, 'k'); //console.log('list', list0)
 	let list = dict2list(EMO.emoscale, 'k').map(x => ({ name: x.k, key: x.key, color: x.color, text: x.list })); //console.log('list', list)
-	prompt('what are you feeling right now?', list, q2);
+	prompt('how are you feeling right now?', list, q2);
 
 }
-function q2(ev) { 
-	let id = evToId(ev); console.log('selected', id); 
+function q2(ev) {
+	let id = evToId(ev); console.log('selected', id);
 	G.a = id;
 	let item = Items[id];
-	console.log('item',item);
+	console.log('item', item);
 	if (nundef(DA.selist)) DA.selist = [];
-	toggle_select(item,DA.selist,'selected')
+	toggle_select(item, DA.selist, {fg:'red'})
 	//das prompt kann ja eine form sein!
 }
 function prompt(q, list, handler) {
@@ -45,7 +45,7 @@ function prompt(q, list, handler) {
 	mLinebreak(dTable);
 	let dq = mDiv(dqcont, G.stq, `q_${G.i}`, q);
 
-	let qitem = iAdd({type:'q',index:G.i,text:q},{cont:dqcont,div:dq});
+	let qitem = iAdd({ type: 'q', index: G.i, text: q }, { cont: dqcont, div: dq });
 	let dacont = mDiv(dTable, G.stcont);
 	let aslist = [];
 	list.map(x => {
@@ -53,7 +53,7 @@ function prompt(q, list, handler) {
 
 		//depending on list elements, use different ui_types: 
 		//1. if {key: sym: text: color:} use ui_type_sym_text_line
-		let da = ui_type_sym_text_line(dacont, x, dict_augment({ bg: colorTrans(x.color,.5), fg: 'contrast' },G.sta), handler); 
+		let da = ui_type_sym_text_line(dacont, x, dict_augment({ bg: colorTrans(x.color, .5), fg: 'contrast' }, G.sta), handler);
 
 		//2. if multiselect - kann ich das ueber den handler abdecken??? sollte ja
 
@@ -65,12 +65,13 @@ function prompt(q, list, handler) {
 	G.as.push(aslist);
 	G.i++;
 	//dTable['transition-style']="in:wipe:up";
-	dTable.setAttribute('transition-style',"in:wipe:bottom-right");
+	dTable.setAttribute('transition-style', "in:wipe:bottom-right");
 }
-function iStrip(item){ }
+function iStrip(item) { }
 function ui_type_sym_text_line(dParent, item, styles = {}, handler = null) {
 	//item must have a sym (or a key w/ exists Syms[key]) and a text
 	//console.log('styles',styles)
+	item.style = styles;
 	let d = mDiv(dParent, styles, `d_${item.key}`); mFlex(d);
 	let sym = valf(item.sym, Syms[item.key]);
 	mDiv(d, { family: sym.family, fz: 40 }, null, sym.text);

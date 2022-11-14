@@ -84,10 +84,11 @@ a:visited {
 	background-image: url('../base/assets/textures/Melamine-wood-001.png');
 }
 .selected {
-	/* color: white !important;
-	background-color: #8000ff !important; */
-	outline: solid 8px yellow !important;
-	outline-offset: -6px !important;
+	/* color: white !important; */
+	/* background-color: #8000ff !important; */
+	/* outline: solid 8px yellow !important; */
+	/* outline-offset: -6px !important; */
+	box-shadow: inset 20px 0px 0px 6px #ffffff80;
 }
 
 /* #region autocomplete */
