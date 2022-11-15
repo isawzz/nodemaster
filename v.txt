@@ -2748,6 +2748,101 @@ __________ mo 14.11.22 waiting at the airport...
 235: *9:15 AM 11/14/2022-
 action: 9:16 AM 11/14/2022-
 3- arrReverse: mit indices nicht mit items!!!! (wegen live jsCopy)
+__________ di 15.11.22 waiting at the airport...  
+300: *6:47 AM 11/15/2022-6:50 AM 11/15/2022
+- just let it all go, fate is taking care of it
+301: *6:50 AM 11/15/2022-6:51 AM 11/15/2022
+302: *6:51 AM 11/15/2022-6:54 AM 11/15/2022
+- arrReverse: mit indices nicht mit items!!!! (wegen live jsCopy)
+- erstmal: output item
+- was soll passieren wenn auch next clicke?
+303: *6:56 AM 11/15/2022-7:01 AM 11/15/2022
+304: *7:01 AM 11/15/2022-7:05 AM 11/15/2022
+- rem cons
+- 54 bug
+305: *7:05 AM 11/15/2022-7:14 AM 11/15/2022
+- wo muss ich hist machen??? was soll in hist gehen??? stripped items
+- eigetlich muss nur answer in hist gehen!
+306: *7:14 AM 11/15/2022-7:18 AM 11/15/2022
+307: *7:18 AM 11/15/2022-7:18 AM 11/15/2022
+308: *7:18 AM 11/15/2022-7:22 AM 11/15/2022
+309: *7:22 AM 11/15/2022-7:26 AM 11/15/2022
+310: *7:26 AM 11/15/2022-7:48 AM 11/15/2022
+311: *7:48 AM 11/15/2022-7:50 AM 11/15/2022
+312: *7:50 AM 11/15/2022-8:11 AM 11/15/2022
+313: *8:11 AM 11/15/2022-8:14 AM 11/15/2022
+314: *8:14 AM 11/15/2022-8:18 AM 11/15/2022
+315: *8:18 AM 11/15/2022-8:37 AM 11/15/2022
+1- how to trigger click event on source???
+2- start binaurial yt https://www.youtube.com/watch?v=3pNpHZ1yv3I&t=2465s
+3- gen transition: steps
+316: *8:19 AM 11/15/2022-8:37 AM 11/15/2022
+317: *8:37 AM 11/15/2022-8:42 AM 11/15/2022
+- mach noch ein example!
+318: *8:42 AM 11/15/2022-8:49 AM 11/15/2022
+=>use yt1.html
+319: *8:49 AM 11/15/2022-9:02 AM 11/15/2022
+- wieso schaff ich es nicht mich in bewegung zu setzen?
+vielleicht weil ich gestern nicht wirklich erfolg damit hatte?
+vielleicht weil es so eiskalt ist?
+vielleicht weeil ich mich nicht traue die lade zu checken?
+vielleicht weil...?
+was ist eigentlich der sinn das zu ueberlegen?
+320: *9:03 AM 11/15/2022-9:27 AM 11/15/2022
+321: *9:27 AM 11/15/2022-9:32 AM 11/15/2022
+322: *9:32 AM 11/15/2022-
+action!!!!!! 9:32 AM 11/15/2022-
+
+
+someactivities you can focus on will 
+some things you can listen to will effectively reduce your worries to nothing
+- https://www.youtube.com/watch?v=3pNpHZ1yv3I&t=2465s
+- what aspect of these worries is in your control, what aspect is out of your control?
+- what can you actually do about it?
+- what are you worried about?
+if it is time:
+- make todo list easy enough to handle it
+- stick to it, with 321 in between every 2 points
+if it is money:
+- if this was you last day, would you to worry about it?
+- consider that someone else is taking care of the 'future', you just plan for today.
+- you do know that YOU dont need money for anything and neither does anyone else.
+if it about a mistake in the past:
+- it is past. from now try to do it better
+if it is about possible making a mistake: 
+1. list mistakes/opportunnities just for TODAY
+2. for each of these think how ideally you would handle that
+3. if nothing comes to mind, just be quiet, answer questions or write down questions say will come back to you about that
+4. minimize challenges for TODAY
+5. determine islands of relaxation between challenges
+- if it is something material
+1. imagine you would die today. then the material world would become dreamlike. then after a few minutes, the emotions created in dream state would fade, so that after some time it would be hard for you even to imagine having those emotions.
+
+
+
+- remedy for worry
+- q2
+- weiter
+- weiter
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

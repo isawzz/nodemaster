@@ -7,18 +7,14 @@ async function start() {
 		Socket.on('update', x => console.log('got update', x));
 	}
 	//show_available_voices();
-	await load_syms();
-	dTable = mBy('map'); mStyle(dTable, { w: '100%', overflow: 'hidden', fz: 22 }); mCenterFlex(dTable);
-	test15_qa(); //test12_iconviewer(); //	test13_load_yt_in_iframe(); //test11_say();
+	//await load_syms();
+	//dTable = mBy('map'); mStyle(dTable, { w: '100%', overflow: 'hidden', fz: 22 }); mCenterFlex(dTable);
+	//test16_yt(); //test13_load_yt_in_iframe(); //test15_qa(); //test12_iconviewer(); //	test11_say();
 
 }
-function inc_g_index() { set_g_index(G.i + 1); }
-function dec_g_index(i) { set_g_index(G.i - 1); }
-function set_g_index(i) { G.i = i; call_question(i); }
-function call_answer(i) { call_func('a' + i); }
-function call_question(i) { call_func('q' + i); }
-function call_func(name) { console.log('name', name); let f = window[name]; f(); }
-
+function test16_yt(){
+	playt();
+}
 function test15_qa() {
 	G = {
 		i: 0,
@@ -38,9 +34,6 @@ function q0() {
 	show_prompt('how are you feeling right now?', list, a0);
 
 }
-function show_answer() {
-
-}
 function a0(ev) {
 	//assertion(G.selist.length>0,'NOTHING SELECTED IN a0!!!')
 	toggle_select(evToItem(ev), G.selist);
@@ -48,29 +41,64 @@ function a0(ev) {
 }
 function q1() {
 	let list = [];
+
 	for (const item of G.selist) {
-		let alpha = 1;
-		for (const w of arrReverse(item.list)) {
-			let o = { name: w, key: item.key, color: colorTrans(item.color, alpha), text: w };
-			alpha -= .2;
+		//console.log('item',item)
+		let alpha = .4;
+		for (const w of item.text.split(',')) {
+			let o = { name: w.trim(), key: item.key, color: colorTrans(item.color, alpha), text: w.trim() };
+			alpha += .2;
 			list.push(o);
 		}
 	}
-	show_prompt('select the 3 dominant feelings', list, a1);
+
+	show_prompt('select the 2 dominant feelings', list, a1);
 
 }
+function a1(ev) { a0(ev); }
+function q2() {
+	//assume worried
+
+	//steps: 1. vor auge fuehren, starte music
+	const transitions = {
+		worried: {
+			money: {},
+			time: {},
+			past: {},
+			future: {},
+			material: {},
+		},
+	};
+	let step1=''
+	//close your eyes
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function handle_command(cmd) {
-	console.log('handle command', cmd);
+	//console.log('handle command', cmd);
 	switch (cmd) {
 		case 'clear': G.selist = clear_select(G.selist); toolbar_check(); break;
-		case 'next': inc_g_index(); break;
-		case 'back': dec_g_index(); break;
+		case 'next': push_hist(); inc_g_index(); break;
+		case 'back': pop_hist(); dec_g_index(); break;
 		default: console.log('do not know how to handle ***', cmd, '***'); break;
 	}
 	//let func = get_func(itemtype, cmd);	func();
 }
 function show_prompt(q, list, handler) {
-
+	mClear(dTable);
+	console.log('list', list)
 	let dqcont = mDiv(dTable, G.stcont);
 	mLinebreak(dTable);
 	let dq = mDiv(dqcont, G.stq, `q_${G.i}`, q);
@@ -79,8 +107,8 @@ function show_prompt(q, list, handler) {
 	let dacont = mDiv(dTable, G.stcont);
 
 	mLinebreak(dTable);
-	let tb=mToolbar(['back', 'clear', 'next'], handle_command, dTable, { align: 'center' }, { margin: 8, fz: 30, cursor: 'pointer' });
-	G.buttons=tb.children;
+	let tb = mToolbar(['back', 'clear', 'next'], handle_command, dTable, { align: 'center' }, { margin: 8, fz: 30, cursor: 'pointer' });
+	G.buttons = tb.children;
 
 	let aslist = [];
 	list.map(x => {
@@ -88,7 +116,7 @@ function show_prompt(q, list, handler) {
 
 		//depending on list elements, use different ui_types: 
 		//1. if {key: sym: text: color:} use ui_type_sym_text_line
-		let da = ui_type_sym_text_line(dacont, x, dict_augment({ bg: colorTrans(x.color, .75) }, G.sta), handler);
+		let da = ui_type_sym_text_line(dacont, x, dict_augment({ bg: x.color }, G.sta), handler);
 
 		//2. if multiselect - kann ich das ueber den handler abdecken??? sollte ja
 
@@ -96,29 +124,12 @@ function show_prompt(q, list, handler) {
 		//console.log('item',item)
 		aslist.push(item.id);
 	});
-	G.q=qitem.id;
-	G.alist=aslist;
-	G.selist=[];
+	G.q = qitem.id;
+	G.alist = aslist;
+	G.selist = [];
 	//dTable['transition-style']="in:wipe:up";
 	dTable.setAttribute('transition-style', "in:wipe:bottom-right");
 	toolbar_check();
-}
-function iStrip(item) { }
-function toolbar_check(){
-	if (isEmpty(G.selist)) {mDisable('bclear');mDisable('bnext')}	else {mEnable('bclear');mEnable('bnext')}
-	if (isEmpty(G.hist)) {mDisable('bback');}	else {mEnable('bback');}
-}
-function ui_type_sym_text_line(dParent, item, styles = {}, handler = null) {
-	//item must have a sym (or a key w/ exists Syms[key]) and a text
-	//console.log('styles',styles)
-	//item.style = styles;
-	let d = mDiv(dParent, styles, `d_${item.key}`); mFlex(d);
-	let sym = valf(item.sym, Syms[item.key]);
-	mDiv(d, { family: sym.family, fz: 40 }, null, sym.text);
-	//mDiv(d, dict_augment(styles, { family: 'opensans', fz: 20, fg: 'contrast' }), null, item.text);
-	mDiv(d, { family: 'opensans', fz: 20 }, null, item.text);
-	if (isdef(handler)) { d.onclick = handler; d.setAttribute('item', JSON.stringify(item)); }
-	return d;
 }
 
 

@@ -25,11 +25,14 @@ function question2(ev){
 
 function test13_load_yt_in_iframe() {
 
-	var iDiv = document.createElement('iframe');
-	iDiv.id = 'iframe1';
-	mStyle(iDiv, { w: 500, h: 300 })
-	document.getElementById("map").appendChild(iDiv);
-	iDiv.src = "https://www.youtube.com/embed/3pNpHZ1yv3I"; //YES!
+	var div = document.createElement('iframe');
+	div.id = 'iframe1';
+	mStyle(div, { w: 500, h: 300 })
+	document.getElementById("map").appendChild(div);
+	div.src = "https://www.youtube.com/embed/3pNpHZ1yv3I"; //YES!
+	//setTimeout(()=>simulateClick(div),1000);
+	//trigger click event on source
+
 	//iDiv.src = "https://www.youtube.com/embed/3pNpHZ1yv3I?autoplay=1";
 
 }

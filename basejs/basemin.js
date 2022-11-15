@@ -818,13 +818,13 @@ function mClass(d) {
 		let arg = arguments[1];
 		if (isString(arg) && arg.indexOf(' ') > 0) { arg = [toWords(arg)]; }
 		else if (isString(arg)) arg = [arg];
-		console.log('arg', arg);
+		//console.log('arg', arg);
 		if (isList(arg)) {
 			for (let i = 0; i < arg.length; i++) {
-				console.log('adding', arg[i], 'to classList');
+				//console.log('adding', arg[i], 'to classList');
 				d.classList.add(arg[i]);
 			}
-			console.log('d', d, '\nclassList', d.classList);
+			//console.log('d', d, '\nclassList', d.classList);
 		}
 	} else for (let i = 1; i < arguments.length; i++) d.classList.add(arguments[i]);
 }
