@@ -6,13 +6,15 @@ async function start() {
 		Socket.on('disconnect', x => console.log('got disconnect', x));
 		Socket.on('update', x => console.log('got update', x));
 	}
+	await load_syms(); dTable = mBy('map'); mStyle(dTable, { w: '100%', overflow: 'hidden', fz: 22 }); mCenterFlex(dTable);
+	// #region tests
 	//show_available_voices();
-	//await load_syms();
-	//dTable = mBy('map'); mStyle(dTable, { w: '100%', overflow: 'hidden', fz: 22 }); mCenterFlex(dTable);
 	//test16_yt(); //test13_load_yt_in_iframe(); //test15_qa(); //test12_iconviewer(); //	test11_say();
+	// #endregion tests
+	test15_qa();
 
 }
-function test16_yt(){
+function test16_yt() {
 	playt();
 }
 function test15_qa() {
@@ -57,7 +59,10 @@ function q1() {
 }
 function a1(ev) { a0(ev); }
 function q2() {
+	console.log('G', G)
 	//assume worried
+
+	//wenn nicht online bin dann sollte simples remedy haben!
 
 	//steps: 1. vor auge fuehren, starte music
 	const transitions = {
@@ -69,7 +74,7 @@ function q2() {
 			material: {},
 		},
 	};
-	let step1=''
+	let step1 = ''
 	//close your eyes
 }
 
