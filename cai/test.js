@@ -1,5 +1,8 @@
 
 
+function test16_yt() {
+	playt();
+}
 
 function test14() {
 	show_emos();

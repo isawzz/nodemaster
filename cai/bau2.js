@@ -1,4 +1,5 @@
 
+
 function load_yt_in_iframe(dParent) {
 
 	var div = document.createElement('iframe');
@@ -9,8 +10,6 @@ function load_yt_in_iframe(dParent) {
 	//iDiv.src = "https://www.youtube.com/embed/3pNpHZ1yv3I?autoplay=1";
 
 }
-
-
 function playt() {
 
 	var tag = document.createElement('script');

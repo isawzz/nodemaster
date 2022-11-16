@@ -14,9 +14,6 @@ async function start() {
 	test15_qa();
 
 }
-function test16_yt() {
-	playt();
-}
 function test15_qa() {
 	G = {
 		i: 0,
@@ -82,15 +79,6 @@ function q2() {
 
 
 
-
-
-
-
-
-
-
-
-
 function handle_command(cmd) {
 	//console.log('handle command', cmd);
 	switch (cmd) {
@@ -99,6 +87,9 @@ function handle_command(cmd) {
 		case 'back': pop_hist(); dec_g_index(); break;
 		default: console.log('do not know how to handle ***', cmd, '***'); break;
 	}
+
+	console.log('history',G.hist)
+	console.log('current selection',G.selist.map(x=>x.name));
 	//let func = get_func(itemtype, cmd);	func();
 }
 function show_prompt(q, list, handler) {

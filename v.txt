@@ -2830,6 +2830,139 @@ actions that are always available:
 2. music
 3. geh ewew bis mindestens 5 punkte auf der lieste stehen
 4. mach mindestens 3 davon
+370: *12:20 PM 11/15/2022-12:48 PM 11/15/2022
+371: *12:48 PM 11/15/2022-12:49 PM 11/15/2022
+372: *12:49 PM 11/15/2022-12:50 PM 11/15/2022
+373: *12:51 PM 11/15/2022-12:55 PM 11/15/2022
+374: *12:55 PM 11/15/2022-1:00 PM 11/15/2022
+375: *1:00 PM 11/15/2022-5:53 PM 11/15/2022
+__________ mi 15.11.22 waiting at the airport...  
+435: *5:53 PM 11/16/2022-5:27 AM 11/16/2022
+436: *5:30 AM 11/16/2022-5:37 AM 11/16/2022
+437: *5:37 AM 11/16/2022-5:44 AM 11/16/2022
+438: *5:44 AM 11/16/2022-5:46 AM 11/16/2022
+439: *5:46 AM 11/16/2022-5:47 AM 11/16/2022
+440: *5:47 AM 11/16/2022-5:48 AM 11/16/2022
+441: *5:49 AM 11/16/2022-5:54 AM 11/16/2022
+442: *5:58 AM 11/16/2022-5:58 AM 11/16/2022
+spielregeln von what to do???:
+phase 1: determine action
+q1. q: EMO.emoscale
+a1. select emotion groups (max 3)
+q2. individual emotions
+a2. select emotions (max 3)
+q3. energy levels / time of day?
+a3. select energy level
+q4. present choices OR random remedy
+a4. select choice
+phase 2: action
+1. ein timer wird gestartet, vor ablauf MUSS erster punkt gestartet werden
+2. sobald starte wird ein timer gestartet der action misst
+3. es gibt ein maximum nachdem automatisch abgedreht wird: PAUSE
+phase 3: pause
+443: *5:58 AM 11/16/2022-6:00 AM 11/16/2022
+444: *6:00 AM 11/16/2022-6:01 AM 11/16/2022
+445: *6:01 AM 11/16/2022-6:02 AM 11/16/2022
+spiel: number es muss simpel genug sein dass ich mir diese zahl SELBER merke
+der comp kann verwendet werden um das ergebnis zu berechnen und auch um randomness reinzubringen ins spiel
+ideal waere wenn ich keine memory brauche ausser vielleicht 1 zahl
+anderes spiel: dazu brauch ich nur 1 heft, 1 wuerfel sonst nichts
+1. schreibe dominant emotion[s] auf
+2. schreibe energy level auf
+3. schreibe choices auf
+=>wuerfel select
+4. schreibe time auf: pause
+5. start vor time: action
+6. stop nach mindestzeit: pause, collect points, ev random multiplicator
+7. admin: schreibe points auf, =>aenderungen zu default regeln,
+goto 1
+446: *6:06 AM 11/16/2022-
+- ich muss von der praxis herkommen!
+- rewards: essen,taschengeld,tv time,lesen
+- motivation: music,bewegung,schlaf
+
+
+
+
+
+
+
+
+
+==>library! oeffnet 1pm Tha Wife Stalker retour!
+Adventures in Raspberry Pi, Raspberrry Pi => retour!!!
+
+=>Dec 10 rest renew
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+- ich moecht das games vereinfacht machen!
+- geh mal zu dem ari select
+- wie kann ich es gestalten?
+- wie kann ich rausfinden was ich will?
+- wie kann ich mich selbst zu magic bringen?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ueberlegen was ich eigentlich will
+- besseren output!
+- immer noch nicht klar was da passiert!
+- was muss passieren wenn back clicke
+
+ich kann localStorage fuer score verwenden!
+dazu kann ich auch noch score saven mit node js
+PAUSE BIS >=1h30
+
+
+
+
+
+
 
 do your magic: my recipe for you:
 baby steps!
