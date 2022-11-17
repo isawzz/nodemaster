@@ -2948,7 +2948,6 @@ A?321wA?m=>fguswmw
 document.addEventListener('mouseleave', e=>{
      //do some async code
 })
-
 document.addEventListener('visibilitychange', e=>{
      if (document.visibilityState === 'visible') {
    //report that user is in focus
@@ -2961,10 +2960,14 @@ document.addEventListener('visibilitychange', e=>{
 551: *11:18 AM 11/17/2022-11:35 AM 11/17/2022
 Pause 30- (trinken,orange/traube)=>3,2,1=>github=>tm:corr:fe=>guspa
 552: *11:35 AM 11/17/2022-11:47 AM 11/17/2022
-551: *11:47 AM 11/17/2022-
+551: *11:47 AM 11/17/2022-11:48 AM 11/17/2022
 1- filename und data
 2- versuchs einfach!
 3- find visibilityState in aroot!
+552: *11:49 AM 11/17/2022-11:52 AM 11/17/2022
+553: *11:52 AM 11/17/2022-
+=>gu spaz
+3- loading the page!
 
 
 
