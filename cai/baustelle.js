@@ -2,12 +2,13 @@
 DA.edits = [];
 function open_invisible_input(ev) {
 	//console.log('ev.target', ev.target)
-	if (ev.target.id != 'map') return;
-	let [x, y] = [ev.clientX, ev.clientY];
-	//console.log('x', x, 'y', y)
+	if (ev.target.id != 'dTable') return;
+	let [x, y] = [ev.offsetX, ev.offsetY];
+	//console.log('x', x, 'y', y, ev)
 	rem=y%20;
-	y-=rem;
-	let d = mDiv(dTable, { x: x, y: y, position: 'absolute', wmin:10,  }, null); //,'<span contenteditable="true">This is an editable paragraph.</span>');
+	y=y-rem-10; if (y<0) y=0;
+
+	let d = mDiv(dTable, { x: x, y: y, padding:10, position: 'absolute', wmin:10,  }, null); //,'<span contenteditable="true">This is an editable paragraph.</span>');
 	DA.edits.push(d);
 	d.setAttribute('contentEditable', true);
 	d.style.outline = 'none';
@@ -16,6 +17,9 @@ function open_invisible_input(ev) {
 		if (DA.tabKeyPressed) {
 			e.preventDefault();
 			return;
+		}else {
+			//console.log('keyCode',e.keyCode);
+			//if (e.keyCode == 13){			save_all();			}
 		}
 	};
 
@@ -45,11 +49,11 @@ function open_invisible_input(ev) {
 		}
 		//console.log('focus');
 		DA.focusElement = e.target;
-		selectText(DA.focusElement);
+		if (DA.selectOnClick) selectText(DA.focusElement);
 
 		//if (isEmpty(d.innerHTML)) {removeInPlace(DA.edits,d);d.remove(); }
 	};
-
+	d.ondblclick = ev=>{selectText(ev.target); console.log('dblclick!')}
 	d.focus();
 
 	// d.onkeyup = setFocus;
@@ -57,7 +61,7 @@ function open_invisible_input(ev) {
 }
 
 function cycle_through_editables(ev) {
-	console.log('key', ev.key)
+	//console.log('key', ev.key)
 }
 
 var selectedElement = null;
@@ -69,7 +73,19 @@ function setFocus(e) {
 	// selectedElement.style.outline = '1px solid #f00';
 };
 
-
+function save_all(){
+	//console.log('save',Date.now())
+	let data = [];
+	for(const edit of DA.edits){
+		let rect = getRect(edit);
+		let text = edit.innerHTML;
+		let o = {x:rect.x,y:rect.y,text:text};
+		data.push(o);
+	}
+	route_post_json('http://localhost:3000/post/json', {data:data,filename:'page'}, response => {
+		//console.log(JSON.stringify(response));
+	});
+}
 
 
 

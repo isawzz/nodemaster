@@ -69,7 +69,7 @@ async function test12_iconviewer() {
 	//console.log('items', items2[0])
 	items = items.concat(items2);
 
-	dTable = mBy('map');
+	dTable = mBy('dTable');
 	for (const item of items) ui_type_item(dTable, item, {}, null, item.key);
 	//dTable.innerHTML = createViewerContent(items, [], true);
 }
@@ -90,7 +90,7 @@ function test10_autocomplete() {
 	// map.flyTo(Geo.cities[city].center);
 }
 function test9_google() {
-	mBy('map').innerHTML = `
+	mBy('dTable').innerHTML = `
 	<iframe class='flat' id="gmap" src="http://maps.google.com/maps?z=15&t=m&q=loc:48.25+16.3&output=embed" width="100%" height="${window.innerWidth}"></iframe>	
 	`;
 	let x = document.getElementById('gmap');
@@ -129,7 +129,7 @@ function test6_init() {
 
 }
 function test5_load() {
-	dTable = mDiv('map');
+	dTable = mDiv('dTable');
 	load_all();
 }
 function test4_save() {
@@ -137,7 +137,7 @@ function test4_save() {
 	serialize_all();
 }
 function test3_sit_around_table(n = 4) {
-	dTable = mBy('map');
+	dTable = mBy('dTable');
 	let r = getRect(dTable);
 	let [w, h] = [r.w * .9, r.h * .9]; // [r.w,r.h]
 	let [offx, offy] = [r.w * .05, r.h * .05]; //[0,0];
@@ -170,7 +170,7 @@ function test3_sit_around_table(n = 4) {
 	return [table, players];
 }
 function test2_sit_around_table() {
-	dTable = mBy('map');
+	dTable = mBy('dTable');
 	let r = getRect(dTable);
 
 	//let pts=cCircle({x:r.w/2,y:r.h/2}, 100, 4,0);
@@ -184,7 +184,7 @@ function test2_sit_around_table() {
 
 }
 function tests1_canvas_vs_dom() {
-	let dPage = mBy('map'); mCenterCenterFlex(dPage); mStyle(dPage, { gap: 4 }); // mStyle(dPage, { padding:10, bg: BLUE, align: 'center' });
+	let dPage = mBy('dTable'); mCenterCenterFlex(dPage); mStyle(dPage, { gap: 4 }); // mStyle(dPage, { padding:10, bg: BLUE, align: 'center' });
 	G = { items: [] };
 	dHeader = mDivLine(dPage);
 	mLinebreak(dPage);
@@ -199,7 +199,7 @@ function tests1_canvas_vs_dom() {
 	mLinebreak(dPage);
 }
 function tests0_table_drawloop() {
-	dTable = mBy('map'); mStyle(dTable, { vpadding: 20, bg: BLUE, align: 'center' });
+	dTable = mBy('dTable'); mStyle(dTable, { vpadding: 20, bg: BLUE, align: 'center' });
 	G = { items: [] };
 	TO.running = setInterval(drawloop, 100);
 	test1ttt(); //test0();

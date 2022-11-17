@@ -2932,11 +2932,39 @@ way shorter!!!
 2- rem cons 41
 3- mach ein bestimmes y
 523: *8:17 AM 11/17/2022-8:19 AM 11/17/2022
-524: *8:20 AM 11/17/2022-
-=>action:wm=>tm: 8:20 AM 11/17/2022-
+524: *8:20 AM 11/17/2022-9:02 AM 11/17/2022
+=>action:wm=>tm: 8:20 AM 11/17/2022-9:01 AM 11/17/2022 40'=20#
+544: *9:02 AM 11/17/2022-9:03 AM 11/17/2022
+545: *9:03 AM 11/17/2022-9:18 AM 11/17/2022
+546: *9:18 AM 11/17/2022-9:24 AM 11/17/2022
+1- set focus element geht nicht wirklich!!!
+2- toolbar oben
 3- clear button oben! 
+547: *9:28 AM 11/17/2022-9:37 AM 11/17/2022
+A?321wA?m=>fguswmw
+548: *9:38 AM 11/17/2022-9:42 AM 11/17/2022
+550: *11:14 AM 11/17/2022-11:18 AM 11/17/2022
+1- js how to detect when page is deactivated or reloaded?
+document.addEventListener('mouseleave', e=>{
+     //do some async code
+})
 
-
+document.addEventListener('visibilitychange', e=>{
+     if (document.visibilityState === 'visible') {
+   //report that user is in focus
+    } else {
+     //report that user is out of focus
+    }  
+})
+2- route_post_json
+3- save page as is! load on restart
+551: *11:18 AM 11/17/2022-11:35 AM 11/17/2022
+Pause 30- (trinken,orange/traube)=>3,2,1=>github=>tm:corr:fe=>guspa
+552: *11:35 AM 11/17/2022-11:47 AM 11/17/2022
+551: *11:47 AM 11/17/2022-
+1- filename und data
+2- versuchs einfach!
+3- find visibilityState in aroot!
 
 
 
