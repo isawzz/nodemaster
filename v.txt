@@ -2876,7 +2876,108 @@ anderes spiel: dazu brauch ich nur 1 heft, 1 wuerfel sonst nichts
 6. stop nach mindestzeit: pause, collect points, ev random multiplicator
 7. admin: schreibe points auf, =>aenderungen zu default regeln,
 goto 1
-446: *6:06 AM 11/16/2022-
+446: *6:06 AM 11/16/2022-6:13 AM 11/16/2022
+447: *6:13 AM 11/16/2022-6:15 AM 11/16/2022
+448: *6:15 AM 11/16/2022-5:09 PM 11/16/2022
+__________ do 17.11.22 waiting at the airport...  
+500: *6:23 AM 11/17/2022-6:31 AM 11/17/2022
+501: *6:31 AM 11/17/2022-6:39 AM 11/17/2022
+502: *6:39 AM 11/17/2022-6:48 AM 11/17/2022
+503: *6:48 AM 11/17/2022-6:51 AM 11/17/2022
+504: *6:51 AM 11/17/2022-6:58 AM 11/17/2022
+505: *6:58 AM 11/17/2022-6:59 AM 11/17/2022
+how to exclude directory from Five-server:
+see https://github.com/yandeu/five-server
+// fiveserver.config.js
+module.exports = {
+  // ...
+  watch: ['cai','basejs'],
+  ignore: 'y',
+
+  // can also be an array:
+  // watch: ['src', 'public'],
+  // ignore: [/\.s[ac]ss$/i, /\.tsx?$/i]
+}
+506: *6:59 AM 11/17/2022-7:01 AM 11/17/2022
+507: *7:02 AM 11/17/2022-7:04 AM 11/17/2022
+- finding 50 simplify sustainability discipline
+- die aufgabe ist: discipline! practice discipline!! internalize discipline!!!
+508: *7:04 AM 11/17/2022-7:06 AM 11/17/2022
+509: *7:06 AM 11/17/2022-7:10 AM 11/17/2022
+510: *7:10 AM 11/17/2022-7:30 AM 11/17/2022
+511: *7:30 AM 11/17/2022-7:38 AM 11/17/2022
+512: *7:38 AM 11/17/2022-7:41 AM 11/17/2022
+513: *7:41 AM 11/17/2022-7:42 AM 11/17/2022
+514: *7:42 AM 11/17/2022-7:42 AM 11/17/2022
+515: *7:42 AM 11/17/2022-7:46 AM 11/17/2022
+516L *7:46 AM 11/17/2022-7:49 AM 11/17/2022
+517: *7:49 AM 11/17/2022-8:00 AM 11/17/2022
+518: *8:00 AM 11/17/2022-8:10 AM 11/17/2022
+- rem cons!!!
+way shorter!!!
+- lostfocus: if empty, recycle!
+- if a div is left empty, recycle it!
+- focus on next index
+- shorter!
+- when pressing tab cycle through editable divs
+- nein, schlecht
+- js editable div
+- click on page: show cursor
+519: *8:10 AM 11/17/2022-8:10 AM 11/17/2022
+321wm=>emailswmw
+520: *8:10 AM 11/17/2022-8:12 AM 11/17/2022
+521: *8:12 AM 11/17/2022-8:13 AM 11/17/2022
+522: *8:13 AM 11/17/2022-8:17 AM 11/17/2022
+1- wie mach ich module 20?
+2- rem cons 41
+3- mach ein bestimmes y
+523: *8:17 AM 11/17/2022-8:19 AM 11/17/2022
+524: *8:20 AM 11/17/2022-
+=>action:wm=>tm: 8:20 AM 11/17/2022-
+3- clear button oben! 
+
+
+
+
+
+
+
+
+
+
+- test 114
+- how to save a file on server directly?
+- ich muss auf einfache are ein wort eingeben koennen
+- es muss immer alles sofort persistent gemacht werden - am besten in einem file
+- ui:
+a program to direct my spinning thoughts
+
+
+
+
+
+
+
+
+remove yourself from the outer world - this self is dommed with all the others there is nothing you can do - but you can turn inside and create a new world
+
+
+
+
+
+
+
+
+not doing is slow but more efficient
+you knew that as long as you look forward or backward you will suffer!
+this is not about the outer world or money. this is a training for you to wake up
+
+
+
+
+- go through materials
+- social interaction: be quiet do what you are told as long as it is ok
+dont bother about outcome
 - ich muss von der praxis herkommen!
 - rewards: essen,taschengeld,tv time,lesen
 - motivation: music,bewegung,schlaf
@@ -2885,14 +2986,6 @@ goto 1
 
 
 
-
-
-
-
-==>library! oeffnet 1pm Tha Wife Stalker retour!
-Adventures in Raspberry Pi, Raspberrry Pi => retour!!!
-
-=>Dec 10 rest renew
 
 
 

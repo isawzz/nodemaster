@@ -3,6 +3,19 @@
 function test16_yt() {
 	playt();
 }
+function test15_qa() {
+	G = {
+		i: 0,
+		q: null, //current question object
+		alist: null, // current answers list
+		selist: null, //current answers selected
+		hist: [], // tuples [{i,q,as,selist} ...]
+		stcont: { box: true, wmin: 600 },
+		sta: { cursor: 'pointer', aitems: 'center', vpadding: 6, hpadding: 12, gap: 4, margin: 6, rounding: 12, fg: 'contrast' },
+		stq: { padding: 12, weight: 'bold', family: 'opensans', fz: 28 },
+	};
+	q0();
+}
 
 function test14() {
 	show_emos();
@@ -95,11 +108,10 @@ function test8_load_googlemap_in_iframe() {
 	// iDiv.src = 'https://maps.google.com/maps?q=48.2,16.3&hl=fa;z=5&ie=UTF8&output=embed&hl=en';
 }
 function test7_uploadfile() {
-	let o = { filename: 'ex', data: { text: 'aber geh jaaaa', id: 78912 } };
+	let o = { filename: 'ex', data: { text: 'jajajaaber geh jaaaa', id: 78912 } };
 
-	route_post_json('http://localhost:3000/post/json', o, r => {
-		dTable.children[0].innerHTML = r.checked;
-		console.log(JSON.stringify(r))
+	route_post_json('http://localhost:3000/post/json', o, response => {
+		console.log(JSON.stringify(response))
 	});
 }
 function test6_init() {

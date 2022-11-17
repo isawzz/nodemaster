@@ -19,7 +19,7 @@ function update_player_move(player,data){
 }
 //#endregion
 
-for (const name of ['cabai', 'games', 'mapgame', 'noc']) {
+for (const name of ['cai', 'games', 'mapgame', 'noc']) {
 	app.get('/' + name, (req, res) => {
 		res.sendFile(__dirname + '/' + name + '/index.html');
 	});
