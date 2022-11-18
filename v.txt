@@ -3038,7 +3038,9 @@ putzen
 zimmer: stiege, eingang, wohnzi, kueche, klo gu, loft/guschlafzi
 592: *7:10 AM 11/18/2022-12:21 PM 11/18/2022
 ok - brot, kekse, gu schwimmen
-612: *12:21 PM 11/18/2022-
+612: *12:21 PM 11/18/2022-12:40 PM 11/18/2022
+613: *12:40 PM 11/18/2022-
+
 
 
 
