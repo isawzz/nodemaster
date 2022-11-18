@@ -5890,6 +5890,7 @@ function setRect(elem, options) {
 	return r;
 }
 function toElem(d) { return isString(d) ? mBy(d) : d; }
+function toModulo(n,modul){rem=n%modul;	n=n-rem; if (n<0) n=0;return n;}
 function toggleSelection(pic, selected, clSelected = 'framedPicture', clUnselected = null) {
 	//if selected is a list, pic is added or removed from it
 	//if selected is an object, it is unselected

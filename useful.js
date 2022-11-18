@@ -1,5 +1,18 @@
 
 
+function _cycle_through_editables(ev) {
+	//console.log('key', ev.key)
+}
+
+var selectedElement = null;
+function setFocus(e) {
+	if (selectedElement)
+		selectedElement.style.outline = 'none';
+
+	selectedElement = window.getSelection().focusNode.parentNode;
+	// selectedElement.style.outline = '1px solid #f00';
+};
+
 
 function show_reasons() {
 

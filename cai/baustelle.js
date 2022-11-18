@@ -1,14 +1,7 @@
 
 DA.edits = [];
-function open_invisible_input(ev) {
-	//console.log('ev.target', ev.target)
-	if (ev.target.id != 'dTable') return;
-	let [x, y] = [ev.offsetX, ev.offsetY];
-	//console.log('x', x, 'y', y, ev)
-	rem=y%20;
-	y=y-rem-10; if (y<0) y=0;
-
-	let d = mDiv(dTable, { x: x, y: y, padding:10, position: 'absolute', wmin:10,  }, null); //,'<span contenteditable="true">This is an editable paragraph.</span>');
+function add_edit(x,y,text='',bg='random'){
+	let d = mDiv(dTable, { bg:bg, fg:'contrast', x: x, y: y, padding:10, position: 'absolute', wmin:10,  }, getUID(), text); //,'<span contenteditable="true">This is an editable paragraph.</span>');
 	DA.edits.push(d);
 	d.setAttribute('contentEditable', true);
 	d.style.outline = 'none';
@@ -22,7 +15,6 @@ function open_invisible_input(ev) {
 			//if (e.keyCode == 13){			save_all();			}
 		}
 	};
-
 	d.onkeyup=function (e) {
 		if (DA.tabKeyPressed) {
 			//console.log('TAB!', DA.edits); // Do stuff for TAB
@@ -39,6 +31,9 @@ function open_invisible_input(ev) {
 		//Do other stuff when not TAB
 	};
 	d.onfocus=e=>{
+		
+		//console.log('target',e.target.id);
+		//return;
 		if (DA.focusElement != e.target && isdef(DA.focusElement)){
 			let el = DA.focusElement;
 			if (isEmpty(el.innerHTML)) {
@@ -47,32 +42,44 @@ function open_invisible_input(ev) {
 				//console.log('recycled:',el);
 			}
 		}
+
+		//console.log('target',e.target);
+		let id = evToId(e);
+		console.log('id',id)
+		let elem = mBy(id);
+		selectText(elem);
+
 		//console.log('focus');
 		DA.focusElement = e.target;
-		if (DA.selectOnClick) selectText(DA.focusElement);
+		//if (DA.selectOnClick) selectText(DA.focusElement);
 
 		//if (isEmpty(d.innerHTML)) {removeInPlace(DA.edits,d);d.remove(); }
 	};
-	d.ondblclick = ev=>{selectText(ev.target); console.log('dblclick!')}
 	d.focus();
-
-	// d.onkeyup = setFocus;
-	// d.onmouseup = setFocus;
 }
-
-function cycle_through_editables(ev) {
-	//console.log('key', ev.key)
+async function load_all(){
+	let o= await route_path_yaml_dict('../y/page.yaml');
+	for(const item of o){		add_edit(item.x,item.y-41,item.text);	}
 }
-
-var selectedElement = null;
-function setFocus(e) {
-	if (selectedElement)
-		selectedElement.style.outline = 'none';
-
-	selectedElement = window.getSelection().focusNode.parentNode;
-	// selectedElement.style.outline = '1px solid #f00';
-};
-
+function onclick_toobar(name) { 
+	console.log('clicked', name); 
+	switch(name){
+		case 'clear':mClear(dTable);DA.edits=[]; break;
+		case 'magic':break;
+		case 'lineup':
+			mCenterFlex(dTable); //mStyle(dTable,{display:'grid'});
+			DA.edits.map(x=>mStyle(x,{position:null,display:'inline'}));
+		break;
+		case 'orig':DA.edits.map(x=>x.style.position='absolute');break;
+	}
+}
+function open_invisible_input(ev) {
+	if (ev.target.id != 'dTable') return;
+	let [x, y] = [ev.offsetX, ev.offsetY];
+	y=toModulo(y-10,20);
+	x=toModulo(x,50);
+	add_edit(x,y);
+}
 function save_all(){
 	//console.log('save',Date.now())
 	let data = [];

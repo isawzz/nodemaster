@@ -2965,13 +2965,103 @@ Pause 30- (trinken,orange/traube)=>3,2,1=>github=>tm:corr:fe=>guspa
 2- versuchs einfach!
 3- find visibilityState in aroot!
 552: *11:49 AM 11/17/2022-11:52 AM 11/17/2022
-553: *11:52 AM 11/17/2022-
-=>gu spaz
+553: *11:52 AM 11/17/2022-12:36 PM 11/17/2022
+ok =>gu spaz
+563: *12:37 PM 11/17/2022-4:30 PM 11/17/2022
+RH=321/5/321/10/321/15/music+action[1000]: *4:33 PM 11/17/2022-
+564: *4:33 PM 11/17/2022-4:39 PM 11/17/2022
+565: *4:42 PM 11/17/2022-4:42 PM 11/17/2022
+1- show_edit
+2- await
 3- loading the page!
+566: *4:42 PM 11/17/2022-4:47 PM 11/17/2022
+567: *4:48 PM 11/17/2022-4:51 PM 11/17/2022
+568: *4:51 PM 11/17/2022-4:55 PM 11/17/2022
+1- was passiert wenn auf clear clicke?
+2- toolbar weg
+3- wird um dToolbar zu weit unten gezeichnet!
+569: *4:55 PM 11/17/2022-4:55 PM 11/17/2022
+570: *4:59 PM 11/17/2022-5:04 PM 11/17/2022
+1- events muessen angehaengt werden!
+2- rem cons 22
+3- select on click
+571: *5:04 PM 11/17/2022-5:06 PM 11/17/2022
+572: *5:06 PM 11/17/2022-5:07 PM 11/17/2022
+1- x soll modulo 40 sein
+2- ich moecht einen timer
+3- das ist eigentlich wie bei notion!
+573: *5:12 PM 11/17/2022-5:12 PM 11/17/2022
+574: *5:13 PM 11/17/2022-5:14 PM 11/17/2022
+575: *5:14 PM 11/17/2022-5:17 PM 11/17/2022
+576: *5:18 PM 11/17/2022-5:22 PM 11/17/2022
+1- mouseenter check if control key is down
+2- dd kann sein: verschieben bei ctrl+click
+3- ich koennte mit tastatur arbeiten
+577: *5:22 PM 11/17/2022-5:42 PM 11/17/2022
+578: *5:43 PM 11/17/2022-7:06 PM 11/17/2022
+__________ fr 18.11.22 waiting at the airport...  
+583: *7:06 PM 11/17/2022-5:35 AM 11/18/2022
+584: *5:36 AM 11/18/2022-5:37 AM 11/18/2022
+585: *5:37 AM 11/18/2022-5:38 AM 11/18/2022
+586: *5:38 AM 11/18/2022-5:39 AM 11/18/2022
+587: *5:39 AM 11/18/2022-6:02 AM 11/18/2022
+588: *6:02 AM 11/18/2022-6:04 AM 11/18/2022
+589: *6:04 AM 11/18/2022-6:06 AM 11/18/2022
+590: *6:06 AM 11/18/2022-6:14 AM 11/18/2022
+591: *6:15 AM 11/18/2022-6:24 AM 11/18/2022
+591: *6:24 AM 11/18/2022-7:10 AM 11/18/2022
+- determine energy level: <0, 0, >0
+phase 1: avoid ego triggers, disziplin (random obey ewew)
+- triggers avoiden! disziplin
+- random order for #(1-10):
+examples: apfel schneiden
+orange schaelen
+karotten schaelen
+femto
+micro
+macro
+standard
+104
+tennis
+full
+safeway
+(mit gu)
+tm (300-3000)
+post scan
+post zahlen
+klavier: op111,chopin etude,nocturne,ballade,bach ital,mozart bdur,cdur concert, beeth kk3-3, kk5-2, mondschein3, waldstein1 (11)
+5+ 10+ 15+ 20+ 30+
+kochen kartoffel, purree+kohlsprossen+zwiebel
+backen almond horns, gugelhupf, vanillekipferl, striezelteig, rezept
+staubsaugen
+putzen
+zimmer: stiege, eingang, wohnzi, kueche, klo gu, loft/guschlafzi
+592: *7:10 AM 11/18/2022-
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+=>it has to be things that have nothing to do with ego (eg money, time, people, things)
+wie kann ich das feststellen? wenn auch nur slightest unease habe
+
+
+- the best way to clear your mind is to obey random orders
+- you have to clear your mind
+- test it!
+- ich koennte sowas wie lineup machen dass alle divs in position relative verwandelt: was wuerde dann passieren?
+- oder ich sage timed dann schreibt er immer vorher die start zeit zeit
+- wenn ich schreibe timer 20 oder cd20 macht er sowas
 
 
 
@@ -2985,7 +3075,8 @@ a program to direct my spinning thoughts
 
 
 
-
+sasha Latipova
+Reese truth for health foundation
 
 
 
