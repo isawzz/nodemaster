@@ -1,3 +1,20 @@
+/* #region autobot */
+.parent {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+
+  /* Just for parent demo size */
+  height: 100vh;
+}
+.autobot {
+  display: flex;
+}
+.autobot > * {
+  margin: auto;
+}
+/* #endregion autobot */
+
+
 .top span,
 .bottom span {
 	display: inline-block;

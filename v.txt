@@ -3039,7 +3039,74 @@ zimmer: stiege, eingang, wohnzi, kueche, klo gu, loft/guschlafzi
 592: *7:10 AM 11/18/2022-12:21 PM 11/18/2022
 ok - brot, kekse, gu schwimmen
 612: *12:21 PM 11/18/2022-12:40 PM 11/18/2022
-613: *12:40 PM 11/18/2022-
+613: *12:40 PM 11/18/2022-7:54 PM 11/18/2022
+620: *7:54 PM 11/18/2022-7:55 PM 11/18/2022
+__________ sa 19.11.22 waiting at the airport...  
+621: *7:55 PM 11/18/2022-7:18 AM 11/19/2022
+622: *7:18 AM 11/19/2022-7:19 AM 11/19/2022
+- way shorter!!!!!!! life is suffering
+623: *7:19 AM 11/19/2022-7:22 AM 11/19/2022
+624: *7:22 AM 11/19/2022-7:24 AM 11/19/2022
+625: *7:24 AM 11/19/2022-7:27 AM 11/19/2022
+626: *7:27 AM 11/19/2022-7:29 AM 11/19/2022
+627: *7:29 AM 11/19/2022-7:30 AM 11/19/2022
+628: *7:30 AM 11/19/2022-7:30 AM 11/19/2022
+629: *7:30 AM 11/19/2022-7:31 AM 11/19/2022
+630: *7:31 AM 11/19/2022-7:32 AM 11/19/2022
+631: *7:32 AM 11/19/2022-7:32 AM 11/19/2022
+632: *7:33 AM 11/19/2022-7:34 AM 11/19/2022
+633: *7:34 AM 11/19/2022-7:35 AM 11/19/2022
+634: *7:35 AM 11/19/2022-7:35 AM 11/19/2022
+635: *7:35 AM 11/19/2022-7:46 AM 11/19/2022
+636: *7:46 AM 11/19/2022-7:46 AM 11/19/2022
+637: *7:46 AM 11/19/2022-7:55 AM 11/19/2022
+638: *7:55 AM 11/19/2022-7:56 AM 11/19/2022
+639: *7:56 AM 11/19/2022-7:56 AM 11/19/2022
+==>excluded styles.css!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+640: *7:56 AM 11/19/2022-8:03 AM 11/19/2022
+641: *8:03 AM 11/19/2022-8:06 AM 11/19/2022
+642: *8:06 AM 11/19/2022-8:08 AM 11/19/2022
+643: *8:08 AM 11/19/2022-8:10 AM 11/19/2022
+644: *8:10 AM 11/19/2022-8:23 AM 11/19/2022
+642: *8:23 AM 11/19/2022-8:31 AM 11/19/2022
+643: *8:31 AM 11/19/2022-8:34 AM 11/19/2022
+644: *8:34 AM 11/19/2022-8:35 AM 11/19/2022
+645: *8:36 AM 11/19/2022-9:07 AM 11/19/2022
+646: *9:07 AM 11/19/2022-10:34 AM 11/19/2022 19
+action D: list
+665: *10:34 AM 11/19/2022-
+- open examples mit dem aspectRatio
+- hol die baselayout styles rein!
+gu schwimmen org
+- simpler!!!
+- mach ein mTag sowie mDiv
+- next html line
+- next
+- base styles fuer layouts!
+- test20_aspect_ratio_image_card
+- one by one it does not really matter!
+alle layouts: test
+
+
+
+
+
+
+
+- music is the first stage with NO permanence (not time-bound)
+- thoughts have almost no permanence
+- emotions have a more volatile permanence, but still some
+- this body seemingly has a certain permanence 
+
+- when I have understood that hell is not inflicted and that this body is just a part of it created by my soul with a slightly higher permanence than simple thoughts
+- the reason to goto hell is to learn that it is self-chosen not inflicted
+- it is only my chosen state that decides where I am
+- when I leave the space of nirvigelpa samadhi and start paying attention to the sick mind = ego, I am suffering (=hell)
+- when I am not suffering I am in the neutral space of nirvigelpa samadhi (=heaven)
+- ich moecht die layouts kennenlernen! die sind cool!
+- autobot???
+- echt???
+- life IS suffering
 
 
 

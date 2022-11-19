@@ -20,7 +20,8 @@ function get_bstp() {
 	let val = rChoose(actions[key]);
 
 	console.log('val', val);
-	add_edit()
+	
+	//add_edit()
 
 }
 

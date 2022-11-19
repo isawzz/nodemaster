@@ -12,13 +12,17 @@
 		<link rel="stylesheet" href="../base/alibs/leaflet/leaflet.css" />
 		<link rel="stylesheet" href="../base/alibs/leaflet/leaflet-routing-machine.css" />
 		<!-- <link rel="stylesheet" href="../basejs/basemin.css" /> -->
-		<link rel="stylesheet" href="../cai/styles.css" />
+		<!-- <link rel="stylesheet" href="../cai/styles.css" /> -->
+		<link rel="stylesheet" href="../cai/layoutbase.css" />
 	</head>
-	<body>
-		<div id="dPage" style="height:100%;width:100%;position:relative;">
-			<div id="dToolbar"></div>
+	<body style="padding:0;margin:0">
+		<div style="display: grid;grid-template-rows: auto 1fr auto;height: 100vh;">
+			<div id="dToolbar" style="background:orange;min-height:10px"></div>
 			<div id="dTable"></div>
-		</div>
+			<div id="dStatusbar" style="background:orange;min-height:10px"></div>
+		</div>		
+		<!-- <div id="dPage" style="height:100%;width:100%;position:relative;">
+		</div> -->
 		<script src="../base/alibs/cyto/cyto.js"></script>
 		<script src="../base/alibs/cyto/cola.min.js"></script>
 		<script src="../base/alibs/cyto/cytoscape-cola.js"></script>

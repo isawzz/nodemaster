@@ -1,1 +1,11 @@
-[]
+- x: 400
+  y: 201
+  text: dddd
+- x: 100
+  y: 121
+  text: hallo<div>dasdas</div>
+- x: 350
+  y: 461
+  text: das ist wirklich lustig<div>ich koennte hier genauso was anderes
+    schreiben!</div><div>aber wieso erlaubt er mir nicht etwas anderes zu
+    schriben?</div>

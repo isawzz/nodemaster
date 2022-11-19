@@ -1,4 +1,151 @@
 
+function test20_aspect_ratio_image_card() {
+	let d = mDiv(dTable, { display: 'grid', 'place-items': 'center' });//parent
+	let d1 = mDiv(d, { width: '50%', display: 'flex', 'flex-direction': 'column', padding: '1rem' });//card
+	d1.innerHTML = `<h1>Video Title</h1>`;
+	//return d;
+	let d2 = mDiv(d1, { 'aspect-ratio': '16 / 9' }); //visual
+	d1.innerHTML += `<p>Descriptive Text goes here</p>`;
+	//mTag('p','Descriptive Text goes here',d1);
+	return d;
+}
+
+//#region misc tests
+function test17_load_save_texte() {
+	mStyle(dTable, { h: '100%', family: 'opensans', fz: 20, bg: ORANGE, fg: 'white', position: 'relative' }); mCenterFlex(dTable);
+	//return;
+	//mStyle(dTable, { overflow:'auto',position: 'relative', w: '100%', family: 'opensans', fz: 20, bg: ORANGE, fg: 'white' });//mStyle(dTable, { w: '100%', overflow: 'hidden', fz: 22 }); mCenterFlex(dTable);
+	// #region tests
+	//show_available_voices();
+	//test15_qa();//test16_yt(); //test13_load_yt_in_iframe(); //test15_qa(); //test12_iconviewer(); //	test11_say();
+	// #endregion tests
+
+	//console.log('hallo');	test7_uploadfile();
+	let buttons = ['clear', 'magic']; //,'lineup','orig'];
+	dToolbar = mToolbar(buttons, onclick_toobar, 'dToolbar', { padding: 10, display: 'flex', gap: 10, bg: 'orange' });
+
+	document.addEventListener('mouseleave', e => {
+		//console.log('page mouse left!!!');
+		save_all();
+	})
+
+	document.addEventListener('visibilitychange', e => {
+		if (document.visibilityState === 'visible') {
+			console.log('page activated!');
+
+		} else {
+			console.log('page deactivated!!!');
+			save_all();
+		}
+	});
+
+	load_all();
+	//onkeyup=_cycle_through_editables;
+
+
+	onclick = open_invisible_input;
+
+
+
+}
+//#region test17
+DA.edits = [];
+function add_edit(x, y, text = '', bg = 'random') {
+	let d = mDiv(dTable, { bg: bg, fg: 'contrast', x: x, y: y, position: 'absolute', padding: 10, wmin: 10, }, getUID(), text); //,'<span contenteditable="true">This is an editable paragraph.</span>');
+	DA.edits.push(d);
+	add_interaction(d);
+}
+function add_interaction(d){
+	d.setAttribute('contentEditable', true);
+	d.style.outline = 'none';
+	d.onkeydown = function (e) {
+		DA.tabKeyPressed = e.keyCode == 9;
+		if (DA.tabKeyPressed) {
+			e.preventDefault();
+			return;
+		} else {
+			//console.log('keyCode',e.keyCode);
+			//if (e.keyCode == 13){			save_all();			}
+		}
+	};
+	d.onkeyup = function (e) {
+		if (DA.tabKeyPressed) {
+			//console.log('TAB!', DA.edits); // Do stuff for TAB
+			//what is the index of this div?
+			let idx = DA.edits.indexOf(e.target);
+			//console.log('i am index',idx);
+			let next = (idx + 1) % DA.edits.length;
+			if (next != idx) DA.edits[next].focus();
+			e.preventDefault();
+			return;
+		}
+
+
+		//Do other stuff when not TAB
+	};
+	d.onfocus = e => {
+
+		//console.log('target',e.target.id);
+		//return;
+		if (DA.focusElement != e.target && isdef(DA.focusElement)) {
+			let el = DA.focusElement;
+			if (isEmpty(el.innerHTML)) {
+				removeInPlace(DA.edits, el);
+				el.remove();
+				//console.log('recycled:',el);
+			}
+		}
+
+		//console.log('target',e.target);
+		//let id = evToId(e); console.log('id', id); let elem = mBy(id); selectText(elem);
+
+		//console.log('focus');
+		DA.focusElement = e.target;
+		//if (DA.selectOnClick) selectText(DA.focusElement);
+
+		//if (isEmpty(d.innerHTML)) {removeInPlace(DA.edits,d);d.remove(); }
+	};
+	d.focus();
+}
+async function load_all() {
+	let o = await route_path_yaml_dict('../y/page.yaml');
+	for (const item of o) { add_edit(item.x, item.y - 41, item.text); }
+}
+function onclick_toobar(name) {
+	console.log('clicked', name);
+	switch (name) {
+		case 'clear': mClear(dTable); DA.edits = []; break;
+		case 'magic': break;
+		case 'lineup':
+			mCenterFlex(dTable); //mStyle(dTable,{display:'grid'});
+			DA.edits.map(x => mStyle(x, { position: null, display: 'inline' }));
+			break;
+		case 'orig': DA.edits.map(x => x.style.position = 'absolute'); break;
+	}
+}
+function open_invisible_input(ev) {
+	if (ev.target.id != 'dTable') return;
+	let [x, y] = [ev.offsetX, ev.offsetY];
+	y = toModulo(y - 10, 20, 0, mStyleGet(dTable,'h')-47);
+	x = toModulo(x, 50);
+	add_edit(x, y);
+}
+function save_all() {
+	//console.log('save',Date.now())
+	let data = [];
+	for (const edit of DA.edits) {
+		let rect = getRect(edit);
+		let text = edit.innerHTML;
+		let o = { x: rect.x, y: rect.y, text: text };
+		data.push(o);
+	}
+	route_post_json('http://localhost:3000/post/json', { data: data, filename: 'page' }, response => {
+		//console.log(JSON.stringify(response));
+	});
+}
+
+//#endregion
+
 
 function test16_yt() {
 	playt();
@@ -19,10 +166,10 @@ function test15_qa() {
 
 function test14() {
 	show_emos();
-	say('what do you feel right now???','uk',null,.5,.8);
+	say('what do you feel right now???', 'uk', null, .5, .8);
 }
 
-function question2(ev){
+function question2(ev) {
 	//console.log('target',ev.target)
 	let id = evToId(ev);
 	let item = Items[id];
@@ -30,8 +177,8 @@ function question2(ev){
 	// ev.stopPropagation();
 	// let d=ev.target;
 	// let item = JSON.parse(d.getAttribute('item'));
-	console.log('item',item);
-	say(`why do you feel ${item.list}???`,'uk',show_reasons,.5,.8);
+	console.log('item', item);
+	say(`why do you feel ${item.list}???`, 'uk', show_reasons, .5, .8);
 
 	// let d1=d.lastChild;
 	// let list = d1.innerHTML;
@@ -220,13 +367,7 @@ function test0() {
 	dTable.onclick = game_add_default_item;
 }
 
-
-
-
-
-
-
-
+//#endregion
 
 
 
