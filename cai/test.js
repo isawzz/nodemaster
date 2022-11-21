@@ -1,12 +1,33 @@
 
+function test21_resizable(){
+
+}
+function test22_centering_container(){
+	let d = mDiv(dTable,{bg:'yellow', w:'100%',h:'100%',aitems:'center'}); mCenterCenter(d);//, { display: 'grid', place: 'center', h: '100%', w:'100%' });//parent
+	//let d1 = mDiv(d, { bg:'red', 'place-content':'center',w:'80%',display: 'grid', 'grid-template-columns': 'repeat(auto-fill, 100px)','grid-gap':'1rem'});
+	//mCenter(d,4);
+	for(let i=0;i<14;i++){
+		mDiv(d,{display:'inline-block',w:rNumber(50,150),h:rNumber(50,150),bg:'random',margin:10});
+	}
+}
+function test21_centering_container(){
+	let d = mDiv(dTable,{bg:'yellow', w:'100%',h:'100%'}); mCenterCenter(d);//, { display: 'grid', place: 'center', h: '100%', w:'100%' });//parent
+	let d1 = mDiv(d, { bg:'red', 'place-content':'center',w:'80%',display: 'grid', 'grid-template-columns': 'repeat(auto-fill, 100px)','grid-gap':'1rem'});
+	//mCenter(d,4);
+	for(let i=0;i<14;i++){
+		mDiv(d1,{w:rNumber(50,150),h:100,bg:'random',margin:10});
+	}
+}
+
 function test20_aspect_ratio_image_card() {
-	let d = mDiv(dTable, { display: 'grid', 'place-items': 'center' });//parent
-	let d1 = mDiv(d, { width: '50%', display: 'flex', 'flex-direction': 'column', padding: '1rem' });//card
-	d1.innerHTML = `<h1>Video Title</h1>`;
-	//return d;
-	let d2 = mDiv(d1, { 'aspect-ratio': '16 / 9' }); //visual
-	d1.innerHTML += `<p>Descriptive Text goes here</p>`;
-	//mTag('p','Descriptive Text goes here',d1);
+	let d = mDiv(dTable, { display: 'grid', place: 'center', h: '100%' });//parent
+
+	let dcard = mDiv(d, { w: '50%', display: 'flex', dir: 'column', padding: '1rem' }, null, null, 'blue'); //card
+
+	let dtitle = mTag('h1', 'Video Title', dcard);
+	let dimg = mDiv(dcard, { aspectRatio: '16 / 9' }, null, null, 'green'); //visual
+	let ddesc = mTag('p', 'Descriptive Text goes here', dcard);
+
 	return d;
 }
 
@@ -55,7 +76,7 @@ function add_edit(x, y, text = '', bg = 'random') {
 	DA.edits.push(d);
 	add_interaction(d);
 }
-function add_interaction(d){
+function add_interaction(d) {
 	d.setAttribute('contentEditable', true);
 	d.style.outline = 'none';
 	d.onkeydown = function (e) {
@@ -126,7 +147,7 @@ function onclick_toobar(name) {
 function open_invisible_input(ev) {
 	if (ev.target.id != 'dTable') return;
 	let [x, y] = [ev.offsetX, ev.offsetY];
-	y = toModulo(y - 10, 20, 0, mStyleGet(dTable,'h')-47);
+	y = toModulo(y - 10, 20, 0, mStyleGet(dTable, 'h') - 47);
 	x = toModulo(x, 50);
 	add_edit(x, y);
 }

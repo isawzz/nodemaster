@@ -3074,7 +3074,130 @@ __________ sa 19.11.22 waiting at the airport...
 645: *8:36 AM 11/19/2022-9:07 AM 11/19/2022
 646: *9:07 AM 11/19/2022-10:34 AM 11/19/2022 19
 action D: list
-665: *10:34 AM 11/19/2022-
+__________ so 20.11.22 waiting at the airport...  
+665: *10:34 AM 11/19/2022-6:30 AM 11/20/2022
+666: *6:33 AM 11/20/2022-6:33 AM 11/20/2022
+ok - suche alle mit class card in baselayouts.css
+667: *6:33 AM 11/20/2022-6:38 AM 11/20/2022
+ok - class blue green...
+668: *6:38 AM 11/20/2022-6:42 AM 11/20/2022
+669: *6:42 AM 11/20/2022-6:52 AM 11/20/2022
+- suche function mTag
+- versuch noch mal das tag
+670: *6:52 AM 11/20/2022-6:53 AM 11/20/2022
+671: *6:53 AM 11/20/2022-7:08 AM 11/20/2022
+672: *7:08 AM 11/20/2022-7:25 AM 11/20/2022
+- soll ich einen style centering machen?
+- daraus kann ich lernen:
+1. title,content,desc soll flexibel sein!
+673: *7:25 AM 11/20/2022-7:30 AM 11/20/2022
+- resize: both css!!!!!!!!!!!!!!!!!!!!! extrem cool!!!
+674: *7:30 AM 11/20/2022-7:39 AM 11/20/2022
+675: *7:39 AM 11/20/2022-7:41 AM 11/20/2022
+- is there a css columns JA: https://developer.mozilla.org/en-US/docs/Web/CSS/columns#:~:text=The%20columns%20CSS%20shorthand%20property,well%20as%20those%20columns'%20widths.
+- centering_container
+676: *7:41 AM 11/20/2022-7:47 AM 11/20/2022
+ repeat(auto-fill, minmax(300px, 1fr));
+677: *7:54 AM 11/20/2022-8:08 AM 11/20/2022
+678: *8:08 AM 11/20/2022-9:09 AM 11/20/2022
+__________ mo 21.11.22 waiting at the airport...  
+680: *5:36 AM 11/21/2022-5:47 AM 11/21/2022
+681: *5:47 AM 11/21/2022-5:50 AM 11/21/2022
+682: *5:50 AM 11/21/2022-5:51 AM 11/21/2022
+683: *5:52 AM 11/21/2022-5:55 AM 11/21/2022
+684: *5:55 AM 11/21/2022-6:02 AM 11/21/2022
+685: *6:02 AM 11/21/2022-6:02 AM 11/21/2022
+tutorial on REST: https://www.youtube.com/watch?v=6sUbt-Qp6Pg
+REST == Create(POST) Read(GET) Update(PUT) Delete(DELETE)
+686: *6:04 AM 11/21/2022-6:08 AM 11/21/2022
+a REST interface lets you manipulate server resources using those commands with standard url which ist 
+http://example.com/users[/id]
+687: *6:08 AM 11/21/2022-6:08 AM 11/21/2022
+backend tutorial https://www.youtube.com/watch?v=4r6WdaY3SOA
+688: *6:08 AM 11/21/2022-6:12 AM 11/21/2022
+was passiert wenn ich machen:
+https://www.youtube.com/results?search_query=depression
+689: *6:12 AM 11/21/2022-6:25 AM 11/21/2022
+fuer long macht er das:
+https://www.youtube.com/results?search_query=depression&sp=EgIYAg%253D%253D
+690: *6:25 AM 11/21/2022-6:33 AM 11/21/2022
+onYouTubeIframeAPIReady
+691: *6:33 AM 11/21/2022-6:39 AM 11/21/2022
+692: *6:39 AM 11/21/2022-6:43 AM 11/21/2022
+- ok und was jetzt? das audio file kann ich auch spielen in meiner website
+693: *6:43 AM 11/21/2022-6:44 AM 11/21/2022
+694: *6:45 AM 11/21/2022-6:45 AM 11/21/2022
+- obwohl es ist 3 jahre alt! waer nicht ein neueres besser?
+- wenn ich auf dem flughafen waere wuerd ich es dann machen? ja ich denk schon
+- soll ich das machen das tutorial oder ist es eh sinnlos? 
+695: *6:45 AM 11/21/2022-7:20 AM 11/21/2022
+696: *7:20 AM 11/21/2022-
+- runde gehen
+- webdevsimplified: newest backend dev node js
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+- brauchen wir die memory?
+- am allerliebsten wuerd ich einen assistant machen der  mich beraet und meine mind killt
+- am liebsten moecht ich ein multi reversi machen
+choices:
+- multireversi? macht das sinn?
+- simplere spiele
+- async patterns
+- noc
+- patterns
+- html game
+- fix ferrocarril?
+- ferrocarril bot?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 - open examples mit dem aspectRatio
 - hol die baselayout styles rein!
 gu schwimmen org

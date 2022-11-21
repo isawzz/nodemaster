@@ -243,7 +243,7 @@ const EMO = {
 		sleep: { list: 'rest, close your eyes, deep breath' },
 		distraction: { list: 'read, movie, docu, audiobook' },
 		walk: { list: 'music, tm, library, walk' },
-		babystep: { list: 'veggies,fruit,haushalt,wae,wasser,tee' },
+		babystep: { list: 'veggies, fruit, haushalt, wae, wasser, tee' },
 		work: { list: 'post, box, shelf, people, todolist' },
 		action: { list: 'piano, violin, game' },
 		choices: { list: 'dice, todolist, openlist, choices' },
@@ -801,16 +801,19 @@ function mCard(dParent, styles, classtr = '', id = null) {
 	return mDiv(dParent, styles, id, null, classes);
 }
 function mCardText(ckey, sz, color) { return is_jolly(ckey) ? '<span style="font-family:Algerian">jolly</span>' : `${ckey[0]}${mSuit(ckey, sz, color)}`; }
-function mCenterFlex(d, hCenter = true, vCenter = false, wrap = true) {
+function mCenterFlex(d, hCenter = true, vCenter = false, wrap = true, gap = null) {
 	let styles = { display: 'flex' };
 	if (hCenter) styles['justify-content'] = 'center';
 	styles['align-content'] = vCenter ? 'center' : 'flex-start';
 	if (wrap) styles['flex-wrap'] = 'wrap';
+	if (gap) styles.gap = gap;
 	mStyle(d, styles);
 	//console.log('d', d)
 }
 function mClear(d) { clearElement(toElem(d)); }
-function mCenterCenterFlex(d) { mCenterFlex(d, true, true, true); }
+function mCenterCenterFlex(d, gap) { mCenterFlex(d, true, true, true, gap); }
+function mCenter(d, gap) { mCenterFlex(d, true, false, true, gap); }
+function mCenterCenter(d, gap) { mCenterCenterFlex(d, gap); }
 function mClass0(d) { d = toElem(d); d.className = ''; }
 function mClass(d) {
 	d = toElem(d);
@@ -1548,10 +1551,23 @@ function mSpan(dParent, styles, innerHTML) {
 	if (isdef(dParent)) mAppend(dParent, d);
 	return d;
 }
+function mTag(tag, inner = null, dParent = null, styles = {}, id = null, classes = null) {
+
+	let el = mCreate(tag);
+	if (inner) el.innerHTML = inner; //'Descriptive Text goes here';
+	if (dParent) mAppend(dParent, el);
+	if (styles) mStyle(el, styles);
+	if (id) el.id = id;
+	if (classes) mClass(el, classes);
+	return el;
+
+}
 const STYLE_PARAMS = {
 	align: 'text-align',
+	aspectRatio: 'aspect-ratio',
 	bg: 'background-color',
 	dir: 'flex-direction',
+	//columns: 'grid-' // ne es gibt ein columns in css!!!!!!!!!
 	fg: 'color',
 	hgap: 'column-gap',
 	vgap: 'row-gap',
@@ -1569,6 +1585,7 @@ const STYLE_PARAMS = {
 	paleft: 'padding-left',
 	pabottom: 'padding-bottom',
 	paright: 'padding-right',
+	place: 'place-items', //fuer grid
 	rounding: 'border-radius',
 	w: 'width',
 	h: 'height',

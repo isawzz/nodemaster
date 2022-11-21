@@ -7,10 +7,26 @@ async function start() {
 		Socket.on('update', x => console.log('got update', x));
 	}
 	await load_syms(); dTable = mSection({h:'100%'},'dTable');
+	//#region tests
+	//test22_centering_container(); //test20_aspect_ratio_image_card();
+	//#endregion
 
-	test20_aspect_ratio_image_card();
+	let url = `http://gdata.youtube.com/feeds/api/videos`; //blocked by CORS
+	let result = await route_path_text(url);
+	console.log('result',result);
 
-
+	let res = `
+	http://gdata.youtube.com/feeds/api/videos
+?v=2
+&author=SesameStreet
+&q=rubber+ducky
+&orderby=viewCount
+&start-index=1
+&max-results=10
+&alt=json-in-script
+&callback=myCallbackFunction
+&prettyprint=true
+	`;
 }
 
 
