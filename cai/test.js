@@ -31,6 +31,29 @@ function test20_aspect_ratio_image_card() {
 	return d;
 }
 
+//#region FAILED
+async function fail_yt(){
+
+	let url = `http://gdata.youtube.com/feeds/api/videos`; //blocked by CORS
+	let result = await route_path_text(url);
+	console.log('result',result);
+
+	let res = `
+		http://gdata.youtube.com/feeds/api/videos
+		?v=2
+		&author=SesameStreet
+		&q=rubber+ducky
+		&orderby=viewCount
+		&start-index=1
+		&max-results=10
+		&alt=json-in-script
+		&callback=myCallbackFunction
+		&prettyprint=true
+	`;
+
+}
+//#endregion
+
 //#region misc tests
 function test17_load_save_texte() {
 	mStyle(dTable, { h: '100%', family: 'opensans', fz: 20, bg: ORANGE, fg: 'white', position: 'relative' }); mCenterFlex(dTable);

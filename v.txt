@@ -3131,9 +3131,25 @@ onYouTubeIframeAPIReady
 - wenn ich auf dem flughafen waere wuerd ich es dann machen? ja ich denk schon
 - soll ich das machen das tutorial oder ist es eh sinnlos? 
 695: *6:45 AM 11/21/2022-7:20 AM 11/21/2022
-696: *7:20 AM 11/21/2022-
-- runde gehen
+696: *7:20 AM 11/21/2022-8:26 AM 11/21/2022
+action
+706: *8:26 AM 11/21/2022-8:27 AM 11/21/2022
 - webdevsimplified: newest backend dev node js
+707: *8:27 AM 11/21/2022-8:35 AM 11/21/2022
+708: *8:37 AM 11/21/2022-8:37 AM 11/21/2022
+1- bis CD aus: schau mir den timer an!
+2- weiter
+3- webdevsimplified anschauen
+709: *8:38 AM 11/21/2022-10:42 AM 11/21/2022
+- mail kurz
+719: *10:42 AM 11/21/2022-11:18 AM 11/21/2022
+720: *11:19 AM 11/21/2022-11:20 AM 11/21/2022
+721: *11:21 AM 11/21/2022-11:21 AM 11/21/2022
+1- audit fix
+2- test
+3- google docs clone
+722: *11:21 AM 11/21/2022-
+3- maedi checken!
 
 
 
