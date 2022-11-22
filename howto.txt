@@ -1,3 +1,41 @@
+_________________ web dev simplified
+_________start project https://www.youtube.com/watch?v=qj2oDkvc4dQ&list=PLZlA0Gpn_vH8jbFkBjOuFjhxANC63OmXM&index=5
+open vscode in dir
+npm init (creates package.json)
+npm i express ejs express-ejs-layouts
+npm i --save-dev nodemon
+create server.js file (or app.js) ... see C:\D\webdevsimplified\wds\tutfullstack\server.js
+
+
+_________ what is ejs?
+templating engine to write html in js (for server rendering)
+compare to: vue, mustache, pug(Jade), Handlebars.js (react,underscore)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+_________________ older howto
 start server: npx nodemon app.js (or nodemon dir/app.js)
 
 start with live: npx live-server, navi to dir
