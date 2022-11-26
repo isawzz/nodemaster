@@ -3164,14 +3164,609 @@ even if I do  not leave this room ever again this is how everything would be
 731: *6:45 AM 11/22/2022-6:55 AM 11/22/2022
 ok - ich sollt es in learning machen! wds
 732: *6:55 AM 11/22/2022-7:04 AM 11/22/2022
-733: *7:04 AM 11/22/2022-
+733: *7:04 AM 11/22/2022-8:46 AM 11/22/2022
 lieber gott bitte lass sie deine liebe spueren! vergib mir alles denn du kannst es alle meine fehler und alle meine shortcomings. in meiner kompletten verwirrung und unsicherheit bitte lass sie deine liebe spueren! lass sie gestaerkt aus dieser schweren erfahrung hervorgehen! bitte lieber gott staerke sie und lass sie deine liebe spueren!!!!!!!!
+734: *8:47 AM 11/22/2022-9:00 AM 11/22/2022
+735: *9:00 AM 11/22/2022-9:15 AM 11/22/2022
+736: *9:15 AM 11/22/2022-9:23 AM 11/22/2022
+1- was ist zu tun? mich in mnusic verwandeln
+2- sehr weired alles
+3- wie mach ich es jetzt mit live-server?
+ - in public mach ein hallo.html (nicht index.html nennen!!!!
+ - start live-server mit npx live-server
+ - navigate to hallo.html
+ - in hallo.html mach ein 
+	window.location = 'http://localhost:3001/';
+737: *9:23 AM 11/22/2022-9:32 AM 11/22/2022
+738: *9:32 AM 11/22/2022-6:12 AM 11/23/2022
+2- ja so geht es!
+3- problem von dem approach er ist ja redirected!
+__________ mi 23.11.22 waiting at the airport...  
+740: *6:13 AM 11/23/2022-6:14 AM 11/23/2022
+der ausweg ist do what you are told explicitly komplett emotionlos 
+default: 
+*learn programming and piano for next life if I have to come again
+*11-12 tm+handle email/discord/post
+*h,spaz
+pray to god to fogive my sins and let me die forever
+nothing matters really because it is just a nightmare
+741: *6:14 AM 11/23/2022-6:17 AM 11/23/2022
+742: *6:17 AM 11/23/2022-6:24 AM 11/23/2022
+743: *6:24 AM 11/23/2022-6:33 AM 11/23/2022
+- such das file
+- create file layout.ejs
+744: *6:33 AM 11/23/2022-6:36 AM 11/23/2022
+araxis merge
+745: *6:36 AM 11/23/2022-6:37 AM 11/23/2022
+fehler war: layouts.ejs file war in views anstatt layouts
+746: *6:37 AM 11/23/2022-6:39 AM 11/23/2022
+747: *6:39 AM 11/23/2022-6:42 AM 11/23/2022
+mongodb tutorial why not ich bin auf einem flughafen
+748: *6:42 AM 11/23/2022-6:43 AM 11/23/2022
+mongo db tutorial 
+https://www.youtube.com/watch?v=wcx3f0eUiAw
+749: *6:43 AM 11/23/2022-6:45 AM 11/23/2022
+=>how to
+750: *6:45 AM 11/23/2022-6:51 AM 11/23/2022
+751: *6:51 AM 11/23/2022-6:53 AM 11/23/2022
+step through mongodb installation wizard
+752: *6:53 AM 11/23/2022-6:54 AM 11/23/2022
+installing mongodb in Program Files
+753: *6:54 AM 11/23/2022-6:55 AM 11/23/2022
+754: *6:55 AM 11/23/2022-6:56 AM 11/23/2022
+goto folder
+755: *6:56 AM 11/23/2022-7:02 AM 11/23/2022
+756: *7:02 AM 11/23/2022-7:06 AM 11/23/2022
+757: *7:06 AM 11/23/2022-7:09 AM 11/23/2022
+758: *7:09 AM 11/23/2022-7:09 AM 11/23/2022
+- install
+- empty recycle bin
+- ininstall ALLE mongoDB
+- goto Program Files/MongoDB
+759: *7:12 AM 11/23/2022-7:13 AM 11/23/2022
+- delete large files auf C: 
+1. display hidden folders( hab ich eh)
+2. in search input: size: huge (gigantic)
+760: *7:13 AM 11/23/2022-7:14 AM 11/23/2022
+761: *7:14 AM 11/23/2022-7:20 AM 11/23/2022
+762: *7:20 AM 11/23/2022-7:40 AM 11/23/2022
+- muss die mongodb shell extra installieren!!!
+- install mongo.exe windows
+open Program Files/MongoDB
+763: *7:40 AM 11/23/2022-7:42 AM 11/23/2022
+765: *9:15 AM 11/23/2022-9:34 AM 11/23/2022
+#10 rechnung zahlen
+775: *9:34 AM 11/23/2022-10:23 AM 11/23/2022
+#10 2 auftraege
+785: *10:23 AM 11/23/2022-11:15 AM 11/23/2022
+pause bis 11h ewew alles free
+786: *11:15 AM 11/23/2022-12:14 PM 11/23/2022
+796: *12:14 PM 11/23/2022-12:14 PM 11/23/2022
+797: *12:14 PM 11/23/2022-12:16 PM 11/23/2022
+1- mach mir atee
+2- spaz
+3- uninstall mongodb
+JA- vielleicht sollte ich eine aeltere version von mongodb installieren
+798: *12:16 PM 11/23/2022-12:20 PM 11/23/2022
+799: *12:21 PM 11/23/2022-12:23 PM 11/23/2022
+1- goto mongo db download
+2- install mongo db
+3- start chrome
+800: *12:23 PM 11/23/2022-12:24 PM 11/23/2022
+801: *12:24 PM 11/23/2022-12:26 PM 11/23/2022
+1- nobody knows!
+2- tutorial weiter
+3- wenn fertig ist: check ob ich jetzt endlich das mongo.exe file habe! JA
+802: *12:27 PM 11/23/2022-12:29 PM 11/23/2022
+803: *12:29 PM 11/23/2022-12:34 PM 11/23/2022
+1 >show databases
+2- in Program Files/MongoDB/bin start mongo.exe
+3- tut weiter
+804: *5:27 PM 11/23/2022-
+action: 5:28 PM 11/23/2022-7:09 PM 11/23/2022
+830: *7:09 PM 11/23/2022-8:04 PM 11/23/2022
+- bett und vorhang ist fertig
+__________ do 24.11.22 waiting at the airport...  
+830: *8:09 PM 11/23/2022-6:22 AM 11/24/2022
+831: *6:22 AM 11/24/2022-8:22 AM 11/24/2022
+855: *8:45 AM 11/24/2022-11:33 AM 11/24/2022
+880: *11:33 AM 11/24/2022-4:32 PM 11/24/2022
+- weiter gehts! 
+putzmittel mitnehmen! 
+paper towels mitnehmen
+fenster putzen unten!
+- arbeit maedi bereich
+910: *4:32 PM 11/24/2022-6:16 PM 11/24/2022
+930: *6:17 PM 11/24/2022-5:07 AM 11/25/2022
+action weiter: gu essen machen, kit cl, spazier+music
+__________ fr 25.11.22 waiting at the airport...  
+931: *5:07 AM 11/25/2022-5:10 AM 11/25/2022
+932: *5:10 AM 11/25/2022-5:10 AM 11/25/2022
+933: *5:10 AM 11/25/2022-5:11 AM 11/25/2022
+934: *5:11 AM 11/25/2022-5:18 AM 11/25/2022
+935: *5:18 AM 11/25/2022-5:20 AM 11/25/2022
+936: *5:20 AM 11/25/2022-5:23 AM 11/25/2022
+937: *5:23 AM 11/25/2022-5:26 AM 11/25/2022
+938: *5:26 AM 11/25/2022-5:28 AM 11/25/2022
+939: *5:28 AM 11/25/2022-5:32 AM 11/25/2022
+940: *5:32 AM 11/25/2022-5:34 AM 11/25/2022
+941: *5:34 AM 11/25/2022-5:35 AM 11/25/2022
+942: *5:35 AM 11/25/2022-5:35 AM 11/25/2022
+WOW, thanks! it actually worked!!! connected to db!!!!
+- require('dotenv').config
+- lauter bugs!!!
+- test: npm start dev
+- load special line
+- production vs dev node js
+- check ob mongos laeuft: Ctrl+alt+del Services: JA, MongoDB laeuft
+- npm i --save-dev dotenv
+- einsteigen!(2)
+- loesche node_modules
+- austeigen
+943: *5:35 AM 11/25/2022-5:36 AM 11/25/2022
+- weiter tut
+944: *5:36 AM 11/25/2022-5:38 AM 11/25/2022
+945: *5:38 AM 11/25/2022-5:40 AM 11/25/2022
+- how to start w/ nodemon and live-server
+946: *5:41 AM 11/25/2022-5:42 AM 11/25/2022
+947: *5:42 AM 11/25/2022-5:47 AM 11/25/2022
+948: *5:47 AM 11/25/2022-5:48 AM 11/25/2022
+949: *5:48 AM 11/25/2022-5:51 AM 11/25/2022
+git push -u origin master
+- new repo: testmongo
+- integrate this server in nodemoaster? can I?
+- weiter tut
+950: *5:51 AM 11/25/2022-5:54 AM 11/25/2022
+- how to clone github repo locally (on LG)
+951: *5:55 AM 11/25/2022-5:57 AM 11/25/2022
+952: *5:57 AM 11/25/2022-5:58 AM 11/25/2022
+953: *5:58 AM 11/25/2022-5:58 AM 11/25/2022
+954: *5:58 AM 11/25/2022-6:04 AM 11/25/2022
+955: *6:04 AM 11/25/2022-6:07 AM 11/25/2022
+956: *6:07 AM 11/25/2022-6:20 AM 11/25/2022
+957: *6:20 AM 11/25/2022-6:22 AM 11/25/2022
+958: *6:23 AM 11/25/2022-6:23 AM 11/25/2022
+959: *6:28 AM 11/25/2022-6:30 AM 11/25/2022
+960: *6:30 AM 11/25/2022-6:38 AM 11/25/2022
+961: *6:40 AM 11/25/2022-6:40 AM 11/25/2022
+962: *6:40 AM 11/25/2022-6:46 AM 11/25/2022
+963: *6:46 AM 11/25/2022-6:54 AM 11/25/2022
+964: *6:54 AM 11/25/2022-6:55 AM 11/25/2022
+965: *6:55 AM 11/25/2022-6:55 AM 11/25/2022
+966: *6:56 AM 11/25/2022-7:13 AM 11/25/2022
+967: *7:13 AM 11/25/2022-7:16 AM 11/25/2022
+968; *7:16 AM 11/25/2022-7:17 AM 11/25/2022
+- how to!
+- open firewall for port 1770 on vps: >ufw allow 1770
+- set PORT to 1770
+969: *7:17 AM 11/25/2022-7:20 AM 11/25/2022
+970: *7:20 AM 11/25/2022-7:20 AM 11/25/2022
+- uploaded
+- set dev port to 1770
+971: *7:20 AM 11/25/2022-7:21 AM 11/25/2022
+972: *7:21 AM 11/25/2022-7:25 AM 11/25/2022
+973: *7:25 AM 11/25/2022-7:35 AM 11/25/2022
+974: *7:35 AM 11/25/2022-7:37 AM 11/25/2022
+975: *7:37 AM 11/25/2022-7:38 AM 11/25/2022
+976: *7:38 AM 11/25/2022-7:39 AM 11/25/2022
+977: *7:39 AM 11/25/2022-7:41 AM 11/25/2022
+978: *7:41 AM 11/25/2022-7:42 AM 11/25/2022
+979: *7:42 AM 11/25/2022-7:43 AM 11/25/2022
+980: *7:43 AM 11/25/2022-7:44 AM 11/25/2022
+981: *7:44 AM 11/25/2022-7:45 AM 11/25/2022
+982: *7:45 AM 11/25/2022-7:45 AM 11/25/2022
+983: *7:45 AM 11/25/2022-7:46 AM 11/25/2022
+984: *7:46 AM 11/25/2022-7:47 AM 11/25/2022
+985: *7:47 AM 11/25/2022-7:48 AM 11/25/2022
+986: *7:48 AM 11/25/2022-8:18 AM 11/25/2022
+987: *8:18 AM 11/25/2022-8:21 AM 11/25/2022
+988: *8:21 AM 11/25/2022-9:18 AM 11/25/2022
+989: *9:18 AM 11/25/2022-9:23 AM 11/25/2022
+ok - spaz
+999: *9:23 AM 11/25/2022-9:45 AM 11/25/2022
+1000: *9:45 AM 11/25/2022-9:53 AM 11/25/2022 
+1001: *9:53 AM 11/25/2022-10:00 AM 11/25/2022
+2: *10:00 AM 11/25/2022-10:01 AM 11/25/2022
+- onenote!!!
+3: *10:02 AM 11/25/2022-10:06 AM 11/25/2022
+4: *10:06 AM 11/25/2022-10:10 AM 11/25/2022
+5: *10:10 AM 11/25/2022-
+how to move terminal to the bottom of vs code:
+1. click ctrl+`
+2. click 'split terminal' symbol
+3. rechts erscheint eine scrollbar: dd unteres symbol into editor area bottom
+(jetzt sollte untere haelfte von editor das terminal sein!)
+4. close right terminal
+5. resize terminal on bottom
+6: *10:13 AM 11/25/2022-10:15 AM 11/25/2022
+- das howto soll jetzt to a4 gehen!
+7: *10:15 AM 11/25/2022-10:17 AM 11/25/2022
+8: *10:17 AM 11/25/2022-10:28 AM 11/25/2022
+9: *10:29 AM 11/25/2022-10:35 AM 11/25/2022
+10: *10:35 AM 11/25/2022-10:35 AM 11/25/2022
+11: *10:35 AM 11/25/2022-10:36 AM 11/25/2022
+12: *10:36 AM 11/25/2022-10:38 AM 11/25/2022
+13: *10:38 AM 11/25/2022-10:40 AM 11/25/2022
+14: *10:40 AM 11/25/2022-1:17 PM 11/25/2022
+15: *1:17 PM 11/25/2022-1:18 PM 11/25/2022
+16: *1:18 PM 11/25/2022-1:23 PM 11/25/2022
+- install new copy of nginx
+how to reinstall a fresh copy of nginx, removing the old one:
+sudo apt remove --purge nginx*
+sudo apt autoremove
+sudo apt update
+sudo apt install nginx
+17: *1:24 PM 11/25/2022-1:25 PM 11/25/2022
+18: *1:25 PM 11/25/2022-1:26 PM 11/25/2022
+19: *1:26 PM 11/25/2022-1:28 PM 11/25/2022
+20: *1:28 PM 11/25/2022-1:30 PM 11/25/2022
+21: *1:30 PM 11/25/2022-1:31 PM 11/25/2022
+=>gu essen!
+22: *2:09 PM 11/25/2022-2:13 PM 11/25/2022
+how to 
+<link rel="icon" href="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/whatsapp/314/horse-face_1f434.png" />
+- mach ein favicon da rein! ein web one
+- goto root web dir: zu dem index.html >ls /var/www/html;
+- browse to IP
+- look at sites-enabled
+23: *2:13 PM 11/25/2022-2:18 PM 11/25/2022
+24: *2:18 PM 11/25/2022-2:18 PM 11/25/2022
+25: *2:18 PM 11/25/2022-2:29 PM 11/25/2022
+1- diesmal NUR NOCH FUN!!!! ssh in aroot
+2- a04 ist jetzt mein neuer server!
+3- re-installing nginx helped! 
+26: *2:30 PM 11/25/2022-7:38 PM 11/25/2022
+27: *7:38 PM 11/25/2022-7:44 PM 11/25/2022
+- action 7:38 PM 11/25/2022-7:44 PM 11/25/2022
+__________ sa 26.11.22 waiting at the airport...  
+28: *7:44 PM 11/25/2022-5:49 AM 11/26/2022
+29: *5:49 AM 11/26/2022-5:50 AM 11/26/2022
+A___ nginx tut https://www.youtube.com/watch?v=7VAI73roXaY
+30: *5:50 AM 11/26/2022-5:52 AM 11/26/2022
+31: *5:52 AM 11/26/2022-5:57 AM 11/26/2022
+nginx forwards request to real server == reverse proxy
+32: *5:57 AM 11/26/2022-5:57 AM 11/26/2022
+B___ simply run node js
+33: *6:00 AM 11/26/2022-6:02 AM 11/26/2022
+- schau wo derzeit app.js listens
+34: *6:03 AM 11/26/2022-6:08 AM 11/26/2022
+- what is my IP? 216.250.112.218
+35: *6:08 AM 11/26/2022-6:08 AM 11/26/2022
+vidulusludorum is dead!
+
+gesamte VPS neu installieren!
+>>- reinstalling server!
+root
+85@OM*HiU3
+
+36: *6:31 AM 11/26/2022-6:31 AM 11/26/2022
+37: *6:31 AM 11/26/2022-6:32 AM 11/26/2022
+38: *6:33 AM 11/26/2022-6:54 AM 11/26/2022
+39: *6:54 AM 11/26/2022-6:54 AM 11/26/2022
+40: *6:54 AM 11/26/2022-6:56 AM 11/26/2022
+41: *6:56 AM 11/26/2022-7:11 AM 11/26/2022
+45: *7:11 AM 11/26/2022-7:39 AM 11/26/2022
+50: *7:39 AM 11/26/2022-7:50 AM 11/26/2022
+51: *7:50 AM 11/26/2022-7:50 AM 11/26/2022
+52: *7:50 AM 11/26/2022-7:52 AM 11/26/2022
+53: *7:52 AM 11/26/2022-8:03 AM 11/26/2022
+55: *8:03 AM 11/26/2022-8:05 AM 11/26/2022
+- port 3000 is open YEAH!!!! geht wieder!!!!
+56: *8:05 AM 11/26/2022-8:10 AM 11/26/2022
+57: *8:11 AM 11/26/2022-8:21 AM 11/26/2022
+58: *8:22 AM 11/26/2022-8:23 AM 11/26/2022
+- what is ubuntu snap? so aehnlich wie package installer fuer linux
+59: *8:23 AM 11/26/2022-8:27 AM 11/26/2022
+60: *8:27 AM 11/26/2022-8:35 AM 11/26/2022
+61: *8:35 AM 11/26/2022-8:39 AM 11/26/2022
+63: *8:39 AM 11/26/2022-8:39 AM 11/26/2022
+64: *8:39 AM 11/26/2022-8:42 AM 11/26/2022
+- http://216.250.112.218:443 geht!
+- https mit 216.250.112.218:443 geht nicht!
+- run a different node process on port 3001: geht nicht!!!
+- ok so no one is listening on port 80, meaning: nginx not running!!!
+65: *8:42 AM 11/26/2022-8:46 AM 11/26/2022
+66: *8:46 AM 11/26/2022-8:46 AM 11/26/2022
+- schau ob nginx da ist??? NEIN!!!!!
+- check nginx index file in /var/www/html
+67: *8:46 AM 11/26/2022-8:47 AM 11/26/2022
+- will ich ueberhaupt nginx?
+68: *8:47 AM 11/26/2022-8:52 AM 11/26/2022
+69: *8:52 AM 11/26/2022-8:53 AM 11/26/2022
+- right now running nodejs server only!
+- check ob apache php oder tomcat da ist
+apache2 ist da!
+70: *8:54 AM 11/26/2022-8:56 AM 11/26/2022
+75: *9:05 AM 11/26/2022-9:06 AM 11/26/2022
+http://www.vidulusludorum.com/ (geht when running on port 80)
+- check ob er es kann wenn port 80 verwende JA geht!!!
+76: *9:06 AM 11/26/2022-9:07 AM 11/26/2022
+77: *9:08 AM 11/26/2022-9:09 AM 11/26/2022
+- check http://www.vidulusludorum.com:3000/ JA geht!!!!
+78: *9:09 AM 11/26/2022-9:37 AM 11/26/2022
+- um 2 verschiedene web sites (flask und node) paralell laufen zu lassen
+MUSS ich 2 verschiedene ports verwenden!????? stimmt das?
+79: *9:38 AM 11/26/2022-9:48 AM 11/26/2022
+- jetzt sollt ich einen spaziergang machen
+- zuerst noch ein git init
+80: *9:48 AM 11/26/2022-
+- spazier, dann fgu, dann tm
 
 
-- music
-- soll ich wds project in nodemon machen oder in wo anders?
-- was koennt ich machen?
-MVC
+
+
+
+
+- check ob ufw alle ports durchlaesst
+- goto file: 
+
+SHA256:YuUJ5aiMk6ioyh6skZowJBmu298NqYLhLu0hfV9YNx8.
+- try:
+sudo apt install curl
+curl -sL https://deb.nodesource.com/setup_14.x | sudo bash -
+sudo apt install -y nodejs
+- ubuntu install nodejs version 14
+- was hab ich installiert?8
+- 
+download and install putty
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ich koennt mittagschlaefchen machen jetzt mit de mello
+
+
+
+
+
+
+
+
+
+
+
+
+
+- check who is listening on port 80 ubuntu
+- ich kann ueberhaupt nicht mehr zu meinem server connecten!
+- ping 0000:2607:f1c0:1801:0117:0000:0001:0000
+ok - ping www.vidulusludorum.com GEHT NICHT!!!
+ok - ping 216.250.112.218 GEHT NICHT!
+- ich muss einen server starten!
+- connect to vps: ssh root@216.250.112.218
+jetzt cannot access VPS ip address and port
+
+- echt confusing! wie soll ich das machen???
+- vs code terminal position 2022
+- vs code show terminal bottom
+goto IONOS
+
+- 
+- try >nginx -s stop
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+- hab alles gekillt und kenn mich ueberhaupt nicht aus!!!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+tcp6       0      0 :::3000                 :::*                    LISTEN      1025198/node
+- geht nicht, geh mal zu IONOS
+- browse to 216.250.112.218:3000/
+- auf ntest, just run node server.js
+- nachdem PORT 3000 schon offen ist, brauch ich kein allow firewall
+- nachdem express schon auf root ist, brauch ich kein npm install!!!
+- navigate to ntest 
+- connect to root: ssh root@216.250.112.218
+- copy project to VPS using WinSCP
+- (keep PORT 3000)
+- copy code from nodemaster/all/starters/express
+- create server.js file
+- open terminal: npm init (server.js ist name of entry point)
+- open in vs code
+- in a4, create a dir ntest
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1- full life cycle node js app
+2- versuch was ganz simples: mach eine node js starter app 
+
+3- how to allow connection from IPaddress to MongoDB
+- in mongodb com need to allow vps IP address!!!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1- copy .env file into testmongo
+- I guess I have to add an .env file to VPS now!
+- also: locally kann ich schon connecten!!!
+
+- test
+1- goto mongodb.com iwg@g mp...mdb
+2- project: animasimple
+3- next to Cluster0, click connect
+4- username: admin pwd: (auto) PGJpyMmWw0Npmd2e
+5- click create user
+6- click choose a connection method
+
+- https://cloud.mongodb.com/v2/60cd5dae4f51021a7e4411ec#clusters
+- brauch mein password
+- klar, ich hab dort kein .env file! hance kein connection string!
+- git clone https://github.com/isawzz/testmongo.git ... ist jetzt auf VPS
+- versuch auf VPS das tutfullstack zu clonen
+- versuch ob ich einfach mongoose 
+- download package-lock.json from VPS
+3- ssh root@216.250.112.218
+2- suche steps fuer VPS
+1- open onenote
+- how to publish this thing to a server?!?!?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+am sa MUSS zur library fuer Raspberry pi buecher!!!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+breggin and I
+america out loud
+dr peter breggin
+
+
+
 
 
 

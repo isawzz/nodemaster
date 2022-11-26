@@ -6,20 +6,90 @@ npm i express ejs express-ejs-layouts
 npm i --save-dev nodemon
 create server.js file (or app.js) ... see C:\D\webdevsimplified\wds\tutfullstack\server.js
 
-
 _________ what is ejs?
 templating engine to write html in js (for server rendering)
 compare to: vue, mustache, pug(Jade), Handlebars.js (react,underscore)
 
+_________ how to run live-server + nodemon
+1. npm i cors
+2. in server.js, add: 
+	const cors = require('cors');
+	app.use(cors());
+3. now, in public/hallo.html can actually fetch(route)
+4. to start w/ live-server & nodemon:
+	create 2 terminals
+	oberes: >npx live-server
+	unteres: >npm start dev
+
+_________ how to setup mongoDB
+1. tut: https://www.youtube.com/watch?v=wcx3f0eUiAw
+2. https://cloud.mongodb.com/v2/60cd5dae4f51021a7e4411ec#clusters
+3. download link: https://www.mongodb.com/download-center/community
+download msi file, install (Program Files/MongoDB)
+=>nimm NICHT 6.0 version sondern 5.x!!!!!!!
+4. goto Program Files/MongoDB/Server/5.x/bin start mongo.express
+5. test:
+>show databases
+>use newdb
+>db.items.insert({name:'name'})
+>show dbs
+
+_________ how to use mongoDB in server.js
+npm i mongoose
+npm i --save-dev dotenv
+create a file .env (in project root dir)
+enter code:
+	DATABASE_URL=mongodb://localhost/newdb
+in server.js add line on top:
+	if (process.env.NODE_ENV !== 'production'){ require('dotenv').config();}
+
+_________ how to get mongoDB connection string in the cloud
+goto mongoDB.com iwg@g mp...mdb
+https://cloud.mongodb.com/v2/60cd5dae4f51021a7e4411ec#clusters
+mongodb+srv://admin:PGJpyMmWw0Npmd2e@cluster0.vuq6gro.mongodb.net/?retryWrites=true&w=majority
+
+_________ how to push project to git
+add .gitignore file (containing node_modules and .env)
+git init
+git add .
+git commit -m 'initial'
+=>goto github
+git remote add origin https://github.com/isawzz/testmongo.git
+git push -u origin master
+
+_________ how to clone from git
+on LG create dir tutfullstack
+open in vs code
+git clone https://github.com/isawzz/testmongo.git
+>npm install
+(muss aber auch das mongo auf LG installieren!!!! und ein newdb machen!)
+
+_________ how to open PORT on vps
+ssh root@216.250.112.218
+ufw allow PORT
+
+_________ how to allow connection from IP address to mongoDB
+goto mongoDB.com iwg@g mp...mdb
+click on leaf (oben links)
+click animasimple (project)
+click security/Network Access
+add IP address 216.250.112.218
+
+_________ how to move terminal to the bottom of vs code:
+1. click ctrl+`
+2. click 'split terminal' symbol
+3. rechts erscheint eine scrollbar: dd unteres symbol into editor area bottom
+(jetzt sollte untere haelfte von editor das terminal sein!)
+4. close right terminal
+5. resize terminal on bottom
+
+_________ how to 
 
 
 
-
-
-
-
-
-
+_________ how to browse to 1770 vps
+_________ how to 
+_________ 
 
 
 
