@@ -3498,7 +3498,6 @@ MUSS ich 2 verschiedene ports verwenden!????? stimmt das?
 
 
 
-
 - check ob ufw alle ports durchlaesst
 - goto file: 
 
