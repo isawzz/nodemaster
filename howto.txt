@@ -234,6 +234,9 @@ _________ how to add a new (mvc) app to node js app
 			app.use('/authors', authorsRouter); //NOTE: path is composed together with paths in ./routes/authors.js
 
 
+ACHTUNG!!!! ==>das .env file auf der vps muss ANDERS sein (das ist das production environment!!!)
+1. open testmongo
+
 
 
 _________ 

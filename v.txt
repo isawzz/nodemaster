@@ -3595,14 +3595,36 @@ TODO- ich versteh nicht ganz wieso er nicht router.get('/authors',...) macht?
 145: *9:03 AM 11/27/2022-9:07 AM 11/27/2022
 146: *9:07 AM 11/27/2022-9:09 AM 11/27/2022
 147: *9:09 AM 11/27/2022-9:10 AM 11/27/2022
-148: *9:10 AM 11/27/2022-
+148: *9:10 AM 11/27/2022-11:17 AM 11/27/2022
+ok - ganz viel zeug erledigt
+178: *11:17 AM 11/27/2022-12:07 PM 11/27/2022
+179: *12:08 PM 11/27/2022-12:10 PM 11/27/2022
+181: *12:11 PM 11/27/2022-12:12 PM 11/27/2022
+182: *12:12 PM 11/27/2022-12:15 PM 11/27/2022
+183: *12:15 PM 11/27/2022-12:21 PM 11/27/2022
+- have to restart das ganze mongo db zeug weil ich nicht weiss wie das .env file vorher war!!!
+- goto howto hol mir den connection string!
+- das .gitignore auf LG ist schlecht!!!!! jetzt ist mein .env file compromised!
+- oh gott ich ha
+- weitermachen mit video
 - kitchen check!
 serrver crash!
 - weiter unten: use thie new route
 - add: how to add a new (mvc) app to node js app
 - ok hab die antwort!
 - add another router in server.js
-
+184: *12:21 PM 11/27/2022-12:23 PM 11/27/2022
+185: *12:23 PM 11/27/2022-12:25 PM 11/27/2022
+186: *12:25 PM 11/27/2022-12:26 PM 11/27/2022
+187: *12:26 PM 11/27/2022-12:33 PM 11/27/2022
+190: *12:33 PM 11/27/2022-12:33 PM 11/27/2022
+1- IP has to be white listed in atlas db!!!
+2- das .env file am vps muss ANDERS sein!!!!
+3- weiter tut
+- ssh
+- upload!
+191: *12:34 PM 11/27/2022-
+3- how to do this?
 
 
 
