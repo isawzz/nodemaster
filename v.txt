@@ -3490,9 +3490,21 @@ MUSS ich 2 verschiedene ports verwenden!????? stimmt das?
 - jetzt sollt ich einen spaziergang machen
 - zuerst noch ein git init
 80: *9:48 AM 11/26/2022-9:50 AM 11/26/2022
-81: *9:50 AM 11/26/2022-
-- copy a4 und nodemaster auf das ding
-- spazier, dann fgu, dann tm
+81: *9:50 AM 11/26/2022-4:29 PM 11/26/2022
+ok - skype, fgu, kochen, spaz
+90: *4:29 PM 11/26/2022-4:29 PM 11/26/2022
+ok - copy a4 und nodemaster auf das ding
+ok - spazier, dann fgu, dann tm
+92: *4:45 PM 11/26/2022-5:27 PM 11/26/2022
+__________ so 27.11.22 waiting at the airport...  
+93: *5:27 PM 11/26/2022-6:02 AM 11/27/2022
+94: *6:05 AM 11/27/2022-6:05 AM 11/27/2022
+add a todo for nginx
+95: *6:05 AM 11/27/2022-6:06 AM 11/27/2022
+96: *6:06 AM 11/27/2022-
+dazu brauch ich aber doch testmongo oder???
+weiter bei wdf mongoose: try connecting to cloud db from vps
+
 
 
 
