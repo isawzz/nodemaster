@@ -1,0 +1,30 @@
+_________________ sample link and script tags index.html
+	index paths: (work for both live and localhost, w/ sockets)
+		<link rel="icon" href="../base/assets/icons/belinda.png" style="height: 40px" />
+		<link rel="stylesheet" href="../base/assets/fonts/fonts.css" />
+		<script src="../base/alibs/anime.min.js"></script>
+		<script src="../DIR/start.js"></script>
+
+_________ load assets: await load_syms(); await load_cards(); ...
+
+_________ use F12 in js code: see jsonconfig.json in main dir
+
+_________ action="javascript... in einer form?
+	<form action="javascript:void(0);" onsubmit="make_payments_challenge_eval(this.elements[0]);return false;">
+	<form action="javascript:unfocusOnEnter(event);">
+
+_________  input select on click:
+	<input type="text" onclick="select()"/>
+
+
+
+
+
+
+
+
+
+
+
+
+

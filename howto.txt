@@ -1,147 +1,242 @@
-_________________ web dev simplified
-_________start project https://www.youtube.com/watch?v=qj2oDkvc4dQ&list=PLZlA0Gpn_vH8jbFkBjOuFjhxANC63OmXM&index=5
-open vscode in dir
-npm init (creates package.json)
-npm i express ejs express-ejs-layouts
-npm i --save-dev nodemon
-create server.js file (or app.js) ... see C:\D\webdevsimplified\wds\tutfullstack\server.js
+_________________ WebDevSimplified: full stack web development: https://www.youtube.com/playlist?list=PLZlA0Gpn_vH8jbFkBjOuFjhxANC63OmXM
+_________________ WebDevSimplified course #1:
+_________ start project https://www.youtube.com/watch?v=qj2oDkvc4dQ&list=PLZlA0Gpn_vH8jbFkBjOuFjhxANC63OmXM&index=5
+	open vscode in dir
+	npm init (creates package.json)
+	npm i express ejs express-ejs-layouts
+	npm i --save-dev nodemon
+	create server.js file (or app.js) ... see C:\D\webdevsimplified\wds\tutfullstack\server.js
 
 _________ what is ejs?
-templating engine to write html in js (for server rendering)
-compare to: vue, mustache, pug(Jade), Handlebars.js (react,underscore)
+	templating engine to write html in js (for server rendering)
+	compare to: vue, mustache, pug(Jade), Handlebars.js (react,underscore)
 
 _________ how to run live-server + nodemon
-1. npm i cors
-2. in server.js, add: 
-	const cors = require('cors');
-	app.use(cors());
-3. now, in public/hallo.html can actually fetch(route)
-4. to start w/ live-server & nodemon:
-	create 2 terminals
-	oberes: >npx live-server
-	unteres: >npm start dev
+	1. npm i cors
+	2. in server.js, add: 
+		const cors = require('cors');
+		app.use(cors());
+	3. now, in public/hallo.html can actually fetch(route)
+	4. to start w/ live-server & nodemon:
+		create 2 terminals
+		oberes: >npx live-server
+		unteres: >npm start dev (or:npx nodemon server.js)
+		fuer npm start dev brauche ich in package.jsonL
+			  "scripts": {
+					"start": "node server.js",
+					"dev": "nodemon server.js",
+					"test": "echo \"Error: no test specified\" && exit 1"
+				},
 
 _________ how to setup mongoDB
-1. tut: https://www.youtube.com/watch?v=wcx3f0eUiAw
-2. https://cloud.mongodb.com/v2/60cd5dae4f51021a7e4411ec#clusters
-3. download link: https://www.mongodb.com/download-center/community
-download msi file, install (Program Files/MongoDB)
-=>nimm NICHT 6.0 version sondern 5.x!!!!!!!
-4. goto Program Files/MongoDB/Server/5.x/bin start mongo.express
-5. test:
->show databases
->use newdb
->db.items.insert({name:'name'})
->show dbs
+	1. tut: https://www.youtube.com/watch?v=wcx3f0eUiAw
+	2. https://cloud.mongodb.com/v2/60cd5dae4f51021a7e4411ec#clusters
+	3. download link: https://www.mongodb.com/download-center/community
+	download msi file, install (Program Files/MongoDB)
+	=>nimm NICHT 6.0 version sondern 5.x!!!!!!!
+	4. goto Program Files/MongoDB/Server/5.x/bin start mongo.express
+	5. test:
+	>show databases
+	>use newdb
+	>db.items.insert({name:'name'})
+	>show dbs
 
 _________ how to use mongoDB in server.js
-npm i mongoose
-npm i --save-dev dotenv
-create a file .env (in project root dir)
-enter code:
-	DATABASE_URL=mongodb://localhost/newdb
-in server.js add line on top:
-	if (process.env.NODE_ENV !== 'production'){ require('dotenv').config();}
+	npm i mongoose
+	npm i --save-dev dotenv
+	create a file .env (in project root dir)
+	enter code:
+		DATABASE_URL=mongodb://localhost/newdb
+	in server.js add line on top:
+		if (process.env.NODE_ENV !== 'production'){ require('dotenv').config();}
 
 _________ how to get mongoDB connection string in the cloud
-goto mongoDB.com iwg@g mp...mdb
-https://cloud.mongodb.com/v2/60cd5dae4f51021a7e4411ec#clusters
-mongodb+srv://admin:PGJpyMmWw0Npmd2e@cluster0.vuq6gro.mongodb.net/?retryWrites=true&w=majority
+	goto mongoDB.com iwg@g mp...mdb
+	https://cloud.mongodb.com/v2/60cd5dae4f51021a7e4411ec#clusters
+	mongodb+srv://admin:PGJpyMmWw0Npmd2e@cluster0.vuq6gro.mongodb.net/?retryWrites=true&w=majority
 
 _________ how to push project to git
-add .gitignore file (containing node_modules and .env)
-git init
-git add .
-git commit -m 'initial'
-=>goto github
-git remote add origin https://github.com/isawzz/testmongo.git
-git push -u origin master
+	add .gitignore file (containing node_modules and .env)
+	git init
+	git add .
+	git commit -m 'initial'
+	=>goto github create new repo
+	git remote add origin https://github.com/isawzz/testmongo.git
+	git push -u origin master
 
 _________ how to clone from git
-on LG create dir tutfullstack
-open in vs code
-git clone https://github.com/isawzz/testmongo.git
->npm install
-(muss aber auch das mongo auf LG installieren!!!! und ein newdb machen!)
+	on LG create dir tutfullstack
+	open in vs code
+	git clone https://github.com/isawzz/testmongo.git
+	>npm install
+	(muss aber auch das mongo auf LG installieren!!!! und ein newdb machen!)
 
+_________________ new vps installation
 _________ how to open PORT on vps
-ssh root@216.250.112.218
-ufw allow PORT
+	ssh root@216.250.112.218
+	ufw allow PORT
 
 _________ how to allow connection from IP address to mongoDB
-goto mongoDB.com iwg@g mp...mdb
-click on leaf (oben links)
-click animasimple (project)
-click security/Network Access
-add IP address 216.250.112.218
+	goto mongoDB.com iwg@g mp...mdb
+	click on leaf (oben links)
+	click animasimple (project)
+	click security/Network Access
+	add IP address 216.250.112.218
 
 _________ how to move terminal to the bottom of vs code:
-1. click ctrl+`
-2. click 'split terminal' symbol
-3. rechts erscheint eine scrollbar: dd unteres symbol into editor area bottom
-(jetzt sollte untere haelfte von editor das terminal sein!)
-4. close right terminal
-5. resize terminal on bottom
+	1. click ctrl+`
+	2. click 'split terminal' symbol
+	3. rechts erscheint eine scrollbar: dd unteres symbol into editor area bottom
+	(jetzt sollte untere haelfte von editor das terminal sein!)
+	4. close right terminal
+	5. resize terminal on bottom
 
-_________ how to 
+_________ how to reinstall a fresh copy of nginx, removing the old one:
+	ssh root@216.250.112.218
+	sudo apt remove --purge nginx*
+	sudo apt autoremove
+	sudo apt update
+	sudo apt install nginx
+
+_________ how to add a favicon from emojis
+	in index.html, add after title: 
+	<link rel="icon" href="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/whatsapp/314/horse-face_1f434.png" />
+	in WinSCP, refresh and upload (/var/www/html is web root)
+	browse to http://216.250.112.218/ (or hard reload)
+
+_________ node and npm on old VPS
+	>node -v (v14.20.0)
+	>npm -v (6.14.17)
+
+_________ how to: install new vps
+	apt install net-tools
+
+_________ how to remove nodejs and npm
+	sudo apt-get remove nodejs
+	sudo apt-get remove npm
+
+_________ how to install nodejs and npm
+	1. install nvm: https://github.com/nvm-sh/nvm
+	curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.2/install.sh | bash
+	wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.2/install.sh | bash
+	export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+	[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+	2. nvm install 14 (installs nodejs 14 and 16)
+	3. nvm use 14
+	4. test versions:
+	>node -v (v14.21.1)
+	>npm -v (6.14.17)
+
+_________ how to setup ssh: https://www.youtube.com/watch?v=gXQ44GW6v3Y
+	download & install putty
+	run puttygen.exe
+	download bitwise SSH Client
+	start bitwise, enter loogin info
+	start a terminal =>macht ein terminal zu vps
+	goto C:\Users\tawzz\.ssh\known_hosts and delete line with IP for vps to renew vs code ssh connection
+	test connection: ssh root@216.250.112.218
+
+_________ how to run node js app on vps
+	cd ntest
+	npm install express -save
+	node server.js
+	(listening on port 3000)
+	browse to: http://216.250.112.218:3000/
+	GEHT!!!!!
+
+	browse to:
+	http://5ef3e08.online-server.cloud:3000/ (geht wenn ntest/server.js gestartet)
+	http://216.250.112.218:3000/ (geht wenn ntest/server.js gestartet)
+	http://216.250.112.218:3001/ (geht nicht! 3001 firewalled)
+	http://216.250.112.218:443 (geht wenn ntest/server.js gestartet und running on port 443)
+	https mit 216.250.112.218:443 (geht nicht!)
+	http://216.250.112.218/ (geht wenn auf port 80 starte!!!)
+	==>hier hab ich den A record von vidulusludorum wieder auf 216.250.112.218 gesetzt (change destination):
+	http://www.vidulusludorum.com/ (geht when running on port 80)
+	http://www.vidulusludorum.com:3000/ (JA geht when running on 3000!!!!)
+
+
+	https geht nicht (eh klar, not set up yet)
+	vidulusludorum geht nicht (eh klar, not set up yet)
+
+_________ how to check firewall
+	login to IONOS, Servers, Network, click on Server
+
+_________ how to show listening ports on vps
+	sudo lsof -i -P -n | grep LISTEN
+	>>
+	process			PID
+	systemd-r   820 systemd-resolve   14u  IPv4  31300      0t0  TCP 127.0.0.53:53 (LISTEN)
+	sshd        885            root    3u  IPv4  33335      0t0  TCP *:22 (LISTEN)
+	sshd        885            root    4u  IPv6  33346      0t0  TCP *:22 (LISTEN)
+	node      11954            root   19u  IPv6  81002      0t0  TCP *:3000 (LISTEN)
+
+	??who is listening on port x: >netstat -ltnp | grep -w ':3000'
+	??who is listening on port 80 >sudo lsof -i TCP:80
+	>>tcp6       0      0 :::3000                 :::*                    LISTEN      11954/node
+	??mehr info >sudo lsof -i
+	>>
+	COMMAND     PID            USER   FD   TYPE DEVICE SIZE/OFF NODE NAME
+	systemd-n   818 systemd-network   15u  IPv6  27297      0t0  UDP linux:dhcpv6-client
+	systemd-n   818 systemd-network   18u  IPv4  27097      0t0  UDP linux:bootpc
+	systemd-r   820 systemd-resolve   13u  IPv4  31299      0t0  UDP localhost:domain
+	systemd-r   820 systemd-resolve   14u  IPv4  31300      0t0  TCP localhost:domain (LISTEN)
+	sshd        885            root    3u  IPv4  33335      0t0  TCP *:ssh (LISTEN)
+	sshd        885            root    4u  IPv6  33346      0t0  TCP *:ssh (LISTEN)
+	sshd       1289            root    4u  IPv4  37852      0t0  TCP linux:ssh->c-67-161-115-78.hsd1.wa.comcast.net:62505 (ESTABLISHED)
+	sshd      11386            root    4u  IPv4  75492      0t0  TCP linux:ssh->c-67-161-115-78.hsd1.wa.comcast.net:62906 (ESTABLISHED)
+	sshd      11623            root    4u  IPv4  79456      0t0  TCP linux:ssh->c-67-161-115-78.hsd1.wa.comcast.net:63102 (ESTABLISHED)
+	node      11954            root   19u  IPv6  81002      0t0  TCP *:3000 (LISTEN)
+
+_________ misc ubuntu commands:
+	>kill PID
+	>sudo systemctl status <service-name> (services have d at the end, eg httpd)
+
+________________________ TODO: deploying node app to vps
+	nodejs server setup and deployment: https://github.com/rromanv/CITP-4316-Notes/blob/master/Backend%20Server_Setup/README.md
+		tutorial: https://www.youtube.com/watch?v=p7X7tVO-UWY
+_________ simple node js server:
+	cd /ntest
+	node server.js
+
+_________ pm2 (runs node server as daemon):
+	sudo npm install pm2@latest -g
+	cd /ntest
+	pm2 start index.js
+
+________ setup nginx to run multiple nodejs servers and other
+
+
+________________________ REPLICA OF MONGODB PROJECT in a04
+_________ npm install string for WebDefSimplified full stack course:
+	>npm i express ejs express-ejs-layouts mongoose dotenv nodemon cors
+
+_________ how to a04 run testmongo
+	goto a04/testmongo
+	>npx nodemon server.js
+	browse to localhost:2121
+
+_________ how to vps run testmongo
+	WinSCP connect, refresh + upload testmongo folder
+	ssh root@216.250.112.218
+	>npm i express ejs express-ejs-layouts mongoose dotenv nodemon cors -save 
+	>cd testmongo
+	>nodemon server.js
+	browse to 216.250.112.218:2121
+
+________________________ WebDefSimplified full stack dev: course #2
+_________ how to add a new (mvc) app to node js app 
+	- in routes, a new js file is created: create new controller: routes/authors.js
+	- in views, a new directory is created create new dir authors, files index.js and new.js
+	- in server, a new router is created:
+			const authorRouter = require('./routes/authors'); //requires the authors.js file in ./routes
+			...
+			app.use('/authors', authorsRouter); //NOTE: path is composed together with paths in ./routes/authors.js
 
 
 
-_________ how to browse to 1770 vps
-_________ how to 
+
 _________ 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-_________________ older howto
-start server: npx nodemon app.js (or nodemon dir/app.js)
-
-start with live: npx live-server, navi to dir
-
-index paths: (work for both live and localhost, w/ sockets)
-		<link rel="icon" href="../base/assets/icons/belinda.png" style="height: 40px" />
-		<link rel="stylesheet" href="../base/assets/fonts/fonts.css" />
-		<script src="../base/alibs/anime.min.js"></script>
-		<script src="../DIR/start.js"></script>
-
-load assets: await load_syms(); await load_cards(); ...
-
-use F12 in js code: see jsonconfig.json in main dir
-
-start new project: copy starter, rename
-
-_______________howtos
-- action="javascript... in einer form?
-<form action="javascript:void(0);" onsubmit="make_payments_challenge_eval(this.elements[0]);return false;">
-<form action="javascript:unfocusOnEnter(event);">
-
-- input select on click:
-<input type="text" onclick="select()"/>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

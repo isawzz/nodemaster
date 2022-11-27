@@ -3501,9 +3501,148 @@ __________ so 27.11.22 waiting at the airport...
 94: *6:05 AM 11/27/2022-6:05 AM 11/27/2022
 add a todo for nginx
 95: *6:05 AM 11/27/2022-6:06 AM 11/27/2022
-96: *6:06 AM 11/27/2022-
+96: *6:06 AM 11/27/2022-6:09 AM 11/27/2022
+97: *6:10 AM 11/27/2022-6:11 AM 11/27/2022
+show package.json aber nicht das lock
 dazu brauch ich aber doch testmongo oder???
 weiter bei wdf mongoose: try connecting to cloud db from vps
+98: *6:12 AM 11/27/2022-6:21 AM 11/27/2022
+99: *6:21 AM 11/27/2022-6:26 AM 11/27/2022
+100: *6:26 AM 11/27/2022-6:30 AM 11/27/2022
+101: *6:30 AM 11/27/2022-6:30 AM 11/27/2022
+ok - nodemaster hat all die howtos =>ev in a4
+ok - a4 hat all die projects
+102: *6:30 AM 11/27/2022-6:36 AM 11/27/2022
+103: *6:36 AM 11/27/2022-6:38 AM 11/27/2022
+104: *6:38 AM 11/27/2022-6:38 AM 11/27/2022
+105: *6:38 AM 11/27/2022-6:43 AM 11/27/2022
+- npm i express ejs express-ejs-layouts mongoose dotenv nodemon
+_________ replica von mongoose project machen!!!
+106: *6:43 AM 11/27/2022-6:44 AM 11/27/2022
+107: *6:44 AM 11/27/2022-6:46 AM 11/27/2022
+108: *6:46 AM 11/27/2022-6:47 AM 11/27/2022
+- recap wdf from start
+109: *6:47 AM 11/27/2022-6:48 AM 11/27/2022
+110: *6:48 AM 11/27/2022-6:49 AM 11/27/2022
+- copy .env file
+- copy serverr.js file
+testmongo: copy files
+geh zu how to und mach alles genau so
+111: *6:49 AM 11/27/2022-6:55 AM 11/27/2022
+112: *6:55 AM 11/27/2022-6:57 AM 11/27/2022
+113: *6:57 AM 11/27/2022-6:59 AM 11/27/2022
+- dir struct
+- copy .env
+- welchen PORT will ich laufen? jetzt mal 2121
+114: *6:59 AM 11/27/2022-7:00 AM 11/27/2022
+115: *7:00 AM 11/27/2022-7:00 AM 11/27/2022
+116: *7:01 AM 11/27/2022-7:01 AM 11/27/2022
+117: *7:02 AM 11/27/2022-7:03 AM 11/27/2022
+118: *7:03 AM 11/27/2022-7:06 AM 11/27/2022
+how to vps run testmongo
+run command: npx nodemon server.js (im server dir!)
+- open index.js in tutfullstack/routes
+mach index.js in routes
+119: *7:07 AM 11/27/2022-7:07 AM 11/27/2022
+__________RIESEN SERVER TEST!!!!!!
+120: *7:07 AM 11/27/2022-7:08 AM 11/27/2022
+ok - WinSCP connect, refresh + upload testmongo folder
+121: *7:09 AM 11/27/2022-7:11 AM 11/27/2022
+- in nodemaster: ssh root@216.250.112.218
+122: *7:11 AM 11/27/2022-7:14 AM 11/27/2022
+- try npm i command
+>npm i express ejs express-ejs-layouts mongoose dotenv nodemon -save
+123: *7:14 AM 11/27/2022-7:15 AM 11/27/2022
+>cd testmongo
+124: *7:15 AM 11/27/2022-7:17 AM 11/27/2022
+>node server.js
+125: *7:17 AM 11/27/2022-7:17 AM 11/27/2022
+- browse to 216.250.112.218:2121
+__________ALLES HAT FUNKTIONIERRT!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+126: *7:17 AM 11/27/2022-7:19 AM 11/27/2022
+127: *7:19 AM 11/27/2022-7:21 AM 11/27/2022
+128: *7:21 AM 11/27/2022-7:24 AM 11/27/2022
+- vps run mit cors
+- npm i cors -save
+- add cors to npm string!
+129: *7:24 AM 11/27/2022-7:26 AM 11/27/2022
+- add view
+130: *7:26 AM 11/27/2022-7:27 AM 11/27/2022
+- run localhost w/ views
+131: *7:27 AM 11/27/2022-7:29 AM 11/27/2022
+- run vps w/ views
+132: *7:29 AM 11/27/2022-7:32 AM 11/27/2022
+- gib ihm ein favicon!
+133: *7:32 AM 11/27/2022-7:33 AM 11/27/2022
+- add mongodb zeug
+134: *7:33 AM 11/27/2022-7:34 AM 11/27/2022
+- back to tutorial!!! course #2 Create Search View
+135: *7:34 AM 11/27/2022-8:44 AM 11/27/2022
+ok - check discord
+136: *8:45 AM 11/27/2022-8:47 AM 11/27/2022
+ok - check yahoo
+137: *8:47 AM 11/27/2022-8:48 AM 11/27/2022
+138: *8:48 AM 11/27/2022-8:55 AM 11/27/2022
+- create authors.js in routes
+MVC: routers ist controllers
+139: *8:55 AM 11/27/2022-8:55 AM 11/27/2022
+140: *8:56 AM 11/27/2022-8:58 AM 11/27/2022
+TODO- ich versteh nicht ganz wieso er nicht router.get('/authors',...) macht?
+141: *8:58 AM 11/27/2022-8:59 AM 11/27/2022
+142: *8:59 AM 11/27/2022-9:00 AM 11/27/2022
+143: *9:00 AM 11/27/2022-9:01 AM 11/27/2022
+144: *9:01 AM 11/27/2022-9:03 AM 11/27/2022
+145: *9:03 AM 11/27/2022-9:07 AM 11/27/2022
+146: *9:07 AM 11/27/2022-9:09 AM 11/27/2022
+147: *9:09 AM 11/27/2022-9:10 AM 11/27/2022
+148: *9:10 AM 11/27/2022-
+- kitchen check!
+serrver crash!
+- weiter unten: use thie new route
+- add: how to add a new (mvc) app to node js app
+- ok hab die antwort!
+- add another router in server.js
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+- get dir struct von nodemaster!
+
 
 
 
