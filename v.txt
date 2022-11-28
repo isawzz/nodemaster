@@ -3623,7 +3623,8 @@ serrver crash!
 3- weiter tut
 - ssh
 - upload!
-191: *12:34 PM 11/27/2022-
+191: *12:34 PM 11/27/2022-3:45 PM 11/27/2022
+195: *3:45 PM 11/27/2022-
 3- how to do this?
 
 
