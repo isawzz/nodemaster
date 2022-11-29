@@ -3624,8 +3624,160 @@ serrver crash!
 - ssh
 - upload!
 191: *12:34 PM 11/27/2022-3:45 PM 11/27/2022
-195: *3:45 PM 11/27/2022-
+195: *3:45 PM 11/27/2022-3:50 PM 11/27/2022
+196: *3:50 PM 11/27/2022-3:52 PM 11/27/2022
+3- whitelist IPs
+1- weg mit dem dotenv das ist mist
+2- versuch mal ob es locally geht mit der PRO id
 3- how to do this?
+197: *5:48 PM 11/27/2022-5:53 PM 11/27/2022
+mongoDB tutorial: https://www.youtube.com/watch?v=ofme2o29ngU
+198: *5:54 PM 11/27/2022-5:58 PM 11/27/2022
+199: *5:58 PM 11/27/2022-5:59 PM 11/27/2022
+200: *5:59 PM 11/27/2022-6:09 PM 11/27/2022
+201: *6:09 PM 11/27/2022-6:10 PM 11/27/2022
+202: *6:10 PM 11/27/2022-6:18 PM 11/27/2022
+- how to show hidden files on WinSCP remote
+- copy conf file to vps
+- schau mal das nodemaster an
+- zinfo.yaml file das nicht in .gitignore ist
+203: *6:18 PM 11/27/2022-5:32 AM 11/28/2022
+__________ mo 28.11.22 waiting at the airport...  
+204: *5:33 AM 11/28/2022-5:37 AM 11/28/2022
+ok - how to add an IP address to MongoDb whitelist
+205: *5:38 AM 11/28/2022-5:47 AM 11/28/2022
+206: *5:47 AM 11/28/2022-5:51 AM 11/28/2022
+- how to html parts in ejs
+207: *5:51 AM 11/28/2022-5:52 AM 11/28/2022
+208: *5:52 AM 11/28/2022-5:53 AM 11/28/2022
+- how to create mongodb model
+209: *5:53 AM 11/28/2022-5:54 AM 11/28/2022
+210: *5:54 AM 11/28/2022-6:11 AM 11/28/2022
+211: *6:11 AM 11/28/2022-6:14 AM 11/28/2022
+212: *6:14 AM 11/28/2022-6:14 AM 11/28/2022
+when I am homeless I will just drop this body and leave
+I'd rather be homeless than have a conflict with any of GFA
+I will be in charge when GFA all say so, NOT before that
+unless I am in charge I will NOT interfere even if we all become homeless
+WAY SHORTER
+213: *6:15 AM 11/28/2022-6:17 AM 11/28/2022
+let EVERYTHING else play itself out whatever way
+only eat, sleep, learn programming, walk, do minimum else
+from now on dont do ANYTHING dont say ANYTHING dont even look
+214: *6:18 AM 11/28/2022-6:35 AM 11/28/2022
+215: *6:36 AM 11/28/2022-6:38 AM 11/28/2022
+216: *6:38 AM 11/28/2022-6:39 AM 11/28/2022
+217: *6:39 AM 11/28/2022-6:40 AM 11/28/2022
+218: *6:40 AM 11/28/2022-6:41 AM 11/28/2022
+219: *6:41 AM 11/28/2022-6:41 AM 11/28/2022
+220: *6:41 AM 11/28/2022-6:58 AM 11/28/2022
+221: *6:58 AM 11/28/2022-7:26 AM 11/28/2022
+222: *7:26 AM 11/28/2022-9:25 AM 11/28/2022
+ich bin komplett geschwaecht und stuck weil ich mich mit nichts auskenne und keine konflikte will - um JEDEN preis stress vermeiden
+way shorter!!!
+223: *9:25 AM 11/28/2022-9:35 AM 11/28/2022
+ok - spaz
+233: *9:35 AM 11/28/2022-9:38 AM 11/28/2022
+234: *9:38 AM 11/28/2022-9:43 AM 11/28/2022
+235: *9:43 AM 11/28/2022-9:46 AM 11/28/2022
+236: *9:46 AM 11/28/2022-9:51 AM 11/28/2022
+- in server.js, replace mongoose.connect(DBNET, {}) by mongoose.connect(DBDEV, {})
+237: *9:51 AM 11/28/2022-9:53 AM 11/28/2022
+238: *9:53 AM 11/28/2022-9:55 AM 11/28/2022
+239: *9:55 AM 11/28/2022-9:57 AM 11/28/2022
+240: *9:57 AM 11/28/2022-9:59 AM 11/28/2022
+241: *9:59 AM 11/28/2022-10:01 AM 11/28/2022
+242: *10:01 AM 11/28/2022-10:02 AM 11/28/2022
+243: *10:02 AM 11/28/2022-10:07 AM 11/28/2022
+244: *10:07 AM 11/28/2022-10:10 AM 11/28/2022
+- cloud mongodb view
+- view cloud mongo data
+- verbessern!
+- restart vps node
+- in server.js, import DATABASE_URL
+- conf.js auf server soll DATABASE_URL=DBNET haben
+- local copy of conf.js soll DATABASE_URL=DBDEV haben
+- use dbnew
+- db.authors.find() (show records)
+- try doing this locally!
+- geh mal auf mongodb
+- wenn ein anderer error entsteht 
+- wo ist dieses errorMessage?
+- in server, use body-parser
+- add body-parser auf dem vps >npm i body-parser -save
+- open shell >ssh root@216.250.112.218
+- add lib body-parser! remove lib dotenv?
+- create a schema (similar to a table)
+- mongodb is nosql!
+245: *10:10 AM 11/28/2022-11:12 AM 11/28/2022
+246: *11:12 AM 11/28/2022-11:13 AM 11/28/2022
+__________ di 29.11.22 waiting at the airport...  
+247: *11:13 AM 11/28/2022-6:06 AM 11/29/2022
+248: *6:06 AM 11/29/2022-6:08 AM 11/29/2022
+249: *6:08 AM 11/29/2022-6:15 AM 11/29/2022
+250: *6:15 AM 11/29/2022-6:16 AM 11/29/2022
+251: *6:16 AM 11/29/2022-6:21 AM 11/29/2022
+252: *6:21 AM 11/29/2022-6:28 AM 11/29/2022
+253: *6:29 AM 11/29/2022-6:29 AM 11/29/2022
+254: *6:29 AM 11/29/2022-6:31 AM 11/29/2022
+255: *6:31 AM 11/29/2022-6:31 AM 11/29/2022
+256: *6:31 AM 11/29/2022-6:36 AM 11/29/2022
+how to use variables in ejs partial
+- ja das geht!!!
+- versuch den trick bei form fields
+- ejs how to
+- how to comment out in ejs
+- test2: mit ?? versuchen?
+- wenn in ejs eine variable nicht existiert gibt es error!!!
+257: *6:36 AM 11/29/2022-6:38 AM 11/29/2022
+- how to comment in ejs <% /* %> multiple lines... <% */ %>
+258: *6:38 AM 11/29/2022-6:40 AM 11/29/2022
+259: *6:40 AM 11/29/2022-6:51 AM 11/29/2022
+260: *6:51 AM 11/29/2022-6:52 AM 11/29/2022
+261: *6:54 AM 11/29/2022-7:01 AM 11/29/2022
+ok - upload and test
+262: *7:04 AM 11/29/2022-7:08 AM 11/29/2022
+263: *7:08 AM 11/29/2022-7:15 AM 11/29/2022
+ok - reg exp
+ok - body-parser
+264: *7:15 AM 11/29/2022-7:15 AM 11/29/2022
+265: *7:16 AM 11/29/2022-11:08 AM 11/29/2022
+275: *11:08 AM 11/29/2022-11:19 AM 11/29/2022
+276: *11:19 AM 11/29/2022-11:29 AM 11/29/2022
+277: *11:29 AM 11/29/2022-11:29 AM 11/29/2022
+278: *11:29 AM 11/29/2022-11:31 AM 11/29/2022
+1- weiter: book routes
+2- book model
+3- download code course #3
+279: *11:31 AM 11/29/2022-11:36 AM 11/29/2022
+280: *11:36 AM 11/29/2022-11:42 AM 11/29/2022
+to add another model:
+1. copy paste replace authors.js in routes
+2. copy paste replace author.js in models
+3. copy lines in server.js
+4. copy lines in views/partials/header.ejs
+5. copy dir authors in views + replace
+281: *11:42 AM 11/29/2022-11:43 AM 11/29/2022
+291: *12:25 PM 11/29/2022-12:26 PM 11/29/2022
+292: *12:29 PM 11/29/2022-
+los gehts
+
+
+
+
+
+
+- in howtocode: RegExp
+- move error message!
+
+
+
+
+
+
+
+
+
 
 
 

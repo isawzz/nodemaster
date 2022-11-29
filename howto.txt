@@ -11,6 +11,14 @@ _________ what is ejs?
 	templating engine to write html in js (for server rendering)
 	compare to: vue, mustache, pug(Jade), Handlebars.js (react,underscore)
 
+_________ how to use variables in ejs template
+	- in route: res.render('authors/new', { author: author, errorMessage: "error creating author!" })
+		or (without setting errorMessage): res.render('authors/new', { author: new Author() });
+	- if not sure that this variable is set: <%= locals.errorMessage?errorMessage:'' %>
+		or if set: <%= errorMessage %>
+
+_________ how to comment in ejs <% /* %> multiple lines... <% */ %>
+
 _________ how to run live-server + nodemon
 	1. npm i cors
 	2. in server.js, add: 
@@ -29,7 +37,7 @@ _________ how to run live-server + nodemon
 				},
 
 _________ how to setup mongoDB
-	1. tut: https://www.youtube.com/watch?v=wcx3f0eUiAw
+	1. tut: https://www.youtube.com/watch?v=wcx3f0eUiAw or https://www.youtube.com/watch?v=ofme2o29ngU
 	2. https://cloud.mongodb.com/v2/60cd5dae4f51021a7e4411ec#clusters
 	3. download link: https://www.mongodb.com/download-center/community
 	download msi file, install (Program Files/MongoDB)
@@ -54,6 +62,29 @@ _________ how to get mongoDB connection string in the cloud
 	goto mongoDB.com iwg@g mp...mdb
 	https://cloud.mongodb.com/v2/60cd5dae4f51021a7e4411ec#clusters
 	mongodb+srv://admin:PGJpyMmWw0Npmd2e@cluster0.vuq6gro.mongodb.net/?retryWrites=true&w=majority
+
+_________ how to add an IP address to MongoDb whitelist
+	goto https://cloud.mongodb.com/v2/60cd5dae4f51021a7e4411ec#clusters iw mpt.mdb
+	click sidebar: Network Access
+	click right: Add IP address (to whitelist ALL IP addresses, enter 0.0.0.0/0)
+
+_________ use local mongodb: 
+	- in conf.js, replace DATABASE_URL = DBNET by DATABASE_URL = DBDEV
+
+_________ view local mongodb: 
+	- explorer C:\Program Files\MongoDB\Server\5.0\bin, 
+	- start mongo.exe, 
+	>show databases
+	>use dbnew
+	>db.authors.find() (shows all records)
+
+_________ use cloud mongodb: 
+	- in conf.js, set DATABASE_URL = DBNET
+
+_________ view cloud mongodb: 
+	- bw needs to be active (or iw mp-mdb)
+	- browse to: https://cloud.mongodb.com/v2/60cd5dae4f51021a7e4411ec#metrics/replicaSet/63611d0b42733a0e7aab0d3f/explorer/test/authors/find
+	- bei FILTER kann eingeben: {name:'felix'}
 
 _________ how to push project to git
 	add .gitignore file (containing node_modules and .env)
@@ -192,6 +223,8 @@ _________ misc ubuntu commands:
 	>kill PID
 	>sudo systemctl status <service-name> (services have d at the end, eg httpd)
 
+> show hidden files in WinSCP: Options, Preferences, Panels, check Show Hidden Files
+
 ________________________ TODO: deploying node app to vps
 	nodejs server setup and deployment: https://github.com/rromanv/CITP-4316-Notes/blob/master/Backend%20Server_Setup/README.md
 		tutorial: https://www.youtube.com/watch?v=p7X7tVO-UWY
@@ -229,13 +262,29 @@ _________ how to add a new (mvc) app to node js app
 	- in routes, a new js file is created: create new controller: routes/authors.js
 	- in views, a new directory is created create new dir authors, files index.js and new.js
 	- in server, a new router is created:
-			const authorRouter = require('./routes/authors'); //requires the authors.js file in ./routes
+			const authorsRouter = require('./routes/authors'); //requires the authors.js file in ./routes
 			...
 			app.use('/authors', authorsRouter); //NOTE: path is composed together with paths in ./routes/authors.js
 
+_________ how to html parts in ejs
+	- in views, create dir partials
+	- in partials, create header.ejs (see C:\D\a04\testmongo\views\partials\header.ejs)
+	- in layout.ejs: 	<%- include('../partials/header.ejs') %>
 
-ACHTUNG!!!! ==>das .env file auf der vps muss ANDERS sein (das ist das production environment!!!)
-1. open testmongo
+_________ how to create mongodb model
+	- in models, create author.js
+
+________________________ WebDefSimplified full stack dev: course #3
+_________ how to add another model (books, copy paste replace from authors)
+	1. copy paste replace authors.js in routes
+	2. copy paste replace author.js in models
+	3. copy lines in server.js
+	4. copy lines in views/partials/header.ejs
+	5. copy dir authors in views + replace
+	6. views form 
+	
+
+
 
 
 
