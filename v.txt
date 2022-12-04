@@ -3893,12 +3893,27 @@ __________ so 4.12.22 waiting at the airport...   D
 507: *9:46 AM 12/4/2022-9:46 AM 12/4/2022
 508: *9:46 AM 12/4/2022-9:49 AM 12/4/2022
 509: *9:49 AM 12/4/2022-11:15 AM 12/4/2022
-510: *11:16 AM 12/4/2022-
+510: *11:16 AM 12/4/2022-12:36 PM 12/4/2022
 I am completely stuck!!! es wird immer schwieriger!
-
-- geh die runde jetzt
-- wie hat er es gemacht?
-- 
+action 5
+515: *12:36 PM 12/4/2022-12:37 PM 12/4/2022
+516: *12:37 PM 12/4/2022-12:38 PM 12/4/2022
+- goto header code: class header-title
+517: *12:38 PM 12/4/2022-12:40 PM 12/4/2022
+- mach es
+518: *12:40 PM 12/4/2022-12:45 PM 12/4/2022
+519: *12:45 PM 12/4/2022-12:53 PM 12/4/2022
+520: *12:53 PM 12/4/2022-12:53 PM 12/4/2022
+521: *12:53 PM 12/4/2022-1:42 PM 12/4/2022
+522: *1:42 PM 12/4/2022-1:43 PM 12/4/2022
+523: *1:43 PM 12/4/2022-3:00 PM 12/4/2022
+524: *3:01 PM 12/4/2022-
+- gehe eine runde dann eine runde mit dem guggi
+- ich will das alles ganichtmehr ich will endlich sterben ist doch eh alles kaputt
+- open 
+- ich brauch jetzt ein tiny model fuer mongo db
+- also was jetzt?
+- links wie macht man js bei links anstatt leaving page?
 - WAY SHORTER
 - region block
 - jsyaml wird gebraucht
