@@ -3882,7 +3882,69 @@ __________ so 4.12.22 waiting at the airport...   D
 497: *8:11 AM 12/4/2022-8:14 AM 12/4/2022
 498: *8:14 AM 12/4/2022-8:16 AM 12/4/2022
 499: *8:16 AM 12/4/2022-8:50 AM 12/4/2022
-500: *8:50 AM 12/4/2022-
+500: *8:50 AM 12/4/2022-9:05 AM 12/4/2022
+501: *9:05 AM 12/4/2022-9:06 AM 12/4/2022
+- das waer jetzt eine gute zeit fuer RH*
+502: *9:07 AM 12/4/2022-9:31 AM 12/4/2022
+503: *9:31 AM 12/4/2022-9:32 AM 12/4/2022
+504: *9:32 AM 12/4/2022-9:33 AM 12/4/2022
+505: *9:33 AM 12/4/2022-9:39 AM 12/4/2022
+506: *9:39 AM 12/4/2022-9:46 AM 12/4/2022
+507: *9:46 AM 12/4/2022-9:46 AM 12/4/2022
+508: *9:46 AM 12/4/2022-9:49 AM 12/4/2022
+509: *9:49 AM 12/4/2022-11:15 AM 12/4/2022
+510: *11:16 AM 12/4/2022-
+I am completely stuck!!! es wird immer schwieriger!
+
+- geh die runde jetzt
+- wie hat er es gemacht?
+- 
+- WAY SHORTER
+- region block
+- jsyaml wird gebraucht
+- genau das sollte eben irgendwo stehen!!!
+- brauch das json settings zeug fuer paths F12
+- komplett simple app
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 aber ini wirklichkeit ist was zaehlt die innere welt oder?
 - mach einen mongosink local und einen mongosink cloud
 - das ist ein interface das IMMER laeuft
