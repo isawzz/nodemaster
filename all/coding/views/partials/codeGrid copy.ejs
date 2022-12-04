@@ -1,0 +1,8 @@
+<% bookCoverClass = locals.large ? 'book-cover-large' : '' %> <% bookGridClass = locals.large ? 'book-grid-large' : '' %>
+<div class="book-grid <%= bookGridClass %>">
+	<% code.forEach(x => { %>
+	<a href="/code/<%= x.id %>">
+		<textarea><%= x.snippet %></textarea>
+	</a>
+	<% }) %>
+</div>

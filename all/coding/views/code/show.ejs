@@ -1,0 +1,21 @@
+<h2 class="page-header"><%= code.keywords %></h2>
+<div class="book-details">
+  <div>
+    <div class="book-details-btn-grid">
+      <a class="btn btn-primary" href="/code/<%= code.id %>/edit">Edit</a>
+      <%- include('../partials/deleteForm', { url: `/code/${code.id}` }) %>
+    </div>
+  </div>
+  <div class="book-details-grid">
+    <div class="book-details-label">Keywords:</div>
+    <div><%= code.keywords %></div>
+    <div class="book-details-label">Created Date:</div>
+    <div><%= code.createdAt.toDateString() %></div>
+    <div class="book-details-label">Link:</div>
+    <div><%= code.link %></div>
+    <div class="book-details-label">Description:</div>
+    <div><%= code.description %></div>
+    <div class="book-details-label">Snippet:</div>
+    <div><%= code.snippet %></div>
+  </div>
+</div>

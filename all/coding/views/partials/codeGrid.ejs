@@ -1,0 +1,29 @@
+<script>
+	function textAreaAdjust(o) {
+		console.log('o',o.innerHTML)
+		o.style.height = '1px';
+		o.style.height = 10+o.scrollHeight + 'px';
+	}
+	function get_code_link(link){
+		console.log('link',link)
+		if (link){
+			let sub = link.subString(0,4);
+			console.log('sub',sub);
+		}
+	}
+</script>
+
+<div>
+	<% code.forEach(x => { %>
+	<div class="form-row">
+		<div class="form-item">
+			<a href="/code/<%= x.id %>"><%= x.keywords %></a>
+			<a href="<%= x.link %>"><%= x.link %></a>
+			<pre style="margin-top:-1px;height:unset"><%= x.snippet %></pre>
+			<!-- <pre style="margin-top:-1px;background: white; color: black; font-size: 24px; font-family: opensans; text-decoration: none"><%= x.snippet %></pre> -->
+			<!-- <textarea onload="resize_textarea(this)" rows="20" style="margin-top: -1px; max-height: 500px"><%= x.snippet %></textarea> -->
+			<!-- <textarea autofocus="true" onfocus="textAreaAdjust(this);"><%= x.snippet %></textarea> -->
+		</div>
+	</div>
+	<% }) %>
+</div>

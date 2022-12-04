@@ -1,0 +1,22 @@
+onload=start;
+
+function start(){
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

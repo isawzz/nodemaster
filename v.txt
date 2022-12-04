@@ -3879,7 +3879,24 @@ __________ so 4.12.22 waiting at the airport...   D
 494: *7:51 AM 12/4/2022-7:51 AM 12/4/2022
 495: *7:51 AM 12/4/2022-8:06 AM 12/4/2022
 496: *8:06 AM 12/4/2022-8:11 AM 12/4/2022
-497: *8:11 AM 12/4/2022-
+497: *8:11 AM 12/4/2022-8:14 AM 12/4/2022
+498: *8:14 AM 12/4/2022-8:16 AM 12/4/2022
+499: *8:16 AM 12/4/2022-8:50 AM 12/4/2022
+500: *8:50 AM 12/4/2022-
+aber ini wirklichkeit ist was zaehlt die innere welt oder?
+- mach einen mongosink local und einen mongosink cloud
+- das ist ein interface das IMMER laeuft
+
+
+
+
+
+
+
+
+
+
+- kann ich das nicht einfacher machen? mit einer codebase
 - alles totaler mist!!!!
 - redirect
 link
