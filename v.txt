@@ -3759,16 +3759,268 @@ to add another model:
 5. copy dir authors in views + replace
 281: *11:42 AM 11/29/2022-11:43 AM 11/29/2022
 291: *12:25 PM 11/29/2022-12:26 PM 11/29/2022
-292: *12:29 PM 11/29/2022-
-los gehts
+292: *12:29 PM 11/29/2022-8:14 PM 11/29/2022
+__________ mi 30.11.22 waiting at the airport...  
+320: *8:14 PM 11/29/2022-6:57 AM 11/30/2022
+321: *6:57 AM 11/30/2022-6:57 AM 11/30/2022
+322: *6:57 AM 11/30/2022-6:58 AM 11/30/2022
+323: *6:59 AM 11/30/2022-7:02 AM 11/30/2022
+324: *7:02 AM 11/30/2022-7:04 AM 11/30/2022
+325: *7:04 AM 11/30/2022-7:06 AM 11/30/2022
+326: *7:06 AM 11/30/2022-7:10 AM 11/30/2022
+327: *7:10 AM 11/30/2022-7:11 AM 11/30/2022
+328: *7:11 AM 11/30/2022-7:12 AM 11/30/2022
+329: *7:12 AM 11/30/2022-7:13 AM 11/30/2022
+330: *7:13 AM 11/30/2022-7:14 AM 11/30/2022
+331: *7:14 AM 11/30/2022-7:23 AM 11/30/2022
+- wieviel space hat mein vps? df (show in KB)
+332: *7:23 AM 11/30/2022-7:24 AM 11/30/2022
+333: *7:25 AM 11/30/2022-7:29 AM 11/30/2022
+- er verwendet .wt files! wiredtiger komisches zeug
+- way shorter!!!! schau mal wie mongodb daten abspeichert
+334: *7:29 AM 11/30/2022-7:30 AM 11/30/2022
+335: *7:30 AM 11/30/2022-7:38 AM 11/30/2022
+336: *7:38 AM 11/30/2022-7:39 AM 11/30/2022
+337: *7:39 AM 11/30/2022-7:50 AM 11/30/2022
+338: *7:50 AM 11/30/2022-8:12 AM 11/30/2022
+339: *8:12 AM 11/30/2022-8:30 AM 11/30/2022
+340: *8:30 AM 11/30/2022-8:36 AM 11/30/2022
+ok - suche rechnung von pc
+341: *8:36 AM 11/30/2022-9:05 AM 11/30/2022
+__________ do 1.12.22 waiting at the airport...   D
+342: *9:05 AM 11/30/2022-6:35 AM 12/1/2022
+343: *6:35 AM 12/1/2022-6:36 AM 12/1/2022
+344: *6:36 AM 12/1/2022-6:37 AM 12/1/2022
+345: *6:37 AM 12/1/2022-6:40 AM 12/1/2022
+346: *6:40 AM 12/1/2022-6:48 AM 12/1/2022
+347: *6:48 AM 12/1/2022-6:48 AM 12/1/2022
+- base und basejs uploaded: achtung jetzt gibt es basemin in 3 orten!
+==>phase out nodemaster!!!
+348: *6:48 AM 12/1/2022-6:54 AM 12/1/2022
+349: *6:54 AM 12/1/2022-7:18 AM 12/1/2022
+350: *7:18 AM 12/1/2022-7:21 AM 12/1/2022
+351: *7:21 AM 12/1/2022-7:35 AM 12/1/2022
+352: *7:36 AM 12/1/2022-7:44 AM 12/1/2022
+353: *7:44 AM 12/1/2022-7:58 AM 12/1/2022
+354: *7:58 AM 12/1/2022-2:51 PM 12/1/2022
+ok - arbeit
+__________ fr 2.12.22 waiting at the airport...   D
+400: *2:51 PM 12/1/2022-7:19 AM 12/2/2022
+401: *7:19 AM 12/2/2022-7:23 AM 12/2/2022
+402: *7:23 AM 12/2/2022-7:28 AM 12/2/2022
+403: *7:28 AM 12/2/2022-7:30 AM 12/2/2022
+404: *7:30 AM 12/2/2022-7:41 AM 12/2/2022
+405: *7:42 AM 12/2/2022-7:42 AM 12/2/2022
+- jetzt geht auch das Gotham Rounded!!!
+- DATABASE_URL
+- do not use dotenv
+- all das zeug in ein mybrary dir
+406: *7:43 AM 12/2/2022-7:45 AM 12/2/2022
+407: *7:45 AM 12/2/2022-7:48 AM 12/2/2022
+408: *7:48 AM 12/2/2022-7:50 AM 12/2/2022
+409: *7:50 AM 12/2/2022-7:54 AM 12/2/2022
+410: *7:54 AM 12/2/2022-8:04 AM 12/2/2022
+411: *8:04 AM 12/2/2022-8:08 AM 12/2/2022
+412: *8:09 AM 12/2/2022-8:18 AM 12/2/2022
+413: *8:18 AM 12/2/2022-8:23 AM 12/2/2022
+414: *8:23 AM 12/2/2022-8:28 AM 12/2/2022
+415: *8:28 AM 12/2/2022-8:30 AM 12/2/2022
+416: *8:31 AM 12/2/2022-8:45 AM 12/2/2022
+417: *8:45 AM 12/2/2022-8:47 AM 12/2/2022
+- check mail,discord
+418: *8:47 AM 12/2/2022-9:54 AM 12/2/2022
+419: *9:54 AM 12/2/2022-1:47 PM 12/2/2022
+420: *1:47 PM 12/2/2022-6:07 AM 12/3/2022
+__________ sa 3.12.22 waiting at the airport...   D
+450: *6:07 AM 12/3/2022-6:35 AM 12/3/2022
+451: *6:36 AM 12/3/2022-6:40 AM 12/3/2022
+452: *6:40 AM 12/3/2022-6:42 AM 12/3/2022
+453: *6:43 AM 12/3/2022-6:43 AM 12/3/2022
+454: *6:43 AM 12/3/2022-6:45 AM 12/3/2022
+455: *6:45 AM 12/3/2022-6:52 AM 12/3/2022
+456: *6:52 AM 12/3/2022-6:59 AM 12/3/2022
+457: *6:59 AM 12/3/2022-7:05 AM 12/3/2022
+458: *7:05 AM 12/3/2022-7:06 AM 12/3/2022
+459: *7:06 AM 12/3/2022-7:07 AM 12/3/2022
+460: *7:07 AM 12/3/2022-7:30 AM 12/3/2022
+461: *7:30 AM 12/3/2022-7:55 AM 12/3/2022
+462: *7:55 AM 12/3/2022-7:55 AM 12/3/2022
+463: *7:55 AM 12/3/2022-8:04 AM 12/3/2022
+464: *8:04 AM 12/3/2022-8:04 AM 12/3/2022
+465: *8:05 AM 12/3/2022-8:05 AM 12/3/2022
+466: *8:05 AM 12/3/2022-8:18 AM 12/3/2022
+467: *8:18 AM 12/3/2022-8:18 AM 12/3/2022
+468: *8:18 AM 12/3/2022-8:29 AM 12/3/2022
+469: *8:29 AM 12/3/2022-9:09 AM 12/3/2022
+470: *9:09 AM 12/3/2022-9:29 AM 12/3/2022
+471: *9:29 AM 12/3/2022-9:29 AM 12/3/2022
+472: *9:29 AM 12/3/2022-11:59 AM 12/3/2022
+473: *11:59 AM 12/3/2022-4:13 PM 12/3/2022
+480: *4:13 PM 12/3/2022-4:35 PM 12/3/2022
+- gu schwimmen eintragen
+- katze check
+- kleidung holen!
+- kueche
+- dann RH
+485: *5:32 PM 12/3/2022-6:35 PM 12/3/2022
+- futter
+- zaehneputzen
+- aus schluss basta
+__________ so 4.12.22 waiting at the airport...   D
+487: *6:49 PM 12/3/2022-6:59 AM 12/4/2022
+488: *6:59 AM 12/4/2022-7:01 AM 12/4/2022
+489: *7:01 AM 12/4/2022-7:07 AM 12/4/2022
+490: *7:08 AM 12/4/2022-7:09 AM 12/4/2022
+491: *7:09 AM 12/4/2022-7:13 AM 12/4/2022
+- how to delete mongodb database? db.dropDatabase()
+492: *7:13 AM 12/4/2022-7:23 AM 12/4/2022
+493: *7:23 AM 12/4/2022-7:26 AM 12/4/2022
+494: *7:26 AM 12/4/2022-7:51 AM 12/4/2022
+494: *7:51 AM 12/4/2022-7:51 AM 12/4/2022
+495: *7:51 AM 12/4/2022-8:06 AM 12/4/2022
+496: *8:06 AM 12/4/2022-8:11 AM 12/4/2022
+497: *8:11 AM 12/4/2022-
+- alles totaler mist!!!!
+- redirect
+link
+- WAY SHORTER!!! just give it all up then you are free
+Not allowed to load local resource: file:///C:/D/a03/nodemaster
+it does not matter: C:\D\a03\nodemaster
+=>schau in howto wie man eine db created!
+- besser waere: keyswords,link und groessere box fuer description
+add input field for link
+field: stackoverflow link
+
+
+es gibt eine moeglichkeit!
+die moeglichkeit ist:
+1- 
+
+was ich mir wuensche?
+allein zu sein irgendwo in der welt mein eigener herr zu sein
+frei zu sein 
+tot zu sein und nie wieder reincarnieren zu muessen
+NIE NIE NIE NIE MEHR!
+dass mir niemand mehr irgendwas bedeutet dass ich nie mehr angst habe vor irgendeinem menschen seiner meinung oder seinem verhalten
+irgendwo in ruhe zu leben und fuer niemanden mehr mitdenken
+allein als ein programmierer zu leben
+nichts den ganzen tag lang tun als programmieren
+garnichts fuer irgendwen tun muessen an niemanden denken muessen
+allein fuer mich in einer simplen welt zu sein
+einen simplen job ein simples gehalt ein einziges simples bankkonto und sonst nichts
+wohnen koennen wo ich will nicht fuer irgendwelche building schaeden zustaendig zu sein
+eine simple billige wohnung mieten, zu fuss zur arbeit, eine simple arbeit die ich gut kann, that's all!
+
+
+
+- wenn auf update click wird snippet nicht updated
+- how to make textarea rows fit content
+- gehen!
+
+- search ist falsch
+- WAY SHORTER!!!!
+- search code moecht ich keine dates und keyswords statt Title
+- WAY SHORTER!!!
+heut ist samstag
+WAY SHORTER!
+- header!
+- copy soul project
+- bootstrap ein coding das mir jedes ding wirklich als example liefert!
+- nodejs add cors
+
+- jetzt muss cors adden und dann muss authors route machen!
+- header?
+- restart vs code!
+- mach ich jetzt mit dem doofen views zeug weiter oder einfach mit wunderschoenem index.html???
+- jetzt koennt ich doch statt books soulplaces machen oder?
+- tutorial weiter!!!
+- beispiel mit preview
+- was jetzt? 
 
 
 
 
 
 
-- in howtocode: RegExp
-- move error message!
+
+
+
+
+
+
+
+
+
+- auf und gu essen machen!
+- tel dustin
+
+- runde mit musik 
+- mach einen filepond test
+- hol das filepond zeug!
+statt views directory mach 1 index.html file
+- will es wieder mit live server laufen lassen!
+- filepond
+- look up filepond
+- statt books werden das jetzt soul places wo man hineingehen kann
+- mach automatisch 100 books 
+- mach ein book named: airport
+- er hat jetzt wirklich das bild selbst in der db! data ist jetzt schon 300MB!!!
+- weired! ist es local?
+geh zur mongodb
+
+
+
+
+3pm tuesday
+- noch eines
+- such noch airport images
+- edit airpot1
+- use css
+- stretch image
+- w3schools background-image
+- mach nicht ein css sondern hol mir das basemin.js
+- copy base from nodemaster
+- in public
+- schau wo das css sein soll logisch
+- background bg
+- search background-image
+
+
+- nimm das airport terminal als 
+- airport feeling
+- where to begin?
+- erstmal list alles was ich lerne im leben:
+1. ubuntu / vps
+2. nodejs
+3. vs code
+4. js
+5. html
+6. css
+7. monkeymind = dummes geplapper, phased out
+8. body = eat drink sleep move
+9. words = communicate with family, core beliefs
+10. actions = communicate with world, make decisions, do something
+11. energy stages & advice how to handle 8 .. 11 as per stage
+12. life skills (eg., backen, handwerk)
+13. python, flask, jupyter
+14. dashboard fuer ideen
+15. klavier, geige
+
+
+
+- how to start?
+
+- all das auf meinem vps! in nodejs! mit mongodb
+- und eine eigene art von mood calendar! mit tips
+- und wo ich searchen kann => +eine advancced search!
+- auch all die howtos reintue!
+- sowie eine eigene website wo ich all die snippets reintue
+- kann ich irgendwie das zeug das ich lerne mir selbst zugaenglich machen???
+- mongodb filter
+- db.authors.deleteMany({name:{$ne:'felix'}})
+- delete authors w/ name != 'felix': {name:{$ne:'felix'}}
+- how to delete all records in mongodb collection? db.movies.deleteMany({})
+- versuch rauszufinden ob er jetzt formfields verwendet?
 
 
 

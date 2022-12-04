@@ -7,6 +7,7 @@ _________ start project https://www.youtube.com/watch?v=qj2oDkvc4dQ&list=PLZlA0G
 	npm i --save-dev nodemon
 	create server.js file (or app.js) ... see C:\D\webdevsimplified\wds\tutfullstack\server.js
 
+_________________ ejs:
 _________ what is ejs?
 	templating engine to write html in js (for server rendering)
 	compare to: vue, mustache, pug(Jade), Handlebars.js (react,underscore)
@@ -36,20 +37,21 @@ _________ how to run live-server + nodemon
 					"test": "echo \"Error: no test specified\" && exit 1"
 				},
 
-_________ how to setup mongoDB
+_________________ mongodb:
+_________ how to setup mongodb
 	1. tut: https://www.youtube.com/watch?v=wcx3f0eUiAw or https://www.youtube.com/watch?v=ofme2o29ngU
 	2. https://cloud.mongodb.com/v2/60cd5dae4f51021a7e4411ec#clusters
 	3. download link: https://www.mongodb.com/download-center/community
-	download msi file, install (Program Files/MongoDB)
+	download msi file, install (Program Files/mongodb)
 	=>nimm NICHT 6.0 version sondern 5.x!!!!!!!
-	4. goto Program Files/MongoDB/Server/5.x/bin start mongo.express
+	4. goto Program Files/mongodb/Server/5.x/bin start mongo.express
 	5. test:
 	>show databases
 	>use newdb
 	>db.items.insert({name:'name'})
 	>show dbs
 
-_________ how to use mongoDB in server.js
+_________ how to use mongodb in server.js
 	npm i mongoose
 	npm i --save-dev dotenv
 	create a file .env (in project root dir)
@@ -58,12 +60,12 @@ _________ how to use mongoDB in server.js
 	in server.js add line on top:
 		if (process.env.NODE_ENV !== 'production'){ require('dotenv').config();}
 
-_________ how to get mongoDB connection string in the cloud
-	goto mongoDB.com iwg@g mp...mdb
+_________ how to get mongodb connection string in the cloud
+	goto mongodb.com iwg@g mp...mdb
 	https://cloud.mongodb.com/v2/60cd5dae4f51021a7e4411ec#clusters
 	mongodb+srv://admin:PGJpyMmWw0Npmd2e@cluster0.vuq6gro.mongodb.net/?retryWrites=true&w=majority
 
-_________ how to add an IP address to MongoDb whitelist
+_________ how to add an IP address to mongodb whitelist
 	goto https://cloud.mongodb.com/v2/60cd5dae4f51021a7e4411ec#clusters iw mpt.mdb
 	click sidebar: Network Access
 	click right: Add IP address (to whitelist ALL IP addresses, enter 0.0.0.0/0)
@@ -72,7 +74,7 @@ _________ use local mongodb:
 	- in conf.js, replace DATABASE_URL = DBNET by DATABASE_URL = DBDEV
 
 _________ view local mongodb: 
-	- explorer C:\Program Files\MongoDB\Server\5.0\bin, 
+	- explorer C:\Program Files\mongodb\Server\5.0\bin, 
 	- start mongo.exe, 
 	>show databases
 	>use dbnew
@@ -86,6 +88,10 @@ _________ view cloud mongodb:
 	- browse to: https://cloud.mongodb.com/v2/60cd5dae4f51021a7e4411ec#metrics/replicaSet/63611d0b42733a0e7aab0d3f/explorer/test/authors/find
 	- bei FILTER kann eingeben: {name:'felix'}
 
+_________ mongodb filter: {name:{$ne:'felix'}} https://www.mongodb.com/docs/manual/reference/operator/query/
+_________ mongodb delete: db.movies.deleteMany({}) https://www.mongodb.com/docs/mongodb-shell/crud/delete/
+
+_________________ git:
 _________ how to push project to git
 	add .gitignore file (containing node_modules and .env)
 	git init
@@ -107,8 +113,8 @@ _________ how to open PORT on vps
 	ssh root@216.250.112.218
 	ufw allow PORT
 
-_________ how to allow connection from IP address to mongoDB
-	goto mongoDB.com iwg@g mp...mdb
+_________ how to allow connection from IP address to mongodb
+	goto mongodb.com iwg@g mp...mdb
 	click on leaf (oben links)
 	click animasimple (project)
 	click security/Network Access
@@ -240,7 +246,7 @@ _________ pm2 (runs node server as daemon):
 ________ setup nginx to run multiple nodejs servers and other
 
 
-________________________ REPLICA OF MONGODB PROJECT in a04
+________________________ REPLICA OF mongodb PROJECT in a04
 _________ npm install string for WebDefSimplified full stack course:
 	>npm i express ejs express-ejs-layouts mongoose dotenv nodemon cors
 
