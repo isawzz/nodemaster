@@ -3907,7 +3907,137 @@ action 5
 521: *12:53 PM 12/4/2022-1:42 PM 12/4/2022
 522: *1:42 PM 12/4/2022-1:43 PM 12/4/2022
 523: *1:43 PM 12/4/2022-3:00 PM 12/4/2022
-524: *3:01 PM 12/4/2022-
+524: *3:01 PM 12/4/2022-7:44 PM 12/4/2022
+__________ mo 5.12.22 waiting at the airport...   D
+525: *6:23 AM 12/5/2022-6:24 AM 12/5/2022
+526: *6:24 AM 12/5/2022-6:30 AM 12/5/2022
+527: *6:30 AM 12/5/2022-6:34 AM 12/5/2022
+- minimal express app + mongodb
+528: *6:34 AM 12/5/2022-6:39 AM 12/5/2022
+529: *6:39 AM 12/5/2022-6:39 AM 12/5/2022
+530: *6:39 AM 12/5/2022-6:42 AM 12/5/2022
+531: *6:42 AM 12/5/2022-6:43 AM 12/5/2022
+532: *6:43 AM 12/5/2022-6:44 AM 12/5/2022
+533: *6:44 AM 12/5/2022-6:56 AM 12/5/2022
+534: *6:56 AM 12/5/2022-6:57 AM 12/5/2022
+535: *6:57 AM 12/5/2022-6:57 AM 12/5/2022
+536: *6:57 AM 12/5/2022-6:58 AM 12/5/2022
+537: *6:58 AM 12/5/2022-7:10 AM 12/5/2022
+538: *7:10 AM 12/5/2022-7:13 AM 12/5/2022
+539: *7:13 AM 12/5/2022-7:19 AM 12/5/2022
+540: *7:19 AM 12/5/2022-7:24 AM 12/5/2022
+541: *7:24 AM 12/5/2022-7:28 AM 12/5/2022
+542: *7:28 AM 12/5/2022-7:32 AM 12/5/2022
+543: *7:32 AM 12/5/2022-7:38 AM 12/5/2022
+544: *7:39 AM 12/5/2022-7:41 AM 12/5/2022
+545: *7:41 AM 12/5/2022-7:50 AM 12/5/2022
+546: *7:50 AM 12/5/2022-7:50 AM 12/5/2022
+547: *7:50 AM 12/5/2022-7:51 AM 12/5/2022
+548: *7:51 AM 12/5/2022-8:43 AM 12/5/2022
+ok - spaz
+ok - kabel suchen
+ok - hiditz anschliessen
+558: *8:44 AM 12/5/2022-8:57 AM 12/5/2022
+- discord, mail
+560: *8:57 AM 12/5/2022-9:01 AM 12/5/2022
+- wie ist das und warum wenn man stuck ist?
+561: *9:04 AM 12/5/2022-1:56 PM 12/5/2022
+__________ di 6.12.22 waiting at the airport...   D
+600: *1:56 PM 12/5/2022-5:56 AM 12/6/2022
+601: *6:02 AM 12/6/2022-6:14 AM 12/6/2022
+602: *6:14 AM 12/6/2022-6:22 AM 12/6/2022
+603: *6:22 AM 12/6/2022-6:22 AM 12/6/2022
+604: *6:22 AM 12/6/2022-6:29 AM 12/6/2022
+605: *6:29 AM 12/6/2022-6:32 AM 12/6/2022
+606: *6:32 AM 12/6/2022-6:34 AM 12/6/2022
+607: *6:34 AM 12/6/2022-6:36 AM 12/6/2022
+608: *6:36 AM 12/6/2022-6:38 AM 12/6/2022
+- client: inculudes?
+609: *6:38 AM 12/6/2022-6:41 AM 12/6/2022
+610: *6:41 AM 12/6/2022-6:51 AM 12/6/2022
+611: *6:51 AM 12/6/2022-7:02 AM 12/6/2022
+612: *7:02 AM 12/6/2022-7:25 AM 12/6/2022
+622: *7:25 AM 12/6/2022-7:31 AM 12/6/2022
+625: *7:31 AM 12/6/2022-7:34 AM 12/6/2022
+626: *7:34 AM 12/6/2022-7:40 AM 12/6/2022
+627: *7:40 AM 12/6/2022-7:45 AM 12/6/2022
+628: *7:45 AM 12/6/2022-7:54 AM 12/6/2022
+629: *7:54 AM 12/6/2022-7:56 AM 12/6/2022
+630: *7:57 AM 12/6/2022-7:59 AM 12/6/2022
+631: *7:59 AM 12/6/2022-8:02 AM 12/6/2022
+- wenn ich TESTING = live setze dann muss ich local server starten
+- update fonts on server!!!
+- cool! it looks like I can connect to vps from live server!!!!!!!
+somehow that works like a miracle
+632: *8:03 AM 12/6/2022-
+- ich kann live server zu vps, live server zu localhost:3000 UND vps und localhost:3000 machen!
+
+
+
+
+
+
+
+- connect to vps
+- als erstes check ob das zeug auch am vps geht!
+- got it! jetzt geht es wirklich!!!
+- rename to cita
+- WAY SHORTER! repait server.js!
+- such ein socket beispiel mit disconnect
+- test
+- brauch das http zeug!!!
+- start.js
+- server end!
+- socket io server tests!
+- was ist wenn socketio dazunehme? goto nodemaster socketstarter!
+- jetzt hab ich eine db
+- save data button
+
+
+
+
+
+
+
+- minimize server mit file read filewrite db load db modify
+- mach eine db am server!
+- way shorter!!!
+- hau das yaml raus, hol das js-yaml rein!
+- parse yaml file content to json object
+const inputYML = 'input.yml';
+const outputJSON = 'output.json';
+const yaml = require('js-yaml');
+const fs = require('fs');
+const obj = yaml.load(fs.readFileSync(inputYML, {encoding: 'utf-8'})); 
+//this code if you want to save file locally
+fs.writeFileSync(outputJSON, JSON.stringify(obj, null, 2));
+- button for file
+
+- now open a file as db on server, on post update this file!
+- need to take 'y' dir out of files being watched by live-server!!!
+- mach einen test
+- do not reload on link click
+- ausgabe von return value!
+- aber zuerst: getfile
+
+
+- spaeter behalt ich dann den file content object live am server und veraendere es nur!
+- write yaml file
+- brauch ich den body-parser? NEIN =>remove it
+- test
+- is fs ein package? nicht sicher
+- wo find ich einen server der yaml required?
+- mach minimal yaml server
+- minimal model
+
+heaven is math and music, light and sound, pure consciousness, limitless
+
+in that other world there is no time and money and possession
+everything is pure light and sound in that other world
+goto that other world
+in that other world there are no needs
+
+
 - gehe eine runde dann eine runde mit dem guggi
 - ich will das alles ganichtmehr ich will endlich sterben ist doch eh alles kaputt
 - open 

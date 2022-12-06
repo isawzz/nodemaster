@@ -1,7 +1,7 @@
 onload = start;
 
 //TESTING = true; // live | nginx | [false] | true (live for live-server, nginx for nginx) 
-TESTING = 'live'
+TESTING = 'live';
 
 async function start() {
 

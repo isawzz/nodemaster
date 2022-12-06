@@ -108,7 +108,10 @@ _________ how to clone from git
 	>npm install
 	(muss aber auch das mongo auf LG installieren!!!! und ein newdb machen!)
 
-_________________ new vps installation
+_________________ new vps installation (mp_B)
+_________ how to connect to vps via ssh: ssh root@216.250.112.218
+_________ how to BROWSE to VPS PORT 3000: http://216.250.112.218:3000/
+
 _________ how to open PORT on vps
 	ssh root@216.250.112.218
 	ufw allow PORT
