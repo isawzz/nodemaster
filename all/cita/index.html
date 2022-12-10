@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="icon" href="./base/assets/icons/belinda.png" style="height: 40px" />
+		<title>CITA</title>
+		<link rel="stylesheet" href="../base/assets/fonts/fonts.css" />
+		<link rel="stylesheet" href="../cita/schoen.css" />
+	</head>
+	<body class="airport_bg">
+		<div id="dMain" style="opacity: 0">
+			<header id="dHeader">
+				<nav class="header-nav">
+					<a class="header-title" href="#" onclick="db_load()">CITA</a>
+					<ul>
+						<li><a href="javascript:void(0)" onclick="onclick_list();return false;">List</a></li>
+						<li><a href="javascript:void(0)" onclick="onclick_new();return false;">New</a></li>
+						<li><a href="javascript:void(0)" onclick="onclick_file();return false;">File</a></li>
+						<li><a href="javascript:void(0)" onclick="onclick_save();return false;">Save</a></li>
+						<li><a href="javascript:void(0)" onclick="onclick_test();return false;">Test</a></li>
+					</ul>
+				</nav>
+			</header>
+
+			<form id="fSearch" action="javascript:void(0);" onsubmit="perform_search()" class="form-row vmiddle">
+				<label>Keywords</label>
+				<input id="iKeywords" type="text" name="keywords" style="flex-grow: 1" />
+				<button class="btn btn-primary" type="submit">Search</button>
+			</form>
+
+			<div id="dTable"></div>
+		</div>
+
+		<script src="../base/alibs/anime.min.js"></script>
+		<script src="../base/alibs/jsyaml.js"></script>
+		<script src="../basejs/basemin.js"></script>
+		<script src="../basejs/gamehelpers.js"></script>
+		<script src="../base/alibs/socket.io.js"></script>
+
+		<script src="../cita/db.js"></script>
+		<script src="../cita/test.js"></script>
+		<script src="../cita/ui.js"></script>
+		<script src="../cita/start.js"></script>
+	</body>
+</html>

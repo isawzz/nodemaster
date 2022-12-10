@@ -4064,13 +4064,82 @@ action/3 1:24 PM 12/9/2022-2:02 PM 12/9/2022 = 38 / 4 = 9
 action/5 5:13 PM 12/9/2022-6:35 PM 12/9/2022 = 82 / 5 = 16
 811: *6:35 PM 12/9/2022-6:40 PM 12/9/2022
 - hole LG
-812: *6:40 PM 12/9/2022-
+812: *6:40 PM 12/9/2022-7:52 AM 12/10/2022
 - one drive download das zeug fuer fe 
-
-
-wieviel bekomm ich fuer 1 spiel mit musik? 
-the simplest would be to go for a walk
+__________ sa 10.12.22 waiting at the airport...   D
+813: *7:53 AM 12/10/2022-7:59 AM 12/10/2022
+mein ego ist nur noch pure angst ich lass es jetzt es liegt im sterben ich muss nur noch geduldig sein
+814: *7:59 AM 12/10/2022-8:07 AM 12/10/2022
+815: *8:07 AM 12/10/2022-8:11 AM 12/10/2022
+irgendwie muss ich ja meine zeit hier auf der erde verbringen
+speziell wenn ich in einem gefaengnis bin
+das waer doch der idela ort creativ zu sein
+ich hab alle tools dazu die ich brauche
+ich bin in einem luxus gefaengnis
+und jetzt hab ich auch die zeit dazu
+warum ist mir das jetzt alles so egal geworden?
+- ich merke dass ich das garnicht machen will - aber warum?
+- wie mach ich eine aristo ai?
+- aristo neue platform? wird es da irgendwie simpler?
+- ist es nicht besser ein andres spiel zu spielen? aber welches?
+- wie wuerd es anfangen?
+- fuer 1=1, 2=2, 3=4, 4=6, 5=10, 6=14, 7=18
+- wie geht AI vor?
+- kann ich es so machen dass man immer 3 ziehen kann?
+- ttr europ mit echter map? und variablen staedten
+- warum nicht implement ticket to ride?
+- ich moecht wieder ein spiel mit ai machen! das lustig ist sowiettr
+816: *8:11 AM 12/10/2022-8:12 AM 12/10/2022
+es ist teilweise so weil ich nicht wieder in die sucht kommen will
 just simplify your life
+817: *8:12 AM 12/10/2022-8:16 AM 12/10/2022
+818: *8:16 AM 12/10/2022-8:16 AM 12/10/2022
+819: *8:17 AM 12/10/2022-8:20 AM 12/10/2022
+820: *8:20 AM 12/10/2022-8:43 AM 12/10/2022
+821: *8:43 AM 12/10/2022-8:50 AM 12/10/2022
+822: *8:50 AM 12/10/2022-
+- brauch die db
+- hol session rein!
+- goto aroot games schau wie settings gemacht werden?
+- zuerst brauch ich die settings 
+- goalnumber waer cool!
+- starte mit einem simplen board game
+ang das spiel laeuft am server
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -4084,11 +4153,12 @@ just simplify your life
 
 
 
-
-
-
-
-tel PSE address change
+- POST EINWERFEN!!!
+- library 10am
+- kaufe essen
+- gu TKD guertel 3pm
+- tel PSE address change
+- oasis eiskasten abdrehen!
 
 =>danach direct editing mit update!
 =>delete button

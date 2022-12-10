@@ -1,0 +1,185 @@
+:root {
+	--color-base-hue: 200;
+	--color-danger-hue-offset: 180;
+	--color-danger-hue: calc(var(--color-base-hue) - var(--color-danger-hue-offset));
+	--color-background-dark: hsl(var(--color-base-hue), 100%, 8%);
+	--color-background-light: hsl(var(--color-base-hue), 100%, 16%);
+	--color-text-light: hsl(var(--color-base-hue), 100%, 87%);
+	--nav-title-font-size: 3rem;
+	--nav-title-font-weight: bold;
+	--nav-link-font-weight: 300;
+	--color-btn-primary-background: hsl(var(--color-base-hue), 100%, 83%);
+	--color-btn-primary-background-dark: hsl(var(--color-base-hue), 100%, 73%);
+	--color-btn-primary-text: hsl(var(--color-base-hue), 100%, 20%);
+	--color-btn-primary-text-dark: hsl(var(--color-base-hue), 100%, 10%);
+	--color-btn-border: black;
+	--color-btn-danger-background: hsl(var(--color-danger-hue), 100%, 83%);
+	--color-btn-danger-background-dark: hsl(var(--color-danger-hue), 100%, 73%);
+	--color-btn-danger-text: black;
+	--color-btn-danger-text-dark: black;
+	--form-label-font-size: 1.2rem;
+	--form-input-background-color: hsl(var(--color-base-hue), 100%, 31%);
+	--form-input-border-color: hsl(var(--color-base-hue), 100%, 50%);
+	--form-input-border-color-light: hsl(var(--color-base-hue), 100%, 80%);
+	font-family: 'Gotham Rounded';
+	font-size: 20px;
+	color: var(--color-text-light);
+}
+
+/* #region header */
+.header-title {
+	color: var(--color-text-light);
+	text-decoration: none;
+	font-size: var(--nav-title-font-size);
+	font-weight: var(--nav-title-font-weight);
+}
+
+.header-nav {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 5rem;
+}
+
+.header-nav ul {
+	display: flex;
+	margin: 0;
+	padding: 0;
+}
+
+.header-nav li {
+	list-style: none;
+}
+
+.header-nav li a,
+.a {
+	text-decoration: none;
+	color: var(--color-text-light);
+	font-weight: var(--nav-link-font-weight);
+	padding: 1rem;
+}
+
+.header-nav li a:hover,
+.header-title:hover,
+.a:hover {
+	color: white;
+}
+/* #endregion */
+
+/* #region buttons */
+.btn {
+	border: 1px solid var(--color-btn-border);
+	border-radius: 0.5rem;
+	padding: 0.5rem 1rem;
+	font-size: 1.2rem;
+	font-family: 'Gotham Rounded';
+	cursor: pointer;
+	text-decoration: none;
+	text-align: center;
+}
+
+.btn-row {
+	display: flex;
+	align-items: flex-start;
+}
+
+.btn-row > * {
+	margin-left: 1rem;
+}
+
+.btn-row > *:first-child {
+	margin-left: 0;
+}
+
+.btn-primary {
+	color: var(--color-btn-primary-text);
+	background-color: var(--color-btn-primary-background);
+}
+
+.btn-primary:hover {
+	color: var(--color-btn-primary-text-dark);
+	background-color: var(--color-btn-primary-background-dark);
+}
+
+.btn-danger {
+	color: var(--color-btn-danger-text);
+	background-color: var(--color-btn-danger-background);
+}
+
+.btn-danger:hover {
+	color: var(--color-btn-danger-text-dark);
+	background-color: var(--color-btn-danger-background-dark);
+}
+/* #endregion */
+
+/* #region form */
+.form-row {
+	display: flex;
+	margin-bottom: 0.5rem;
+}
+.vmiddle {
+	align-items: stretch;
+	gap: 10px;
+}
+.vmiddle input {
+	border-radius: 0.25rem;
+	/* border: 1px solid var(--form-input-border-color);
+  background-color: var(--form-input-background-color);
+  color: var(--color-text-light); */
+	padding: 0.25rem 0.5rem;
+	font-size: 1rem;
+	font-weight: normal;
+	font-family: 'Gotham Rounded';
+	outline: none;
+}
+.vmiddle * {
+	font-size: 1rem;
+}
+.vmiddle label {
+	padding-top: 10px;
+}
+
+/* #endregion */
+
+/* #region MAIN */
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+body {
+	background: linear-gradient(to right, var(--color-background-dark), var(--color-background-light));
+}
+.container {
+	max-width: 1200px;
+	margin: auto;
+	margin-bottom: 3rem;
+}
+.inner-container {
+	margin: 0 2rem;
+}
+.page-header {
+	font-size: 2rem;
+	font-weight: 500;
+}
+.error-message {
+	color: hsl(var(--color-danger-hue), 100%, 50%);
+}
+textarea,
+pre {
+	-moz-tab-size: 2;
+	-o-tab-size: 2;
+	tab-size: 2;
+}
+/* #endregion */
+
+.airport_bg {
+	background-image: url('../base/assets/img/airport/airport2.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-attachment: fixed;
+}
+
+/* #region */
+/* #endregion */
