@@ -3965,11 +3965,214 @@ __________ di 6.12.22 waiting at the airport...   D
 629: *7:54 AM 12/6/2022-7:56 AM 12/6/2022
 630: *7:57 AM 12/6/2022-7:59 AM 12/6/2022
 631: *7:59 AM 12/6/2022-8:02 AM 12/6/2022
+__________ mi 7.12.22 waiting at the airport...   D
+670: *7:13 PM 12/6/2022-6:17 AM 12/7/2022
+671: *6:21 AM 12/7/2022-6:26 AM 12/7/2022
+672: *6:26 AM 12/7/2022-6:27 AM 12/7/2022
+- er posted implicitly ueber form, deshalb denk ich braucht er auch das body-parser
+- wie poste ich?
+673: *6:27 AM 12/7/2022-6:28 AM 12/7/2022
+- suche post in basemin: post_json(url, o, callback)
+- die url enthaelt die route, o ist das object, callback mit response data
+674: *6:28 AM 12/7/2022-6:29 AM 12/7/2022
+choice: 
+1. eigene route fuer code
+=>2. eigene route fuer db CRUD
+675: *6:30 AM 12/7/2022-6:34 AM 12/7/2022
+676: *6:34 AM 12/7/2022-6:46 AM 12/7/2022
+677: *6:46 AM 12/7/2022-6:51 AM 12/7/2022
+678: *6:51 AM 12/7/2022-7:59 AM 12/7/2022
+spa
+685: *7:59 AM 12/7/2022-8:12 AM 12/7/2022
+686: *8:13 AM 12/7/2022-8:17 AM 12/7/2022
+- convert json object to yaml js-yaml nodejs yaml package, yaml.stringify(o)
+687: *8:17 AM 12/7/2022-6:34 AM 12/8/2022
+__________ do 8.12.22 waiting at the airport...   D
+700: *6:34 AM 12/8/2022-6:46 AM 12/8/2022
+701: *6:46 AM 12/8/2022-6:54 AM 12/8/2022
+- schau mal das schoen ding an wie ich so buttons machen kann!
+702: *6:54 AM 12/8/2022-6:55 AM 12/8/2022
+- acancel => aclear
+703: *6:55 AM 12/8/2022-7:03 AM 12/8/2022
+- was soll passieren wenn auf save clicke?
+- soll ich keywords eingeben muessen?
+704: *7:03 AM 12/8/2022-7:05 AM 12/8/2022
+705: *7:05 AM 12/8/2022-7:09 AM 12/8/2022
+706: *7:09 AM 12/8/2022-7:11 AM 12/8/2022
+- hole code von how to
+- mach ein db.js
+- just save it to DB!
+707: *7:15 AM 12/8/2022-7:15 AM 12/8/2022
+- scheint zu gehen!
+708: *7:15 AM 12/8/2022-7:19 AM 12/8/2022
+- click List: mach einen list button
+709: *7:19 AM 12/8/2022-7:46 AM 12/8/2022
+710: *7:46 AM 12/8/2022-7:48 AM 12/8/2022
+- schau rueber zu ui_type_x
+711: *7:48 AM 12/8/2022-7:50 AM 12/8/2022
+onclick_new
+712: *7:50 AM 12/8/2022-7:53 AM 12/8/2022
+textarea tabsize:
+textarea,
+pre {
+    -moz-tab-size : 4;
+      -o-tab-size : 4;
+         tab-size : 4;
+}
+713: *7:53 AM 12/8/2022-8:06 AM 12/8/2022
+714: *8:06 AM 12/8/2022-8:06 AM 12/8/2022
+- way shorter!!!!!!!!!!!!!!!!!!!
+715: *8:06 AM 12/8/2022-10:14 AM 12/8/2022
+wie mach ich es?
+o - aktiv
+735: *10:14 AM 12/8/2022-4:09 PM 12/8/2022
+KqxC2C9jyqMcu6w5PeiTHEMD6PPTim2xNab9CVR4En3gsLB4bdb5FvfT3J
+- search dazu!!!
+LvB_geboren_16.12.1770
+736: *4:09 PM 12/8/2022-6:01 PM 12/8/2022
+- katze futter
+- katzenklo unten checken
+- katze spielen
+- email maedi
+- zahlen rechnungen
+740: *6:01 PM 12/8/2022-6:09 PM 12/8/2022
+741: *6:09 PM 12/8/2022-6:15 PM 12/8/2022
+742: *6:15 PM 12/8/2022-6:58 PM 12/8/2022
+743: *6:59 PM 12/8/2022-7:06 PM 12/8/2022
+- alles in die kueche tragen, gu noch ein slice oder 1 banane + nuesse!
+- nuesse nachfuellen!
+- kit cl
+- submit on enter!
+__________ fr 9.12.22 waiting at the airport...   D
+744: *7:43 PM 12/8/2022-7:16 AM 12/9/2022
+745: *7:16 AM 12/9/2022-8:55 AM 12/9/2022
+746: *8:55 AM 12/9/2022-9:34 AM 12/9/2022
+747: *9:34 AM 12/9/2022-9:36 AM 12/9/2022
+748: *9:36 AM 12/9/2022-10:59 AM 12/9/2022
+action* 9:36 AM 12/9/2022-10:58 AM 12/9/2022 82/3=27
+=>verbesserung!
+choices:
+1. spaz
+2. katze fuettern
+3. katze spielen
+=> random pick is: alle gemacht!
+775: *10:59 AM 12/9/2022-
+action* 11:24 AM 12/9/2022-12:19 PM 12/9/2022 55 / 5 = 11
+786" *12:20 PM 12/9/2022-
+action/3 1:24 PM 12/9/2022-2:02 PM 12/9/2022 = 38 / 4 = 9
+795: *2:02 PM 12/9/2022-
+action/5 5:13 PM 12/9/2022-6:35 PM 12/9/2022 = 82 / 5 = 16
+811: *6:35 PM 12/9/2022-
+- hole LG
+- one drive download das zeug fuer fe 
+
+
+wieviel bekomm ich fuer 1 spiel mit musik? 
+the simplest would be to go for a walk
+just simplify your life
+
+
+
+
+
+- wie krieg ich einen background?
+- airport was nun?
+
+
+
+
+
+
+
+
+
+
+tel PSE address change
+
+=>danach direct editing mit update!
+=>delete button
+=>howto parsing
+=>adding to how to
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+POST!
+- von gu holen
+- zahlen
+- scannen
+
+
+
+
+
+
+eine table ist ein base-level dict
+db read => goto OneNote CRUD picture!
+fuer codesamples waer es so:
+
+GET /code ... list all code samples
+POST /code ... add a code sample
+GET /code?kw=a+b+c ... list code samples search
+
+how to update a code sample??? dazu bracuht es eine id!
+
+code sample:
+lang:[
+code
+link
+kw
+]
+
+was wenn ich nie code samples loesche? dann geht es doch! einfach max nehmen
+oder wenn sie als list gespeichrt werden
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+airport zeug!
 - wenn ich TESTING = live setze dann muss ich local server starten
 - update fonts on server!!!
 - cool! it looks like I can connect to vps from live server!!!!!!!
 somehow that works like a miracle
-632: *8:03 AM 12/6/2022-
 - ich kann live server zu vps, live server zu localhost:3000 UND vps und localhost:3000 machen!
 
 
