@@ -4097,7 +4097,14 @@ just simplify your life
 819: *8:17 AM 12/10/2022-8:20 AM 12/10/2022
 820: *8:20 AM 12/10/2022-8:43 AM 12/10/2022
 821: *8:43 AM 12/10/2022-8:50 AM 12/10/2022
-822: *8:50 AM 12/10/2022-
+822: *8:50 AM 12/10/2022-8:52 AM 12/10/2022
+823: *8:53 AM 12/10/2022-8:58 AM 12/10/2022
+824: *8:58 AM 12/10/2022-8:59 AM 12/10/2022
+825: *8:59 AM 12/10/2022-9:05 AM 12/10/2022
+826: *9:05 AM 12/10/2022-9:09 AM 12/10/2022
+- first time I use gamehelper or onclick =>put it aside in basegame.js
+onclick_game_menu_item
+- brauch auch die syms
 - brauch die db
 - hol session rein!
 - goto aroot games schau wie settings gemacht werden?
@@ -4105,6 +4112,32 @@ just simplify your life
 - goalnumber waer cool!
 - starte mit einem simplen board game
 ang das spiel laeuft am server
+827: *9:14 AM 12/10/2022-9:21 AM 12/10/2022
+828: *9:21 AM 12/10/2022-9:26 AM 12/10/2022
+ok - farben! zu schrill!!!
+829: *9:27 AM 12/10/2022-9:44 AM 12/10/2022
+830: *9:44 AM 12/10/2022-11:32 AM 12/10/2022
+*action /3: 9:44 AM 12/10/2022-11:31 AM 12/10/2022 107/3=35
+865: *11:32 AM 12/10/2022-12:25 PM 12/10/2022
+this is how this ego feels and what it thinks:
+1. sad because my children dont like me
+2. super sad because I was a bad mother
+3. stressed because I am ruining my family
+4. super stressed because we are stuck with oasis
+screw this ego it is never going to learn anything
+just dont feed it by not speaking and not communicating in any way with anyone, except guggi who I have to take care of.
+866: *12:26 PM 12/10/2022-12:28 PM 12/10/2022
+part 2: rebuttals:
+1. sad because my children dont like me - isnt really bad because they live their own lives anyway
+2. super sad because I was a bad mother - isnt really bad because it is in the past
+3. stressed because I am ruining my family - isnt really bad because even if that were true it is time for ending material stress
+4. super stressed because we are stuck with oasis - isn't really bad because its just sittng around
+i also feel worried and sad because of A but even that is fehl am platz and does not help anyone least her. it is GOD who's responsibility she is.
+867: *12:30 PM 12/10/2022-
+*action /3 1:51 PM 12/10/2022-
+
+
+- mach eines fuer goalnumber in hue160
 
 
 
