@@ -4247,6 +4247,7 @@ var files = fs.readdirSync('/assets/photos/');
 224: *9:13 AM 12/15/2022-9:19 AM 12/15/2022
 - prevent text selection on dbl click , 'user-select': 'none'
 225: *9:20 AM 12/15/2022-
+action /3 *9:26 AM 12/15/2022-
 das geht jetzt habe also ein ui_type_ga gemacht
 try a b
 - SIMPLEST!!!!!!!
