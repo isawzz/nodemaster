@@ -4133,8 +4133,181 @@ part 2: rebuttals:
 3. stressed because I am ruining my family - isnt really bad because even if that were true it is time for ending material stress
 4. super stressed because we are stuck with oasis - isn't really bad because its just sittng around
 i also feel worried and sad because of A but even that is fehl am platz and does not help anyone least her. it is GOD who's responsibility she is.
-867: *12:30 PM 12/10/2022-
-*action /3 1:51 PM 12/10/2022-
+867: *12:30 PM 12/10/2022-6:11 PM 12/10/2022
+*action /3 1:51 PM 12/10/2022-3:51 PM 12/10/2022 =120 =>40
+*action /3 6:12 PM 12/10/2022=7:05 AM 12/11/2022 =40 =>13
+__________ so 11.12.22 waiting at the airport...   D
+920: *7:07 AM 12/11/2022-7:16 AM 12/11/2022
+921: *7:16 AM 12/11/2022-7:26 AM 12/11/2022
+922: *7:26 AM 12/11/2022-7:27 AM 12/11/2022
+923: *7:27 AM 12/11/2022-7:30 AM 12/11/2022
+924: *7:30 AM 12/11/2022-7:35 AM 12/11/2022
+925: *7:35 AM 12/11/2022-7:53 AM 12/11/2022
+926: *7:53 AM 12/11/2022-8:03 AM 12/11/2022
+927: *8:03 AM 12/11/2022-
+action /4 8:03 AM 12/11/2022-10:13 AM 12/11/2022 =130/4 = 32
+959: *10:14 AM 12/11/2022-10:54 AM 12/11/2022
+960: *10:54 AM 12/11/2022-
+- gibt es einen trick den ich machen kann um mich selbst an die musik anzubinden?
+- oder ist es besser auf alles zu verzicheten auch auf die musik?
+- ich glaub wenn ich die musik verliere dann bin ich in eternal hell und das will ich nicht
+- why do I spend my time on thinking about bad things that could happen but are extremely unlikely? seems pretty stupid way to spend my time
+- what would be a better way to spend my time?
+obviously, programming is a candidate
+everything else is too scary. leaving my room is too scary really
+ja, werd ich machen - ich wollt einkaufen fahren
+unwichtig and not called for - ich wollt im oasis den fridge abdrehen
+- ich wollt hausfreunderln backen
+- gu spazierengehen
+action /3 *11:44 AM 12/11/2022-3:16 PM 12/11/2022 = 210/3 = 70
+30: *3:16 PM 12/11/2022-
+katze fuettern
+kit cl
+vielleicht andre uhr suchen?
+action* 6:36 PM 12/11/2022-7:16 PM 12/11/2022 
+__________ mo 12.12.22 waiting at the airport...   D
+40: *8:19 PM 12/11/2022-6:36 AM 12/12/2022
+41: *6:36 AM 12/12/2022-6:40 AM 12/12/2022
+42: *6:40 AM 12/12/2022-6:43 AM 12/12/2022
+43: *6:43 AM 12/12/2022-6:55 AM 12/12/2022
+44: *6:55 AM 12/12/2022-7:02 AM 12/12/2022
+45: *7:02 AM 12/12/2022-7:09 AM 12/12/2022
+46: *7:09 AM 12/12/2022-7:16 AM 12/12/2022
+47: *7:16 AM 12/12/2022-7:20 AM 12/12/2022
+48: *7:20 AM 12/12/2022-7:20 AM 12/12/2022
+49: *7:20 AM 12/12/2022-7:25 AM 12/12/2022
+50: *7:25 AM 12/12/2022-7:36 AM 12/12/2022
+51: *7:36 AM 12/12/2022-8:06 AM 12/12/2022
+52: *8:06 AM 12/12/2022-6:40 AM 12/13/2022
+action* 8:07 AM 12/12/2022-?
+__________ di 13.12.22 waiting at the airport...   D 31K
+100: *6:40 AM 12/13/2022-6:43 AM 12/13/2022
+101: *6:43 AM 12/13/2022-6:48 AM 12/13/2022
+102: *6:48 AM 12/13/2022-7:41 AM 12/13/2022
+103: *7:41 AM 12/13/2022-7:43 AM 12/13/2022
+104: *7:43 AM 12/13/2022-7:59 AM 12/13/2022
+- repair getConsonant....
+- rName
+- all die names von den bildern
+- n random names 
+105: *7:59 AM 12/13/2022-8:13 AM 12/13/2022
+- colors sollen aufgeteilt sein!!!
+106: *8:13 AM 12/13/2022-8:49 AM 12/13/2022
+107: *8:49 AM 12/13/2022-
+action* 8:49 AM 12/13/2022-7:27 AM 12/14/2022
+__________ mi 14.12.22 waiting at the airport...   D
+150: *7:28 AM 12/14/2022-7:35 AM 12/14/2022
+151: *7:35 AM 12/14/2022-7:39 AM 12/14/2022
+weired bug in jsconfig.json: fixed: compileroptions needs target specified
+{
+	"compilerOptions": {
+		"target": "ESNext",
+		"baseUrl": "..",
+		"paths": {
+			"@/base/*": ["../base/js/*"],
+			"@/js/*": ["../js/*"],
+			"@/*": ["../basejs/*"]
+		}
+	},
+	"exclude": ["node_modules", "_*", "temp","*UCODE*"]
+}
+152: *7:39 AM 12/14/2022-7:43 AM 12/14/2022
+153: *7:43 AM 12/14/2022-7:49 AM 12/14/2022
+154: *7:49 AM 12/14/2022-8:05 AM 12/14/2022
+155: *8:05 AM 12/14/2022-8:06 AM 12/14/2022
+156: *8:06 AM 12/14/2022-8:10 AM 12/14/2022
+157: *8:10 AM 12/14/2022-8:34 AM 12/14/2022
+158: *8:34 AM 12/14/2022-8:44 AM 12/14/2022
+159: *8:44 AM 12/14/2022-9:06 AM 12/14/2022
+160: *9:07 AM 12/14/2022-5:54 PM 12/14/2022
+210: *5:54 PM 12/14/2022-7:07 PM 12/14/2022
+__________ do 15.12.22 waiting at the airport...   D
+211: *7:08 PM 12/14/2022-6:51 AM 12/15/2022
+212: *6:51 AM 12/15/2022-6:52 AM 12/15/2022
+213: *6:52 AM 12/15/2022-6:59 AM 12/15/2022
+214: *6:59 AM 12/15/2022-6:59 AM 12/15/2022
+215: *7:00 AM 12/15/2022-7:01 AM 12/15/2022
+216: *7:01 AM 12/15/2022-7:23 AM 12/15/2022
+217: *7:23 AM 12/15/2022-7:29 AM 12/15/2022
+218: *7:29 AM 12/15/2022-7:38 AM 12/15/2022
+219: *7:38 AM 12/15/2022-7:49 AM 12/15/2022
+- TimeIt suchen!
+- schau in transition.css ob ich die schneller machen kann!
+- warum nicht eine Tables var?
+- try it
+- js list all files in directory 
+var files = fs.readdirSync('/assets/photos/');
+- wie wuerde man es wirklich machen?
+220: *7:50 AM 12/15/2022-7:52 AM 12/15/2022
+221: *7:52 AM 12/15/2022-8:02 AM 12/15/2022
+222: *8:02 AM 12/15/2022-8:08 AM 12/15/2022
+223: *8:08 AM 12/15/2022-8:48 AM 12/15/2022
+224: *8:48 AM 12/15/2022-8:54 AM 12/15/2022
+225: *8:54 AM 12/15/2022-9:13 AM 12/15/2022
+224: *9:13 AM 12/15/2022-9:19 AM 12/15/2022
+- prevent text selection on dbl click , 'user-select': 'none'
+225: *9:20 AM 12/15/2022-
+das geht jetzt habe also ein ui_type_ga gemacht
+try a b
+- SIMPLEST!!!!!!!
+- wenn ich auf action clicke:
+localstorage store start time
+show a stop button
+
+- key fuer meditate und fuer action
+- am besten waer ein gutes system fuer all die ui_types
+- eine bessere idee waer es mit ui_type_item zu gehen
+
+
+- simpelst way to do it!!!!
+was kann an einer app geaendert werden?
+die options
+
+- bei apps sollte ich so states haben: icon,info,page
+die steps von heute sollen ein editable div sein
+
+apps gehen einfach auf dh werden groesser
+fitbit soll so ausschauen: das logo geht ins eck
+dann steht
+
+
+
+
+- bei therapy soll ich ein 'record' drauf haben?
+- pro tag eine fen adden
+- mach eine abteilung fuer apps
+- iconViewer fuer fitbit
+
+
+
+- show players
+
+wannIstEsSoweit?
+- brauch einen title
+- settings gute idee
+- wo muss ich da hingehen?y config.yaml
+- gib eine player number zu options
+- hue wheel
+- maButton bekommt noch styles!
+- jetzt brauch ich justify style
+- warum wird mLink nicht gezeigt???
+- hue theme ist eigentlich eine gute idee!!!
+- class .a aus schoen
+- hol jetzt das a zeug fuerr start cancel buttons
+how often do you reincarnate in one day
+
+
+
+
+- mach ein maButton
+- 
+- ich koennt eines nehmen das heisst: keyframes.css oder alle keyframes zu den transitions dazugeben
+fa.min.cs: keyframes: fa-beat fa-bounce fa-fade fa-beat-fade fa-flip fa-shake fa-spin
+- transition-style:
+- moecht alle keyframes in 1 file haben!
+
+- wie geht es besser mit aniations?
+- what next? das settings menu!
 
 
 - mach eines fuer goalnumber in hue160
