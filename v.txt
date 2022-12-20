@@ -4246,10 +4246,385 @@ var files = fs.readdirSync('/assets/photos/');
 225: *8:54 AM 12/15/2022-9:13 AM 12/15/2022
 224: *9:13 AM 12/15/2022-9:19 AM 12/15/2022
 - prevent text selection on dbl click , 'user-select': 'none'
-225: *9:20 AM 12/15/2022-
+225: *9:20 AM 12/15/2022-7:53 PM 12/15/2022
 action /3 *9:26 AM 12/15/2022-
 das geht jetzt habe also ein ui_type_ga gemacht
 try a b
+__________ fr 16.12.22 waiting at the airport...   D
+260: *7:54 PM 12/15/2022-7:08 AM 12/16/2022
+was soll also am simpelsten bei action passieren?
+es soll ein timestamp gesaved werden (localStorage)
+p2:es soll ein factor bestimmt werden .1 bis 10
+.1 ist fuer gespraeche business
+.5 ist fuer 
+wenn zurueckkomme, click stop, dann soll time berechnet und eingetragen werden
+wie kann der factor bestimmt werden? gefuehlsmaessig?
+danach wird in action.yaml gespeichert:
+261: *7:08 AM 12/16/2022-7:14 AM 12/16/2022
+262: *7:14 AM 12/16/2022-7:15 AM 12/16/2022
+263: *7:15 AM 12/16/2022-7:21 AM 12/16/2022
+264: *7:21 AM 12/16/2022-7:28 AM 12/16/2022
+265: *7:28 AM 12/16/2022-7:31 AM 12/16/2022
+266: *7:31 AM 12/16/2022-7:43 AM 12/16/2022
+267: *7:44 AM 12/16/2022-7:58 AM 12/16/2022
+a:07:57,2,1
+268: *7:58 AM 12/16/2022-8:40 AM 12/16/2022
+a:08:29,11,11
+a:12/16/2022,2,1
+269: *8:41 AM 12/16/2022-9:13 AM 12/16/2022
+270: *9:13 AM 12/16/2022-12:12 PM 12/16/2022
+action: 9:13 AM 12/16/2022-6:58 PM 12/16/2022
+a:18:28,31,19
+a:09:14,178,107
+__________ sa 17.12.22 waiting at the airport...   D
+320: *6:59 PM 12/16/2022-7:14 AM 12/17/2022
+321: *7:14 AM 12/17/2022-7:18 AM 12/17/2022
+322: *7:18 AM 12/17/2022-7:18 AM 12/17/2022
+323: *7:18 AM 12/17/2022-7:26 AM 12/17/2022
+324: *7:26 AM 12/17/2022-7:37 AM 12/17/2022
+325: *7:37 AM 12/17/2022-8:21 AM 12/17/2022
+326: *8:22 AM 12/17/2022-8:22 AM 12/17/2022
+327: *8:22 AM 12/17/2022-8:33 AM 12/17/2022
+328: *8:33 AM 12/17/2022-9:17 AM 12/17/2022
+329: *9:17 AM 12/17/2022-10:24 AM 12/17/2022
+action *9:18 AM 12/17/2022-10:23 AM 12/17/2022
+a:09:18,65,20
+339: *10:44 AM 12/17/2022-10:50 AM 12/17/2022
+3- define what your dream life is
+2- dream life is completely up to me! events are ALWAYS ignorable or require only minimal reaction and mostly gelassenheit: this too will pass
+340: *10:51 AM 12/17/2022-10:51 AM 12/17/2022
+1- das was fe und gu beide haben ist: eigenen plan machen und verfolgen no matter what und ohne jeden  stress
+341: *10:51 AM 12/17/2022-3:19 PM 12/17/2022
+351: *3:19 PM 12/17/2022-5:21 PM 12/17/2022
+action *3:19 PM 12/17/2022-5:21 PM 12/17/2022
+__________ so 18.12.22 waiting at the airport...   D
+400: *7:17 PM 12/17/2022-6:33 AM 12/18/2022
+401: *6:33 AM 12/18/2022-6:38 AM 12/18/2022
+402: *6:38 AM 12/18/2022-6:39 AM 12/18/2022
+403: *6:39 AM 12/18/2022-6:51 AM 12/18/2022
+404: *6:51 AM 12/18/2022-6:53 AM 12/18/2022
+405: *6:53 AM 12/18/2022-6:57 AM 12/18/2022
+406: *6:57 AM 12/18/2022-6:58 AM 12/18/2022
+407: *6:58 AM 12/18/2022-7:00 AM 12/18/2022
+408: *7:00 AM 12/18/2022-7:00 AM 12/18/2022
+409: *7:01 AM 12/18/2022-7:01 AM 12/18/2022
+410: *7:02 AM 12/18/2022-7:03 AM 12/18/2022
+419: *7:03 AM 12/18/2022-7:04 AM 12/18/2022
+420: *7:04 AM 12/18/2022-7:17 AM 12/18/2022
+421: *7:17 AM 12/18/2022-7:18 AM 12/18/2022
+422: *7:18 AM 12/18/2022-7:18 AM 12/18/2022
+423: *7:18 AM 12/18/2022-7:20 AM 12/18/2022
+424: *7:20 AM 12/18/2022-7:21 AM 12/18/2022
+425: *7:21 AM 12/18/2022-10:07 AM 12/18/2022
+445: *10:08 AM 12/18/2022-7:22 AM 12/19/2022
+__________ mo 19.12.22 waiting at the airport...   D0f
+450: *7:22 AM 12/19/2022-7:26 AM 12/19/2022
+451: *7:26 AM 12/19/2022-7:27 AM 12/19/2022
+452: *7:27 AM 12/19/2022-7:29 AM 12/19/2022
+453: *7:29 AM 12/19/2022-7:37 AM 12/19/2022
+454: *7:37 AM 12/19/2022-7:38 AM 12/19/2022
+455: *7:38 AM 12/19/2022-7:53 AM 12/19/2022
+456: *7:53 AM 12/19/2022-8:08 AM 12/19/2022
+457: *8:08 AM 12/19/2022-8:09 AM 12/19/2022
+458: *8:09 AM 12/19/2022-8:14 AM 12/19/2022
+459: *8:14 AM 12/19/2022-8:18 AM 12/19/2022
+460: *8:18 AM 12/19/2022-8:26 AM 12/19/2022
+461: *8:26 AM 12/19/2022-8:33 AM 12/19/2022
+462: *8:33 AM 12/19/2022-8:34 AM 12/19/2022
+- readdirSync liest das alle files oder nur filenames??? NUR FILENAMES!!!
+463: *8:34 AM 12/19/2022-8:45 AM 12/19/2022
+- load config
+- I forgot what I was looking for: modeul exports in base
+- assemble_code(options)
+464: *8:45 AM 12/19/2022-8:49 AM 12/19/2022
+465: *8:49 AM 12/19/2022-8:50 AM 12/19/2022
+- muss unterscheiden zwischen update Appdata und update Config
+- /add/appdata/howto/ im body steht {kw:,c:}
+- /mod/appdata/howto/i im body steht updated record i {kw:,c:}
+466: *8:50 AM 12/19/2022-8:59 AM 12/19/2022
+- what if appdata are always tables of name [appname]?
+and a table is a list of records
+appdata.fitbit = list of {d:,st:
+appdata.action = list of {d:,t:,a:,p:}}
+appdata.howto = list of {kw:,c:}
+appdata.meditate = list of {d:,t:,k:,}
+467: *8:59 AM 12/19/2022-9:09 AM 12/19/2022
+468: *9:25 AM 12/19/2022-9:31 AM 12/19/2022
+- ich muss immer noch entscheiden ob die daten am client oder am server gehandelt werden sollen
+compare:
+server:
++ multiple leute koennen mit selben daten arbeiten
+- less flexible
+client:
++simple
+- das ist wirklich nur wenn ich das ganze fuer just 1 user mache
+=>in dem fall sollte ich eigentlich die daten local saven!
+=>localsaving geht eigentlich auch nicht wirklich weil dann ist es auf HD
+database somewhere in the cloud:
+- format nicht human editable!
+small-server: ich hol mir daten vom server, hab auch routes fuer CRUD, aber dann lass ich den server basically komplett in ruhe
+admin client kann alles machen
+normal client nur ueber routes
+469: *9:31 AM 12/19/2022-1:40 PM 12/19/2022
+- am besten waer eigentlich wenn ich den db code in ein extra file gebe mir selbst aussuchen kann wer den code verwendet und wie
+server.js hat die routes
+client.js hat die client db functions
+db.js kann entweder required werden oder einfach geladen: beide haben den code
+490: *1:40 PM 12/19/2022-3:36 PM 12/19/2022
+action: *1:41 PM 12/19/2022-3:36 PM 12/19/2022 =120=30
+520: *3:36 PM 12/19/2022-7:01 PM 12/19/2022
+521: *7:01 PM 12/19/2022-7:03 PM 12/19/2022
+522: *7:03 PM 12/19/2022-8:17 PM 12/19/2022
+action *7:03 PM 12/19/2022-8:18 PM 12/19/2022
+__________ di 20.12.22 waiting at the airport...   D0f
+550: *8:18 PM 12/19/2022-7:47 AM 12/20/2022
+551: *7:47 AM 12/20/2022-7:47 AM 12/20/2022
+552: *7:48 AM 12/20/2022-7:51 AM 12/20/2022
+- how to save on server when deactivating app? visibilitychange
+	document.addEventListener('mouseleave', e => { console.log('page mouse left!!!'); save_all(); })
+	document.addEventListener('visibilitychange', e => { if (document.visibilityState === 'visible') { console.log('page activated!'); } else { console.log('page deactivated!!!'); save_all(); } });
+553: *7:51 AM 12/20/2022-8:05 AM 12/20/2022
+basemin: onpagedeactivated(handler)
+- wie mach ich das?
+- solange nur 1 user: muss db nur am ende saven, ansonsten muss nur am client arbeiten
+- auf client hab jetzt nicht mehr config sondern DB auf server auch!
+554: *8:05 AM 12/20/2022-8:34 AM 12/20/2022
+- mach es jetzt anders:
+RUN_STATE={liveserver:true,sockets:false,nodejs:true,localhost:true,singleclient:true,port:3000}
+555: *8:34 AM 12/20/2022-8:39 AM 12/20/2022
+param order!
+which one is most likely to be changed?
+singleclient
+sockets
+port
+localhost
+testing
+liveserver
+nodejs
+556: *8:39 AM 12/20/2022-
+wie muesst es fuer vps und multiclients mit sockets sein?
+set_run_state(false,true,3000,false,false,false,true)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CRUD:
+Create: appname create 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+- kann ich ein programm machen dass mir ein dir nimmt und alle js functions daraus in 1 einziges js file copiert, wobei neuere versionen aeltere ueberschreiben und duplicate names in verschiedenen filenames mit dem filename versehen werden?
+
+am ende sollte ich von jeder function die ich je geschrieben habe die neueste version haben
+
+das gilt jetzt fuer js files, classes und functions
+(what about globals = const)?
+what about regions?
+what about nodejs?
+what about css?
+
+
+
+- brauch etwas um gesamte codebase zu searchen!!!!
+- wie mach ich das jetzt mit der table?
+- was wenn ich eine app ploetzlich 
+- die howto app hat ein search window
+- howto app und magic app
+how to make today a perfect day?
+1. learn something and keep it in my howto app
+perfect day
+be as if you were perfect 
+in the meantime what could I do that does make sense?
+if I had a half-goal, that is a goal that motivates to action but does not stress out
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+- now what?
+
+
+
+
+
+
+
+
+since music IS transcending time, music is one of the best solutions
+the body is a prison but this prison is dissolving itself and I I have to do to transcend it is transcending time
+was soll ueberhaupt diese aussage: the body is a temple
+- is the body a temple or much rather a prison?!?!?
+- es ist so aehnlich wie den traum im traum selbst zurechtbiegen
+- stimmt es dass replacing neg thoughts by positive thoughts is very shortlived? not a great solution
+bliss
+die befreiung ist immer da - es ist einfach der channel auf dem bliss immer gespielt wird
+es ist nicht moeglich irgendwas zu verstehen oder irgendwas zu erklaeren
+was aber ist das leben? das leben und der tod sind dasselbe - alle concepts sind dasselbe im grunde
+es ist ein unterschied zwischen gewalt und befreiung: der tod ist befreiung und geschieht von selbst, ungerufen, ALL THE TIME
+das ego muss eradicated werden, aber nicht umgebracht.
+ist es eigentlich wahr dass angst vermieden werden soll???
+nuetzt es was, narratives zu konstruieren? sind narratives die sprache von der mind?
+wie kann ich alles in win-win turnen was ich sehe?
+aber wie kann ich mir das vergegenwaertigen?
+und doch bin ich leicht und rein wie zuvor denn das ego ist illusion und existiert nicht
+jetzt liegt ueberall geruempel herum auch das mit den gebaeuden, das mit den messern das mit den moving boxes das mit dem job, all diese samskaras sind dazugekommen
+danach hat immer mehr und mehr das ego den platz verwuestet
+noch mit 12 gab es einen grossteil reinheit in mir
+dieses wissen wurde irgendwie zugeschuettet von dem geruempel das der ego channel produziert von frueh bis spaet
+- ich hab einmal vor langer zeit herausgefunden wie man magic macht und wie man zeit verschwinden laesst, was dasselbe ist
+- oracle sollt es auch geben oder es heist zaubern
+- was will ich damit machen?
+- ich hab jetzt ein base/assets/apps/meditate mit mp3 files
+open audio
+soll ich yt video oder einfach mp3 verwenden
+das problem ist dass meine wuensche nicht mehr lange genug halten
+sie kommen und gehen bevor ich was dazu tue
+koenntenicht bei meditation eine von den 5 minute meditations kommen?
+
+
+
+
+
+
+
+
+
+
+- fuer die apps gibt es jeweils nur 1 instance
+- fen saven
+- du bist dran
+
+
+
+
+- build your own inner world which is beautiful
+- just open another channel for that
+- wie genau
+- erstelle einen calendar
+- data structures
+- eintrag fitbit 16.12.
+- was soll bei open fitbit passieren???
+
+
+
+
+
+
+
+heino ferch
+silke bodenbender
+
+
+
+
+- items haben keinen name!!!
+- test it
+- js format Date.now: new Date().toLocaleDateString().padStart(10, '0')
+- search localStorage in basemin
+- js write to clipboard: navigator.clipboard.writeText(copyText.value); 
+simplest:
+open: save time and key to localStorage
+close: output result to console / clipboard
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+how can I eliminate the strategizing mind?
+es koennt noch ein RH geben
+was soll bei fitbit passieren?
+
+I am dying at 10am
+
 - SIMPLEST!!!!!!!
 - wenn ich auf action clicke:
 localstorage store start time

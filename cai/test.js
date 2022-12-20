@@ -1,21 +1,21 @@
 
-function test21_resizable(){
+function test21_resizable() {
 
 }
-function test22_centering_container(){
-	let d = mDiv(dTable,{bg:'yellow', w:'100%',h:'100%',aitems:'center'}); mCenterCenter(d);//, { display: 'grid', place: 'center', h: '100%', w:'100%' });//parent
+function test22_centering_container() {
+	let d = mDiv(dTable, { bg: 'yellow', w: '100%', h: '100%', aitems: 'center' }); mCenterCenter(d);//, { display: 'grid', place: 'center', h: '100%', w:'100%' });//parent
 	//let d1 = mDiv(d, { bg:'red', 'place-content':'center',w:'80%',display: 'grid', 'grid-template-columns': 'repeat(auto-fill, 100px)','grid-gap':'1rem'});
 	//mCenter(d,4);
-	for(let i=0;i<14;i++){
-		mDiv(d,{display:'inline-block',w:rNumber(50,150),h:rNumber(50,150),bg:'random',margin:10});
+	for (let i = 0; i < 14; i++) {
+		mDiv(d, { display: 'inline-block', w: rNumber(50, 150), h: rNumber(50, 150), bg: 'random', margin: 10 });
 	}
 }
-function test21_centering_container(){
-	let d = mDiv(dTable,{bg:'yellow', w:'100%',h:'100%'}); mCenterCenter(d);//, { display: 'grid', place: 'center', h: '100%', w:'100%' });//parent
-	let d1 = mDiv(d, { bg:'red', 'place-content':'center',w:'80%',display: 'grid', 'grid-template-columns': 'repeat(auto-fill, 100px)','grid-gap':'1rem'});
+function test21_centering_container() {
+	let d = mDiv(dTable, { bg: 'yellow', w: '100%', h: '100%' }); mCenterCenter(d);//, { display: 'grid', place: 'center', h: '100%', w:'100%' });//parent
+	let d1 = mDiv(d, { bg: 'red', 'place-content': 'center', w: '80%', display: 'grid', 'grid-template-columns': 'repeat(auto-fill, 100px)', 'grid-gap': '1rem' });
 	//mCenter(d,4);
-	for(let i=0;i<14;i++){
-		mDiv(d1,{w:rNumber(50,150),h:100,bg:'random',margin:10});
+	for (let i = 0; i < 14; i++) {
+		mDiv(d1, { w: rNumber(50, 150), h: 100, bg: 'random', margin: 10 });
 	}
 }
 
@@ -32,11 +32,11 @@ function test20_aspect_ratio_image_card() {
 }
 
 //#region FAILED
-async function fail_yt(){
+async function fail_yt() {
 
 	let url = `http://gdata.youtube.com/feeds/api/videos`; //blocked by CORS
 	let result = await route_path_text(url);
-	console.log('result',result);
+	console.log('result', result);
 
 	let res = `
 		http://gdata.youtube.com/feeds/api/videos
@@ -68,20 +68,8 @@ function test17_load_save_texte() {
 	let buttons = ['clear', 'magic']; //,'lineup','orig'];
 	dToolbar = mToolbar(buttons, onclick_toobar, 'dToolbar', { padding: 10, display: 'flex', gap: 10, bg: 'orange' });
 
-	document.addEventListener('mouseleave', e => {
-		//console.log('page mouse left!!!');
-		save_all();
-	})
-
-	document.addEventListener('visibilitychange', e => {
-		if (document.visibilityState === 'visible') {
-			console.log('page activated!');
-
-		} else {
-			console.log('page deactivated!!!');
-			save_all();
-		}
-	});
+	document.addEventListener('mouseleave', e => { console.log('page mouse left!!!'); save_all(); })
+	document.addEventListener('visibilitychange', e => { if (document.visibilityState === 'visible') { console.log('page activated!'); } else { console.log('page deactivated!!!'); save_all(); } });
 
 	load_all();
 	//onkeyup=_cycle_through_editables;
