@@ -4412,8 +4412,8 @@ what am I? dont know nothing I would know
 what am I (feel)? 
 591: *7:55 AM 12/21/2022-7:56 AM 12/21/2022
 why shouldnt I pass the day with music? so gott mir helfe ich wachse nur durch deine hilfe
-952: *7:56 AM 12/21/2022-8:12 AM 12/21/2022
-953: *8:12 AM 12/21/2022-
+592: *7:56 AM 12/21/2022-8:12 AM 12/21/2022
+593: *8:12 AM 12/21/2022-
 - goal setting
 what do you want to da? music
 where are you now? I have a piano and a violin and a computer w/ internet and mp3 player
@@ -4432,7 +4432,50 @@ it is extremely unrealistic BUT still I have to have a plan B
 => it is necessary to unclutch from that goal also
 if resources are lost, need to form a new goal! one that only uses resources available
 how about this: ask someone what to do to
+__________ do 22.12.22 waiting at the airport...   D0f
+600: *8:05 PM 12/21/2022-6:17 AM 12/22/2022
+601: *6:17 AM 12/22/2022-6:18 AM 12/22/2022
+602: *6:18 AM 12/22/2022-6:34 AM 12/22/2022
+603: *6:34 AM 12/22/2022-6:37 AM 12/22/2022
+604: *6:37 AM 12/22/2022-6:49 AM 12/22/2022
+605: *6:49 AM 12/22/2022-6:57 AM 12/22/2022
+606: *7:08 AM 12/22/2022-7:08 AM 12/22/2022
+- wie sag ich dem server dass er saven muss?
+- update howto kw:rName(),
+- test update db mit irgendeinem button
+607: *7:08 AM 12/22/2022-7:14 AM 12/22/2022
+608: *7:14 AM 12/22/2022-7:18 AM 12/22/2022
+- open fitbit should show step avg, and step min for today (to keep a min of 10K and an avg of 15K) see DB.apps.fitbit
+609: *7:19 AM 12/22/2022-7:27 AM 12/22/2022
+610: *7:27 AM 12/22/2022-7:44 AM 12/22/2022
+- wie kann ich min for today berechnen?
+avg soll immer 15 sein
+dh including heute muss sum=(days+1)*15 sein
+611: *7:44 AM 12/22/2022-7:44 AM 12/22/2022
+612: *7:44 AM 12/22/2022-8:02 AM 12/22/2022
+howto: input soll gestyled werden! sowi in schoen.css
+613: *8:02 AM 12/22/2022-8:18 AM 12/22/2022
+614: *8:18 AM 12/22/2022-8:18 AM 12/22/2022
+615: *8:26 AM 12/22/2022-
+action: 8:26 AM 12/22/2022-
+- btn
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+crowded zone: voll, die natur: voll
 
 
 
