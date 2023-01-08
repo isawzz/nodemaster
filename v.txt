@@ -4457,10 +4457,827 @@ howto: input soll gestyled werden! sowi in schoen.css
 613: *8:02 AM 12/22/2022-8:18 AM 12/22/2022
 614: *8:18 AM 12/22/2022-8:18 AM 12/22/2022
 615: *8:26 AM 12/22/2022-
-action: 8:26 AM 12/22/2022-
-- btn
+action: 8:26 AM 12/22/2022-8:27 PM 12/22/2022
+__________ fr 23.12.22 waiting at the airport...   D0f
+650: *8:29 PM 12/22/2022-7:19 AM 12/23/2022
+651: *7:19 AM 12/23/2022-7:21 AM 12/23/2022
+652: *7:21 AM 12/23/2022-7:24 AM 12/23/2022
+653: *7:24 AM 12/23/2022-7:52 AM 12/23/2022
+654: *7:52 AM 12/23/2022-7:54 AM 12/23/2022
+- new noc2 code => nodemaster repo
+655: *7:54 AM 12/23/2022-8:11 AM 12/23/2022
+656: *8:11 AM 12/23/2022-8:23 AM 12/23/2022
+- p5 sketch ist einfach ein setInterval(...,1000/FR) (FR=60)
+- open nodemaster
+- codepilot online
+wie koennte ich all meine js files consolidaten??????
+- how can I search a huge amount of 
+- intellisearch
+657: *8:24 AM 12/23/2022-10:38 AM 12/23/2022 a!
+690: *10:38 AM 12/23/2022-
+__________ sa 24.12.22 waiting at the airport...   D0f
+750: *6:14 AM 12/24/2022-6:21 AM 12/24/2022
+Perlin noise: smooth random numbers
+751: *6:27 AM 12/24/2022-6:27 AM 12/24/2022
+Perlin noise 2:
+https://www.youtube.com/watch?v=YcdldZ1E9gU&list=PLRqwX-V7Uu6ZV4yEcW3uDwOgGXKUUsPOM&index=4
+752: *6:27 AM 12/24/2022-6:33 AM 12/24/2022
+753: *6:33 AM 12/24/2022-6:37 AM 12/24/2022
+754: *6:37 AM 12/24/2022-6:39 AM 12/24/2022
+755: *6:39 AM 12/24/2022-6:39 AM 12/24/2022
+756: *6:39 AM 12/24/2022-6:46 AM 12/24/2022
+757: *6:47 AM 12/24/2022-6:58 AM 12/24/2022
+758: *6:58 AM 12/24/2022-7:21 AM 12/24/2022
+759: *7:21 AM 12/24/2022-7:55 AM 12/24/2022
+760: *7:55 AM 12/24/2022-7:55 AM 12/24/2022
+action /3: *7:56 AM 12/24/2022-8:38 AM 12/24/2022 40/3=13
+772: *8:38 AM 12/24/2022-
+action /3: *8:38 AM 12/24/2022-8:58 AM 12/24/2022 20/2=6
+778: *8:58 AM 12/24/2022-9:35 AM 12/24/2022
+780: *9:35 AM 12/24/2022-8:26 PM 12/24/2022
+__________ so 25.12.22 waiting at the airport...   D88
+800: *8:26 PM 12/24/2022-6:36 AM 12/25/2022
+801: *6:36 AM 12/25/2022-6:38 AM 12/25/2022
+802: *6:38 AM 12/25/2022-6:46 AM 12/25/2022
+803: *6:47 AM 12/25/2022-6:47 AM 12/25/2022
+804: *6:47 AM 12/25/2022-6:58 AM 12/25/2022
+805: *6:58 AM 12/25/2022-7:01 AM 12/25/2022
+806: *7:01 AM 12/25/2022-7:22 AM 12/25/2022
+807: *7:22 AM 12/25/2022-7:41 AM 12/25/2022
+808: *7:41 AM 12/25/2022-7:41 AM 12/25/2022
+809: *7:41 AM 12/25/2022-7:54 AM 12/25/2022
+810: *7:55 AM 12/25/2022-9:25 AM 12/25/2022
+811: *9:25 AM 12/25/2022-6:24 AM 12/26/2022
+action: *9:25 AM 12/25/2022-
+__________ mo 26.12.22 waiting at the airport...   D88
+830: *6:24 AM 12/26/2022-6:33 AM 12/26/2022
+831: *6:33 AM 12/26/2022-6:37 AM 12/26/2022
+832: *6:37 AM 12/26/2022-6:44 AM 12/26/2022
+833: *6:44 AM 12/26/2022-6:50 AM 12/26/2022
+834: *6:50 AM 12/26/2022-7:13 AM 12/26/2022
+835: *7:14 AM 12/26/2022-7:33 AM 12/26/2022
+836: *7:33 AM 12/26/2022-7:33 AM 12/26/2022
+- WAY SHORTER!!!
+837: *7:33 AM 12/26/2022-8:06 AM 12/26/2022
+840: *8:06 AM 12/26/2022-8:15 AM 12/26/2022
+841: *8:15 AM 12/26/2022-8:16 AM 12/26/2022
+842: *8:16 AM 12/26/2022-8:16 AM 12/26/2022
+843: *8:16 AM 12/26/2022-8:17 AM 12/26/2022
+844: *8:17 AM 12/26/2022-8:20 AM 12/26/2022
+845: *8:20 AM 12/26/2022-8:27 AM 12/26/2022
+846: *8:27 AM 12/26/2022-8:27 AM 12/26/2022
+847: *8:27 AM 12/26/2022-9:08 AM 12/26/2022
+action /3: *8:27 AM 12/26/2022-9:08 AM 12/26/2022 30/3=10
+857: *9:09 AM 12/26/2022-3:14 PM 12/26/2022
+858: *3:14 PM 12/26/2022-3:17 PM 12/26/2022
+859: *3:17 PM 12/26/2022-3:20 PM 12/26/2022
+860: *3:20 PM 12/26/2022-3:26 PM 12/26/2022
+861: *3:27 PM 12/26/2022-3:37 PM 12/26/2022
+862: *3:37 PM 12/26/2022-3:38 PM 12/26/2022
+863: *3:38 PM 12/26/2022-3:43 PM 12/26/2022
+864: *3:43 PM 12/26/2022-3:50 PM 12/26/2022
+865: *3:50 PM 12/26/2022-3:54 PM 12/26/2022
+866: *3:54 PM 12/26/2022-3:56 PM 12/26/2022
+867: *3:56 PM 12/26/2022-3:58 PM 12/26/2022
+868: *3:59 PM 12/26/2022-4:01 PM 12/26/2022
+- css transition
+- better transition!!!
+- mach ein toggle_apps und toggle_games
+- wird class a je verwendet in game?
+- dazu muss ich in das fullstack zeug gehen
+- oben soll eine menuzeile sein!!!
+- way shorter!!!
+- book_open_title: macht table auf mit hintergrund von book
+- open book: Intro to CS
+- book app
+book app
+- nimm ein bild von perlin noise
+- wie mach ich das: page1: random walk
+- page 2: perlin walk = biene!
+- ich will so eine art buch wo auf jeder seite ein cooles beispiel ist
+- WAY SHORTER!!!!!!!
+- mach ein 2d perlin noise
+- map range ist das dasselbe wie clamp?
+- wie nur wie
+- sollte repro koennen! zuerst mach das mit random ellipse
+- hol mir alle vars in global Perlin
+- open p5
+- p5 mit instance no instance ich will eigentlich die helpers!
+869: *4:01 PM 12/26/2022-4:03 PM 12/26/2022
+870: *4:03 PM 12/26/2022-4:04 PM 12/26/2022
+getrect
+und wie mach ich die height genauso wie window height?
+- wie mach ich einen footer?
+- book unten soll es footer mit page numbers haben
+875: *4:17 PM 12/26/2022-4:46 PM 12/26/2022
+876: *4:46 PM 12/26/2022-
+- check gu!
+action /2: *4:46 PM 12/26/2022-
+- jedes von den zahlen soll ein link sein!
+__________ di 27.12.22 waiting at the airport...   D87
+880: *7:50 AM 12/27/2022-7:53 AM 12/27/2022
+881: *7:53 AM 12/27/2022-8:09 AM 12/27/2022
+882: *8:09 AM 12/27/2022-8:09 AM 12/27/2022
+way shorter!!!
+883: *8:09 AM 12/27/2022-8:17 AM 12/27/2022
+884: *8:17 AM 12/27/2022-8:40 AM 12/27/2022
+885: *8:40 AM 12/27/2022-8:40 AM 12/27/2022
+886: *8:40 AM 12/27/2022-8:53 AM 12/27/2022
+887: *8:53 AM 12/27/2022-9:13 AM 12/27/2022
+900: *9:13 AM 12/27/2022-9:59 AM 12/27/2022
+- how to get intellisense???
+- es geht aber ich muss Items resetten! bei openPage
+- wie mach ich eine fiddle???
+yt: https://www.youtube.com/watch?v=DMY73TvXDyU
+- bau1 70
+- soll ich ein dContent machen??? JA
+- ich muss die pages zu test names verknuepfen
+book_open_page
+book fiddle
+905: *9:59 AM 12/27/2022-10:04 AM 12/27/2022
+906: *10:04 AM 12/27/2022-10:05 AM 12/27/2022
+907: *10:05 AM 12/27/2022-10:17 AM 12/27/2022
+908: *10:17 AM 12/27/2022-10:26 AM 12/27/2022
+909: *10:26 AM 12/27/2022-10:43 AM 12/27/2022
+910: *10:43 AM 12/27/2022-
+action: *11:00 AM 12/27/2022-12:22 PM 12/27/2022- 70/3=23
+933: *12:22 PM 12/27/2022-8:32 PM 12/27/2022
+- wie macht der das???
+__________ mi 28.12.22 waiting at the airport...   D86
+960: *8:32 PM 12/27/2022-5:45 AM 12/28/2022
+961: *5:32 AM 12/28/2022-5:45 AM 12/28/2022
+962: *5:46 AM 12/28/2022-5:47 AM 12/28/2022
+963: *5:47 AM 12/28/2022-5:51 AM 12/28/2022
+964: *5:51 AM 12/28/2022-5:54 AM 12/28/2022
+965: *5:54 AM 12/28/2022-6:31 AM 12/28/2022
+970: *6:31 AM 12/28/2022-6:35 AM 12/28/2022
+971: *6:35 AM 12/28/2022-6:46 AM 12/28/2022
+972: *6:46 AM 12/28/2022-7:17 AM 12/28/2022
+973: *7:17 AM 12/28/2022-7:25 AM 12/28/2022
+975: *7:25 AM 12/28/2022-7:29 AM 12/28/2022
+976: *7:29 AM 12/28/2022-7:34 AM 12/28/2022
+977: *7:34 AM 12/28/2022-7:35 AM 12/28/2022
+9778: *7:35 AM 12/28/2022-8:25 AM 12/28/2022
+980: *8:25 AM 12/28/2022-8:27 AM 12/28/2022
+__________ do 29.12.22 waiting at the airport...   D86
+1: *8:27 AM 12/28/2022-8:07 PM 12/28/2022
+2: *5:39 AM 12/29/2022-5:48 AM 12/29/2022
+3: *5:48 AM 12/29/2022-6:01 AM 12/29/2022
+4: *6:01 AM 12/29/2022-6:08 AM 12/29/2022
+5: *6:08 AM 12/29/2022-6:20 AM 12/29/2022
+6: *6:20 AM 12/29/2022-6:26 AM 12/29/2022
+7: *6:26 AM 12/29/2022-6:34 AM 12/29/2022
+8: *6:34 AM 12/29/2022-6:50 AM 12/29/2022
+9: *6:50 AM 12/29/2022-6:53 AM 12/29/2022
+a=[1,2,3]; a[0];
+mDiv(dTable,{w:100,h:100,bg:'red'});
+a=[1,2,3,4,5,6]; a[2]; stop();
+start();
+10: *6:53 AM 12/29/2022-6:55 AM 12/29/2022
+11: *6:55 AM 12/29/2022-7:07 AM 12/29/2022
+- unter tb mach eine line wo rechts steht: execute current line (Ctrl+Shift+Enter), execute all (Ctrl+Enter)
+run all
+12: *7:07 AM 12/29/2022-7:11 AM 12/29/2022
+13: *7:11 AM 12/29/2022-7:24 AM 12/29/2022
+14: *7:24 AM 12/29/2022-7:24 AM 12/29/2022
+15: *7:25 AM 12/29/2022-7:26 AM 12/29/2022
+16: *7:26 AM 12/29/2022-7:26 AM 12/29/2022
+- open to code
+- gogo au_show_list
+- add params to list
+- save code to localStorage upon reload oder page deactivate
+- load code from localStorage
+- back to book cs? sidebar not working!!!
+- js set focus on textarea
+17: *7:26 AM 12/29/2022-7:57 AM 12/29/2022
+18: *7:57 AM 12/29/2022-7:59 AM 12/29/2022
+19: *7:59 AM 12/29/2022-8:36 AM 12/29/2022
+25: *8:36 AM 12/29/2022-8:53 AM 12/29/2022
+26: *8:53 AM 12/29/2022-9:01 AM 12/29/2022
+- arrow down und up nicht in textarea wenn liste habe!
+- do NOT start canvas
+- goto code get current line
+- get current word (word under caret) and present list for it!
+27: *9:01 AM 12/29/2022-
+__________ fr 30.12.22 waiting at the airport...   D84
+50: *8:00 AM 12/30/2022-8:15 AM 12/30/2022
+51: *8:15 AM 12/30/2022-8:20 AM 12/30/2022
+52: *8:20 AM 12/30/2022-8:24 AM 12/30/2022
+53: *8:24 AM 12/30/2022-8:26 AM 12/30/2022
+54: *8:26 AM 12/30/2022-8:30 AM 12/30/2022
+55: *8:30 AM 12/30/2022-8:41 AM 12/30/2022
+56: *8:42 AM 12/30/2022-8:44 AM 12/30/2022
+57: *8:44 AM 12/30/2022-8:45 AM 12/30/2022
+58: *8:45 AM 12/30/2022-8:49 AM 12/30/2022
+59: *8:49 AM 12/30/2022-9:02 AM 12/30/2022
+60: *9:02 AM 12/30/2022-9:10 AM 12/30/2022
+61: *9:10 AM 12/30/2022-9:10 AM 12/30/2022
+62: *9:10 AM 12/30/2022-9:22 AM 12/30/2022
+63: *9:22 AM 12/30/2022-9:31 AM 12/30/2022
+64: *9:31 AM 12/30/2022-12:14 PM 12/30/2022
+74: *12:14 PM 12/30/2022-12:35 PM 12/30/2022
+75: *12:35 PM 12/30/2022-5:22 PM 12/30/2022
+76: *5:24 PM 12/30/2022-6:50 PM 12/30/2022
+action /3 *5:24 PM 12/30/2022-8:34 PM 12/30/2022
+__________ sa 31.12.22 waiting at the airport...   D83
+100: *6:50 PM 12/30/2022-6:29 AM 12/31/2022
+101: *6:29 AM 12/31/2022-6:40 AM 12/31/2022
+102: *6:40 AM 12/31/2022-6:46 AM 12/31/2022
+103: *6:46 AM 12/31/2022-6:54 AM 12/31/2022
+104: *6:54 AM 12/31/2022-6:54 AM 12/31/2022
+105: *6:55 AM 12/31/2022-7:10 AM 12/31/2022
+106: *7:10 AM 12/31/2022-7:19 AM 12/31/2022
+107: *7:19 AM 12/31/2022-7:31 AM 12/31/2022
+108: *7:31 AM 12/31/2022-10:01 AM 12/31/2022
+128: *10:01 AM 12/31/2022-10:33 AM 12/31/2022
+129: *10:33 AM 12/31/2022-1:06 PM 12/31/2022
+action: *10:33 AM 12/31/2022-1:06 PM 12/31/2022
+130: *1:06 PM 12/31/2022-1:18 PM 12/31/2022
+131: *1:18 PM 12/31/2022-1:23 PM 12/31/2022
+132: *1:23 PM 12/31/2022-
+- spazier ist angesagt!
+action: *1:24 PM 12/31/2022-6:43 PM 12/31/2022
+action /2: *6:43 PM 12/31/2022-6:20 AM 1/1/2023
+__________ so 1.1.23 waiting at the airport...   D82
+150: *6:21 AM 1/1/2023-6:33 AM 1/1/2023
+151: *6:33 AM 1/1/2023-7:17 AM 1/1/2023
+160: *7:17 AM 1/1/2023-7:28 AM 1/1/2023
+161: *7:28 AM 1/1/2023-7:28 AM 1/1/2023
+165: *7:28 AM 1/1/2023-7:29 AM 1/1/2023
+166: *7:29 AM 1/1/2023-7:32 AM 1/1/2023
+167: *7:32 AM 1/1/2023-7:33 AM 1/1/2023
+168: *7:34 AM 1/1/2023-7:35 AM 1/1/2023
+169: *7:35 AM 1/1/2023-7:44 AM 1/1/2023
+170: *7:44 AM 1/1/2023-7:54 AM 1/1/2023
+171: *7:54 AM 1/1/2023-8:33 AM 1/1/2023
+172: *8:33 AM 1/1/2023-8:44 AM 1/1/2023
+173: *9:17 AM 1/1/2023-
+action /3: *9:17 AM 1/1/2023-10:21 AM 1/1/2023 20
+193: *10:21 AM 1/1/2023-11:05 AM 1/1/2023
+194: *11:05 AM 1/1/2023-
+action /3: *12:55 PM 1/1/2023-
+__________ mo 2.1.23 waiting at the airport...   D810fr
+210: *5:42 AM 1/2/2023-6:03 AM 1/2/2023
+211: *6:04 AM 1/2/2023-6:29 AM 1/2/2023
+220: *6:29 AM 1/2/2023-6:58 AM 1/2/2023
+222: *6:58 AM 1/2/2023-7:04 AM 1/2/2023
+223: *7:04 AM 1/2/2023-8:04 AM 1/2/2023
+item must be serializable!
+dh functions replaced by funcname,
+DOM elems replaced by their id
+225: *8:04 AM 1/2/2023-8:41 AM 1/2/2023
+226: *8:41 AM 1/2/2023-8:43 AM 1/2/2023
+227: *8:43 AM 1/2/2023-8:45 AM 1/2/2023
+228: *8:45 AM 1/2/2023-8:52 AM 1/2/2023
+230: *8:52 AM 1/2/2023-9:13 AM 1/2/2023
+231: *9:13 AM 1/2/2023-9:13 AM 1/2/2023
+233: *9:22 AM 1/2/2023-
+action: *9:23 AM 1/2/2023-
+__________ di 3.1.23 waiting at the airport...   D800fr
+320: *9:10 PM 1/2/2023-6:27 AM 1/3/2023
+321: *6:27 AM 1/3/2023-6:28 AM 1/3/2023
+322: *6:28 AM 1/3/2023-6:37 AM 1/3/2023
+323: *6:37 AM 1/3/2023-6:41 AM 1/3/2023
+[a,b]=[1,2] schau ob value returned! JA!!!
+- linebreak zwischen canvas und buttons!
+324: *6:41 AM 1/3/2023-6:42 AM 1/3/2023
+325: *6:42 AM 1/3/2023-6:43 AM 1/3/2023
+326: *6:43 AM 1/3/2023-6:48 AM 1/3/2023
+327: *6:49 AM 1/3/2023-6:50 AM 1/3/2023
+328: *6:50 AM 1/3/2023-6:51 AM 1/3/2023
+329: *6:51 AM 1/3/2023-7:06 AM 1/3/2023
+330: *7:06 AM 1/3/2023-7:06 AM 1/3/2023
+- way shorter!!!
+331: *7:06 AM 1/3/2023-7:08 AM 1/3/2023
+332: *7:08 AM 1/3/2023-7:17 AM 1/3/2023
+333: *7:17 AM 1/3/2023-7:18 AM 1/3/2023
+334: *7:18 AM 1/3/2023-7:29 AM 1/3/2023
+- rPosition ist falsch!!!! gibt nur pos values
+WAY SHORTER!!!!!!!!!!!!
+335: *7:29 AM 1/3/2023-7:33 AM 1/3/2023
+336: *7:33 AM 1/3/2023-7:45 AM 1/3/2023
+- set_context('_1')
+- draw_line = 
+- dream c-de: draw_line(0,0,100,100,)
+- set_context
+- kann ich sowas wie setContext machen??? mit irgendeinem super object?
+337: *7:45 AM 1/3/2023-7:51 AM 1/3/2023
+338: *7:51 AM 1/3/2023-7:54 AM 1/3/2023
+- rn koennte sein rnois statt random!
+- mach ta und tacon 120
+339: *7:54 AM 1/3/2023-8:40 AM 1/3/2023
+340: *8:40 AM 1/3/2023-11:44 AM 1/3/2023
+- ist schon ein riesen problem: drawing a canvas instead of drawing a figure ON the canvas~!!~!~!!!
+- perlin random number: brauch ein global last pos
+440: *11:44 AM 1/3/2023-4:27 PM 1/3/2023
+__________ mi 4.1.23 waiting at the airport...   D800fr
+480: *4:27 PM 1/3/2023-5:38 AM 1/4/2023
+481: *5:38 AM 1/4/2023-5:40 AM 1/4/2023
+482: *5:40 AM 1/4/2023-5:41 AM 1/4/2023
+- das problem mit den items loesen!
+483: *5:41 AM 1/4/2023-5:45 AM 1/4/2023
+484: *5:45 AM 1/4/2023-5:46 AM 1/4/2023
+choices:
+1. alle items global Items
+=>2. G is topmost und hat items
+3. es gibt nur canvas items
+choices draw:
+1. each object draws itself, then its children
+2. every item draws all its children
+=>3. item calls draw on self if has any, then rec on children
+choices:
+1. items sind nur die containers 
+2. everyobject that has draw or update or event can be item
+=>3. every object can be an item
+4. items sind nur die objects mit live
+485: *5:46 AM 1/4/2023-5:49 AM 1/4/2023
+choices impl:
+1. Item hierarchy (G) only uses ids, global Items has info
+2. strictly hierarchical
+3. other way around: hierarchy uses objects, Items only uses ids
+4. there are concrete items and prototypes
+=>5. use ids in props, G is object hierarchy, Items flat dict (pointers into G tree)
+486: *5:50 AM 1/4/2023-5:51 AM 1/4/2023
+487: *5:51 AM 1/4/2023-5:59 AM 1/4/2023
+choices:
+visual item has 
+inheritable:
+x,y,w,h,x1,y1,shape,bg,fg 
+shape: 1 (point),2(line),3...12(poly),more(ellipse),0(points list)
+individual:
+pts (bei shape 0 = irreg poly)
+classNames
+sym|text|layout + list of sym/text
+pid,chids (parent,children)
+488: *5:59 AM 1/4/2023-6:02 AM 1/4/2023
+children inherit inheritable per default (unless they override)
+489: *6:04 AM 1/4/2023-6:05 AM 1/4/2023
+490: *6:05 AM 1/4/2023-6:06 AM 1/4/2023
+491: *6:06 AM 1/4/2023-6:09 AM 1/4/2023
+492: *6:09 AM 1/4/2023-6:10 AM 1/4/2023
+js does not allow .2 (. notation for numbers)!!!!!!!!!!!!!!!!
+493: *6:10 AM 1/4/2023-6:12 AM 1/4/2023
+functions:
+all functions are global
+backend has provision to modify code base (replacing js files)
+functions are added as funcname only
+functions can also be loaded as text (no backend)
+494: *6:12 AM 1/4/2023-6:13 AM 1/4/2023
+495: *6:13 AM 1/4/2023-6:14 AM 1/4/2023
+496: *6:14 AM 1/4/2023-6:15 AM 1/4/2023
+everything more than 10 lines of code hide within base op!!!!!!
+implementation has to be SUPER SIMPLE!!! NO EXCEPTION!!!!!!!!!!!!!!!!!
+497: *6:15 AM 1/4/2023-6:38 AM 1/4/2023
+498: *6:38 AM 1/4/2023-6:39 AM 1/4/2023
+499: *6:39 AM 1/4/2023-6:54 AM 1/4/2023
+500: *6:54 AM 1/4/2023-6:54 AM 1/4/2023
+- way shorter!!!
+- debug!!!
+way shorter!
+ex1: transparent canvas
+501: *6:54 AM 1/4/2023-7:05 AM 1/4/2023
+502: *7:05 AM 1/4/2023-7:05 AM 1/4/2023
+- way shorter!!!
+503: *7:05 AM 1/4/2023-7:08 AM 1/4/2023
+504: *7:08 AM 1/4/2023-7:31 AM 1/4/2023
+- kann ich nicht irgendwie die DOM hierarchy verrwenden?
+- mach ein iClear das immer wenn ein DOM elem removed wird das Items ebenfalls removed
+- need to keep track of Items hierarchy!!!
+- ich glaub das problem ist dass ich Items kille!
+505: *7:31 AM 1/4/2023-7:40 AM 1/4/2023
+506: *7:40 AM 1/4/2023-7:46 AM 1/4/2023
+507: *7:46 AM 1/4/2023-
+1. when an Item is deleted, all its live props should be removed!
+=>extra param: cleanup live, cleanup relatives
+2. when an Item is registered at least 1 of the live props HAS to be idd w/ item id!!!!!!
+- get all descendants with non empty id attribute: 
+elem.querySelectAll('[id]:not([id]="")')
+normally main id is div prop. but it could also be canvas prop
+508: *8:07 AM 1/4/2023-8:07 AM 1/4/2023
+way shorter!!!
+509: *8:07 AM 1/4/2023-8:16 AM 1/4/2023
+510: *8:16 AM 1/4/2023-8:16 AM 1/4/2023
+ok - email, outlook und discord
+511: *8:18 AM 1/4/2023-8:33 AM 1/4/2023
+512: *8:33 AM 1/4/2023-8:37 AM 1/4/2023
+513: *8:37 AM 1/4/2023-8:38 AM 1/4/2023
+514: *8:39 AM 1/4/2023-8:39 AM 1/4/2023
+515: *8:39 AM 1/4/2023-8:41 AM 1/4/2023
+516: *8:42 AM 1/4/2023-6:51 AM 1/5/2023
+- app ist so wie 1 table
+- game aber ist so wie multiple potential tables!!!
+abfolge: top_menu_open, top_menu_close
+tile_open, tile_close
+application_open, application_close
+__________ do 5.1.23 waiting at the airport...   D790frat
+550: *6:39 AM 1/5/2023-6:48 AM 1/5/2023
+551: *6:48 AM 1/5/2023-6:49 AM 1/5/2023
+552: *6:50 AM 1/5/2023-6:50 AM 1/5/2023
+553: *6:50 AM 1/5/2023-6:52 AM 1/5/2023
+554: *6:52 AM 1/5/2023-6:57 AM 1/5/2023
+- copy design info to notes
+- closing book when close apptile for books
+- das open tile soll eigentlich nur so ein mini summary zeigen
+555: *6:58 AM 1/5/2023-7:17 AM 1/5/2023
+556: *7:18 AM 1/5/2023-7:18 AM 1/5/2023
+557: *7:18 AM 1/5/2023-7:31 AM 1/5/2023
+558: *7:31 AM 1/5/2023-7:31 AM 1/5/2023
+- way shorter!
+559: *7:31 AM 1/5/2023-7:35 AM 1/5/2023
+560: *7:35 AM 1/5/2023-7:37 AM 1/5/2023
+561: *7:38 AM 1/5/2023-7:42 AM 1/5/2023
+562: *7:42 AM 1/5/2023-7:49 AM 1/5/2023
+563: *7:49 AM 1/5/2023-7:53 AM 1/5/2023
+564: *7:53 AM 1/5/2023-7:56 AM 1/5/2023
+565: *7:56 AM 1/5/2023-8:12 AM 1/5/2023
+566: *8:12 AM 1/5/2023-8:18 AM 1/5/2023
+567: *8:18 AM 1/5/2023-8:25 AM 1/5/2023
+568: *8:26 AM 1/5/2023-8:26 AM 1/5/2023
+569: *8:26 AM 1/5/2023-8:32 AM 1/5/2023
+570: *8:32 AM 1/5/2023-8:46 AM 1/5/2023
+571: *8:46 AM 1/5/2023-9:02 AM 1/5/2023
+572: *9:02 AM 1/5/2023-9:04 AM 1/5/2023
+- discord on spazier?
+573: *9:04 AM 1/5/2023-9:11 AM 1/5/2023
+- email call to jeslyn
+583: *9:12 AM 1/5/2023-9:23 AM 1/5/2023
+- dunder carpet info
+584: *9:24 AM 1/5/2023-10:20 AM 1/5/2023
+ok - herd, jeslyn
+594: *10:20 AM 1/5/2023-7:32 AM 1/6/2023
+- fgu, knoedl teig
+__________ fr 6.1.23 waiting at the airport...   D78ok
+620: *7:32 AM 1/6/2023-7:48 AM 1/6/2023
+621: *7:48 AM 1/6/2023-7:52 AM 1/6/2023
+622: *7:52 AM 1/6/2023-7:53 AM 1/6/2023
+623: *7:53 AM 1/6/2023-7:58 AM 1/6/2023
+624: *7:58 AM 1/6/2023-8:02 AM 1/6/2023
+625: *8:02 AM 1/6/2023-8:04 AM 1/6/2023
+626: *8:04 AM 1/6/2023-8:05 AM 1/6/2023
+627: *8:05 AM 1/6/2023-8:05 AM 1/6/2023
+628: *8:05 AM 1/6/2023-8:07 AM 1/6/2023
+629: *8:07 AM 1/6/2023-8:12 AM 1/6/2023
+- close table! einfach ein x machen!
+mButtonX(dParent, handler, pos = 'tr', sz = 25, color = 'white')
+630: *8:12 AM 1/6/2023-8:14 AM 1/6/2023
+631: *8:14 AM 1/6/2023-8:24 AM 1/6/2023
+632: *8:25 AM 1/6/2023-8:29 AM 1/6/2023
+633: *8:29 AM 1/6/2023-8:49 AM 1/6/2023
+635: *8:49 AM 1/6/2023-8:56 AM 1/6/2023
+636: *8:56 AM 1/6/2023-9:14 AM 1/6/2023
+637: *9:14 AM 1/6/2023-9:28 AM 1/6/2023
+638: *9:28 AM 1/6/2023-9:28 AM 1/6/2023
+639: *9:28 AM 1/6/2023-9:32 AM 1/6/2023
+640: *9:32 AM 1/6/2023-9:33 AM 1/6/2023
+641: *9:33 AM 1/6/2023-9:53 AM 1/6/2023
+642: *9:53 AM 1/6/2023-9:53 AM 1/6/2023
+643: *9:54 AM 1/6/2023-6:14 PM 1/6/2023
+- action: *9:54 AM 1/6/2023-
++ meeting
+__________ sa 7.1.23 waiting at the airport...   D77
+770: *6:14 PM 1/6/2023-6:14 PM 1/6/2023
+771: *8:29 PM 1/6/2023-7:16 AM 1/7/2023
+772: *7:16 AM 1/7/2023-7:23 AM 1/7/2023
+773: *7:23 AM 1/7/2023-7:29 AM 1/7/2023
+774: *7:29 AM 1/7/2023-7:39 AM 1/7/2023
+775: *7:39 AM 1/7/2023-7:43 AM 1/7/2023
+776: *7:44 AM 1/7/2023-7:45 AM 1/7/2023
+777: *7:46 AM 1/7/2023-7:49 AM 1/7/2023
+778: *7:49 AM 1/7/2023-7:59 AM 1/7/2023
+779: *7:59 AM 1/7/2023-8:00 AM 1/7/2023
+780: *8:00 AM 1/7/2023-8:17 AM 1/7/2023
+781: *8:17 AM 1/7/2023-8:20 AM 1/7/2023
+782: *8:20 AM 1/7/2023-8:21 AM 1/7/2023
+783: *8:21 AM 1/7/2023-8:22 AM 1/7/2023
+784: *8:23 AM 1/7/2023-8:24 AM 1/7/2023
+785: *8:25 AM 1/7/2023-8:39 AM 1/7/2023
+786: *8:39 AM 1/7/2023-8:40 AM 1/7/2023
+787: *8:41 AM 1/7/2023-8:53 AM 1/7/2023
+788: *8:53 AM 1/7/2023-8:53 AM 1/7/2023
+789: *8:53 AM 1/7/2023-10:11 AM 1/7/2023
+795: *10:11 AM 1/7/2023-12:44 PM 1/7/2023
+800: *12:44 PM 1/7/2023-4:11 PM 1/7/2023
+- action: *12:44 PM 1/7/2023-4:11 PM 1/7/2023
+810: *4:11 PM 1/7/2023-4:16 PM 1/7/2023
+811: *4:16 PM 1/7/2023-8:46 PM 1/7/2023
+__________ so 8.1.23 waiting at the airport...   D76
+850: *8:46 PM 1/7/2023-7:47 AM 1/8/2023
+851: *7:47 AM 1/8/2023-7:50 AM 1/8/2023
+852: *7:50 AM 1/8/2023-7:59 AM 1/8/2023
+853: *7:59 AM 1/8/2023-8:02 AM 1/8/2023
+- mAnimate er gibt 2x function dazu!
+- warum macht er das?
+854: *8:02 AM 1/8/2023-8:05 AM 1/8/2023
+855: *8:05 AM 1/8/2023-8:19 AM 1/8/2023
+856: *8:19 AM 1/8/2023-8:33 AM 1/8/2023
+857: *8:33 AM 1/8/2023-8:47 AM 1/8/2023
+858: *8:47 AM 1/8/2023-8:56 AM 1/8/2023
+860: *8:56 AM 1/8/2023-9:30 AM 1/8/2023
+870: *9:30 AM 1/8/2023-9:53 AM 1/8/2023
+- post
+880: *9:53 AM 1/8/2023-
+
+- next!
+ich muss alle ersetzungen machen: 
+'http://
+'http:/'+'
+dasselbe mit https
+- irgendwie komisch!!!
+- split join muesste gehen!
+- async geht nicht gut!!!
 
 
+
+100 scheck
+10 k
+- innerhalb von params DARF es kein extra pair of () geben!!!!
+problem bei dem cubic-bezier!!! expressions
+params fehler suchen!
+
+
+function set_context(item){
+  CONTEXT = isDict(item) ? item
+    : isString(item) && isdef(Items[item]) ? Items[item]
+      : isNumber(item) && isdef(Items[`_${item}`]) ? Items[`_${item}`]
+        : get_values(Items)[0];
+}
+
+
+
+- params!!!!!!
+- search codebase
+- ignore caps, ignore full word =>sowie in vs code!
+- ein tag ist region
+- ich brauch irgendeine art wie ich functions tags zuweise damit ich besser sortieren kann nach tags
+- ich brauch eine outer codebase und eine innercodebase
+- magically: click on refactor, dann macht er 1 file wo er clean alle funcs mit clean code hat, das kann ich dann gemeinsam mit index in ein neues dir pasten und schon hab ich eine neue codebase!
+
+
+
+
+
+
+
+
+- geniale idee: allfuncs code machen damit ich jederzeit neu anfangen kann!
+- was ist ein toggle element?
+hat einen triggerbutton
+hat einen on_state und einen off_state
+im on_state muss der button das reflecten!
+
+
+
+- ich brauch erstmal ein principle um ein toggle element zu machen
+- ich muss wirklich komplett neu anfangen!
+- show_sidebar(list,handler)
+handler takes as input a list element
+- show_sidebar is flawed!
+- basemin: Codebase statt DA.funcs
+choices:wenn auf fiddle click
+=>1. soll er sidebar+fiddle zeigen!
+2. fiddle soll einfach eine app sein
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+- mach ein HOME logo
+- restart SIMPLE
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+- alles irgendwie falsch!!!
+- was ich eigentlich will ist: wenn open app minimize_apps
+- filter immer dazu
+- way shorter!!!
+- google chrome clear suggestions select
+
+
+
+
+>>> find out WHY it is showing the code when press enter??? ist it doing all 3 of them?!?!?!?!?
+
+
+
+
+- way shorter!!!
+- filter, signatures, code
+- signatures only! mit plus dazu??????
+- class muss entfernt werden: special treatment!
+- brauch die async zu den functions!
+- als erstes die search!
+
+howto zu viewer renamen, 
+viewer soll code icons fa images haben
+
+
+Fiddle und Sidebar sind eigentlich dev tools
+
+
+- und eine code synthesizer die soll alle funcs aus code wieder zusammensetzen! brauch aber tags!!!
+- dann brauch ich noch eine iconViewer und eine imageViewer
+in der howto will ich die sidebar soll ergebnisse filtern,fiddle offen und table zu
+in der books app will ich die sidebar zuschaltbar, fiddle min height
+in der codeviewer app will ich die sidebar + fiddle gleich hoch
+
+
+
+
+
+- sollte daraus eine app machen! genauso wie iconViewer codeViewer
+- getPoly ist eine gute test function!
+- way shorter!
+waer echt cool wenn end of line comments auch removen koennte!!!
+show_fiddle mit cols
+
+- versuch nochmal ta
+- was jetzt???
+- show_sidebar => boau2
+- way shorter!!!!
+- body remove all comments!!!! // to end of line!!!
+- load_codebase => bau1
+- jsyaml.dump und jsyaml.load muss besser werden!
+- das load_codebase muss besser werden!!!
+- convert to yaml!
+- wenn auf ein sidebar ding clicke soll er body in fiddle zeigen!
+- sort wieder
+=>darf nicht 'function' nehmen (wenn type abfrage)
+- do not sort keys
+- search sidebar_load
+- test sidebar
+- restart all!!!
+how to populate the sidebar?
+- some app tiles (that have long menus) may use sidebar for menu!
+examples f stacks:
+State=
+are apps games Fiddle open?
+what is the content of fiddle?
+which app tile are open?
+which app or game is open on table?
+what tables exist? (chronologische reihenfolge oder wo bin ich dran)
+open,close,show,hide,
+wo wird appstate gesaved? am besten in db,
+
+zusaetzlich sollte state IMMER (auf server oder local) gesaved werden
+damit wenn open wieder state restored wird!
+
+
+
+
+hierarchy: top menu - tiles - dTable
+tile app/game: 
+wenn app or game open: clear dTable!
+- rem cons
+- G aufbauen! G is an app or a game
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+DA.item = Items._1;
+get_keys(Items);
+get_keys(DA.item);
+DA.item.x=0;DA.item.y=0;//DA.item.draw=draw_random_walk;
+rPosition(DA.item)
+DA.item.draw = x=>{ cClear(x.live.cv,x.live.cx);rPosition(x);cRect(x.x,x.y,10,10,{bg:'blue'},x.live.cx);};
+DA.item.play();
+DA.item.pause();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+- page mit footer und header:
+<div style="display: grid;grid-template-rows: auto 1fr auto;height: 100vh;">
+<div id="dToolbar" style="background:orange;min-height:10px"></div>
+<div id="dTable"></div>
+<div id="dStatusbar" style="background:orange;min-height:10px"></div>
+</div>		
+
+* {
+  box-sizing: border-box;
+}
+/* Create two equal columns that floats next to each other */
+.column {
+  float: left;
+	height: calc( 100vh - 60px );
+
+}
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.hmost {
+	height: calc( 100vh - 60px );
+}
+
+
+- show_elems oder show_constants
+- was will ich jetzt als naechstes?
+- globals waer gut zu haben!!!
+- wenn AU.selected ist darf enter nicht genommen werden
+- ich koennte das popup im size limiten und y-overflow auto setzen???
+- WAY SHORTER!!!
+- ich moecht ein zweites popup bei dem ich ein help display mit params
+- remove last char from a string js:  slice(0, -1) 
+- enter!
+- backspace!!!
+- simple intellisense
+
+spital abfahrt 10h
+
+
+
+
+
+
+
+
+
+
+- hol mir p5.min.js
+- schau mir lieber das ganze an: extract p5.zip
+- der canvas selbst ist global in p5
+- this is an exercise
+- suche p5.js damit ich weiss was ich brauche
+- p5 engine
+- zuerst muss ich die table machen!
+
+
+- noc FR loop
+
+die botschaften der barmherzigkeit der jesusmutter maria fuer die welt
 
 
 

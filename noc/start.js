@@ -13,7 +13,7 @@ function start() {
 	let controls = mPlayPause(dTable, {}, gameloop_start, gameloop_stop);
 	[G.play, G.pause] = [controls.play, controls.pause];
 
-	test4();  //test_formula0(); ////test3_cdf(); //test2_nerd(); //test1_nerd(); //test_nerd(); //noc6_simple_gaussian(); //noc4_gaussian(); //noc3_gaussian(); //noc2_explicit_distribution(); //noc1_randomwalkers();
+	test2_nerd(); ////test4();  //test_formula0(); ////test3_cdf(); //test1_nerd(); //test_nerd(); //noc6_simple_gaussian(); //noc4_gaussian(); //noc3_gaussian(); //noc2_explicit_distribution(); //noc1_randomwalkers();
 
 	//G.play();
 }
