@@ -4975,39 +4975,205 @@ __________ so 8.1.23 waiting at the airport...   D76
 860: *8:56 AM 1/8/2023-9:30 AM 1/8/2023
 870: *9:30 AM 1/8/2023-9:53 AM 1/8/2023
 - post
-880: *9:53 AM 1/8/2023-
+880: *9:53 AM 1/8/2023-1:30 PM 1/8/2023
+oasis
+980: *1:30 PM 1/8/2023-8:24 PM 1/8/2023
+1000: *8:24 PM 1/8/2023-8:24 PM 1/8/2023
+__________ mo 9.1.23 waiting at the airport...   D75
+1: *8:24 PM 1/8/2023-5:25 AM 1/9/2023
+2: *5:25 AM 1/9/2023-5:31 AM 1/9/2023
+3: *5:31 AM 1/9/2023-5:39 AM 1/9/2023
+4: *5:39 AM 1/9/2023-5:41 AM 1/9/2023
+5: *5:41 AM 1/9/2023-5:46 AM 1/9/2023
+6: *5:46 AM 1/9/2023-5:53 AM 1/9/2023
+ok basemin: FRUIDCounter SHAPEFUNCS MyEasing STYLE_PARAMS
+7: *5:53 AM 1/9/2023-5:53 AM 1/9/2023
+ok basemin: var TOFleetingMessage, dFleetingMessage, Animation1;
+8: *5:53 AM 1/9/2023-6:15 AM 1/9/2023
+- config.yaml hatte ich 
+- gen huge basemin!
+- wo gibt es noch globals? cards>
+- basemin hat jetzt alle classes! bis auf die games
+- alle auf einmal!
+- gamehelpers
+9: *6:15 AM 1/9/2023-6:55 AM 1/9/2023
+10: *6:55 AM 1/9/2023-6:58 AM 1/9/2023
+11: *6:58 AM 1/9/2023-6:59 AM 1/9/2023
+choices: 
+- streamline cards.js,select.js,...
+- nomenclatur!
+- inno cards!
+==> decide how to org basejs?
+12: *6:59 AM 1/9/2023-7:04 AM 1/9/2023
+13: *7:04 AM 1/9/2023-7:14 AM 1/9/2023
+14: *7:14 AM 1/9/2023-7:34 AM 1/9/2023
+- email Nichole
+24: *7:34 AM 1/9/2023-8:46 AM 1/9/2023
+- HSA zeug
+124: *8:46 AM 1/9/2023-9:04 AM 1/9/2023
+125: *9:04 AM 1/9/2023-9:21 AM 1/9/2023
+126: *9:21 AM 1/9/2023-9:21 AM 1/9/2023
+127: *9:21 AM 1/9/2023-9:25 AM 1/9/2023
+128: *9:25 AM 1/9/2023-9:26 AM 1/9/2023
+__________ di 10.1.23 waiting at the airport...   D74aok
+150: *9:26 AM 1/9/2023-8:18 PM 1/9/2023
+- what does it take???
+151: *8:19 PM 1/9/2023-6:43 AM 1/10/2023
+152: *6:44 AM 1/10/2023-6:52 AM 1/10/2023
+153: *6:52 AM 1/10/2023-7:20 AM 1/10/2023
+154: *7:20 AM 1/10/2023-7:28 AM 1/10/2023
+155: *7:28 AM 1/10/2023-7:33 AM 1/10/2023
+156: *7:33 AM 1/10/2023-7:34 AM 1/10/2023
+all global names exist in window
+157: *7:34 AM 1/10/2023-7:52 AM 1/10/2023
+158: *7:52 AM 1/10/2023-8:46 AM 1/10/2023
+159: *8:46 AM 1/10/2023-8:50 AM 1/10/2023
+160: *8:50 AM 1/10/2023-9:03 AM 1/10/2023
+161: *9:03 AM 1/10/2023-9:15 AM 1/10/2023
+163: *9:15 AM 1/10/2023-8:08 PM 1/10/2023
+__________ mi 11.1.23 waiting at the airport...   D73aok
+200: *8:09 PM 1/10/2023-8:09 PM 1/10/2023
+- mTextArea ==>mTextarea
+201: *8:09 PM 1/10/2023-6:09 AM 1/11/2023
+202: *6:09 AM 1/11/2023-6:10 AM 1/11/2023
+203: *6:10 AM 1/11/2023-6:19 AM 1/11/2023
+204: *6:19 AM 1/11/2023-6:52 AM 1/11/2023
+205: *6:52 AM 1/11/2023-7:09 AM 1/11/2023
+206: *7:10 AM 1/11/2023-7:17 AM 1/11/2023
+207: *7:17 AM 1/11/2023-7:22 AM 1/11/2023
+208: *7:22 AM 1/11/2023-7:50 AM 1/11/2023
+209: *7:50 AM 1/11/2023-7:53 AM 1/11/2023
+- wie gross ist das tribute file? 30KB
+- demo anschauen
+- use tribute!
+- gut das ist echt nicht geeignet!
+- js input event
+- was macht mAutocomplete?
+- wie mach ich eine intellifiddle aus einem textarea???
+210: *7:53 AM 1/11/2023-7:57 AM 1/11/2023
+211: *7:57 AM 1/11/2023-8:03 AM 1/11/2023
+- getkeys: Reflect.ownKeys(mDiv)
+js params from function object: arguments
+212: *8:03 AM 1/11/2023-8:04 AM 1/11/2023
+213: *8:04 AM 1/11/2023-
+- gesamten code mit AU raushauen!!!
+- goto parse_functions
 
-- next!
-ich muss alle ersetzungen machen: 
-'http://
-'http:/'+'
-dasselbe mit https
-- irgendwie komisch!!!
-- split join muesste gehen!
-- async geht nicht gut!!!
 
 
 
-100 scheck
-10 k
-- innerhalb von params DARF es kein extra pair of () geben!!!!
-problem bei dem cubic-bezier!!! expressions
-params fehler suchen!
-
-
-function set_context(item){
-  CONTEXT = isDict(item) ? item
-    : isString(item) && isdef(Items[item]) ? Items[item]
-      : isNumber(item) && isdef(Items[`_${item}`]) ? Items[`_${item}`]
-        : get_values(Items)[0];
-}
 
 
 
-- params!!!!!!
-- search codebase
-- ignore caps, ignore full word =>sowie in vs code!
-- ein tag ist region
+
+
+
+
+
+
+
+
+
+
+- js fit textarea columns to parent element
+- what does it take to make a jupyter shell?
+
+
+1. bevor ich das fiddle oeffne, save ich die Globals in ReservedKeys
+2. dann eval ich immer nur block wise
+
+=>besser ist: wie bei jupiter machen!!!
+Ctrl+'+'=>open div danach
+
+2a. ein block ist alles 
+wenn line ein '=' enthaelt, LHS wird neue window key unless in Reserved: error
+otherwise 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+- ordne nach types
+
+
+- wenn ich eine function mache und sie nachherr zu window zuordne dann geht es!
+
+- eval: can I define new function that stays?
+- es sind 1000 funcs
+?wann wird es zusammengeschrieben?
+
+aufteilen:
+alles bis //#endregion classes gehoert in basemin
+
+- ich koennte erstmal
+#region file
+#endregion machen
+
+- im interface: alle func names im code sind links zu funcs
+choices:
+l = layout
+a = animation
+add = add stuff to other stuff
+arr = arrays
+b = board
+c = canvas
+ca = card
+co = color
+d = div names (=globals!) (dTable...)
+r = random
+g = game
+get = get stuff
+set = set stuff
+sv = svg
+ui = ui types
+
+=>library 1pm office 2021, osa, TKD
+
+agCircle => svCircle(gParent
+
+=>bad?
+=>suche gu costco card!!! 6060 =>fahre zu costco nachmittag 1pm?
+tanken+einkaufen
+
+
+
+
+
+eigentlich will ich doch zuerst org functions machen!
+
+also: die signatures sollen links sein, click=replace bei code!
+noch besser: +- davor
+
+
+
+
+
+
+- was will ich ueberhaupt??? ==> decide how to org basejs?
+how to org basejs:
+choices:
+1. einzelne files beibehalten oder 1 fettes base file?
+2. wie und wo mach ich updates?
+3. how to org functions? by tag? by subject?
+problem: there are definitely multiple ways to sort functions!
+also: remove empty line between! sicherr hilfreich!
+
+
+
+
+
 - ich brauch irgendeine art wie ich functions tags zuweise damit ich besser sortieren kann nach tags
 - ich brauch eine outer codebase und eine innercodebase
 - magically: click on refactor, dann macht er 1 file wo er clean alle funcs mit clean code hat, das kann ich dann gemeinsam mit index in ein neues dir pasten und schon hab ich eine neue codebase!
