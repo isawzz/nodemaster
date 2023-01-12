@@ -5055,7 +5055,9 @@ __________ mi 11.1.23 waiting at the airport...   D73aok
 - getkeys: Reflect.ownKeys(mDiv)
 js params from function object: arguments
 212: *8:03 AM 1/11/2023-8:04 AM 1/11/2023
-213: *8:04 AM 1/11/2023-
+213: *8:04 AM 1/11/2023-10:55 AM 1/11/2023
+313: *10:55 AM 1/11/2023-6:19 PM 1/11/2023
+333: *6:20 PM 1/11/2023-
 - gesamten code mit AU raushauen!!!
 - goto parse_functions
 
