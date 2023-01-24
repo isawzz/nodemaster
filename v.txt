@@ -5031,7 +5031,7 @@ all global names exist in window
 160: *8:50 AM 1/10/2023-9:03 AM 1/10/2023
 161: *9:03 AM 1/10/2023-9:15 AM 1/10/2023
 163: *9:15 AM 1/10/2023-8:08 PM 1/10/2023
-__________ mi 11.1.23 waiting at the airport...   D73aok
+__________ mi 11.1.23 waiting at the airport...   D73
 200: *8:09 PM 1/10/2023-8:09 PM 1/10/2023
 - mTextArea ==>mTextarea
 201: *8:09 PM 1/10/2023-6:09 AM 1/11/2023
@@ -5057,7 +5057,1242 @@ js params from function object: arguments
 212: *8:03 AM 1/11/2023-8:04 AM 1/11/2023
 213: *8:04 AM 1/11/2023-10:55 AM 1/11/2023
 313: *10:55 AM 1/11/2023-6:19 PM 1/11/2023
-333: *6:20 PM 1/11/2023-
+333: *6:20 PM 1/11/2023-8:49 PM 1/11/2023
+__________ do 12.1.23 waiting at the airport...   D72
+350: *8:50 PM 1/11/2023-7:45 AM 1/12/2023
+351: *7:45 AM 1/12/2023-7:46 AM 1/12/2023
+- what is the keycode for control key 17 (shift:16, alt: 18)
+352: *7:47 AM 1/12/2023-7:53 AM 1/12/2023
+353: *7:54 AM 1/12/2023-7:59 AM 1/12/2023
+354: *8:00 AM 1/12/2023-8:29 AM 1/12/2023
+355: *8:29 AM 1/12/2023-8:36 AM 1/12/2023
+356: *8:36 AM 1/12/2023-9:07 AM 1/12/2023
+357: *9:07 AM 1/12/2023-9:14 AM 1/12/2023
+358: *9:14 AM 1/12/2023-9:15 AM 1/12/2023
+359: *9:15 AM 1/12/2023-9:44 AM 1/12/2023
+360: *9:44 AM 1/12/2023-10:03 AM 1/12/2023
+361: *10:03 AM 1/12/2023-10:04 AM 1/12/2023
+362: *10:05 AM 1/12/2023-10:05 AM 1/12/2023
+363: *10:05 AM 1/12/2023-11:54 AM 1/12/2023
+364: *11:54 AM 1/12/2023-8:42 PM 1/12/2023
+action /3 *10:06 AM 1/12/2023-
+__________ fr 13.1.23 waiting at the airport...   D71
+380: *8:43 PM 1/12/2023-6:28 AM 1/13/2023
+381: *6:28 AM 1/13/2023-6:35 AM 1/13/2023
+382: *6:35 AM 1/13/2023-6:36 AM 1/13/2023
+383: *6:36 AM 1/13/2023-6:47 AM 1/13/2023
+384: *6:47 AM 1/13/2023-6:47 AM 1/13/2023
+- way shorter
+385: *6:47 AM 1/13/2023-6:53 AM 1/13/2023
+386: *6:53 AM 1/13/2023-7:01 AM 1/13/2023
+387: *7:01 AM 1/13/2023-7:04 AM 1/13/2023
+388: *7:04 AM 1/13/2023-7:05 AM 1/13/2023
+- way shorter!!!
+389: *7:05 AM 1/13/2023-7:07 AM 1/13/2023
+arrAtDist([0,1,2,3,4,5], 1, -1); //0
+390: *7:07 AM 1/13/2023-7:08 AM 1/13/2023
+arrAtDist([0,1,2,3,4,5], 1, -1, 1); //5
+391: *7:08 AM 1/13/2023-7:12 AM 1/13/2023
+arrAtDist([0,1,2,3,4,5], 1, -1, 1,3); //3
+392: *7:12 AM 1/13/2023-7:17 AM 1/13/2023
+393: *7:17 AM 1/13/2023-7:34 AM 1/13/2023
+394: *7:34 AM 1/13/2023-7:34 AM 1/13/2023
+395: *7:34 AM 1/13/2023-7:48 AM 1/13/2023
+396: *7:48 AM 1/13/2023-7:49 AM 1/13/2023
+397: *7:49 AM 1/13/2023-8:41 AM 1/13/2023
+398: *8:41 AM 1/13/2023-11:10 AM 1/13/2023
+400: *11:10 AM 1/13/2023-11:17 AM 1/13/2023
+401: *11:17 AM 1/13/2023-12:12 PM 1/13/2023
+- action /3 : 11:18 AM 1/13/2023-12:12 PM 1/13/2023
+420: *12:12 PM 1/13/2023-3:07 PM 1/13/2023
+spaa 10
+440: *4:49 PM 1/13/2023-4:49 PM 1/13/2023
+- give ids to 
+445: *5:54 PM 1/13/2023-5:57 PM 1/13/2023
+- jedes ta soll eine id bekommen!
+446: *5:57 PM 1/13/2023-6:53 PM 1/13/2023
+450: *6:53 PM 1/13/2023-7:07 PM 1/13/2023
+- wie machen die das matchen?
+451: *7:07 PM 1/13/2023-8:12 PM 1/13/2023
+- go back to tribute
+452: *8:13 PM 1/13/2023-8:47 PM 1/13/2023
+453: *8:47 PM 1/13/2023-8:48 PM 1/13/2023
+__________ sa 14.1.23 waiting at the airport...   D70
+455: *8:48 PM 1/13/2023-6:21 AM 1/14/2023
+456: *6:21 AM 1/14/2023-6:39 AM 1/14/2023
+457: *6:39 AM 1/14/2023-6:39 AM 1/14/2023
+458: *6:39 AM 1/14/2023-6:42 AM 1/14/2023
+459: *6:42 AM 1/14/2023-6:50 AM 1/14/2023
+460: *6:50 AM 1/14/2023-6:53 AM 1/14/2023
+461: *6:53 AM 1/14/2023-6:55 AM 1/14/2023
+462: *6:55 AM 1/14/2023-6:58 AM 1/14/2023
+463: *6:59 AM 1/14/2023-6:59 AM 1/14/2023
+1. das processValues ist eine inner function von showMenuFor
+2. wenn values eine func ist, dann wird diese func mit processValues aufgerufen
+464: *6:59 AM 1/14/2023-7:02 AM 1/14/2023
+465: *7:02 AM 1/14/2023-7:11 AM 1/14/2023
+466: *7:11 AM 1/14/2023-7:11 AM 1/14/2023
+467: *7:12 AM 1/14/2023-7:13 AM 1/14/2023
+468: *7:13 AM 1/14/2023-7:15 AM 1/14/2023
+469: *7:15 AM 1/14/2023-7:16 AM 1/14/2023
+470: *7:16 AM 1/14/2023-7:18 AM 1/14/2023
+471: *7:19 AM 1/14/2023-7:21 AM 1/14/2023
+472: *7:21 AM 1/14/2023-7:22 AM 1/14/2023
+- copy tribute.js docu to one note
+- keyhandler einhaengen!
+- init: only keep the fiddles that are non-empty!
+- remove Control handler
+- rem cons
+- finding RH!
+- das heisst ja, ich muss die Globals.function uebergeben
+- goto tribute.js processValues
+- was soll das?
+- SHORTER
+- value func params???
+besser: tribute tests
+473: *7:22 AM 1/14/2023-7:26 AM 1/14/2023
+474: *7:26 AM 1/14/2023-7:43 AM 1/14/2023
+475: *7:43 AM 1/14/2023-7:49 AM 1/14/2023
+476: *7:49 AM 1/14/2023-7:49 AM 1/14/2023
+- load tribute.min.js
+477: *7:49 AM 1/14/2023-7:50 AM 1/14/2023
+478: *7:50 AM 1/14/2023-7:58 AM 1/14/2023
+479: *7:58 AM 1/14/2023-8:03 AM 1/14/2023
+480: *8:03 AM 1/14/2023-8:13 AM 1/14/2023
+481: *8:14 AM 1/14/2023-8:15 AM 1/14/2023
+- rem cons
+- toggle_fiddle
+- fiddleInit
+- goto runcode
+- nach jeder eval soll GLobals recomputed werden!!!
+482: *8:15 AM 1/14/2023-8:16 AM 1/14/2023
+483: *8:16 AM 1/14/2023-6:53 PM 1/14/2023
+__________ so 15.1.23 waiting at the airport...   D69
+500: *5:48 AM 1/15/2023-5:51 AM 1/15/2023
+501: *5:51 AM 1/15/2023-5:57 AM 1/15/2023
+502: *5:58 AM 1/15/2023-5:58 AM 1/15/2023
+503: *5:58 AM 1/15/2023-6:01 AM 1/15/2023
+504: *6:01 AM 1/15/2023-6:02 AM 1/15/2023
+505: *6:02 AM 1/15/2023-6:05 AM 1/15/2023
+506: *6:05 AM 1/15/2023-6:09 AM 1/15/2023
+507: *6:09 AM 1/15/2023-6:14 AM 1/15/2023
+508: *6:14 AM 1/15/2023-6:16 AM 1/15/2023
+509: *6:16 AM 1/15/2023-6:16 AM 1/15/2023
+510: *6:16 AM 1/15/2023-6:21 AM 1/15/2023
+511: *6:21 AM 1/15/2023-6:21 AM 1/15/2023
+512: *6:21 AM 1/15/2023-6:24 AM 1/15/2023
+513: *6:24 AM 1/15/2023-6:25 AM 1/15/2023
+514: *6:25 AM 1/15/2023-6:34 AM 1/15/2023
+515: *6:34 AM 1/15/2023-7:50 AM 1/15/2023
+516: *7:51 AM 1/15/2023-8:09 AM 1/15/2023
+517: *8:09 AM 1/15/2023-8:17 AM 1/15/2023
+518: *8:17 AM 1/15/2023-8:25 AM 1/15/2023
+519: *8:25 AM 1/15/2023-8:35 AM 1/15/2023
+520: *8:35 AM 1/15/2023-8:41 AM 1/15/2023
+- schneidet _ weg!!!
+regex pattern non alphanumeric
+toWords(' Globals;')[0]
+toWords('_TOSound, _sndPlayer, _loaded = false, _qSound, _idleSound = true, _sndCounter = 0;')
+521: *8:41 AM 1/15/2023-2:39 PM 1/15/2023
+530: *2:39 PM 1/15/2023-2:42 PM 1/15/2023
+531: *2:42 PM 1/15/2023-2:53 PM 1/15/2023
+532: *2:53 PM 1/15/2023-3:09 PM 1/15/2023
+535: *3:09 PM 1/15/2023-3:32 PM 1/15/2023
+536: *3:33 PM 1/15/2023-7:41 PM 1/15/2023
+537: *7:41 PM 1/15/2023-7:56 PM 1/15/2023
+580: *7:57 PM 1/15/2023-8:16 PM 1/15/2023
+mButtonX braucht fa!!!!!!
+__________ mo 16.1.23 waiting at the airport...   D68
+600: *8:17 PM 1/15/2023-6:06 AM 1/16/2023
+601: *6:06 AM 1/16/2023-6:07 AM 1/16/2023
+602: *6:07 AM 1/16/2023-6:08 AM 1/16/2023
+603: *6:08 AM 1/16/2023-6:10 AM 1/16/2023
+604: *6:10 AM 1/16/2023-6:13 AM 1/16/2023
+605: *6:13 AM 1/16/2023-6:15 AM 1/16/2023
+606: *6:16 AM 1/16/2023-6:22 AM 1/16/2023
+607: *6:23 AM 1/16/2023-6:26 AM 1/16/2023
+608: *6:26 AM 1/16/2023-6:36 AM 1/16/2023
+609: *6:36 AM 1/16/2023-6:47 AM 1/16/2023
+610: *6:47 AM 1/16/2023-6:47 AM 1/16/2023
+WAY SHORTER!!!
+611: *6:47 AM 1/16/2023-6:49 AM 1/16/2023
+- also wie geht das spiel?
+612: *6:50 AM 1/16/2023-7:35 AM 1/16/2023
+615: *7:35 AM 1/16/2023-7:51 AM 1/16/2023
+- wo ist startgame bei TESTING?
+616: *7:52 AM 1/16/2023-7:52 AM 1/16/2023
+omit 1. zeige 5 sayings
+omit 2. click on 1
+===>3. zeigen das saying zu allen
+617: *7:52 AM 1/16/2023-7:54 AM 1/16/2023
+618: *7:54 AM 1/16/2023-8:03 AM 1/16/2023
+619: *8:03 AM 1/16/2023-8:11 AM 1/16/2023
+- ueberlege wie man zum server submitted? playerdata (spotit?
+- rem const sayings
+620: *8:11 AM 1/16/2023-9:10 AM 1/16/2023
+635: *9:11 AM 1/16/2023-9:16 AM 1/16/2023
+Form submission canceled because the form is not connected???
+turn: alle die noch nicht geantwortet haben!
+636: *9:17 AM 1/16/2023-9:22 AM 1/16/2023
+637: *9:23 AM 1/16/2023-9:23 AM 1/16/2023
+- stats werden einfach falsch angezeigt!
+- wenn ich die mimi bin (oder der starter)
+638: *9:23 AM 1/16/2023-9:44 AM 1/16/2023
+639: *9:44 AM 1/16/2023-9:51 AM 1/16/2023
+640: *9:51 AM 1/16/2023-11:19 AM 1/16/2023
+644: *11:19 AM 1/16/2023-6:00 AM 1/17/2023
+- ich muss mir merrken welcher player was gesagt hat!!!
+- was jetzt?
+sammle endinges
+you cannot use psychology to get out of psychology
+__________ di 17.1.23 waiting at the airport...   D68
+680: *6:00 AM 1/17/2023-6:01 AM 1/17/2023
+681: *6:01 AM 1/17/2023-6:04 AM 1/17/2023
+682: *6:04 AM 1/17/2023-6:09 AM 1/17/2023
+683: *6:09 AM 1/17/2023-6:11 AM 1/17/2023
+684: *6:11 AM 1/17/2023-6:16 AM 1/17/2023
+685: *6:16 AM 1/17/2023-6:16 AM 1/17/2023
+686: *6:16 AM 1/17/2023-7:06 AM 1/17/2023
+695: *7:06 AM 1/17/2023-7:37 AM 1/17/2023
+kann es bei waiting einen conflict geben?
+waiting kann ja nur dann sein wenn uplayer noch nicht das result bekommen hat!
+bei multiplayer gibt es polling, also brauch ich das feedback nicht
+bei hotseat oder solo aber brauch ich es schon!
+697: *7:37 AM 1/17/2023-7:39 AM 1/17/2023
+698: *7:39 AM 1/17/2023-7:59 AM 1/17/2023
+699: *7:59 AM 1/17/2023-7:59 AM 1/17/2023
+700: *7:59 AM 1/17/2023-8:08 AM 1/17/2023
+- for real!!!
+- heisst nichts andres als das statt einem fen.index ein fen.saying gewaehlt wird!
+- ich kann nicht einfach die sayings shuffeln!!! der starter bestimmt das saying und aus!!!
+701: *8:08 AM 1/17/2023-8:12 AM 1/17/2023
+- brauch eine winning condition!
+702: *8:18 AM 1/17/2023-8:30 AM 1/17/2023
+703: *8:30 AM 1/17/2023-8:34 AM 1/17/2023
+704: *8:34 AM 1/17/2023-8:35 AM 1/17/2023
+705: *8:35 AM 1/17/2023-9:09 AM 1/17/2023
+- wie kann man das aendern?
+- bei winning score endet er ohne den letzten screen zu zeigen!
+- state
+- multiple winners!
+710: *9:09 AM 1/17/2023-9:20 AM 1/17/2023
+711: *9:21 AM 1/17/2023-9:39 AM 1/17/2023
+712: *9:39 AM 1/17/2023-9:47 AM 1/17/2023
+713: *9:47 AM 1/17/2023-5:07 PM 1/17/2023
+740: *5:07 PM 1/17/2023-5:16 PM 1/17/2023
+mFleeting(inner,d,ms,styles,classes)
+__________ mi 18.1.23 waiting at the airport...   D67
+750: *8:32 PM 1/17/2023-6:10 AM 1/18/2023
+751: *6:10 AM 1/18/2023-6:14 AM 1/18/2023
+752: *6:14 AM 1/18/2023-6:21 AM 1/18/2023
+753: *6:21 AM 1/18/2023-6:21 AM 1/18/2023
+754: *6:21 AM 1/18/2023-6:29 AM 1/18/2023
+755: *6:29 AM 1/18/2023-6:30 AM 1/18/2023
+- wird db_update je gebraucht?
+- ich brauch es fuer db_update
+- set_run_state fuer das post brauch ich tatsaechlich die server address!
+- oder nicht? wenn ich routes habe!
+- wann wird SERVER je gebraucht??? nur fuer socketio
+756: *6:30 AM 1/18/2023-6:42 AM 1/18/2023
+757: *6:42 AM 1/18/2023-6:43 AM 1/18/2023
+- log ein am server: OneNote
+- was laeuft eigentlich am server? wie kann ich es feststellen?
+==> $root server.js laeuft unter pm2 als 'server'
+758: *6:43 AM 1/18/2023-6:44 AM 1/18/2023
+759: *6:44 AM 1/18/2023-7:01 AM 1/18/2023
+760: *7:01 AM 1/18/2023-7:08 AM 1/18/2023
+761: *7:08 AM 1/18/2023-7:08 AM 1/18/2023
+rem v
+762: *7:08 AM 1/18/2023-7:09 AM 1/18/2023
+goal: save DB at vps when page deactivated
+763: *7:09 AM 1/18/2023-7:09 AM 1/18/2023
+1. save
+764: *7:09 AM 1/18/2023-7:10 AM 1/18/2023
+2. upload game
+765: *7:10 AM 1/18/2023-7:11 AM 1/18/2023
+3. did he actually save the DB? reload
+766: *7:11 AM 1/18/2023-7:11 AM 1/18/2023
+4. now remove code line
+767: *7:12 AM 1/18/2023-7:18 AM 1/18/2023
+5. test: DB should have simple eintry
+768: *7:18 AM 1/18/2023-7:19 AM 1/18/2023
+6. upload&test YEAH!!!
+769: *7:20 AM 1/18/2023-7:29 AM 1/18/2023
+7. update basemin.js db_save_client
+770: *7:29 AM 1/18/2023-7:38 AM 1/18/2023
+- nachdem ich cors hab sollte ich eigentlich auch von live-server aus posten koennen!!!
+http://localhost:3000/post/json
+771: *7:38 AM 1/18/2023-7:39 AM 1/18/2023
+- geht einfach nicht von live-server aus!!! vielleicht ist cors nur fuerr get?
+772: *7:40 AM 1/18/2023-7:43 AM 1/18/2023
+773: *7:43 AM 1/18/2023-7:47 AM 1/18/2023
+- js how to detect current url? document.URL;
+- ueberpruefe post_json
+774: *7:47 AM 1/18/2023-7:57 AM 1/18/2023
+- js how to post to some external server
+775: *7:57 AM 1/18/2023-8:01 AM 1/18/2023
+- dbSave: DB koennte auch appState includen! all die Globals
+776: *8:01 AM 1/18/2023-8:23 AM 1/18/2023
+777: *8:23 AM 1/18/2023-8:27 AM 1/18/2023
+778: *8:27 AM 1/18/2023-8:28 AM 1/18/2023
+779: *8:28 AM 1/18/2023-8:29 AM 1/18/2023
+780: *8:29 AM 1/18/2023-8:33 AM 1/18/2023
+781: *8:33 AM 1/18/2023-8:39 AM 1/18/2023
+__________ do 19.1.23 waiting at the airport...   D66
+800: *8:39 AM 1/18/2023-6:23 AM 1/19/2023
+801: *6:24 AM 1/19/2023-6:25 AM 1/19/2023
+802: *6:25 AM 1/19/2023-6:27 AM 1/19/2023
+803: *6:30 AM 1/19/2023-6:31 AM 1/19/2023
+804: *6:31 AM 1/19/2023-6:34 AM 1/19/2023
+805: *6:34 AM 1/19/2023-6:40 AM 1/19/2023
+806: *6:40 AM 1/19/2023-6:45 AM 1/19/2023
+807: *6:46 AM 1/19/2023-6:56 AM 1/19/2023
+808: *6:56 AM 1/19/2023-7:08 AM 1/19/2023
+809: *7:08 AM 1/19/2023-7:14 AM 1/19/2023
+810: *7:14 AM 1/19/2023-7:21 AM 1/19/2023
+811: *7:21 AM 1/19/2023-7:21 AM 1/19/2023
+812: *7:21 AM 1/19/2023-7:22 AM 1/19/2023
+813: *7:22 AM 1/19/2023-7:24 AM 1/19/2023
+814: *7:24 AM 1/19/2023-7:24 AM 1/19/2023
+815: *7:25 AM 1/19/2023-7:26 AM 1/19/2023
+816: *7:26 AM 1/19/2023-7:29 AM 1/19/2023
+817: *7:30 AM 1/19/2023-7:50 AM 1/19/2023
+818: *7:50 AM 1/19/2023-7:50 AM 1/19/2023
+819: *7:50 AM 1/19/2023-8:12 AM 1/19/2023
+820: *8:13 AM 1/19/2023-8:24 AM 1/19/2023
+821: *8:24 AM 1/19/2023-8:28 AM 1/19/2023
+822: *8:29 AM 1/19/2023-8:33 AM 1/19/2023
+823: *8:33 AM 1/19/2023-11:23 AM 1/19/2023
+- functions innerhalb 1 region muessen sortiert werden!!!
+- test mit basemin
+- wie hab ich es displayed in textarea?
+- way shorter!
+833: *11:24 AM 1/19/2023-11:30 AM 1/19/2023
+834: *11:30 AM 1/19/2023-4:27 PM 1/19/2023
+840: *4:27 PM 1/19/2023-4:41 PM 1/19/2023
+843: *4:42 PM 1/19/2023-8:31 PM 1/19/2023
+__________ fr 20.1.23 waiting at the airport...   D65
+880: *8:32 PM 1/19/2023-6:41 AM 1/20/2023
+881: *6:41 AM 1/20/2023-7:04 AM 1/20/2023
+882: *7:05 AM 1/20/2023-7:08 AM 1/20/2023
+883: *7:08 AM 1/20/2023-8:25 AM 1/20/2023
+884: *8:25 AM 1/20/2023-8:42 AM 1/20/2023
+910: *8:42 AM 1/20/2023-8:58 AM 1/20/2023
+911: *8:58 AM 1/20/2023-9:00 AM 1/20/2023
+912: *9:00 AM 1/20/2023-9:09 AM 1/20/2023
+913: *9:09 AM 1/20/2023-9:15 AM 1/20/2023
+915: *9:15 AM 1/20/2023-11:13 AM 1/20/2023
+925: *11:13 AM 1/20/2023-11:14 AM 1/20/2023
+926: *11:14 AM 1/20/2023-11:20 AM 1/20/2023
+927: *11:20 AM 1/20/2023-5:50 AM 1/21/2023
+928: *5:50 AM 1/21/2023-5:51 AM 1/21/2023
+- firstWordAfter
+=>duplicate functions anschauen!
+- multiple files!
+- warum added er die classes 2x?
+- weg bau1 50
+- rem cons bau1 71
+region names:
+1. ideally: tag (file)
+2. what if overcopy?
+__________ sa 21.1.23 waiting at the airport...   D64
+960: *8:37 PM 1/20/2023-5:51 AM 1/21/2023
+961: *5:51 AM 1/21/2023-5:53 AM 1/21/2023
+962: *5:53 AM 1/21/2023-5:54 AM 1/21/2023
+963: *5:55 AM 1/21/2023-6:01 AM 1/21/2023
+964: *6:01 AM 1/21/2023-6:07 AM 1/21/2023
+- versuch es mit \r\n nach functions was passiert dann???
+- warum wird manchmal line break so komisch?
+965: *6:08 AM 1/21/2023-6:18 AM 1/21/2023
+966: *6:18 AM 1/21/2023-6:21 AM 1/21/2023
+967: *6:21 AM 1/21/2023-6:23 AM 1/21/2023
+968: *6:23 AM 1/21/2023-6:25 AM 1/21/2023
+969: *6:25 AM 1/21/2023-6:26 AM 1/21/2023
+970: *6:26 AM 1/21/2023-6:26 AM 1/21/2023
+971: *6:26 AM 1/21/2023-6:29 AM 1/21/2023
+972: *6:29 AM 1/21/2023-6:30 AM 1/21/2023
+973: *6:31 AM 1/21/2023-6:32 AM 1/21/2023
+974: *6:32 AM 1/21/2023-6:36 AM 1/21/2023
+975: *6:36 AM 1/21/2023-7:29 AM 1/21/2023
+976: *7:29 AM 1/21/2023-7:30 AM 1/21/2023
+977: *7:30 AM 1/21/2023-7:35 AM 1/21/2023
+978: *7:35 AM 1/21/2023-7:37 AM 1/21/2023
+979: *7:38 AM 1/21/2023-7:41 AM 1/21/2023
+980: *7:41 AM 1/21/2023-7:49 AM 1/21/2023
+- read file in dir
+- get all files in directory! node js
+open a file read in pass to parser
+aufgabe 1: aus 1 file mit full path functions und classes extracten
+
+
+
+C:\Users\tawzz\OneDrive\dev\CODEBASE\rsg93\static\js
+C:\Users\tawzz\OneDrive\dev\CODEBASE\okt21\static\js
+C:\Users\tawzz\OneDrive\dev\CBII\CODE_SAFE\CODE\js
+C:\Users\tawzz\OneDrive\dev\CODEBASE\gsm2_tictactoe\js
+C:\Users\tawzz\OneDrive\dev\CODEBASE\tnt_code\_front\asimple\js
+C:\Users\tawzz\OneDrive\dev\CODEBASE\tntCode\js
+C:\D\a00\git_archive\testing\BASE\features
+C:\D\a00\git_archive\testing\BASE
+C:\D\a00\git_archive\test01\public\BASE
+C:\D\a00\git_archive\test01\public\t99
+C:\D\a00\FLASK\step4\base\js
+C:\D\a00\FLASK\step4\base\features
+C:\D\a00\git_archive\vid_old\static\rsg\js
+C:\D\a00\git_archive\vid_old\static\front\js
+C:\D\a00\git_archive\vid\frontend\static\rsg\js
+C:\D\a00\git_archive\vid\frontend\static\front\js
+C:\D\a00\git_archive\gsmTester\C
+C:\D\a00\git_archive\gsmTester\DIE
+C:\D\a00\git_archive\gsmTester\DOC
+C:\D\a00\git_archive\gsmTester\RSG\js\done
+C:\D\a00\git_archive\gsmTester\RSG\js\measureArrange
+C:\D\a00\git_archive\gsmTester\RSG\js\R
+C:\D\a00\git_archive\gsmTester\RSG\js\testing
+C:\D\a00\git_archive\gsmTester\RSG\js\types
+C:\D\a00\git_archive\gsmTester\RSG\js\uiCreation
+C:\D\a00\git_archive\gsmTester\RSG\js (auch _)
+C:\D\a00\git_archive\gsmTester\SPGAME
+C:\D\a00\git_archive\gsmTester\SPNEW
+C:\D\a00\git_archive\cardTests\_test\ex03
+C:\D\a00\git_archive\cardTests\simple01
+C:\D\a00\git_archive\cardTests\ex06_fromScratch
+C:\D\a00\git_archive\eximple\static
+C:\D\a00\git_archive\eximple\static\games
+C:\D\a00\git_archive\dycon_ui_test\base\js
+C:\D\a00\git_archive\course-player-socketio\public\t99
+C:\D\a00\git_archive\asstest\CODE
+C:\D\a00\git_archive\asstest\SIMPLE
+C:\D\a00\git_archive\animaludos\public\work
+C:\D\a00\git_archive\animaludos\public\work\done
+C:\D\a00\git_archive\also\MZZ
+C:\D\a00\git_archive\also\BASE
+C:\D\a00\git_archive\also\BASE\features
+C:\D\a00\git_archive\animaludos\public
+C:\D\a00\git_archive\animaludos\public\BASE
+C:\D\a00\git_archive\animaludos\public\BASE\features
+C:\D\a00\git_archive\abra
+C:\D\a00\hive\hive
+C:\D\a00\TESTING\base\js
+C:\D\a00\TESTING\cosensus
+C:\D\a00\TESTING\easy
+C:\D\a00\TESTING\feedback
+C:\D\a00\TESTING\games
+C:\D\a00\TESTING\index_palette
+C:\D\a00\videmo\frontend\static\front\js
+C:\D\a00\videmo\frontend\static\rsg\js
+C:\D\a00\videmo\games\catan\_rsg
+C:\D\a00\videmo\games\ttt\_rsg
+C:\D\a00\vid\vid0\static\front\js
+C:\D\a00\vid\vid0\static\rsg\js
+C:\D\a00\vid\work2
+C:\D\a00\vid\wCOMMON\js\rsgTypes
+C:\D\a00\vid\wCOMMON\js
+C:\D\a00\vid\vid2\js
+C:\D\a00\vid\vid2\rsg
+C:\D\a01\chatApp\public\BASE
+C:\D\a01\chatApp\public\BASE\features
+C:\D\a01\chatApp\public\work
+C:\D\a01\chatApp\public\work\done
+C:\D\a01\chatApp\public
+C:\D\a01\chess
+982: *7:49 AM 1/21/2023-7:50 AM 1/21/2023
+983: *7:50 AM 1/21/2023-7:54 AM 1/21/2023
+- for each in dirlist, read all files named *.js and list filenames
+984: *7:55 AM 1/21/2023-8:04 AM 1/21/2023
+987: *8:04 AM 1/21/2023-8:07 AM 1/21/2023
+988: *8:07 AM 1/21/2023-8:11 AM 1/21/2023
+- show text in file!
+- output text in 1 file
+989: *8:11 AM 1/21/2023-8:25 AM 1/21/2023
+990: *8:25 AM 1/21/2023-8:42 AM 1/21/2023
+- gu schwimmen 
+991: *8:42 AM 1/21/2023-8:48 AM 1/21/2023
+992: *8:48 AM 1/21/2023-8:49 AM 1/21/2023
+993: *8:49 AM 1/21/2023-8:58 AM 1/21/2023
+994: *8:58 AM 1/21/2023-9:12 AM 1/21/2023
+995: *9:12 AM 1/21/2023-9:12 AM 1/21/2023
+way shorter!!!!!!!!!!!!!!!!!!
+996: *9:12 AM 1/21/2023-
+- return list of all files w/ fullpath,timestamp fuer modified sorted by time
+__________ so 22.1.23 waiting at the airport...   D64
+1: *6:57 AM 1/22/2023-7:03 AM 1/22/2023
+2: *7:03 AM 1/22/2023-7:23 AM 1/22/2023
+3: *7:23 AM 1/22/2023-7:27 AM 1/22/2023
+list more important
+C:\xampp\htdocs\aroot\_other\perlen\work\done
+C:\xampp\htdocs\aroot\_other\perlen\work
+C:\xampp\htdocs\aroot\_other\perlen
+C:\xampp\htdocs\aroot\_other\bella\js
+C:\xampp\htdocs\aroot\_other\bg\js
+C:\xampp\htdocs\aroot\_other\bg4\js
+C:\xampp\htdocs\aroot\_other\canyonglen
+C:\xampp\htdocs\aroot\_other\cards
+C:\xampp\htdocs\aroot\_other\caristo
+C:\xampp\htdocs\aroot\_other\chatas\js
+C:\xampp\htdocs\aroot\_other\chatas2
+C:\xampp\htdocs\aroot\_other\chmultOrig\js
+C:\xampp\htdocs\aroot\_other\feedback
+C:\xampp\htdocs\aroot\_other\frontend
+C:\xampp\htdocs\aroot\_other\happy
+C:\xampp\htdocs\aroot\_other\hive
+C:\xampp\htdocs\aroot\_other\klavier
+C:\xampp\htdocs\aroot\_other\phpchat\public\socket.io-client\lib
+C:\xampp\htdocs\aroot\_other\simply\js
+C:\xampp\htdocs\aroot\_other\v0_chatas
+C:\xampp\htdocs\aroot\base\js
+C:\xampp\htdocs\aroot\base\code
+C:\xampp\htdocs\aroot\belinda\js
+C:\xampp\htdocs\aroot\belinda\features
+C:\xampp\htdocs\aroot\cosensus
+C:\xampp\htdocs\aroot\easy
+C:\xampp\htdocs\aroot\iconViewer\js
+C:\xampp\htdocs\aroot\rechnung
+C:\xampp\htdocs\aroot\simple
+C:\xampp\htdocs\aroot\videos\js
+C:\D\a03\nodemaster\all\caba
+C:\D\a03\nodemaster\all\canvas\lib
+C:\D\a03\nodemaster\all\canvas\noc
+C:\D\a03\nodemaster\all\canvas\smooth
+C:\D\a03\nodemaster\all\cita
+C:\D\a03\nodemaster\all\coding\public\javascripts
+C:\D\a03\nodemaster\all\favicontester
+C:\D\a03\nodemaster\all\fileupload\public
+C:\D\a03\nodemaster\all\fractals\nature
+C:\D\a03\nodemaster\all\fractals\nn\031_FlappyBird\P5
+C:\D\a03\nodemaster\all\fractals\plant
+C:\D\a03\nodemaster\all\fractals\tree
+C:\D\a03\nodemaster\all\leaflet\leaf
+C:\D\a03\nodemaster\all\leaflet\leaf90
+C:\D\a03\nodemaster\all\leaflet\leaf91
+C:\D\a03\nodemaster\all\leaflet\leafp
+C:\D\a03\nodemaster\all\leaflet\leaf94
+C:\D\a03\nodemaster\all\leaflet\leafstreetview
+C:\D\a03\nodemaster\all\leaflet\mapgame
+C:\D\a03\nodemaster\all\leaflet\routing
+C:\D\a03\nodemaster\all\mapbox\mapbox
+C:\D\a03\nodemaster\all\mybrary\public\javascripts
+C:\D\a03\nodemaster\all\openlayers\map
+C:\D\a03\nodemaster\all\openlayers\mapTEXT
+C:\xampp\htdocs\aroot\games
+C:\D\a03\nodemaster\basejs
+C:\D\a03\nodemaster\cai
+C:\D\a03\nodemaster\noc
+C:\D\a03\nodemaster\socketstarter
+C:\D\a04\basejs
+C:\D\a04\game
+4: *7:27 AM 1/22/2023-7:27 AM 1/22/2023
+5: *7:27 AM 1/22/2023-7:33 AM 1/22/2023
+6: *7:33 AM 1/22/2023-7:33 AM 1/22/2023
+7: *7:33 AM 1/22/2023-7:34 AM 1/22/2023
+8: *7:35 AM 1/22/2023-7:36 AM 1/22/2023
+9: *7:36 AM 1/22/2023-7:45 AM 1/22/2023
+10: *7:45 AM 1/22/2023-8:02 AM 1/22/2023
+11: *8:02 AM 1/22/2023-8:05 AM 1/22/2023
+- uebernimm liste!
+- was ist opal.js? ein ruby to js compiler
+- open dev altes
+C:\DATA\dev\js\02harris\_global
+C:\DATA\dev\js\02harris\manyCars
+C:\DATA\dev\js\02harris\wipgame
+C:\DATA\dev\js\02harris\ch9
+C:\DATA\dev\js\03seidlin\ch01\examples
+C:\DATA\dev\js\03seidlin\ch02\scripts
+C:\DATA\dev\js\03seidlin\ch03\scripts
+C:\DATA\dev\js\03seidlin\ch04\scripts
+C:\DATA\dev\js\03seidlin\ch07\scripts
+C:\DATA\dev\js\03seidlin\ch09\scripts
+C:\DATA\dev\js\03seidlin\ch10\scripts
+C:\DATA\dev\js\03seidlin\ch11\scripts
+C:\DATA\dev\js\03seidlin\ch12\scripts
+C:\DATA\dev\js\06verou
+C:\DATA\dev\js\07joeames\js
+C:\DATA\dev\js\08cardGame1\script
+C:\DATA\dev\js\16kaefer\js
+C:\DATA\dev\js\19lifeGame\version1
+C:\DATA\dev\js\20testPongApp
+C:\DATA\dev\js\23Animations_CSS_JS\_my\clock\js
+C:\DATA\dev\js\23Animations_CSS_JS\_my\learning\final\js
+C:\DATA\dev\js\24memory
+C:\DATA\dev\js\25nnImage\scripts
+C:\DATA\dev\js\26udaCanvas
+C:\DATA\dev\js\28cards\test02
+C:\DATA\dev\js\31p0
+C:\DATA\dev\js\32t0\grid
+C:\DATA\dev\js\33cardGameStarter
+C:\DATA\dev\js\40cardSolitaire\cg01
+C:\DATA\dev\js\42deckOfCards\test02
+C:\DATA\dev_2020\CBII\zLastVid\work2
+C:\DATA\dev_2020\CBII\zLastVid\work
+C:\DATA\dev_2020\CBII\zLastVid\wCOMMON\js
+C:\DATA\dev_2020\CBII\zLastVid\wCOMMON\js\rsgTypes
+C:\DATA\dev_2020\CBII\zLastVid\vid2\js
+C:\DATA\dev_2020\CBII\zLastVid\vid2\rsg
+C:\DATA\dev_2020\CBII\zLastVid\vid0\static\front\js
+C:\DATA\dev_2020\CBII\zLastVid\vid0\static\rsg\js
+C:\DATA\dev_2020\CODEBASE\tnt_code\_front\asimple\js
+C:\DATA\dev_2020\CODEBASE\tnt_code\_front\front_console\js
+C:\DATA\dev_2020\CODEBASE\okt21\static\js
+C:\DATA\dev_2020\CODEBASE\work\nov08\js
+15: *8:06 AM 1/22/2023-8:15 AM 1/22/2023
+16: *8:15 AM 1/22/2023-8:16 AM 1/22/2023
+17: *8:16 AM 1/22/2023-8:16 AM 1/22/2023
+18: *8:17 AM 1/22/2023-8:17 AM 1/22/2023
+19: *8:17 AM 1/22/2023-8:20 AM 1/22/2023
+20: *8:20 AM 1/22/2023-8:26 AM 1/22/2023
+21: *8:26 AM 1/22/2023-8:27 AM 1/22/2023
+22: *8:27 AM 1/22/2023-8:27 AM 1/22/2023
+23: *8:27 AM 1/22/2023-8:28 AM 1/22/2023
+import / export:
+and ende vom file schreibe:
+if (this && typeof module == "object" && module.exports && this === module.exports) {
+	module.exports = {
+		parseCodefile,....
+	};
+}
+ins server file, schreibe
+const { parseCodefile.... } = require('./game/bau1.js');
+24: *8:28 AM 1/22/2023-9:15 AM 1/22/2023
+25: *9:16 AM 1/22/2023-9:25 AM 1/22/2023
+26: *9:26 AM 1/22/2023-9:27 AM 1/22/2023
+27: *9:27 AM 1/22/2023-9:36 AM 1/22/2023
+28: *9:36 AM 1/22/2023-9:36 AM 1/22/2023
+29: *9:37 AM 1/22/2023-9:38 AM 1/22/2023
+30: *9:38 AM 1/22/2023-9:42 AM 1/22/2023
+31: *9:42 AM 1/22/2023-9:42 AM 1/22/2023
+32: *9:42 AM 1/22/2023-9:56 AM 1/22/2023
+33: *9:56 AM 1/22/2023-
+- save it somewhere else!!!
+__________ mo 23.1.23 waiting at the airport...   D63
+60: *8:35 PM 1/22/2023-6:06 AM 1/23/2023
+61: *6:06 AM 1/23/2023-6:08 AM 1/23/2023
+62: *6:08 AM 1/23/2023-6:12 AM 1/23/2023
+63: *6:12 AM 1/23/2023-6:15 AM 1/23/2023
+64: *6:15 AM 1/23/2023-6:19 AM 1/23/2023
+65: *6:19 AM 1/23/2023-6:22 AM 1/23/2023
+66: *6:22 AM 1/23/2023-6:28 AM 1/23/2023
+67: *6:28 AM 1/23/2023-6:42 AM 1/23/2023
+68: *6:42 AM 1/23/2023-6:46 AM 1/23/2023
+69: *6:46 AM 1/23/2023-6:46 AM 1/23/2023
+70: *6:47 AM 1/23/2023-6:52 AM 1/23/2023
+71: *6:52 AM 1/23/2023-6:55 AM 1/23/2023
+72: *6:55 AM 1/23/2023-7:25 AM 1/23/2023
+73: *7:25 AM 1/23/2023-7:31 AM 1/23/2023
+74: *7:31 AM 1/23/2023-7:32 AM 1/23/2023
+75: *7:49 AM 1/23/2023-7:53 AM 1/23/2023
+- discard files that have server or app in their name startWith
+firstWords can be: onload,function,async,class,var,const,let,module,require,import
+//# //
+76: *7:53 AM 1/23/2023-8:14 AM 1/23/2023
+77: *8:14 AM 1/23/2023-8:26 AM 1/23/2023
+/* bis */ commented out solange line kein */ enthaelt, dann normal weiter
+- besser: z[n].js OR append text???
+- alle files size 500-1500
+80: *8:26 AM 1/23/2023-8:31 AM 1/23/2023
+81: *8:32 AM 1/23/2023-
+- versteht es nicht mehr!!!!
+__________ di 24.1.23 waiting at the airport...   D62
+110: *6:41 AM 1/24/2023-
+
+
+
+- click link in code file in vs code editor: unable to open File is a directory
+- vs code Unable to open file is a directory
+- brauch eine option dass er mir den path angibt!!!
+- >300
+- next example
+- wie also?
+- test ob fromFile functioniert!
+nimm erstes file mit ueber 100 byte
+- size
+- was gibt es noch in fs.statSync(file).size
+- sort files by length
+- output ist bei nodemaster
+for some reason ist kein code in regions?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+- ich muss es im client machen!
+- ok so einfach geht es nicht
+- parse a random code file and save it as z.txt
+- die beiden kommen in region import und region export
+- mach einen test: schreibe export vor irgendeine func in aaa
+- js export function
+- server version hat einfach nur:
+module.exports = {
+alle funcs
+};
+open baseminserver
+
+ich koennte all diese files
+ok 0. sort by timestamp
+1. read
+2. open new file
+enter full path 
+enter full code sorted in: var const class function
+name: t_000 ... t_688.js
+
+
+weiters:
+search for '= function('
+convert const WORD = function(...){ into: function WORD(...){
+
+was koennt ich jetzt machen?
+habe 688 files! 
+
+
+
+
+
+
+
+
+
+
+
+
+- nimm mtime
+- format fs.stats.mtimeMs as date time
+- hol den code rein!
+
+- jetzt soll nur noch dazukommen das alte zeug von den books
+
+exclude words like min. and copy
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+C:\xampp\htdocs\aroot\_other\bg\js
+C:\xampp\htdocs\aroot\_other\bg\js
+C:\xampp\htdocs\aroot\_other\bg\js
+C:\xampp\htdocs\aroot\_other\bg\js
+C:\xampp\htdocs\aroot\_other\bg\js
+
+
+
+
+
+
+
+
+jetzt hab ich alle files
+jetzt koennte ich noch alle aus aroot holen
+
+- kann ich die fileinfo(datemodified) irgendwie sehen?
+- kann ich all die dirs in 1 dir umkopieren?
+
+gu sonntag: 3-6
+mittwoch + freitag 11h30-1
+
+
+
+
+
+
+
+nodemaster
+aroot
+a04
+
+
+
+
+
+UCODE MUELL z... rest trash
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+die andere moeglichkeit waere, haendisch die files durchzusuchen
+ich sag ihm die root dirs
+exclude all files or dirs: _* node_modules 
+
+
+- das muss jetzt von app.js aus gemacht werden!!!
+duplicate handling:
+sort all files by date
+do NOT use alibs,node_modules
+gib ihm die roots fuer search und er searched tree down
+
+
+===>- er sieht nur noch duplicates im selben file!!!
+- trotzdem noch die duplicate functions!!!
+- ja klar, er gleicht es aus wenn es alles aus 1 file kommt, ist ok denk ich
+- jetzt das neue!
+- copy paste
+- nochmal das alte!
+- jetzt das neue
+- nochmal das alte!
+- mach die lines, ersetze durch \r\n bei save
+- wo wird regionName gesetzt?
+- goto bau1 line 29
+- wie kann es duplicate funcs geben in different regions?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+- preserve region!!!!!
+- test mit 2 files
+- multiple files!!!
+
+eine zeile kann nur entweder mit
+async function o
+function
+//#region
+//
+empty
+}
+class
+
+starten
+
+
+- rem cons
+- multiple files!
+
+
+bei basemin ist es so:
+//#region
+var
+...
+//#region classes
+*
+
+bei allen anderen ist es so:
+*
+
+- es genuegt wenn ich die codebase clean mache
+- legacy code wird abandoned! ab a04
+- kann aber jederzeit legacy code analysen und function wise zu base addierren
+- automatisch toCamelCase fuer alle funcs im gesamten text!!!
+=>muss aber checken ob diese camelcased schon existierrt!!!!
+- provision fuer multiple files!!!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+- WAY SHORTER!!!
+- wenn ich die vars will, muss ich bis function oder class text copieren
+- next: mach nur die section mit den vars selbst, rest 
+- download text as text
+- text next
+- jetzt den text!
+- test: output regions und ueberlege ob ich zu 2letter beginnings machen kann?
+- output funcnames und ueberlege die verbs
+
+renaming functions:
+-:
+1. breaks former code! unless rename in aroot and nodemaster as well!
+2. sehr viel arbeit
++:
+1. kann region/filename removen
+2. consistenteres besseres naming
+3. arbeit ist leicht
+4. intellisense geht besser!
+
+on the other hand: koennte auch search nach region machen 
+
+- oder ich koennte die region info fuer renamings verwenden?
+ich habe zu jedem zeitpunkt die current region und current filename!
+ich koennte noch ein 3ttest dict machen sorted by filename and region?
+
+
+- text: 
+- what about the text for download? soll ich die regions machen?
+- back to code parsing!
+- goto code: fiddleSave
+- Viewer - code ist dasselbe wie fiddle
+- mach eine fiddle app
+- fiddle? ist das jetzt eine app oder was? ja die fiddle app
+- save env: remote / localhost / localStorage (alle die moeglich!)
+- load env: localStorage / localhost | remote host / defaults
+- save env: wenn server laeuft: auf db
+- falls ich keinen server laufen habe: load env from localhost
+- env.fiddle was soll ich saven hier?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+- was macht db_save_client? saves to localhost!!! das will ich nicht oder? das geht nur wenn der local server laeuft!!!
+- back to code parsing!!!
+=>reverse engineer basemin.js
+
+
+
+==>code parsing!
+- action / 3 9:40 AM 1/17/2023-
+- mach einen solve button der round restartet
+
+
+
+behavior vs person
+abgrenzung: erwachsen have to take care of my inner state vs inner state just a mirror of umfeld
+judgement: expose or not
+aber: do we actually have a choice? is this question even meaningfull?
+=>ma notes
+
+
+
+
+
+
+
+
+4. jeder schreibt seine version
+5. alles wird collected (playerdata)
+6. zeige alle kompletten sayings including the correct one
+7. jeder voted
+8. votes werden collected
+9. scoring!
+- im select_saying phase soll einfach 
+- was ist dieses a_game?
+- warum zeigt er mir die options nicht???
+- show games
+- config brauch ein wise mit owl
+- wenn ankomme: handle
+- loading assets
+- assets aus asset/games/wise
+- what does it take to implement a simple game on telecave?
+
+
+- upload game und base
+- how to start a simple server on vps
+- das muesst eigentlich gehen!
+
+
+
+
+
+
+
+
+- var
+- way shorter!!!!
+- ich muss mir das mit dem prefix ueberlegen!
+
+- can I reconstruct the codebase?
+dazu muss ich mir merken in welches file welche func gehoert und unter welchem region sie laeuft!
+- mach eine func: compile
+- woher nehm ich den code fuer compile?
+- ang ich verwende basejs nicht mehr
+
+
+- wie koennt ich den cycle am besten machen?
+- mDiv overhaul
+- mDivC(dParent,styles,opts)
+
+
+
+- what does it take to add a search bar to sidebar?
+es waer gut wenn die fiddle eine search bar haette
+noch besser wenn die sidebar eine filter bar haette!
+
+- goto runcode
+- LHS RHS
+- jetzt moecht ich die constants
+
+
+
+==>tv: camelCase ueberall!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+- hol mir das tribute.js nochmal? echt?
+- super slow heute! ganz viele punkte sammeln!!!
+=>mach ein eigenes autocomplete das tribute ist mist
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+TarekRaafat:
+https://github.com/TarekRaafat/autoComplete.js
+
+
+- rem cons aaa 2904 (+)
+
+- hideMenu sollte das richtige sein!
+
+- get focused element
+- somehow cannot focus on a textarea!!!
+- Ctrl - remove all empty fiddles!
+- gibt es ein dFiddle??? JA
+arrAtDist([0,1,2,3,4,5], 1, -1, 1,13); //5
+- modulo wenn unter 0!
+besser
+- get_next_in_list =>arrNext(arr,el,imin,imax)
+- min 1
+- arrowUp
+
+
+patrick bet-david
+plötzlich und unerwartet
+assistance 18776534732
+mail a poa paj
+
+- save all fiddles, restore all fiddles
+- fgu
+- camel case!!!
+- fiddle_add_below,fiddle_add_above,fiddle_execute,fiddle_clear,fiddle_set_current
+- aendern sodass control allein nur die zeile executed
+- mach ein aRestore dass transform loescht
+- on top of textarea will ich ein div fuer info sowie params
+
+rem cons
+
 - gesamten code mit AU raushauen!!!
 - goto parse_functions
 
