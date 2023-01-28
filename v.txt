@@ -5692,7 +5692,248 @@ firstWords can be: onload,function,async,class,var,const,let,module,require,impo
 81: *8:32 AM 1/23/2023-
 - versteht es nicht mehr!!!!
 __________ di 24.1.23 waiting at the airport...   D62
-110: *6:41 AM 1/24/2023-
+110: *6:41 AM 1/24/2023-6:50 AM 1/24/2023
+111: *6:50 AM 1/24/2023-6:59 AM 1/24/2023
+112: *6:59 AM 1/24/2023-7:10 AM 1/24/2023
+113: *7:10 AM 1/24/2023-7:41 AM 1/24/2023
+114: *7:41 AM 1/24/2023-7:44 AM 1/24/2023
+115: *7:44 AM 1/24/2023-7:49 AM 1/24/2023
+120: *8:01 AM 1/24/2023-8:26 AM 1/24/2023
+121: *8:26 AM 1/24/2023-8:54 AM 1/24/2023
+122: *8:55 AM 1/24/2023-8:56 AM 1/24/2023
+123: *8:56 AM 1/24/2023-9:07 AM 1/24/2023
+124: *9:15 AM 1/24/2023-9:15 AM 1/24/2023
+- scheussliche bauchweh dauernd!!!!!!! alles frei!!!!!!!!!
+125: *9:15 AM 1/24/2023-9:16 AM 1/24/2023
+126: *9:16 AM 1/24/2023-9:41 AM 1/24/2023
+127: *9:41 AM 1/24/2023-9:44 AM 1/24/2023
+128: *9:44 AM 1/24/2023-10:03 AM 1/24/2023
+130: *10:03 AM 1/24/2023-11:30 AM 1/24/2023
+action /3 *10:12 AM 1/24/2023-11:29 AM 1/24/2023 24
+150: *11:30 AM 1/24/2023-11:31 AM 1/24/2023
+151: *11:32 AM 1/24/2023-3:43 PM 1/24/2023
+152: *3:44 PM 1/24/2023-
+action /3: *3:44 PM 1/24/2023-6:53 AM 1/25/2023
+__________ mi 25.1.23 waiting at the airport...   D61
+180: *6:53 AM 1/25/2023-6:55 AM 1/25/2023
+181: *6:55 AM 1/25/2023-7:02 AM 1/25/2023
+182: *7:02 AM 1/25/2023-7:03 AM 1/25/2023
+183: *7:03 AM 1/25/2023-7:04 AM 1/25/2023
+184: *7:04 AM 1/25/2023-7:07 AM 1/25/2023
+185: *7:07 AM 1/25/2023-7:13 AM 1/25/2023
+186: *7:13 AM 1/25/2023-7:14 AM 1/25/2023
+187: *7:14 AM 1/25/2023-7:17 AM 1/25/2023
+188: *7:18 AM 1/25/2023-8:26 AM 1/25/2023
+189: *8:26 AM 1/25/2023-8:46 AM 1/25/2023
+190: *8:46 AM 1/25/2023-8:40 AM 1/26/2023
+=>alles ins region superdict und sigdict!!!
+- check brot!
+- parse var const
+- ich koennt bei var auch parsing starten:
+wenn code nur 1 zeile ist
+__________ do 26.1.23 waiting at the airport...   D60 krank
+200: *7:56 AM 1/26/2023-8:01 AM 1/26/2023
+201: *8:01 AM 1/26/2023-8:11 AM 1/26/2023
+202: *8:11 AM 1/26/2023-8:16 AM 1/26/2023
+203: *8:16 AM 1/26/2023-8:29 AM 1/26/2023
+205: *8:29 AM 1/26/2023-8:35 AM 1/26/2023
+206: *8:35 AM 1/26/2023-8:37 AM 1/26/2023
+207: *8:37 AM 1/26/2023-8:40 AM 1/26/2023
+208: *8:40 AM 1/26/2023-8:44 AM 1/26/2023
+209: *8:44 AM 1/26/2023-8:48 AM 1/26/2023
+210: *8:48 AM 1/26/2023-8:50 AM 1/26/2023
+211: *8:50 AM 1/26/2023-8:51 AM 1/26/2023
+212: *8:51 AM 1/26/2023-9:13 AM 1/26/2023
+213: *9:13 AM 1/26/2023-9:15 AM 1/26/2023
+214: *9:15 AM 1/26/2023-9:15 AM 1/26/2023
+215: *9:15 AM 1/26/2023-11:01 AM 1/26/2023
+225: *11:01 AM 1/26/2023-8:20 PM 1/26/2023
+__________ fr 27.1.23 waiting at the airport...   D59
+250: *9:07 PM 1/26/2023-6:50 AM 1/27/2023
+251: *6:50 AM 1/27/2023-6:51 AM 1/27/2023
+252: *6:51 AM 1/27/2023-6:51 AM 1/27/2023
+253: *6:52 AM 1/27/2023-6:53 AM 1/27/2023
+254: *6:53 AM 1/27/2023-6:59 AM 1/27/2023
+255: *7:00 AM 1/27/2023-7:21 AM 1/27/2023
+- was ist unterder table?
+- bei der fiffle brauch ich ein fiddleOutput(d)
+- versuch fiddleInit
+- versuche das sigdi einfach als yaml von dem 
+- die dictionaries muessen am server produziert werden!
+- sigdi sollte eigentlich superdi dictionary sein oder?
+- brauch einen pointer zu code von manchen vars!
+256: *7:21 AM 1/27/2023-7:30 AM 1/27/2023
+257: *7:30 AM 1/27/2023-7:31 AM 1/27/2023
+258: *7:31 AM 1/27/2023-7:42 AM 1/27/2023
+260: *7:42 AM 1/27/2023-7:54 AM 1/27/2023
+261: *7:54 AM 1/27/2023-8:22 AM 1/27/2023
+262: *8:22 AM 1/27/2023-9:01 PM 1/27/2023
+__________ sa 28.1.23 waiting at the airport...   D58
+280: *6:40 PM 1/27/2023-7:23 AM 1/28/2023
+281: *7:28 AM 1/28/2023-7:31 AM 1/28/2023
+282: *7:31 AM 1/28/2023-7:40 AM 1/28/2023
+283: *7:40 AM 1/28/2023-7:43 AM 1/28/2023
+284: *7:43 AM 1/28/2023-7:44 AM 1/28/2023
+285: *7:44 AM 1/28/2023-7:52 AM 1/28/2023
+286: *7:52 AM 1/28/2023-7:53 AM 1/28/2023
+287: *7:53 AM 1/28/2023-8:55 AM 1/28/2023
+288: *8:55 AM 1/28/2023-8:57 AM 1/28/2023
+289: *8:57 AM 1/28/2023-9:07 AM 1/28/2023
+290: *9:07 AM 1/28/2023-9:09 AM 1/28/2023
+291: *9:09 AM 1/28/2023-9:16 AM 1/28/2023
+292: *9:16 AM 1/28/2023-9:18 AM 1/28/2023
+293: *9:19 AM 1/28/2023-9:22 AM 1/28/2023
+294: *9:23 AM 1/28/2023-9:24 AM 1/28/2023
+295: *9:24 AM 1/28/2023-9:28 AM 1/28/2023
+296: *9:28 AM 1/28/2023-9:31 AM 1/28/2023
+297: *9:31 AM 1/28/2023-9:40 AM 1/28/2023
+298: *9:40 AM 1/28/2023-9:48 AM 1/28/2023
+299: *9:48 AM 1/28/2023-9:49 AM 1/28/2023
+300: *9:49 AM 1/28/2023-10:00 AM 1/28/2023
+301: *10:00 AM 1/28/2023-10:02 AM 1/28/2023
+action /2: *10:02 AM 1/28/2023-
+get ready,spaz
+
+- duplicate names have NO way
+priority: function,class,const,var
+=> MSCATS var weg
+ok => AREAS var weg
+
+- weiter gehts
+
+
+=>how about: keys HAVE to start with letter or '_'
+=>bei var line: if contains '{' or '[' do NOT split!!!!!
+- weiter
+- einfach durchsieben bis code ok ist!
+- something else is relevant... =>spa!
+- das ending: '];' muss es auch geben!
+- ne nuetzt nichts! wenn ich es so mache dann muss ich leidedr vom server aus gehen!!!
+- hol mir das ding
+
+- brauch ich wirklich im yaml file den code?
+- wo hab ich all die exports gemacht???
+- vars und consts muessen zu exports gegeben werden!!!
+- goto code toggle_fiddle
+- click fiddle soll open close die echte fiddle MIT search bar!
+- rem cons bau1 9624
+
+something else is relevant
+something else is relevant.
+
+
+
+
+
+
+sa airport 25
+so jeslyn 100
+
+
+
+- wenn enter click in ta soll vergroessern wenn noetig!!!
+- jetzt moecht ich const def laden in textarea so gross wie lines!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+versuch es mit const
+
+- wo wird show_code verwendet? ,
+
+kann ich einfach so show_sidebar aufrufen?
+- jetzt zeige alle wieder 
+- das mit den vars haut nicht hin!!!
+- bin komplett ko leider was hab ich fuer eine krankheit?
+- info superdi
+
+- only keep superdi!
+- multiple vars in 1 line???
+
+
+
+
+
+
+
+
+
+- ich koennte varblocks machen mit:
+code: sowie func code
+varnames: 
+- versuch statt aaa und bau1 einfach _bau1 zu implrten!
+- how to handle var and const?
+
+
+
+
+
+
+
+
+- und: region info fehlt auch!!! sollte path und region haven!
+- und: sehr viele vars und consts fehlen jetzt!!!
+- folding geht nicht fuer so ein langes file!!!
+- neues load_codebase >>bau1
+was nun?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

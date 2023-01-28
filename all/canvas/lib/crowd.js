@@ -19,9 +19,7 @@ const removeItemFromArray = (array, item) => removeFromArray(array, array.indexO
 
 const removeRandomFromArray = (array) => removeFromArray(array, randomIndex(array))
 
-const getRandomFromArray = (array) => (
-	array[randomIndex(array) | 0]
-)
+const getRandomFromArray = (array) => (array[randomIndex(array) | 0])
 
 // TWEEN FACTORIES
 
