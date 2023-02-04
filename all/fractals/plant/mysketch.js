@@ -2,14 +2,14 @@
 //axiom: A
 //rules: A->AB, B->A
 var axiom, rules, factor, angle, max, sentence, interval_id;
-const Simple = {
+var Simple = {
 	axiom: 'A',
 	rules: [
 		{ aus: 'A', mach: 'AB' },
 		{ aus: 'B', mach: 'A' }
 	],
 };
-const Algae = {
+var Algae = {
 	axiom: 'A',
 	rules: [
 		{ aus: 'A', mach: 'A+[B]-[A]' },
@@ -19,7 +19,7 @@ const Algae = {
 	factor: .9,
 	max: 5,
 };
-const Complex = {
+var Complex = {
 	axiom: 'F',
 	rules: [
 		{ aus: 'F', mach: 'FF+[+F-F-F]-[-F+F+F]' }

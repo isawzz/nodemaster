@@ -1,53 +1,1554 @@
-var activatedTests = [];
-var ActiveButton = null;
-var ActiveChats = {}; 
-var AD, ADS; 
-var AGAME = {
+const DOMCATS = { rect: 'g', g: 'g', circle: 'g', text: 'g', polygon: 'g', line: 'g', body: 'd', svg: 'h', div: 'd', p: 'd', table: 'd', button: 'd', a: 'd', span: 'd', image: 'd', paragraph: 'd', anchor: 'd' };
+const IS_MIRROR = false;
+const FLASK = true;
+const NGROK = false; //'http://849aec381695.ngrok.io/'; // MUSS / am ende!!! 
+const SERVER_URL = IS_MIRROR ? 'http://localhost:5555/' : FLASK ? (NGROK ? NGROK : 'http://localhost:' + PORT + '/') : 'http://localhost:5005/';
+const clientData = {}; 
+const defaultGameplayerAreaName = 'gameplayerArea';
+const defaultTabletopCardsAreaName = 'tabletopCardsArea';
+const defaultDeckAreaName = 'deckArea';
+const MIN_CARD_HEIGHT = 60;
+const MAX_CARD_HEIGHT = 100;
+const CARD_SZ = 80;
+const LABEL_SZ = 40;
+const FIELD_SZ = 40;
+const THEMES = ['#c9af98', '#2F4F4F', '#6B7A8F', '#00303F', 'rgb(3, 74, 166)', '#458766', '#7A9D96'];
+const overwriteMerge = (destinationArray, sourceArray, options) => sourceArray
+const fieldSorter = fields => (a, b) =>
+  fields
+    .map(o => {
+      let dir = 1;
+      if (o[0] === '-') {
+        dir = -1;
+        o = o.substring(1);
+      }
+      return a[o] > b[o] ? dir : a[o] < b[o] ? -dir : 0;
+    })
+    .reduce((p, n) => (p ? p : n), 0);
+const INTERACTION = { none: 0, selected: 1, stop: 2, saveLoad: 3, route: 4 };
+const MAX_PLAYERS_AVAILABLE = 8;
+const soloTypes = ['me', 'AI regular', 'AI random', 'AI pass'];
+const allPlayerTypes = ['me', 'human', 'AI regular', 'AI random', 'AI pass'];
+const PLAYER_CONFIG_FOR_MULTIPLAYER = ['me', 'human', 'human'];
+const CACHE_INITDATA = true;
+const RUNTEST = false; 
+const USE_NON_TESTING_DATA = true;
+const DSPEC_VERSION = 3;
+const USPEC_VERSION = '2a';
+const SERVERDATA_VERSION = 1;
+const TEST_PATH = '/zdata/';
+const INIT_CLEAR_LOCALSTORAGE = true; 
+const USE_MAX_PLAYER_NUM = false; 
+const STARTING_TAB_OPEN = 'bPlayers'; 
+const TIMIT_SHOW = false; 
+const SHOW_SERVER_ROUTE = false; 
+const SHOW_SERVER_RETURN = false; 
+const USE_OLD_GRID_FUNCTIONS = false;
+const USE_ALL_GAMES_ROUTE = false; 
+const USE_SOCKETIO = false;
+const USE_BACKEND_AI = true;
+const names = ['felix', 'amanda', 'sabine', 'tom', 'taka', 'microbe', 'dwight', 'jim', 'michael', 'pam', 'kevin', 'darryl', 'lauren', 'anuj', 'david', 'holly'];
+const TEST_VERSION = '17'; 
+const INCREMENTAL_UPDATE = true; 
+const VERBOSE = true; 
+const SHOW_SERVERDATA = false; 
+const USER_SERVERDATA_STUB = false; 
+const DEF_ORIENTATION = 'v';
+const DEF_SPLIT = 0.5;
+const RUPDATE = {
+  info: mNodeChangeContent,
+};
+const MAX_RECURSIONS = 200;
+const RCREATE = {
+  card52: mCard52,
+  card: mCard,
+  hand: mHand,
+  grid: mGrid,
+  info: mInfo,
+  invisible: mInvisible,
+  panel: mPanel,
+  picto: mPicto,
+  manual00: mManual00,
+}
+const RCONTAINERPROP = {
+  list: 'elm',
+  hand: 'elm',
+  panel: 'sub',
+}
+const PARAMCSS = {
+  bg: 'background-color',
+  fg: 'color',
+  align: 'text-align',
+  rounding: 'border-radius',
+};
+const PARAMRSG_T = {
+  defaultType: false,
+  show: false,
+  overlap: true,
+  orientation: true, 
+  split: true, 
+  shape: true,
+  field_spacing: true,
+  size: true,
+  rounding: true,
+};
+const SHOW_TRACE = false; 
+const SHOW_DEFS = false; 
+const MarkerText = ['✔️', '❌'];
+const MarkerId = { SUCCESS: 0, FAIL: 1 };
+const GENERATE_EMPTY_MESSAGES = true;
+const SEND_MOUSE_MOVE_EVERY = 200;
+const MOUSED = 15;
+const MASTERVOLUME = 0.1;
+const germanNumbers = {
+  ein: 1, eins: 1, zwei: 2, 1: 'eins', 2: 'zwei', 3: 'drei', drei: 3, vier: 4, 4: 'vier', 5: 'fuenf', fuenf: 5, sechs: 6, 6: 'sechs', sex: 6,
+  sieben: 7, 7: 'sieben', 8: 'acht', acht: 8, 9: 'neun', neun: 9, zehn: 10, elf: 11, zwoelf: 12, zwanzig: 20, dreissig: 30,
+  10: 'zehn', 11: 'elf', 12: 'zwoelf', 20: 'zwanzig', 30: 'dreissig', vierzig: 40, fuenfzig: 50, 40: 'vierzig', 50: 'fuenfzig'
+};
+const _overwriteMerge = (destinationArray, sourceArray, options) => sourceArray
+const messageTypes = { LEFT: 'left', RIGHT: 'right', LOGIN: 'login' };
+const messages = []; 
+const VerboseSocket = false;
+const createMessageHTML = message => {
+  if (isString(message)) {
+    return `
+      <p class="secondary-text text-center mb-2">${message}</p>
+    `;
+  } else if (isString(message)) {
+    return `
+    <div>
+      <p style="color:red" class="message-content">${message}</p>
+    </div>
+    `;
+  }
+  return `
+  <div class="message ${message.type === messageTypes.LEFT ? 'message-left' : 'message-right'
+    }">
+    <div class="message-details flex">
+      <p class="flex-grow-1 message-author">${message.author}</p>
+      <p class="message-date">${message.date}</p>
+    </div>
+    <p class="message-content">${message.content}</p>
+  </div>
+  `;
+};
+const displayMessages = () => {
+  const messagesHTML = messages
+    .map(message => createMessageHTML(message))
+    .join('');
+  messagesList.innerHTML = messagesHTML;
+};
+const BLUE = '#4363d8';
+const BROWN = '#96613d';
+const GREEN = '#3cb44b';
+const BLUEGREEN = '#004054';
+const FIREBRICK = '#800000';
+const LIGHTGREEN = '#afff45'; //'#bfef45';
+const LIGHTBLUE = '#42d4f4';
+const OLIVE = '#808000';
+const ORANGE = '#f58231';
+const PURPLE = '#911eb4';
+const RED = '#e6194B';
+const TEAL = '#469990';
+const YELLOW = '#ffe119';
+const YELLOW2 = '#fff620';
+const YELLOW3 = '#ffed01';
+const wamber = '#ffc107';
+const waqua = '#00ffff';
+const wblack = '#000000';
+const wblue = '#2196f3';
+const wbluegrey = '#607d8b';
+const wbluegray = '#607d8b';
+const wbrown = '#795548';
+const wcyan = '#00bcd4';
+const wdarkgrey = '#616161';
+const wdeeporange = '#ff5722';
+const wdeeppurple = '#673ab7';
+const wgreen = '#4caf50';
+const wgrey = '#9e9e9e';
+const windigo = '#3f51b5';
+const wkhaki = '#f0e68c';
+const wlight = '#f1f1f1';
+const wlightblue = '#87ceeb';
+const wlightgreen = '#8bc34a';
+const wlime = '#cddc39';
+const worange = '#ff9800';
+const wpaleblue = '#ddffff';
+const wpalegreen = '#ddffdd';
+const wpalered = '#ffdddd';
+const wpaleyellow = '#ffffcc';
+const wpink = '#e91e63';
+const wpurple = '#9c27b0';
+const wred = '#f44336';
+const wsand = '#fdf5e6';
+const wteal = '#009688';
+const wwhite = '#ffffff';
+const wyellow = '#ffeb3b';
+const ColorList = ['lightgreen', 'lightblue', 'yellow', 'red', 'green', 'blue', 'purple', 'violet', 'lightyellow',
+  'teal', 'orange', 'brown', 'olive', 'deepskyblue', 'deeppink', 'gold', 'black', 'white', 'grey'];
+const levelColors = [LIGHTGREEN, LIGHTBLUE, YELLOW, 'orange', RED,
+  GREEN, BLUE, PURPLE, YELLOW2, 'deepskyblue',
+  'deeppink', TEAL, ORANGE, 'seagreen', FIREBRICK, OLIVE,
+  '#ffd8b1', '#000075', '#a9a9a9', '#ffffff', '#000000', 'gold', 'orangered', 'skyblue', 'pink', 'deeppink',
+  'palegreen', '#e6194B'];
+const DD = {
+  yellow: 'gelb', green: 'grün', blue: 'blau', red: 'rot', pink: 'rosa', orange: 'orange', black: 'schwarz',
+  white: 'weiss', violet: 'violett', '1st': 'erste', '2nd': 'zweite', '3rd': 'dritte', '4th': 'vierte', '5th': 'fünfte',
+  add: 'addiere', subtract: 'subtrahiere', multiply: 'mutipliziere', plus: 'plus', minus: 'minus', times: 'mal',
+  'divided by': 'dividiert durch', excellent: 'sehr gut', very: 'sehr', good: 'gut',
+  'to the previous number': 'zur vorhergehenden zahl',
+  'from the previous number': 'von der vorhergehenden zahl',
+  'multiply the previous number by': 'multipliziere die vorhergehende zahl mit',
+  'divide the previous number by': 'dividiere die vorhergehende zahl durch',
+  'the previous number': 'die vorhergehende zahl', is: 'ist', what: 'was', equals: 'ist gleich', enter: "tippe",
+  'to the power of': 'hoch', or: 'oder', less: 'kleiner', greater: 'grösser', than: 'als', equal: 'gleich', and: 'und',
+  not: 'nicht', click: 'click', press: 'tippe', quite: 'ziemlich', 'not quite': 'nicht ganz',
+  say: 'sage', write: 'schreibe', complete: 'ergänze', 'unequal': 'ungleich', except: 'ausser', EXCEPT: 'AUSSER',
+  number: 'Zahl', color: 'farbe', eliminate: 'eliminiere', all: 'alle', with: 'mit', true: 'wahr', false: 'falsch',
+  build: 'bilde', count: 'zähle', 'the red dots': 'die roten Punkte',
+};
+const playerColors = {
+  red: '#D01013',
+  blue: '#003399',
+  green: '#58A813',
+  orange: '#FF6600',
+  yellow: '#FAD302',
+  violet: '#55038C',
+  pink: '#ED527A',
+  beige: '#D99559',
+  sky: '#049DD9',
+  brown: '#A65F46',
+  white: '#FFFFFF',
+};
+const PlayerColors = {
+  red: '#D01013',
+  blue: '#003399',
+  green: '#58A813',
+  orange: '#FF6600',
+  yellow: '#FAD302',
+  violet: '#55038C',
+  pink: '#ED527A',
+  beige: '#D99559',
+  sky: '#049DD9',
+  brown: '#A65F46',
+  white: '#FFFFFF',
+  lightblue: '#42d4f4',
+  lightgreen: '#afff45',
+};
+const OPS = { 
+  'first': { cmd: 'add', link: 'to', wr: '+', sp: 'plus', f: (a, b) => (a + b), min: 20, max: 100 },
+  'plus': { cmd: 'add', link: 'to', wr: '+', sp: 'plus', f: (a, b) => (a + b), min: 3, max: 30 },
+  'minus': { cmd: 'subtract', link: 'from', wr: '-', sp: 'minus', f: (a, b) => (a - b), min: 1, max: 10 },
+  'div': { cmd: 'divide', link: 'by', wr: ':', sp: 'divided by', f: (a, b) => (a / b), min: 2, max: 10 },
+  'intdiv': { cmd: 'divide', link: 'by', wr: 'div', sp: 'divided by', f: (a, b) => (Math.floor(a / b)), min: 1, max: 10 },
+  'mult': { cmd: 'multiply', link: 'by', wr: 'x', sp: 'times', f: (a, b) => (a * b), min: 2, max: 10 },
+  'pow': { cmd: 'build', link: 'to the power of', wr: '^', sp: 'to the power of', f: (a, b) => (Math.pow(a, b)), min: 0, max: 20 },
+  'mod': { cmd: 'build', link: 'modulo', wr: '%', sp: 'modulo', f: (a, b) => (a % b), min: 0, max: 20 },
+  'l': { cmd: 'true or false?', link: 'less than', wr: '<', sp: 'less than', f: (a, b) => (a < b) },
+  'g': { cmd: 'true or false?', link: 'greater than', wr: '>', sp: 'greater than', f: (a, b) => (a > b) },
+  'leq': { cmd: 'true or false?', link: 'less or equal', wr: '<=', sp: 'less or equal', f: (a, b) => (a <= b) },
+  'geq': { cmd: 'true or false?', link: 'greater or equal', wr: '>=', sp: 'greater or equal', f: (a, b) => (a >= b) },
+  'eq': { cmd: 'true or false?', link: 'equal', wr: '=', sp: 'equal', f: (a, b) => (a == b) },
+  'neq': { cmd: 'true or false?', link: 'unequal', wr: '#', sp: 'unequal', f: (a, b) => (a != b) },
+  'and': { cmd: 'true or false?', link: 'and', wr: '&&', sp: 'and', f: (a, b) => (a && b) },
+  'or': { cmd: 'true or false?', link: 'or', wr: '||', sp: 'or', f: (a, b) => (a || b) },
+  'nand': { cmd: 'true or false?', link: 'nand', wr: 'nand', sp: 'nand', f: (a, b) => (!(a && b)) },
+  'nor': { cmd: 'true or false?', link: 'nor', wr: 'nor', sp: 'nor', f: (a, b) => (!(a || b)) },
+  'xor': { cmd: 'true or false?', link: 'xor', wr: 'xor', sp: 'xor', f: (a, b) => (a && !b || !a && b) },
+}
+const GirlNames = ['afia', 'ally', 'amanda', 'angela', 'anna', 'annabel', 'birgit', 'bona', 'carmen', 'cassandra',
+  'charlene', 'erin', 'hanna', 'holly', 'jan', 'karen', 'kelly', 'lauren', 'malta', 'maria', 'maurita', 'minnow', 'meredith',
+  'milda', 'mimi', 'minna', 'minnow', 'mitra', 'nasi', 'nil', 'nimble', 'nonna', 'pam', 'phyllis', 'poppa', 'rhi', 'sarah',
+  'sheeba', 'valerie', 'viola', 'wala'];
+const BoyNames = ['aaron', 'andy', 'bill', 'blade', 'bob', 'buddy', 'creed', 'dan', 'darryl', 'dagobert', 'david', 'donald', 'dwight', 'felix',
+  'gilbert', 'gul', 'jim', 'john', 'kevin', 'leo', 'luis', 'mac', 'max', 'michael', 'mike', 'oscar', 'peter', 'robert', 'ryan',
+  'sebastian', 'stanley', 'stitch', 'toby', 'tom', 'vladimir', 'wolf', 'wolfgang'];
+const UnicodeSymbols = {
+  menu: '☰',
+};
+const STYLE_PARAMS = {
+  align: 'text-align',
+  acontent: 'align-content',
+  aitems: 'align-items',
+  aspectRatio: 'aspect-ratio',
+  bg: 'background-color',
+  dir: 'flex-direction',
+  fg: 'color',
+  hgap: 'column-gap',
+  vgap: 'row-gap',
+  jcontent: 'justify-content',
+  jitems: 'justify-items',
+  justify: 'justify-content',
+  matop: 'margin-top',
+  maleft: 'margin-left',
+  mabottom: 'margin-bottom',
+  maright: 'margin-right',
+  origin: 'transform-origin',
+  overx: 'overflow-x',
+  overy: 'overflow-y',
+  patop: 'padding-top',
+  paleft: 'padding-left',
+  pabottom: 'padding-bottom',
+  paright: 'padding-right',
+  place: 'place-items',
+  rounding: 'border-radius',
+  w: 'width',
+  h: 'height',
+  wmin: 'min-width',
+  hmin: 'min-height',
+  hline: 'line-height',
+  wmax: 'max-width',
+  hmax: 'max-height',
+  fontSize: 'font-size',
+  fz: 'font-size',
+  family: 'font-family',
+  weight: 'font-weight',
+  x: 'left',
+  y: 'top',
+  z: 'z-index'
+};
+const NEONORANGE = '#ff6700';
+const NEONYELLOW = '#efff04';
+const rgbToHexCOOL = (pixel) => {
+  const componentToHex = (c) => {
+    const hex = c.toString(16);
+    return hex.length == 1 ? "0" + hex : hex;
+  };
+  return (
+    "#" +
+    componentToHex(pixel.r) +
+    componentToHex(pixel.g) +
+    componentToHex(pixel.b)
+  ).toUpperCase();
+};
+const hslToHexCOOL = (hslColor) => {
+  const hslColorCopy = { ...hslColor };
+  hslColorCopy.l /= 100;
+  const a =
+    (hslColorCopy.s * Math.min(hslColorCopy.l, 1 - hslColorCopy.l)) / 100;
+  const f = (n) => {
+    const k = (n + hslColorCopy.h / 30) % 12;
+    const color = hslColorCopy.l - a * Math.max(Math.min(k - 3, 9 - k, 1), -1);
+    return Math.round(255 * color)
+      .toString(16)
+      .padStart(2, "0");
+  };
+  return `#${f(0)}${f(8)}${f(4)}`.toUpperCase();
+};
+const convertRGBtoHSL = (rgbValues) => {
+  return rgbValues.map((pixel) => {
+    let hue,
+      saturation,
+      luminance = 0;
+    let redOpposite = pixel.r / 255;
+    let greenOpposite = pixel.g / 255;
+    let blueOpposite = pixel.b / 255;
+    const Cmax = Math.max(redOpposite, greenOpposite, blueOpposite);
+    const Cmin = Math.min(redOpposite, greenOpposite, blueOpposite);
+    const difference = Cmax - Cmin;
+    luminance = (Cmax + Cmin) / 2.0;
+    if (luminance <= 0.5) {
+      saturation = difference / (Cmax + Cmin);
+    } else if (luminance >= 0.5) {
+      saturation = difference / (2.0 - Cmax - Cmin);
+    }
+    const maxColorValue = Math.max(pixel.r, pixel.g, pixel.b);
+    if (maxColorValue === pixel.r) {
+      hue = (greenOpposite - blueOpposite) / difference;
+    } else if (maxColorValue === pixel.g) {
+      hue = 2.0 + (blueOpposite - redOpposite) / difference;
+    } else {
+      hue = 4.0 + (greenOpposite - blueOpposite) / difference;
+    }
+    hue = hue * 60; 
+    if (hue < 0) {
+      hue = hue + 360;
+    }
+    if (difference === 0) {
+      return false;
+    }
+    return {
+      h: Math.round(hue) + 180, 
+      s: parseFloat(saturation * 100).toFixed(2),
+      l: parseFloat(luminance * 100).toFixed(2),
+    };
+  });
+};
+const orderByLuminance = (rgbValues) => {
+  const calculateLuminance = (p) => {
+    return 0.2126 * p.r + 0.7152 * p.g + 0.0722 * p.b;
+  };
+  return rgbValues.sort((p1, p2) => {
+    return calculateLuminance(p2) - calculateLuminance(p1);
+  });
+};
+const buildRgb = (imageData) => {
+  const rgbValues = [];
+  for (let i = 0; i < imageData.length; i += 4) {
+    const rgb = {
+      r: imageData[i],
+      g: imageData[i + 1],
+      b: imageData[i + 2],
+    };
+    rgbValues.push(rgb);
+  }
+  return rgbValues;
+};
+const calculateColorDifference = (color1, color2) => {
+  const rDifference = Math.pow(color2.r - color1.r, 2);
+  const gDifference = Math.pow(color2.g - color1.g, 2);
+  const bDifference = Math.pow(color2.b - color1.b, 2);
+  return rDifference + gDifference + bDifference;
+};
+const buildPalette = (colorsList) => {
+  const paletteContainer = document.getElementById("palette");
+  const complementaryContainer = document.getElementById("complementary");
+  paletteContainer.innerHTML = "";
+  complementaryContainer.innerHTML = "";
+  const orderedByColor = orderByLuminance(colorsList);
+  const hslColors = convertRGBtoHSL(orderedByColor);
+  for (let i = 0; i < orderedByColor.length; i++) {
+    const hexColor = rgbToHexCOOL(orderedByColor[i]);
+    const hexColorComplementary = hslToHexCOOL(hslColors[i]);
+    if (i > 0) {
+      const difference = calculateColorDifference(
+        orderedByColor[i],
+        orderedByColor[i - 1]
+      );
+      if (difference < 120) {
+        continue;
+      }
+    }
+    const colorElement = document.createElement("div");
+    colorElement.style.backgroundColor = hexColor;
+    colorElement.appendChild(document.createTextNode(hexColor));
+    paletteContainer.appendChild(colorElement);
+    if (hslColors[i].h) {
+      const complementaryElement = document.createElement("div");
+      complementaryElement.style.backgroundColor = `hsl(${hslColors[i].h},${hslColors[i].s}%,${hslColors[i].l}%)`;
+      complementaryElement.appendChild(
+        document.createTextNode(hexColorComplementary)
+      );
+      complementaryContainer.appendChild(complementaryElement);
+    }
+  }
+};
+const findBiggestColorRange = (rgbValues) => {
+  let rMin = Number.MAX_VALUE;
+  let gMin = Number.MAX_VALUE;
+  let bMin = Number.MAX_VALUE;
+  let rMax = Number.MIN_VALUE;
+  let gMax = Number.MIN_VALUE;
+  let bMax = Number.MIN_VALUE;
+  rgbValues.forEach((pixel) => {
+    rMin = Math.min(rMin, pixel.r);
+    gMin = Math.min(gMin, pixel.g);
+    bMin = Math.min(bMin, pixel.b);
+    rMax = Math.max(rMax, pixel.r);
+    gMax = Math.max(gMax, pixel.g);
+    bMax = Math.max(bMax, pixel.b);
+  });
+  const rRange = rMax - rMin;
+  const gRange = gMax - gMin;
+  const bRange = bMax - bMin;
+  const biggestRange = Math.max(rRange, gRange, bRange);
+  if (biggestRange === rRange) {
+    return "r";
+  } else if (biggestRange === gRange) {
+    return "g";
+  } else {
+    return "b";
+  }
+};
+const quantization = (rgbValues, depth) => {
+  const MAX_DEPTH = 4;
+  if (depth === MAX_DEPTH || rgbValues.length === 0) {
+    const color = rgbValues.reduce(
+      (prev, curr) => {
+        prev.r += curr.r;
+        prev.g += curr.g;
+        prev.b += curr.b;
+        return prev;
+      },
+      {
+        r: 0,
+        g: 0,
+        b: 0,
+      }
+    );
+    color.r = Math.round(color.r / rgbValues.length);
+    color.g = Math.round(color.g / rgbValues.length);
+    color.b = Math.round(color.b / rgbValues.length);
+    return [color];
+  }
+  const componentToSortBy = findBiggestColorRange(rgbValues);
+  rgbValues.sort((p1, p2) => {
+    return p1[componentToSortBy] - p2[componentToSortBy];
+  });
+  const mid = rgbValues.length / 2;
+  return [
+    ...quantization(rgbValues.slice(0, mid), depth + 1),
+    ...quantization(rgbValues.slice(mid + 1), depth + 1),
+  ];
+};
+const GT = {}; 
+const RSGTYPES = { board: 1, hand: 2, field: 101, edge: 102, corner: 103 };
+const CORNERS = ['◢', '◣', '◤', '◥'];
+const CORNERS0 = ['♠', '♡'];
+const CORNERS2 = ['⬔', '⬕'];
+const CORNERS3 = ['⮜', '⮝', '⮞', '⮟'];
+const CORNERS4 = ['⭐', '⭑'];
+const CORNERS5 = ['⬛', '⬜'];
+const BLUFF = {
+  torank: { _: '_', three: '3', four: '4', five: '5', six: '6', seven: '7', eight: '8', nine: '9', ten: 'T', jack: 'J', queen: 'Q', king: 'K', ace: 'A' },
+  toword: { _: '_', '3': 'three', '4': 'four', '5': 'five', '6': 'six', '7': 'seven', '8': 'eight', '9': 'nine', T: 'ten', J: 'jack', Q: 'queen', K: 'king', A: 'ace' },
+  rankstr: '3456789TJQKA',
+};
+const DEFAULTPICTYPE = 'all'; 
+const LevelsML = {
+  0: { NumPics: 1, NumLabels: 1, MinWordLength: 3, MaxWordLength: 3, NumMissingLetters: 1, MaxPosMissing: 0, MaxNumTrials: 3 },
+  1: { NumPics: 1, NumLabels: 1, MinWordLength: 3, MaxWordLength: 4, NumMissingLetters: 1, MaxPosMissing: 0, MaxNumTrials: 3 },
+  2: { NumPics: 1, NumLabels: 1, MinWordLength: 4, MaxWordLength: 5, NumMissingLetters: 2, MaxPosMissing: 1, MaxNumTrials: 3 },
+  3: { NumPics: 1, NumLabels: 0, MinWordLength: 4, MaxWordLength: 6, NumMissingLetters: 1, MaxPosMissing: 0, MaxNumTrials: 3 },
+  4: { NumPics: 1, NumLabels: 0, MinWordLength: 4, MaxWordLength: 7, NumMissingLetters: 2, MaxPosMissing: 1, MaxNumTrials: 3 },
+  5: { NumPics: 1, NumLabels: 0, MinWordLength: 5, MaxWordLength: 8, NumMissingLetters: 1, MaxPosMissing: 1, MaxNumTrials: 3 },
+  6: { NumPics: 1, NumLabels: 0, MinWordLength: 5, MaxWordLength: 9, NumMissingLetters: 2, MaxPosMissing: 2, MaxNumTrials: 3 },
+  7: { NumPics: 1, NumLabels: 0, MinWordLength: 5, MaxWordLength: 10, NumMissingLetters: 3, MaxPosMissing: 4, MaxNumTrials: 3 },
+  8: { NumPics: 1, NumLabels: 0, MinWordLength: 6, MaxWordLength: 11, NumMissingLetters: 4, MaxPosMissing: 12, MaxNumTrials: 3 },
+  9: { NumPics: 1, NumLabels: 0, MinWordLength: 6, MaxWordLength: 12, NumMissingLetters: 5, MaxPosMissing: 12, MaxNumTrials: 3 },
+  10: { NumPics: 1, NumLabels: 0, MinWordLength: 6, MaxWordLength: 12, NumMissingLetters: 6, MaxPosMissing: 12, MaxNumTrials: 3 },
+}
+const LevelsSP = {
+  0: { NumPics: 1, NumLabels: 1, MinWordLength: 2, MaxWordLength: 21, MaxNumTrials: 3 },
+  1: { NumPics: 1, NumLabels: 1, MinWordLength: 3, MaxWordLength: 21, MaxNumTrials: 3 },
+  2: { NumPics: 1, NumLabels: 1, MinWordLength: 3, MaxWordLength: 21, MaxNumTrials: 3 },
+  3: { NumPics: 1, NumLabels: 0, MinWordLength: 4, MaxWordLength: 21, MaxNumTrials: 3 },
+  4: { NumPics: 1, NumLabels: 0, MinWordLength: 4, MaxWordLength: 21, MaxNumTrials: 3 },
+  5: { NumPics: 1, NumLabels: 0, MinWordLength: 5, MaxWordLength: 21, MaxNumTrials: 3 },
+  6: { NumPics: 1, NumLabels: 0, MinWordLength: 6, MaxWordLength: 21, MaxNumTrials: 3 },
+  7: { NumPics: 1, NumLabels: 0, MinWordLength: 7, MaxWordLength: 21, MaxNumTrials: 3 },
+  8: { NumPics: 1, NumLabels: 0, MinWordLength: 8, MaxWordLength: 21, MaxNumTrials: 3 },
+  9: { NumPics: 1, NumLabels: 0, MinWordLength: 7, MaxWordLength: 21, MaxNumTrials: 3 },
+  10: { NumPics: 1, NumLabels: 0, MinWordLength: 6, MaxWordLength: 21, MaxNumTrials: 3 },
+}
+const LevelsSPA = {
+  0: { NumPics: 1, NumLabels: 1, MinWordLength: 2, MaxWordLength: 4, MaxNumTrials: 1 },
+  1: { NumPics: 1, NumLabels: 1, MinWordLength: 3, MaxWordLength: 5, MaxNumTrials: 3 },
+  2: { NumPics: 1, NumLabels: 1, MinWordLength: 3, MaxWordLength: 6, MaxNumTrials: 3 },
+  3: { NumPics: 1, NumLabels: 0, MinWordLength: 4, MaxWordLength: 7, MaxNumTrials: 3 },
+  4: { NumPics: 1, NumLabels: 0, MinWordLength: 4, MaxWordLength: 8, MaxNumTrials: 3 },
+  5: { NumPics: 1, NumLabels: 0, MinWordLength: 5, MaxWordLength: 9, MaxNumTrials: 3 },
+  6: { NumPics: 1, NumLabels: 0, MinWordLength: 6, MaxWordLength: 10, MaxNumTrials: 3 },
+  7: { NumPics: 1, NumLabels: 0, MinWordLength: 7, MaxWordLength: 11, MaxNumTrials: 3 },
+  8: { NumPics: 1, NumLabels: 0, MinWordLength: 8, MaxWordLength: 12, MaxNumTrials: 3 },
+  9: { NumPics: 1, NumLabels: 0, MinWordLength: 7, MaxWordLength: 13, MaxNumTrials: 3 },
+  10: { NumPics: 1, NumLabels: 0, MinWordLength: 6, MaxWordLength: 14, MaxNumTrials: 1 },
+}
+const SIMPLE_COLORS =['red','green', 'yellow','blue'];
+const EXTENDED_COLORS =['red','green', 'yellow','blue','pink','indigo','gray','sienna','olive'];
+const LevelsTC = {
+  0: { NumColors:2, NumPics: 2, NumLabels: 4, MinWordLength: 2, MaxWordLength: 5, MaxNumTrials: 1 },
+  1: { NumColors:2, NumPics: 3, NumLabels: 6, MinWordLength: 3, MaxWordLength: 6, MaxNumTrials: 1 },
+  2: { NumColors:3, NumPics: 2, NumLabels: 6, MinWordLength: 3, MaxWordLength: 7, MaxNumTrials: 1 },
+  3: { NumColors:3, NumPics: 3, NumLabels: 9, MinWordLength: 4, MaxWordLength: 7, MaxNumTrials: 1 },
+  4: { NumColors:3, NumPics: 3, NumLabels: 0, MinWordLength: 4, MaxWordLength: 14, MaxNumTrials: 2 },
+  5: { NumColors:2, NumPics: 2, NumLabels: 2, MinWordLength: 4, MaxWordLength: 8, MaxNumTrials: 1 },
+  6: { NumColors:2, NumPics: 2, NumLabels: 2, MinWordLength: 4, MaxWordLength: 9, MaxNumTrials: 1 },
+  7: { NumColors:2, NumPics: 2, NumLabels: 2, MinWordLength: 5, MaxWordLength: 10, MaxNumTrials: 2 },
+  8: { NumColors:3, NumPics: 3, NumLabels: 9, MinWordLength: 5, MaxWordLength: 11, MaxNumTrials: 2 },
+  9: { NumColors:3, NumPics: 3, NumLabels: 3, MinWordLength: 6, MaxWordLength: 12, MaxNumTrials: 2 },
+  10: { NumColors:3, NumPics: 3, NumLabels: 0, MinWordLength: 6, MaxWordLength: 13, MaxNumTrials: 3 },
+}
+const LevelsTP = {
+  0: { NumPics: 2, NumLabels: 2, MinWordLength: 2, MaxWordLength: 4, MaxNumTrials: 1 },
+  1: { NumPics: 3, NumLabels: 3, MinWordLength: 3, MaxWordLength: 5, MaxNumTrials: 1 },
+  2: { NumPics: 2, NumLabels: 1, MinWordLength: 3, MaxWordLength: 6, MaxNumTrials: 1 },
+  3: { NumPics: 3, NumLabels: 2, MinWordLength: 4, MaxWordLength: 7, MaxNumTrials: 1 },
+  4: { NumPics: 2, NumLabels: 0, MinWordLength: 4, MaxWordLength: 8, MaxNumTrials: 1 },
+  5: { NumPics: 4, NumLabels: 4, MinWordLength: 4, MaxWordLength: 9, MaxNumTrials: 1 },
+  6: { NumPics: 3, NumLabels: 1, MinWordLength: 5, MaxWordLength: 10, MaxNumTrials: 2 },
+  7: { NumPics: 4, NumLabels: 2, MinWordLength: 5, MaxWordLength: 11, MaxNumTrials: 1 },
+  8: { NumPics: 5, NumLabels: 5, MinWordLength: 6, MaxWordLength: 12, MaxNumTrials: 1 },
+  9: { NumPics: 3, NumLabels: 0, MinWordLength: 6, MaxWordLength: 13, MaxNumTrials: 2 },
+  10: { NumPics: 4, NumLabels: 0, MinWordLength: 4, MaxWordLength: 14, MaxNumTrials: 2 },
+}
+const LevelsWP = {
+  0: { NumPics: 1, NumLabels: 1, MinWordLength: 2, MaxWordLength: 3, MaxNumTrials: 3 },
+  1: { NumPics: 1, NumLabels: 1, MinWordLength: 3, MaxWordLength: 4, MaxNumTrials: 3 },
+  2: { NumPics: 1, NumLabels: 1, MinWordLength: 3, MaxWordLength: 5, MaxNumTrials: 3 },
+  3: { NumPics: 1, NumLabels: 0, MinWordLength: 3, MaxWordLength: 6, MaxNumTrials: 3 },
+  4: { NumPics: 1, NumLabels: 0, MinWordLength: 4, MaxWordLength: 7, MaxNumTrials: 3 },
+  5: { NumPics: 1, NumLabels: 0, MinWordLength: 5, MaxWordLength: 8, MaxNumTrials: 3 },
+  6: { NumPics: 1, NumLabels: 0, MinWordLength: 6, MaxWordLength: 9, MaxNumTrials: 3 },
+  7: { NumPics: 1, NumLabels: 0, MinWordLength: 7, MaxWordLength: 11, MaxNumTrials: 3 },
+  8: { NumPics: 1, NumLabels: 0, MinWordLength: 8, MaxWordLength: 12, MaxNumTrials: 3 },
+  9: { NumPics: 1, NumLabels: 0, MinWordLength: 7, MaxWordLength: 13, MaxNumTrials: 3 },
+  10: { NumPics: 1, NumLabels: 0, MinWordLength: 6, MaxWordLength: 14, MaxNumTrials: 3 },
+}
+const voiceNames = {
+  david: 'Microsoft David Desktop - English',
+  zira: 'Microsoft Zira Desktop - English',
+  us: 'Google US English',
+  ukFemale: 'Google UK English Female',
+  ukMale: 'Google UK English Male',
+  deutsch: 'Google Deutsch',
+};
+const GFUNC = {
+  gTouchPic: { 
+    startGame: startGameTP,startLevel:startLevelTP, startRound: startRoundTP,trialPrompt:trialPromptTP, prompt: promptTP, activate: activateTP, eval: evalTP},
+  gTouchColors: { 
+    startGame: startGameTC,startLevel:startLevelTC, startRound: startRoundTC,trialPrompt:trialPromptTC, prompt: promptTC, activate: activateTC, eval: evalTC},
+  gWritePic: { 
+    startGame: startGameWP,startLevel:startLevelWP, startRound: startRoundWP,trialPrompt:trialPromptWP, prompt: promptWP, activate: activateWP, eval: evalWP},
+  gMissingLetter: { 
+    startGame: startGameML,startLevel:startLevelML, startRound: startRoundML,trialPrompt:trialPromptML, prompt: promptML, activate: activateML, eval: evalML},
+  gSayPic: { 
+    startGame: startGameSP,startLevel:startLevelSP, startRound: startRoundSP,trialPrompt:trialPromptSP, prompt: promptSP, activate: activateSP, eval: evalSP},
+  gSayPicAuto: { 
+    startGame: startGameSPA,startLevel:startLevelSPA, startRound: startRoundSPA,trialPrompt:trialPromptSPA, prompt: promptSPA, activate: activateSPA, eval: evalSPA},
+}
+const CRIMSON = colorDarker('crimson',.25);
+const ALLTESTS = {
+  0: { 
+    0: {
+      fStruct: makeRoot, options: {
+        presentationStrategy: 'rec', autoType: 'cssEmpty',
+        params: { _1: { width: 40, height: 40, color: 'red', 'background-color': 'blue' } }
+      }
+    },
+  },
+  1: {
+    0: { fStruct: makeSimplestTree, options: { params: { '_1': { height: 120 } } } },
+    1: { fStruct: makeSimplestTree, options: { params: { '_1': { width: 100, height: 120 } } } },
+    2: { fStruct: makeSimpleTree, options: { params: { '_1': { width: 100, height: 120 } } } },
+    3: { fStruct: makeSimpleTree, options: { params: { '_1': { orientation: 'v', width: 100, height: 120 } } } },
+    4: { fStruct: makeTree33, options: { params: { '_1': { orientation: 'v' }, '_4': { orientation: 'v' } } } },
+    5: { fStruct: makeTree332x2, options: { params: { '_1': { orientation: 'v' } } } },
+    6: { fStruct: makeTree332x2, options: { params: { '_4': { orientation: 'v' } } } },
+  },
+  2: {
+    0: { fStruct: makeTree33, options: { params: { '_4': { fg: 'red', orientation: 'v' } } } },
+    1: { fStruct: makeTree33, options: { params: { '_4': { orientation: 'v' } } } },
+    2: { fStruct: makeTree33, options: { params: { '_1': { orientation: 'v' } } } },
+    3: { fStruct: makeTree33, options: { params: { '_1': { orientation: 'v' } } } },
+    4: { fStruct: makeTree33, options: { params: { '_1': { orientation: 'v' }, '_4': { orientation: 'v' } } } },
+    5: { fStruct: makeTree332x2, options: { params: { '_1': { orientation: 'v' } } } },
+    6: { fStruct: makeTree332x2, options: { params: { '_4': { orientation: 'v' } } } },
+    7: { fStruct: makeTree332x2, options: { params: { '_7': { orientation: 'v' } } } },
+  },
+  3: {
+    0: { fStruct: makeTree33, options: { params: { '_4': { fg: 'red', orientation: 'v' } } } },
+    1: { fStruct: makeTree33, options: { params: { '_4': { orientation: 'v' } } } },
+    2: { fStruct: makeTree33, options: { params: { '_1': { orientation: 'v' } } } },
+    3: { fStruct: makeTree33, options: { params: { '_1': { orientation: 'v' } } } },
+    4: { fStruct: makeTree33, options: { params: { '_1': { orientation: 'v' }, '_4': { orientation: 'v' } } } },
+    5: { fStruct: makeTree332x2, options: { params: { '_1': { orientation: 'v' } } } },
+    6: { fStruct: makeTree332x2, options: { params: { '_4': { orientation: 'v' } } } },
+    7: { fStruct: makeTree332x2, options: { params: { '_7': { orientation: 'v' } } } },
+    8: { fStruct: makeTree332x2, options: { params: { '_4': { orientation: 'v' }, '_7': { orientation: 'v' } } } },
+    9: { fStruct: makeSimplestTree, options: undefined },
+    10: { fStruct: makeSimplestTree, options: { fContent: contentNoRootContent } },
+    11: { fStruct: makeSimpleTree, options: undefined },
+    12: { fStruct: makeSimpleTree, options: { params: { '_1': { orientation: 'v' } } } },
+    13: { fStruct: makeSimpleTree, options: { fContent: contentNoRootContent } },
+    14: { fStruct: makeTree33, options: { fContent: contentNoRootContent } },
+    15: { fStruct: makeTree332x2, options: undefined },
+    16: { fStruct: makeTree332x2, options: { fContent: contentNoRootContent } },
+    17: { fStruct: () => makeSimpleTree(20), options: { fContent: contentNoRootContent } },
+    18: { fStruct: makeSimplestTree, options: { fContent: contentRootExtralong } },
+    19: { fStruct: makeTree33, options: { fContent: contentRootExtralong } },
+    20: { fStruct: () => makeSimpleTree(3), options: { fContent: contentRootExtralong } },
+    21: {
+      fStruct: makeTree33, options: {
+        params: {
+          '_1': { bg: 'black', orientation: 'v' },
+          '_4': { bg: 'inherit', orientation: 'v' }
+        }
+      }
+    },
+    22: { fStruct: makeTree33, options: { fContent: contentRootExtralong, params: { '_1': { orientation: 'v' } } } },
+    23: { fStruct: makeTree33, options: { fContent: contentRootExtralong, params: { '_4': { orientation: 'v' } } } },
+  },
+  4: { 
+    0: { fStruct: makeSimplestTree, options: { fContent: n => n.uid == '_1' ? 'random' : n.uid, positioning: 'random' } },
+    1: { fStruct: makeSimpleTree, options: { fContent: n => n.uid == '_1' ? 'random' : n.uid, positioning: 'random' } },
+    2: { fStruct: () => makeSimpleTree(10), options: { fContent: n => n.uid == '_1' ? 'random' : n.uid, positioning: 'random' } },
+    3: { fStruct: makeTree33, options: { fContent: n => n.uid == '_1' ? 'random' : n.uid, positioning: 'random' } },
+  },
+  5: { 
+    0: { fStruct: makeSimplestTree, options: { fContent: n => n.uid == '_1' ? 'hallo' : n.uid, params: { '_1': { height: 120 } } } },
+    1: {
+      fStruct: makeSimplestTree, options: {
+        fContent: n => n.uid == '_1' ? { first: '1', uid: n.uid } : n.uid,
+        params: { '_1': { bg: 'blue', 'text-align': 'center', width: 100, height: 120 } }
+      }
+    },
+  },
+  6: { 
+    41: {
+      fStruct: () => makeTreeNNEach(2, 4), options: {
+        params: {
+          '_1': { orientation: 'h' },
+          '_2': { orientation: 'w', rows: 2, cols: 2 },
+          '_7': { orientation: 'w', rows: 2, cols: 2 }
+        }
+      }
+    },
+    40: {
+      fStruct: () => makeTreeNNEach(1, 4),
+      options: {
+        params:
+        {
+          '_2': { orientation: 'w', rows: 2, cols: 2 }
+        }
+      }
+    },
+    39: {
+      fStruct: () => makeTreeNNEach(2, 2), options: {
+        params: {
+          '_2': { orientation: 'w', rows: 1, cols: 2 },
+          '_5': { orientation: 'w', rows: 1, cols: 2 }
+        }
+      }
+    },
+    38: {
+      fStruct: () => makeTreeNNEach(2, 4), options: {
+        params: {
+          '_2': { orientation: 'w', rows: 2, cols: 2 },
+          '_7': { orientation: 'w', rows: 2, cols: 2 }
+        }
+      }
+    },
+    37: { fStruct: makeSimpleTree, options: { fType: typePanelInfo, fContent: contentHallo } },
+    36: { fStruct: makeSimpleTree, options: { fType: typePanelInfo, fContent: contentHallo, presentationStrategy: 'new' } },
+    35: { fStruct: () => makeTreeNN(2, 2), options: { fType: typeEmpty, presentationStrategy: 'new' } },
+    34: { fStruct: makeTree33, options: { fType: typeEmpty, presentationStrategy: 'new' } },
+    33: { fStruct: makeTree33, options: { fType: typeEmpty, presentationStrategy: 'new', params: { '_1': { orientation: 'v' } } } },
+    32: { fStruct: makeTree33, options: { presentationStrategy: 'orig', params: { '_1': { orientation: 'v' } } } },
+    31: {
+      fStruct: makeTree33, options: {
+        fType: typePanelInfo,
+        presentationStrategy: 'new',
+        params: { '_1': { orientation: 'v' } }
+      }
+    },
+    30: {
+      fStruct: makeTree33, options: {
+        fType: typeEmpty,
+        presentationStrategy: 'rec',
+        params: { '_1': { orientation: 'h' } }
+      }
+    },
+    29: { fStruct: makeTree33, options: { params: { '_1': { orientation: 'v' } } } },
+    28: { fStruct: () => makeSimpleTree(8), options: { presentationStrategy: 'new', fType: type00flex } },
+    27: { fStruct: makeSimplestTree, options: { presentationStrategy: 'new', fType: type00flex } },
+    26: { fStruct: makeSimplestTree, options: { presentationStrategy: 'new', fType: typeEmpty } },
+    25: { fStruct: makeSimplestTree, options: { presentationStrategy: 'new' } },
+    24: { fStruct: makeSimplestTree, options: undefined },
+    23: { fStruct: makeSimplestTree, options: { presentationStrategy: 'orig' } },
+    22: { fStruct: makeSimplestTree, options: { fType: typeEmpty } },
+    21: { fStruct: () => makeHugeBoardInBoardOld(25, 5), options: { fContent: contentNoParentContent } },
+    20: { fStruct: () => makeHugeBoardInBoard(25, 5), options: { fContent: contentNoParentContent } },
+    19: { fStruct: () => makeHugeBoardInBoard(40, 5), options: { fContent: contentNoParentContent } },
+    18: { fStruct: () => makeHugeBoardInBoard(4, 2), options: { fContent: contentNoParentContent } },
+    17: { fStruct: () => makeTreeNNEach(2, 4), options: { fContent: contentNoParentContent, params: { '_1': { orientation: 'w', rows: 1, cols: 2 }, '_2': { contentwalign: 'center', contenthalign: 'center' }, '_7': { contentwalign: 'center', orientation: 'w', rows: 2, cols: 2 } } } },
+    16: {
+      fStruct: () => makeTreeNNEach(2, 4), options: {
+        fContent: contentRootExtralong,
+        params: {
+          '_1': { orientation: 'w', rows: 1, cols: 2 },
+          '_2': { contenthalign: 'center' },
+          '_7': { contentwalign: 'center', orientation: 'w', rows: 2, cols: 2 }
+        }
+      }
+    },
+    15: {
+      fStruct: () => makeTreeNNEach(2, 4), options: {
+        params: {
+          '_1': { orientation: 'w', rows: 1, cols: 2 },
+          '_7': { orientation: 'w', rows: 2, cols: 2 }
+        }
+      }
+    },
+    14: { fStruct: () => makeTreeNN(2, 4), options: { fContent: contentNoParentContentRootExtralong, params: { '_1': { orientation: 'w', rows: 1, cols: 2 }, '_2': { orientation: 'w', rows: 2, cols: 2 } } } },
+    13: { fStruct: () => makeTreeNN(2, 4), options: { params: { '_1': { orientation: 'w', rows: 1, cols: 2 }, '_2': { orientation: 'w', rows: 2, cols: 2 } } } },
+    12: { fStruct: () => makeTreeNN(2, 4), options: { fContent: contentNoParentContent, params: { '_1': { orientation: 'w', rows: 1, cols: 2 }, '_2': { orientation: 'w', rows: 2, cols: 2 } } } },
+    11: { fStruct: () => makeSimpleTree(3), options: { fContent: contentRootExtralong, params: { '_1': { orientation: 'w', rows: 3, cols: 1 } } } },
+    10: { fStruct: () => makeSimpleTree(3), options: { params: { '_1': { orientation: 'w', rows: 3, cols: 1 } } } },
+    9: { fStruct: () => makeSimpleTree(3), options: { fContent: contentNoParentContent, params: { '_1': { orientation: 'w', rows: 3, cols: 1 } } } },
+    8: { fStruct: () => makeSimpleTree(2), options: { fContent: contentRootExtralong, params: { '_1': { orientation: 'w', rows: 2, cols: 1 } } } },
+    7: { fStruct: () => makeSimpleTree(2), options: { params: { '_1': { orientation: 'w', rows: 2, cols: 1 } } } },
+    6: { fStruct: () => makeSimpleTree(2), options: { fContent: contentNoParentContent, params: { '_1': { orientation: 'w', rows: 2, cols: 1 } } } },
+    5: { fStruct: () => makeSimpleTree(4), options: { fContent: contentRootExtralong, params: { '_1': { orientation: 'w', rows: 2, cols: 2 } } } },
+    4: { fStruct: () => makeSimpleTree(4), options: { params: { '_1': { orientation: 'w', rows: 2, cols: 2 } } } },
+    3: { fStruct: () => makeSimpleTree(2), options: { fContent: contentRootExtralong } },
+    2: { fStruct: () => makeSimpleTree(2), options: { positioning: 'regular', fContent: contentRootExtralong } },
+    1: { fStruct: () => makeSimpleTree(20), options: { positioning: 'regular' } },
+    0: { fStruct: () => makeSimpleTree(4), options: { fContent: n => n.uid == '_1' ? 'board' : n.uid, positioning: 'regular' } },
+  },
+  7: {
+    0: { fStruct: makeSimpleTree, options: { autoType: 'cssEmpty', fContent: contentNoParentContent } },
+  },
+};
+const ALLTESTSOLUTIONS = {
+  0: {},
+  1: { "0": { "_1": { "w": 23, "h": 120 }, "_2": { "w": 19, "h": 19 } }, "1": { "_1": { "w": 104, "h": 120 }, "_2": { "w": 19, "h": 19 } }, "2": { "_1": { "w": 104, "h": 120 }, "_2": { "w": 19, "h": 19 }, "_3": { "w": 19, "h": 19 } }, "3": { "_1": { "w": 104, "h": 120 }, "_2": { "w": 19, "h": 19 }, "_3": { "w": 19, "h": 19 } }, "4": { "_1": { "w": 27, "h": 145 }, "_2": { "w": 23, "h": 19 }, "_3": { "w": 23, "h": 19 }, "_4": { "w": 23, "h": 82 }, "_5": { "w": 19, "h": 19 }, "_6": { "w": 19, "h": 19 }, "_7": { "w": 19, "h": 19 } }, "5": { "_1": { "w": 130, "h": 124 }, "_2": { "w": 126, "h": 19 }, "_3": { "w": 126, "h": 19 }, "_4": { "w": 126, "h": 61 }, "_5": { "w": 44, "h": 40 }, "_8": { "w": 19, "h": 19 }, "_9": { "w": 19, "h": 19 }, "_6": { "w": 19, "h": 40 }, "_7": { "w": 54, "h": 40 }, "_10": { "w": 24, "h": 19 }, "_11": { "w": 23, "h": 19 } }, "6": { "_1": { "w": 104, "h": 145 }, "_2": { "w": 19, "h": 124 }, "_3": { "w": 19, "h": 124 }, "_4": { "w": 58, "h": 124 }, "_5": { "w": 54, "h": 40 }, "_8": { "w": 19, "h": 19 }, "_9": { "w": 19, "h": 19 }, "_6": { "w": 54, "h": 19 }, "_7": { "w": 54, "h": 40 }, "_10": { "w": 24, "h": 19 }, "_11": { "w": 23, "h": 19 } } },
+  2: { "0": { "_1": { "w": 69, "h": 103 }, "_2": { "w": 19, "h": 82 }, "_3": { "w": 19, "h": 82 }, "_4": { "w": 23, "h": 82 }, "_5": { "w": 19, "h": 19 }, "_6": { "w": 19, "h": 19 }, "_7": { "w": 19, "h": 19 } }, "1": { "_1": { "w": 69, "h": 103 }, "_2": { "w": 19, "h": 82 }, "_3": { "w": 19, "h": 82 }, "_4": { "w": 23, "h": 82 }, "_5": { "w": 19, "h": 19 }, "_6": { "w": 19, "h": 19 }, "_7": { "w": 19, "h": 19 } }, "2": { "_1": { "w": 69, "h": 103 }, "_2": { "w": 65, "h": 19 }, "_3": { "w": 65, "h": 19 }, "_4": { "w": 65, "h": 40 }, "_5": { "w": 19, "h": 19 }, "_6": { "w": 19, "h": 19 }, "_7": { "w": 19, "h": 19 } }, "3": { "_1": { "w": 69, "h": 103 }, "_2": { "w": 65, "h": 19 }, "_3": { "w": 65, "h": 19 }, "_4": { "w": 65, "h": 40 }, "_5": { "w": 19, "h": 19 }, "_6": { "w": 19, "h": 19 }, "_7": { "w": 19, "h": 19 } }, "4": { "_1": { "w": 27, "h": 145 }, "_2": { "w": 23, "h": 19 }, "_3": { "w": 23, "h": 19 }, "_4": { "w": 23, "h": 82 }, "_5": { "w": 19, "h": 19 }, "_6": { "w": 19, "h": 19 }, "_7": { "w": 19, "h": 19 } }, "5": { "_1": { "w": 130, "h": 124 }, "_2": { "w": 126, "h": 19 }, "_3": { "w": 126, "h": 19 }, "_4": { "w": 126, "h": 61 }, "_5": { "w": 44, "h": 40 }, "_8": { "w": 19, "h": 19 }, "_9": { "w": 19, "h": 19 }, "_6": { "w": 19, "h": 40 }, "_7": { "w": 54, "h": 40 }, "_10": { "w": 24, "h": 19 }, "_11": { "w": 23, "h": 19 } }, "6": { "_1": { "w": 104, "h": 145 }, "_2": { "w": 19, "h": 124 }, "_3": { "w": 19, "h": 124 }, "_4": { "w": 58, "h": 124 }, "_5": { "w": 54, "h": 40 }, "_8": { "w": 19, "h": 19 }, "_9": { "w": 19, "h": 19 }, "_6": { "w": 54, "h": 19 }, "_7": { "w": 54, "h": 40 }, "_10": { "w": 24, "h": 19 }, "_11": { "w": 23, "h": 19 } }, "7": { "_1": { "w": 146, "h": 103 }, "_2": { "w": 19, "h": 82 }, "_3": { "w": 19, "h": 82 }, "_4": { "w": 100, "h": 82 }, "_5": { "w": 44, "h": 61 }, "_8": { "w": 19, "h": 19 }, "_9": { "w": 19, "h": 19 }, "_6": { "w": 19, "h": 61 }, "_7": { "w": 28, "h": 61 }, "_10": { "w": 24, "h": 19 }, "_11": { "w": 24, "h": 19 } } },
+  3: { "0": { "_1": { "w": 69, "h": 103 }, "_2": { "w": 19, "h": 82 }, "_3": { "w": 19, "h": 82 }, "_4": { "w": 23, "h": 82 }, "_5": { "w": 19, "h": 19 }, "_6": { "w": 19, "h": 19 }, "_7": { "w": 19, "h": 19 } }, "1": { "_1": { "w": 69, "h": 103 }, "_2": { "w": 19, "h": 82 }, "_3": { "w": 19, "h": 82 }, "_4": { "w": 23, "h": 82 }, "_5": { "w": 19, "h": 19 }, "_6": { "w": 19, "h": 19 }, "_7": { "w": 19, "h": 19 } }, "2": { "_1": { "w": 69, "h": 103 }, "_2": { "w": 65, "h": 19 }, "_3": { "w": 65, "h": 19 }, "_4": { "w": 65, "h": 40 }, "_5": { "w": 19, "h": 19 }, "_6": { "w": 19, "h": 19 }, "_7": { "w": 19, "h": 19 } }, "3": { "_1": { "w": 69, "h": 103 }, "_2": { "w": 65, "h": 19 }, "_3": { "w": 65, "h": 19 }, "_4": { "w": 65, "h": 40 }, "_5": { "w": 19, "h": 19 }, "_6": { "w": 19, "h": 19 }, "_7": { "w": 19, "h": 19 } }, "4": { "_1": { "w": 27, "h": 145 }, "_2": { "w": 23, "h": 19 }, "_3": { "w": 23, "h": 19 }, "_4": { "w": 23, "h": 82 }, "_5": { "w": 19, "h": 19 }, "_6": { "w": 19, "h": 19 }, "_7": { "w": 19, "h": 19 } }, "5": { "_1": { "w": 130, "h": 124 }, "_2": { "w": 126, "h": 19 }, "_3": { "w": 126, "h": 19 }, "_4": { "w": 126, "h": 61 }, "_5": { "w": 44, "h": 40 }, "_8": { "w": 19, "h": 19 }, "_9": { "w": 19, "h": 19 }, "_6": { "w": 19, "h": 40 }, "_7": { "w": 54, "h": 40 }, "_10": { "w": 24, "h": 19 }, "_11": { "w": 23, "h": 19 } }, "6": { "_1": { "w": 104, "h": 145 }, "_2": { "w": 19, "h": 124 }, "_3": { "w": 19, "h": 124 }, "_4": { "w": 58, "h": 124 }, "_5": { "w": 54, "h": 40 }, "_8": { "w": 19, "h": 19 }, "_9": { "w": 19, "h": 19 }, "_6": { "w": 54, "h": 19 }, "_7": { "w": 54, "h": 40 }, "_10": { "w": 24, "h": 19 }, "_11": { "w": 23, "h": 19 } }, "7": { "_1": { "w": 146, "h": 103 }, "_2": { "w": 19, "h": 82 }, "_3": { "w": 19, "h": 82 }, "_4": { "w": 100, "h": 82 }, "_5": { "w": 44, "h": 61 }, "_8": { "w": 19, "h": 19 }, "_9": { "w": 19, "h": 19 }, "_6": { "w": 19, "h": 61 }, "_7": { "w": 28, "h": 61 }, "_10": { "w": 24, "h": 19 }, "_11": { "w": 24, "h": 19 } }, "8": { "_1": { "w": 94, "h": 166 }, "_2": { "w": 19, "h": 145 }, "_3": { "w": 19, "h": 145 }, "_4": { "w": 48, "h": 145 }, "_5": { "w": 44, "h": 40 }, "_8": { "w": 19, "h": 19 }, "_9": { "w": 19, "h": 19 }, "_6": { "w": 44, "h": 19 }, "_7": { "w": 44, "h": 61 }, "_10": { "w": 24, "h": 19 }, "_11": { "w": 24, "h": 19 } }, "9": { "_1": { "w": 23, "h": 40 }, "_2": { "w": 19, "h": 19 } }, "10": { "_1": { "w": 23, "h": 23 }, "_2": { "w": 19, "h": 19 } }, "11": { "_1": { "w": 44, "h": 40 }, "_2": { "w": 19, "h": 19 }, "_3": { "w": 19, "h": 19 } }, "12": { "_1": { "w": 23, "h": 61 }, "_2": { "w": 19, "h": 19 }, "_3": { "w": 19, "h": 19 } }, "13": { "_1": { "w": 44, "h": 23 }, "_2": { "w": 19, "h": 19 }, "_3": { "w": 19, "h": 19 } }, "14": { "_1": { "w": 111, "h": 44 }, "_2": { "w": 19, "h": 40 }, "_3": { "w": 19, "h": 40 }, "_4": { "w": 65, "h": 40 }, "_5": { "w": 19, "h": 19 }, "_6": { "w": 19, "h": 19 }, "_7": { "w": 19, "h": 19 } }, "15": { "_1": { "w": 172, "h": 82 }, "_2": { "w": 19, "h": 61 }, "_3": { "w": 19, "h": 61 }, "_4": { "w": 126, "h": 61 }, "_5": { "w": 44, "h": 40 }, "_8": { "w": 19, "h": 19 }, "_9": { "w": 19, "h": 19 }, "_6": { "w": 19, "h": 40 }, "_7": { "w": 54, "h": 40 }, "_10": { "w": 24, "h": 19 }, "_11": { "w": 23, "h": 19 } }, "16": { "_1": { "w": 172, "h": 65 }, "_2": { "w": 19, "h": 61 }, "_3": { "w": 19, "h": 61 }, "_4": { "w": 126, "h": 61 }, "_5": { "w": 44, "h": 40 }, "_8": { "w": 19, "h": 19 }, "_9": { "w": 19, "h": 19 }, "_6": { "w": 19, "h": 40 }, "_7": { "w": 54, "h": 40 }, "_10": { "w": 24, "h": 19 }, "_11": { "w": 23, "h": 19 } }, "17": { "_1": { "w": 490, "h": 23 }, "_2": { "w": 19, "h": 19 }, "_3": { "w": 19, "h": 19 }, "_4": { "w": 19, "h": 19 }, "_5": { "w": 19, "h": 19 }, "_6": { "w": 19, "h": 19 }, "_7": { "w": 19, "h": 19 }, "_8": { "w": 19, "h": 19 }, "_9": { "w": 19, "h": 19 }, "_10": { "w": 24, "h": 19 }, "_11": { "w": 23, "h": 19 }, "_12": { "w": 24, "h": 19 }, "_13": { "w": 24, "h": 19 }, "_14": { "w": 24, "h": 19 }, "_15": { "w": 24, "h": 19 }, "_16": { "w": 24, "h": 19 }, "_17": { "w": 24, "h": 19 }, "_18": { "w": 24, "h": 19 }, "_19": { "w": 24, "h": 19 }, "_20": { "w": 24, "h": 19 }, "_21": { "w": 24, "h": 19 } }, "18": { "_1": { "w": 196, "h": 40 }, "_2": { "w": 19, "h": 19 } }, "19": { "_1": { "w": 196, "h": 61 }, "_2": { "w": 19, "h": 40 }, "_3": { "w": 19, "h": 40 }, "_4": { "w": 65, "h": 40 }, "_5": { "w": 19, "h": 19 }, "_6": { "w": 19, "h": 19 }, "_7": { "w": 19, "h": 19 } }, "20": { "_1": { "w": 196, "h": 40 }, "_2": { "w": 19, "h": 19 }, "_3": { "w": 19, "h": 19 }, "_4": { "w": 19, "h": 19 } }, "21": { "_1": { "w": 27, "h": 145 }, "_2": { "w": 23, "h": 19 }, "_3": { "w": 23, "h": 19 }, "_4": { "w": 23, "h": 82 }, "_5": { "w": 19, "h": 19 }, "_6": { "w": 19, "h": 19 }, "_7": { "w": 19, "h": 19 } }, "22": { "_1": { "w": 196, "h": 103 }, "_2": { "w": 65, "h": 19 }, "_3": { "w": 65, "h": 19 }, "_4": { "w": 65, "h": 40 }, "_5": { "w": 19, "h": 19 }, "_6": { "w": 19, "h": 19 }, "_7": { "w": 19, "h": 19 } }, "23": { "_1": { "w": 196, "h": 103 }, "_2": { "w": 19, "h": 82 }, "_3": { "w": 19, "h": 82 }, "_4": { "w": 23, "h": 82 }, "_5": { "w": 19, "h": 19 }, "_6": { "w": 19, "h": 19 }, "_7": { "w": 19, "h": 19 } } },
+  4: {}, 
+  5: { "0": { "_1": { "w": 33, "h": 120 }, "_2": { "w": 19, "h": 19 } }, "1": { "_1": { "w": 104, "h": 120 }, "_2": { "w": 19, "h": 19 } } },
+  6: {},
+  7: {"0":{"_1":{"w":22,"h":46},"_2":{"w":22,"h":23},"_3":{"w":22,"h":23}}},
+};
+const MAXNODES = 5; 
+const SHOW_FREEZER = false; 
+const ALLOW_CALIBRATION = false;
+const KSKeys = ['action', 'actionPlus', 'all', 'best25', 'best50', 'best75', 'best100', 'emo', 'huge',
+  'life', 'life50', 'lifePlus', 'nemo', 'nemo100', 'object', 'object50', 'objectPlus'];
+const PERLEN_DATA_PATH = './public/PERLENDATA/';
+const PERLENPATH_FRONT = './PERLENDATA/';
+const HEROKU = false;
+const USERNAME_SELECTION = 'random'; 
+const UITEST = false;
+const JUST_PERLEN_GAME = true;
+const BRAUN = '#331606';
+const ColorDict = {
+  black: { c: 'black', E: 'black', D: 'schwarz' },
+  blue: { c: 'blue', E: 'blue', D: 'blau' },
+  BLUE: { c: '#4363d8', E: 'blue', D: 'blau' },
+  BLUEGREEN: { c: BLUEGREEN, E: 'bluegreen', D: 'blaugrün' },
+  blue1: { c: BLUE, E: 'blue', D: 'blau' },
+  BRAUN: { c: BRAUN, E: 'brown', D: 'braun' },
+  BROWN: { c: BROWN, E: 'brown', D: 'braun' },
+  brown: { c: BRAUN, E: 'brown', D: 'braun' },
+  deepyellow: { c: YELLOW3, E: 'yellow', D: 'gelb' },
+  FIREBRICK: { c: '#800000', E: 'darkred', D: 'rotbraun' },
+  gold: { c: 'gold', E: 'gold', D: 'golden' },
+  green: { c: 'green', E: 'green', D: 'grün' },
+  GREEN: { c: '#3cb44b', E: 'green', D: 'grün' },
+  green1: { c: GREEN, E: 'green', D: 'grün' },
+  grey: { c: 'grey', E: 'grey', D: 'grau' },
+  lightblue: { c: LIGHTBLUE, E: 'lightblue', D: 'hellblau' },
+  LIGHTBLUE: { c: '#42d4f4', E: 'lightblue', D: 'hellblau' },
+  lightgreen: { c: LIGHTGREEN, E: 'lightgreen', D: 'hellgrün' },
+  LIGHTGREEN: { c: '#afff45', E: 'lightgreen', D: 'hellgrün' },
+  lightyellow: { c: YELLOW2, E: 'lightyellow', D: 'gelb' },
+  olive: { c: OLIVE, E: 'olive', D: 'oliv' },
+  OLIVE: { c: '#808000', E: 'olive', D: 'oliv' },
+  orange: { c: ORANGE, E: 'orange', D: 'orange' },
+  ORANGE: { c: '#f58231', E: 'orange', D: 'orange' },
+  pink: { c: 'deeppink', E: 'pink', D: 'rosa' },
+  purple: { c: PURPLE, E: 'purple', D: 'lila' },
+  PURPLE: { c: '#911eb4', E: 'purple', D: 'lila' },
+  red: { c: 'red', E: 'red', D: 'rot' },
+  RED: { c: '#e6194B', E: 'red', D: 'rot' },
+  red1: { c: RED, E: 'red', D: 'rot' },
+  skyblue: { c: 'deepskyblue', E: 'skyblue', D: 'himmelblau' },
+  teal: { c: TEAL, E: 'teal', D: 'blaugrün' },
+  TEAL: { c: '#469990', E: 'teal', D: 'blaugrün' },
+  violet: { c: 'indigo', E: 'violet', D: 'violett' },
+  white: { c: 'white', E: 'white', D: 'weiss' },
+  yellow: { c: 'yellow', E: 'yellow', D: 'gelb' },
+  YELLOW: { c: '#ffe119', E: 'yellow', D: 'gelb' },
+  YELLOW2: { c: YELLOW2, E: 'yellow', D: 'gelb' },
+  YELLOW3: { c: YELLOW3, E: 'yellow', D: 'gelb' },
+};
+const GermanToEnglish = {
+  rot: 'red', blau: 'blue', grün: 'green', gelb: 'yellow', violett: 'violet', lila: 'purple',
+  braun: 'brown', schwarz: 'black', weiss: 'white', grau: 'grey', rosa: 'pink', orange: 'orange'
+};
+const DARKBLUE = '#04041b';
+const NATURE = {
+  depth: 6,
+  branching: [-25, 5, 25],
+  lsystems: [
+    {
+      axiom: 'A',
+      rules: [
+        { aus: 'A', wird: 'A+[+A-A]' },
+      ],
+      angle: 25,
+      len: 500,
+      dlen: .7,
+      depth: 6
+    },
+    {
+      axiom: 'F',
+      rules: [
+        { aus: 'F', wird: 'F[+F]F[-F]F' },
+      ],
+      angle: 26,
+      len: 50,
+    },
+    {
+      axiom: 'F',
+      rules: [
+        { aus: 'F', wird: 'F[+F]F[-F][F]' },
+      ],
+      angle: 20,
+      len: 200,
+    },
+    {
+      axiom: 'X',
+      rules: [
+        { aus: 'X', wird: 'F[+X][-X]FX' },
+        { aus: 'F', wird: 'FF' },
+      ],
+      angle: 26,
+      len: 200,
+    },
+    {
+      axiom: 'A',
+      rules: [{ aus: 'A', wird: 'AA+[+A-A-A]-[-A+A+A]' }],
+      angle: 25,
+    },
+    {
+      axiom: 'A',
+      rules: [{ aus: 'F', wird: 'FF' }, { aus: 'A', wird: 'F-[[A]+A]+F[+FA]-A' }],
+      angle: 23,
+    },
+    {
+      axiom: 'Y',
+      rules: [{ aus: 'X', wird: 'X[-FFF][+FFF]FX' }, { aus: 'Y', wird: 'YFX[+Y][-Y]' }, { aus: 'F', wird: 'X' }],
+      angle: 25,
+      len: 85,
+    },
+    {
+      axiom: 'F',
+      rules: [{ aus: 'F', wird: 'F[+FF][-FF]F[-F][+F]F' }],
+      angle: 35,
+      len: 70,
+    },
+    {
+      axiom: 'VZFFF',
+      rules: [{ aus: 'V', wird: '[+++W][---W]YV' },
+      { aus: 'W', wird: '+X[-W]Z' },
+      { aus: 'Y', wird: 'YZ' },
+      { aus: 'F', wird: 'Y' },
+      { aus: 'Z', wird: '[-FFF][+FFF]F' },
+      { aus: 'X', wird: '-W[+X]Z' }],
+      angle: 40,
+      len: 100,
+    },
+    {
+      axiom: 'F++F++F',
+      rules: [{ aus: 'F', wird: 'F-F++F-F' }],
+      angle: 60,
+      len: 100,
+      depth: 3,
+      xstart: 3,
+    },
+    {
+      axiom: 'F+F+F+F',
+      rules: [{ aus: 'F', wird: 'FF+F+F+F+FF' }],
+      angle: 90,
+      len: 100,
+      depth: 3,
+      xstart: 6,
+    },
+    {
+      axiom: 'F+F+F+F',
+      rules: [{ aus: 'F', wird: 'F+F-F-FFF+F+F-F' }],
+      angle: 90,
+      len: 28,
+      depth: 3,
+    },
+    {
+      axiom: 'X',
+      rules: [
+        { aus: 'X', wird: '-YF+XFX+FY-' },
+        { aus: 'Y', wird: '+XF-YFY-FX+' },
+        { aus: 'F', wird: 'F' },
+      ],
+      angle: 90,
+      len: 150,
+      xstart: 1.3,
+      depth: 4,
+    },
+    {
+      axiom: 'X',
+      rules: [{ aus: 'F', wird: 'FF' },
+      { aus: 'X', wird: 'F[+X]F[-X]+X' }],
+      angle: 20,
+      len: 200,
+    },
+  ]
+};
+const sleep = m => new Promise(r => setTimeout(r, m))
+const colorShadeX = (c, amt) => {
+  let col = colorHex(c);
+  col = col.replace(/^#/, '')
+  if (col.length === 3) col = col[0] + col[0] + col[1] + col[1] + col[2] + col[2]
+  let [r, g, b] = col.match(/.{2}/g);
+  ([r, g, b] = [parseInt(r, 16) + amt, parseInt(g, 16) + amt, parseInt(b, 16) + amt])
+  r = Math.max(Math.min(255, r), 0).toString(16)
+  g = Math.max(Math.min(255, g), 0).toString(16)
+  b = Math.max(Math.min(255, b), 0).toString(16)
+  const rr = (r.length < 2 ? '0' : '') + r
+  const gg = (g.length < 2 ? '0' : '') + g
+  const bb = (b.length < 2 ? '0' : '') + b
+  return `#${rr}${gg}${bb}`
+}
+const COLORPARAMNAMES = {
+  bg: true,
+  fg: true,
+  color: true,
+  'font-color': true,
+  border: true,
+  highlight: true,
+  highlight1: true,
+  highlight1: true,
+}
+const config = {
+  src: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/175711/open-peeps-sheet.png',
+  rows: 15,
+  cols: 7
+}
+const randomRange = (min, max) => min + Math.random() * (max - min)
+const randomIndex = (array) => randomRange(0, array.length) | 0
+const removeFromArray = (array, i) => array.splice(i, 1)[0]
+const removeItemFromArray = (array, item) => removeFromArray(array, array.indexOf(item))
+const removeRandomFromArray = (array) => removeFromArray(array, randomIndex(array))
+const getRandomFromArray = (array) => (array[randomIndex(array) | 0])
+const normalWalk = ({ peep, props }) => {
+  const {
+    startX,
+    startY,
+    endX
+  } = props
+  const xDuration = 10
+  const yDuration = 0.25
+  const tl = gsap.timeline()
+  tl.timeScale(randomRange(0.5, 1.5))
+  tl.to(peep, {
+    duration: xDuration,
+    x: endX,
+    ease: 'none'
+  }, 0)
+  tl.to(peep, {
+    duration: yDuration,
+    repeat: xDuration / yDuration,
+    yoyo: true,
+    y: startY - 10
+  }, 0)
+  return tl
+}
+const walks = [
+  normalWalk,
+]
+const img = document.createElement('img')
+const INNO = {
+  color: { blue: '#89aad7', red: '#da7887', green: '#72b964', yellow: '#e2e57a', purple: '#9b58ba' },
+  sym: {
+    tower: { key: 'white-tower', fg: 'silver', bg: 'dimgray' },
+    leaf: { key: 'leaf', fg: '#96D6BE', bg: '#275D45' },
+    tree: { key: 'leaf', fg: '#96D6BE', bg: '#275D45' },
+    bulb: { key: 'lightbulb', fg: 'white', bg: '#69224C' },
+    crown: { key: 'queen-crown', fg: '#FEE593', bg: '#A27E44' },
+    factory: { key: 'i_factory', fg: '#CD5147', bg: '#6D1A12' },
+    clock: { key: 'clock', fg: '#3E84B5', bg: '#0B5884' },
+    none: { key: 'flamer', fg: 'silver', bg: 'dimgrey' },
+    plus: { key: 'plus', fg: 'silver', bg: '#00000020' },
+    fountain: { key: 'fountain', fg: 'silver', bg: '#00000020' },
+    flag: { key: 'flying-flag', fg: 'silver', bg: '#00000020' },
+    up: { key: 'arrow-up', fg: 'silver', bg: '#00000020' },
+    left: { key: 'arrow-left', fg: 'silver', bg: '#00000020' },
+    right: { key: 'arrow-right', fg: 'silver', bg: '#00000020' },
+  },
+  symNames: ['tower', 'tree', 'bulb', 'crown', 'factory', 'clock'],
+  phases: [
+    { key: 'init', message: 'select initial card to meld!' },
+    { key: 'just_one_turn', message: 'take your first turn!' },
+    { key: 'two_turns', message: 'take your turn!' },
+  ],
+  special_achievements: {
+    MONUMENT: "Claim immediately if you tuck six cards or score six cards during a single turn (May also be claimed via Masonry from Age 1)",
+    EMPIRE: "Claim immediately if you have three  or more icons of all six types (May also be claimed via Construction from Age 2)",
+    WORLD: "Claim immediately if you have twelve or more clocks on your board (May also be claimed via Translation from Age 3)",
+    WONDER: "Claim immediately if you have all five colors on your board, and each is splayed either up or right (May also be claimed via Invention from Age 4)",
+    UNIVERSE: "Claim immediately if you have five top cards, and each is of value 8 or higher (May also be claimed via Astronomy from Age 5)",
+    LEGEND: "Claim if you meld a city with a left arrow on a color already splayed left",
+    REPUTE: "Claim if you meld a city with a right arrow on a color already splayed right",
+    FAME: "Claim if you meld a city with a up arrow on a color already splayed up",
+    GLORY: "Claim immediately tuck a city with a flag",
+    VICTORY: "Claim immediately tuck a city with a fountain",
+    SUPREMACY: "Claim immediately if you have 3 or more of one icon in 4 different colors (May also be claimed via Novel from Age 3)",
+    DESTINY: "Claim immediately if you have 7 or more cards in your forecast (May also be claimed via Barometer from Age 4)",
+    WEALTH: "Claim immediately if you have 8 or more bonuses (May also be claimed via Palampore from Age 5)",
+    HERITAGE: "Claim immediately if you have 8 or more numbers in one color (May also be claimed via Loom from Age 6)",
+    HISTORY: "Claim immediately if you have 4 or more echoes in one color (May also be claimed via Photography from Age 7)",
+  },
+};
+const mainCOOL = () => {
+  const imgFile = document.getElementById("imgfile");
+  const image = new Image();
+  const file = imgFile.files[0];
+  const fileReader = new FileReader();
+  fileReader.onload = () => {
+    image.onload = () => {
+      const canvas = document.getElementById("canvas");
+      canvas.width = image.width;
+      canvas.height = image.height;
+      const ctx = canvas.getContext("2d");
+      ctx.drawImage(image, 0, 0);
+      const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+      const rgbArray = buildRgb(imageData.data);
+      const quantColors = quantization(rgbArray, 0);
+      buildPalette(quantColors);
+    };
+    image.src = fileReader.result;
+  };
+  fileReader.readAsDataURL(file);
+};
+const DIBOA = {
+  home: { link: "../rechnung/index.html", img: 'home.png', align: 'left', pop: false },
+  bill: { link: "../rechnung/index.html", img: 'bill.png', align: 'left', pop: false },
+  boa: { link: "", img: 'boa.png', align: 'left', pop: false },
+  bw: { link: "../rechnung/bwindex.html", img: 'bwicon.png', align: 'right', pop: true },
+  authenticator: { link: "../rechnung/boaa.html", img: 'authenticator.png', align: 'right', pop: true },
+  authy: { link: "../rechnung/boaa.html", img: 'authy.png', align: 'right', pop: true },
+  onedrive: { link: "../rechnung/boaa.html", img: 'onedrive.png', align: 'right', pop: true },
+  skype: {
+    link: "../rechnung/boaa.html", img: 'skype.png', align: 'right', pop: false,
+    contacts: {
+      'Julia Oasis': { date: 'Wed', msg: 'Wow', color: BLUEGREEN },
+      '+14778991960': { date: 'Thu', msg: 'Missed Call', color: ORANGE },
+    }
+  },
+  bw_info: {
+    boa: { userid: 'gleem@gmail.com', pwd: rPassword(20) },
+    authy: { userid: 'gleem@gmail.com', pwd: rPassword(20) },
+  },
+  boa_data: {
+    'AAA-MBNA 5464 3332 3333 5555': { sub: '*5555', logo: 'boa.png' },
+    'AMERICAN EXPRESS': { sub: '*4554', logo: 'amex.png' },
+    'AT&T Mobility': { sub: '*1331', logo: 'att.png' },
+    'AT&T Mobility{AT&T WA}': { sub: '*7575', logo: 'att.png' },
+    'AT&T Mobility': { sub: '*8585', logo: 'att.png' },
+    'Bank Of Amerika Credit Card': { sub: '*1212', logo: 'boa.png', 'Last Payment': '5-25 $1150.41', brand: 'BofA_rgb' },
+    'Bank Of Amerika': { sub: '*0898', logo: 'boa.png' },
+    'Bank Of Amerika Mail-in1': { sub: '*6565', logo: 'boa.png' },
+    'Bel-Red Oral': { sub: '*2432' },
+    'Bellevue Kendo Club': { sub: '*hallo' },
+    'CapitalOne': { sub: '*1324', logo: 'capitalOne.png' },
+    'CapitalOneVenture': { sub: '*6456', logo: 'capitalOne.png' },
+    'CapitalOneVentureF': { sub: '*9789', logo: 'capitalOne.png' },
+    'Chase': { sub: '*3131', logo: 'chase.png' },
+    'Chase Amazon': { sub: '*0898', 'Last Payment': '5-25 $1150.41', logo: 'chase.png', brand: 'prime' },
+    'Chase Card': { sub: '*1432', logo: 'chase.png' },
+    'CHASE MANHATTAN BANK-MC': { sub: '*0797', 'Last Payment': '5-25 $110.99', logo: 'chase.png', brand: 'chase_bank' },
+    'Chase Sapphire': { sub: '*5132', logo: 'chase.png' },
+    'Chase Sapphire': { sub: '*8679', logo: 'chase.png' },
+    'City Cards': { sub: '*3124', logo: 'citi.png' },
+    'City Cards Divident': { sub: '*9678', logo: 'citi.png' },
+    'CITY CARDS Points': { sub: '*7678', logo: 'citi.png' },
+    'Citi Costco': { sub: '*8768', 'Last Payment': '6-17 $506.14', logo: 'citi.png', brand: 'citibank' },
+    'Citi Costco gu': { sub: '*0890', 'Last Payment': '6-6 $228.92', logo: 'citi.png', brand: 'citibank' },
+    'CITI DIVIDENT Platinum': { sub: '*3454', logo: 'citi.png' },
+    'CITIBANK VISA NV': { sub: '*7566', logo: 'citi.png' },
+    'City of Redmond': { sub: '*4998' },
+    'City of Redmond WA': { sub: '*2887', 'Last Payment': '5-17 $214.94', brand: 'redmond' },
+    'Comcast': { sub: '*7676', logo: 'comcast.png' },
+    'Comcast Perrigo': { sub: '*1324', 'Last Payment': '6-21 $89.44', logo: 'comcast.png', brand: 'comcast' },
+    'ComCast WA': { sub: '*6456', logo: 'comcast.png' },
+    'DISCOVER CARD SERVICES': { sub: '*8678' },
+    'Dr. Ellie Tabaraie': { sub: '*hallo' },
+    'Fastenerz.com': { sub: '*000' },
+    'Fibonacci': { sub: '*6666' },
+    'Fleet Credit Card Service': { sub: '*8798' },
+    'FLEET CREDIT CARD0MC/VS (32)': { sub: '*8799' },
+    'Frontier': { sub: '*05-5' },
+    'Frontier2': { sub: '*5366' },
+    'GoodToGo': { sub: '*7767' },
+    'Hardford Mutual Funds Inc.': { sub: '*8878' },
+    'King County Treasury': { sub: '*0-02' },
+    'King County Treasury': { sub: '*0-03' },
+    'LabCorp': { sub: '*8899' },
+    'Landover Mortgage': { sub: '*hallo' },
+    'Lauren Magada': { sub: 'Lauren boa' },
+    'Lederman&Pulman': { sub: '*9988' },
+    'Liberty Mutual Group': { sub: '*-660' },
+    'Liberty Mutual Group': { sub: '*-768' },
+    'Liberty Mutual Group': { sub: '*-760' },
+    "Macy's Star Rewards": { sub: '*23-0', logo: 'macys.png' },
+    'MBNA': { sub: '*3444' },
+    'MBNA 6455 6677 7924 5555': { sub: '*5555' },
+    'Oachita': { sub: '*6556' },
+    'Oasis Condominium CA': { sub: '*889' },
+    'Oasis Condominium CA': { sub: '*1889', 'Last Payment': '5-31 $581.54', brand: 'oasis' },
+    'Orthodontics Roos': { sub: '*1111' },
+    'Overcast Law Office, PS': { sub: '*4423' },
+    'Overlake Medical Center': { sub: '*hallo' },
+    'Pediatric Associates Inc': { sub: '*8383' },
+    'Perrigo Heights HOA': { sub: '*t#98' },
+    'Premier Periodontics': { sub: '*9494' },
+    'PreventionMD': { sub: '*9566' },
+    'Prime Trust LLC': { sub: '*8788' },
+    'ProSport': { sub: '*1233' },
+    'PSE - Puget Sound Energy': { sub: '*3444', 'Last Payment': '5-25 $70.59', brand: 'PSE' },
+    'Puget Sound Energy': { sub: '*66-9' },
+    'Real Property Management Eclipse': { sub: '*asss' },
+    'Remadina Ridge Family Dentistry': { sub: '*6656' },
+    'Sewage Capacity Charge': { sub: '*7575' },
+    'Silkroad': { sub: '*788-1' },
+    'Suhrco': { sub: '*899' },
+    'Target': { sub: '*9789' },
+    'Target National Bank': { sub: '*1432' },
+    'Univerity Of WA Medical Center': { sub: '*1543' },
+    'US Bank Credit Card FlexPerks': { sub: '*0789', 'Last Payment': '5-20 $11.13', brand: 'usbank' },
+    'USBank': { sub: '*7567' },
+    'USBank-CashPlus': { sub: '*3123' },
+    'USBank-FlexPerks': { sub: '*1321' },
+    'Verizon': { sub: '*7567' },
+    'Waste Management': { sub: '*87-1' },
+    'Waste Management': { sub: '*23-9' },
+    'Wells Fargo Home Mortgage': { sub: '*1333', 'Last Payment': '6-10 $1625.06', logo: 'wellsfargo.png', brand: 'wellsfargo' },
+    'Wells Fargo Mortgage': { sub: '*2444', logo: 'wellsfargo.png' },
+    'Williams-Sonoma': { sub: '*9888' },
+    'WINDERMERE PROPERTY MGMT/EASTSID': { sub: '*8766' },
+    'Windermere Real Estate/East': { sub: '*ntal' },
+  }
+};
+const stage = {
+  width: 0,
+  height: 0,
+}
+const ARI = {
+  sz_hand: 7,
   stage: {
+    1: 'journey',
+    2: 'tax',
+    3: 'auto market',
+    4: 'stall selection',
+    1004: 'TEST_starts_in_stall_selection_complete',
+    5: 'action: command',
+    6: 'action step 2',
+    7: 'action 3',
+    8: 'action 4',
+    9: 'action 5',
+    10: 'end game?',
+    11: 'ball',
+    12: 'auction: bid',
+    13: 'auction: buy',
+    14: 'complementing_market_after_church',
+    15: 'commission',
+    16: 'commission new',
+    17: 'church',
+    18: 'church_minplayer_tithe',
+    19: 'church_newcards',
+    20: 'payment action',
+    21: 'church_minplayer_tithe_add',
+    22: 'church_minplayer_tithe_downgrade',
+    23: 'comm_weitergeben',
+    24: 'rumors_weitergeben',
+    25: 'rumor',
+    26: 'blackmail',
+    blackmail: 26,
+    27: 'inspect',
+    rumor: 25,
+    28: 'buy rumor',
+    'buy rumor': 28,
+    29: 'rumor discard',
+    30: 'pick luxury or journey cards',
+    31: 'add new journey',
+    32: 'rumor_both',
+    33: 'blackmail_owner',
+    34: 'accept_blackmail',
+    35: 'blackmail_complete',
+    36: 'reject_blackmail',
+    37: 'commission_stall',
+    38: 'pick_schwein',
+    40: 'trade',
+    41: 'build',
+    42: 'visit',
+    43: 'buy',
+    44: 'upgrade',
+    45: 'downgrade',
+    46: 'visit destroy',
+    build: 41,
+    upgrade: 44,
+    downgrade: 45,
+    visit: 42,
+    buy: 43,
+    100: 'pickup end',
+    101: 'build end',
+    102: 'select building to upgrade',
+    103: 'select downgrade cards',
+    104: 'next_comm_setup_stage',
+    105: 'next_rumor_setup_stage',
   }
 };
-var AIThinkingTime = 30;
-var allAreas = {}; 
-var allGames = null; 
-var allGames1 = {
-  ttt: {
-    name: 'TicTacToe',
-    long_name: 'Tic-Tac-Toe',
-    short_name: 'ttt',
-    num_players: [2],
-    player_names: ['Player1', 'Player2'],
+const SHERIFF = {
+  color: {
+    legal: GREEN, //'lime',
+    contraband: 'crimson',
+    royal: 'orangered'
   },
-  s1: {
-    name: 's1',
-    long_name: 's1',
-    short_name: 's1',
-    num_players: [2, 3, 4, 5],
-    player_names: ['Player1', 'Player2', 'Player3', 'Player4', 'Player5'],
+  cards: {
+    apples: { ksym: 'green apple', kcenter: 'red apple', label: 'apple', type: 'legal', value: 2, penalty: 2 },
+    cheese: { ksym: 'cheese wedge', kcenter: 'cheese wedge', label: 'cheese', type: 'legal', value: 3, penalty: 2 },
+    pineapple: { ksym: 'pineapple', kcenter: 'pineapple', label: 'pineapple', type: 'legal', value: 4, penalty: 2 },
+    chicken: { ksym: 'poultry leg', kcenter: 'poultry leg', label: 'chicken', type: 'legal', value: 4, penalty: 2 },
+    bread: { ksym: 'bread', kcenter: 'bread', label: 'bread', type: 'legal', value: 3, penalty: 2 },
+    pepper: { ksym: 'hot pepper', kcenter: 'hot pepper', label: 'pepper', type: 'contraband', value: 6, penalty: 4 },
+    mead: { ksym: 'beer mug', kcenter: 'beer mug', label: 'mead', type: 'contraband', value: 7, penalty: 4 },
+    silk: { ksym: 'sari', kcenter: 'kimono', label: 'silk', type: 'contraband', value: 8, penalty: 4 },
+    crossbow: { ksym: 'crossbow', kcenter: 'crossbow', label: 'crossbow', type: 'contraband', value: 9, penalty: 4 },
+    chestnut: { ksym: 'chestnut', kcenter: 'chestnut', label: 'chestnut', type: 'royal', value: 4, penalty: 3 },
+    pear: { ksym: 'pear', kcenter: 'pear', label: 'pear', type: 'royal', value: 6, penalty: 4 },
+    pie: { ksym: 'pie', kcenter: 'pie', label: 'pie', type: 'royal', value: 6, penalty: 4 },
+    squid: { ksym: 'squid', kcenter: 'squid', label: 'squid', type: 'royal', value: 9, penalty: 5 },
+    shortcake: { ksym: 'shortcake', kcenter: 'shortcake', label: 'shortcake', type: 'royal', value: 9, penalty: 5 },
+    grapes: { ksym: 'grapes', kcenter: 'grapes', label: 'grapes', type: 'royal', value: 9, penalty: 5 },
+    pretzel: { ksym: 'pretzel', kcenter: 'pretzel', label: 'pretzel', type: 'royal', value: 9, penalty: 5 },
+    baguette: { ksym: 'baguette bread', kcenter: 'baguette bread', label: 'bread', type: 'royal', value: 6, penalty: 4 },
+    cherries: { ksym: 'cherries', kcenter: 'cherries', label: 'cherries', type: 'royal', value: 8, penalty: 4 },
   },
-  starter: {
-    name: 'Starter',
-    long_name: 'Starter',
-    short_name: 'starter',
-    num_players: [2],
-    player_names: ['Player1', 'Player2'],
+  cardtypes: {
+    legal: ['apples', 'cheese', 'pineapple', 'bread'],
+    contraband: ['pepper', 'mead', 'silk', 'crossbow'],
+    royal: ['chestnut', 'pear', 'pie', 'shortcake', 'pretzel', 'grapes', 'baguette', 'cherries']
   },
-  catan: {
-    name: 'Catan',
-    long_name: 'The Settlers of Catan',
-    short_name: 'catan',
-    num_players: [3, 4],
-    player_names: ['White', 'Red', 'Blue', 'Orange'],
+  stage: {
+    1: 'exchange',
+  }
+}
+const EMO = {
+  emoscale: {
+    freedom: { list: 'joyful, empowered, loving, free', key: 'smiling face with hearts', n: 4, color: 'violet', E: 'joy', D: 'freiheit', stage: 'open heart', danger: 'arrogance', advice: 'be quiet', loc: 'airport', locd: 'flughafen', syn: 'joy,appreciation,empowerment,love', rem: 'let go' },
+    zone: { list: "energetic, creative, enthusiastic, in the zone", key: 'nerd face', n: 3, color: 'indigo', E: 'energy', D: 'energie', stage: 'constant flow', danger: 'greed', advice: 'now', loc: 'airport', locd: 'flughafen', syn: 'passion', rem: 'remain watchful' },
+    grateful: { list: 'peaceful, grateful, happy, playful', key: 'smiling face with halo', n: 2, color: 'blue', syn: 'eagerness,happiness', rem: 'stick to plan', E: 'energy', D: 'energie', stage: 'energy', danger: 'planlos verpuffen lassen, being overly confident', advice: 'make a plan, stick to the plan', loc: 'airport', locd: 'flughafen' },
+    contentment: { list: 'calm, centered, content, trusting', key: 'relieved face', n: 1, color: 'green', rem: 'abide', E: 'serene', D: 'zufriedenheit', stage: 'gelassenheit', danger: 'passivity', advice: 'stay active', loc: 'airport', locd: 'flughafen' },
+    boredom: { list: 'tired, bored, aimless, empty', key: 'slightly frowning face', n: 0, color: 'sienna', rem: 'oracle', E: 'bored', D: 'langeweile', stage: 'gelassenheit', danger: 'passivity', advice: 'stay active', loc: 'airport', locd: 'flughafen' },
+    pessimism: { list: 'indecisive, confused, doubting, worried', key: 'worried face', n: -1, color: 'yellow', rem: 'last day', E: 'serene', D: 'langeweile', stage: 'gelassenheit', danger: 'passivity', advice: 'stay active', loc: 'airport', locd: 'flughafen' },
+    overwhelm: { list: 'irritated, anxious, stressed, overwhelmed', key: 'anxious face with sweat', n: -2, color: 'orange', rem: 'pause', E: 'irritated', D: 'irritiert', stage: 'damage control', danger: 'losing contenance', advice: 'retreat', loc: 'airport', locd: 'flughafen' },
+    blame: { list: 'impatient, resentful, blaming, angry', key: 'face with symbols on mouth', n: -3, color: 'red', syn: 'discouragement,anger,revenge', rem: 'robot', E: 'blaming', D: 'schuld zuweisend', stage: 'damage control', danger: 'toxicity', advice: 'surrender', loc: 'airport', locd: 'flughafen' },
+    hatred: { list: 'ruthless, aggressive, jealous, hateful', key: 'black heart', n: -4, color: 'black', syn: 'rage,jealousy', rem: 'robot', E: 'hateful', D: 'hass', stage: 'damage control', danger: 'toxicity', advice: 'surrender', loc: 'airport', locd: 'flughafen' },
+    guilt: { list: 'guilty, powerless, frozen, suicidal', key: 'cold face', n: -5, color: 'grey', syn: 'insecurity,unworthiness', rem: 'robot', E: 'guilty', D: 'wertlos', stage: 'damage control', danger: 'toxicity', advice: 'surrender', loc: 'airport', locd: 'flughafen' },
   },
-  aristocracy: {
-    name: 'Aristocracy',
-    long_name: 'Aristocracy',
-    short_name: 'aristocracy',
-    num_players: [2, 3, 4, 5],
-    player_names: ['Player1', 'Player2', 'Player3', 'Player4', 'Player5'],
+  remedy: {
+    sleep: { list: 'rest, close your eyes, deep breath' },
+    distraction: { list: 'read, movie, docu, audiobook' },
+    walk: { list: 'music, tm, library, walk' },
+    babystep: { list: 'veggies, fruit, haushalt, wae, wasser, tee' },
+    work: { list: 'post, box, shelf, people, todolist' },
+    action: { list: 'piano, violin, game' },
+    choices: { list: 'dice, todolist, openlist, choices' },
+    retreat: { list: 'flight, dimension change' },
+    cafe: { list: 'renew, plan' },
+    inside: { list: 'watch, freeze, meditate' }
+  },
+  attitude: {
+    disziplin: { max: 1 },
+    gelassenheit: { min: 1, max: 4 },
+    energie: { min: 3, max: 5 },
+    ausgelassenheit: { min: 5, max: 7 },
+    friede: { min: 5, max: 7 },
+    freude: { min: 5, max: 7 },
+    freiheit: { min: 5, max: 7 },
+    liebe: { min: 5, max: 7 },
   }
 };
-var allGamesC = null;
-var animate = false;
+const EMOFONTLIST = ['emoOpen', 'openmoBlack', 'segoe ui emoji', 'segoe ui symbol'];
+const resetPeep = ({ stage, peep }) => {
+  const direction = Math.random() > 0.5 ? 1 : -1
+  const offsetY = 100 - 250 * gsap.parseEase('power2.in')(Math.random())
+  const startY = stage.height - peep.height + offsetY
+  let startX
+  let endX
+  if (direction === 1) {
+    startX = -peep.width
+    endX = stage.width
+    peep.scaleX = 1
+  } else {
+    startX = stage.width + peep.width
+    endX = 0
+    peep.scaleX = -1
+  }
+  peep.x = startX
+  peep.y = startY
+  peep.anchorY = startY
+  return {
+    startX,
+    startY,
+    endX
+  }
+}
+const allPeeps = []
+const availablePeeps = []
+const crowd = []
+const CODE = {
+  paths: [],
+  funcs: {},
+  consts: {},
+  index: [],
+};
+const CODE_VERSION = 1;
+const SHOW_CODE = false; 
+const SHOW_CODE_DATA = false; 
+const Perlin = {
+  PERLIN_YWRAPB: 4,
+  PERLIN_YWRAP: 1 << 4,
+  PERLIN_ZWRAPB: 8,
+  PERLIN_ZWRAP: 1 << 8,
+  PERLIN_SIZE: 4095,
+  perlin_octaves: 4,
+  perlin_amp_falloff: 0.5,
+  scaled_cosine: i => 0.5 * (1.0 - Math.cos(i * Math.PI)),
+  perlin: null,
+  lastx: 0,
+  speed: 0.02,
+  channels: {},
+}
+const MyNames = ['amanda', 'angela', 'erin', 'holly', 'jan', 'karen', 'kelly', 'pam', 'phyllis', 'andy', 'creed', 'darryl', 'david', 'dwight', 'felix', 'gul', 'jim', 'kevin', 'luis', 'michael', 'nil', 'oscar', 'ryan', 'stanley', 'toby', 'wolfgang'];
+const MARGIN_S = '3px 6px';
+const MARGIN_M = '4px 10px';
+const MARGIN_XS = '2px 4px';
+const complementaryColor = color => {
+  const hexColor = color.replace('#', '0x');
+  return `#${('000000' + ('0xffffff' ^ hexColor).toString(16)).slice(-6)}`;
+};
+const immediateStart = true;  
+const uiHaltedMask = 1 << 0; 
+const beforeActivationMask = 1 << 1;
+const hasClickedMask = 1 << 2;
+var jewel = (function() {
+    var settings = {
+        rows : 8,
+        cols : 8,
+        baseScore : 100,
+        baseLevelScore : 1500,
+        baseLevelExp : 1.05,
+        baseLevelTimer : 60000,
+        numJewelTypes : 7,
+        controls : {
+            KEY_UP : "moveUp",
+            KEY_LEFT : "moveLeft",
+            KEY_DOWN : "moveDown",
+            KEY_RIGHT : "moveRight",
+            KEY_ENTER : "selectJewel",
+            KEY_SPACE : "selectJewel",
+            CLICK : "selectJewel",
+            TOUCH : "selectJewel",
+            BUTTON_A: "selectJewel",
+            LEFT_STICK_UP: "moveUp",
+            LEFT_STICK_DOWN: "moveDown",
+            LEFT_STICK_LEFT: "moveLeft",
+            LEFT_STICK_RIGHT: "moveRight"
+        }
+    };
+    var scriptQueue = [],
+        numResourcesLoaded = 0,
+        numResources = 0,
+        executeRunning = false;
+    function executeScriptQueue() {
+        var next = scriptQueue[0],
+            first, script;
+        if (next && next.loaded) {
+            executeRunning = true;
+            scriptQueue.shift();
+            first = document.getElementsByTagName("script")[0];
+            script = document.createElement("script");
+            script.onload = function() {
+                if (next.callback) {
+                    next.callback();
+                }
+                executeScriptQueue();
+            };
+            script.src = next.src;
+            first.parentNode.insertBefore(script, first);
+        } else {
+            executeRunning = false;
+        }
+    }
+    function getLoadProgress() {
+        return numResourcesLoaded / numResources;
+    }
+    function load(src, callback) {
+        var image, queueEntry;
+        numResources++;
+        queueEntry = {
+            src: src,
+            callback: callback,
+            loaded: false
+        };
+        scriptQueue.push(queueEntry);
+        image = new Image();
+        image.onload = image.onerror = function() {
+            numResourcesLoaded++;
+            queueEntry.loaded = true;
+            if (!executeRunning) {
+                executeScriptQueue();
+            }
+        };
+        image.src = src;
+    }
+    function preload(src) {
+        var image = new Image();
+        image.src = src;
+    }
+    function showScreen(screenId) {
+        var dom = jewel.dom,
+            $ = dom.$,
+            activeScreen = $("#game .screen.active")[0],
+            screen = $("#" + screenId)[0];
+        if (!jewel.screens[screenId]) {
+            alert("This module is not implemented yet!");
+            return;
+        }
+        if (activeScreen) {
+            dom.removeClass(activeScreen, "active");
+        }
+        dom.addClass(screen, "active");
+        jewel.screens[screenId].run();
+    }
+    function isStandalone() {
+        return (window.navigator.standalone !== false);
+    }
+    function hasWebWorkers() {
+        return ("Worker" in window);
+    }
+    function hasWebWorkers() {
+        return ("Worker" in window);
+    }
+    function hasWebGL() {
+        var canvas = document.createElement("canvas"),
+            gl = canvas.getContext("webgl") ||
+                 canvas.getContext("experimental-webgl");
+        return !!gl;
+    }
+    function setup() {
+        if (/Android/.test(navigator.userAgent)) {
+            jewel.dom.$("html")[0].style.height = "200%";
+            setTimeout(function() {
+                window.scrollTo(0, 1);
+            }, 0);
+        }
+        jewel.dom.bind(document, "touchmove", function(event) {
+            event.preventDefault();
+        });
+        if (isStandalone()) {
+            showScreen("splash-screen");
+        } else {
+            showScreen("install-screen");
+        }
+    }
+    return {
+        getLoadProgress: getLoadProgress,
+        hasWebWorkers: hasWebWorkers,
+        hasWebGL: hasWebGL,
+        isStandalone: isStandalone,
+        preload: preload,
+        load: load,
+        setup: setup,
+        showScreen : showScreen,
+        settings: settings,
+        screens: {}
+    };
+})();
+var currentKey = null;
+var keysDown = new Array(256);
+var virtKeys = false;
 var AnimTimer = function () {
   this.date = new Date();
   this.lastTime = 0;
@@ -64,232 +1565,798 @@ var AnimTimer = function () {
     return (this.currentTime - this.lastTime);
   }
 }
-var App; 
-var areaSubTypes = {}; 
-var _AUDIOCONTEXT;
-var _audioSources = {
-  incorrect1: '../base/assets/sounds/incorrect1.wav',
-  incorrect3: '../base/assets/sounds/incorrect3.mp3',
-  goodBye: "../base/assets/sounds/level1.wav",
-  down: "../base/assets/sounds/down.mp3",
-  levelComplete: "../base/assets/sounds/sound1.wav",
-  rubberBand: "../base/assets/sounds/sound2.wav",
-  hit: "../base/assets/sounds/hit.wav",
-  mozart: "../base/assets/music/mozart_s39_4.mp3",
-};
-var autoplayFunction = () => false;
-var auxOpen, GameTimer, STOPAUS = false;
-var Avatars = [];
-var AvatarTimeout;
-var axiom, rules, factor, angle, max, sentence, interval_id;
-var B = {};
-var badges = [];
-var Badges = [];
-var Ball = function () {
-  var velocity = [0, 0];
-  var position = [0, 0];
-  var element = $('#ball');
-  var owner;
-  var halfTile = 32;
-  var paused = false;
-  function move(t) {
-    if (owner !== undefined) {
-      var ownerPosition = owner.getPosition();
-      position[1] = ownerPosition[1] + owner.getSize() / 2;
-      if (owner.getSide() === 'left') {
-        position[0] = ownerPosition[0] + owner.getSize();
-      } else {
-        position[0] = ownerPosition[0];
+var ObjetoSolitario = function () {
+  this.CartaDrag = new Array();
+  this.ImagenDrag = new Array();
+  this.Movimiento = 0;
+  this.Movimientos = new Array();
+  this.MovimientosAuyda = new Array();
+  this.MovimientosAuydaActual = 0;
+  this.Iniciar = function () {
+    $("body").on("keydown", function (e) {
+      if (e.ctrlKey && (String.fromCharCode(e.which) === 'z' || String.fromCharCode(e.which) === 'Z')) {
+        Solitario.Deshacer(e);
+      } else if (e.ctrlKey && (String.fromCharCode(e.which) === 'y' || String.fromCharCode(e.which) === 'Y')) {
+        Solitario.Rehacer(e);
+      } else if (String.fromCharCode(e.which) === 'n' || String.fromCharCode(e.which) === 'N') {
+        Solitario.NuevoJuego();
+      } else if (String.fromCharCode(e.which) === ' ') {
+        Solitario.MostrarAyuda();
       }
-    } else {
-      if (position[1] - halfTile <= 0 ||
-          position[1] + halfTile >= innerHeight) {
-        velocity[1] = -velocity[1];
-      }
-      position[0] += velocity[0] * t; 
-      position[1] += velocity[1] * t;   
-    }  
-    element.css('left', (position[0] - halfTile) + 'px');
-    element.css('top', (position[1] - halfTile) + 'px');
+    });
+    $("ventanamenu > button:nth-child(1)").on("click", this.NuevoJuego.bind(this));
+    $("ventanamenu > button:nth-child(2)").on("click", this.Deshacer.bind(this));
+    $("ventanamenu > button:nth-child(3)").on("click", this.Rehacer.bind(this));
+    $("ventanamenu > button:nth-child(4)").on("click", this.MostrarAyuda.bind(this));
+    this.NuevoJuego();
   };
-    function checkScored() {
-    if (position[0] <= 0) {
-      pause();
-      $(document).trigger('ping:opponentScored');
+  this.MostrarAyuda = function () {
+    $("Carta, Solucion, Baraja, Columna").removeAttr("ayuda1").removeAttr("ayuda2");
+    var Mov = this.MovimientosAuyda[this.MovimientosAuydaActual];
+    if (this.MovimientosAuydaActual === this.MovimientosAuyda.length - 1) {
+      this.MovimientosAuydaActual = 0;
+    } else {
+      this.MovimientosAuydaActual++;
     }
-    if (position[0] >= innerWidth) {
-      pause();
-      $(document).trigger('ping:playerScored');
-    }
+    Mov.origen.attr({
+      "ayuda1": "true"
+    });
+    Mov.destino.attr({
+      "ayuda2": "true"
+    });
   }
-  function update(t) {
-    if(!paused) {
-      move(t);
+  this.NuevoJuego = function () {
+    var Orden = new Array(4 * 13);
+    var Baraja = Array();
+    for (i = 0; i < 4; i++) {
+      Baraja[i] = $("Baraja[num='" + (i + 1) + "']");
+      Baraja[i].html("");
     }
-    if (owner !== undefined) {
+    var Solucion = Array();
+    for (i = 0; i < 4; i++) {
+      Solucion[i] = $("Solucion[num='" + (i + 1) + "']");
+      Solucion[i].html("");
+    }
+    var Columna = Array();
+    for (i = 0; i < 7; i++) {
+      Columna[i] = $("Columna[num='" + (i + 1) + "']");
+      Columna[i].html("");
+    }
+    this.Movimiento = 0;
+    this.Movimientos = [];
+    var Cartas = Array();
+    Contador = 0;
+    for (p = 1; p < 5; p++) {
+      for (v = 0; v < 13; v++) {
+        Orden[Contador] = Contador;
+        Cartas[Contador] = $("<Carta></Carta>")
+        Cartas[Contador++].attr({
+          "Palo": p,
+          "Valor": v,
+          "Tapada": "true"
+        });
+      }
+    }
+    for (var Rand, Tmp, i = Orden.length; i; Rand = Math.floor(Math.random() * i), Tmp = Orden[--i], Orden[i] = Orden[Rand], Orden[Rand] = Tmp);
+    Contador = 0;
+    for (Cols = 0; Cols < 7; Cols++) {
+      Carta = Columna[Cols];
+      for (i = 0; i < Cols + 1; i++) {
+        Carta = Cartas[Orden[Contador++]].appendTo(Carta);
+        if (i == Cols) {
+          Carta.attr({
+            "Tapada": "false",
+            "draggable": "true"
+          });
+        }
+        Carta.css({
+          "z-index": i
+        });
+      }
+    }
+    Carta = Baraja[0];
+    for (var i = Contador; i < 52; i++) {
+      Carta = Cartas[Orden[i]].appendTo(Carta);
+      Carta.css({
+        "z-index": i - Contador
+      });
+    }
+    Baraja[0].off("click").on("click", this.Baraja1_EventoClick.bind(this));
+    $("Carta").off("mouseover").on('mouseover', this.Carta_EventoMouseOver.bind(this));
+    $("Carta").off("mouseout").on('mouseout', this.Carta_EventoMouseOut.bind(this));
+    $("Carta").off("dragstart").on('dragstart', this.Carta_EventoDragStart.bind(this));
+    $("Carta").off("dragend").on('dragend', this.Carta_EventoDragEnd.bind(this));
+    $("Carta").off("dblclick").on('dblclick', this.Carta_EventoDblClick.bind(this));
+    $("Columna").off("drop").on('drop', this.Columna_EventoDrop.bind(this));
+    $("Columna").off("dragover").on('dragover', this.Columna_EventoDragOver.bind(this));
+    $("Solucion").off("drop").on('drop', this.Solucion_EventoDrop.bind(this));
+    $("Solucion").off("dragover").on('dragover', this.Solucion_EventoDragOver.bind(this));
+    this.UltimoHijo($("Columna[num=7]"));
+    $("Victoria").css({
+      "display": "none"
+    });
+    $("Derrota").css({
+      "display": "none"
+    });
+    this.GuardarMovimiento();
+  };
+  this.Carta_EventoMouseOver = function (e) {
+    Carta = $(e.originalEvent.currentTarget);
+    if (Carta.attr("tapada") !== "true" && Carta.attr("draggable") === "true") {
+      $(e.originalEvent.currentTarget).attr({
+        "hover": "true"
+      });
+    }
+    e.stopPropagation();
+  };
+  this.Carta_EventoMouseOut = function (e) {
+    $(e.originalEvent.currentTarget).removeAttr("hover");
+    e.stopPropagation();
+  };
+  this.Carta_EventoDblClick = function (e) {
+    Carta = this.UltimoHijo($(e.originalEvent.currentTarget));
+    Palo = 0;
+    Valor = 0;
+    for (i = 1; i < 5; i++) {
+      if (this.UltimoHijo($("Solucion[num='" + i + "']")).attr("palo") == Carta.attr("palo")) {
+        Valor = parseInt(this.UltimoHijo($("Solucion[num='" + i + "']")).attr("valor")) + 1;
+        Palo = this.UltimoHijo($("Solucion[num='" + i + "']"));
+      }
+    }
+    if (Palo == 0) {
+      for (i = 1; i < 5; i++) {
+        if (this.UltimoHijo($("Solucion[num='" + i + "']")).attr("num") == i) {
+          Palo = this.UltimoHijo($("Solucion[num='" + i + "']"));
+          break;
+        }
+      }
+    }
+    if (parseInt(Carta.attr("valor")) == Valor) {
+      if (typeof (Carta.parent().attr("num")) === "undefined") {
+        Carta.parent().attr({
+          "tapada": "false",
+          "draggable": "true"
+        });
+      }
+      Carta.appendTo(this.UltimoHijo(Palo));
+      Carta.removeAttr("draggable");
+      this.GuardarMovimiento();
+    }
+    e.stopPropagation();
+  };
+  this.Carta_EventoDragStart = function (e) {
+    this.CartaDrag = $(e.originalEvent.currentTarget);
+    this.ImagenDrag = $("#ImgDrag");
+    this.ImagenDrag.attr({
+      "palo": this.CartaDrag.attr("palo"),
+      "valor": this.CartaDrag.attr("valor")
+    }).html(this.CartaDrag.html());
+    this.CartaDrag.css({
+      opacity: 0
+    });
+    OffSet = this.CartaDrag.offset();
+    e.originalEvent.dataTransfer.setDragImage(this.ImagenDrag[0], e.originalEvent.clientX - OffSet.left, (e.originalEvent.clientY - OffSet.top) + $(window).scrollTop());
+    e.originalEvent.dataTransfer.effectAllowed = 'move';
+    e.originalEvent.dataTransfer.setData('text/html', e.originalEvent.currentTarget);
+    e.stopPropagation();
+  }
+  this.Carta_EventoDragEnd = function (e) {
+    this.CartaDrag.css({
+      opacity: 1
+    });
+  };
+  this.Baraja1_EventoClick = function (e) {
+    Baraja1 = $("Baraja[num='1']");
+    Baraja2 = $("Baraja[num='2']");
+    if (this.UltimoHijo(Baraja1) !== Baraja1) {
+      $("Baraja[num='2'] Carta[draggable]").removeAttr("draggable");
+      Carta = this.UltimoHijo(Baraja1).appendTo(this.UltimoHijo(Baraja2));
+      Carta.css({
+        "z-index": (Cartas.length + 1)
+      }).attr({
+        "Tapada": "false",
+        "draggable": "true"
+      });
+      this.GuardarMovimiento();
+    } else { 
+      if (this.UltimoHijo(Baraja2) === Baraja2) return;
+      Carta = this.UltimoHijo(Baraja2);
+      while (Carta !== Baraja2) {
+        Carta.appendTo(this.UltimoHijo(Baraja1)).attr({
+          "Tapada": "true",
+          "draggable": "false"
+        });
+        Carta = this.UltimoHijo(Baraja2);
+      }
+      this.Baraja1_EventoClick();
+    }
+  };
+  this.Solucion_EventoDragOver = function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+    e.originalEvent.dataTransfer.dropEffect = 'move';
+    return false;
+  };
+  this.Solucion_EventoDrop = function (e) {
+    if (this.UltimoHijo(this.CartaDrag) === this.CartaDrag) {
+      Solucion = this.UltimoHijo($(e.originalEvent.target));
+      Valor = 0;
+      if (typeof (Solucion.attr("num")) === "undefined") {
+        if (Solucion.attr("palo") === this.CartaDrag.attr("palo")) {
+          Valor = (parseInt(Solucion.attr("valor")) + 1);
+        } else {
+          Valor = -1;
+        }
+      }
+      if (parseInt(this.CartaDrag.attr("valor")) === Valor) {
+        if (typeof (this.CartaDrag.parent().attr("num")) === "undefined") {
+          this.CartaDrag.parent().attr({
+            "tapada": "false",
+            "draggable": "true"
+          });
+        }
+        this.CartaDrag.appendTo(Solucion);
+        this.CartaDrag.removeAttr("draggable");
+        this.GuardarMovimiento();
+      }
+    }
+  };
+  this.Columna_EventoDragOver = function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+    e.originalEvent.dataTransfer.dropEffect = 'move';
+    return false;
+  };
+  this.Columna_EventoDrop = function (e) {
+    var GM = false;
+    if (this.CartaValida(this.CartaDrag, $(e.originalEvent.target)) == true) {
+      if (this.UltimoHijo(this.CartaDrag) != this.UltimoHijo($(e.originalEvent.target))) {
+        if (typeof (this.CartaDrag.parent().attr("num")) === "undefined") {
+          this.CartaDrag.parent().attr({
+            "tapada": "false",
+            "draggable": "true"
+          });
+        }
+        this.CartaDrag.appendTo(this.UltimoHijo($(e.originalEvent.target)));
+        GM = true;
+      }
+      UH = this.UltimoHijo($("Baraja[num='2']"));
+      $("Baraja[num='2'] Carta[draggable]").removeAttr("draggable");
+      if (typeof (UH.attr("num")) === "undefined") {
+        this.UltimoHijo($("Baraja[num='2']")).attr({
+          "draggable": "true"
+        });
+      }
+      if (GM === true) {
+        this.GuardarMovimiento();
+      }
+    }
+    e.preventDefault();
+    e.stopPropagation();
+    return false;
+  };
+  this.CartaValida = function (Carta, Destino) {
+    if (typeof (Destino.attr("num")) !== "undefined" && parseInt(Carta.attr("valor")) === 12) {
+      return true;
+    }
+    if (Destino.attr("tapada") === true) {
+      return false;
+    }
+    if (parseInt(Carta.attr("valor")) === parseInt(Destino.attr("valor")) - 1) {
+      if (parseInt(Carta.attr("palo")) > 2) {
+        if (parseInt(Destino.attr("palo")) < 3) {
+          return true;
+        }
+      }
+      else {
+        if (parseInt(Destino.attr("palo")) > 2) {
+          return true;
+        }
+      }
+    }
+    return false;
+  };
+  this.UltimoHijo = function (nPadre) {
+    Cartas = nPadre.find(":last-child");
+    if (Cartas.length == 0) return nPadre;
+    return $(Cartas[Cartas.length - 1]);
+  };
+  this.Victoria = function () {
+    return ($("Columna Carta[tapada='true']").length > 0) ? false : true;
+  }
+  this.GuardarMovimiento = function () {
+    $("Carta, Solucion, Baraja, Columna").removeAttr("ayuda1").removeAttr("ayuda2");
+    var DH = [];
+    DH["Baraja1"] = $("Baraja[num='1']").html();
+    DH["Baraja2"] = $("Baraja[num='2']").html();
+    DH["Solucion1"] = $("Solucion[num='1']").html();
+    DH["Solucion2"] = $("Solucion[num='2']").html();
+    DH["Solucion3"] = $("Solucion[num='3']").html();
+    DH["Solucion4"] = $("Solucion[num='4']").html();
+    DH["Columna1"] = $("Columna[num='1']").html();
+    DH["Columna2"] = $("Columna[num='2']").html();
+    DH["Columna3"] = $("Columna[num='3']").html();
+    DH["Columna4"] = $("Columna[num='4']").html();
+    DH["Columna5"] = $("Columna[num='5']").html();
+    DH["Columna6"] = $("Columna[num='6']").html();
+    DH["Columna7"] = $("Columna[num='7']").html();
+    this.Movimientos[this.Movimiento++] = DH;
+    $("movimientos").html(this.Movimiento - 1);
+    var V = this.Victoria();
+    $("Derrota").css({
+      "display": (this.Ayuda() === false && V !== true) ? "block" : "none"
+    });
+    $("Victoria").css({
+      "display": (V === true) ? "block" : "none"
+    });
+  };
+  this.Rehacer = function (e) {
+    if (this.Movimiento < this.Movimientos.length) {
+      var DH = this.Movimientos[this.Movimiento++];
+      $("Baraja[num='1']").html(DH["Baraja1"]);
+      $("Baraja[num='2']").html(DH["Baraja2"]);
+      $("Solucion[num='1']").html(DH["Solucion1"]);
+      $("Solucion[num='2']").html(DH["Solucion2"]);
+      $("Solucion[num='3']").html(DH["Solucion3"]);
+      $("Solucion[num='4']").html(DH["Solucion4"]);
+      $("Columna[num='1']").html(DH["Columna1"]);
+      $("Columna[num='2']").html(DH["Columna2"]);
+      $("Columna[num='3']").html(DH["Columna3"]);
+      $("Columna[num='4']").html(DH["Columna4"]);
+      $("Columna[num='5']").html(DH["Columna5"]);
+      $("Columna[num='6']").html(DH["Columna6"]);
+      $("Columna[num='7']").html(DH["Columna7"]);
+      $("Carta").css({
+        opacity: 1
+      }).removeAttr("hover");
+      $("Carta").off("mouseover").on('mouseover', this.Carta_EventoMouseOver.bind(this));
+      $("Carta").off("mouseout").on('mouseout', this.Carta_EventoMouseOut.bind(this));
+      $("Carta").off("dragstart").on('dragstart', this.Carta_EventoDragStart.bind(this));
+      $("Carta").off("dragend").on('dragend', this.Carta_EventoDragEnd.bind(this));
+      $("Carta").off("dblclick").on('dblclick', this.Carta_EventoDblClick.bind(this));
+    }
+    $("movimientos").html(this.Movimiento - 1);
+    $("Derrota").css({
+      "display": (this.Ayuda() === false) ? "block" : "none"
+    });
+    $("Victoria").css({
+      "display": (this.Victoria() === true) ? "block" : "none"
+    });
+  };
+  this.Deshacer = function (e) {
+    if (this.Movimiento !== 1) {
+      var DH = this.Movimientos[--this.Movimiento - 1];
+      $("Baraja[num='1']").html(DH["Baraja1"]);
+      $("Baraja[num='2']").html(DH["Baraja2"]);
+      $("Solucion[num='1']").html(DH["Solucion1"]);
+      $("Solucion[num='2']").html(DH["Solucion2"]);
+      $("Solucion[num='3']").html(DH["Solucion3"]);
+      $("Solucion[num='4']").html(DH["Solucion4"]);
+      $("Columna[num='1']").html(DH["Columna1"]);
+      $("Columna[num='2']").html(DH["Columna2"]);
+      $("Columna[num='3']").html(DH["Columna3"]);
+      $("Columna[num='4']").html(DH["Columna4"]);
+      $("Columna[num='5']").html(DH["Columna5"]);
+      $("Columna[num='6']").html(DH["Columna6"]);
+      $("Columna[num='7']").html(DH["Columna7"]);
+      $("Carta").css({
+        opacity: 1
+      }).removeAttr("hover");
+      $("Carta").off("mouseover").on('mouseover', this.Carta_EventoMouseOver.bind(this));
+      $("Carta").off("mouseout").on('mouseout', this.Carta_EventoMouseOut.bind(this));
+      $("Carta").off("dragstart").on('dragstart', this.Carta_EventoDragStart.bind(this));
+      $("Carta").off("dragend").on('dragend', this.Carta_EventoDragEnd.bind(this));
+      $("Carta").off("dblclick").on('dblclick', this.Carta_EventoDblClick.bind(this));
+      $("movimientos").html(this.Movimiento - 1);
+    }
+    $("Derrota").css({
+      "display": (this.Ayuda() === false) ? "block" : "none"
+    });
+    $("Victoria").css({
+      "display": (this.Victoria() === true) ? "block" : "none"
+    });
+  };
+  this.Ayuda = function (e) {
+    var Solucion = [];
+    var Baraja = [];
+    var Columna = [];
+    Solucion[1] = this.UltimoHijo($("Solucion[num='1']"));
+    Solucion[2] = this.UltimoHijo($("Solucion[num='2']"));
+    Solucion[3] = this.UltimoHijo($("Solucion[num='3']"));
+    Solucion[4] = this.UltimoHijo($("Solucion[num='4']"));
+    Baraja[1] = this.UltimoHijo($("Baraja[num='1']"));
+    Baraja[2] = this.UltimoHijo($("Baraja[num='2']"));
+    Columna[1] = this.UltimoHijo($("Columna[num='1']"));
+    Columna[2] = this.UltimoHijo($("Columna[num='2']"));
+    Columna[3] = this.UltimoHijo($("Columna[num='3']"));
+    Columna[4] = this.UltimoHijo($("Columna[num='4']"));
+    Columna[5] = this.UltimoHijo($("Columna[num='5']"));
+    Columna[6] = this.UltimoHijo($("Columna[num='6']"));
+    Columna[7] = this.UltimoHijo($("Columna[num='7']"));
+    this.MovimientosAuyda = new Array();
+    this.MovimientosAuydaActual = 0;
+    this.MovimientosAuyda.push({
+      origen: $("Baraja[num='1']"),
+      destino: $("Baraja[num='2']"),
+      valor: 0
+    });
+    if (Baraja[2].prop("tagName") === "CARTA") {
+      for (i = 1; i < 5; i++) {
+        Valor = (Solucion[i].prop("tagName") === "CARTA") ? parseInt(Solucion[i].attr("valor")) : -1;
+        Palo = (Solucion[i].prop("tagName") === "CARTA") ? Solucion[i].attr("palo") : Baraja[2].attr("palo");
+        if (Valor + 1 === parseInt(Baraja[2].attr("valor")) && Palo === Baraja[2].attr("palo")) {
+          this.MovimientosAuyda.push({
+            origen: Baraja[2],
+            destino: Solucion[i],
+            valor: 150 - ((Valor + 1) * 10)
+          });
+        }
+      }
+    }
+    for (c = 7; c > 0; c--) {
+      for (i = 1; i < 5; i++) {
+        Valor = (Solucion[i].prop("tagName") === "CARTA") ? parseInt(Solucion[i].attr("valor")) : -1;
+        Palo = (Solucion[i].prop("tagName") === "CARTA") ? Solucion[i].attr("palo") : Columna[c].attr("palo");
+        if (Valor + 1 === parseInt(Columna[c].attr("valor")) && Palo === Columna[c].attr("palo")) {
+          this.MovimientosAuyda.push({
+            origen: Columna[c],
+            destino: Solucion[i],
+            valor: 150 - ((Valor + 1) * 10)
+          });
+        }
+      }
+    }
+    for (c = 7; c > 0; c--) {
+      Carta = this.UltimoHijo(Columna[c]);
+      if (Carta.prop("tagName") === "CARTA") {
+        Padres = 1;
+        do {
+          for (c2 = 7; c2 > 0; c2--) {
+            CC = this.UltimoHijo(Columna[c2]);
+            Valor = (CC.prop("tagName") === "CARTA") ? parseInt(CC.attr("valor")) : -1;
+            Palo = (CC.prop("tagName") === "CARTA") ? CC.attr("palo") : Carta.attr("palo");
+            if (this.CartaValida(Carta, CC)) {
+              if (Carta.parent().attr("tapada") === "true" || Carta.parent().prop("tagName") !== "CARTA") {
+                if (parseInt(Carta.attr("valor")) === 12 && CC.prop("tagName") === "COLUMNA" && Carta.parent().prop("tagName") === "COLUMNA") {} else {
+                  this.MovimientosAuyda.push({
+                    origen: Carta,
+                    destino: CC,
+                    valor: 10 * Padres
+                  });
+                }
+              }
+            }
+          }
+          Carta = Carta.parent();
+          Padres++;
+        } while (Carta.attr("tapada") !== "true" && Carta.prop("tagName") === "CARTA");
+      }
+    }
+    if (Baraja[2].prop("tagName") === "CARTA") {
+      for (c = 7; c > 0; c--) {
+        CC = this.UltimoHijo(Columna[c]);
+        Valor = (CC.prop("tagName") === "CARTA") ? CC.attr("valor") : -1;
+        Palo = (CC.prop("tagName") === "CARTA") ? CC.attr("palo") : Baraja[2].attr("palo");
+        if (this.CartaValida(Baraja[2], CC)) {
+          this.MovimientosAuyda.push({
+            origen: Baraja[2],
+            destino: CC,
+            valor: 10
+          });
+        }
+      }
+    }
+    this.MovimientosAuyda.sort(function (a, b) {
+      var a1 = a.valor,
+        b1 = b.valor;
+      if (a1 === b1) return 0;
+      return (a1 < b1) ? 1 : -1;
+    });
+    var DebugIA = $("DebugIA");
+    var DebugHTML = "<ul>";
+    var ValoresCartas = Array("A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K")
+    for (d = 0; d < this.MovimientosAuyda.length; d++) {
+      var OrigenPalo = this.MovimientosAuyda[d].origen.attr("palo");
+      var OrigenValor = this.MovimientosAuyda[d].origen.attr("valor");
+      var DestinoPalo = this.MovimientosAuyda[d].destino.attr("palo");
+      var DestinoValor = this.MovimientosAuyda[d].destino.attr("valor");
+      DebugHTML += "<li>" + "<palo num= '" + OrigenPalo + "'> " + ValoresCartas[OrigenValor] + " -&gt; " + DestinoPalo + "'> " + ValoresCartas[DestinoValor] + "</li>"
+    }
+    DebugHTML += "</ul>"
+    DebugIA.html(DebugHTML);
+    if (this.MovimientosAuyda.length === 1) {
+      for (b = 1; b < 3; b++) {
+        Carta = Baraja[b];
+        do {
+          for (c = 7; c > 0; c--) {
+            if (this.CartaValida(Carta, Columna[c])) {
+              return true; /* Aun se pueden poner cartas en los mazos de las columnas */
+            }
+          }
+          Carta = Carta.parent();
+        } while (Carta.prop("tagName") === "CARTA");
+      }
+      for (b = 1; b < 3; b++) {
+        Carta = Baraja[b];
+        do {
+          for (s = 1; s < 5; s++) {
+            Valor = (Solucion[s].prop("tagName") === "CARTA") ? parseInt(Solucion[s].attr("valor")) : -1;
+            Palo = (Solucion[s].prop("tagName") === "CARTA") ? Solucion[s].attr("palo") : Carta.attr("palo");
+            if (Valor + 1 === parseInt(Carta.attr("valor")) && Palo === Carta.attr("palo")) {
+              return true; /* Aun se pueden poner cartas en los mazos de las soluciones */
+            }
+          }
+          Carta = Carta.parent();
+        } while (Carta.prop("tagName") === "CARTA");
+      }
+      return false; /* No quedan movimientos posibles */
+    }
+    return true;
+  };
+};
+var panzoom = (function () {
+  const MIN_SCALE = 0.35;
+  var txStart;
+  var tyStart;
+  var xStart;
+  var yStart;
+  var panning = false;
+  var couldBePanning = false;
+  var totalMaxDelta;
+  function initPanZoom(id) {
+    let map = document.getElementById(id);
+    map.setAttribute("transform", `translate(0,0) scale(${MIN_SCALE})`); 
+    map.addEventListener("wheel", ev => {
+      onwheel(ev, map);
+    });
+    map.addEventListener("pointerdown", ev => {
+      onmousedown(ev);
+    });
+    addEventListener("mouseup", ev => {
+      onmouseup(ev, map);
+    });
+    addEventListener("mousemove", ev => {
+      onmousemove(ev, map);
+    });
+    addEventListener("dblclick", ev => reset(ev, map));
+  }
+  function onwheel(ev, board) {
+    let delta = ev.wheelDelta;
+    let z = delta < 0 ? 0.5 : 2;
+    let dir = Math.sign(delta);
+    let currentMouseX = ev.offsetX;
+    let currentMouseY = ev.offsetY;
+    let transOld = getTransformInfo(board);
+    let getLeft = transOld.translateX;
+    let getTop = transOld.translateY;
+    let scale = transOld.scale;
+    if (scale <= MIN_SCALE + 0.1 && dir < 0) return;
+    let dx = (currentMouseX - getLeft) * (z - 1);
+    let dy = (currentMouseY - getTop) * (z - 1);
+    let scaleNew = scale * z;
+    let txNew = getLeft - dx;
+    let tyNew = getTop - dy;
+    const MIN_TX = -(3400 * scaleNew - 3400 * MIN_SCALE);
+    const MIN_TY = -(2200 * scaleNew - 2200 * MIN_SCALE);
+    txNew = Math.min(txNew, 0);
+    txNew = Math.max(txNew, MIN_TX);
+    tyNew = Math.min(tyNew, 0);
+    tyNew = Math.max(tyNew, MIN_TY);
+    let transNew = `translate(${txNew},${tyNew}) scale(${scaleNew})`;
+    board.setAttribute("transform", transNew);
+    transNew = getTransformInfo(board);
+    ev.preventDefault();
+  }
+  function reset(ev, board) {
+    let map = ev.target;
+    let transNew = `translate(0,0) scale(${MIN_SCALE})`;
+    board.setAttribute("transform", transNew);
+  }
+  function onmousedown(ev) {
+    let map = ev.target;
+    let board = ev.path[1];
+    let x = ev.screenX; 
+    let y = ev.screenY; 
+    let transOld = getTransformInfo(board);
+    let scale = transOld.scale;
+    if (scale <= MIN_SCALE + 0.1) return;
+    xStart = x;
+    yStart = y;
+    txStart = transOld.translateX;
+    tyStart = transOld.translateY;
+    totalMaxDelta = 0;
+    couldBePanning = true;
+  }
+  function onmousemove(ev, board) {
+    let id = ev.target.id;
+    if (id != "imgMap" && id != "mapG") {
+      couldBePanning = false;
+      panning = false;
       return;
     }
-    var playerPosition = player.getPosition();
-    if (position[0] <= player.getSize() &&
-        position[1] >= playerPosition[1] &&
-        position[1] <= playerPosition[1] + player.getSize()) {
-      console.log("Grabbed by player!");
-      owner = player;
+    if (couldBePanning) {
+      let x = Math.abs(ev.screenX - xStart); 
+      let y = Math.abs(ev.screenY - yStart); 
+      totalMaxDelta += Math.max(x, y);
+      if (totalMaxDelta > 10) {
+        panning = true;
+        couldBePanning = false;
+        board.setPointerCapture(true);
+        ev.preventDefault();
+      }
+    } else if (panning) {
+      let x = ev.screenX; 
+      let y = ev.screenY; 
+      let transOld = getTransformInfo(board);
+      let tx = transOld.translateX;
+      let ty = transOld.translateY;
+      let scale = transOld.scale;
+      let txNew = txStart + x - xStart; 
+      let tyNew = tyStart + y - yStart; 
+      const MIN_TX = -(3400 * scale - 3400 * MIN_SCALE);
+      const MIN_TY = -(2200 * scale - 2200 * MIN_SCALE);
+      txNew = Math.min(txNew, 0);
+      txNew = Math.max(txNew, MIN_TX);
+      tyNew = Math.min(tyNew, 0);
+      tyNew = Math.max(tyNew, MIN_TY);
+      let transNew = `translate(${txNew},${tyNew}) scale(${scale})`;
+      board.setAttribute("transform", transNew);
     }
-    var opponentPosition = opponent.getPosition();
-     if (position[0] >= innerWidth - opponent.getSize() &&
-        position[1] >= opponentPosition[1] &&
-        position[1] <= opponentPosition[1] + opponent.getSize()) {
-      console.log("Grabbed by opponent!");
-      owner = opponent;
-    }
-   checkScored();
   }
-  function pause() {
-    paused = true;
+  function onmouseup(ev, board) {
+    if (panning) {
+      let map = ev.target;
+      let x = ev.screenX; 
+      let y = ev.screenY; 
+      let transOld = getTransformInfo(board);
+      let tx = transOld.translateX;
+      let ty = transOld.translateY;
+      let scale = transOld.scale;
+      let txNew = txStart + x - xStart;
+      let tyNew = tyStart + y - yStart;
+      const MIN_TX = -(3400 * scale - 3400 * MIN_SCALE);
+      const MIN_TY = -(2200 * scale - 2200 * MIN_SCALE);
+      txNew = Math.min(txNew, 0);
+      txNew = Math.max(txNew, MIN_TX);
+      tyNew = Math.min(tyNew, 0);
+      tyNew = Math.max(tyNew, MIN_TY);
+      let transNew = `translate(${txNew},${tyNew}) scale(${scale})`;
+      board.setAttribute("transform", transNew);
+      board.releasePointerCapture(true);
+      panning = false;
+    } else couldBePanning = false;
   }
-  function start() {
-    paused = false;
-  }
-  return {
-    update: update,
-    pause:        pause,
-    start:        start,
-    getOwner:     function()  { return owner; },
-    setOwner:     function(o) { owner = o; },
-    getVelocity:  function()  { return velocity }, 
-    setVelocity:  function(v) { velocity = v; },
-    getPosition:  function(p) { return position; },
-  }
+  return function (id) {initPanZoom(id);}
+})();
+var unitTestId = 0;
+var visualStructures = {}; 
+var UID = 0; 
+var PLAYER_UPDATE_BEHAVIOR = [];
+var PLAYER_UPDATE_VISUALIZATION = [];
+var TABLE_UPDATE_BEHAVIOR = [];
+var TABLE_UPDATE_VISUALIZATION = [];
+var TABLE_UPDATE = {};
+var PLAYER_UPDATE = {};
+var modern_palettes = {
+  CD_green_blue: { GreenMountain: '#3d7c47', BlueMountain: '#09868b', LightBlueBackdrop: '#76c1d4', BarelyGrayEdge: '#f7f7f7' },
+  CD_gelb_orange_grau: { Blueberry: '#6B7A8F', Apricot: '#F7882F', Citrus: '#F7C331', AppleCore: ' #DCC7AA' },
+  CD_blue_brown: { FrenchLaundryBlue: '#3a4660', ComfortablyTan: '#c9af98', PeachyKreme: '#ed8a63', BrownBonnet: '#845007' },
+  CD_yellow_grey: { Areyayellow: '#feda6a', SilverFox: '#d4d4dc', DeepMatteGrey: '#393f4d' }, 
+  CD_fresh_green_grey_yellow: { MorningSky: '#CAE4DB', Honey: '#DCAE1D', Cerulean: '#00303F', Mist: '#7A9D96' },
+  CD_green_beige: { green: '#BFEB55', green2: '#458766', beige: '#F9F68A', beige2: '#FBF1B4' },
+  CD_dark_beach: { c1: 'rgb(3, 74, 166)', c2: 'rgb(0, 6, 13)', c3: 'rgb(83, 119, 166)', c4: 'rgb(64, 95, 115)', c5: 'rgb(62, 89, 86)' },
+  CD_color_beach: { c1: 'rgb(83, 111, 166)', c2: 'rgb(3, 74, 166)', c3: 'rgb(126, 174, 217)', c4: 'rgb(242, 181, 107)', c5: 'rgb(4, 173, 191)' }
 };
-var bBySuit = document.createElement('button')
-var bDeal = document.createElement('button')
-var BestKeysD, BestKeysE, BestKeySets;
-var BestMinusScore = Infinity, BestMinusState, BestPlusScore = -Infinity, BestPlusState;
-var bFan = document.createElement('button')
-var BFBoard = {};
-var BFGameContr = {};
-var bFlip = document.createElement('button')
-var BFUserMove = {};
-var BG_CARD_BACK = randomColor();
-var bicycleRental = {
-  "type": "FeatureCollection",
-  "features": [
-    {
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -104.9998241,
-          39.7471494
-        ]
-      },
-      "type": "Feature",
-      "properties": {
-        "popupContent": "This is a B-Cycle Station. Come pick up a bike and pay by the hour. What a deal!"
-      },
-      "id": 51
-    },
-    {
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -104.9983545,
-          39.7502833
-        ]
-      },
-      "type": "Feature",
-      "properties": {
-        "popupContent": "This is a B-Cycle Station. Come pick up a bike and pay by the hour. What a deal!"
-      },
-      "id": 52
-    },
-    {
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -104.9963919,
-          39.7444271
-        ]
-      },
-      "type": "Feature",
-      "properties": {
-        "popupContent": "This is a B-Cycle Station. Come pick up a bike and pay by the hour. What a deal!"
-      },
-      "id": 54
-    },
-    {
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -104.9960754,
-          39.7498956
-        ]
-      },
-      "type": "Feature",
-      "properties": {
-        "popupContent": "This is a B-Cycle Station. Come pick up a bike and pay by the hour. What a deal!"
-      },
-      "id": 55
-    },
-    {
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -104.9933717,
-          39.7477264
-        ]
-      },
-      "type": "Feature",
-      "properties": {
-        "popupContent": "This is a B-Cycle Station. Come pick up a bike and pay by the hour. What a deal!"
-      },
-      "id": 57
-    },
-    {
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -104.9913392,
-          39.7432392
-        ]
-      },
-      "type": "Feature",
-      "properties": {
-        "popupContent": "This is a B-Cycle Station. Come pick up a bike and pay by the hour. What a deal!"
-      },
-      "id": 58
-    },
-    {
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -104.9788452,
-          39.6933755
-        ]
-      },
-      "type": "Feature",
-      "properties": {
-        "popupContent": "This is a B-Cycle Station. Come pick up a bike and pay by the hour. What a deal!"
-      },
-      "id": 74
-    }
-  ]
-};
-var BiDir = [-9, -11, 11, 9];
-var BINDINGS = {}
-var BishopPair = 30;
-var BishopTable = [
-  0, 0, -10, 0, 0, -10, 0, 0,
-  0, 0, 0, 10, 10, 0, 0, 0,
-  0, 0, 10, 15, 15, 10, 0, 0,
-  0, 10, 15, 20, 20, 15, 10, 0,
-  0, 10, 15, 20, 20, 15, 10, 0,
-  0, 0, 10, 15, 15, 10, 0, 0,
-  0, 0, 0, 10, 10, 0, 0, 0,
-  0, 0, 0, 0, 0, 0, 0, 0
+var blues = [
+  '#f7fbff',
+  '#ecf4fc',
+  '#e2eef8',
+  '#d8e7f5',
+  '#cde0f1',
+  '#c0d9ed',
+  '#b0d2e8',
+  '#9fc9e2',
+  '#8bbfdd',
+  '#77b4d8',
+  '#63a8d2',
+  '#529ccc',
+  '#4190c5',
+  '#3382be',
+  '#2575b6',
+  '#1a67ad',
+  '#1059a1',
+  '#0a4c92',
+  '#083e7f',
+  '#08306b'
 ];
-var BlockServerSend = false;
-var BlockServerSend1 = false;
+var green = [
+  '#f7fcf5',
+  '#eff9ec',
+  '#e7f6e2',
+  '#dcf1d7',
+  '#d0edca',
+  '#c2e7bc',
+  '#b3e0ac',
+  '#a2d99d',
+  '#90d18d',
+  '#7dc87f',
+  '#69be72',
+  '#55b466',
+  '#42a85c',
+  '#339c52',
+  '#268f47',
+  '#18823d',
+  '#0c7433',
+  '#03652a',
+  '#005522',
+  '#00441b'
+];
+var greys = [
+  '#ffffff',
+  '#f9f9f9',
+  '#f2f2f2',
+  '#e9e9e9',
+  '#e0e0e0',
+  '#d5d5d5',
+  '#cacaca',
+  '#bdbdbd',
+  '#aeaeae',
+  '#9f9f9f',
+  '#8f8f8f',
+  '#808080',
+  '#727272',
+  '#636363',
+  '#545454',
+  '#434343',
+  '#313131',
+  '#202020',
+  '#101010',
+  '#000000'
+];
+var oranges = [
+  '#fff5eb',
+  '#ffefdf',
+  '#fee8d1',
+  '#fee0c1',
+  '#fdd6af',
+  '#fdcb9b',
+  '#fdbe85',
+  '#fdb06f',
+  '#fda25a',
+  '#fc9446',
+  '#f98534',
+  '#f57623',
+  '#ee6815',
+  '#e55a0b',
+  '#d84d05',
+  '#c84303',
+  '#b43b02',
+  '#a13403',
+  '#902d04',
+  '#7f2704'
+];
+var purples = [
+  '#fcfbfd',
+  '#f6f5fa',
+  '#f0eff6',
+  '#e9e8f2',
+  '#e0dfee',
+  '#d6d6e9',
+  '#cacae3',
+  '#bebedc',
+  '#b1b0d4',
+  '#a4a2cd',
+  '#9894c6',
+  '#8b87bf',
+  '#8079b8',
+  '#7668af',
+  '#6c56a6',
+  '#63449d',
+  '#5a3294',
+  '#51218c',
+  '#481085',
+  '#3f007d'
+];
 var bluegreen = [
   '#f7fcfd',
   '#eff9fb',
@@ -334,102 +2401,217 @@ var bluepurple = [
   '#62075f',
   '#4d004b'
 ];
-var blues = [
-  '#f7fbff',
-  '#ecf4fc',
-  '#e2eef8',
-  '#d8e7f5',
-  '#cde0f1',
-  '#c0d9ed',
-  '#b0d2e8',
-  '#9fc9e2',
-  '#8bbfdd',
-  '#77b4d8',
-  '#63a8d2',
-  '#529ccc',
-  '#4190c5',
-  '#3382be',
-  '#2575b6',
-  '#1a67ad',
-  '#1059a1',
-  '#0a4c92',
-  '#083e7f',
-  '#08306b'
+var cubehelix = [
+  '#000000',
+  '#130918',
+  '#1a1732',
+  '#192a47',
+  '#15414e',
+  '#17584a',
+  '#246b3d',
+  '#3f7632',
+  '#647a30',
+  '#8d7a3c',
+  '#b17959',
+  '#ca7b81',
+  '#d485ac',
+  '#d296d1',
+  '#c9ade9',
+  '#c2c5f3',
+  '#c3dbf2',
+  '#d0ecef',
+  '#e6f7f1',
+  '#ffffff'
 ];
+var inferno = [
+  '#000004',
+  '#08051d',
+  '#180c3c',
+  '#2f0a5b',
+  '#450a69',
+  '#5c126e',
+  '#71196e',
+  '#87216b',
+  '#9b2964',
+  '#b1325a',
+  '#c43c4e',
+  '#d74b3f',
+  '#e55c30',
+  '#f1711f',
+  '#f8870e',
+  '#fca108',
+  '#fbba1f',
+  '#f6d543',
+  '#f1ed71',
+  '#fcffa4'
+];
+var magma = [
+  '#000004',
+  '#07061c',
+  '#150e38',
+  '#29115a',
+  '#3f0f72',
+  '#56147d',
+  '#6a1c81',
+  '#802582',
+  '#942c80',
+  '#ab337c',
+  '#c03a76',
+  '#d6456c',
+  '#e85362',
+  '#f4695c',
+  '#fa815f',
+  '#fd9b6b',
+  '#feb47b',
+  '#fecd90',
+  '#fde5a7',
+  '#fcfdbf'
+];
+var purplegreen = [
+  '#40004b',
+  '#5c1768',
+  '#753283',
+  '#8a529a',
+  '#9e74ae',
+  '#b391c1',
+  '#c7acd2',
+  '#dac4e0',
+  '#e9daea',
+  '#f0ebf0',
+  '#ecf2ea',
+  '#def0d9',
+  '#c8e8c2',
+  '#acdca7',
+  '#89c988',
+  '#64b26a',
+  '#409750',
+  '#237b3b',
+  '#0f5f2a',
+  '#00441b'
+];
+const AREAS={}; 
+const MSCATS = { rect: 'g', g: 'g', circle: 'g', text: 'g', polygon: 'g', line: 'g', body: 'd', svg: 'd', div: 'd', p: 'd', table: 'd', button: 'd', a: 'd', span: 'd', image: 'd', paragraph: 'd', anchor: 'd' };
+var DEFAULT_OBJECT_AREA = 'area_objects';
+var DEFAULT_PLAYER_AREA = 'area_players';
+var dHelp, counters, timit; 
+var TT_JUST_UPDATED = -1;
+var x = {
+  "loc":
+  {
+    "actions":
+    {
+      "_set":
+        [{
+          "_tuple":
+            [{
+              "_set":
+                [{ "ID": "91", "val": "Corner[91]", "type": "obj" },
+                { "ID": "92", "val": "Corner[92]", "type": "obj" },
+                { "ID": "93", "val": "Corner[93]", "type": "obj" },
+                { "ID": "94", "val": "Corner[94]", "type": "obj" },
+                { "ID": "95", "val": "Corner[95]", "type": "obj" },
+                ]
+            }]
+        }]
+    }
+  }
+}
+var maxZIndex = 110;
+var USERNAME = 'felix';
+var GAME = 'ttt'; 
+var DELETED_IDS = [];
+var DELETED_THIS_ROUND = [];
+var ROOT = null;
+var choiceCompleted = false;
+var frozen = false;
 var boatFilters = [];
 var boatHighlighted = null;
-var bodyZoom = 1.0;
-var BOOL = { FALSE: 0, TRUE: 1 };
-var BotTicker, POLL_COUNTER = 0;
-var boundary;
-var bPoker = document.createElement('button')
-var brd_searchKillers = new Array(3 * MAXDEPTH);
-var BRD_SQ_NUM = 120;
-var browserZoom = Math.round(window.devicePixelRatio * 100);
-var bShuffle = document.createElement('button')
-var bSort = document.createElement('button')
-var c = canvas.getContext("2d");
-var c52 = null;
-var C52, Syms, SymKeys, KeySets, Categories, ByGroupSubgroup, Dictionary, WordP; 
-var c52C = null;
-var campus = {
-  "type": "Feature",
-  "properties": {
-    "popupContent": "This is the Auraria West Campus",
-    "style": {
-      weight: 2,
-      color: "#999",
-      opacity: 1,
-      fillColor: "#B0DE5C",
-      fillOpacity: 0.8
-    }
-  },
-  "geometry": {
-    "type": "MultiPolygon",
-    "coordinates": [
-      [
-        [
-          [-105.00432014465332, 39.74732195489861],
-          [-105.00715255737305, 39.74620006835170],
-          [-105.00921249389647, 39.74468219277038],
-          [-105.01067161560059, 39.74362625960105],
-          [-105.01195907592773, 39.74290029616054],
-          [-105.00989913940431, 39.74078835902781],
-          [-105.00758171081543, 39.74059036160317],
-          [-105.00346183776855, 39.74059036160317],
-          [-105.00097274780272, 39.74059036160317],
-          [-105.00062942504881, 39.74072235994946],
-          [-105.00020027160645, 39.74191033368865],
-          [-105.00071525573731, 39.74276830198601],
-          [-105.00097274780272, 39.74369225589818],
-          [-105.00097274780272, 39.74461619742136],
-          [-105.00123023986816, 39.74534214278395],
-          [-105.00183105468751, 39.74613407445653],
-          [-105.00432014465332, 39.74732195489861]
-        ], [
-          [-105.00361204147337, 39.74354376414072],
-          [-105.00301122665405, 39.74278480127163],
-          [-105.00221729278564, 39.74316428375108],
-          [-105.00283956527711, 39.74390674342741],
-          [-105.00361204147337, 39.74354376414072]
-        ]
-      ], [
-        [
-          [-105.00942707061768, 39.73989736613708],
-          [-105.00942707061768, 39.73910536278566],
-          [-105.00685214996338, 39.73923736397631],
-          [-105.00384807586671, 39.73910536278566],
-          [-105.00174522399902, 39.73903936209552],
-          [-105.00041484832764, 39.73910536278566],
-          [-105.00041484832764, 39.73979836621592],
-          [-105.00535011291504, 39.73986436617916],
-          [-105.00942707061768, 39.73989736613708]
-        ]
-      ]
-    ]
-  }
+var cnt=0;
+var S_startGame = GAME; 
+var S_username = USERNAME; 
+var S_playMode = PLAYMODE; 
+var S_tooltips = 'OFF';
+var S_openTab = 'CodeTab'; 
+var S_useSpec = false;
+var S_useBehaviors = true;
+var S_boardDetection = true; 
+var S_defaultObjectArea = 'a_d_objects';
+var S_defaultPlayerArea = 'a_d_players';
+var S_autoplay = false;
+var S_showEvents = false; 
+var S_AIThinkingTime = 30;
+var S_autoplayFunction = (_g) => false;
+var socket = null;
+var loggedIn = false;
+var scenarioQ = [];
+var scenarioRunning = false;
+var collections = {};
+var elements = {}; 
+var symbols = {
+  knight: 'user-secret',
+  victory_point: 'trophy',
+  road_building: 'road',
+  monopoly: 'umbrella',
+  year_of_plenty: 'tree',
 };
-var card1 = cards1['c1'];
+var symbolColors = {
+  knight: 'red',
+  victory_point: 'gold',
+  road_building: 'dimgray',
+  monopoly: 'violet',
+  year_of_plenty: 'green',
+};
+var ibox4oid={};
+var COND = {};
+var FUNCS = {};
+var colorPalette;
+var allAreas = {}; 
+var areaSubTypes = {}; 
+var vidCache, allGames, playerConfig, c52, C52,  cinno, testCards; 
+var mkMan = null
+var allGamesC = null;
+var playerConfigC = null;
+var iconCharsC = null;
+var c52C = null;
+var testCardsC = null
+var allGames = null; 
+var playerConfig = null;
+var iconChars = null;
+var testCards = null
+var defaultSpecC = null;
+var userSpecC = null;
+var userCodeC = null;
+var initialDataC = {}; 
+var serverDataC = null;
+var defaultSpec = null
+var userSpec = null;
+var userCode = null;
+var serverData = null;
+var mappings;
+var mappingsInitialized;
+var mappingTypes;
+var LOG = {};
+var LOGDIVS = [];
+var prevGamePlid = null;
+var prevWaitingFor = null; 
+var t_total = 0;
+var PREFERRED_CARD_HEIGHT = 0;
+var magCounter = 0;
+var evAddCounter = 0;
+var TABLE_CREATE = {};
+var PLAYER_CREATE = {};
+var V = {};
+var BINDINGS = {}
+var logCounter = 0;
+var testCounter = 100;
+var bodyZoom = 1.0;
+var browserZoom = Math.round(window.devicePixelRatio * 100);
+var iTHEME = 0;
+var WAITINGFORPLAYER = null;
+var flags = {};
+var UPD={}; 
+var PRES={};
+var DONE={};
 var cards1 = {
   'c1':
   {
@@ -467,8 +2649,287 @@ var cards1 = {
     visible: { _set: ["White", "Red", "Blue", "Orange"] },
   },
 };
+var card1 = cards1['c1'];
+var justExpand = false;
+var colorDict = null; 
+var dragStartOffset;
+var draggedElement;
+var dropPosition = 'none'; 
+var UIDCounter = 0;
+var startBoats = ['93', '99', '109', '121', '124', '116', '106', '111', '116', '129'];
+var allGames1 = {
+  ttt: {
+    name: 'TicTacToe',
+    long_name: 'Tic-Tac-Toe',
+    short_name: 'ttt',
+    num_players: [2],
+    player_names: ['Player1', 'Player2'],
+  },
+  s1: {
+    name: 's1',
+    long_name: 's1',
+    short_name: 's1',
+    num_players: [2, 3, 4, 5],
+    player_names: ['Player1', 'Player2', 'Player3', 'Player4', 'Player5'],
+  },
+  starter: {
+    name: 'Starter',
+    long_name: 'Starter',
+    short_name: 'starter',
+    num_players: [2],
+    player_names: ['Player1', 'Player2'],
+  },
+  catan: {
+    name: 'Catan',
+    long_name: 'The Settlers of Catan',
+    short_name: 'catan',
+    num_players: [3, 4],
+    player_names: ['White', 'Red', 'Blue', 'Orange'],
+  },
+  aristocracy: {
+    name: 'Aristocracy',
+    long_name: 'Aristocracy',
+    short_name: 'aristocracy',
+    num_players: [2, 3, 4, 5],
+    player_names: ['Player1', 'Player2', 'Player3', 'Player4', 'Player5'],
+  }
+};
+var numPlayersMin = 0;
+var numPlayersMax = 8;
+var currentSeed;
+var currentGamename;
+var currentPlaymode;
+var currentNumPlayers;
+var joinCandidate = null;
+var commandChain = [];
+var firstDomLoad = null;
+var faChars, gaChars, faKeys;
+var DEF_LIST_TYPE = 'dom';
+var DEF_ITEM_TYPE = 'dom';
+var DEF_DOM_TAG = 'div';
+var PLAYMODE = 'hotseat'; 
+var SEED = 1;
+var S_useSimpleCode = false; 
+var S_userSettings = true; 
+var S_userStructures = true; 
+var S_userBehaviors = true; 
+var S_deckDetection = true; 
+var S_useColorHintForProperties = true; 
+var S_useColorHintForObjects = true;
+var view = null;
+var isPlaying = false; 
+var isReallyMultiplayer = false;
+var gcs = {
+  ttt: {
+    numPlayers: 2,
+    players: [
+      { id: 'Player1', playerType: 'me', agentType: null, username: USERNAME },
+      { id: 'Player2', playerType: 'me', agentType: null, username: USERNAME + '1' },
+    ]
+  },
+  s1: {
+    numPlayers: 4,
+    players: [
+      { id: 'Player1', playerType: 'me', agentType: null, username: USERNAME },
+      { id: 'Player2', playerType: 'me', agentType: null, username: USERNAME + '1' },
+      { id: 'Player3', playerType: 'me', agentType: null, username: USERNAME + '2' },
+      { id: 'Player4', playerType: 'me', agentType: null, username: USERNAME + '3' },
+    ]
+  },
+  starter: {
+    numPlayers: 2,
+    players: [
+      { id: 'Player1', playerType: 'me', agentType: null, username: USERNAME },
+      { id: 'Player2', playerType: 'me', agentType: null, username: USERNAME + '1' },
+    ]
+  },
+  aristocracy: {
+    numPlayers: 2,
+    players: [
+      { id: 'Player1', playerType: 'me', agentType: null, username: USERNAME },
+      { id: 'Player2', playerType: 'me', agentType: null, username: USERNAME + '1' },
+    ]
+  },
+  catan: {
+    numPlayers: 3,
+    players: [
+      { id: 'White', playerType: 'me', agentType: null, username: USERNAME },
+      { id: 'Red', playerType: 'me', agentType: null, username: USERNAME + '1' },
+      { id: 'Blue', playerType: 'me', agentType: null, username: USERNAME + '2' },
+    ]
+  }
+}
+var route_counter = 0;
+const VERSION = '_ui'; 
+const CACHE_DEFAULTSPEC = false;
+const CACHE_USERSPEC = false;
+const CACHE_CODE = false;
+var SPEC = null; 
+var GAMEPLID = null; 
+var PGAMEPLID = null; 
+var t_avg = 0;
+var autoplayFunction = () => false;
+var AIThinkingTime = 30;
+var CLICK_TO_SELECT = true; 
+var USE_SETTINGS = true; 
+var USE_STRUCTURES = true; 
+var USE_BEHAVIORS = true; 
+var divMain, divPlayer, divOpps, colors, iColor, timit;
+var FUNCTIONS = {
+  instanceof: 'instanceOf',
+  prop: (o, v) => isdef(o[v]),
+  no_prop: (o, v) => nundef(o[v]),
+  no_spec: (o, v) => false, 
+}
+var UIROOT; 
+var PROTO;
+var POOLS = {};
+var dynSpec;
+var INFO={};
+var B = {};
+var serverDataUpdated;
+var isTraceOn = true; 
+var ___enteredRecursion = 0;
+var DEFS = null; 
+var DSPEC_PATH = '/DATA/defaultSpec'; 
+var TEST_DIR = '01mini'; 
+var SPEC_PATH = '/DATA/' + TEST_DIR + '/_spec';
+var SERVERDATA_PATH = '/DATA/' + TEST_DIR + '/server';
+const SHOW_SPEC = true; 
+var SHOW_RTREE = false; 
+var SHOW_UITREE = false; 
+var SHOW_OIDNODES = true; 
+var SHOW_DICTIONARIES = false; 
+var SHOW_IDS_REFS = false; 
+var MAX_CYCLES = 500; 
+var CYCLES=0;
+var WR = {};
+var phase = 0;
+var TV = {};
+var _audioSources = {
+  incorrect1: '../base/assets/sounds/incorrect1.wav',
+  incorrect3: '../base/assets/sounds/incorrect3.mp3',
+  goodBye: "../base/assets/sounds/level1.wav",
+  down: "../base/assets/sounds/down.mp3",
+  levelComplete: "../base/assets/sounds/sound1.wav",
+  rubberBand: "../base/assets/sounds/sound2.wav",
+  hit: "../base/assets/sounds/hit.wav",
+  mozart: "../base/assets/music/mozart_s39_4.mp3",
+};
+var TOSound, _sndPlayer, _loaded = false, _qSound, _idleSound = true, _sndCounter = 0;
+var _AUDIOCONTEXT;
+var badges = [];
+var Markers = [];
+var BlockServerSend = false;
+var DragElem = null; 
+var DropZones = []; 
+var DropZoneItem = null;
+var DropZoneItems = [];
+var DragSource = null; 
+var DragSourceItem = null;
+var DragSourceItems = [];
+var TOFleetingMessage, dFleetingMessage, Animation1;
+var StateDict = {};
+var EmptyFunc = x => nundef(x) || x == ' ';
+var Avatars = [];
+var AvatarTimeout;
+var LastPositionX = 0, LastPositionY = 0;
+var MouseMoveCounter = 0;
+var IsCanvasActive = false;
+var StepCounter = 0, Autoreload=false, KeepSessionUser = false; 
+var Toolbar;
+var RecogOutput = false;
+var RecogOutputError = true;
+var RecogHighPriorityOutput = true;
+var SpeakerOutput = false;
+var MicrophoneUi; 
+var SessionId;
+var ZMax = 0;
+const MyEasing = 'cubic-bezier(1,-0.03,.86,.68)';
+var DDInfo = null;
+var FRUIDCounter = -1;
+var ActiveButton = null;
+var HistoryOfStates = {};
+var brd_side = COLOURS.WHITE;
+var brd_pieces = new Array(BRD_SQ_NUM);
+var brd_enPas = SQUARES.NO_SQ;
+var brd_fiftyMove;
+var brd_hisPly;
+var brd_ply;
+var brd_castlePerm;
+var brd_posKey;
+var brd_pceNum = new Array(13);
+var brd_material = new Array(2);
+var brd_pList = new Array(14 * 10);
+var brd_history = [];
+var brd_bookLines = [];
+var brd_moveList = new Array(MAXDEPTH * MAXPOSITIONMOVES);
+var brd_moveScores = new Array(MAXDEPTH * MAXPOSITIONMOVES);
+var brd_moveListStart = new Array(MAXDEPTH);
+var brd_PvTable = [];
+var brd_PvArray = new Array(MAXDEPTH);
+var brd_searchHistory = new Array(14 * BRD_SQ_NUM);
+var brd_searchKillers = new Array(3 * MAXDEPTH);
+var PIECES = { EMPTY: 0, wP: 1, wN: 2, wB: 3, wR: 4, wQ: 5, wK: 6, bP: 7, bN: 8, bB: 9, bR: 10, bQ: 11, bK: 12 };
+var BRD_SQ_NUM = 120;
+var MAXGAMEMOVES = 2048;
+var MAXPOSITIONMOVES = 256;
+var MAXDEPTH = 64;
+var INFINITE = 30000;
+var MATE = 29000;
+var START_FEN = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";
+var COLUMNS =  { COL_A:0, COL_B:1, COL_C:2, COL_D:3, COL_E:4, COL_F:5, COL_G:6, COL_H:7, COL_NONE:8 };
+var ROWS =  { ROW_1:0, ROW_2:1, ROW_3:2, ROW_4:3, ROW_5:4, ROW_6:5, ROW_7:6, ROW_8:7, ROW_NONE:8 };
+var COLOURS = { WHITE: 0, BLACK: 1, BOTH: 2 };
+var SQUARES = {
+  A1: 21, B1: 22, C1: 23, D1: 24, E1: 25, F1: 26, G1: 27, H1: 28,
+  A8: 91, B8: 92, C8: 93, D8: 94, E8: 95, F8: 96, G8: 97, H8: 98, NO_SQ: 99, OFFBOARD: 100
+};
+var BOOL = { FALSE: 0, TRUE: 1 };
 var CASTLEBIT = { WKCA: 1, WQCA: 2, BKCA: 4, BQCA: 8 };
+var ColBrd = new Array(BRD_SQ_NUM);
+var RowBrd = new Array(BRD_SQ_NUM);
+var Sq120ToSq64 = new Array(BRD_SQ_NUM);
+var Sq64ToSq120 = new Array(64);
+var PceChar = ".PNBRQKpnbrqk";
+var SideChar = "wb-";
+var RowChar = "12345678";
+var ColChar = "abcdefgh";
+var PieceBig = [BOOL.FALSE, BOOL.FALSE, BOOL.TRUE, BOOL.TRUE, BOOL.TRUE, BOOL.TRUE, BOOL.TRUE, BOOL.FALSE, BOOL.TRUE, BOOL.TRUE, BOOL.TRUE, BOOL.TRUE, BOOL.TRUE];
+var PieceMaj = [BOOL.FALSE, BOOL.FALSE, BOOL.FALSE, BOOL.FALSE, BOOL.TRUE, BOOL.TRUE, BOOL.TRUE, BOOL.FALSE, BOOL.FALSE, BOOL.FALSE, BOOL.TRUE, BOOL.TRUE, BOOL.TRUE];
+var PieceMin = [BOOL.FALSE, BOOL.FALSE, BOOL.TRUE, BOOL.TRUE, BOOL.FALSE, BOOL.FALSE, BOOL.FALSE, BOOL.FALSE, BOOL.TRUE, BOOL.TRUE, BOOL.FALSE, BOOL.FALSE, BOOL.FALSE];
+var PieceVal = [0, 100, 325, 325, 550, 1000, 50000, 100, 325, 325, 550, 1000, 50000];
+var PieceCol = [COLOURS.BOTH, COLOURS.WHITE, COLOURS.WHITE, COLOURS.WHITE, COLOURS.WHITE, COLOURS.WHITE, COLOURS.WHITE, COLOURS.BLACK, COLOURS.BLACK, COLOURS.BLACK, COLOURS.BLACK, COLOURS.BLACK, COLOURS.BLACK];
+var PiecePawn = [BOOL.FALSE, BOOL.TRUE, BOOL.FALSE, BOOL.FALSE, BOOL.FALSE, BOOL.FALSE, BOOL.FALSE, BOOL.TRUE, BOOL.FALSE, BOOL.FALSE, BOOL.FALSE, BOOL.FALSE, BOOL.FALSE];
+var PieceKnight = [BOOL.FALSE, BOOL.FALSE, BOOL.TRUE, BOOL.FALSE, BOOL.FALSE, BOOL.FALSE, BOOL.FALSE, BOOL.FALSE, BOOL.TRUE, BOOL.FALSE, BOOL.FALSE, BOOL.FALSE, BOOL.FALSE];
+var PieceKing = [BOOL.FALSE, BOOL.FALSE, BOOL.FALSE, BOOL.FALSE, BOOL.FALSE, BOOL.FALSE, BOOL.TRUE, BOOL.FALSE, BOOL.FALSE, BOOL.FALSE, BOOL.FALSE, BOOL.FALSE, BOOL.TRUE];
+var PieceRookQueen = [BOOL.FALSE, BOOL.FALSE, BOOL.FALSE, BOOL.FALSE, BOOL.TRUE, BOOL.TRUE, BOOL.FALSE, BOOL.FALSE, BOOL.FALSE, BOOL.FALSE, BOOL.TRUE, BOOL.TRUE, BOOL.FALSE];
+var PieceBishopQueen = [BOOL.FALSE, BOOL.FALSE, BOOL.FALSE, BOOL.TRUE, BOOL.FALSE, BOOL.TRUE, BOOL.FALSE, BOOL.FALSE, BOOL.FALSE, BOOL.TRUE, BOOL.FALSE, BOOL.TRUE, BOOL.FALSE];
+var PieceSlides = [BOOL.FALSE, BOOL.FALSE, BOOL.FALSE, BOOL.TRUE, BOOL.TRUE, BOOL.TRUE, BOOL.FALSE, BOOL.FALSE, BOOL.FALSE, BOOL.TRUE, BOOL.TRUE, BOOL.TRUE, BOOL.FALSE];
+var KnDir = [-8, -19, -21, -12, 8, 19, 21, 12];
+var RkDir = [-1, -10, 1, 10];
+var BiDir = [-9, -11, 11, 9];
+var KiDir = [-1, -10, 1, 10, -9, -11, 11, 9];
+var DirNum = [0, 0, 8, 4, 4, 8, 8, 0, 8, 4, 4, 8, 8];
+var PceDir = [0, 0, KnDir, BiDir, RkDir, KiDir, KiDir, 0, KnDir, BiDir, RkDir, KiDir, KiDir];
+var LoopSlidePce = [PIECES.wB, PIECES.wR, PIECES.wQ, 0, PIECES.bB, PIECES.bR, PIECES.bQ, 0];
+var LoopNonSlidePce = [PIECES.wN, PIECES.wK, 0, PIECES.bN, PIECES.bK, 0];
+var LoopSlideIndex = [0, 4];
+var LoopNonSlideIndex = [0, 3];
+var Kings = [PIECES.wK, PIECES.bK];
+var PieceKeys = new Array(14 * 120);
+var SideKey;
 var CastleKeys = new Array(16);
+var Mirror64 = [
+  56, 57, 58, 59, 60, 61, 62, 63,
+  48, 49, 50, 51, 52, 53, 54, 55,
+  40, 41, 42, 43, 44, 45, 46, 47,
+  32, 33, 34, 35, 36, 37, 38, 39,
+  24, 25, 26, 27, 28, 29, 30, 31,
+  16, 17, 18, 19, 20, 21, 22, 23,
+  8, 9, 10, 11, 12, 13, 14, 15,
+  0, 1, 2, 3, 4, 5, 6, 7
+];
 var CastlePerm = [
   15, 15, 15, 15, 15, 15, 15, 15, 15, 15,
   15, 15, 15, 15, 15, 15, 15, 15, 15, 15,
@@ -483,316 +2944,222 @@ var CastlePerm = [
   15, 15, 15, 15, 15, 15, 15, 15, 15, 15,
   15, 15, 15, 15, 15, 15, 15, 15, 15, 15
 ];
-var CCC = 0;
-var CGAP = CSZ * .05;
-var CHEIGHT = CSZ;
-var choiceCompleted = false;
-var circle = {
-  x : canvas.width/2,
-  y : canvas.height/2,
-  vx: 0, 
-  vy: 0
-};
-var CLICK_TO_SELECT = true; 
-var cnt=0;
-var ColBrd = new Array(BRD_SQ_NUM);
-var ColChar = "abcdefgh";
-var collections = {};
-var ColorDi, Items = {}, DA = {}, Card = {}, TO = {}, Counter = {}, Socket = null;
-var colorDict = null; 
+var GameController = {};
+var MFLAGEP = 0x40000
+var MFLAGPS = 0x80000
+var MFLAGCA = 0x1000000
+var MFLAGCAP = 0x7C000
+var MFLAGPROM = 0xF00000
+var NOMOVE = 0
+var RookOpenCol = 10;
+var RookSemiOpenCol = 5;
+var QueenOpenCol = 5;
+var QueenSemiOpenCol = 3;
+var BishopPair = 30;
+var PawnRowsWhite = new Array(10);
+var PawnRowsBlack = new Array(10);
+var PawnIsolated = -10;
+var PawnPassed = [0, 5, 10, 20, 35, 60, 100, 200];
+var PawnTable = [
+  0, 0, 0, 0, 0, 0, 0, 0,
+  10, 10, 0, -10, -10, 0, 10, 10,
+  5, 0, 0, 5, 5, 0, 0, 5,
+  0, 0, 10, 20, 20, 10, 0, 0,
+  5, 5, 5, 10, 10, 5, 5, 5,
+  10, 10, 10, 20, 20, 10, 10, 10,
+  20, 20, 20, 30, 30, 20, 20, 20,
+  0, 0, 0, 0, 0, 0, 0, 0
+];
+var KnightTable = [
+  0, -10, 0, 0, 0, 0, -10, 0,
+  0, 0, 0, 5, 5, 0, 0, 0,
+  0, 0, 10, 10, 10, 10, 0, 0,
+  0, 0, 10, 20, 20, 10, 5, 0,
+  5, 10, 15, 20, 20, 15, 10, 5,
+  5, 10, 10, 20, 20, 10, 10, 5,
+  0, 0, 5, 10, 10, 5, 0, 0,
+  0, 0, 0, 0, 0, 0, 0, 0
+];
+var BishopTable = [
+  0, 0, -10, 0, 0, -10, 0, 0,
+  0, 0, 0, 10, 10, 0, 0, 0,
+  0, 0, 10, 15, 15, 10, 0, 0,
+  0, 10, 15, 20, 20, 15, 10, 0,
+  0, 10, 15, 20, 20, 15, 10, 0,
+  0, 0, 10, 15, 15, 10, 0, 0,
+  0, 0, 0, 10, 10, 0, 0, 0,
+  0, 0, 0, 0, 0, 0, 0, 0
+];
+var RookTable = [
+  0, 0, 5, 10, 10, 5, 0, 0,
+  0, 0, 5, 10, 10, 5, 0, 0,
+  0, 0, 5, 10, 10, 5, 0, 0,
+  0, 0, 5, 10, 10, 5, 0, 0,
+  0, 0, 5, 10, 10, 5, 0, 0,
+  0, 0, 5, 10, 10, 5, 0, 0,
+  25, 25, 25, 25, 25, 25, 25, 25,
+  0, 0, 5, 10, 10, 5, 0, 0
+];
+var KingE = [
+  -50, -10, 0, 0, 0, 0, -10, -50,
+  -10, 0, 10, 10, 10, 10, 0, -10,
+  0, 10, 20, 20, 20, 20, 10, 0,
+  0, 10, 20, 40, 40, 20, 10, 0,
+  0, 10, 20, 40, 40, 20, 10, 0,
+  0, 10, 20, 20, 20, 20, 10, 0,
+  -10, 0, 10, 10, 10, 10, 0, -10,
+  -50, -10, 0, 0, 0, 0, -10, -50
+];
+var KingO = [
+  0, 5, 5, -10, -10, 0, 10, 5,
+  -30, -30, -30, -30, -30, -30, -30, -30,
+  -50, -50, -50, -50, -50, -50, -50, -50,
+  -70, -70, -70, -70, -70, -70, -70, -70,
+  -70, -70, -70, -70, -70, -70, -70, -70,
+  -70, -70, -70, -70, -70, -70, -70, -70,
+  -70, -70, -70, -70, -70, -70, -70, -70,
+  -70, -70, -70, -70, -70, -70, -70, -70
+];
+var ENDGAME_MAT = 1 * PieceVal[PIECES.wR] + 2 * PieceVal[PIECES.wN] + 2 * PieceVal[PIECES.wP] + PieceVal[PIECES.wK];
+var UserMove = {};
+var MirrorCols = [ COLUMNS.COL_H, COLUMNS.COL_G, COLUMNS.COL_F, COLUMNS.COL_E, COLUMNS.COL_D, COLUMNS.COL_C, COLUMNS.COL_B, COLUMNS.COL_A ];
+var MirrorRows = [ ROWS.ROW_8, ROWS.ROW_7, ROWS.ROW_6, ROWS.ROW_5, ROWS.ROW_4, ROWS.ROW_3, ROWS.ROW_2, ROWS.ROW_1 ];
+var VictimScore = [0, 100, 200, 300, 400, 500, 600, 100, 200, 300, 400, 500, 600];
+var MvvLvaScores = new Array(14 * 14);
+var perft_leafNodes;
+var srch_nodes;
+var srch_fh;
+var srch_fhf;
+var srch_depth;
+var srch_time;
+var srch_start;
+var srch_stop;
+var srch_best;
+var srch_thinking;
+var domUpdate_depth;
+var domUpdate_move;
+var domUpdate_score;
+var domUpdate_nodes;
+var domUpdate_ordering;
+var FILES = { FILE_A: 0, FILE_B: 1, FILE_C: 2, FILE_D: 3, FILE_E: 4, FILE_F: 5, FILE_G: 6, FILE_H: 7, FILE_NONE: 8 };
+var RANKS = { RANK_1: 0, RANK_2: 1, RANK_3: 2, RANK_4: 3, RANK_5: 4, RANK_6: 5, RANK_7: 6, RANK_8: 7, RANK_NONE: 8 };
+var PVENTRIES = 10000;
+var FilesBrd = new Array(BRD_SQ_NUM);
+var RanksBrd = new Array(BRD_SQ_NUM);
+var RankChar = "12345678";
+var FileChar = "abcdefgh";
+var BFGameContr = {};
+var BFUserMove = {};
+var BFBoard = {};
+var MvvLvaValue = [0, 100, 200, 300, 400, 500, 600, 100, 200, 300, 400, 500, 600];
+var SearchController = {};
+var BG_CARD_BACK = randomColor();
+var GAME_PLAY_UI = null;
+var PROJECTNAME = 'basinno';
+var USELIVESERVER = false;
+var START_IN_MENU = false;
+var DEFAULTUSERNAME = 'gul';
+var USE_LOCAL_STORAGE = true; 
+const CLEAR_LOCAL_STORAGE = false;
+var USE_ADDONS = false;
+var sent_audio = new Audio("../base/assets/sounds/message_sent.mp3");
+var received_audio = new Audio("../base/assets/sounds/message_received.mp3");
+var CURRENT_CHAT_USER = "";
+var CURRENT_GAME = "";
+var CURRENT_FEN = "";
+var SEEN_STATUS = false;
+var Daat = {}, DA = {}, Items, ItemsByKey;
+var FenPositionList;
+var DB, M = {}, S = {}, Z, U = null, PL, G = null, C = null, UI = {}, Users, Tables, Basepath, Serverdata = {}, Clientdata = {};
+var Userdata, Username, Serverdata, Live;
+var Pictures = [];
+var Goal, Selected;
+var IsAnswerCorrect;
+var uiActivated = false, Selected, Turn, Prevturn;
+var Settings, SettingsList, SettingsChanged, SelectedMenuKey; 
+var Players, PlayerOnTurn, GC, GameCounter;
+var BestMinusScore = Infinity, BestMinusState, BestPlusScore = -Infinity, BestPlusState;
+var F_END, F_MOVES, F_APPLYMOVE, F_UNDOMOVE, F_EVAL, DMAX, MAXIMIZER, MINIMIZER, SelectedMove, CANCEL_AI;
+var DMM = {}, timit, STARTED;
+var ShapeKeys = ['hex', 'hexF', 'tri', 'triDown', 'triLeft', 'triRight'];
+var PolyClips = {
+  hex: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)',
+  test1: 'inset(50% 0% 100% 25% 100% 75% 50% 100% 0% 75% 0% 25% round 10px)',
+  test0: 'inset(45% 0% 33% 10% round 10px)',
+  hexagon: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)',
+  hexF: 'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)',
+  hexFlat: 'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)',
+  hexflat: 'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)',
+  tri: 'polygon(50% 0%, 100% 100%, 0% 100%)',
+  triangle: 'polygon(50% 0%, 100% 100%, 0% 100%)',
+  triUp: 'polygon(50% 0%, 100% 100%, 0% 100%)',
+  triup: 'polygon(50% 0%, 100% 100%, 0% 100%)',
+  triDown: 'polygon(0% 0%, 100% 0%, 50% 100%)',
+  tridown: 'polygon(0% 0%, 100% 0%, 50% 100%)',
+  triright: 'polygon(0% 0%, 100% 50%, 0% 100%)',
+  triRight: 'polygon(0% 0%, 100% 50%, 0% 100%)',
+  trileft: 'polygon(0% 50%, 100% 0%, 100% 100%)',
+  triLeft: 'polygon(0% 50%, 100% 0%, 100% 100%)',
+  splayup: 'polygon(0% 70%, 100% 70%, 100% 100%, 0% 100%)',
+}
 var ColorNames; 
-var ColorThiefObject, SelectedItem, SelectedColor;
-var COLOURS = { WHITE: 0, BLACK: 1, BOTH: 2 };
-var COLUMNS =  { COL_A:0, COL_B:1, COL_C:2, COL_D:3, COL_E:4, COL_F:5, COL_G:6, COL_H:7, COL_NONE:8 };
-var commandChain = [];
-var COND = {};
+var levelKeys = ['island', 'justice star', 'materials science', 'mayan pyramid', 'medieval gate',
+  'great pyramid', 'meeple', 'smart', 'stone tower', 'trophy cup', 'viking helmet',
+  'flower star', 'island', 'justice star', 'materials science', 'mayan pyramid',];
+var dLeiste;
+var TOMan, TO, TOMain, TOTrial, TOList, TOTicker, TCount, TOAnim;
+var Speech;
+var BotTicker, POLL_COUNTER = 0;
+var Badges = [];
+var Fen, R, Qu, U, G, A;
+var Waiting_for = null;
+var TestNumber,TestList, TestRunning, TestSuiteRunning;
+var CSZ = 300;
+var CHEIGHT = CSZ;
+var CWIDTH = CSZ * .7
+var CGAP = CSZ * .05;
+var OVD = .25, OVW = 14, OVH = 20;
+var SUITS = 'SHDC';
+var DECKS = 'br';
+var NUMJOKERS = 0;
+var NUMDECKS = 2;
+var dActions, dActions0, dActions1, dActions2, dActions3, dActions4, dActions5, dError;
+const SHAPEFUNCS = { 'circle': agCircle, 'hex': agHex, 'rect': agRect, };
+var MAXITER = 200, ITER = 0;
+var FLAG_HINT_ONLY = false;
+var FLAG_AI_CANCELED = false;
+var RookOpenFile = 10;
+var RookSemiOpenFile = 5;
+var QueenOpenFile = 5;
+var QueenSemiOpenFile = 3;
+var PawnRanksWhite = new Array(10);
+var PawnRanksBlack = new Array(10);
+var MirrorFiles = [FILES.FILE_H, FILES.FILE_G, FILES.FILE_F, FILES.FILE_E, FILES.FILE_D, FILES.FILE_C, FILES.FILE_B, FILES.FILE_A];
+var MirrorRanks = [RANKS.RANK_8, RANKS.RANK_7, RANKS.RANK_6, RANKS.RANK_5, RANKS.RANK_4, RANKS.RANK_3, RANKS.RANK_2, RANKS.RANK_1];
+var IconSet, lastIndex;
+var CCC = 0;
+var ActiveChats = {}; 
+var dCurrent = null;
+var paneOpen = false;
+var DELAY_PANE = 100;
+var DELAY_DISAPPEAR = 100;
+var DELAY_APPEAR = 100;
+var SOCKETSERVER = 'http://localhost:5000'; //geht im spital
+var Pollmode = 'auto', Globals;
+var Info, ColorDi, Items = {}, DA = {}, Card = {}, TO = {};
+var Counter = { server: 0 };
 var Config, Syms, SymKeys, ByGroupSubgroup, KeySets, C52, Cinno, C52Cards;
-var container;
-var container1 = document.getElementById('container')
-var coorsField = {
-  "type": "Feature",
-  "properties": {
-    "popupContent": "Coors Field"
-  },
-  "geometry": {
-    "type": "Point",
-    "coordinates": [-104.99404191970824, 39.756213909328125]
+var PrevUser = null;
+var FORCE_REDRAW = false, TESTING = false;
+var ColorThiefObject, SelectedItem, SelectedColor;
+var FirstLoad = true;
+var AGAME = {
+  stage: {
   }
 };
-var CorrectWords, CorrectWordsExact, CorrectWordsCorrect, CorrectWordsFailed;
-var count = fen[fenCnt].charCodeAt() - '0'.charCodeAt(); 
-var countries = [
-  'Afghanistan',
-  'Albania',
-  'Algeria',
-  'Andorra',
-  'Angola',
-  'Anguilla',
-  'Antigua & Barbuda',
-  'Argentina',
-  'Armenia',
-  'Aruba',
-  'Australia',
-  'Austria',
-  'Azerbaijan',
-  'Bahamas',
-  'Bahrain',
-  'Bangladesh',
-  'Barbados',
-  'Belarus',
-  'Belgium',
-  'Belize',
-  'Benin',
-  'Bermuda',
-  'Bhutan',
-  'Bolivia',
-  'Bosnia & Herzegovina',
-  'Botswana',
-  'Brazil',
-  'British Virgin Islands',
-  'Brunei',
-  'Bulgaria',
-  'Burkina Faso',
-  'Burundi',
-  'Cambodia',
-  'Cameroon',
-  'Canada',
-  'Cape Verde',
-  'Cayman Islands',
-  'Central Arfrican Republic',
-  'Chad',
-  'Chile',
-  'China',
-  'Colombia',
-  'Congo',
-  'Cook Islands',
-  'Costa Rica',
-  'Cote D Ivoire',
-  'Croatia',
-  'Cuba',
-  'Curacao',
-  'Cyprus',
-  'Czech Republic',
-  'Denmark',
-  'Djibouti',
-  'Dominica',
-  'Dominican Republic',
-  'Ecuador',
-  'Egypt',
-  'El Salvador',
-  'Equatorial Guinea',
-  'Eritrea',
-  'Estonia',
-  'Ethiopia',
-  'Falkland Islands',
-  'Faroe Islands',
-  'Fiji',
-  'Finland',
-  'France',
-  'French Polynesia',
-  'French West Indies',
-  'Gabon',
-  'Gambia',
-  'Georgia',
-  'Germany',
-  'Ghana',
-  'Gibraltar',
-  'Greece',
-  'Greenland',
-  'Grenada',
-  'Guam',
-  'Guatemala',
-  'Guernsey',
-  'Guinea',
-  'Guinea Bissau',
-  'Guyana',
-  'Haiti',
-  'Honduras',
-  'Hong Kong',
-  'Hungary',
-  'Iceland',
-  'India',
-  'Indonesia',
-  'Iran',
-  'Iraq',
-  'Ireland',
-  'Isle of Man',
-  'Israel',
-  'Italy',
-  'Jamaica',
-  'Japan',
-  'Jersey',
-  'Jordan',
-  'Kazakhstan',
-  'Kenya',
-  'Kiribati',
-  'Kosovo',
-  'Kuwait',
-  'Kyrgyzstan',
-  'Laos',
-  'Latvia',
-  'Lebanon',
-  'Lesotho',
-  'Liberia',
-  'Libya',
-  'Liechtenstein',
-  'Lithuania',
-  'Luxembourg',
-  'Macau',
-  'Macedonia',
-  'Madagascar',
-  'Malawi',
-  'Malaysia',
-  'Maldives',
-  'Mali',
-  'Malta',
-  'Marshall Islands',
-  'Mauritania',
-  'Mauritius',
-  'Mexico',
-  'Micronesia',
-  'Moldova',
-  'Monaco',
-  'Mongolia',
-  'Montenegro',
-  'Montserrat',
-  'Morocco',
-  'Mozambique',
-  'Myanmar',
-  'Namibia',
-  'Nauro',
-  'Nepal',
-  'Netherlands',
-  'Netherlands Antilles',
-  'New Caledonia',
-  'New Zealand',
-  'Nicaragua',
-  'Niger',
-  'Nigeria',
-  'North Korea',
-  'Norway',
-  'Oman',
-  'Pakistan',
-  'Palau',
-  'Palestine',
-  'Panama',
-  'Papua New Guinea',
-  'Paraguay',
-  'Peru',
-  'Philippines',
-  'Poland',
-  'Portugal',
-  'Puerto Rico',
-  'Qatar',
-  'Reunion',
-  'Romania',
-  'Russia',
-  'Rwanda',
-  'Saint Pierre & Miquelon',
-  'Samoa',
-  'San Marino',
-  'Sao Tome and Principe',
-  'Saudi Arabia',
-  'Senegal',
-  'Serbia',
-  'Seychelles',
-  'Sierra Leone',
-  'Singapore',
-  'Slovakia',
-  'Slovenia',
-  'Solomon Islands',
-  'Somalia',
-  'South Africa',
-  'South Korea',
-  'South Sudan',
-  'Spain',
-  'Sri Lanka',
-  'St Kitts & Nevis',
-  'St Lucia',
-  'St Vincent',
-  'Sudan',
-  'Suriname',
-  'Swaziland',
-  'Sweden',
-  'Switzerland',
-  'Syria',
-  'Taiwan',
-  'Tajikistan',
-  'Tanzania',
-  'Thailand',
-  "Timor L'Este",
-  'Togo',
-  'Tonga',
-  'Trinidad & Tobago',
-  'Tunisia',
-  'Turkey',
-  'Turkmenistan',
-  'Turks & Caicos',
-  'Tuvalu',
-  'Uganda',
-  'Ukraine',
-  'United Arab Emirates',
-  'United Kingdom',
-  'United States of America',
-  'Uruguay',
-  'Uzbekistan',
-  'Vanuatu',
-  'Vatican City',
-  'Venezuela',
-  'Vietnam',
-  'Virgin Islands (US)',
-  'Yemen',
-  'Zambia',
-  'Zimbabwe'
-];
-var CSZ = 300;
-var cubehelix = [
-  '#000000',
-  '#130918',
-  '#1a1732',
-  '#192a47',
-  '#15414e',
-  '#17584a',
-  '#246b3d',
-  '#3f7632',
-  '#647a30',
-  '#8d7a3c',
-  '#b17959',
-  '#ca7b81',
-  '#d485ac',
-  '#d296d1',
-  '#c9ade9',
-  '#c2c5f3',
-  '#c3dbf2',
-  '#d0ecef',
-  '#e6f7f1',
-  '#ffffff'
-];
-var CURRENT_FEN = "";
-var currentCategories = ['nosymbols'];
-var currentDeck;
-var currentGame = IS_TESTING ? 'gTouchPic' : 'sequence';
-var currentGamename;
-var currentKey = null;
-var currentKeys; 
-var currentLanguage = 'E';
-var currentLevel;
-var currentNumPlayers;
-var currentPlaymode;
-var currentSeed;
-var CurrentSessionData, CurrentGameData, CurrentLevelData;
-var currentUser = 'Gunter';
-var CWIDTH = CSZ * .7
-var CYCLES=0;
-var DA = {}
-var Daat = {}, DA = {}, Items, ItemsByKey;
-var dActions, dActions0, dActions1, dActions2, dActions3, dActions4, dActions5, dError;
-var dampening = 0.995;
-var DB, M = {}, S = {}, Z, U = null, PL, G = null, C = null, UI = {}, Users, Tables, Basepath, Serverdata = {}, Clientdata = {};
-var dBottom, dButtons, dCenter, dCode, dConsole, dContent, dFiddle, dFooter, dHeader, dLeft, dMap, dMain, dMenu, dMessage, dPage, dPuppet;
-var dCurrent = null;
-var DDInfo = null;
-var deck = DeckA()
+var WhichCorner = 0;
+var W_init = 10; 
+var is_host, socket, settings, defaults, greenbar, redbar, in_game_screen, lastgreen = 0, lastred = 0, granularity, num_calls = 0, num_painted = 0;
 var DeckA = (function () {
   //#region variables  
   var ____fontSize;
@@ -1589,6 +3956,21 @@ var DeckA = (function () {
   console.log('hallo!')
   return DeckA;
 })();
+var prefix = DeckA.prefix
+var transform = prefix('transform')
+var translate = DeckA.translate
+var container1 = document.getElementById('container')
+var topbar1 = document.getElementById('topbar')
+var bSort = document.createElement('button')
+var bShuffle = document.createElement('button')
+var bBySuit = document.createElement('button')
+var bFan = document.createElement('button')
+var bPoker = document.createElement('button')
+var bFlip = document.createElement('button')
+var bDeal = document.createElement('button')
+var deck = DeckA()
+var currentDeck;
+var dummyString = "translateX(-50%) scale(1.2)";
 var DeckB = (function () {
   //#region variables  
   let ____fontSize;
@@ -2358,58 +4740,54 @@ var DeckB = (function () {
   fDeck.params = _deckParams;
   return { fDeck: fDeck };
 })();
-var DECKS = 'br';
-var DeDict,EdDict; 
-var DEFAULT_PLAYER_AREA = 'area_players';
-var defaultFocusElement;
-var defaultSpec = null
-var defaultSpecC = null;
-var DEFAULTUSERNAME = 'gul';
-var DEFS = null; 
-var DELAY_BETWEEN_MIKE_AND_SPEECH = 2000;
-var DELETED_THIS_ROUND = [];
-var dg = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
-var dHelp, counters, timit; 
-var dHint, dFeedback, dInstruction, dScore, dLevel;
-var DirNum = [0, 0, 8, 4, 4, 8, 8, 0, 8, 4, 4, 8, 8];
-var divMain, divPlayer, divOpps, colors, iColor, timit;
-var dLeiste, dScore, dGameTitle, dTable, dTableShield, dTitle, dLinks, dRechts, dOben, dUnten, dPlayerStats, dMessage, dStatus;
-var dLineBottomOuter, dLineBottom, dLineBottomLeft, dLineBottomRight, dLineBottomMiddle;
-var dLineTableOuter, dLineTable, dLineTableLeft, dLineTableRight, dLineTableMiddle;
-var dLineTitleOuter, dLineTitle, dLineTitleLeft, dLineTitleRight, dLineTitleMiddle;
-var dLineTopOuter, dLineTop, dLineTopLeft, dLineTopRight, dLineTopMiddle;
-var dMain = document.getElementById('dMain'), dTable, Step = 0;
-var DMM = {}, timit, STARTED;
-var DOC_CURRENT_FUNC;
-var domUpdate_ordering;
-var DONE={};
-var DragElem = null; 
-var draggedElement;
-var DragSource = null; 
-var DragSourceItem = null;
-var DragSourceItems = [];
-var dragStartOffset;
-var dRight, dSidebar, dTable, dTitle, dTop;
-var dropPosition = 'none'; 
-var DropZoneItem = null;
-var DropZoneItems = [];
-var DropZones = []; 
-var dSettings = mBy('dSettings');
-var dTable, dPage, dMap, dHeader, dFooter, dMessage, dPuppet, dMenu, dLeft, dCenter, dRight, dTop, dBottom; 
-var dummyString = "translateX(-50%) scale(1.2)";
-var dynSpec;
-var EBEF = null, UBEF = null, GBEF = null;
-var EC = {}; 
-var EID = {}; 
-var elements = {}; 
-var Emicons = {
-  msmaus: "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/microsoft/319/mouse-face_1f42d.png",
-  gmaus: "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/google/346/mouse-face_1f42d.png",
-  smaus: "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/softbank/145/mouse-face_1f42d.png",
-  twmaus: "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/twitter/322/mouse-face_1f42d.png",
-  maus: "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/whatsapp/326/mouse-face_1f42d.png",
+var Script = {
+  _loadedScripts: [],
+  include: function (script) {
+    if (this._loadedScripts.include(script)) {
+      return false;
+    }
+    var code = new Ajax.Request(script, {
+      asynchronous: false,
+      method: "GET",
+      evalJS: false,
+      evalJSON: false
+    }).transport.responseText;
+    if (Prototype.Browser.IE) {
+      window.execScript(code);
+    } else if (Prototype.Browser.WebKit) {
+      $$("head").first().insert(Object.extend(
+        new Element("script", {
+          type: "text/javascript"
+        }), {
+        text: code
+      }
+      ));
+    } else {
+      window.eval(code);
+    }
+    this._loadedScripts.push(script);
+  }
 };
-var emoCharsC = null;
+var symbolDict, symbolKeys, symbolList; 
+var svgDict, svgKeys, svgList; 
+var symByType, symBySet;
+var symKeysByType, symKeysBySet;
+var symListByType, symListBySet;
+var CorrectWords, CorrectWordsExact, CorrectWordsCorrect, CorrectWordsFailed;
+var selectedEmoSetNames = ['all', 'animal', 'body', 'drink', 'emotion', 'food', 'fruit', 'game', 'gesture', 'kitchen', 'object', 'person', 'place', 'plant', 'sports', 'time', 'transport', 'vegetable'];
+var primitiveSetNames = ['all', 'activity', 'animal', 'body', 'drink',
+  'emotion', 'family', 'fantasy', 'food', 'fruit', 'game', 'gesture',
+  'kitchen', 'object', 'place', 'plant', 'person',
+  'role', 'shapes', 'sport', 'sports',
+  'time', 'transport', 'vegetable',
+  'toolbar', 'math', 'punctuation', 'misc'];
+var higherOrderEmoSetNames = {
+  animals: ['animal'],
+  animalplantfood: ['animal', 'plant', 'drink', 'food', 'fruit', 'vegetable'],
+  life: ['animal', 'plant', 'drink', 'food', 'fruit', 'vegetable', 'kitchen', 'game', 'sport'],
+  more: ['animal', 'plant', 'drink', 'food', 'fruit', 'kitchen', 'vegetable', 'game', 'sport', 'transport', 'object'],
+};
+var higherOrderEmoSetNames1 = { all: ['all'], select: selectedEmoSetNames, abstract: ['time', 'symbols'], action: ['game', 'sports'], food: ['drink', 'food', 'fruit', 'kitchen', 'vegetable'], human: ['body', 'gesture', 'emotion', 'person', 'role'], life: ['animal', 'plant'], mood: ['emotion'], object: ['object'], places: ['place', 'transport'] };
 var emoSets = {
   nosymbols: { name: 'nosymbols', f: o => o.group != 'symbols' && o.group != 'flags' && o.group != 'clock' },
   nosymemo: { name: 'nosymemo', f: o => o.group != 'smileys-emotion' && o.group != 'symbols' && o.group != 'flags' && o.group != 'clock' },
@@ -2463,57 +4841,213 @@ var emoSets = {
   transport: { name: 'transport', f: o => startsWith(o.subgroups, 'transport') && o.subgroups != 'transport-sign' },
   vegetable: { name: 'vegetable', f: o => o.group == 'food-drink' && o.subgroups == 'food-vegetable' },
 };
-var EmptyFunc = x => nundef(x) || x == ' ';
-var ENDGAME_MAT = 1 * PieceVal[PIECES.wR] + 2 * PieceVal[PIECES.wN] + 2 * PieceVal[PIECES.wP] + PieceVal[PIECES.wK];
-var ENN = {};
-var ___enteredRecursion = 0;
-var Epsilon = 1e-10;
-var ET = {}; 
-var evAddCounter = 0;
-var exp = expand1_99;
-var extend = function () {
-  var extended = {};
-  var deep = false;
-  var i = 0;
-  if (typeof arguments[0] === 'boolean') {
-    deep = arguments[0];
-    i++;
-  }
-  var merge = function (obj) {
-    for (var prop in obj) {
-      if (obj.hasOwnProperty(prop)) {
-        if (deep && Object.prototype.toString.call(obj[prop]) === '[object Object]') {
-          extended[prop] = extend(true, extended[prop], obj[prop]);
-        } else {
-          extended[prop] = obj[prop];
-        }
-      }
-    }
-  };
-  for (; i < arguments.length; i++) {
-    merge(arguments[i]);
-  }
-  return extended;
-};
-var F_END, F_MOVES, F_APPLYMOVE, F_UNDOMOVE, F_EVAL, DMAX, MAXIMIZER, MINIMIZER, SelectedMove, CANCEL_AI;
-var faChars, gaChars, faKeys;
-var FASTSTART = false && EXPERIMENTAL;
-var fen = "345623";
-var Fen, R, Qu, U, G, A;
-var fenCnt=3;
-var FenPositionList;
-var FileChar = "abcdefgh";
-var FILES = { FILE_A: 0, FILE_B: 1, FILE_C: 2, FILE_D: 3, FILE_E: 4, FILE_F: 5, FILE_G: 6, FILE_H: 7, FILE_NONE: 8 };
-var FilesBrd = new Array(BRD_SQ_NUM);
+var symbolDictC = null;
+var svgDictC = null;
+var emoCharsC = null;
+var SIGI;
+var pictureSize, TOMain, TOTrial;
+var NumMissingLetters, nMissing, MaxPosMissing;
+var inputs = [];
+var th = ['', 'thousand', 'million', 'billion', 'trillion'];
+var dg = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
+var tn = ['ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'];
+var tw = ['twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'];
+var uiActivatedTC;
+var NumColors;
+var interim_transcript = '';
+var final_transcript = '';
 var final_confidence, final_confidence2, final_confidence_sum, final_num;
-var firstDomLoad = null;
-var FirstLoad = true;
-var FLAG_AI_CANCELED = false;
-var flags = {};
-var fleetingMessageTimeout;
-var FORCE_REDRAW = false, TESTING = false;
-var FR = 50, CX, CV, AU = {}, CONTEXT = null;
-var FRAMERATE = 30; 
+var interim_confidence, interim_confidence2, interim_confidence_sum, interim_num;
+var isRunning = false;
+var hasGotResult, hasGotFinalResult;
+var timeout1, timeout2;
+var nextIndex = -1;
+var BestKeysD, BestKeysE, BestKeySets;
+var DeDict,EdDict; 
+var symKeysByGroupSub;
+var TimestampStarted, TimeElapsed, OnTimeOver = null, TimeElem, TimeLeft;
+var I; 
+var AD, ADS; 
+var App; 
+var Zones = {};
+var Options = {};
+var container;
+var DOC_UIS;
+var DOC_vault;
+var DOC_dvIndex;
+var DOC_CURRENT_PATH_INDEX;
+var DOC_CURRENT_FUNC;
+var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition
+var SpeechGrammarList = SpeechGrammarList || webkitSpeechGrammarList
+var SpeechRecognitionEvent = SpeechRecognitionEvent || webkitSpeechRecognitionEvent
+var words,grammar,lang,matchingWords,recognition,speechRecognitionList,hintMessage,resultMessage;
+var TESTVAR = 0;
+var testDict = {};
+var QuestionCounter = 0;
+var lastPosition = 0;
+var WordProblems;
+var SERVER_DATA = null;
+var SettingTypesCommon = {
+  samplesPerGame: true,
+  minutesPerUnit: true,
+  incrementLevelOnPositiveStreak: true,
+  decrementLevelOnNegativeStreak: true,
+  showLabels: true,
+  language: true,
+  vocab: true,
+  showTime: true,
+  spokenFeedback: true,
+  silentMode: true,
+  switchGame: true,
+  trials: false,
+  showHint: false,
+}
+var FASTSTART = false && EXPERIMENTAL;
+var MSTimeClock, MSTimeDiff, MSTimeStart, MSTimeCallback, MSTimeTO;
+var MessageCounter = 0;
+var PerlenDict, BaseColor, HeaderColor, SidebarColor, IsControlKeyDown = false
+var NiceBaseColors = ['#791900']
+var MAGNIFIER_IMAGE;
+var globalSum = 0 
+var positionCount;
+var weights = { 'p': 100, 'n': 280, 'b': 320, 'r': 479, 'q': 929, 'k': 60000, 'k_e': 60000 };
+var pst_w = {
+  'p': [
+    [100, 100, 100, 100, 105, 100, 100, 100],
+    [78, 83, 86, 73, 102, 82, 85, 90],
+    [7, 29, 21, 44, 40, 31, 44, 7],
+    [-17, 16, -2, 15, 14, 0, 15, -13],
+    [-26, 3, 10, 9, 6, 1, 0, -23],
+    [-22, 9, 5, -11, -10, -2, 3, -19],
+    [-31, 8, -7, -37, -36, -14, 3, -31],
+    [0, 0, 0, 0, 0, 0, 0, 0]
+  ],
+  'n': [
+    [-66, -53, -75, -75, -10, -55, -58, -70],
+    [-3, -6, 100, -36, 4, 62, -4, -14],
+    [10, 67, 1, 74, 73, 27, 62, -2],
+    [24, 24, 45, 37, 33, 41, 25, 17],
+    [-1, 5, 31, 21, 22, 35, 2, 0],
+    [-18, 10, 13, 22, 18, 15, 11, -14],
+    [-23, -15, 2, 0, 2, 0, -23, -20],
+    [-74, -23, -26, -24, -19, -35, -22, -69]
+  ],
+  'b': [
+    [-59, -78, -82, -76, -23, -107, -37, -50],
+    [-11, 20, 35, -42, -39, 31, 2, -22],
+    [-9, 39, -32, 41, 52, -10, 28, -14],
+    [25, 17, 20, 34, 26, 25, 15, 10],
+    [13, 10, 17, 23, 17, 16, 0, 7],
+    [14, 25, 24, 15, 8, 25, 20, 15],
+    [19, 20, 11, 6, 7, 6, 20, 16],
+    [-7, 2, -15, -12, -14, -15, -10, -10]
+  ],
+  'r': [
+    [35, 29, 33, 4, 37, 33, 56, 50],
+    [55, 29, 56, 67, 55, 62, 34, 60],
+    [19, 35, 28, 33, 45, 27, 25, 15],
+    [0, 5, 16, 13, 18, -4, -9, -6],
+    [-28, -35, -16, -21, -13, -29, -46, -30],
+    [-42, -28, -42, -25, -25, -35, -26, -46],
+    [-53, -38, -31, -26, -29, -43, -44, -53],
+    [-30, -24, -18, 5, -2, -18, -31, -32]
+  ],
+  'q': [
+    [6, 1, -8, -104, 69, 24, 88, 26],
+    [14, 32, 60, -10, 20, 76, 57, 24],
+    [-2, 43, 32, 60, 72, 63, 43, 2],
+    [1, -16, 22, 17, 25, 20, -13, -6],
+    [-14, -15, -2, -5, -1, -10, -20, -22],
+    [-30, -6, -13, -11, -16, -11, -16, -27],
+    [-36, -18, 0, -19, -15, -15, -21, -38],
+    [-39, -30, -31, -13, -31, -36, -34, -42]
+  ],
+  'k': [
+    [4, 54, 47, -99, -99, 60, 83, -62],
+    [-32, 10, 55, 56, 56, 55, 10, 3],
+    [-62, 12, -57, 44, -67, 28, 37, -31],
+    [-55, 50, 11, -4, -19, 13, 0, -49],
+    [-55, -43, -52, -28, -51, -47, -8, -50],
+    [-47, -42, -43, -79, -64, -32, -29, -32],
+    [-4, 3, -14, -50, -57, -18, 13, 4],
+    [17, 30, -3, -14, 6, -1, 40, 18]
+  ],
+  'k_e': [
+    [-50, -40, -30, -20, -20, -30, -40, -50],
+    [-30, -20, -10, 0, 0, -10, -20, -30],
+    [-30, -10, 20, 30, 30, 20, -10, -30],
+    [-30, -10, 30, 40, 40, 30, -10, -30],
+    [-30, -10, 30, 40, 40, 30, -10, -30],
+    [-30, -10, 20, 30, 30, 20, -10, -30],
+    [-30, -30, 0, 0, 0, 0, -30, -30],
+    [-50, -30, -30, -30, -30, -30, -30, -50]
+  ]
+};
+var pst_b = {
+  'p': pst_w['p'].slice().reverse(),
+  'n': pst_w['n'].slice().reverse(),
+  'b': pst_w['b'].slice().reverse(),
+  'r': pst_w['r'].slice().reverse(),
+  'q': pst_w['q'].slice().reverse(),
+  'k': pst_w['k'].slice().reverse(),
+  'k_e': pst_w['k_e'].slice().reverse()
+}
+var pstOpponent = { 'w': pst_b, 'b': pst_w };
+var pstSelf = { 'w': pst_w, 'b': pst_b };
+var verbose = false;
+var BlockServerSend1 = false;
+var square_coordinates = [
+  [1, 1, 1, 2, 2, 2, 3, 3, 3],
+  [1, 1, 1, 2, 2, 2, 3, 3, 3],
+  [1, 1, 1, 2, 2, 2, 3, 3, 3],
+  [4, 4, 4, 5, 5, 5, 6, 6, 6],
+  [4, 4, 4, 5, 5, 5, 6, 6, 6],
+  [4, 4, 4, 5, 5, 5, 6, 6, 6],
+  [7, 7, 7, 8, 8, 8, 9, 9, 9],
+  [7, 7, 7, 8, 8, 8, 9, 9, 9],
+  [7, 7, 7, 8, 8, 8, 9, 9, 9]
+]
+var EBEF = null, UBEF = null, GBEF = null;
+var PI = Math.pi, interval_id, angle, factor = .67, tree = [], leaves = [], jittering = false;
+var numlayers = 0;
+var requestAnimFrame = (function(){
+  return window.requestAnimationFrame       || 
+         window.webkitRequestAnimationFrame || 
+         window.mozRequestAnimationFrame    || 
+         window.oRequestAnimationFrame      || 
+         window.msRequestAnimationFrame     || 
+         function( callback ){
+           window.setTimeout(callback, 1000 / 60);
+         };
+})();
+const canvas = document.querySelector('#canvas')
+var radius = 32;
+var lineWidth = 4;
+var gravity = 0.1;
+var dampening = 0.995;
+var mousePullStrength = 0.005;
+var animate = false;
+var mouse = {
+  x : 0, 
+  y : 0,
+  down: false
+};
+var Gaussian = function (mean, variance) {
+  if (variance <= 0) {
+    throw new Error('Variance must be > 0 (but was ' + variance + ')');
+  }
+  this.mean = mean;
+  this.variance = variance;
+  this.standardDeviation = Math.sqrt(variance);
+}
+var Emicons = {
+  msmaus: "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/microsoft/319/mouse-face_1f42d.png",
+  gmaus: "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/google/346/mouse-face_1f42d.png",
+  smaus: "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/softbank/145/mouse-face_1f42d.png",
+  twmaus: "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/twitter/322/mouse-face_1f42d.png",
+  maus: "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/whatsapp/326/mouse-face_1f42d.png",
+};
+var SICHERER = 100;
 var freeBus = {
   "type": "FeatureCollection",
   "features": [
@@ -2564,354 +5098,6 @@ var freeBus = {
     }
   ]
 };
-var frozen = false;
-var FRUIDCounter = -1;
-var FUNCS = {};
-var FUNCTIONS = {
-  instanceof: 'instanceOf',
-  prop: (o, v) => isdef(o[v]),
-  no_prop: (o, v) => nundef(o[v]),
-  no_spec: (o, v) => false, 
-}
-var G, S, M, UIS, IdOwner, id2oids, id2uids, oid2ids;
-var game = new Game;
-var GAME = 'ttt'; 
-var GameController = {};
-var GAMEPLID = null; 
-var gameSequence = IS_TESTING ? ['gSayPicAuto', 'gTouchPic', 'gTouchColors', 'gWritePic', 'gMissingLetter', 'gSayPic']
-  : ['gSayPic', 'gTouchColors', 'gWritePic'];//'gMissingLetter','gTouchPic', 
-var Gaussian = function (mean, variance) {
-  if (variance <= 0) {
-    throw new Error('Variance must be > 0 (but was ' + variance + ')');
-  }
-  this.mean = mean;
-  this.variance = variance;
-  this.standardDeviation = Math.sqrt(variance);
-}
-var gcs = {
-  ttt: {
-    numPlayers: 2,
-    players: [
-      { id: 'Player1', playerType: 'me', agentType: null, username: USERNAME },
-      { id: 'Player2', playerType: 'me', agentType: null, username: USERNAME + '1' },
-    ]
-  },
-  s1: {
-    numPlayers: 4,
-    players: [
-      { id: 'Player1', playerType: 'me', agentType: null, username: USERNAME },
-      { id: 'Player2', playerType: 'me', agentType: null, username: USERNAME + '1' },
-      { id: 'Player3', playerType: 'me', agentType: null, username: USERNAME + '2' },
-      { id: 'Player4', playerType: 'me', agentType: null, username: USERNAME + '3' },
-    ]
-  },
-  starter: {
-    numPlayers: 2,
-    players: [
-      { id: 'Player1', playerType: 'me', agentType: null, username: USERNAME },
-      { id: 'Player2', playerType: 'me', agentType: null, username: USERNAME + '1' },
-    ]
-  },
-  aristocracy: {
-    numPlayers: 2,
-    players: [
-      { id: 'Player1', playerType: 'me', agentType: null, username: USERNAME },
-      { id: 'Player2', playerType: 'me', agentType: null, username: USERNAME + '1' },
-    ]
-  },
-  catan: {
-    numPlayers: 3,
-    players: [
-      { id: 'White', playerType: 'me', agentType: null, username: USERNAME },
-      { id: 'Red', playerType: 'me', agentType: null, username: USERNAME + '1' },
-      { id: 'Blue', playerType: 'me', agentType: null, username: USERNAME + '2' },
-    ]
-  }
-}
-var globalSum = 0 
-var Goal, Selected;
-var grammar;
-var gravity = 0.1;
-var green = [
-  '#f7fcf5',
-  '#eff9ec',
-  '#e7f6e2',
-  '#dcf1d7',
-  '#d0edca',
-  '#c2e7bc',
-  '#b3e0ac',
-  '#a2d99d',
-  '#90d18d',
-  '#7dc87f',
-  '#69be72',
-  '#55b466',
-  '#42a85c',
-  '#339c52',
-  '#268f47',
-  '#18823d',
-  '#0c7433',
-  '#03652a',
-  '#005522',
-  '#00441b'
-];
-var greys = [
-  '#ffffff',
-  '#f9f9f9',
-  '#f2f2f2',
-  '#e9e9e9',
-  '#e0e0e0',
-  '#d5d5d5',
-  '#cacaca',
-  '#bdbdbd',
-  '#aeaeae',
-  '#9f9f9f',
-  '#8f8f8f',
-  '#808080',
-  '#727272',
-  '#636363',
-  '#545454',
-  '#434343',
-  '#313131',
-  '#202020',
-  '#101010',
-  '#000000'
-];
-var gridsize = 12;
-var hasGotResult, hasGotFinalResult;
-var higherOrderEmoSetNames = {
-  animals: ['animal'],
-  animalplantfood: ['animal', 'plant', 'drink', 'food', 'fruit', 'vegetable'],
-  life: ['animal', 'plant', 'drink', 'food', 'fruit', 'vegetable', 'kitchen', 'game', 'sport'],
-  more: ['animal', 'plant', 'drink', 'food', 'fruit', 'kitchen', 'vegetable', 'game', 'sport', 'transport', 'object'],
-};
-var higherOrderEmoSetNames1 = { all: ['all'], select: selectedEmoSetNames, abstract: ['time', 'symbols'], action: ['game', 'sports'], food: ['drink', 'food', 'fruit', 'kitchen', 'vegetable'], human: ['body', 'gesture', 'emotion', 'person', 'role'], life: ['animal', 'plant'], mood: ['emotion'], object: ['object'], places: ['place', 'transport'] };
-var HistoryOfStates = {};
-var I; 
-var ibox4oid={};
-var iconChars = null;
-var iconCharsC = null;
-var IconSet, lastIndex;
-var id2oids = {}; 
-var id2uids = {}; 
-var IdOwner = {}; 
-var inferno = [
-  '#000004',
-  '#08051d',
-  '#180c3c',
-  '#2f0a5b',
-  '#450a69',
-  '#5c126e',
-  '#71196e',
-  '#87216b',
-  '#9b2964',
-  '#b1325a',
-  '#c43c4e',
-  '#d74b3f',
-  '#e55c30',
-  '#f1711f',
-  '#f8870e',
-  '#fca108',
-  '#fbba1f',
-  '#f6d543',
-  '#f1ed71',
-  '#fcffa4'
-];
-var INFINITE = 30000;
-var INFO={};
-var Info, ColorDi, Items = {}, DA = {}, Card = {}, TO = {}, Counter = { server: 0 };
-var initialDataC = {}; 
-var inputBox;
-var inputs = [];
-var interim_confidence, interim_confidence2, interim_confidence_sum, interim_num;
-var IsAnswerCorrect;
-var IsCanvasActive = false;
-var isPlaying = false; 
-var isReallyMultiplayer = false;
-var isRunning = false;
-var isSpeakerRunning, isINTERRUPT;
-var isTraceOn = true; 
-var Items = {};
-var iTHEME = 0;
-var jewel = (function() {
-    var settings = {
-        rows : 8,
-        cols : 8,
-        baseScore : 100,
-        baseLevelScore : 1500,
-        baseLevelExp : 1.05,
-        baseLevelTimer : 60000,
-        numJewelTypes : 7,
-        controls : {
-            KEY_UP : "moveUp",
-            KEY_LEFT : "moveLeft",
-            KEY_DOWN : "moveDown",
-            KEY_RIGHT : "moveRight",
-            KEY_ENTER : "selectJewel",
-            KEY_SPACE : "selectJewel",
-            CLICK : "selectJewel",
-            TOUCH : "selectJewel",
-            BUTTON_A: "selectJewel",
-            LEFT_STICK_UP: "moveUp",
-            LEFT_STICK_DOWN: "moveDown",
-            LEFT_STICK_LEFT: "moveLeft",
-            LEFT_STICK_RIGHT: "moveRight"
-        }
-    };
-    var scriptQueue = [],
-        numResourcesLoaded = 0,
-        numResources = 0,
-        executeRunning = false;
-    function executeScriptQueue() {
-        var next = scriptQueue[0],
-            first, script;
-        if (next && next.loaded) {
-            executeRunning = true;
-            scriptQueue.shift();
-            first = document.getElementsByTagName("script")[0];
-            script = document.createElement("script");
-            script.onload = function() {
-                if (next.callback) {
-                    next.callback();
-                }
-                executeScriptQueue();
-            };
-            script.src = next.src;
-            first.parentNode.insertBefore(script, first);
-        } else {
-            executeRunning = false;
-        }
-    }
-    function getLoadProgress() {
-        return numResourcesLoaded / numResources;
-    }
-    function load(src, callback) {
-        var image, queueEntry;
-        numResources++;
-        queueEntry = {
-            src: src,
-            callback: callback,
-            loaded: false
-        };
-        scriptQueue.push(queueEntry);
-        image = new Image();
-        image.onload = image.onerror = function() {
-            numResourcesLoaded++;
-            queueEntry.loaded = true;
-            if (!executeRunning) {
-                executeScriptQueue();
-            }
-        };
-        image.src = src;
-    }
-    function preload(src) {
-        var image = new Image();
-        image.src = src;
-    }
-    function showScreen(screenId) {
-        var dom = jewel.dom,
-            $ = dom.$,
-            activeScreen = $("#game .screen.active")[0],
-            screen = $("#" + screenId)[0];
-        if (!jewel.screens[screenId]) {
-            alert("This module is not implemented yet!");
-            return;
-        }
-        if (activeScreen) {
-            dom.removeClass(activeScreen, "active");
-        }
-        dom.addClass(screen, "active");
-        jewel.screens[screenId].run();
-    }
-    function isStandalone() {
-        return (window.navigator.standalone !== false);
-    }
-    function hasWebWorkers() {
-        return ("Worker" in window);
-    }
-    function hasWebWorkers() {
-        return ("Worker" in window);
-    }
-    function hasWebGL() {
-        var canvas = document.createElement("canvas"),
-            gl = canvas.getContext("webgl") ||
-                 canvas.getContext("experimental-webgl");
-        return !!gl;
-    }
-    function setup() {
-        if (/Android/.test(navigator.userAgent)) {
-            jewel.dom.$("html")[0].style.height = "200%";
-            setTimeout(function() {
-                window.scrollTo(0, 1);
-            }, 0);
-        }
-        jewel.dom.bind(document, "touchmove", function(event) {
-            event.preventDefault();
-        });
-        if (isStandalone()) {
-            showScreen("splash-screen");
-        } else {
-            showScreen("install-screen");
-        }
-    }
-    return {
-        getLoadProgress: getLoadProgress,
-        hasWebWorkers: hasWebWorkers,
-        hasWebGL: hasWebGL,
-        isStandalone: isStandalone,
-        preload: preload,
-        load: load,
-        setup: setup,
-        showScreen : showScreen,
-        settings: settings,
-        screens: {}
-    };
-})();
-var joinCandidate = null;
-var justExpand = false;
-var keysDown = new Array(256);
-var KeySets;
-var KiDir = [-1, -10, 1, 10, -9, -11, 11, 9];
-var KingE = [
-  -50, -10, 0, 0, 0, 0, -10, -50,
-  -10, 0, 10, 10, 10, 10, 0, -10,
-  0, 10, 20, 20, 20, 20, 10, 0,
-  0, 10, 20, 40, 40, 20, 10, 0,
-  0, 10, 20, 40, 40, 20, 10, 0,
-  0, 10, 20, 20, 20, 20, 10, 0,
-  -10, 0, 10, 10, 10, 10, 0, -10,
-  -50, -10, 0, 0, 0, 0, -10, -50
-];
-var KingO = [
-  0, 5, 5, -10, -10, 0, 10, 5,
-  -30, -30, -30, -30, -30, -30, -30, -30,
-  -50, -50, -50, -50, -50, -50, -50, -50,
-  -70, -70, -70, -70, -70, -70, -70, -70,
-  -70, -70, -70, -70, -70, -70, -70, -70,
-  -70, -70, -70, -70, -70, -70, -70, -70,
-  -70, -70, -70, -70, -70, -70, -70, -70,
-  -70, -70, -70, -70, -70, -70, -70, -70
-];
-var Kings = [PIECES.wK, PIECES.bK];
-var KnDir = [-8, -19, -21, -12, 8, 19, 21, 12];
-var KnightTable = [
-  0, -10, 0, 0, 0, 0, -10, 0,
-  0, 0, 0, 5, 5, 0, 0, 0,
-  0, 0, 10, 10, 10, 10, 0, 0,
-  0, 0, 10, 20, 20, 10, 5, 0,
-  5, 10, 15, 20, 20, 15, 10, 5,
-  5, 10, 10, 20, 20, 10, 10, 5,
-  0, 0, 5, 10, 10, 5, 0, 0,
-  0, 0, 0, 0, 0, 0, 0, 0
-];
-var lastPosition;
-var LastPositionX = 0, LastPositionY = 0;
-var lastUpdate = 0;
-var LevelChange = true;
-var levelIncrement, levelPoints;
-var levelKeys = ['island', 'justice star', 'materials science', 'mayan pyramid', 'medieval gate',
-  'great pyramid', 'meeple', 'smart', 'stone tower', 'trophy cup', 'viking helmet',
-  'flower star', 'island', 'justice star', 'materials science', 'mayan pyramid',];
-var lifeView = new LifeView(document.getElementById('grid'), gridsize);
 var lightRailStop = {
   "type": "FeatureCollection",
   "features": [
@@ -2936,2871 +5122,175 @@ var lightRailStop = {
     }
   ]
 };
-var lineWidth = 4;
-var Live, DB, G, T, P, U, User, Settings, SettingsChanged; 
-var LOG = {};
-var logCounter = 0;
-var LOGDIVS = [];
-var loggedIn = false;
-var LoopNonSlideIndex = [0, 3];
-var LoopNonSlidePce = [PIECES.wN, PIECES.wK, 0, PIECES.bN, PIECES.bK, 0];
-var LoopSlideIndex = [0, 4];
-var LoopSlidePce = [PIECES.wB, PIECES.wR, PIECES.wQ, 0, PIECES.bB, PIECES.bR, PIECES.bQ, 0];
-var M = {}, S = {}, Z, U = null, PL, G = null, C = null, UI = {}, Users, Tables, Basepath, Serverdata = {}, Clientdata = {};
-var magCounter = 0;
-var magma = [
-  '#000004',
-  '#07061c',
-  '#150e38',
-  '#29115a',
-  '#3f0f72',
-  '#56147d',
-  '#6a1c81',
-  '#802582',
-  '#942c80',
-  '#ab337c',
-  '#c03a76',
-  '#d6456c',
-  '#e85362',
-  '#f4695c',
-  '#fa815f',
-  '#fd9b6b',
-  '#feb47b',
-  '#fecd90',
-  '#fde5a7',
-  '#fcfdbf'
-];
-var MAGNIFIER_IMAGE;
-var mappings;
-var mappingsInitialized;
-var mappingTypes;
-var Markers = [];
-var MATE = 29000;
-var MAXDEPTH = 64;
-var MAXGAMEMOVES = 2048;
-var MAXITER = 200, ITER = 0;
-var MAXLEVEL = 10;
-var MaxNumTrials = 1;
-var MAXPOSITIONMOVES = 256;
-var maxWidthPreserver = new MaxWidthPreserver();
-var MaxWordLength = 100;
-var maxZIndex = 110;
-var meme;
-var MessageCounter = 0;
-var MFLAGCA = 0x1000000
-var MFLAGCAP = 0x7C000
-var MFLAGEP = 0x40000
-var MFLAGPROM = 0xF00000
-var MFLAGPS = 0x80000
-var MicrophoneUi;
-var minIncrement = 1, maxIncrement = 5, levelDonePoints = 5;
-var MinWordLength = 1;
-var Mirror64 = [
-  56, 57, 58, 59, 60, 61, 62, 63,
-  48, 49, 50, 51, 52, 53, 54, 55,
-  40, 41, 42, 43, 44, 45, 46, 47,
-  32, 33, 34, 35, 36, 37, 38, 39,
-  24, 25, 26, 27, 28, 29, 30, 31,
-  16, 17, 18, 19, 20, 21, 22, 23,
-  8, 9, 10, 11, 12, 13, 14, 15,
-  0, 1, 2, 3, 4, 5, 6, 7
-];
-var MirrorCols = [ COLUMNS.COL_H, COLUMNS.COL_G, COLUMNS.COL_F, COLUMNS.COL_E, COLUMNS.COL_D, COLUMNS.COL_C, COLUMNS.COL_B, COLUMNS.COL_A ];
-var MirrorFiles = [FILES.FILE_H, FILES.FILE_G, FILES.FILE_F, FILES.FILE_E, FILES.FILE_D, FILES.FILE_C, FILES.FILE_B, FILES.FILE_A];
-var MirrorRanks = [RANKS.RANK_8, RANKS.RANK_7, RANKS.RANK_6, RANKS.RANK_5, RANKS.RANK_4, RANKS.RANK_3, RANKS.RANK_2, RANKS.RANK_1];
-var MirrorRows = [ ROWS.ROW_8, ROWS.ROW_7, ROWS.ROW_6, ROWS.ROW_5, ROWS.ROW_4, ROWS.ROW_3, ROWS.ROW_2, ROWS.ROW_1 ];
-var mkMan = null
-var modern_palettes = {
-  CD_green_blue: { GreenMountain: '#3d7c47', BlueMountain: '#09868b', LightBlueBackdrop: '#76c1d4', BarelyGrayEdge: '#f7f7f7' },
-  CD_gelb_orange_grau: { Blueberry: '#6B7A8F', Apricot: '#F7882F', Citrus: '#F7C331', AppleCore: ' #DCC7AA' },
-  CD_blue_brown: { FrenchLaundryBlue: '#3a4660', ComfortablyTan: '#c9af98', PeachyKreme: '#ed8a63', BrownBonnet: '#845007' },
-  CD_yellow_grey: { Areyayellow: '#feda6a', SilverFox: '#d4d4dc', DeepMatteGrey: '#393f4d' }, 
-  CD_fresh_green_grey_yellow: { MorningSky: '#CAE4DB', Honey: '#DCAE1D', Cerulean: '#00303F', Mist: '#7A9D96' },
-  CD_green_beige: { green: '#BFEB55', green2: '#458766', beige: '#F9F68A', beige2: '#FBF1B4' },
-  CD_dark_beach: { c1: 'rgb(3, 74, 166)', c2: 'rgb(0, 6, 13)', c3: 'rgb(83, 119, 166)', c4: 'rgb(64, 95, 115)', c5: 'rgb(62, 89, 86)' },
-  CD_color_beach: { c1: 'rgb(83, 111, 166)', c2: 'rgb(3, 74, 166)', c3: 'rgb(126, 174, 217)', c4: 'rgb(242, 181, 107)', c5: 'rgb(4, 173, 191)' }
-};
-var mouse = {
-  x : 0, 
-  y : 0,
-  down: false
-};
-var MouseMoveCounter = 0;
-var mousePullStrength = 0.005;
-var MSTimeClock, MSTimeDiff, MSTimeStart, MSTimeCallback, MSTimeTO;
-var MvvLvaScores = new Array(14 * 14);
-var MvvLvaValue = [0, 100, 200, 300, 400, 500, 600, 100, 200, 300, 400, 500, 600];
-var myGameArea = {
-  canvas: document.createElement('canvas'),
-  start: function () {
-    this.canvas.width = 480;
-    this.canvas.height = 270;
-    this.context = this.canvas.getContext('2d');
-    document.body.insertBefore(this.canvas, document.body.childNodes[0]);
-    this.frameNo = 0;
-    this.interval = setInterval(updateGameArea, 20);
-  },
-  clear: function () {
-    this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
-  },
-};
-var NAMED_UIDS = {};
-var nextIndex = -1;
-var NextPictureIndex = 0;
-var NiceBaseColors = ['#791900']
-var NOMOVE = 0
-var NumColors;
-var numCorrectAnswers, numTotalAnswers, percentageCorrect;
-var NUMDECKS = 2;
-var numgen=0;
-var NUMJOKERS = 0;
-var NumLabels;
-var numlayers = 0;
-var NumMissingLetters, nMissing, MaxPosMissing;
-var NumPics;
-var numPlayersMax = 8;
-var numPlayersMin = 0;
-var ObjetoSolitario = function () {
-  this.CartaDrag = new Array();
-  this.ImagenDrag = new Array();
-  this.Movimiento = 0;
-  this.Movimientos = new Array();
-  this.MovimientosAuyda = new Array();
-  this.MovimientosAuydaActual = 0;
-  this.Iniciar = function () {
-    $("body").on("keydown", function (e) {
-      if (e.ctrlKey && (String.fromCharCode(e.which) === 'z' || String.fromCharCode(e.which) === 'Z')) {
-        Solitario.Deshacer(e);
-      } else if (e.ctrlKey && (String.fromCharCode(e.which) === 'y' || String.fromCharCode(e.which) === 'Y')) {
-        Solitario.Rehacer(e);
-      } else if (String.fromCharCode(e.which) === 'n' || String.fromCharCode(e.which) === 'N') {
-        Solitario.NuevoJuego();
-      } else if (String.fromCharCode(e.which) === ' ') {
-        Solitario.MostrarAyuda();
-      }
-    });
-    $("ventanamenu > button:nth-child(1)").on("click", this.NuevoJuego.bind(this));
-    $("ventanamenu > button:nth-child(2)").on("click", this.Deshacer.bind(this));
-    $("ventanamenu > button:nth-child(3)").on("click", this.Rehacer.bind(this));
-    $("ventanamenu > button:nth-child(4)").on("click", this.MostrarAyuda.bind(this));
-    this.NuevoJuego();
-  };
-  this.MostrarAyuda = function () {
-    $("Carta, Solucion, Baraja, Columna").removeAttr("ayuda1").removeAttr("ayuda2");
-    var Mov = this.MovimientosAuyda[this.MovimientosAuydaActual];
-    if (this.MovimientosAuydaActual === this.MovimientosAuyda.length - 1) {
-      this.MovimientosAuydaActual = 0;
-    } else {
-      this.MovimientosAuydaActual++;
-    }
-    Mov.origen.attr({
-      "ayuda1": "true"
-    });
-    Mov.destino.attr({
-      "ayuda2": "true"
-    });
-  }
-  this.NuevoJuego = function () {
-    var Orden = new Array(4 * 13);
-    var Baraja = Array();
-    for (i = 0; i < 4; i++) {
-      Baraja[i] = $("Baraja[num='" + (i + 1) + "']");
-      Baraja[i].html("");
-    }
-    var Solucion = Array();
-    for (i = 0; i < 4; i++) {
-      Solucion[i] = $("Solucion[num='" + (i + 1) + "']");
-      Solucion[i].html("");
-    }
-    var Columna = Array();
-    for (i = 0; i < 7; i++) {
-      Columna[i] = $("Columna[num='" + (i + 1) + "']");
-      Columna[i].html("");
-    }
-    this.Movimiento = 0;
-    this.Movimientos = [];
-    var Cartas = Array();
-    Contador = 0;
-    for (p = 1; p < 5; p++) {
-      for (v = 0; v < 13; v++) {
-        Orden[Contador] = Contador;
-        Cartas[Contador] = $("<Carta></Carta>")
-        Cartas[Contador++].attr({
-          "Palo": p,
-          "Valor": v,
-          "Tapada": "true"
-        });
-      }
-    }
-    for (var Rand, Tmp, i = Orden.length; i; Rand = Math.floor(Math.random() * i), Tmp = Orden[--i], Orden[i] = Orden[Rand], Orden[Rand] = Tmp);
-    Contador = 0;
-    for (Cols = 0; Cols < 7; Cols++) {
-      Carta = Columna[Cols];
-      for (i = 0; i < Cols + 1; i++) {
-        Carta = Cartas[Orden[Contador++]].appendTo(Carta);
-        if (i == Cols) {
-          Carta.attr({
-            "Tapada": "false",
-            "draggable": "true"
-          });
-        }
-        Carta.css({
-          "z-index": i
-        });
-      }
-    }
-    Carta = Baraja[0];
-    for (var i = Contador; i < 52; i++) {
-      Carta = Cartas[Orden[i]].appendTo(Carta);
-      Carta.css({
-        "z-index": i - Contador
-      });
-    }
-    Baraja[0].off("click").on("click", this.Baraja1_EventoClick.bind(this));
-    $("Carta").off("mouseover").on('mouseover', this.Carta_EventoMouseOver.bind(this));
-    $("Carta").off("mouseout").on('mouseout', this.Carta_EventoMouseOut.bind(this));
-    $("Carta").off("dragstart").on('dragstart', this.Carta_EventoDragStart.bind(this));
-    $("Carta").off("dragend").on('dragend', this.Carta_EventoDragEnd.bind(this));
-    $("Carta").off("dblclick").on('dblclick', this.Carta_EventoDblClick.bind(this));
-    $("Columna").off("drop").on('drop', this.Columna_EventoDrop.bind(this));
-    $("Columna").off("dragover").on('dragover', this.Columna_EventoDragOver.bind(this));
-    $("Solucion").off("drop").on('drop', this.Solucion_EventoDrop.bind(this));
-    $("Solucion").off("dragover").on('dragover', this.Solucion_EventoDragOver.bind(this));
-    this.UltimoHijo($("Columna[num=7]"));
-    $("Victoria").css({
-      "display": "none"
-    });
-    $("Derrota").css({
-      "display": "none"
-    });
-    this.GuardarMovimiento();
-  };
-  this.Carta_EventoMouseOver = function (e) {
-    Carta = $(e.originalEvent.currentTarget);
-    if (Carta.attr("tapada") !== "true" && Carta.attr("draggable") === "true") {
-      $(e.originalEvent.currentTarget).attr({
-        "hover": "true"
-      });
-    }
-    e.stopPropagation();
-  };
-  this.Carta_EventoMouseOut = function (e) {
-    $(e.originalEvent.currentTarget).removeAttr("hover");
-    e.stopPropagation();
-  };
-  this.Carta_EventoDblClick = function (e) {
-    Carta = this.UltimoHijo($(e.originalEvent.currentTarget));
-    Palo = 0;
-    Valor = 0;
-    for (i = 1; i < 5; i++) {
-      if (this.UltimoHijo($("Solucion[num='" + i + "']")).attr("palo") == Carta.attr("palo")) {
-        Valor = parseInt(this.UltimoHijo($("Solucion[num='" + i + "']")).attr("valor")) + 1;
-        Palo = this.UltimoHijo($("Solucion[num='" + i + "']"));
-      }
-    }
-    if (Palo == 0) {
-      for (i = 1; i < 5; i++) {
-        if (this.UltimoHijo($("Solucion[num='" + i + "']")).attr("num") == i) {
-          Palo = this.UltimoHijo($("Solucion[num='" + i + "']"));
-          break;
-        }
-      }
-    }
-    if (parseInt(Carta.attr("valor")) == Valor) {
-      if (typeof (Carta.parent().attr("num")) === "undefined") {
-        Carta.parent().attr({
-          "tapada": "false",
-          "draggable": "true"
-        });
-      }
-      Carta.appendTo(this.UltimoHijo(Palo));
-      Carta.removeAttr("draggable");
-      this.GuardarMovimiento();
-    }
-    e.stopPropagation();
-  };
-  this.Carta_EventoDragStart = function (e) {
-    this.CartaDrag = $(e.originalEvent.currentTarget);
-    this.ImagenDrag = $("#ImgDrag");
-    this.ImagenDrag.attr({
-      "palo": this.CartaDrag.attr("palo"),
-      "valor": this.CartaDrag.attr("valor")
-    }).html(this.CartaDrag.html());
-    this.CartaDrag.css({
-      opacity: 0
-    });
-    OffSet = this.CartaDrag.offset();
-    e.originalEvent.dataTransfer.setDragImage(this.ImagenDrag[0], e.originalEvent.clientX - OffSet.left, (e.originalEvent.clientY - OffSet.top) + $(window).scrollTop());
-    e.originalEvent.dataTransfer.effectAllowed = 'move';
-    e.originalEvent.dataTransfer.setData('text/html', e.originalEvent.currentTarget);
-    e.stopPropagation();
-  }
-  this.Carta_EventoDragEnd = function (e) {
-    this.CartaDrag.css({
-      opacity: 1
-    });
-  };
-  this.Baraja1_EventoClick = function (e) {
-    Baraja1 = $("Baraja[num='1']");
-    Baraja2 = $("Baraja[num='2']");
-    if (this.UltimoHijo(Baraja1) !== Baraja1) {
-      $("Baraja[num='2'] Carta[draggable]").removeAttr("draggable");
-      Carta = this.UltimoHijo(Baraja1).appendTo(this.UltimoHijo(Baraja2));
-      Carta.css({
-        "z-index": (Cartas.length + 1)
-      }).attr({
-        "Tapada": "false",
-        "draggable": "true"
-      });
-      this.GuardarMovimiento();
-    } else { 
-      if (this.UltimoHijo(Baraja2) === Baraja2) return;
-      Carta = this.UltimoHijo(Baraja2);
-      while (Carta !== Baraja2) {
-        Carta.appendTo(this.UltimoHijo(Baraja1)).attr({
-          "Tapada": "true",
-          "draggable": "false"
-        });
-        Carta = this.UltimoHijo(Baraja2);
-      }
-      this.Baraja1_EventoClick();
-    }
-  };
-  this.Solucion_EventoDragOver = function (e) {
-    e.preventDefault();
-    e.stopPropagation();
-    e.originalEvent.dataTransfer.dropEffect = 'move';
-    return false;
-  };
-  this.Solucion_EventoDrop = function (e) {
-    if (this.UltimoHijo(this.CartaDrag) === this.CartaDrag) {
-      Solucion = this.UltimoHijo($(e.originalEvent.target));
-      Valor = 0;
-      if (typeof (Solucion.attr("num")) === "undefined") {
-        if (Solucion.attr("palo") === this.CartaDrag.attr("palo")) {
-          Valor = (parseInt(Solucion.attr("valor")) + 1);
-        } else {
-          Valor = -1;
-        }
-      }
-      if (parseInt(this.CartaDrag.attr("valor")) === Valor) {
-        if (typeof (this.CartaDrag.parent().attr("num")) === "undefined") {
-          this.CartaDrag.parent().attr({
-            "tapada": "false",
-            "draggable": "true"
-          });
-        }
-        this.CartaDrag.appendTo(Solucion);
-        this.CartaDrag.removeAttr("draggable");
-        this.GuardarMovimiento();
-      }
-    }
-  };
-  this.Columna_EventoDragOver = function (e) {
-    e.preventDefault();
-    e.stopPropagation();
-    e.originalEvent.dataTransfer.dropEffect = 'move';
-    return false;
-  };
-  this.Columna_EventoDrop = function (e) {
-    var GM = false;
-    if (this.CartaValida(this.CartaDrag, $(e.originalEvent.target)) == true) {
-      if (this.UltimoHijo(this.CartaDrag) != this.UltimoHijo($(e.originalEvent.target))) {
-        if (typeof (this.CartaDrag.parent().attr("num")) === "undefined") {
-          this.CartaDrag.parent().attr({
-            "tapada": "false",
-            "draggable": "true"
-          });
-        }
-        this.CartaDrag.appendTo(this.UltimoHijo($(e.originalEvent.target)));
-        GM = true;
-      }
-      UH = this.UltimoHijo($("Baraja[num='2']"));
-      $("Baraja[num='2'] Carta[draggable]").removeAttr("draggable");
-      if (typeof (UH.attr("num")) === "undefined") {
-        this.UltimoHijo($("Baraja[num='2']")).attr({
-          "draggable": "true"
-        });
-      }
-      if (GM === true) {
-        this.GuardarMovimiento();
-      }
-    }
-    e.preventDefault();
-    e.stopPropagation();
-    return false;
-  };
-  this.CartaValida = function (Carta, Destino) {
-    if (typeof (Destino.attr("num")) !== "undefined" && parseInt(Carta.attr("valor")) === 12) {
-      return true;
-    }
-    if (Destino.attr("tapada") === true) {
-      return false;
-    }
-    if (parseInt(Carta.attr("valor")) === parseInt(Destino.attr("valor")) - 1) {
-      if (parseInt(Carta.attr("palo")) > 2) {
-        if (parseInt(Destino.attr("palo")) < 3) {
-          return true;
-        }
-      }
-      else {
-        if (parseInt(Destino.attr("palo")) > 2) {
-          return true;
-        }
-      }
-    }
-    return false;
-  };
-  this.UltimoHijo = function (nPadre) {
-    Cartas = nPadre.find(":last-child");
-    if (Cartas.length == 0) return nPadre;
-    return $(Cartas[Cartas.length - 1]);
-  };
-  this.Victoria = function () {
-    return ($("Columna Carta[tapada='true']").length > 0) ? false : true;
-  }
-  this.GuardarMovimiento = function () {
-    $("Carta, Solucion, Baraja, Columna").removeAttr("ayuda1").removeAttr("ayuda2");
-    var DH = [];
-    DH["Baraja1"] = $("Baraja[num='1']").html();
-    DH["Baraja2"] = $("Baraja[num='2']").html();
-    DH["Solucion1"] = $("Solucion[num='1']").html();
-    DH["Solucion2"] = $("Solucion[num='2']").html();
-    DH["Solucion3"] = $("Solucion[num='3']").html();
-    DH["Solucion4"] = $("Solucion[num='4']").html();
-    DH["Columna1"] = $("Columna[num='1']").html();
-    DH["Columna2"] = $("Columna[num='2']").html();
-    DH["Columna3"] = $("Columna[num='3']").html();
-    DH["Columna4"] = $("Columna[num='4']").html();
-    DH["Columna5"] = $("Columna[num='5']").html();
-    DH["Columna6"] = $("Columna[num='6']").html();
-    DH["Columna7"] = $("Columna[num='7']").html();
-    this.Movimientos[this.Movimiento++] = DH;
-    $("movimientos").html(this.Movimiento - 1);
-    /* Miramos si se ha ganado o perdido la partida */
-    var V = this.Victoria();
-    $("Derrota").css({
-      "display": (this.Ayuda() === false && V !== true) ? "block" : "none"
-    });
-    $("Victoria").css({
-      "display": (V === true) ? "block" : "none"
-    });
-  };
-  this.Rehacer = function (e) {
-    if (this.Movimiento < this.Movimientos.length) {
-      var DH = this.Movimientos[this.Movimiento++];
-      $("Baraja[num='1']").html(DH["Baraja1"]);
-      $("Baraja[num='2']").html(DH["Baraja2"]);
-      $("Solucion[num='1']").html(DH["Solucion1"]);
-      $("Solucion[num='2']").html(DH["Solucion2"]);
-      $("Solucion[num='3']").html(DH["Solucion3"]);
-      $("Solucion[num='4']").html(DH["Solucion4"]);
-      $("Columna[num='1']").html(DH["Columna1"]);
-      $("Columna[num='2']").html(DH["Columna2"]);
-      $("Columna[num='3']").html(DH["Columna3"]);
-      $("Columna[num='4']").html(DH["Columna4"]);
-      $("Columna[num='5']").html(DH["Columna5"]);
-      $("Columna[num='6']").html(DH["Columna6"]);
-      $("Columna[num='7']").html(DH["Columna7"]);
-      $("Carta").css({
-        opacity: 1
-      }).removeAttr("hover");
-      /* Re-asignamos los eventos */
-      $("Carta").off("mouseover").on('mouseover', this.Carta_EventoMouseOver.bind(this));
-      $("Carta").off("mouseout").on('mouseout', this.Carta_EventoMouseOut.bind(this));
-      $("Carta").off("dragstart").on('dragstart', this.Carta_EventoDragStart.bind(this));
-      $("Carta").off("dragend").on('dragend', this.Carta_EventoDragEnd.bind(this));
-      $("Carta").off("dblclick").on('dblclick', this.Carta_EventoDblClick.bind(this));
-    }
-    $("movimientos").html(this.Movimiento - 1);
-    $("Derrota").css({
-      "display": (this.Ayuda() === false) ? "block" : "none"
-    });
-    $("Victoria").css({
-      "display": (this.Victoria() === true) ? "block" : "none"
-    });
-  };
-  this.Deshacer = function (e) {
-    if (this.Movimiento !== 1) {
-      var DH = this.Movimientos[--this.Movimiento - 1];
-      $("Baraja[num='1']").html(DH["Baraja1"]);
-      $("Baraja[num='2']").html(DH["Baraja2"]);
-      $("Solucion[num='1']").html(DH["Solucion1"]);
-      $("Solucion[num='2']").html(DH["Solucion2"]);
-      $("Solucion[num='3']").html(DH["Solucion3"]);
-      $("Solucion[num='4']").html(DH["Solucion4"]);
-      $("Columna[num='1']").html(DH["Columna1"]);
-      $("Columna[num='2']").html(DH["Columna2"]);
-      $("Columna[num='3']").html(DH["Columna3"]);
-      $("Columna[num='4']").html(DH["Columna4"]);
-      $("Columna[num='5']").html(DH["Columna5"]);
-      $("Columna[num='6']").html(DH["Columna6"]);
-      $("Columna[num='7']").html(DH["Columna7"]);
-      $("Carta").css({
-        opacity: 1
-      }).removeAttr("hover");
-      /* Re-asignamos los eventos */
-      $("Carta").off("mouseover").on('mouseover', this.Carta_EventoMouseOver.bind(this));
-      $("Carta").off("mouseout").on('mouseout', this.Carta_EventoMouseOut.bind(this));
-      $("Carta").off("dragstart").on('dragstart', this.Carta_EventoDragStart.bind(this));
-      $("Carta").off("dragend").on('dragend', this.Carta_EventoDragEnd.bind(this));
-      $("Carta").off("dblclick").on('dblclick', this.Carta_EventoDblClick.bind(this));
-      $("movimientos").html(this.Movimiento - 1);
-    }
-    $("Derrota").css({
-      "display": (this.Ayuda() === false) ? "block" : "none"
-    });
-    $("Victoria").css({
-      "display": (this.Victoria() === true) ? "block" : "none"
-    });
-  };
-  this.Ayuda = function (e) {
-    var Solucion = [];
-    var Baraja = [];
-    var Columna = [];
-    Solucion[1] = this.UltimoHijo($("Solucion[num='1']"));
-    Solucion[2] = this.UltimoHijo($("Solucion[num='2']"));
-    Solucion[3] = this.UltimoHijo($("Solucion[num='3']"));
-    Solucion[4] = this.UltimoHijo($("Solucion[num='4']"));
-    Baraja[1] = this.UltimoHijo($("Baraja[num='1']"));
-    Baraja[2] = this.UltimoHijo($("Baraja[num='2']"));
-    /* OJO porque también existe la columna 0 que se usa exclusivamente para las imagenes del drag & drop, no hay que tenerla en cuenta */
-    Columna[1] = this.UltimoHijo($("Columna[num='1']"));
-    Columna[2] = this.UltimoHijo($("Columna[num='2']"));
-    Columna[3] = this.UltimoHijo($("Columna[num='3']"));
-    Columna[4] = this.UltimoHijo($("Columna[num='4']"));
-    Columna[5] = this.UltimoHijo($("Columna[num='5']"));
-    Columna[6] = this.UltimoHijo($("Columna[num='6']"));
-    Columna[7] = this.UltimoHijo($("Columna[num='7']"));
-    /* Array con los posibles movimientos Origen -> Destino, y con una valoración en puntos. */
-    this.MovimientosAuyda = new Array();
-    this.MovimientosAuydaActual = 0;
-    this.MovimientosAuyda.push({
-      origen: $("Baraja[num='1']"),
-      destino: $("Baraja[num='2']"),
-      valor: 0
-    });
-    if (Baraja[2].prop("tagName") === "CARTA") {
-      for (i = 1; i < 5; i++) {
-        Valor = (Solucion[i].prop("tagName") === "CARTA") ? parseInt(Solucion[i].attr("valor")) : -1;
-        Palo = (Solucion[i].prop("tagName") === "CARTA") ? Solucion[i].attr("palo") : Baraja[2].attr("palo");
-        if (Valor + 1 === parseInt(Baraja[2].attr("valor")) && Palo === Baraja[2].attr("palo")) {
-          this.MovimientosAuyda.push({
-            origen: Baraja[2],
-            destino: Solucion[i],
-            valor: 150 - ((Valor + 1) * 10)
-          });
-        }
-      }
-    }
-    for (c = 7; c > 0; c--) {
-      for (i = 1; i < 5; i++) {
-        Valor = (Solucion[i].prop("tagName") === "CARTA") ? parseInt(Solucion[i].attr("valor")) : -1;
-        Palo = (Solucion[i].prop("tagName") === "CARTA") ? Solucion[i].attr("palo") : Columna[c].attr("palo");
-        if (Valor + 1 === parseInt(Columna[c].attr("valor")) && Palo === Columna[c].attr("palo")) {
-          this.MovimientosAuyda.push({
-            origen: Columna[c],
-            destino: Solucion[i],
-            valor: 150 - ((Valor + 1) * 10)
-          });
-        }
-      }
-    }
-    for (c = 7; c > 0; c--) {
-      Carta = this.UltimoHijo(Columna[c]);
-      if (Carta.prop("tagName") === "CARTA") {
-        Padres = 1;
-        do {
-          for (c2 = 7; c2 > 0; c2--) {
-            CC = this.UltimoHijo(Columna[c2]);
-            Valor = (CC.prop("tagName") === "CARTA") ? parseInt(CC.attr("valor")) : -1;
-            Palo = (CC.prop("tagName") === "CARTA") ? CC.attr("palo") : Carta.attr("palo");
-            if (this.CartaValida(Carta, CC)) {
-              if (Carta.parent().attr("tapada") === "true" || Carta.parent().prop("tagName") !== "CARTA") {
-                if (parseInt(Carta.attr("valor")) === 12 && CC.prop("tagName") === "COLUMNA" && Carta.parent().prop("tagName") === "COLUMNA") {} else {
-                  this.MovimientosAuyda.push({
-                    origen: Carta,
-                    destino: CC,
-                    valor: 10 * Padres
-                  });
-                }
-              }
-            }
-          }
-          Carta = Carta.parent();
-          Padres++;
-        } while (Carta.attr("tapada") !== "true" && Carta.prop("tagName") === "CARTA");
-      }
-    }
-    if (Baraja[2].prop("tagName") === "CARTA") {
-      for (c = 7; c > 0; c--) {
-        CC = this.UltimoHijo(Columna[c]);
-        Valor = (CC.prop("tagName") === "CARTA") ? CC.attr("valor") : -1;
-        Palo = (CC.prop("tagName") === "CARTA") ? CC.attr("palo") : Baraja[2].attr("palo");
-        if (this.CartaValida(Baraja[2], CC)) {
-          this.MovimientosAuyda.push({
-            origen: Baraja[2],
-            destino: CC,
-            valor: 10
-          });
-        }
-      }
-    }
-    /* Ordeno el array de movimientos posibles por su valor */
-    this.MovimientosAuyda.sort(function (a, b) {
-      var a1 = a.valor,
-        b1 = b.valor;
-      if (a1 === b1) return 0;
-      return (a1 < b1) ? 1 : -1;
-    });
-    /* Para depurar la IA he decidido que lo mejor es mostrar los movimientos de cada turno de forma eficiente 
-     * además de contar con un experto anónimo local para mejorar la IA del juego hasta donde mis habilidades lo permitan */
-    var DebugIA = $("DebugIA");
-    var DebugHTML = "<ul>";
-    var ValoresCartas = Array("A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K")
-    for (d = 0; d < this.MovimientosAuyda.length; d++) {
-      var OrigenPalo = this.MovimientosAuyda[d].origen.attr("palo");
-      var OrigenValor = this.MovimientosAuyda[d].origen.attr("valor");
-      var DestinoPalo = this.MovimientosAuyda[d].destino.attr("palo");
-      var DestinoValor = this.MovimientosAuyda[d].destino.attr("valor");
-      DebugHTML += "<li>" + "<palo num= '" + OrigenPalo + "'> " + ValoresCartas[OrigenValor] + " -&gt; " + DestinoPalo + "'> " + ValoresCartas[DestinoValor] + "</li>"
-    }
-    DebugHTML += "</ul>"
-    DebugIA.html(DebugHTML);
-    /* Si solo hay un movimiento posible miramos los movimientos posibles que quedan en la baraja 
-     * para comprobar si se ha perdido la partida. */
-    if (this.MovimientosAuyda.length === 1) {
-      /* Movimientos posibles de la baraja a las columnas */
-      for (b = 1; b < 3; b++) {
-        Carta = Baraja[b];
-        do {
-          for (c = 7; c > 0; c--) {
-            if (this.CartaValida(Carta, Columna[c])) {
-              return true; /* Aun se pueden poner cartas en los mazos de las columnas */
-            }
-          }
-          Carta = Carta.parent();
-        } while (Carta.prop("tagName") === "CARTA");
-      }
-      /* Movimientos posibles de la baraja a las soluciones */
-      for (b = 1; b < 3; b++) {
-        Carta = Baraja[b];
-        do {
-          for (s = 1; s < 5; s++) {
-            Valor = (Solucion[s].prop("tagName") === "CARTA") ? parseInt(Solucion[s].attr("valor")) : -1;
-            Palo = (Solucion[s].prop("tagName") === "CARTA") ? Solucion[s].attr("palo") : Carta.attr("palo");
-            if (Valor + 1 === parseInt(Carta.attr("valor")) && Palo === Carta.attr("palo")) {
-              return true; /* Aun se pueden poner cartas en los mazos de las soluciones */
-            }
-          }
-          Carta = Carta.parent();
-        } while (Carta.prop("tagName") === "CARTA");
-      }
-      return false; /* No quedan movimientos posibles */
-    }
-    return true;
-  };
-};
-var obstacles = [];
-var oid2ids = {}; 
-var OnMicrophoneReady, OnMicrophoneGotResult, OnMicrophoneProblem;
-var Options = {};
-var oranges = [
-  '#fff5eb',
-  '#ffefdf',
-  '#fee8d1',
-  '#fee0c1',
-  '#fdd6af',
-  '#fdcb9b',
-  '#fdbe85',
-  '#fdb06f',
-  '#fda25a',
-  '#fc9446',
-  '#f98534',
-  '#f57623',
-  '#ee6815',
-  '#e55a0b',
-  '#d84d05',
-  '#c84303',
-  '#b43b02',
-  '#a13403',
-  '#902d04',
-  '#7f2704'
-];
-var OVD = .25, OVW = 14, OVH = 20;
-var palDict = {};
-var palette = null;
-var paneOpen = false;
-var panzoom = (function () {
-  const MIN_SCALE = 0.35;
-  var txStart;
-  var tyStart;
-  var xStart;
-  var yStart;
-  var panning = false;
-  var couldBePanning = false;
-  var totalMaxDelta;
-  function initPanZoom(id) {
-    let map = document.getElementById(id);
-    map.setAttribute("transform", `translate(0,0) scale(${MIN_SCALE})`); 
-    map.addEventListener("wheel", ev => {
-      onwheel(ev, map);
-    });
-    map.addEventListener("pointerdown", ev => {
-      onmousedown(ev);
-    });
-    addEventListener("mouseup", ev => {
-      onmouseup(ev, map);
-    });
-    addEventListener("mousemove", ev => {
-      onmousemove(ev, map);
-    });
-    addEventListener("dblclick", ev => reset(ev, map));
-  }
-  function onwheel(ev, board) {
-    let delta = ev.wheelDelta;
-    let z = delta < 0 ? 0.5 : 2;
-    let dir = Math.sign(delta);
-    let currentMouseX = ev.offsetX;
-    let currentMouseY = ev.offsetY;
-    let transOld = getTransformInfo(board);
-    let getLeft = transOld.translateX;
-    let getTop = transOld.translateY;
-    let scale = transOld.scale;
-    if (scale <= MIN_SCALE + 0.1 && dir < 0) return;
-    let dx = (currentMouseX - getLeft) * (z - 1);
-    let dy = (currentMouseY - getTop) * (z - 1);
-    let scaleNew = scale * z;
-    let txNew = getLeft - dx;
-    let tyNew = getTop - dy;
-    const MIN_TX = -(3400 * scaleNew - 3400 * MIN_SCALE);
-    const MIN_TY = -(2200 * scaleNew - 2200 * MIN_SCALE);
-    txNew = Math.min(txNew, 0);
-    txNew = Math.max(txNew, MIN_TX);
-    tyNew = Math.min(tyNew, 0);
-    tyNew = Math.max(tyNew, MIN_TY);
-    let transNew = `translate(${txNew},${tyNew}) scale(${scaleNew})`;
-    board.setAttribute("transform", transNew);
-    transNew = getTransformInfo(board);
-    ev.preventDefault();
-  }
-  function reset(ev, board) {
-    let map = ev.target;
-    let transNew = `translate(0,0) scale(${MIN_SCALE})`;
-    board.setAttribute("transform", transNew);
-  }
-  function onmousedown(ev) {
-    let map = ev.target;
-    let board = ev.path[1];
-    let x = ev.screenX; 
-    let y = ev.screenY; 
-    let transOld = getTransformInfo(board);
-    let scale = transOld.scale;
-    if (scale <= MIN_SCALE + 0.1) return;
-    xStart = x;
-    yStart = y;
-    txStart = transOld.translateX;
-    tyStart = transOld.translateY;
-    totalMaxDelta = 0;
-    couldBePanning = true;
-  }
-  function onmousemove(ev, board) {
-    let id = ev.target.id;
-    if (id != "imgMap" && id != "mapG") {
-      couldBePanning = false;
-      panning = false;
-      return;
-    }
-    if (couldBePanning) {
-      let x = Math.abs(ev.screenX - xStart); 
-      let y = Math.abs(ev.screenY - yStart); 
-      totalMaxDelta += Math.max(x, y);
-      if (totalMaxDelta > 10) {
-        panning = true;
-        couldBePanning = false;
-        board.setPointerCapture(true);
-        ev.preventDefault();
-      }
-    } else if (panning) {
-      let x = ev.screenX; 
-      let y = ev.screenY; 
-      let transOld = getTransformInfo(board);
-      let tx = transOld.translateX;
-      let ty = transOld.translateY;
-      let scale = transOld.scale;
-      let txNew = txStart + x - xStart; 
-      let tyNew = tyStart + y - yStart; 
-      const MIN_TX = -(3400 * scale - 3400 * MIN_SCALE);
-      const MIN_TY = -(2200 * scale - 2200 * MIN_SCALE);
-      txNew = Math.min(txNew, 0);
-      txNew = Math.max(txNew, MIN_TX);
-      tyNew = Math.min(tyNew, 0);
-      tyNew = Math.max(tyNew, MIN_TY);
-      let transNew = `translate(${txNew},${tyNew}) scale(${scale})`;
-      board.setAttribute("transform", transNew);
-    }
-  }
-  function onmouseup(ev, board) {
-    if (panning) {
-      let map = ev.target;
-      let x = ev.screenX; 
-      let y = ev.screenY; 
-      let transOld = getTransformInfo(board);
-      let tx = transOld.translateX;
-      let ty = transOld.translateY;
-      let scale = transOld.scale;
-      let txNew = txStart + x - xStart;
-      let tyNew = tyStart + y - yStart;
-      const MIN_TX = -(3400 * scale - 3400 * MIN_SCALE);
-      const MIN_TY = -(2200 * scale - 2200 * MIN_SCALE);
-      txNew = Math.min(txNew, 0);
-      txNew = Math.max(txNew, MIN_TX);
-      tyNew = Math.min(tyNew, 0);
-      tyNew = Math.max(tyNew, MIN_TY);
-      let transNew = `translate(${txNew},${tyNew}) scale(${scale})`;
-      board.setAttribute("transform", transNew);
-      board.releasePointerCapture(true);
-      panning = false;
-    } else couldBePanning = false;
-  }
-  return function (id) {initPanZoom(id);}
-})();
-var PawnIsolated = -10;
-var PawnPassed = [0, 5, 10, 20, 35, 60, 100, 200];
-var PawnRanksBlack = new Array(10);
-var PawnRanksWhite = new Array(10);
-var PawnRowsBlack = new Array(10);
-var PawnRowsWhite = new Array(10);
-var PawnTable = [
-  0, 0, 0, 0, 0, 0, 0, 0,
-  10, 10, 0, -10, -10, 0, 10, 10,
-  5, 0, 0, 5, 5, 0, 0, 5,
-  0, 0, 10, 20, 20, 10, 0, 0,
-  5, 5, 5, 10, 10, 5, 5, 5,
-  10, 10, 10, 20, 20, 10, 10, 10,
-  20, 20, 20, 30, 30, 20, 20, 20,
-  0, 0, 0, 0, 0, 0, 0, 0
-];
-var PceChar = ".PNBRQKpnbrqk";
-var PceDir = [0, 0, KnDir, BiDir, RkDir, KiDir, KiDir, 0, KnDir, BiDir, RkDir, KiDir, KiDir];
-var perft_leafNodes;
-var PerlenDict, BaseColor, HeaderColor, SidebarColor, IsControlKeyDown = false
-var PGAMEPLID = null; 
-var phase = 0;
-var PI = Math.pi, interval_id, angle, factor = .67, tree = [], leaves = [], jittering = false;
-var PICS_PER_LEVEL = IS_TESTING ? 1 : 3;
-var Pictures, Goal, Selected, Score, TO, TOMain, TOTrial, TOList, IsAnswerCorrect, QContextCounter = 0;
-var pictureSize, TOMain, TOTrial;
-var piece1= RAND_32();
-var piece2= RAND_32();
-var piece3= RAND_32();
-var piece4= RAND_32();
-var PieceBig = [BOOL.FALSE, BOOL.FALSE, BOOL.TRUE, BOOL.TRUE, BOOL.TRUE, BOOL.TRUE, BOOL.TRUE, BOOL.FALSE, BOOL.TRUE, BOOL.TRUE, BOOL.TRUE, BOOL.TRUE, BOOL.TRUE];
-var PieceBishopQueen = [BOOL.FALSE, BOOL.FALSE, BOOL.FALSE, BOOL.TRUE, BOOL.FALSE, BOOL.TRUE, BOOL.FALSE, BOOL.FALSE, BOOL.FALSE, BOOL.TRUE, BOOL.FALSE, BOOL.TRUE, BOOL.FALSE];
-var PieceCol = [COLOURS.BOTH, COLOURS.WHITE, COLOURS.WHITE, COLOURS.WHITE, COLOURS.WHITE, COLOURS.WHITE, COLOURS.WHITE,COLOURS.BLACK, COLOURS.BLACK, COLOURS.BLACK, COLOURS.BLACK, COLOURS.BLACK, COLOURS.BLACK];
-var PieceKeys = new Array(14 * 120);
-var PieceKing = [BOOL.FALSE, BOOL.FALSE, BOOL.FALSE, BOOL.FALSE, BOOL.FALSE, BOOL.FALSE, BOOL.TRUE, BOOL.FALSE, BOOL.FALSE, BOOL.FALSE, BOOL.FALSE, BOOL.FALSE, BOOL.TRUE];
-var PieceKnight = [BOOL.FALSE, BOOL.FALSE, BOOL.TRUE, BOOL.FALSE, BOOL.FALSE, BOOL.FALSE, BOOL.FALSE, BOOL.FALSE, BOOL.TRUE, BOOL.FALSE, BOOL.FALSE, BOOL.FALSE, BOOL.FALSE];
-var PieceMaj = [BOOL.FALSE, BOOL.FALSE, BOOL.FALSE, BOOL.FALSE, BOOL.TRUE, BOOL.TRUE, BOOL.TRUE, BOOL.FALSE, BOOL.FALSE, BOOL.FALSE, BOOL.TRUE, BOOL.TRUE, BOOL.TRUE];
-var PieceMin = [BOOL.FALSE, BOOL.FALSE, BOOL.TRUE, BOOL.TRUE, BOOL.FALSE, BOOL.FALSE, BOOL.FALSE, BOOL.FALSE, BOOL.TRUE, BOOL.TRUE, BOOL.FALSE, BOOL.FALSE, BOOL.FALSE];
-var PiecePawn = [BOOL.FALSE, BOOL.TRUE, BOOL.FALSE, BOOL.FALSE, BOOL.FALSE, BOOL.FALSE, BOOL.FALSE, BOOL.TRUE, BOOL.FALSE, BOOL.FALSE, BOOL.FALSE, BOOL.FALSE, BOOL.FALSE];
-var PieceRookQueen = [BOOL.FALSE, BOOL.FALSE, BOOL.FALSE, BOOL.FALSE, BOOL.TRUE, BOOL.TRUE, BOOL.FALSE, BOOL.FALSE, BOOL.FALSE, BOOL.FALSE, BOOL.TRUE, BOOL.TRUE, BOOL.FALSE];
-var PIECES = { EMPTY: 0, wP: 1, wN: 2, wB: 3, wR: 4, wQ: 5, wK: 6, bP: 7, bN: 8, bB: 9, bR: 10, bQ: 11, bK: 12 };
-var PieceSlides = [BOOL.FALSE, BOOL.FALSE, BOOL.FALSE, BOOL.TRUE, BOOL.TRUE, BOOL.TRUE, BOOL.FALSE, BOOL.FALSE, BOOL.FALSE, BOOL.TRUE, BOOL.TRUE, BOOL.TRUE, BOOL.FALSE];
-var PieceVal = [0, 100, 325, 325, 550, 1000, 50000, 100, 325, 325, 550, 1000, 50000];
-var player, ball, opponent, ai;
-var playerConfig = null;
-var playerConfigC = null;
-var Players, PlayerOnTurn, GC, GameCounter;
-var PLAYMODE = 'hotseat'; 
-var Pollmode = 'auto', Globals;
-var PolyClips = {
-  hex: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)',
-  test1: 'inset(50% 0% 100% 25% 100% 75% 50% 100% 0% 75% 0% 25% round 10px)',
-  test0: 'inset(45% 0% 33% 10% round 10px)',
-  hexagon: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)',
-  hexF: 'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)',
-  hexFlat: 'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)',
-  hexflat: 'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)',
-  tri: 'polygon(50% 0%, 100% 100%, 0% 100%)',
-  triangle: 'polygon(50% 0%, 100% 100%, 0% 100%)',
-  triUp: 'polygon(50% 0%, 100% 100%, 0% 100%)',
-  triup: 'polygon(50% 0%, 100% 100%, 0% 100%)',
-  triDown: 'polygon(0% 0%, 100% 0%, 50% 100%)',
-  tridown: 'polygon(0% 0%, 100% 0%, 50% 100%)',
-  triright: 'polygon(0% 0%, 100% 50%, 0% 100%)',
-  triRight: 'polygon(0% 0%, 100% 50%, 0% 100%)',
-  trileft: 'polygon(0% 50%, 100% 0%, 100% 100%)',
-  triLeft: 'polygon(0% 50%, 100% 0%, 100% 100%)',
-  splayup: 'polygon(0% 70%, 100% 70%, 100% 100%, 0% 100%)',
-}
-var POOLS = {};
-var positionCount;
-var posKey = 0;
-var PREFERRED_CARD_HEIGHT = 0;
-var prefix = DeckA.prefix
-var PRES={};
-var prevGamePlid = null;
-var PrevUser = null;
-var prevWaitingFor = null; 
-var primitiveSetNames = ['all', 'activity', 'animal', 'body', 'drink',
-  'emotion', 'family', 'fantasy', 'food', 'fruit', 'game', 'gesture',
-  'kitchen', 'object', 'place', 'plant', 'person',
-  'role', 'shapes', 'sport', 'sports',
-  'time', 'transport', 'vegetable',
-  'toolbar', 'math', 'punctuation', 'misc'];
-var PROJECTNAME = 'basinno';
-var PROTO;
-var pst_b = {
-  'p': pst_w['p'].slice().reverse(),
-  'n': pst_w['n'].slice().reverse(),
-  'b': pst_w['b'].slice().reverse(),
-  'r': pst_w['r'].slice().reverse(),
-  'q': pst_w['q'].slice().reverse(),
-  'k': pst_w['k'].slice().reverse(),
-  'k_e': pst_w['k_e'].slice().reverse()
-}
-var pstOpponent = { 'w': pst_b, 'b': pst_w };
-var pstSelf = { 'w': pst_w, 'b': pst_b };
-var purplegreen = [
-  '#40004b',
-  '#5c1768',
-  '#753283',
-  '#8a529a',
-  '#9e74ae',
-  '#b391c1',
-  '#c7acd2',
-  '#dac4e0',
-  '#e9daea',
-  '#f0ebf0',
-  '#ecf2ea',
-  '#def0d9',
-  '#c8e8c2',
-  '#acdca7',
-  '#89c988',
-  '#64b26a',
-  '#409750',
-  '#237b3b',
-  '#0f5f2a',
-  '#00441b'
-];
-var purples = [
-  '#fcfbfd',
-  '#f6f5fa',
-  '#f0eff6',
-  '#e9e8f2',
-  '#e0dfee',
-  '#d6d6e9',
-  '#cacae3',
-  '#bebedc',
-  '#b1b0d4',
-  '#a4a2cd',
-  '#9894c6',
-  '#8b87bf',
-  '#8079b8',
-  '#7668af',
-  '#6c56a6',
-  '#63449d',
-  '#5a3294',
-  '#51218c',
-  '#481085',
-  '#3f007d'
-];
-var PVENTRIES = 10000;
-var Q, TOQ, AkQ;
-var QCancelAutoreset, TOQRunner, QRunnerRunning = false, QRunning = false;
-var QCounter = 0;
-var QueenOpenCol = 5;
-var QueenOpenFile = 5;
-var QueenSemiOpenCol = 3;
-var QueenSemiOpenFile = 3;
-var QuestionCounter = 0;
-var radius = 32;
-var RankChar = "12345678";
-var RANKS = { RANK_1: 0, RANK_2: 1, RANK_3: 2, RANK_4: 3, RANK_5: 4, RANK_6: 5, RANK_7: 6, RANK_8: 7, RANK_NONE: 8 };
-var RanksBrd = new Array(BRD_SQ_NUM);
-var received_audio = new Audio("../base/assets/sounds/message_received.mp3");
-var RecogHighPriorityOutput = true;
-var recognition;
-var RecogOutput = false;
-var RecogOutputError = true;
-var requestAnimFrame = (function(){
-  return window.requestAnimationFrame       || 
-         window.webkitRequestAnimationFrame || 
-         window.mozRequestAnimationFrame    || 
-         window.oRequestAnimationFrame      || 
-         window.msRequestAnimationFrame     || 
-         function( callback ){
-           window.setTimeout(callback, 1000 / 60);
-         };
-})();
-var resizeObserver = new ResizeObserver(entries => {
-  for (let entry of entries) {
-    let cs = window.getComputedStyle(entry.target);
-    console.log('watching element:', entry.target);
-    console.log(entry.contentRect.top, ' is ', cs.paddingTop);
-    console.log(entry.contentRect.left, ' is ', cs.paddingLeft);
-    console.log(entry.borderBoxSize[0].inlineSize, ' is ', cs.width);
-    console.log(entry.borderBoxSize[0].blockSize, ' is ', cs.height);
-    if (entry.target.handleResize)
-      entry.target.handleResize(entry);
-  }
-});
-var RkDir = [-1, -10, 1, 10];
-var RookOpenCol = 10;
-var RookOpenFile = 10;
-var RookSemiOpenCol = 5;
-var RookSemiOpenFile = 5;
-var RookTable = [
-  0, 0, 5, 10, 10, 5, 0, 0,
-  0, 0, 5, 10, 10, 5, 0, 0,
-  0, 0, 5, 10, 10, 5, 0, 0,
-  0, 0, 5, 10, 10, 5, 0, 0,
-  0, 0, 5, 10, 10, 5, 0, 0,
-  0, 0, 5, 10, 10, 5, 0, 0,
-  25, 25, 25, 25, 25, 25, 25, 25,
-  0, 0, 5, 10, 10, 5, 0, 0
-];
-var ROOT = null;
-var ROUND_OUTPUT = true;
-var route_counter = 0;
-var RowBrd = new Array(BRD_SQ_NUM);
-var RowChar = "12345678";
-var ROWS =  { ROW_1:0, ROW_2:1, ROW_3:2, ROW_4:3, ROW_5:4, ROW_6:5, ROW_7:6, ROW_8:7, ROW_NONE:8 };
-var S = {}, Z, U = null, PL, G, UI = {}, Users, Tables, Basepath, Serverdata = {}, Clientdata = {};
-var SAMPLES_PER_LEVEL = new Array(20).fill(PICS_PER_LEVEL);
-var scenarioQ = [];
-var scenarioRunning = false;
-var SCENEHEIGHT = 600;
-var SCENEWIDTH = 900;
-var score;
-var scoringMode, DefaultScoringMode = 'n'; 
-var Script = {
-  _loadedScripts: [],
-  include: function (script) {
-    if (this._loadedScripts.include(script)) {
-      return false;
-    }
-    var code = new Ajax.Request(script, {
-      asynchronous: false,
-      method: "GET",
-      evalJS: false,
-      evalJSON: false
-    }).transport.responseText;
-    if (Prototype.Browser.IE) {
-      window.execScript(code);
-    } else if (Prototype.Browser.WebKit) {
-      $$("head").first().insert(Object.extend(
-        new Element("script", {
-          type: "text/javascript"
-        }), {
-        text: code
-      }
-      ));
-    } else {
-      window.eval(code);
-    }
-    this._loadedScripts.push(script);
-  }
-};
-var SearchController = {};
-var SEED = 1;
-var SEEN_STATUS = false;
-var selectedEmoSetNames = ['all', 'animal', 'body', 'drink', 'emotion', 'food', 'fruit', 'game', 'gesture', 'kitchen', 'object', 'person', 'place', 'plant', 'sports', 'time', 'transport', 'vegetable'];
-var SelectedMenuKey, MenuItems;
-var sent_audio = new Audio("../base/assets/sounds/message_sent.mp3");
-var SERVER = "http://localhost:8080/aroot/simple"; // oder telecave!
-var serverData = null;
-var serverDataC = null;
-var serverDataUpdated;
-var SERVERURL, Socket = null, SERVER = 'localhost', PORT = 3000, LIVE_SERVER, NODEJS, SINGLECLIENT;
-var SessionId;
-var SessionScore = 0;
-var Settings, SettingsList, SettingsChanged, SelectedMenuKey; 
-var SettingTypesCommon = {
-  samplesPerGame: true,
-  minutesPerUnit: true,
-  incrementLevelOnPositiveStreak: true,
-  decrementLevelOnNegativeStreak: true,
-  showLabels: true,
-  language: true,
-  vocab: true,
-  showTime: true,
-  spokenFeedback: true,
-  silentMode: true,
-  switchGame: true,
-  trials: false,
-  showHint: false,
-}
-var ShapeKeys = ['hex', 'hexF', 'tri', 'triDown', 'triLeft', 'triRight'];
-var sheet = (function () {
-  var style = document.createElement('style');
-  style.appendChild(document.createTextNode(''));
-  document.head.appendChild(style);
-  return style.sheet;
-})();
-var SICHERER = 100;
-var SideChar = "wb-";
-var SideKey;
-var SIGI;
-var skipAnimations = IS_TESTING; 
-var skipBadgeAnimation = true;
-var socket = null;
-var Socket;
-var SOCKETSERVER = 'http://localhost:5000'; //geht im spital
-var SpeakerOutput = false;
-var SPEC_PATH = '/DATA/' + TEST_DIR + '/_spec';
-var Speech;
-var SpeechGrammarList = SpeechGrammarList || webkitSpeechGrammarList
-var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition
-var SpeechRecognitionEvent = SpeechRecognitionEvent || webkitSpeechRecognitionEvent
-var Sq120ToSq64 = new Array(BRD_SQ_NUM);
-var Sq64ToSq120 = new Array(64);
-var square_coordinates = [
-  [1, 1, 1, 2, 2, 2, 3, 3, 3],
-  [1, 1, 1, 2, 2, 2, 3, 3, 3],
-  [1, 1, 1, 2, 2, 2, 3, 3, 3],
-  [4, 4, 4, 5, 5, 5, 6, 6, 6],
-  [4, 4, 4, 5, 5, 5, 6, 6, 6],
-  [4, 4, 4, 5, 5, 5, 6, 6, 6],
-  [7, 7, 7, 8, 8, 8, 9, 9, 9],
-  [7, 7, 7, 8, 8, 8, 9, 9, 9],
-  [7, 7, 7, 8, 8, 8, 9, 9, 9]
-]
-var SQUARES = {
-  A1: 21, B1: 22, C1: 23, D1: 24, E1: 25, F1: 26, G1: 27, H1: 28,
-  A8: 91, B8: 92, C8: 93, D8: 94, E8: 95, F8: 96, G8: 97, H8: 98, NO_SQ: 99, OFFBOARD: 100
-};
-var srch_thinking;
-var START_FEN = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";
-var startAtLevel = IS_TESTING ? { gSayPicAuto: 10, gTouchPic: 3, gTouchColors: 6, gWritePic: 10, gMissingLetter: 10, gSayPic: 0 }
-  : { gMissingLetter: 3, gTouchPic: 7, gTouchColors: 8, gWritePic: 10, gSayPic: 0 };
-var startBoats = ['93', '99', '109', '121', '124', '116', '106', '111', '116', '129'];
-var StateDict = {};
-var StepByStepMode = false; 
-var StepCounter = 0, Autoreload=false, KeepSessionUser = false; 
-var SUITS = 'SHDC';
-var svgDict, svgKeys, svgList; 
-var svgDictC = null;
-var symbolColors = {
-  knight: 'red',
-  victory_point: 'gold',
-  road_building: 'dimgray',
-  monopoly: 'violet',
-  year_of_plenty: 'green',
-};
-var symbolDict, symbolKeys, symbolList; 
-var symbolDictC = null;
-var symbols = {
-  knight: 'user-secret',
-  victory_point: 'trophy',
-  road_building: 'road',
-  monopoly: 'umbrella',
-  year_of_plenty: 'tree',
-};
-var symByType, symBySet;
-var symKeysByGroupSub;
-var symKeysByType, symKeysBySet;
-var symListByType, symListBySet;
-var Syms, SymKeys, ByGroupSubgroup, KeySets, C52, Cinno, Aristocards;
-var synth, inputForm, inputTxt, voiceSelect, pitch, pitchValue, rate, rateValue, voices, utterance;
-var system = Complex, len = 100, angle;
-var t_avg = 0;
-var T;
-var TABLE_CREATE = {};
-var testCardsC = null
-var testCounter = 100;
-var testDict = {};
-var TESTING = true; 
-var TestNumber,TestList, TestRunning, TestSuiteRunning;
-var TESTVAR = 0;
-var th = ['', 'thousand', 'million', 'billion', 'trillion'];
-var timeout1, timeout2;
-var Timer = function () {
-  this.date = new Date();
-  this.lastTime = 0;
-  this.currentTime = 0;
-  this.start = function () {
-    this.currentTime = Date.now();
-  }
-  this.reset = function () {
-    this.currentTime = Date.now();
-  }
-  this.getTimeElapsed = function () {
-    this.lastTime = this.currentTime;
-    this.currentTime = Date.now();
-    return (this.currentTime - this.lastTime);
-  }
-}
-var TimestampStarted, TimeElapsed, OnTimeOver = null, TimeElem, TimeLeft;
-var timit;
-var tn = ['ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'];
-var TO; 
-var TOFleetingMessage, dFleetingMessage, Animation1;
-var TOList;
-var TOMan, TO, TOMain, TOTrial, TOList, TOTicker, TCount, TOAnim;
-var Toolbar;
-var topbar1 = document.getElementById('topbar')
-var _TOSound, _sndPlayer, _loaded = false, _qSound, _idleSound = true, _sndCounter = 0;
-var transform = prefix('transform')
-var translate = DeckA.translate
-var trialNumber;
-var TT_JUST_UPDATED = -1;
-var tupleGroups = null;
-var TV = {};
-var tw = ['twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'];
-var U, G, F, Users, Tables, Basepath, Serverdata, dParent, dTitle;
-var uiActivated = false, Selected, Turn, Prevturn;
-var uiActivatedTC;
-var UID = 0; 
-var UIDCounter = 0;
-var UIDHelpers = 0;
-var uiPaused = 0;
-var uiPausedStack = [];
-var UIROOT; 
-var UIS = {}; 
-var uniqueIdEngine = new UniqueIdEngine();
-var unitTestId = 0;
-var UPD={}; 
-var USE_ADDONS = false;
-var USELIVESERVER = false;
-var userCode = null;
-var userCodeC = null;
-var Userdata, Username, Serverdata, Live;
-var UserMove = {};
-var Username,Gamename,Tablename;
-var Users,User,Tables,Table; 
-var userSpec = null;
-var userSpecC = null;
-var V = {};
-var verbose = false;
-var VictimScore = [0, 100, 200, 300, 400, 500, 600, 100, 200, 300, 400, 500, 600];
-var vidCache, allGames, playerConfig, c52, C52,  cinno, testCards; 
-var view = null;
-var virtKeys = false;
-var visualStructures = {}; 
-var W_init = 10; 
-var Waiting_for = null;
-var WAITINGFORPLAYER = null;
-var weights = { 'p': 100, 'n': 280, 'b': 320, 'r': 479, 'q': 929, 'k': 60000, 'k_e': 60000 };
-var WhichCorner = 0;
-var WordProblems;
-var words,grammar,lang,matchingWords,recognition,speechRecognitionList,hintMessage,resultMessage;
-var WR = {};
-var x = {
-  "loc":
-  {
-    "actions":
+var bicycleRental = {
+  "type": "FeatureCollection",
+  "features": [
     {
-      "_set":
-        [{
-          "_tuple":
-            [{
-              "_set":
-                [{ "ID": "91", "val": "Corner[91]", "type": "obj" },
-                { "ID": "92", "val": "Corner[92]", "type": "obj" },
-                { "ID": "93", "val": "Corner[93]", "type": "obj" },
-                { "ID": "94", "val": "Corner[94]", "type": "obj" },
-                { "ID": "95", "val": "Corner[95]", "type": "obj" },
-                ]
-            }]
-        }]
-    }
-  }
-}
-var xxxxxxxxxx = new ResizeObserver(entries => {
-  for (let entry of entries) {
-    let cs = window.getComputedStyle(entry.target);
-    console.log('watching element:', entry.target);
-    console.log(entry.contentRect.top, ' is ', cs.paddingTop);
-    console.log(entry.contentRect.left, ' is ', cs.paddingLeft);
-    console.log(entry.borderBoxSize[0].inlineSize, ' is ', cs.width);
-    console.log(entry.borderBoxSize[0].blockSize, ' is ', cs.height);
-    if (entry.target.handleResize)
-      entry.target.handleResize(entry);
-  }
-});
-var z, U, G, UI = {}, Users, Tables, Basepath, Serverdata = {};
-var Z, z, U, PL, G, UI = {}, Users, Tables, Basepath, Serverdata = {};
-var ZMax = 0;
-var Zones = {};
-const fieldSorter = fields => (a, b) =>
-  fields
-    .map(o => {
-      let dir = 1;
-      if (o[0] === '-') {
-        dir = -1;
-        o = o.substring(1);
-      }
-      return a[o] > b[o] ? dir : a[o] < b[o] ? -dir : 0;
-    })
-    .reduce((p, n) => (p ? p : n), 0);
-const complementaryColor = color => {
-  const hexColor = color.replace('#', '0x');
-  return `#${('000000' + ('0xffffff' ^ hexColor).toString(16)).slice(-6)}`;
-};
-const MARGIN_XS = '2px 4px';
-const MSCATS = { rect: 'g', g: 'g', circle: 'g', text: 'g', polygon: 'g', line: 'g', body: 'd', svg: 'd', div: 'd', p: 'd', table: 'd', button: 'd', a: 'd', span: 'd', image: 'd', paragraph: 'd', anchor: 'd' };
-const DOMCATS = { rect: 'g', g: 'g', circle: 'g', text: 'g', polygon: 'g', line: 'g', body: 'd', svg: 'h', div: 'd', p: 'd', table: 'd', button: 'd', a: 'd', span: 'd', image: 'd', paragraph: 'd', anchor: 'd' };
-const AREAS={}; 
-const IS_MIRROR = false;
-const FLASK = true;
-const NGROK = false; //'http://849aec381695.ngrok.io/'; // MUSS / am ende!!! 
-const SERVER = 'http://localhost:5000'
-const playerColors = {
-  red: '#D01013',
-  blue: '#003399',
-  green: '#58A813',
-  orange: '#FF6600',
-  yellow: '#FAD302',
-  violet: '#55038C',
-  pink: '#ED527A',
-  beige: '#D99559',
-  sky: '#049DD9',
-  brown: '#A65F46',
-  white: '#FFFFFF',
-};
-const clientData = {}; 
-const defaultGameplayerAreaName = 'gameplayerArea';
-const defaultTabletopCardsAreaName = 'tabletopCardsArea';
-const defaultDeckAreaName = 'deckArea';
-const MIN_CARD_HEIGHT = 60;
-const MAX_RECURSIONS = 200;
-const RSGTYPES = { board: 1, hand: 2, field: 101, edge: 102, corner: 103 };
-const CARD_SZ = 80;
-const LABEL_SZ = 40;
-const FIELD_SZ = 40;
-const THEMES = ['#c9af98', '#2F4F4F', '#6B7A8F', '#00303F', 'rgb(3, 74, 166)', '#458766', '#7A9D96'];
-const overwriteMerge = (destinationArray, sourceArray, options) => sourceArray
-const INTERACTION = { none: 0, selected: 1, stop: 2, saveLoad: 3, route: 4 };
-const soloTypes = ['me', 'AI regular', 'AI random', 'AI pass'];
-const allPlayerTypes = ['me', 'human', 'AI regular', 'AI random', 'AI pass'];
-const PLAYER_CONFIG_FOR_MULTIPLAYER = ['me', 'human', 'human'];
-const USE_BACKEND_AI = true;
-const VERSION = '_ui'; 
-const CACHE_INITDATA = true;
-const TESTING = false; 
-const RUNTEST = false; 
-const DSPEC_VERSION = 3;
-const USPEC_VERSION = '2a';
-const CODE = {
-  paths: [],
-  funcs: {},
-  consts: {},
-  index: [],
-};
-const SERVERDATA_VERSION = 1;
-const TEST_PATH = '/zdata/';
-const INIT_CLEAR_LOCALSTORAGE = true; 
-const STARTING_TAB_OPEN = 'bPlayers'; 
-const TIMIT_SHOW = false; 
-const SHOW_SPEC = true; 
-const PORT = 2022;
-const names = ['felix', 'amanda', 'sabine', 'tom', 'taka', 'microbe', 'dwight', 'jim', 'michael', 'pam', 'kevin', 'darryl', 'lauren', 'anuj', 'david', 'holly'];
-const INCREMENTAL_UPDATE = true; 
-const VERBOSE = true; 
-const USER_SERVERDATA_STUB = false; 
-const DEF_ORIENTATION = 'v';
-const SPEC_PATH = '/work2/static2.yaml';
-const RUPDATE = {
-  info: mNodeChangeContent,
-};
-const SHAPEFUNCS = { 'circle': agCircle, 'hex': agHex, 'rect': agRect, };
-const RCREATE = {
-  card52: mCard52,
-  card: mCard,
-  hand: mHand,
-  grid: mGrid,
-  info: mInfo,
-  invisible: mInvisible,
-  panel: mPanel,
-  picto: mPicto,
-  manual00: mManual00,
-}
-const RCONTAINERPROP = {
-  list: 'elm',
-  hand: 'elm',
-  panel: 'sub',
-}
-const PARAMCSS = {
-  bg: 'background-color',
-  fg: 'color',
-  align: 'text-align',
-  rounding: 'border-radius',
-};
-const PARAMRSG_T = {
-  defaultType: false,
-  show: false,
-  overlap: true,
-  orientation: true, 
-  split: true, 
-  shape: true,
-  field_spacing: true,
-  size: true,
-  rounding: true,
-};
-const MarkerText = ['✔️', '❌'];
-const MarkerId = { SUCCESS: 0, FAIL: 1 };
-const GENERATE_EMPTY_MESSAGES = true;
-const SEND_MOUSE_MOVE_EVERY = 200;
-const MOUSED = 15;
-const MASTERVOLUME = 0.1;
-const germanNumbers = {
-  ein: 1, eins: 1, zwei: 2, 1: 'eins', 2: 'zwei', 3: 'drei', drei: 3, vier: 4, 4: 'vier', 5: 'fuenf', fuenf: 5, sechs: 6, 6: 'sechs', sex: 6,
-  sieben: 7, 7: 'sieben', 8: 'acht', acht: 8, 9: 'neun', neun: 9, zehn: 10, elf: 11, zwoelf: 12, zwanzig: 20, dreissig: 30,
-  10: 'zehn', 11: 'elf', 12: 'zwoelf', 20: 'zwanzig', 30: 'dreissig', vierzig: 40, fuenfzig: 50, 40: 'vierzig', 50: 'fuenfzig'
-};
-const messageTypes = { LEFT: 'left', RIGHT: 'right', LOGIN: 'login' };
-const messages = []; 
-const VerboseSocket = false;
-const createMessageHTML = message => {
-  if (isString(message)) {
-    return `
-      <p class="secondary-text text-center mb-2">${message}</p>
-    `;
-  } else if (isString(message)) {
-    return `
-    <div>
-      <p style="color:red" class="message-content">${message}</p>
-    </div>
-    `;
-  }
-  return `
-  <div class="message ${message.type === messageTypes.LEFT ? 'message-left' : 'message-right'
-    }">
-    <div class="message-details flex">
-      <p class="flex-grow-1 message-author">${message.author}</p>
-      <p class="message-date">${message.date}</p>
-    </div>
-    <p class="message-content">${message.content}</p>
-  </div>
-  `;
-};
-const displayMessages = () => {
-  const messagesHTML = messages
-    .map(message => createMessageHTML(message))
-    .join('');
-  messagesList.innerHTML = messagesHTML;
-};
-const BLUE = '#4363d8';
-const BLUEGREEN = '#004054';
-const BROWN = '#96613d';
-const GREEN = '#3cb44b';
-const FIREBRICK = '#800000';
-const LIGHTGREEN = '#afff45'; //'#bfef45';
-const LIGHTBLUE = '#42d4f4';
-const OLIVE = '#808000';
-const ORANGE = '#f58231';
-const PURPLE = '#911eb4';
-const RED = '#e6194B';
-const TEAL = '#469990';
-const YELLOW = '#ffe119';
-const YELLOW2 = '#fff620';
-const YELLOW3 = '#ffed01';
-const wamber = '#ffc107';
-const waqua = '#00ffff';
-const wblack = '#000000';
-const wblue = '#2196f3';
-const wbluegrey = '#607d8b';
-const wbluegray = '#607d8b';
-const wbrown = '#795548';
-const wcyan = '#00bcd4';
-const wdarkgrey = '#616161';
-const wdeeporange = '#ff5722';
-const wdeeppurple = '#673ab7';
-const wgreen = '#4caf50';
-const wgrey = '#9e9e9e';
-const windigo = '#3f51b5';
-const wkhaki = '#f0e68c';
-const wlightblue = '#87ceeb';
-const wlightgreen = '#8bc34a';
-const wlight = '#f1f1f1';
-const wlime = '#cddc39';
-const worange = '#ff9800';
-const wpaleblue = '#ddffff';
-const wpalegreen = '#ddffdd';
-const wpalered = '#ffdddd';
-const wpaleyellow = '#ffffcc';
-const wpink = '#e91e63';
-const wpurple = '#9c27b0';
-const wred = '#f44336';
-const wsand = '#fdf5e6';
-const wteal = '#009688';
-const wwhite = '#ffffff';
-const wyellow = '#ffeb3b';
-const ColorList = ['lightgreen', 'lightblue', 'yellow', 'red', 'green', 'blue', 'purple', 'violet', 'lightyellow',
-  'teal', 'orange', 'brown', 'olive', 'deepskyblue', 'deeppink', 'gold', 'black', 'white', 'grey'];
-const ColorDict = {
-  black: { c: 'black', E: 'black', D: 'schwarz' },
-  blue: { c: 'blue', E: 'blue', D: 'blau' },
-  BLUE: { c: '#4363d8', E: 'blue', D: 'blau' },
-  BLUEGREEN: { c: BLUEGREEN, E: 'bluegreen', D: 'blaugrün' },
-  blue1: { c: BLUE, E: 'blue', D: 'blau' },
-  BRAUN: { c: BRAUN, E: 'brown', D: 'braun' },
-  BROWN: { c: BROWN, E: 'brown', D: 'braun' },
-  brown: { c: BRAUN, E: 'brown', D: 'braun' },
-  deepyellow: { c: YELLOW3, E: 'yellow', D: 'gelb' },
-  FIREBRICK: { c: '#800000', E: 'darkred', D: 'rotbraun' },
-  gold: { c: 'gold', E: 'gold', D: 'golden' },
-  green: { c: 'green', E: 'green', D: 'grün' },
-  GREEN: { c: '#3cb44b', E: 'green', D: 'grün' },
-  green1: { c: GREEN, E: 'green', D: 'grün' },
-  grey: { c: 'grey', E: 'grey', D: 'grau' },
-  lightblue: { c: LIGHTBLUE, E: 'lightblue', D: 'hellblau' },
-  LIGHTBLUE: { c: '#42d4f4', E: 'lightblue', D: 'hellblau' },
-  lightgreen: { c: LIGHTGREEN, E: 'lightgreen', D: 'hellgrün' },
-  LIGHTGREEN: { c: '#afff45', E: 'lightgreen', D: 'hellgrün' },
-  lightyellow: { c: YELLOW2, E: 'lightyellow', D: 'gelb' },
-  olive: { c: OLIVE, E: 'olive', D: 'oliv' },
-  OLIVE: { c: '#808000', E: 'olive', D: 'oliv' },
-  orange: { c: ORANGE, E: 'orange', D: 'orange' },
-  ORANGE: { c: '#f58231', E: 'orange', D: 'orange' },
-  pink: { c: 'deeppink', E: 'pink', D: 'rosa' },
-  purple: { c: PURPLE, E: 'purple', D: 'lila' },
-  PURPLE: { c: '#911eb4', E: 'purple', D: 'lila' },
-  red: { c: 'red', E: 'red', D: 'rot' },
-  RED: { c: '#e6194B', E: 'red', D: 'rot' },
-  red1: { c: RED, E: 'red', D: 'rot' },
-  skyblue: { c: 'deepskyblue', E: 'skyblue', D: 'himmelblau' },
-  teal: { c: TEAL, E: 'teal', D: 'blaugrün' },
-  TEAL: { c: '#469990', E: 'teal', D: 'blaugrün' },
-  violet: { c: 'indigo', E: 'violet', D: 'violett' },
-  white: { c: 'white', E: 'white', D: 'weiss' },
-  yellow: { c: 'yellow', E: 'yellow', D: 'gelb' },
-  YELLOW: { c: '#ffe119', E: 'yellow', D: 'gelb' },
-  YELLOW2: { c: YELLOW2, E: 'yellow', D: 'gelb' },
-  YELLOW3: { c: YELLOW3, E: 'yellow', D: 'gelb' },
-};
-const PlayerColors = {
-  red: '#D01013',
-  blue: '#003399',
-  green: '#58A813',
-  orange: '#FF6600',
-  yellow: '#FAD302',
-  violet: '#55038C',
-  pink: '#ED527A',
-  beige: '#D99559',
-  sky: '#049DD9',
-  brown: '#A65F46',
-  white: '#FFFFFF',
-  lightblue: '#42d4f4',
-  lightgreen: '#afff45',
-};
-const levelColors = [LIGHTGREEN, LIGHTBLUE, YELLOW, 'orange', RED,
-  GREEN, BLUE, PURPLE, YELLOW2, 'deepskyblue', 'deeppink', 
-  TEAL, ORANGE, 'seagreen', FIREBRICK, OLIVE, '#ffd8b1', '#000075', '#a9a9a9', '#ffffff', '#000000', 'gold', 'orangered', 'skyblue', 'pink', 'palegreen', '#e6194B'];
-const DD = {
-  yellow: 'gelb', green: 'grün', blue: 'blau', red: 'rot', pink: 'rosa', orange: 'orange', black: 'schwarz',
-  white: 'weiss', violet: 'violett', '1st': 'erste', '2nd': 'zweite', '3rd': 'dritte', '4th': 'vierte', '5th': 'fünfte',
-  add: 'addiere', subtract: 'subtrahiere', multiply: 'mutipliziere', plus: 'plus', minus: 'minus', times: 'mal',
-  'divided by': 'dividiert durch', excellent: 'sehr gut', very: 'sehr', good: 'gut',
-  'to the previous number': 'zur vorhergehenden zahl',
-  'from the previous number': 'von der vorhergehenden zahl',
-  'multiply the previous number by': 'multipliziere die vorhergehende zahl mit',
-  'divide the previous number by': 'dividiere die vorhergehende zahl durch',
-  'the previous number': 'die vorhergehende zahl', is: 'ist', what: 'was', equals: 'ist gleich', enter: "tippe",
-  'to the power of': 'hoch', or: 'oder', less: 'kleiner', greater: 'grösser', than: 'als', equal: 'gleich', and: 'und',
-  not: 'nicht', click: 'click', press: 'tippe', quite: 'ziemlich', 'not quite': 'nicht ganz',
-  say: 'sage', write: 'schreibe', complete: 'ergänze', 'unequal': 'ungleich', except: 'ausser', EXCEPT: 'AUSSER',
-  number: 'Zahl', color: 'farbe', eliminate: 'eliminiere', all: 'alle', with: 'mit', true: 'wahr', false: 'falsch',
-  build: 'bilde', count: 'zähle', 'the red dots': 'die roten Punkte',
-};
-const OPS = { 
-  'first': { cmd: 'add', link: 'to', wr: '+', sp: 'plus', f: (a, b) => (a + b), min: 20, max: 100 },
-  'plus': { cmd: 'add', link: 'to', wr: '+', sp: 'plus', f: (a, b) => (a + b), min: 3, max: 30 },
-  'minus': { cmd: 'subtract', link: 'from', wr: '-', sp: 'minus', f: (a, b) => (a - b), min: 1, max: 10 },
-  'div': { cmd: 'divide', link: 'by', wr: ':', sp: 'divided by', f: (a, b) => (a / b), min: 2, max: 10 },
-  'intdiv': { cmd: 'divide', link: 'by', wr: 'div', sp: 'divided by', f: (a, b) => (Math.floor(a / b)), min: 1, max: 10 },
-  'mult': { cmd: 'multiply', link: 'by', wr: 'x', sp: 'times', f: (a, b) => (a * b), min: 2, max: 10 },
-  'pow': { cmd: 'build', link: 'to the power of', wr: '^', sp: 'to the power of', f: (a, b) => (Math.pow(a, b)), min: 0, max: 20 },
-  'mod': { cmd: 'build', link: 'modulo', wr: '%', sp: 'modulo', f: (a, b) => (a % b), min: 0, max: 20 },
-  'l': { cmd: 'true or false?', link: 'less than', wr: '<', sp: 'less than', f: (a, b) => (a < b) },
-  'g': { cmd: 'true or false?', link: 'greater than', wr: '>', sp: 'greater than', f: (a, b) => (a > b) },
-  'leq': { cmd: 'true or false?', link: 'less or equal', wr: '<=', sp: 'less or equal', f: (a, b) => (a <= b) },
-  'geq': { cmd: 'true or false?', link: 'greater or equal', wr: '>=', sp: 'greater or equal', f: (a, b) => (a >= b) },
-  'eq': { cmd: 'true or false?', link: 'equal', wr: '=', sp: 'equal', f: (a, b) => (a == b) },
-  'neq': { cmd: 'true or false?', link: 'unequal', wr: '#', sp: 'unequal', f: (a, b) => (a != b) },
-  'and': { cmd: 'true or false?', link: 'and', wr: '&&', sp: 'and', f: (a, b) => (a && b) },
-  'or': { cmd: 'true or false?', link: 'or', wr: '||', sp: 'or', f: (a, b) => (a || b) },
-  'nand': { cmd: 'true or false?', link: 'nand', wr: 'nand', sp: 'nand', f: (a, b) => (!(a && b)) },
-  'nor': { cmd: 'true or false?', link: 'nor', wr: 'nor', sp: 'nor', f: (a, b) => (!(a || b)) },
-  'xor': { cmd: 'true or false?', link: 'xor', wr: 'xor', sp: 'xor', f: (a, b) => (a && !b || !a && b) },
-}
-const GirlNames = ['afia', 'ally', 'amanda', 'angela', 'anna', 'annabel', 'birgit', 'bona', 'carmen', 'cassandra',
-  'charlene', 'erin', 'hanna', 'holly', 'jan', 'karen', 'kelly', 'lauren', 'malta', 'maria', 'maurita', 'minnow', 'meredith',
-  'milda', 'mimi', 'minna', 'minnow', 'mitra', 'nasi', 'nil', 'nimble', 'nonna', 'pam', 'phyllis', 'poppa', 'rhi', 'sarah',
-  'sheeba', 'valerie', 'viola', 'wala'];
-const BoyNames = ['aaron', 'andy', 'bill', 'blade', 'bob', 'buddy', 'creed', 'dan', 'darryl', 'dagobert', 'david', 'donald', 'dwight', 'felix',
-  'gilbert', 'gul', 'jim', 'john', 'kevin', 'leo', 'luis', 'mac', 'max', 'michael', 'mike', 'oscar', 'peter', 'robert', 'ryan',
-  'sebastian', 'stanley', 'stitch', 'toby', 'tom', 'vladimir', 'wolf', 'wolfgang'];
-const UnicodeSymbols = {
-  menu: '☰',
-};
-const INNO = {
-  color: { blue: '#89aad7', red: '#da7887', green: '#72b964', yellow: '#e2e57a', purple: '#9b58ba' },
-  sym: {
-    tower: { key: 'white-tower', fg: 'silver', bg: 'dimgray' },
-    leaf: { key: 'leaf', fg: '#96D6BE', bg: '#275D45' },
-    tree: { key: 'leaf', fg: '#96D6BE', bg: '#275D45' },
-    bulb: { key: 'lightbulb', fg: 'white', bg: '#69224C' },
-    crown: { key: 'queen-crown', fg: '#FEE593', bg: '#A27E44' },
-    factory: { key: 'i_factory', fg: '#CD5147', bg: '#6D1A12' },
-    clock: { key: 'clock', fg: '#3E84B5', bg: '#0B5884' },
-    none: { key: 'flamer', fg: 'silver', bg: 'dimgrey' },
-    plus: { key: 'plus', fg: 'silver', bg: '#00000020' },
-    fountain: { key: 'fountain', fg: 'silver', bg: '#00000020' },
-    flag: { key: 'flying-flag', fg: 'silver', bg: '#00000020' },
-    up: { key: 'arrow-up', fg: 'silver', bg: '#00000020' },
-    left: { key: 'arrow-left', fg: 'silver', bg: '#00000020' },
-    right: { key: 'arrow-right', fg: 'silver', bg: '#00000020' },
-  },
-  symNames: ['tower', 'tree', 'bulb', 'crown', 'factory', 'clock'],
-  phases: [
-    { key: 'init', message: 'select initial card to meld!' },
-    { key: 'just_one_turn', message: 'take your first turn!' },
-    { key: 'two_turns', message: 'take your turn!' },
-  ],
-  special_achievements: {
-    MONUMENT: "Claim immediately if you tuck six cards or score six cards during a single turn (May also be claimed via Masonry from Age 1)",
-    EMPIRE: "Claim immediately if you have three  or more icons of all six types (May also be claimed via Construction from Age 2)",
-    WORLD: "Claim immediately if you have twelve or more clocks on your board (May also be claimed via Translation from Age 3)",
-    WONDER: "Claim immediately if you have all five colors on your board, and each is splayed either up or right (May also be claimed via Invention from Age 4)",
-    UNIVERSE: "Claim immediately if you have five top cards, and each is of value 8 or higher (May also be claimed via Astronomy from Age 5)",
-    LEGEND: "Claim if you meld a city with a left arrow on a color already splayed left",
-    REPUTE: "Claim if you meld a city with a right arrow on a color already splayed right",
-    FAME: "Claim if you meld a city with a up arrow on a color already splayed up",
-    GLORY: "Claim immediately tuck a city with a flag",
-    VICTORY: "Claim immediately tuck a city with a fountain",
-    SUPREMACY: "Claim immediately if you have 3 or more of one icon in 4 different colors (May also be claimed via Novel from Age 3)",
-    DESTINY: "Claim immediately if you have 7 or more cards in your forecast (May also be claimed via Barometer from Age 4)",
-    WEALTH: "Claim immediately if you have 8 or more bonuses (May also be claimed via Palampore from Age 5)",
-    HERITAGE: "Claim immediately if you have 8 or more numbers in one color (May also be claimed via Loom from Age 6)",
-    HISTORY: "Claim immediately if you have 4 or more echoes in one color (May also be claimed via Photography from Age 7)",
-  },
-};
-const ARI = {
-  sz_hand: 7,
-  stage: {
-    1: 'journey',
-    2: 'tax',
-    3: 'auto market',
-    4: 'stall selection',
-    1004: 'TEST_starts_in_stall_selection_complete',
-    5: 'action: command',
-    6: 'action step 2',
-    7: 'action 3',
-    8: 'action 4',
-    9: 'action 5',
-    10: 'end game?',
-    11: 'ball',
-    12: 'auction: bid',
-    13: 'auction: buy',
-    14: 'complementing_market_after_church',
-    15: 'commission',
-    16: 'commission new',
-    17: 'church',
-    18: 'church_minplayer_tithe',
-    19: 'church_newcards',
-    20: 'payment action',
-    21: 'church_minplayer_tithe_add',
-    22: 'church_minplayer_tithe_downgrade',
-    23: 'comm_weitergeben',
-    24: 'rumors_weitergeben',
-    25: 'rumor',
-    26: 'blackmail',
-    blackmail: 26,
-    27: 'inspect',
-    rumor: 25,
-    28: 'buy rumor',
-    'buy rumor': 28,
-    29: 'rumor discard',
-    30: 'pick luxury or journey cards',
-    31: 'add new journey',
-    32: 'rumor_both',
-    33: 'blackmail_owner',
-    34: 'accept_blackmail',
-    35: 'blackmail_complete',
-    36: 'reject_blackmail',
-    37: 'commission_stall',
-    38: 'pick_schwein',
-    40: 'trade',
-    41: 'build',
-    42: 'visit',
-    43: 'buy',
-    44: 'upgrade',
-    45: 'downgrade',
-    46: 'visit destroy',
-    build: 41,
-    upgrade: 44,
-    downgrade: 45,
-    visit: 42,
-    buy: 43,
-    100: 'pickup end',
-    101: 'build end',
-    102: 'select building to upgrade',
-    103: 'select downgrade cards',
-    104: 'next_comm_setup_stage',
-    105: 'next_rumor_setup_stage',
-  }
-};
-const STYLE_PARAMS = {
-  align: 'text-align',
-  acontent: 'align-content',
-  aitems: 'align-items',
-  aspectRatio: 'aspect-ratio',
-  bg: 'background-color',
-  dir: 'flex-direction',
-  fg: 'color',
-  hgap: 'column-gap',
-  vgap: 'row-gap',
-  jcontent: 'justify-content',
-  jitems: 'justify-items',
-  justify: 'justify-content',
-  matop: 'margin-top',
-  maleft: 'margin-left',
-  mabottom: 'margin-bottom',
-  maright: 'margin-right',
-  origin: 'transform-origin',
-  overx: 'overflow-x',
-  overy: 'overflow-y',
-  patop: 'padding-top',
-  paleft: 'padding-left',
-  pabottom: 'padding-bottom',
-  paright: 'padding-right',
-  place: 'place-items',
-  rounding: 'border-radius',
-  w: 'width',
-  h: 'height',
-  wmin: 'min-width',
-  hmin: 'min-height',
-  hline: 'line-height',
-  wmax: 'max-width',
-  hmax: 'max-height',
-  fontSize: 'font-size',
-  fz: 'font-size',
-  family: 'font-family',
-  weight: 'font-weight',
-  x: 'left',
-  y: 'top',
-  z: 'z-index'
-};
-const NEONORANGE = '#ff6700';
-const NEONYELLOW = '#efff04';
-const buildPalette = (colorsList) => {
-  const paletteContainer = document.getElementById("palette");
-  const complementaryContainer = document.getElementById("complementary");
-  paletteContainer.innerHTML = "";
-  complementaryContainer.innerHTML = "";
-  const orderedByColor = orderByLuminance(colorsList);
-  const hslColors = convertRGBtoHSL(orderedByColor);
-  for (let i = 0; i < orderedByColor.length; i++) {
-    const hexColor = rgbToHexCOOL(orderedByColor[i]);
-    const hexColorComplementary = hslToHexCOOL(hslColors[i]);
-    if (i > 0) {
-      const difference = calculateColorDifference(
-        orderedByColor[i],
-        orderedByColor[i - 1]
-      );
-      if (difference < 120) {
-        continue;
-      }
-    }
-    const colorElement = document.createElement("div");
-    colorElement.style.backgroundColor = hexColor;
-    colorElement.appendChild(document.createTextNode(hexColor));
-    paletteContainer.appendChild(colorElement);
-    if (hslColors[i].h) {
-      const complementaryElement = document.createElement("div");
-      complementaryElement.style.backgroundColor = `hsl(${hslColors[i].h},${hslColors[i].s}%,${hslColors[i].l}%)`;
-      complementaryElement.appendChild(
-        document.createTextNode(hexColorComplementary)
-      );
-      complementaryContainer.appendChild(complementaryElement);
-    }
-  }
-};
-const rgbToHexCOOL = (pixel) => {
-  const componentToHex = (c) => {
-    const hex = c.toString(16);
-    return hex.length == 1 ? "0" + hex : hex;
-  };
-  return (
-    "#" +
-    componentToHex(pixel.r) +
-    componentToHex(pixel.g) +
-    componentToHex(pixel.b)
-  ).toUpperCase();
-};
-const hslToHexCOOL = (hslColor) => {
-  const hslColorCopy = { ...hslColor };
-  hslColorCopy.l /= 100;
-  const a =
-    (hslColorCopy.s * Math.min(hslColorCopy.l, 1 - hslColorCopy.l)) / 100;
-  const f = (n) => {
-    const k = (n + hslColorCopy.h / 30) % 12;
-    const color = hslColorCopy.l - a * Math.max(Math.min(k - 3, 9 - k, 1), -1);
-    return Math.round(255 * color)
-      .toString(16)
-      .padStart(2, "0");
-  };
-  return `#${f(0)}${f(8)}${f(4)}`.toUpperCase();
-};
-const convertRGBtoHSL = (rgbValues) => {
-  return rgbValues.map((pixel) => {
-    let hue,
-      saturation,
-      luminance = 0;
-    let redOpposite = pixel.r / 255;
-    let greenOpposite = pixel.g / 255;
-    let blueOpposite = pixel.b / 255;
-    const Cmax = Math.max(redOpposite, greenOpposite, blueOpposite);
-    const Cmin = Math.min(redOpposite, greenOpposite, blueOpposite);
-    const difference = Cmax - Cmin;
-    luminance = (Cmax + Cmin) / 2.0;
-    if (luminance <= 0.5) {
-      saturation = difference / (Cmax + Cmin);
-    } else if (luminance >= 0.5) {
-      saturation = difference / (2.0 - Cmax - Cmin);
-    }
-    /**
-     * If Red is max, then Hue = (G-B)/(max-min)
-     * If Green is max, then Hue = 2.0 + (B-R)/(max-min)
-     * If Blue is max, then Hue = 4.0 + (R-G)/(max-min)
-     */
-    const maxColorValue = Math.max(pixel.r, pixel.g, pixel.b);
-    if (maxColorValue === pixel.r) {
-      hue = (greenOpposite - blueOpposite) / difference;
-    } else if (maxColorValue === pixel.g) {
-      hue = 2.0 + (blueOpposite - redOpposite) / difference;
-    } else {
-      hue = 4.0 + (greenOpposite - blueOpposite) / difference;
-    }
-    hue = hue * 60; 
-    if (hue < 0) {
-      hue = hue + 360;
-    }
-    if (difference === 0) {
-      return false;
-    }
-    return {
-      h: Math.round(hue) + 180, 
-      s: parseFloat(saturation * 100).toFixed(2),
-      l: parseFloat(luminance * 100).toFixed(2),
-    };
-  });
-};
-const orderByLuminance = (rgbValues) => {
-  const calculateLuminance = (p) => {
-    return 0.2126 * p.r + 0.7152 * p.g + 0.0722 * p.b;
-  };
-  return rgbValues.sort((p1, p2) => {
-    return calculateLuminance(p2) - calculateLuminance(p1);
-  });
-};
-const buildRgb = (imageData) => {
-  const rgbValues = [];
-  for (let i = 0; i < imageData.length; i += 4) {
-    const rgb = {
-      r: imageData[i],
-      g: imageData[i + 1],
-      b: imageData[i + 2],
-    };
-    rgbValues.push(rgb);
-  }
-  return rgbValues;
-};
-const calculateColorDifference = (color1, color2) => {
-  const rDifference = Math.pow(color2.r - color1.r, 2);
-  const gDifference = Math.pow(color2.g - color1.g, 2);
-  const bDifference = Math.pow(color2.b - color1.b, 2);
-  return rDifference + gDifference + bDifference;
-};
-const findBiggestColorRange = (rgbValues) => {
-  /**
-   * Min is initialized to the maximum value posible
-   * from there we procced to find the minimum value for that color channel
-   *
-   * Max is initialized to the minimum value posible
-   * from there we procced to fin the maximum value for that color channel
-   */
-  let rMin = Number.MAX_VALUE;
-  let gMin = Number.MAX_VALUE;
-  let bMin = Number.MAX_VALUE;
-  let rMax = Number.MIN_VALUE;
-  let gMax = Number.MIN_VALUE;
-  let bMax = Number.MIN_VALUE;
-  rgbValues.forEach((pixel) => {
-    rMin = Math.min(rMin, pixel.r);
-    gMin = Math.min(gMin, pixel.g);
-    bMin = Math.min(bMin, pixel.b);
-    rMax = Math.max(rMax, pixel.r);
-    gMax = Math.max(gMax, pixel.g);
-    bMax = Math.max(bMax, pixel.b);
-  });
-  const rRange = rMax - rMin;
-  const gRange = gMax - gMin;
-  const bRange = bMax - bMin;
-  const biggestRange = Math.max(rRange, gRange, bRange);
-  if (biggestRange === rRange) {
-    return "r";
-  } else if (biggestRange === gRange) {
-    return "g";
-  } else {
-    return "b";
-  }
-};
-const quantization = (rgbValues, depth) => {
-  const MAX_DEPTH = 4;
-  if (depth === MAX_DEPTH || rgbValues.length === 0) {
-    const color = rgbValues.reduce(
-      (prev, curr) => {
-        prev.r += curr.r;
-        prev.g += curr.g;
-        prev.b += curr.b;
-        return prev;
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.9998241,
+          39.7471494
+        ]
       },
-      {
-        r: 0,
-        g: 0,
-        b: 0,
-      }
-    );
-    color.r = Math.round(color.r / rgbValues.length);
-    color.g = Math.round(color.g / rgbValues.length);
-    color.b = Math.round(color.b / rgbValues.length);
-    return [color];
-  }
-  /**
-   *  Recursively do the following:
-   *  1. Find the pixel channel (red,green or blue) with biggest difference/range
-   *  2. Order by this channel
-   *  3. Divide in half the rgb colors list
-   *  4. Repeat process again, until desired depth or base case
-   */
-  const componentToSortBy = findBiggestColorRange(rgbValues);
-  rgbValues.sort((p1, p2) => {
-    return p1[componentToSortBy] - p2[componentToSortBy];
-  });
-  const mid = rgbValues.length / 2;
-  return [
-    ...quantization(rgbValues.slice(0, mid), depth + 1),
-    ...quantization(rgbValues.slice(mid + 1), depth + 1),
-  ];
+      "type": "Feature",
+      "properties": {
+        "popupContent": "This is a B-Cycle Station. Come pick up a bike and pay by the hour. What a deal!"
+      },
+      "id": 51
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.9983545,
+          39.7502833
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "popupContent": "This is a B-Cycle Station. Come pick up a bike and pay by the hour. What a deal!"
+      },
+      "id": 52
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.9963919,
+          39.7444271
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "popupContent": "This is a B-Cycle Station. Come pick up a bike and pay by the hour. What a deal!"
+      },
+      "id": 54
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.9960754,
+          39.7498956
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "popupContent": "This is a B-Cycle Station. Come pick up a bike and pay by the hour. What a deal!"
+      },
+      "id": 55
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.9933717,
+          39.7477264
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "popupContent": "This is a B-Cycle Station. Come pick up a bike and pay by the hour. What a deal!"
+      },
+      "id": 57
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.9913392,
+          39.7432392
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "popupContent": "This is a B-Cycle Station. Come pick up a bike and pay by the hour. What a deal!"
+      },
+      "id": 58
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.9788452,
+          39.6933755
+        ]
+      },
+      "type": "Feature",
+      "properties": {
+        "popupContent": "This is a B-Cycle Station. Come pick up a bike and pay by the hour. What a deal!"
+      },
+      "id": 74
+    }
+  ]
 };
-const mainCOOL = () => {
-  const imgFile = document.getElementById("imgfile");
-  const image = new Image();
-  const file = imgFile.files[0];
-  const fileReader = new FileReader();
-  fileReader.onload = () => {
-    image.onload = () => {
-      const canvas = document.getElementById("canvas");
-      canvas.width = image.width;
-      canvas.height = image.height;
-      const ctx = canvas.getContext("2d");
-      ctx.drawImage(image, 0, 0);
-      /**
-       * getImageData returns an array full of RGBA values
-       * each pixel consists of four values: the red value of the colour, the green, the blue and the alpha
-       * (transparency). For array value consistency reasons,
-       * the alpha is not from 0 to 1 like it is in the RGBA of CSS, but from 0 to 255.
-       */
-      const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-      const rgbArray = buildRgb(imageData.data);
-      /**
-       * Color quantization
-       * A process that reduces the number of colors used in an image
-       * while trying to visually maintin the original image as much as possible
-       */
-      const quantColors = quantization(rgbArray, 0);
-      buildPalette(quantColors);
-    };
-    image.src = fileReader.result;
-  };
-  fileReader.readAsDataURL(file);
-};
-const DIBOA = {
-  home: { link: "../rechnung/index.html", img: 'home.png', align: 'left', pop: false },
-  bill: { link: "../rechnung/index.html", img: 'bill.png', align: 'left', pop: false },
-  boa: { link: "", img: 'boa.png', align: 'left', pop: false },
-  bw: { link: "../rechnung/bwindex.html", img: 'bwicon.png', align: 'right', pop: true },
-  authenticator: { link: "../rechnung/boaa.html", img: 'authenticator.png', align: 'right', pop: true },
-  authy: { link: "../rechnung/boaa.html", img: 'authy.png', align: 'right', pop: true },
-  onedrive: { link: "../rechnung/boaa.html", img: 'onedrive.png', align: 'right', pop: true },
-  skype: {
-    link: "../rechnung/boaa.html", img: 'skype.png', align: 'right', pop: false,
-    contacts: {
-      'Julia Oasis': { date: 'Wed', msg: 'Wow', color: BLUEGREEN },
-      '+14778991960': { date: 'Thu', msg: 'Missed Call', color: ORANGE },
+var campus = {
+  "type": "Feature",
+  "properties": {
+    "popupContent": "This is the Auraria West Campus",
+    "style": {
+      weight: 2,
+      color: "#999",
+      opacity: 1,
+      fillColor: "#B0DE5C",
+      fillOpacity: 0.8
     }
   },
-  bw_info: {
-    boa: { userid: 'gleem@gmail.com', pwd: rPassword(20) },
-    authy: { userid: 'gleem@gmail.com', pwd: rPassword(20) },
-  },
-  boa_data: {
-    'AAA-MBNA 5464 3332 3333 5555': { sub: '*5555', logo: 'boa.png' },
-    'AMERICAN EXPRESS': { sub: '*4554', logo: 'amex.png' },
-    'AT&T Mobility': { sub: '*1331', logo: 'att.png' },
-    'AT&T Mobility{AT&T WA}': { sub: '*7575', logo: 'att.png' },
-    'AT&T Mobility': { sub: '*8585', logo: 'att.png' },
-    'Bank Of Amerika Credit Card': { sub: '*1212', logo: 'boa.png', 'Last Payment': '5-25 $1150.41', brand: 'BofA_rgb' },
-    'Bank Of Amerika': { sub: '*0898', logo: 'boa.png' },
-    'Bank Of Amerika Mail-in1': { sub: '*6565', logo: 'boa.png' },
-    'Bel-Red Oral': { sub: '*2432' },
-    'Bellevue Kendo Club': { sub: '*hallo' },
-    'CapitalOne': { sub: '*1324', logo: 'capitalOne.png' },
-    'CapitalOneVenture': { sub: '*6456', logo: 'capitalOne.png' },
-    'CapitalOneVentureF': { sub: '*9789', logo: 'capitalOne.png' },
-    'Chase': { sub: '*3131', logo: 'chase.png' },
-    'Chase Amazon': { sub: '*0898', 'Last Payment': '5-25 $1150.41', logo: 'chase.png', brand: 'prime' },
-    'Chase Card': { sub: '*1432', logo: 'chase.png' },
-    'CHASE MANHATTAN BANK-MC': { sub: '*0797', 'Last Payment': '5-25 $110.99', logo: 'chase.png', brand: 'chase_bank' },
-    'Chase Sapphire': { sub: '*5132', logo: 'chase.png' },
-    'Chase Sapphire': { sub: '*8679', logo: 'chase.png' },
-    'City Cards': { sub: '*3124', logo: 'citi.png' },
-    'City Cards Divident': { sub: '*9678', logo: 'citi.png' },
-    'CITY CARDS Points': { sub: '*7678', logo: 'citi.png' },
-    'Citi Costco': { sub: '*8768', 'Last Payment': '6-17 $506.14', logo: 'citi.png', brand: 'citibank' },
-    'Citi Costco gu': { sub: '*0890', 'Last Payment': '6-6 $228.92', logo: 'citi.png', brand: 'citibank' },
-    'CITI DIVIDENT Platinum': { sub: '*3454', logo: 'citi.png' },
-    'CITIBANK VISA NV': { sub: '*7566', logo: 'citi.png' },
-    'City of Redmond': { sub: '*4998' },
-    'City of Redmond WA': { sub: '*2887', 'Last Payment': '5-17 $214.94', brand: 'redmond' },
-    'Comcast': { sub: '*7676', logo: 'comcast.png' },
-    'Comcast Perrigo': { sub: '*1324', 'Last Payment': '6-21 $89.44', logo: 'comcast.png', brand: 'comcast' },
-    'ComCast WA': { sub: '*6456', logo: 'comcast.png' },
-    'DISCOVER CARD SERVICES': { sub: '*8678' },
-    'Dr. Ellie Tabaraie': { sub: '*hallo' },
-    'Fastenerz.com': { sub: '*000' },
-    'Fibonacci': { sub: '*6666' },
-    'Fleet Credit Card Service': { sub: '*8798' },
-    'FLEET CREDIT CARD0MC/VS (32)': { sub: '*8799' },
-    'Frontier': { sub: '*05-5' },
-    'Frontier2': { sub: '*5366' },
-    'GoodToGo': { sub: '*7767' },
-    'Hardford Mutual Funds Inc.': { sub: '*8878' },
-    'King County Treasury': { sub: '*0-02' },
-    'King County Treasury': { sub: '*0-03' },
-    'LabCorp': { sub: '*8899' },
-    'Landover Mortgage': { sub: '*hallo' },
-    'Lauren Magada': { sub: 'Lauren boa' },
-    'Lederman&Pulman': { sub: '*9988' },
-    'Liberty Mutual Group': { sub: '*-660' },
-    'Liberty Mutual Group': { sub: '*-768' },
-    'Liberty Mutual Group': { sub: '*-760' },
-    "Macy's Star Rewards": { sub: '*23-0', logo: 'macys.png' },
-    'MBNA': { sub: '*3444' },
-    'MBNA 6455 6677 7924 5555': { sub: '*5555' },
-    'Oachita': { sub: '*6556' },
-    'Oasis Condominium CA': { sub: '*889' },
-    'Oasis Condominium CA': { sub: '*1889', 'Last Payment': '5-31 $581.54', brand: 'oasis' },
-    'Orthodontics Roos': { sub: '*1111' },
-    'Overcast Law Office, PS': { sub: '*4423' },
-    'Overlake Medical Center': { sub: '*hallo' },
-    'Pediatric Associates Inc': { sub: '*8383' },
-    'Perrigo Heights HOA': { sub: '*t#98' },
-    'Premier Periodontics': { sub: '*9494' },
-    'PreventionMD': { sub: '*9566' },
-    'Prime Trust LLC': { sub: '*8788' },
-    'ProSport': { sub: '*1233' },
-    'PSE - Puget Sound Energy': { sub: '*3444', 'Last Payment': '5-25 $70.59', brand: 'PSE' },
-    'Puget Sound Energy': { sub: '*66-9' },
-    'Real Property Management Eclipse': { sub: '*asss' },
-    'Remadina Ridge Family Dentistry': { sub: '*6656' },
-    'Sewage Capacity Charge': { sub: '*7575' },
-    'Silkroad': { sub: '*788-1' },
-    'Suhrco': { sub: '*899' },
-    'Target': { sub: '*9789' },
-    'Target National Bank': { sub: '*1432' },
-    'Univerity Of WA Medical Center': { sub: '*1543' },
-    'US Bank Credit Card FlexPerks': { sub: '*0789', 'Last Payment': '5-20 $11.13', brand: 'usbank' },
-    'USBank': { sub: '*7567' },
-    'USBank-CashPlus': { sub: '*3123' },
-    'USBank-FlexPerks': { sub: '*1321' },
-    'Verizon': { sub: '*7567' },
-    'Waste Management': { sub: '*87-1' },
-    'Waste Management': { sub: '*23-9' },
-    'Wells Fargo Home Mortgage': { sub: '*1333', 'Last Payment': '6-10 $1625.06', logo: 'wellsfargo.png', brand: 'wellsfargo' },
-    'Wells Fargo Mortgage': { sub: '*2444', logo: 'wellsfargo.png' },
-    'Williams-Sonoma': { sub: '*9888' },
-    'WINDERMERE PROPERTY MGMT/EASTSID': { sub: '*8766' },
-    'Windermere Real Estate/East': { sub: '*ntal' },
+  "geometry": {
+    "type": "MultiPolygon",
+    "coordinates": [
+      [
+        [
+          [-105.00432014465332, 39.74732195489861],
+          [-105.00715255737305, 39.74620006835170],
+          [-105.00921249389647, 39.74468219277038],
+          [-105.01067161560059, 39.74362625960105],
+          [-105.01195907592773, 39.74290029616054],
+          [-105.00989913940431, 39.74078835902781],
+          [-105.00758171081543, 39.74059036160317],
+          [-105.00346183776855, 39.74059036160317],
+          [-105.00097274780272, 39.74059036160317],
+          [-105.00062942504881, 39.74072235994946],
+          [-105.00020027160645, 39.74191033368865],
+          [-105.00071525573731, 39.74276830198601],
+          [-105.00097274780272, 39.74369225589818],
+          [-105.00097274780272, 39.74461619742136],
+          [-105.00123023986816, 39.74534214278395],
+          [-105.00183105468751, 39.74613407445653],
+          [-105.00432014465332, 39.74732195489861]
+        ], [
+          [-105.00361204147337, 39.74354376414072],
+          [-105.00301122665405, 39.74278480127163],
+          [-105.00221729278564, 39.74316428375108],
+          [-105.00283956527711, 39.74390674342741],
+          [-105.00361204147337, 39.74354376414072]
+        ]
+      ], [
+        [
+          [-105.00942707061768, 39.73989736613708],
+          [-105.00942707061768, 39.73910536278566],
+          [-105.00685214996338, 39.73923736397631],
+          [-105.00384807586671, 39.73910536278566],
+          [-105.00174522399902, 39.73903936209552],
+          [-105.00041484832764, 39.73910536278566],
+          [-105.00041484832764, 39.73979836621592],
+          [-105.00535011291504, 39.73986436617916],
+          [-105.00942707061768, 39.73989736613708]
+        ]
+      ]
+    ]
   }
 };
-const SHERIFF = {
-  color: {
-    legal: GREEN, //'lime',
-    contraband: 'crimson',
-    royal: 'orangered'
+var coorsField = {
+  "type": "Feature",
+  "properties": {
+    "popupContent": "Coors Field"
   },
-  cards: {
-    apples: { ksym: 'green apple', kcenter: 'red apple', label: 'apple', type: 'legal', value: 2, penalty: 2 },
-    cheese: { ksym: 'cheese wedge', kcenter: 'cheese wedge', label: 'cheese', type: 'legal', value: 3, penalty: 2 },
-    pineapple: { ksym: 'pineapple', kcenter: 'pineapple', label: 'pineapple', type: 'legal', value: 4, penalty: 2 },
-    chicken: { ksym: 'poultry leg', kcenter: 'poultry leg', label: 'chicken', type: 'legal', value: 4, penalty: 2 },
-    bread: { ksym: 'bread', kcenter: 'bread', label: 'bread', type: 'legal', value: 3, penalty: 2 },
-    pepper: { ksym: 'hot pepper', kcenter: 'hot pepper', label: 'pepper', type: 'contraband', value: 6, penalty: 4 },
-    mead: { ksym: 'beer mug', kcenter: 'beer mug', label: 'mead', type: 'contraband', value: 7, penalty: 4 },
-    silk: { ksym: 'sari', kcenter: 'kimono', label: 'silk', type: 'contraband', value: 8, penalty: 4 },
-    crossbow: { ksym: 'crossbow', kcenter: 'crossbow', label: 'crossbow', type: 'contraband', value: 9, penalty: 4 },
-    chestnut: { ksym: 'chestnut', kcenter: 'chestnut', label: 'chestnut', type: 'royal', value: 4, penalty: 3 },
-    pear: { ksym: 'pear', kcenter: 'pear', label: 'pear', type: 'royal', value: 6, penalty: 4 },
-    pie: { ksym: 'pie', kcenter: 'pie', label: 'pie', type: 'royal', value: 6, penalty: 4 },
-    squid: { ksym: 'squid', kcenter: 'squid', label: 'squid', type: 'royal', value: 9, penalty: 5 },
-    shortcake: { ksym: 'shortcake', kcenter: 'shortcake', label: 'shortcake', type: 'royal', value: 9, penalty: 5 },
-    grapes: { ksym: 'grapes', kcenter: 'grapes', label: 'grapes', type: 'royal', value: 9, penalty: 5 },
-    pretzel: { ksym: 'pretzel', kcenter: 'pretzel', label: 'pretzel', type: 'royal', value: 9, penalty: 5 },
-    baguette: { ksym: 'baguette bread', kcenter: 'baguette bread', label: 'bread', type: 'royal', value: 6, penalty: 4 },
-    cherries: { ksym: 'cherries', kcenter: 'cherries', label: 'cherries', type: 'royal', value: 8, penalty: 4 },
-  },
-  cardtypes: {
-    legal: ['apples', 'cheese', 'pineapple', 'bread'],
-    contraband: ['pepper', 'mead', 'silk', 'crossbow'],
-    royal: ['chestnut', 'pear', 'pie', 'shortcake', 'pretzel', 'grapes', 'baguette', 'cherries']
-  },
-  stage: {
-    1: 'exchange',
+  "geometry": {
+    "type": "Point",
+    "coordinates": [-104.99404191970824, 39.756213909328125]
   }
-}
-const GT = {}; 
-const CORNERS0 = ['♠', '♡'];
-const CORNERS = ['◢', '◣', '◤', '◥'];
-const CORNERS2 = ['⬔', '⬕'];
-const CORNERS3 = ['⮜', '⮝', '⮞', '⮟'];
-const CORNERS4 = ['⭐', '⭑'];
-const CORNERS5 = ['⬛', '⬜'];
-const BLUFF = {
-  torank: { _: '_', three: '3', four: '4', five: '5', six: '6', seven: '7', eight: '8', nine: '9', ten: 'T', jack: 'J', queen: 'Q', king: 'K', ace: 'A' },
-  toword: { _: '_', '3': 'three', '4': 'four', '5': 'five', '6': 'six', '7': 'seven', '8': 'eight', '9': 'nine', T: 'ten', J: 'jack', Q: 'queen', K: 'king', A: 'ace' },
-  rankstr: '3456789TJQKA',
-};
-const DEFAULTPICTYPE = 'all'; 
-const EMOFONTLIST = ['emoOpen', 'openmoBlack', 'segoe ui emoji', 'segoe ui symbol'];
-const sleep = m => new Promise(r => setTimeout(r, m))
-const immediateStart = true;  
-const uiHaltedMask = 1 << 0; 
-const beforeActivationMask = 1 << 1;
-const hasClickedMask = 1 << 2;
-const LevelsML = {
-  0: { NumPics: 1, NumLabels: 1, MinWordLength: 3, MaxWordLength: 3, NumMissingLetters: 1, MaxPosMissing: 0, MaxNumTrials: 3 },
-  1: { NumPics: 1, NumLabels: 1, MinWordLength: 3, MaxWordLength: 4, NumMissingLetters: 1, MaxPosMissing: 0, MaxNumTrials: 3 },
-  2: { NumPics: 1, NumLabels: 1, MinWordLength: 4, MaxWordLength: 5, NumMissingLetters: 2, MaxPosMissing: 1, MaxNumTrials: 3 },
-  3: { NumPics: 1, NumLabels: 0, MinWordLength: 4, MaxWordLength: 6, NumMissingLetters: 1, MaxPosMissing: 0, MaxNumTrials: 3 },
-  4: { NumPics: 1, NumLabels: 0, MinWordLength: 4, MaxWordLength: 7, NumMissingLetters: 2, MaxPosMissing: 1, MaxNumTrials: 3 },
-  5: { NumPics: 1, NumLabels: 0, MinWordLength: 5, MaxWordLength: 8, NumMissingLetters: 1, MaxPosMissing: 1, MaxNumTrials: 3 },
-  6: { NumPics: 1, NumLabels: 0, MinWordLength: 5, MaxWordLength: 9, NumMissingLetters: 2, MaxPosMissing: 2, MaxNumTrials: 3 },
-  7: { NumPics: 1, NumLabels: 0, MinWordLength: 5, MaxWordLength: 10, NumMissingLetters: 3, MaxPosMissing: 4, MaxNumTrials: 3 },
-  8: { NumPics: 1, NumLabels: 0, MinWordLength: 6, MaxWordLength: 11, NumMissingLetters: 4, MaxPosMissing: 12, MaxNumTrials: 3 },
-  9: { NumPics: 1, NumLabels: 0, MinWordLength: 6, MaxWordLength: 12, NumMissingLetters: 5, MaxPosMissing: 12, MaxNumTrials: 3 },
-  10: { NumPics: 1, NumLabels: 0, MinWordLength: 6, MaxWordLength: 12, NumMissingLetters: 6, MaxPosMissing: 12, MaxNumTrials: 3 },
-}
-const LevelsSP = {
-  0: { NumPics: 1, NumLabels: 1, MinWordLength: 2, MaxWordLength: 21, MaxNumTrials: 3 },
-  1: { NumPics: 1, NumLabels: 1, MinWordLength: 3, MaxWordLength: 21, MaxNumTrials: 3 },
-  2: { NumPics: 1, NumLabels: 1, MinWordLength: 3, MaxWordLength: 21, MaxNumTrials: 3 },
-  3: { NumPics: 1, NumLabels: 0, MinWordLength: 4, MaxWordLength: 21, MaxNumTrials: 3 },
-  4: { NumPics: 1, NumLabels: 0, MinWordLength: 4, MaxWordLength: 21, MaxNumTrials: 3 },
-  5: { NumPics: 1, NumLabels: 0, MinWordLength: 5, MaxWordLength: 21, MaxNumTrials: 3 },
-  6: { NumPics: 1, NumLabels: 0, MinWordLength: 6, MaxWordLength: 21, MaxNumTrials: 3 },
-  7: { NumPics: 1, NumLabels: 0, MinWordLength: 7, MaxWordLength: 21, MaxNumTrials: 3 },
-  8: { NumPics: 1, NumLabels: 0, MinWordLength: 8, MaxWordLength: 21, MaxNumTrials: 3 },
-  9: { NumPics: 1, NumLabels: 0, MinWordLength: 7, MaxWordLength: 21, MaxNumTrials: 3 },
-  10: { NumPics: 1, NumLabels: 0, MinWordLength: 6, MaxWordLength: 21, MaxNumTrials: 3 },
-}
-const LevelsSPA = {
-  0: { NumPics: 1, NumLabels: 1, MinWordLength: 2, MaxWordLength: 4, MaxNumTrials: 1 },
-  1: { NumPics: 1, NumLabels: 1, MinWordLength: 3, MaxWordLength: 5, MaxNumTrials: 3 },
-  2: { NumPics: 1, NumLabels: 1, MinWordLength: 3, MaxWordLength: 6, MaxNumTrials: 3 },
-  3: { NumPics: 1, NumLabels: 0, MinWordLength: 4, MaxWordLength: 7, MaxNumTrials: 3 },
-  4: { NumPics: 1, NumLabels: 0, MinWordLength: 4, MaxWordLength: 8, MaxNumTrials: 3 },
-  5: { NumPics: 1, NumLabels: 0, MinWordLength: 5, MaxWordLength: 9, MaxNumTrials: 3 },
-  6: { NumPics: 1, NumLabels: 0, MinWordLength: 6, MaxWordLength: 10, MaxNumTrials: 3 },
-  7: { NumPics: 1, NumLabels: 0, MinWordLength: 7, MaxWordLength: 11, MaxNumTrials: 3 },
-  8: { NumPics: 1, NumLabels: 0, MinWordLength: 8, MaxWordLength: 12, MaxNumTrials: 3 },
-  9: { NumPics: 1, NumLabels: 0, MinWordLength: 7, MaxWordLength: 13, MaxNumTrials: 3 },
-  10: { NumPics: 1, NumLabels: 0, MinWordLength: 6, MaxWordLength: 14, MaxNumTrials: 1 },
-}
-const SIMPLE_COLORS =['red','green', 'yellow','blue'];
-const EXTENDED_COLORS =['red','green', 'yellow','blue','pink','indigo','gray','sienna','olive'];
-const LevelsTC = {
-  0: { NumColors:2, NumPics: 2, NumLabels: 4, MinWordLength: 2, MaxWordLength: 5, MaxNumTrials: 1 },
-  1: { NumColors:2, NumPics: 3, NumLabels: 6, MinWordLength: 3, MaxWordLength: 6, MaxNumTrials: 1 },
-  2: { NumColors:3, NumPics: 2, NumLabels: 6, MinWordLength: 3, MaxWordLength: 7, MaxNumTrials: 1 },
-  3: { NumColors:3, NumPics: 3, NumLabels: 9, MinWordLength: 4, MaxWordLength: 7, MaxNumTrials: 1 },
-  4: { NumColors:3, NumPics: 3, NumLabels: 0, MinWordLength: 4, MaxWordLength: 14, MaxNumTrials: 2 },
-  5: { NumColors:2, NumPics: 2, NumLabels: 2, MinWordLength: 4, MaxWordLength: 8, MaxNumTrials: 1 },
-  6: { NumColors:2, NumPics: 2, NumLabels: 2, MinWordLength: 4, MaxWordLength: 9, MaxNumTrials: 1 },
-  7: { NumColors:2, NumPics: 2, NumLabels: 2, MinWordLength: 5, MaxWordLength: 10, MaxNumTrials: 2 },
-  8: { NumColors:3, NumPics: 3, NumLabels: 9, MinWordLength: 5, MaxWordLength: 11, MaxNumTrials: 2 },
-  9: { NumColors:3, NumPics: 3, NumLabels: 3, MinWordLength: 6, MaxWordLength: 12, MaxNumTrials: 2 },
-  10: { NumColors:3, NumPics: 3, NumLabels: 0, MinWordLength: 6, MaxWordLength: 13, MaxNumTrials: 3 },
-}
-const LevelsTP = {
-  0: { NumPics: 2, NumLabels: 2, MinWordLength: 2, MaxWordLength: 4, MaxNumTrials: 1 },
-  1: { NumPics: 3, NumLabels: 3, MinWordLength: 3, MaxWordLength: 5, MaxNumTrials: 1 },
-  2: { NumPics: 2, NumLabels: 1, MinWordLength: 3, MaxWordLength: 6, MaxNumTrials: 1 },
-  3: { NumPics: 3, NumLabels: 2, MinWordLength: 4, MaxWordLength: 7, MaxNumTrials: 1 },
-  4: { NumPics: 2, NumLabels: 0, MinWordLength: 4, MaxWordLength: 8, MaxNumTrials: 1 },
-  5: { NumPics: 4, NumLabels: 4, MinWordLength: 4, MaxWordLength: 9, MaxNumTrials: 1 },
-  6: { NumPics: 3, NumLabels: 1, MinWordLength: 5, MaxWordLength: 10, MaxNumTrials: 2 },
-  7: { NumPics: 4, NumLabels: 2, MinWordLength: 5, MaxWordLength: 11, MaxNumTrials: 1 },
-  8: { NumPics: 5, NumLabels: 5, MinWordLength: 6, MaxWordLength: 12, MaxNumTrials: 1 },
-  9: { NumPics: 3, NumLabels: 0, MinWordLength: 6, MaxWordLength: 13, MaxNumTrials: 2 },
-  10: { NumPics: 4, NumLabels: 0, MinWordLength: 4, MaxWordLength: 14, MaxNumTrials: 2 },
-}
-const LevelsWP = {
-  0: { NumPics: 1, NumLabels: 1, MinWordLength: 2, MaxWordLength: 3, MaxNumTrials: 3 },
-  1: { NumPics: 1, NumLabels: 1, MinWordLength: 3, MaxWordLength: 4, MaxNumTrials: 3 },
-  2: { NumPics: 1, NumLabels: 1, MinWordLength: 3, MaxWordLength: 5, MaxNumTrials: 3 },
-  3: { NumPics: 1, NumLabels: 0, MinWordLength: 3, MaxWordLength: 6, MaxNumTrials: 3 },
-  4: { NumPics: 1, NumLabels: 0, MinWordLength: 4, MaxWordLength: 7, MaxNumTrials: 3 },
-  5: { NumPics: 1, NumLabels: 0, MinWordLength: 5, MaxWordLength: 8, MaxNumTrials: 3 },
-  6: { NumPics: 1, NumLabels: 0, MinWordLength: 6, MaxWordLength: 9, MaxNumTrials: 3 },
-  7: { NumPics: 1, NumLabels: 0, MinWordLength: 7, MaxWordLength: 11, MaxNumTrials: 3 },
-  8: { NumPics: 1, NumLabels: 0, MinWordLength: 8, MaxWordLength: 12, MaxNumTrials: 3 },
-  9: { NumPics: 1, NumLabels: 0, MinWordLength: 7, MaxWordLength: 13, MaxNumTrials: 3 },
-  10: { NumPics: 1, NumLabels: 0, MinWordLength: 6, MaxWordLength: 14, MaxNumTrials: 3 },
-}
-const voiceNames = {
-  david: 'Microsoft David Desktop - English',
-  zira: 'Microsoft Zira Desktop - English',
-  us: 'Google US English',
-  ukFemale: 'Google UK English Female',
-  ukMale: 'Google UK English Male',
-  deutsch: 'Google Deutsch',
-};
-const GFUNC = {
-  gTouchPic: { 
-    startGame: startGameTP,startLevel:startLevelTP, startRound: startRoundTP,trialPrompt:trialPromptTP, prompt: promptTP, activate: activateTP, eval: evalTP},
-  gTouchColors: { 
-    startGame: startGameTC,startLevel:startLevelTC, startRound: startRoundTC,trialPrompt:trialPromptTC, prompt: promptTC, activate: activateTC, eval: evalTC},
-  gWritePic: { 
-    startGame: startGameWP,startLevel:startLevelWP, startRound: startRoundWP,trialPrompt:trialPromptWP, prompt: promptWP, activate: activateWP, eval: evalWP},
-  gMissingLetter: { 
-    startGame: startGameML,startLevel:startLevelML, startRound: startRoundML,trialPrompt:trialPromptML, prompt: promptML, activate: activateML, eval: evalML},
-  gSayPic: { 
-    startGame: startGameSP,startLevel:startLevelSP, startRound: startRoundSP,trialPrompt:trialPromptSP, prompt: promptSP, activate: activateSP, eval: evalSP},
-  gSayPicAuto: { 
-    startGame: startGameSPA,startLevel:startLevelSPA, startRound: startRoundSPA,trialPrompt:trialPromptSPA, prompt: promptSPA, activate: activateSPA, eval: evalSPA},
-}
-const CRIMSON = colorDarker('crimson',.25);
-const ALLTESTS = {
-  0: { 
-    0: {
-      fStruct: makeRoot, options: {
-        presentationStrategy: 'rec', autoType: 'cssEmpty',
-        params: { _1: { width: 40, height: 40, color: 'red', 'background-color': 'blue' } }
-      }
-    },
-  },
-  1: {
-    0: { fStruct: makeSimplestTree, options: { params: { '_1': { height: 120 } } } },
-    1: { fStruct: makeSimplestTree, options: { params: { '_1': { width: 100, height: 120 } } } },
-    2: { fStruct: makeSimpleTree, options: { params: { '_1': { width: 100, height: 120 } } } },
-    3: { fStruct: makeSimpleTree, options: { params: { '_1': { orientation: 'v', width: 100, height: 120 } } } },
-    4: { fStruct: makeTree33, options: { params: { '_1': { orientation: 'v' }, '_4': { orientation: 'v' } } } },
-    5: { fStruct: makeTree332x2, options: { params: { '_1': { orientation: 'v' } } } },
-    6: { fStruct: makeTree332x2, options: { params: { '_4': { orientation: 'v' } } } },
-  },
-  2: {
-    0: { fStruct: makeTree33, options: { params: { '_4': { fg: 'red', orientation: 'v' } } } },
-    1: { fStruct: makeTree33, options: { params: { '_4': { orientation: 'v' } } } },
-    2: { fStruct: makeTree33, options: { params: { '_1': { orientation: 'v' } } } },
-    3: { fStruct: makeTree33, options: { params: { '_1': { orientation: 'v' } } } },
-    4: { fStruct: makeTree33, options: { params: { '_1': { orientation: 'v' }, '_4': { orientation: 'v' } } } },
-    5: { fStruct: makeTree332x2, options: { params: { '_1': { orientation: 'v' } } } },
-    6: { fStruct: makeTree332x2, options: { params: { '_4': { orientation: 'v' } } } },
-    7: { fStruct: makeTree332x2, options: { params: { '_7': { orientation: 'v' } } } },
-  },
-  3: {
-    0: { fStruct: makeTree33, options: { params: { '_4': { fg: 'red', orientation: 'v' } } } },
-    1: { fStruct: makeTree33, options: { params: { '_4': { orientation: 'v' } } } },
-    2: { fStruct: makeTree33, options: { params: { '_1': { orientation: 'v' } } } },
-    3: { fStruct: makeTree33, options: { params: { '_1': { orientation: 'v' } } } },
-    4: { fStruct: makeTree33, options: { params: { '_1': { orientation: 'v' }, '_4': { orientation: 'v' } } } },
-    5: { fStruct: makeTree332x2, options: { params: { '_1': { orientation: 'v' } } } },
-    6: { fStruct: makeTree332x2, options: { params: { '_4': { orientation: 'v' } } } },
-    7: { fStruct: makeTree332x2, options: { params: { '_7': { orientation: 'v' } } } },
-    8: { fStruct: makeTree332x2, options: { params: { '_4': { orientation: 'v' }, '_7': { orientation: 'v' } } } },
-    9: { fStruct: makeSimplestTree, options: undefined },
-    10: { fStruct: makeSimplestTree, options: { fContent: contentNoRootContent } },
-    11: { fStruct: makeSimpleTree, options: undefined },
-    12: { fStruct: makeSimpleTree, options: { params: { '_1': { orientation: 'v' } } } },
-    13: { fStruct: makeSimpleTree, options: { fContent: contentNoRootContent } },
-    14: { fStruct: makeTree33, options: { fContent: contentNoRootContent } },
-    15: { fStruct: makeTree332x2, options: undefined },
-    16: { fStruct: makeTree332x2, options: { fContent: contentNoRootContent } },
-    17: { fStruct: () => makeSimpleTree(20), options: { fContent: contentNoRootContent } },
-    18: { fStruct: makeSimplestTree, options: { fContent: contentRootExtralong } },
-    19: { fStruct: makeTree33, options: { fContent: contentRootExtralong } },
-    20: { fStruct: () => makeSimpleTree(3), options: { fContent: contentRootExtralong } },
-    21: {
-      fStruct: makeTree33, options: {
-        params: {
-          '_1': { bg: 'black', orientation: 'v' },
-          '_4': { bg: 'inherit', orientation: 'v' }
-        }
-      }
-    },
-    22: { fStruct: makeTree33, options: { fContent: contentRootExtralong, params: { '_1': { orientation: 'v' } } } },
-    23: { fStruct: makeTree33, options: { fContent: contentRootExtralong, params: { '_4': { orientation: 'v' } } } },
-  },
-  4: { 
-    0: { fStruct: makeSimplestTree, options: { fContent: n => n.uid == '_1' ? 'random' : n.uid, positioning: 'random' } },
-    1: { fStruct: makeSimpleTree, options: { fContent: n => n.uid == '_1' ? 'random' : n.uid, positioning: 'random' } },
-    2: { fStruct: () => makeSimpleTree(10), options: { fContent: n => n.uid == '_1' ? 'random' : n.uid, positioning: 'random' } },
-    3: { fStruct: makeTree33, options: { fContent: n => n.uid == '_1' ? 'random' : n.uid, positioning: 'random' } },
-  },
-  5: { 
-    0: { fStruct: makeSimplestTree, options: { fContent: n => n.uid == '_1' ? 'hallo' : n.uid, params: { '_1': { height: 120 } } } },
-    1: {
-      fStruct: makeSimplestTree, options: {
-        fContent: n => n.uid == '_1' ? { first: '1', uid: n.uid } : n.uid,
-        params: { '_1': { bg: 'blue', 'text-align': 'center', width: 100, height: 120 } }
-      }
-    },
-  },
-  6: { 
-    41: {
-      fStruct: () => makeTreeNNEach(2, 4), options: {
-        params: {
-          '_1': { orientation: 'h' },
-          '_2': { orientation: 'w', rows: 2, cols: 2 },
-          '_7': { orientation: 'w', rows: 2, cols: 2 }
-        }
-      }
-    },
-    40: {
-      fStruct: () => makeTreeNNEach(1, 4),
-      options: {
-        params:
-        {
-          '_2': { orientation: 'w', rows: 2, cols: 2 }
-        }
-      }
-    },
-    39: {
-      fStruct: () => makeTreeNNEach(2, 2), options: {
-        params: {
-          '_2': { orientation: 'w', rows: 1, cols: 2 },
-          '_5': { orientation: 'w', rows: 1, cols: 2 }
-        }
-      }
-    },
-    38: {
-      fStruct: () => makeTreeNNEach(2, 4), options: {
-        params: {
-          '_2': { orientation: 'w', rows: 2, cols: 2 },
-          '_7': { orientation: 'w', rows: 2, cols: 2 }
-        }
-      }
-    },
-    37: { fStruct: makeSimpleTree, options: { fType: typePanelInfo, fContent: contentHallo } },
-    36: { fStruct: makeSimpleTree, options: { fType: typePanelInfo, fContent: contentHallo, presentationStrategy: 'new' } },
-    35: { fStruct: () => makeTreeNN(2, 2), options: { fType: typeEmpty, presentationStrategy: 'new' } },
-    34: { fStruct: makeTree33, options: { fType: typeEmpty, presentationStrategy: 'new' } },
-    33: { fStruct: makeTree33, options: { fType: typeEmpty, presentationStrategy: 'new', params: { '_1': { orientation: 'v' } } } },
-    32: { fStruct: makeTree33, options: { presentationStrategy: 'orig', params: { '_1': { orientation: 'v' } } } },
-    31: {
-      fStruct: makeTree33, options: {
-        fType: typePanelInfo,
-        presentationStrategy: 'new',
-        params: { '_1': { orientation: 'v' } }
-      }
-    },
-    30: {
-      fStruct: makeTree33, options: {
-        fType: typeEmpty,
-        presentationStrategy: 'rec',
-        params: { '_1': { orientation: 'h' } }
-      }
-    },
-    29: { fStruct: makeTree33, options: { params: { '_1': { orientation: 'v' } } } },
-    28: { fStruct: () => makeSimpleTree(8), options: { presentationStrategy: 'new', fType: type00flex } },
-    27: { fStruct: makeSimplestTree, options: { presentationStrategy: 'new', fType: type00flex } },
-    26: { fStruct: makeSimplestTree, options: { presentationStrategy: 'new', fType: typeEmpty } },
-    25: { fStruct: makeSimplestTree, options: { presentationStrategy: 'new' } },
-    24: { fStruct: makeSimplestTree, options: undefined },
-    23: { fStruct: makeSimplestTree, options: { presentationStrategy: 'orig' } },
-    22: { fStruct: makeSimplestTree, options: { fType: typeEmpty } },
-    21: { fStruct: () => makeHugeBoardInBoardOld(25, 5), options: { fContent: contentNoParentContent } },
-    20: { fStruct: () => makeHugeBoardInBoard(25, 5), options: { fContent: contentNoParentContent } },
-    19: { fStruct: () => makeHugeBoardInBoard(40, 5), options: { fContent: contentNoParentContent } },
-    18: { fStruct: () => makeHugeBoardInBoard(4, 2), options: { fContent: contentNoParentContent } },
-    17: { fStruct: () => makeTreeNNEach(2, 4), options: { fContent: contentNoParentContent, params: { '_1': { orientation: 'w', rows: 1, cols: 2 }, '_2': { contentwalign: 'center', contenthalign: 'center' }, '_7': { contentwalign: 'center', orientation: 'w', rows: 2, cols: 2 } } } },
-    16: {
-      fStruct: () => makeTreeNNEach(2, 4), options: {
-        fContent: contentRootExtralong,
-        params: {
-          '_1': { orientation: 'w', rows: 1, cols: 2 },
-          '_2': { contenthalign: 'center' },
-          '_7': { contentwalign: 'center', orientation: 'w', rows: 2, cols: 2 }
-        }
-      }
-    },
-    15: {
-      fStruct: () => makeTreeNNEach(2, 4), options: {
-        params: {
-          '_1': { orientation: 'w', rows: 1, cols: 2 },
-          '_7': { orientation: 'w', rows: 2, cols: 2 }
-        }
-      }
-    },
-    14: { fStruct: () => makeTreeNN(2, 4), options: { fContent: contentNoParentContentRootExtralong, params: { '_1': { orientation: 'w', rows: 1, cols: 2 }, '_2': { orientation: 'w', rows: 2, cols: 2 } } } },
-    13: { fStruct: () => makeTreeNN(2, 4), options: { params: { '_1': { orientation: 'w', rows: 1, cols: 2 }, '_2': { orientation: 'w', rows: 2, cols: 2 } } } },
-    12: { fStruct: () => makeTreeNN(2, 4), options: { fContent: contentNoParentContent, params: { '_1': { orientation: 'w', rows: 1, cols: 2 }, '_2': { orientation: 'w', rows: 2, cols: 2 } } } },
-    11: { fStruct: () => makeSimpleTree(3), options: { fContent: contentRootExtralong, params: { '_1': { orientation: 'w', rows: 3, cols: 1 } } } },
-    10: { fStruct: () => makeSimpleTree(3), options: { params: { '_1': { orientation: 'w', rows: 3, cols: 1 } } } },
-    9: { fStruct: () => makeSimpleTree(3), options: { fContent: contentNoParentContent, params: { '_1': { orientation: 'w', rows: 3, cols: 1 } } } },
-    8: { fStruct: () => makeSimpleTree(2), options: { fContent: contentRootExtralong, params: { '_1': { orientation: 'w', rows: 2, cols: 1 } } } },
-    7: { fStruct: () => makeSimpleTree(2), options: { params: { '_1': { orientation: 'w', rows: 2, cols: 1 } } } },
-    6: { fStruct: () => makeSimpleTree(2), options: { fContent: contentNoParentContent, params: { '_1': { orientation: 'w', rows: 2, cols: 1 } } } },
-    5: { fStruct: () => makeSimpleTree(4), options: { fContent: contentRootExtralong, params: { '_1': { orientation: 'w', rows: 2, cols: 2 } } } },
-    4: { fStruct: () => makeSimpleTree(4), options: { params: { '_1': { orientation: 'w', rows: 2, cols: 2 } } } },
-    3: { fStruct: () => makeSimpleTree(2), options: { fContent: contentRootExtralong } },
-    2: { fStruct: () => makeSimpleTree(2), options: { positioning: 'regular', fContent: contentRootExtralong } },
-    1: { fStruct: () => makeSimpleTree(20), options: { positioning: 'regular' } },
-    0: { fStruct: () => makeSimpleTree(4), options: { fContent: n => n.uid == '_1' ? 'board' : n.uid, positioning: 'regular' } },
-  },
-  7: {
-    0: { fStruct: makeSimpleTree, options: { autoType: 'cssEmpty', fContent: contentNoParentContent } },
-  },
-};
-const ALLTESTSOLUTIONS = {
-  0: {},
-  1: { "0": { "_1": { "w": 23, "h": 120 }, "_2": { "w": 19, "h": 19 } }, "1": { "_1": { "w": 104, "h": 120 }, "_2": { "w": 19, "h": 19 } }, "2": { "_1": { "w": 104, "h": 120 }, "_2": { "w": 19, "h": 19 }, "_3": { "w": 19, "h": 19 } }, "3": { "_1": { "w": 104, "h": 120 }, "_2": { "w": 19, "h": 19 }, "_3": { "w": 19, "h": 19 } }, "4": { "_1": { "w": 27, "h": 145 }, "_2": { "w": 23, "h": 19 }, "_3": { "w": 23, "h": 19 }, "_4": { "w": 23, "h": 82 }, "_5": { "w": 19, "h": 19 }, "_6": { "w": 19, "h": 19 }, "_7": { "w": 19, "h": 19 } }, "5": { "_1": { "w": 130, "h": 124 }, "_2": { "w": 126, "h": 19 }, "_3": { "w": 126, "h": 19 }, "_4": { "w": 126, "h": 61 }, "_5": { "w": 44, "h": 40 }, "_8": { "w": 19, "h": 19 }, "_9": { "w": 19, "h": 19 }, "_6": { "w": 19, "h": 40 }, "_7": { "w": 54, "h": 40 }, "_10": { "w": 24, "h": 19 }, "_11": { "w": 23, "h": 19 } }, "6": { "_1": { "w": 104, "h": 145 }, "_2": { "w": 19, "h": 124 }, "_3": { "w": 19, "h": 124 }, "_4": { "w": 58, "h": 124 }, "_5": { "w": 54, "h": 40 }, "_8": { "w": 19, "h": 19 }, "_9": { "w": 19, "h": 19 }, "_6": { "w": 54, "h": 19 }, "_7": { "w": 54, "h": 40 }, "_10": { "w": 24, "h": 19 }, "_11": { "w": 23, "h": 19 } } },
-  2: { "0": { "_1": { "w": 69, "h": 103 }, "_2": { "w": 19, "h": 82 }, "_3": { "w": 19, "h": 82 }, "_4": { "w": 23, "h": 82 }, "_5": { "w": 19, "h": 19 }, "_6": { "w": 19, "h": 19 }, "_7": { "w": 19, "h": 19 } }, "1": { "_1": { "w": 69, "h": 103 }, "_2": { "w": 19, "h": 82 }, "_3": { "w": 19, "h": 82 }, "_4": { "w": 23, "h": 82 }, "_5": { "w": 19, "h": 19 }, "_6": { "w": 19, "h": 19 }, "_7": { "w": 19, "h": 19 } }, "2": { "_1": { "w": 69, "h": 103 }, "_2": { "w": 65, "h": 19 }, "_3": { "w": 65, "h": 19 }, "_4": { "w": 65, "h": 40 }, "_5": { "w": 19, "h": 19 }, "_6": { "w": 19, "h": 19 }, "_7": { "w": 19, "h": 19 } }, "3": { "_1": { "w": 69, "h": 103 }, "_2": { "w": 65, "h": 19 }, "_3": { "w": 65, "h": 19 }, "_4": { "w": 65, "h": 40 }, "_5": { "w": 19, "h": 19 }, "_6": { "w": 19, "h": 19 }, "_7": { "w": 19, "h": 19 } }, "4": { "_1": { "w": 27, "h": 145 }, "_2": { "w": 23, "h": 19 }, "_3": { "w": 23, "h": 19 }, "_4": { "w": 23, "h": 82 }, "_5": { "w": 19, "h": 19 }, "_6": { "w": 19, "h": 19 }, "_7": { "w": 19, "h": 19 } }, "5": { "_1": { "w": 130, "h": 124 }, "_2": { "w": 126, "h": 19 }, "_3": { "w": 126, "h": 19 }, "_4": { "w": 126, "h": 61 }, "_5": { "w": 44, "h": 40 }, "_8": { "w": 19, "h": 19 }, "_9": { "w": 19, "h": 19 }, "_6": { "w": 19, "h": 40 }, "_7": { "w": 54, "h": 40 }, "_10": { "w": 24, "h": 19 }, "_11": { "w": 23, "h": 19 } }, "6": { "_1": { "w": 104, "h": 145 }, "_2": { "w": 19, "h": 124 }, "_3": { "w": 19, "h": 124 }, "_4": { "w": 58, "h": 124 }, "_5": { "w": 54, "h": 40 }, "_8": { "w": 19, "h": 19 }, "_9": { "w": 19, "h": 19 }, "_6": { "w": 54, "h": 19 }, "_7": { "w": 54, "h": 40 }, "_10": { "w": 24, "h": 19 }, "_11": { "w": 23, "h": 19 } }, "7": { "_1": { "w": 146, "h": 103 }, "_2": { "w": 19, "h": 82 }, "_3": { "w": 19, "h": 82 }, "_4": { "w": 100, "h": 82 }, "_5": { "w": 44, "h": 61 }, "_8": { "w": 19, "h": 19 }, "_9": { "w": 19, "h": 19 }, "_6": { "w": 19, "h": 61 }, "_7": { "w": 28, "h": 61 }, "_10": { "w": 24, "h": 19 }, "_11": { "w": 24, "h": 19 } } },
-  3: { "0": { "_1": { "w": 69, "h": 103 }, "_2": { "w": 19, "h": 82 }, "_3": { "w": 19, "h": 82 }, "_4": { "w": 23, "h": 82 }, "_5": { "w": 19, "h": 19 }, "_6": { "w": 19, "h": 19 }, "_7": { "w": 19, "h": 19 } }, "1": { "_1": { "w": 69, "h": 103 }, "_2": { "w": 19, "h": 82 }, "_3": { "w": 19, "h": 82 }, "_4": { "w": 23, "h": 82 }, "_5": { "w": 19, "h": 19 }, "_6": { "w": 19, "h": 19 }, "_7": { "w": 19, "h": 19 } }, "2": { "_1": { "w": 69, "h": 103 }, "_2": { "w": 65, "h": 19 }, "_3": { "w": 65, "h": 19 }, "_4": { "w": 65, "h": 40 }, "_5": { "w": 19, "h": 19 }, "_6": { "w": 19, "h": 19 }, "_7": { "w": 19, "h": 19 } }, "3": { "_1": { "w": 69, "h": 103 }, "_2": { "w": 65, "h": 19 }, "_3": { "w": 65, "h": 19 }, "_4": { "w": 65, "h": 40 }, "_5": { "w": 19, "h": 19 }, "_6": { "w": 19, "h": 19 }, "_7": { "w": 19, "h": 19 } }, "4": { "_1": { "w": 27, "h": 145 }, "_2": { "w": 23, "h": 19 }, "_3": { "w": 23, "h": 19 }, "_4": { "w": 23, "h": 82 }, "_5": { "w": 19, "h": 19 }, "_6": { "w": 19, "h": 19 }, "_7": { "w": 19, "h": 19 } }, "5": { "_1": { "w": 130, "h": 124 }, "_2": { "w": 126, "h": 19 }, "_3": { "w": 126, "h": 19 }, "_4": { "w": 126, "h": 61 }, "_5": { "w": 44, "h": 40 }, "_8": { "w": 19, "h": 19 }, "_9": { "w": 19, "h": 19 }, "_6": { "w": 19, "h": 40 }, "_7": { "w": 54, "h": 40 }, "_10": { "w": 24, "h": 19 }, "_11": { "w": 23, "h": 19 } }, "6": { "_1": { "w": 104, "h": 145 }, "_2": { "w": 19, "h": 124 }, "_3": { "w": 19, "h": 124 }, "_4": { "w": 58, "h": 124 }, "_5": { "w": 54, "h": 40 }, "_8": { "w": 19, "h": 19 }, "_9": { "w": 19, "h": 19 }, "_6": { "w": 54, "h": 19 }, "_7": { "w": 54, "h": 40 }, "_10": { "w": 24, "h": 19 }, "_11": { "w": 23, "h": 19 } }, "7": { "_1": { "w": 146, "h": 103 }, "_2": { "w": 19, "h": 82 }, "_3": { "w": 19, "h": 82 }, "_4": { "w": 100, "h": 82 }, "_5": { "w": 44, "h": 61 }, "_8": { "w": 19, "h": 19 }, "_9": { "w": 19, "h": 19 }, "_6": { "w": 19, "h": 61 }, "_7": { "w": 28, "h": 61 }, "_10": { "w": 24, "h": 19 }, "_11": { "w": 24, "h": 19 } }, "8": { "_1": { "w": 94, "h": 166 }, "_2": { "w": 19, "h": 145 }, "_3": { "w": 19, "h": 145 }, "_4": { "w": 48, "h": 145 }, "_5": { "w": 44, "h": 40 }, "_8": { "w": 19, "h": 19 }, "_9": { "w": 19, "h": 19 }, "_6": { "w": 44, "h": 19 }, "_7": { "w": 44, "h": 61 }, "_10": { "w": 24, "h": 19 }, "_11": { "w": 24, "h": 19 } }, "9": { "_1": { "w": 23, "h": 40 }, "_2": { "w": 19, "h": 19 } }, "10": { "_1": { "w": 23, "h": 23 }, "_2": { "w": 19, "h": 19 } }, "11": { "_1": { "w": 44, "h": 40 }, "_2": { "w": 19, "h": 19 }, "_3": { "w": 19, "h": 19 } }, "12": { "_1": { "w": 23, "h": 61 }, "_2": { "w": 19, "h": 19 }, "_3": { "w": 19, "h": 19 } }, "13": { "_1": { "w": 44, "h": 23 }, "_2": { "w": 19, "h": 19 }, "_3": { "w": 19, "h": 19 } }, "14": { "_1": { "w": 111, "h": 44 }, "_2": { "w": 19, "h": 40 }, "_3": { "w": 19, "h": 40 }, "_4": { "w": 65, "h": 40 }, "_5": { "w": 19, "h": 19 }, "_6": { "w": 19, "h": 19 }, "_7": { "w": 19, "h": 19 } }, "15": { "_1": { "w": 172, "h": 82 }, "_2": { "w": 19, "h": 61 }, "_3": { "w": 19, "h": 61 }, "_4": { "w": 126, "h": 61 }, "_5": { "w": 44, "h": 40 }, "_8": { "w": 19, "h": 19 }, "_9": { "w": 19, "h": 19 }, "_6": { "w": 19, "h": 40 }, "_7": { "w": 54, "h": 40 }, "_10": { "w": 24, "h": 19 }, "_11": { "w": 23, "h": 19 } }, "16": { "_1": { "w": 172, "h": 65 }, "_2": { "w": 19, "h": 61 }, "_3": { "w": 19, "h": 61 }, "_4": { "w": 126, "h": 61 }, "_5": { "w": 44, "h": 40 }, "_8": { "w": 19, "h": 19 }, "_9": { "w": 19, "h": 19 }, "_6": { "w": 19, "h": 40 }, "_7": { "w": 54, "h": 40 }, "_10": { "w": 24, "h": 19 }, "_11": { "w": 23, "h": 19 } }, "17": { "_1": { "w": 490, "h": 23 }, "_2": { "w": 19, "h": 19 }, "_3": { "w": 19, "h": 19 }, "_4": { "w": 19, "h": 19 }, "_5": { "w": 19, "h": 19 }, "_6": { "w": 19, "h": 19 }, "_7": { "w": 19, "h": 19 }, "_8": { "w": 19, "h": 19 }, "_9": { "w": 19, "h": 19 }, "_10": { "w": 24, "h": 19 }, "_11": { "w": 23, "h": 19 }, "_12": { "w": 24, "h": 19 }, "_13": { "w": 24, "h": 19 }, "_14": { "w": 24, "h": 19 }, "_15": { "w": 24, "h": 19 }, "_16": { "w": 24, "h": 19 }, "_17": { "w": 24, "h": 19 }, "_18": { "w": 24, "h": 19 }, "_19": { "w": 24, "h": 19 }, "_20": { "w": 24, "h": 19 }, "_21": { "w": 24, "h": 19 } }, "18": { "_1": { "w": 196, "h": 40 }, "_2": { "w": 19, "h": 19 } }, "19": { "_1": { "w": 196, "h": 61 }, "_2": { "w": 19, "h": 40 }, "_3": { "w": 19, "h": 40 }, "_4": { "w": 65, "h": 40 }, "_5": { "w": 19, "h": 19 }, "_6": { "w": 19, "h": 19 }, "_7": { "w": 19, "h": 19 } }, "20": { "_1": { "w": 196, "h": 40 }, "_2": { "w": 19, "h": 19 }, "_3": { "w": 19, "h": 19 }, "_4": { "w": 19, "h": 19 } }, "21": { "_1": { "w": 27, "h": 145 }, "_2": { "w": 23, "h": 19 }, "_3": { "w": 23, "h": 19 }, "_4": { "w": 23, "h": 82 }, "_5": { "w": 19, "h": 19 }, "_6": { "w": 19, "h": 19 }, "_7": { "w": 19, "h": 19 } }, "22": { "_1": { "w": 196, "h": 103 }, "_2": { "w": 65, "h": 19 }, "_3": { "w": 65, "h": 19 }, "_4": { "w": 65, "h": 40 }, "_5": { "w": 19, "h": 19 }, "_6": { "w": 19, "h": 19 }, "_7": { "w": 19, "h": 19 } }, "23": { "_1": { "w": 196, "h": 103 }, "_2": { "w": 19, "h": 82 }, "_3": { "w": 19, "h": 82 }, "_4": { "w": 23, "h": 82 }, "_5": { "w": 19, "h": 19 }, "_6": { "w": 19, "h": 19 }, "_7": { "w": 19, "h": 19 } } },
-  4: {}, 
-  5: { "0": { "_1": { "w": 33, "h": 120 }, "_2": { "w": 19, "h": 19 } }, "1": { "_1": { "w": 104, "h": 120 }, "_2": { "w": 19, "h": 19 } } },
-  6: {},
-  7: {"0":{"_1":{"w":22,"h":46},"_2":{"w":22,"h":23},"_3":{"w":22,"h":23}}},
-};
-const MAXNODES = 5; 
-const ALLOW_CALIBRATION = false;
-const KSKeys = ['action', 'actionPlus', 'all', 'best25', 'best50', 'best75', 'best100', 'emo', 'huge',
-  'life', 'life50', 'lifePlus', 'nemo', 'nemo100', 'object', 'object50', 'objectPlus'];
-const PERLEN_DATA_PATH = './public/PERLENDATA/';
-const PERLENPATH_FRONT = './PERLENDATA/';
-const HEROKU = false;
-const USERNAME_SELECTION = 'random'; 
-const UITEST = false;
-const JUST_PERLEN_GAME = true;
-const SERVERURL='http://localhost:2121';
-const CLEAR_LOCAL_STORAGE = false;
-const BRAUN = '#331606';
-const GermanToEnglish = {
-  rot: 'red', blau: 'blue', grün: 'green', gelb: 'yellow', violett: 'violet', lila: 'purple',
-  braun: 'brown', schwarz: 'black', weiss: 'white', grau: 'grey', rosa: 'pink', orange: 'orange'
-};
-const USELIVESERVER = true; 
-const DEFAULTUSERNAME = 'gul'; 
-const Simple = {
-  axiom: 'A',
-  rules: [
-    { aus: 'A', mach: 'AB' },
-    { aus: 'B', mach: 'A' }
-  ],
-};
-const Algae = {
-  axiom: 'A',
-  rules: [
-    { aus: 'A', mach: 'A+[B]-[A]' },
-    { aus: 'B', mach: 'AA' }
-  ],
-  angle: 25,
-  factor: .9,
-  max: 5,
-};
-const Complex = {
-  axiom: 'F',
-  rules: [
-    { aus: 'F', mach: 'FF+[+F-F-F]-[-F+F+F]' }
-  ],
-  angle: 25,
-  factor: .5,
-  max: 6,
-};
-const style = new ol.style.Style({
-  fill: new ol.style.Fill({
-    color: '#eeeeee',
-  }),
-});
-const vector = new ol.layer.Vector({
-  source: new ol.source.Vector({
-    url: 'https://openlayers.org/data/vector/ecoregions.json',
-    format: new ol.format.GeoJSON(),
-  }),
-  background: 'white',
-  style: function (feature) {
-    const color = feature.get('COLOR') || '#eeeeee';
-    style.getFill().setColor(color);
-    return style;
-  },
-});
-const map = new Map({
-  layers: [
-    new TileLayer({
-      source: new OSM(),
-    }),
-    vectorPolygons,
-    vectorLines,
-    vectorPoints,
-  ],
-  target: 'map',
-  view: new View({
-    center: [-8161939, 6095025],
-    zoom: 8,
-  }),
-});
-const selected = new ol.style.Style({
-  fill: new ol.style.Fill({
-    color: '#eeeeee',
-  }),
-  stroke: new ol.style.Stroke({
-    color: 'rgba(255, 255, 255, 0.7)',
-    width: 2,
-  }),
-});
-const selectSingleClick = new ol.interaction.Select({ style: selectStyle });
-const selectClick = new ol.interaction.Select({
-  condition: ol.events.condition.click,
-  style: selectStyle,
-});
-const selectPointerMove = new ol.interaction.Select({
-  condition: ol.events.condition.pointerMove,
-  style: selectStyle,
-});
-const selectAltClick = new ol.interaction.Select({
-  style: selectStyle,
-  condition: function (mapBrowserEvent) {
-    return click(mapBrowserEvent) && ol.events.condition.altKeyOnly(mapBrowserEvent);
-  },
-});
-const selectElement = document.getElementById('type');
-const changeInteraction = function () {
-  if (select !== null) {
-    map.removeInteraction(select);
-  }
-  const value = selectElement.value;
-  if (value == 'singleclick') {
-    select = selectSingleClick;
-  } else if (value == 'click') {
-    select = selectClick;
-  } else if (value == 'pointermove') {
-    select = selectPointerMove;
-  } else if (value == 'altclick') {
-    select = selectAltClick;
-  } else {
-    select = null;
-  }
-  if (select !== null) {
-    map.addInteraction(select);
-    select.on('select', function (e) {
-      document.getElementById('status').innerHTML =
-        '&nbsp;' +
-        e.target.getFeatures().getLength() +
-        ' selected features (last operation selected ' +
-        e.selected.length +
-        ' and deselected ' +
-        e.deselected.length +
-        ' features)';
-    });
-  }
-};
-const myDom = {
-  points: {
-    text: document.getElementById('points-text'),
-    align: document.getElementById('points-align'),
-    baseline: document.getElementById('points-baseline'),
-    rotation: document.getElementById('points-rotation'),
-    font: document.getElementById('points-font'),
-    weight: document.getElementById('points-weight'),
-    size: document.getElementById('points-size'),
-    height: document.getElementById('points-height'),
-    offsetX: document.getElementById('points-offset-x'),
-    offsetY: document.getElementById('points-offset-y'),
-    color: document.getElementById('points-color'),
-    outline: document.getElementById('points-outline'),
-    outlineWidth: document.getElementById('points-outline-width'),
-    maxreso: document.getElementById('points-maxreso'),
-  },
-  lines: {
-    text: document.getElementById('lines-text'),
-    align: document.getElementById('lines-align'),
-    baseline: document.getElementById('lines-baseline'),
-    rotation: document.getElementById('lines-rotation'),
-    font: document.getElementById('lines-font'),
-    weight: document.getElementById('lines-weight'),
-    placement: document.getElementById('lines-placement'),
-    maxangle: document.getElementById('lines-maxangle'),
-    overflow: document.getElementById('lines-overflow'),
-    size: document.getElementById('lines-size'),
-    height: document.getElementById('lines-height'),
-    offsetX: document.getElementById('lines-offset-x'),
-    offsetY: document.getElementById('lines-offset-y'),
-    color: document.getElementById('lines-color'),
-    outline: document.getElementById('lines-outline'),
-    outlineWidth: document.getElementById('lines-outline-width'),
-    maxreso: document.getElementById('lines-maxreso'),
-  },
-  polygons: {
-    text: document.getElementById('polygons-text'),
-    align: document.getElementById('polygons-align'),
-    baseline: document.getElementById('polygons-baseline'),
-    rotation: document.getElementById('polygons-rotation'),
-    font: document.getElementById('polygons-font'),
-    weight: document.getElementById('polygons-weight'),
-    placement: document.getElementById('polygons-placement'),
-    maxangle: document.getElementById('polygons-maxangle'),
-    overflow: document.getElementById('polygons-overflow'),
-    size: document.getElementById('polygons-size'),
-    height: document.getElementById('polygons-height'),
-    offsetX: document.getElementById('polygons-offset-x'),
-    offsetY: document.getElementById('polygons-offset-y'),
-    color: document.getElementById('polygons-color'),
-    outline: document.getElementById('polygons-outline'),
-    outlineWidth: document.getElementById('polygons-outline-width'),
-    maxreso: document.getElementById('polygons-maxreso'),
-  },
-};
-const getText = function (feature, resolution, dom) {
-  const type = dom.text.value;
-  const maxResolution = dom.maxreso.value;
-  let text = feature.get('name');
-  if (resolution > maxResolution) {
-    text = '';
-  } else if (type == 'hide') {
-    text = '';
-  } else if (type == 'shorten') {
-    text = text.trunc(12);
-  } else if (
-    type == 'wrap' &&
-    (!dom.placement || dom.placement.value != 'line')
-  ) {
-    text = stringDivider(text, 16, '\n');
-  }
-  return text;
-};
-const createTextStyle = function (feature, resolution, dom) {
-  const align = dom.align.value;
-  const baseline = dom.baseline.value;
-  const size = dom.size.value;
-  const height = dom.height.value;
-  const offsetX = parseInt(dom.offsetX.value, 10);
-  const offsetY = parseInt(dom.offsetY.value, 10);
-  const weight = dom.weight.value;
-  const placement = dom.placement ? dom.placement.value : undefined;
-  const maxAngle = dom.maxangle ? parseFloat(dom.maxangle.value) : undefined;
-  const overflow = dom.overflow ? dom.overflow.value == 'true' : undefined;
-  const rotation = parseFloat(dom.rotation.value);
-  if (dom.font.value == "'Open Sans'" && !openSansAdded) {
-    const openSans = document.createElement('link');
-    openSans.href = 'https://fonts.googleapis.com/css?family=Open+Sans';
-    openSans.rel = 'stylesheet';
-    document.head.appendChild(openSans);
-    openSansAdded = true;
-  }
-  const font = weight + ' ' + size + '/' + height + ' ' + dom.font.value;
-  const fillColor = dom.color.value;
-  const outlineColor = dom.outline.value;
-  const outlineWidth = parseInt(dom.outlineWidth.value, 10);
-  return new Text({
-    textAlign: align == '' ? undefined : align,
-    textBaseline: baseline,
-    font: font,
-    text: getText(feature, resolution, dom),
-    fill: new Fill({ color: fillColor }),
-    stroke: new Stroke({ color: outlineColor, width: outlineWidth }),
-    offsetX: offsetX,
-    offsetY: offsetY,
-    placement: placement,
-    maxAngle: maxAngle,
-    overflow: overflow,
-    rotation: rotation,
-  });
-};
-const vectorPolygons = new VectorLayer({
-  source: new VectorSource({
-    url: 'data/geojson/polygon-samples.geojson',
-    format: new GeoJSON(),
-  }),
-  style: polygonStyleFunction,
-});
-const vectorLines = new VectorLayer({
-  source: new VectorSource({
-    url: 'data/geojson/line-samples.geojson',
-    format: new GeoJSON(),
-  }),
-  style: lineStyleFunction,
-});
-const vectorPoints = new VectorLayer({
-  source: new VectorSource({
-    url: 'data/geojson/point-samples.geojson',
-    format: new GeoJSON(),
-  }),
-  style: pointStyleFunction,
-});
-const express = require('express');
-const app = express();
-const http = require('http');
-const server = http.createServer(app);
-const { Server } = require("socket.io");
-const cors = require('cors');
-const io = new Server(server, { cors: { origins: '*', } });
-const DARKBLUE = '#04041b';
-const EMO = {
-  emoscale: {
-    freedom: { list: 'joyful, empowered, loving, free', key: 'smiling face with hearts', n: 4, color: 'violet', E: 'joy', D: 'freiheit', stage: 'open heart', danger: 'arrogance', advice: 'be quiet', loc: 'airport', locd: 'flughafen', syn: 'joy,appreciation,empowerment,love', rem: 'let go' },
-    zone: { list: "energetic, creative, enthusiastic, in the zone", key: 'nerd face', n: 3, color: 'indigo', E: 'energy', D: 'energie', stage: 'constant flow', danger: 'greed', advice: 'now', loc: 'airport', locd: 'flughafen', syn: 'passion', rem: 'remain watchful' },
-    grateful: { list: 'peaceful, grateful, happy, playful', key: 'smiling face with halo', n: 2, color: 'blue', syn: 'eagerness,happiness', rem: 'stick to plan', E: 'energy', D: 'energie', stage: 'energy', danger: 'planlos verpuffen lassen, being overly confident', advice: 'make a plan, stick to the plan', loc: 'airport', locd: 'flughafen' },
-    contentment: { list: 'calm, centered, content, trusting', key: 'relieved face', n: 1, color: 'green', rem: 'abide', E: 'serene', D: 'zufriedenheit', stage: 'gelassenheit', danger: 'passivity', advice: 'stay active', loc: 'airport', locd: 'flughafen' },
-    boredom: { list: 'tired, bored, aimless, empty', key: 'slightly frowning face', n: 0, color: 'sienna', rem: 'oracle', E: 'bored', D: 'langeweile', stage: 'gelassenheit', danger: 'passivity', advice: 'stay active', loc: 'airport', locd: 'flughafen' },
-    pessimism: { list: 'indecisive, confused, doubting, worried', key: 'worried face', n: -1, color: 'yellow', rem: 'last day', E: 'serene', D: 'langeweile', stage: 'gelassenheit', danger: 'passivity', advice: 'stay active', loc: 'airport', locd: 'flughafen' },
-    overwhelm: { list: 'irritated, anxious, stressed, overwhelmed', key: 'anxious face with sweat', n: -2, color: 'orange', rem: 'pause', E: 'irritated', D: 'irritiert', stage: 'damage control', danger: 'losing contenance', advice: 'retreat', loc: 'airport', locd: 'flughafen' },
-    blame: { list: 'impatient, resentful, blaming, angry', key: 'face with symbols on mouth', n: -3, color: 'red', syn: 'discouragement,anger,revenge', rem: 'robot', E: 'blaming', D: 'schuld zuweisend', stage: 'damage control', danger: 'toxicity', advice: 'surrender', loc: 'airport', locd: 'flughafen' },
-    hatred: { list: 'ruthless, aggressive, jealous, hateful', key: 'black heart', n: -4, color: 'black', syn: 'rage,jealousy', rem: 'robot', E: 'hateful', D: 'hass', stage: 'damage control', danger: 'toxicity', advice: 'surrender', loc: 'airport', locd: 'flughafen' },
-    guilt: { list: 'guilty, powerless, frozen, suicidal', key: 'cold face', n: -5, color: 'grey', syn: 'insecurity,unworthiness', rem: 'robot', E: 'guilty', D: 'wertlos', stage: 'damage control', danger: 'toxicity', advice: 'surrender', loc: 'airport', locd: 'flughafen' },
-  },
-  remedy: {
-    sleep: { list: 'rest, close your eyes, deep breath' },
-    distraction: { list: 'read, movie, docu, audiobook' },
-    walk: { list: 'music, tm, library, walk' },
-    babystep: { list: 'veggies, fruit, haushalt, wae, wasser, tee' },
-    work: { list: 'post, box, shelf, people, todolist' },
-    action: { list: 'piano, violin, game' },
-    choices: { list: 'dice, todolist, openlist, choices' },
-    retreat: { list: 'flight, dimension change' },
-    cafe: { list: 'renew, plan' },
-    inside: { list: 'watch, freeze, meditate' }
-  },
-  attitude: {
-    disziplin: { max: 1 },
-    gelassenheit: { min: 1, max: 4 },
-    energie: { min: 3, max: 5 },
-    ausgelassenheit: { min: 5, max: 7 },
-    friede: { min: 5, max: 7 },
-    freude: { min: 5, max: 7 },
-    freiheit: { min: 5, max: 7 },
-    liebe: { min: 5, max: 7 },
-  }
-};
-const NATURE = {
-  depth: 6,
-  branching: [-25, 5, 25],
-  lsystems: [
-    {
-      axiom: 'A',
-      rules: [
-        { aus: 'A', wird: 'A+[+A-A]' },
-      ],
-      angle: 25,
-      len: 500,
-      dlen: .7,
-      depth: 6
-    },
-    {
-      axiom: 'F',
-      rules: [
-        { aus: 'F', wird: 'F[+F]F[-F]F' },
-      ],
-      angle: 26,
-      len: 50,
-    },
-    {
-      axiom: 'F',
-      rules: [
-        { aus: 'F', wird: 'F[+F]F[-F][F]' },
-      ],
-      angle: 20,
-      len: 200,
-    },
-    {
-      axiom: 'X',
-      rules: [
-        { aus: 'X', wird: 'F[+X][-X]FX' },
-        { aus: 'F', wird: 'FF' },
-      ],
-      angle: 26,
-      len: 200,
-    },
-    {
-      axiom: 'A',
-      rules: [{ aus: 'A', wird: 'AA+[+A-A-A]-[-A+A+A]' }],
-      angle: 25,
-    },
-    {
-      axiom: 'A',
-      rules: [{ aus: 'F', wird: 'FF' }, { aus: 'A', wird: 'F-[[A]+A]+F[+FA]-A' }],
-      angle: 23,
-    },
-    {
-      axiom: 'Y',
-      rules: [{ aus: 'X', wird: 'X[-FFF][+FFF]FX' }, { aus: 'Y', wird: 'YFX[+Y][-Y]' }, { aus: 'F', wird: 'X' }],
-      angle: 25,
-      len: 85,
-    },
-    {
-      axiom: 'F',
-      rules: [{ aus: 'F', wird: 'F[+FF][-FF]F[-F][+F]F' }],
-      angle: 35,
-      len: 70,
-    },
-    {
-      axiom: 'VZFFF',
-      rules: [{ aus: 'V', wird: '[+++W][---W]YV' },
-      { aus: 'W', wird: '+X[-W]Z' },
-      { aus: 'Y', wird: 'YZ' },
-      { aus: 'F', wird: 'Y' },
-      { aus: 'Z', wird: '[-FFF][+FFF]F' },
-      { aus: 'X', wird: '-W[+X]Z' }],
-      angle: 40,
-      len: 100,
-    },
-    {
-      axiom: 'F++F++F',
-      rules: [{ aus: 'F', wird: 'F-F++F-F' }],
-      angle: 60,
-      len: 100,
-      depth: 3,
-      xstart: 3,
-    },
-    {
-      axiom: 'F+F+F+F',
-      rules: [{ aus: 'F', wird: 'FF+F+F+F+FF' }],
-      angle: 90,
-      len: 100,
-      depth: 3,
-      xstart: 6,
-    },
-    {
-      axiom: 'F+F+F+F',
-      rules: [{ aus: 'F', wird: 'F+F-F-FFF+F+F-F' }],
-      angle: 90,
-      len: 28,
-      depth: 3,
-    },
-    {
-      axiom: 'X',
-      rules: [
-        { aus: 'X', wird: '-YF+XFX+FY-' },
-        { aus: 'Y', wird: '+XF-YFY-FX+' },
-        { aus: 'F', wird: 'F' },
-      ],
-      angle: 90,
-      len: 150,
-      xstart: 1.3,
-      depth: 4,
-    },
-    {
-      axiom: 'X',
-      rules: [{ aus: 'F', wird: 'FF' },
-      { aus: 'X', wird: 'F[+X]F[-X]+X' }],
-      angle: 20,
-      len: 200,
-    },
-  ]
 };
 const Geo = {
   layerInfo: {
@@ -5915,181 +5405,603 @@ const Geo = {
     'South America': ['Argentina', 'Aruba', 'Bolivia', 'Brazil', 'Chile', 'Colombia', 'Curacao', 'Ecuador', 'French Guiana', 'Guam', 'Guyana', 'Paraguay', 'Peru', 'Suriname', 'Uruguay', 'Venezuela']
   }
 };
-const is_key_down = (() => {
-  const state = {};
-  window.addEventListener('keyup', (e) => state[e.key] = false);
-  window.addEventListener('keydown', (e) => { state[e.key] = true; });
-  return (key) => state.hasOwnProperty(key) && state[key] || false;
+var meme;
+var obstacles = [];
+var score, hintWord, bestWord, answerCorrect, currentInfo;
+var myGameArea = {
+  canvas: document.createElement('canvas'),
+  start: function () {
+    this.canvas.width = 480;
+    this.canvas.height = 270;
+    this.context = this.canvas.getContext('2d');
+    document.body.insertBefore(this.canvas, document.body.childNodes[0]);
+    this.frameNo = 0;
+    this.interval = setInterval(updateGameArea, 20);
+  },
+  clear: function () {
+    this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+  },
+};
+var dRight, dSidebar, dTable, dTitle, dTop;
+var dBottom, dButtons, dCenter, dCode, dConsole, dContent, dFiddle, dFooter, dHeader, dLeft, dMap, dMain, dMenu, dMessage, dPage, dPuppet;
+var FR = 50, CX, CV, AU = {}, CONTEXT = null;
+var _TOSound, _sndPlayer, _loaded = false, _qSound, _idleSound = true, _sndCounter = 0;
+var SCENEWIDTH = 900;
+var SCENEHEIGHT = 600;
+var FRAMERATE = 30; 
+var Timer = function () {
+  this.date = new Date();
+  this.lastTime = 0;
+  this.currentTime = 0;
+  this.start = function () {
+    this.currentTime = Date.now();
+  }
+  this.reset = function () {
+    this.currentTime = Date.now();
+  }
+  this.getTimeElapsed = function () {
+    this.lastTime = this.currentTime;
+    this.currentTime = Date.now();
+    return (this.currentTime - this.lastTime);
+  }
+}
+var EC = {}; 
+var EID = {}; 
+var ET = {}; 
+var ENN = {};
+var Q, TOQ, AkQ;
+var QCounter = 0;
+var QCancelAutoreset, TOQRunner, QRunnerRunning = false, QRunning = false;
+var resizeObserver = new ResizeObserver(entries => {
+  for (let entry of entries) {
+    let cs = window.getComputedStyle(entry.target);
+    console.log('watching element:', entry.target);
+    console.log(entry.contentRect.top, ' is ', cs.paddingTop);
+    console.log(entry.contentRect.left, ' is ', cs.paddingLeft);
+    console.log(entry.borderBoxSize[0].inlineSize, ' is ', cs.width);
+    console.log(entry.borderBoxSize[0].blockSize, ' is ', cs.height);
+    if (entry.target.handleResize)
+      entry.target.handleResize(entry);
+  }
+});
+var xxxxxxxxxx = new ResizeObserver(entries => {
+  for (let entry of entries) {
+    let cs = window.getComputedStyle(entry.target);
+    console.log('watching element:', entry.target);
+    console.log(entry.contentRect.top, ' is ', cs.paddingTop);
+    console.log(entry.contentRect.left, ' is ', cs.paddingLeft);
+    console.log(entry.borderBoxSize[0].inlineSize, ' is ', cs.width);
+    console.log(entry.borderBoxSize[0].blockSize, ' is ', cs.height);
+    if (entry.target.handleResize)
+      entry.target.handleResize(entry);
+  }
+});
+var SERVERURL, Socket = null, SERVER = 'localhost', PORT = 3000, LIVE_SERVER, NODEJS, SINGLECLIENT;
+var game = new GameFunc;
+var UIDHelpers = 0;
+var NAMED_UIDS = {};
+var palDict = {};
+var sheet = (function () {
+  var style = document.createElement('style');
+  style.appendChild(document.createTextNode(''));
+  document.head.appendChild(style);
+  return style.sheet;
 })();
-const MyNames = ['amanda', 'angela', 'erin', 'holly', 'jan', 'karen', 'kelly', 'pam', 'phyllis', 'andy', 'creed', 'darryl', 'david', 'dwight', 'felix', 'gul', 'jim', 'kevin', 'luis', 'michael', 'nil', 'oscar', 'ryan', 'stanley', 'toby', 'wolfgang'];
-const colorShadeX = (c, amt) => {
-  let col = colorHex(c);
-  col = col.replace(/^#/, '')
-  if (col.length === 3) col = col[0] + col[0] + col[1] + col[1] + col[2] + col[2]
-  let [r, g, b] = col.match(/.{2}/g);
-  ([r, g, b] = [parseInt(r, 16) + amt, parseInt(g, 16) + amt, parseInt(b, 16) + amt])
-  r = Math.max(Math.min(255, r), 0).toString(16)
-  g = Math.max(Math.min(255, g), 0).toString(16)
-  b = Math.max(Math.min(255, b), 0).toString(16)
-  const rr = (r.length < 2 ? '0' : '') + r
-  const gg = (g.length < 2 ? '0' : '') + g
-  const bb = (b.length < 2 ? '0' : '') + b
-  return `#${rr}${gg}${bb}`
-}
-const MyEasing = 'cubic-bezier(1,-0.03,.86,.68)';
-const Perlin = {
-  PERLIN_YWRAPB: 4,
-  PERLIN_YWRAP: 1 << 4,
-  PERLIN_ZWRAPB: 8,
-  PERLIN_ZWRAP: 1 << 8,
-  PERLIN_SIZE: 4095,
-  perlin_octaves: 4,
-  perlin_amp_falloff: 0.5,
-  scaled_cosine: i => 0.5 * (1.0 - Math.cos(i * Math.PI)),
-  perlin: null,
-  lastx: 0,
-  speed: 0.02,
-  channels: {},
-}
-const COLORPARAMNAMES = {
-  bg: true,
-  fg: true,
-  color: true,
-  'font-color': true,
-  border: true,
-  highlight: true,
-  highlight1: true,
-  highlight1: true,
-}
-const RLAYOUT = {
-  card52: lCard52,
-  card: lCard,
-  hand: lHand,
-  grid: lGrid,
-  picto: lPicto,
-}
-const config = {
-  src: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/175711/open-peeps-sheet.png',
-  rows: 15,
-  cols: 7
-}
-const randomRange = (min, max) => min + Math.random() * (max - min)
-const randomIndex = (array) => randomRange(0, array.length) | 0
-const removeFromArray = (array, i) => array.splice(i, 1)[0]
-const removeItemFromArray = (array, item) => removeFromArray(array, array.indexOf(item))
-const removeRandomFromArray = (array) => removeFromArray(array, randomIndex(array))
-const getRandomFromArray = (array) => (array[randomIndex(array) | 0])
-const resetPeep = ({ stage, peep }) => {
-  const direction = Math.random() > 0.5 ? 1 : -1
-  const offsetY = 100 - 250 * gsap.parseEase('power2.in')(Math.random())
-  const startY = stage.height - peep.height + offsetY
-  let startX
-  let endX
-  if (direction === 1) {
-    startX = -peep.width
-    endX = stage.width
-    peep.scaleX = 1
-  } else {
-    startX = stage.width + peep.width
-    endX = 0
-    peep.scaleX = -1
+var countries = [
+  'Afghanistan',
+  'Albania',
+  'Algeria',
+  'Andorra',
+  'Angola',
+  'Anguilla',
+  'Antigua & Barbuda',
+  'Argentina',
+  'Armenia',
+  'Aruba',
+  'Australia',
+  'Austria',
+  'Azerbaijan',
+  'Bahamas',
+  'Bahrain',
+  'Bangladesh',
+  'Barbados',
+  'Belarus',
+  'Belgium',
+  'Belize',
+  'Benin',
+  'Bermuda',
+  'Bhutan',
+  'Bolivia',
+  'Bosnia & Herzegovina',
+  'Botswana',
+  'Brazil',
+  'British Virgin Islands',
+  'Brunei',
+  'Bulgaria',
+  'Burkina Faso',
+  'Burundi',
+  'Cambodia',
+  'Cameroon',
+  'Canada',
+  'Cape Verde',
+  'Cayman Islands',
+  'Central Arfrican Republic',
+  'Chad',
+  'Chile',
+  'China',
+  'Colombia',
+  'Congo',
+  'Cook Islands',
+  'Costa Rica',
+  'Cote D Ivoire',
+  'Croatia',
+  'Cuba',
+  'Curacao',
+  'Cyprus',
+  'Czech Republic',
+  'Denmark',
+  'Djibouti',
+  'Dominica',
+  'Dominican Republic',
+  'Ecuador',
+  'Egypt',
+  'El Salvador',
+  'Equatorial Guinea',
+  'Eritrea',
+  'Estonia',
+  'Ethiopia',
+  'Falkland Islands',
+  'Faroe Islands',
+  'Fiji',
+  'Finland',
+  'France',
+  'French Polynesia',
+  'French West Indies',
+  'Gabon',
+  'Gambia',
+  'Georgia',
+  'Germany',
+  'Ghana',
+  'Gibraltar',
+  'Greece',
+  'Greenland',
+  'Grenada',
+  'Guam',
+  'Guatemala',
+  'Guernsey',
+  'Guinea',
+  'Guinea Bissau',
+  'Guyana',
+  'Haiti',
+  'Honduras',
+  'Hong Kong',
+  'Hungary',
+  'Iceland',
+  'India',
+  'Indonesia',
+  'Iran',
+  'Iraq',
+  'Ireland',
+  'Isle of Man',
+  'Israel',
+  'Italy',
+  'Jamaica',
+  'Japan',
+  'Jersey',
+  'Jordan',
+  'Kazakhstan',
+  'Kenya',
+  'Kiribati',
+  'Kosovo',
+  'Kuwait',
+  'Kyrgyzstan',
+  'Laos',
+  'Latvia',
+  'Lebanon',
+  'Lesotho',
+  'Liberia',
+  'Libya',
+  'Liechtenstein',
+  'Lithuania',
+  'Luxembourg',
+  'Macau',
+  'Macedonia',
+  'Madagascar',
+  'Malawi',
+  'Malaysia',
+  'Maldives',
+  'Mali',
+  'Malta',
+  'Marshall Islands',
+  'Mauritania',
+  'Mauritius',
+  'Mexico',
+  'Micronesia',
+  'Moldova',
+  'Monaco',
+  'Mongolia',
+  'Montenegro',
+  'Montserrat',
+  'Morocco',
+  'Mozambique',
+  'Myanmar',
+  'Namibia',
+  'Nauro',
+  'Nepal',
+  'Netherlands',
+  'Netherlands Antilles',
+  'New Caledonia',
+  'New Zealand',
+  'Nicaragua',
+  'Niger',
+  'Nigeria',
+  'North Korea',
+  'Norway',
+  'Oman',
+  'Pakistan',
+  'Palau',
+  'Palestine',
+  'Panama',
+  'Papua New Guinea',
+  'Paraguay',
+  'Peru',
+  'Philippines',
+  'Poland',
+  'Portugal',
+  'Puerto Rico',
+  'Qatar',
+  'Reunion',
+  'Romania',
+  'Russia',
+  'Rwanda',
+  'Saint Pierre & Miquelon',
+  'Samoa',
+  'San Marino',
+  'Sao Tome and Principe',
+  'Saudi Arabia',
+  'Senegal',
+  'Serbia',
+  'Seychelles',
+  'Sierra Leone',
+  'Singapore',
+  'Slovakia',
+  'Slovenia',
+  'Solomon Islands',
+  'Somalia',
+  'South Africa',
+  'South Korea',
+  'South Sudan',
+  'Spain',
+  'Sri Lanka',
+  'St Kitts & Nevis',
+  'St Lucia',
+  'St Vincent',
+  'Sudan',
+  'Suriname',
+  'Swaziland',
+  'Sweden',
+  'Switzerland',
+  'Syria',
+  'Taiwan',
+  'Tajikistan',
+  'Tanzania',
+  'Thailand',
+  "Timor L'Este",
+  'Togo',
+  'Tonga',
+  'Trinidad & Tobago',
+  'Tunisia',
+  'Turkey',
+  'Turkmenistan',
+  'Turks & Caicos',
+  'Tuvalu',
+  'Uganda',
+  'Ukraine',
+  'United Arab Emirates',
+  'United Kingdom',
+  'United States of America',
+  'Uruguay',
+  'Uzbekistan',
+  'Vanuatu',
+  'Vatican City',
+  'Venezuela',
+  'Vietnam',
+  'Virgin Islands (US)',
+  'Yemen',
+  'Zambia',
+  'Zimbabwe'
+];
+var extend = function () {
+  var extended = {};
+  var deep = false;
+  var i = 0;
+  if (typeof arguments[0] === 'boolean') {
+    deep = arguments[0];
+    i++;
   }
-  peep.x = startX
-  peep.y = startY
-  peep.anchorY = startY
-  return {
-    startX,
-    startY,
-    endX
-  }
-}
-const normalWalk = ({ peep, props }) => {
-  const {
-    startX,
-    startY,
-    endX
-  } = props
-  const xDuration = 10
-  const yDuration = 0.25
-  const tl = gsap.timeline()
-  tl.timeScale(randomRange(0.5, 1.5))
-  tl.to(peep, {
-    duration: xDuration,
-    x: endX,
-    ease: 'none'
-  }, 0)
-  tl.to(peep, {
-    duration: yDuration,
-    repeat: xDuration / yDuration,
-    yoyo: true,
-    y: startY - 10
-  }, 0)
-  return tl
-}
-const walks = [
-  normalWalk,
-]
-const img = document.createElement('img')
-const canvas = document.querySelector('#canvas')
-const cx = canvas.getContext('2d')
-const stage = {
-  width: 0,
-  height: 0,
-}
-const allPeeps = []
-const availablePeeps = []
-const crowd = []
-class AAddress extends APasscode {
-  constructor(k, dbInfo, userInfo) {
-    super(k, dbInfo, userInfo);
-  }
-  clear() { super.clear(); Speech.setLanguage(Settings.language); window.onclick = null; }
-  presentInit() {
-    this.msgPrompt = 'enter your address';
-    this.lastHintPrompt = 'please complete entering address!';
-    this.goal = { label: '17448 NE 98th Way Redmond 98052' };
-    Speech.setLanguage('E')
-    let wr = 'your address is:';
-    let sp = 'your address is 1 7 4 4 8 - North-East 98th Way - Redmond, 9 8 0 5 2';
-    showInstruction(this.goal.label, wr, this.dInstruction, true, sp, 12);
-    this.goal.div = mText(this.goal.label, this.dMain, { fz: 40 });
-    this.TOList.push(setTimeout(anim1, 300, this.goal, 500));
-  }
-  presentPrompt() {
-    Speech.setLanguage('E');
-    stdInstruction(this.msgPrompt, this.dInstruction, this.msgPrompt, { voice: 'zira' });
-    this.input = stdInput(this.dMain, { w: 600, fz: 24 });
-    this.input.id = this.defaultFocusElement = 'inputAddon';
-    this.nCorrect = 0;
-  }
-  activate() {
-    window.onclick = () => mBy(this.defaultFocusElement).focus();
-    this.input.onkeyup = ev => {
-      if (ev.key === "Enter") {
-        ev.cancelBubble = true;
-        this.processInput(ev);
+  var merge = function (obj) {
+    for (var prop in obj) {
+      if (obj.hasOwnProperty(prop)) {
+        if (deep && Object.prototype.toString.call(obj[prop]) === '[object Object]') {
+          extended[prop] = extend(true, extended[prop], obj[prop]);
+        } else {
+          extended[prop] = obj[prop];
+        }
       }
-    };
-    this.input.focus();
-    super.activate();
+    }
+  };
+  for (; i < arguments.length; i++) {
+    merge(arguments[i]);
   }
-  eval() {
-    let correctPrefix = this.correctPrefix = getCorrectPrefix(this.goal.label, this.input.value);
-    return correctPrefix == this.goal.label;
+  return extended;
+};
+var palette = null;
+var activatedTests = [];
+var Epsilon = 1e-10;
+var lastUpdate = 0;
+var player, ball, opponent, ai;
+var distance = 24;
+var Ball = function () {
+  var velocity = [0, 0];
+  var position = [0, 0];
+  var element = $('#ball');
+  var owner;
+  var halfTile = 32;
+  var paused = false;
+  function move(t) {
+    if (owner !== undefined) {
+      var ownerPosition = owner.getPosition();
+      position[1] = ownerPosition[1] + owner.getSize() / 2;
+      if (owner.getSide() === 'left') {
+        position[0] = ownerPosition[0] + owner.getSize();
+      } else {
+        position[0] = ownerPosition[0];
+      }
+    } else {
+      if (position[1] - halfTile <= 0 ||
+          position[1] + halfTile >= innerHeight) {
+        velocity[1] = -velocity[1];
+      }
+      position[0] += velocity[0] * t; 
+      position[1] += velocity[1] * t;   
+    }  
+    element.css('left', (position[0] - halfTile) + 'px');
+    element.css('top', (position[1] - halfTile) + 'px');
+  };
+    function checkScored() {
+    if (position[0] <= 0) {
+      pause();
+      $(document).trigger('ping:opponentScored');
+    }
+    if (position[0] >= innerWidth) {
+      pause();
+      $(document).trigger('ping:playerScored');
+    }
   }
-  getHint() {
-    let oldHintLength = isdef(this.hintLength) ? this.hintLength : 0;
-    if (nundef(this.hintLength)) this.hintLength = 0;
-    this.input.value = this.correctPrefix;
-    let progress = this.correctPrefix.length > this.nCorrect;
-    if (this.correctPrefix.length > this.nCorrect) {
-      this.hintLength = 1;
-      this.nCorrect = this.correctPrefix.length;
-    } else if (this.hintLength < this.goal.label.length - this.nCorrect) this.hintLength += 1;
-    if (this.hintLength == 0) this.hintLength = 1;
-    let wr = substringOfMinLength(this.goal.label, this.correctPrefix.length, this.hintLength);
-    let sp = oldHintLength == this.hintLength && !progress ? this.lastHintPrompt : null;
-    return [wr, sp];
+  function update(t) {
+    if(!paused) {
+      move(t);
+    }
+    if (owner !== undefined) {
+      return;
+    }
+    var playerPosition = player.getPosition();
+    if (position[0] <= player.getSize() &&
+        position[1] >= playerPosition[1] &&
+        position[1] <= playerPosition[1] + player.getSize()) {
+      console.log("Grabbed by player!");
+      owner = player;
+    }
+    var opponentPosition = opponent.getPosition();
+     if (position[0] >= innerWidth - opponent.getSize() &&
+        position[1] >= opponentPosition[1] &&
+        position[1] <= opponentPosition[1] + opponent.getSize()) {
+      console.log("Grabbed by opponent!");
+      owner = opponent;
+    }
+   checkScored();
+  }
+  function pause() {
+    paused = true;
+  }
+  function start() {
+    paused = false;
+  }
+  return {
+    update: update,
+    pause:        pause,
+    start:        start,
+    getOwner:     function()  { return owner; },
+    setOwner:     function(o) { owner = o; },
+    getVelocity:  function()  { return velocity }, 
+    setVelocity:  function(v) { velocity = v; },
+    getPosition:  function(p) { return position; },
+  }
+};
+var BallPlayer = function (elementName, side) {
+  var position = [0,0];
+  var aim = 0;
+  var tileSize = 128;
+  var element = $('#'+elementName);
+  var move = function(y) {
+    position[1] += y;
+    if (position[1] <= 0)  {
+      position[1] = 0;
+    }
+    if (position[1] >= innerHeight - tileSize) {
+      position[1] = innerHeight - tileSize;
+    }
+    if (side == 'right') {
+      position[0] = innerWidth - tileSize;
+    }
+    element.css('left', position[0] + 'px'); 
+    element.css('top', position[1] + 'px'); 
+  }
+  var fire = function() {
+    if (ball.getOwner() !== this) {
+      return;
+    }
+    var v = [0,0];
+    if (side == 'left') {
+      switch(aim) {
+      case -1:
+        v = [.707, -.707];
+        break;
+      case 0:
+        v = [1,0];
+        break;
+      case 1:
+        v = [.707, .707];
+      }
+    } else {
+      switch(aim) {
+      case -1:
+        v = [-.707, -.707];
+        break;
+      case 0:
+        v = [-1,0];
+        break;
+      case 1:
+        v = [-.707, .707];
+      }
+    }
+    ball.setVelocity(v);
+    ball.setOwner(undefined);
+  }
+  return {
+    move: move,
+    fire: fire,
+    getSide:      function()  { return side; },
+    setAim:       function(a) { aim = a; },
+    getPosition:  function()  { return position; },
+    getSize:      function()  { return tileSize; }
+  }
+};
+var IS_TESTING = true; 
+var currentGame = IS_TESTING ? 'gTouchPic' : 'sequence';
+var currentUser = 'Gunter';
+var currentLanguage = 'E';
+var currentCategories = ['nosymbols'];
+var startAtLevel = IS_TESTING ? { gSayPicAuto: 10, gTouchPic: 3, gTouchColors: 6, gWritePic: 10, gMissingLetter: 10, gSayPic: 0 }
+  : { gMissingLetter: 3, gTouchPic: 7, gTouchColors: 8, gWritePic: 10, gSayPic: 0 };
+var gameSequence = IS_TESTING ? ['gSayPicAuto', 'gTouchPic', 'gTouchColors', 'gWritePic', 'gMissingLetter', 'gSayPic']
+  : ['gSayPic', 'gTouchColors', 'gWritePic'];//'gMissingLetter','gTouchPic', 
+var currentLevel;
+var currentKeys; 
+var OnMicrophoneReady, OnMicrophoneGotResult, OnMicrophoneProblem;
+var skipAnimations = IS_TESTING; 
+var skipBadgeAnimation = true;
+var StepByStepMode = false; 
+var DELAY = 1000;
+var ROUND_DELAY = 500;
+var DELAY_BETWEEN_MIKE_AND_SPEECH = 2000;
+var ROUND_OUTPUT = true;
+var PICS_PER_LEVEL = IS_TESTING ? 1 : 3;
+var SAMPLES_PER_LEVEL = new Array(20).fill(PICS_PER_LEVEL);
+var MAXLEVEL = 10;
+var fleetingMessageTimeout;
+var MaxNumTrials = 1;
+var MinWordLength = 1;
+var MaxWordLength = 100;
+var NumPics;
+var NumLabels;
+var NextPictureIndex = 0;
+var scoringMode, DefaultScoringMode = 'n'; 
+var minIncrement = 1, maxIncrement = 5, levelDonePoints = 5;
+var numCorrectAnswers, numTotalAnswers, percentageCorrect;
+var levelIncrement, levelPoints;
+var CurrentSessionData, CurrentGameData, CurrentLevelData;
+var SessionScore = 0;
+var LevelChange = true;
+var trialNumber;
+var boundary;
+var isSpeakerRunning, isINTERRUPT;
+var uiPausedStack = [];
+var uiPaused = 0;
+var dLineTopOuter, dLineTop, dLineTopLeft, dLineTopRight, dLineTopMiddle;
+var dLineTitleOuter, dLineTitle, dLineTitleLeft, dLineTitleRight, dLineTitleMiddle;
+var dLineTableOuter, dLineTable, dLineTableLeft, dLineTableRight, dLineTableMiddle;
+var dLineBottomOuter, dLineBottom, dLineBottomLeft, dLineBottomRight, dLineBottomMiddle;
+var dHint, dFeedback, dInstruction, dScore, dLevel;
+var inputBox;
+var defaultFocusElement;
+var dSettings = mBy('dSettings');
+var synth, inputForm, inputTxt, voiceSelect, pitch, pitchValue, rate, rateValue, voices, utterance;
+var axiom, rules, factor, angle, max, sentence, interval_id;
+var Simple = {
+  axiom: 'A',
+  rules: [
+    { aus: 'A', mach: 'AB' },
+    { aus: 'B', mach: 'A' }
+  ],
+};
+var Algae = {
+  axiom: 'A',
+  rules: [
+    { aus: 'A', mach: 'A+[B]-[A]' },
+    { aus: 'B', mach: 'AA' }
+  ],
+  angle: 25,
+  factor: .9,
+  max: 5,
+};
+var Complex = {
+  axiom: 'F',
+  rules: [
+    { aus: 'F', mach: 'FF+[+F-F-F]-[-F+F+F]' }
+  ],
+  angle: 25,
+  factor: .5,
+  max: 6,
+};
+var system = Complex, len = 100, angle;
+var numgen=0;
+
+class _grid {
+  constructor(o, pool, boardInfo, fieldInfo) {
+    this.boardInfo = boardInfo;
+    this.fieldInfo = fieldInfo;
+    let { board, fields, corners, edges } = this.skeleton = this.gridSkeleton(o, pool, this.boardInfo, this.fieldInfo);
+    board.oid = o.oid;
+  }
+  gridSkeleton(omap, pool, gridInfoFunc, fieldInfoFunc) {
+    let board = { o: omap, info: gridInfoFunc(omap.rows, omap.cols) };
+    let fields = {};
+    for (const fid of getElements(omap.fields)) {
+      let o = pool[fid];
+      fields[fid] = { oid: fid, o: pool[fid], info: fieldInfoFunc(board.info, o.row, o.col) };
+    }
+    board.info.vertices = correctPolys(Object.values(fields).map(x => x.info.poly), 1);
+    let dhelp = {}; 
+    let corners = {};
+    for (const fid in fields) {
+      let f = fields[fid];
+      let i = 0;
+      for (const cid of getElements(f.o.corners)) {
+        if (cid && nundef(dhelp[cid])) {
+          let pt = f.info.poly[i];
+          corners[cid] = { oid: cid, o: pool[cid], info: { shape: 'circle', memType: 'corner', x: pt.x, y: pt.y, w: 1, h: 1 } };
+          dhelp[cid] = true;
+        }
+        i += 1;
+      }
+    }
+    dhelp = {}; 
+    let edges = {};
+    for (const fid in fields) {
+      let f = fields[fid];
+      for (const eid of getElements(f.o.edges)) {
+        if (eid && nundef(dhelp[eid])) {
+          let el = pool[eid];
+          let n1 = corners[el.corners[0]._obj];
+          let n2 = corners[el.corners[1]._obj];
+          let [x1, y1, x2, y2] = [n1.info.x, n1.info.y, n2.info.x, n2.info.y];
+          edges[eid] = { oid: eid, o: el, info: { shape: 'line', memType: 'edge', x1: x1, y1: y1, x2: x2, y2: y2, x: (x1 + x2) / 2, y: (y1 + y2) / 2, thickness: 1, w: 1, h: 1 } };
+          dhelp[eid] = true;
+        }
+      }
+    }
+    return { board: board, fields: fields, corners: corners, edges: edges };
   }
 }
 class ABattle {
@@ -6306,7 +6218,7 @@ class ABattle {
   }
   calcMaxUnitTypePerFaction() {
     let unitTypeCountPerFaction = {};
-    let byTypeAndFaction = new Counter(this.b.fire_order, x => x.unit.type + '_' + x.owner);
+    let byTypeAndFaction = new CounterClass(this.b.fire_order, x => x.unit.type + '_' + x.owner);
     for (let g of cartesian(this.allUnitTypes, this.factions)) {
       let type = stringBefore(g, '_');
       let faction = stringAfter(g, '_');
@@ -6820,7 +6732,7 @@ class ABattleSea {
   }
   calcMaxUnitTypePerFaction() {
     let unitTypeCountPerFaction = {};
-    let byTypeAndFaction = new Counter(this.b.fire_order, x => x.unit.type + '_' + x.owner);
+    let byTypeAndFaction = new CounterClass(this.b.fire_order, x => x.unit.type + '_' + x.owner);
     for (let g of cartesian(this.allUnitTypes, this.factions)) {
       let type = stringBefore(g, '_');
       let faction = stringAfter(g, '_');
@@ -7198,12 +7110,10 @@ class AbsGraph1 {
       uniformNodeDimensions: false,
       packComponents: true,
       step: "all",
-      /* spectral layout options */
       samplingType: true,
       sampleSize: 25,
       nodeSeparation: 75,
       piTol: 0.0000001,
-      /* incremental layout options */
       nodeRepulsion: node => 4500,
       idealEdgeLength: edge => 50,
       edgeElasticity: edge => 0.45,
@@ -7217,11 +7127,9 @@ class AbsGraph1 {
       gravityCompound: 1.0,
       gravityRange: 3.8,
       initialEnergyOnIncremental: 0.3,
-      /* constraint options */
       fixedNodeConstraint: undefined,
       alignmentConstraint: undefined,
       relativePlacementConstraint: undefined,
-      /* layout event callbacks */
       ready: () => { }, 
       stop: () => { }, 
       name: 'fcose',
@@ -7262,37 +7170,19 @@ class AbsGraph1 {
       borderSpacing: 20, 
       compactComponents: false, 
       crossingMinimization: 'LAYER_SWEEP', 
-      /* LAYER_SWEEP The layer sweep algorithm iterates multiple times over the layers, trying to find node orderings that minimize the number of crossings. The algorithm uses randomization to increase the odds of finding a good result. To improve its results, consider increasing the Thoroughness option, which influences the number of iterations done. The Randomization seed also influences results.
-      INTERACTIVE Orders the nodes of each layer by comparing their positions before the layout algorithm was started. The idea is that the relative order of nodes as it was before layout was applied is not changed. This of course requires valid positions for all nodes to have been set on the input graph before calling the layout algorithm. The interactive layer sweep algorithm uses the Interactive Reference Point option to determine which reference point of nodes are used to compare positions. */
       cycleBreaking: 'GREEDY', 
-      /* GREEDY This algorithm reverses edges greedily. The algorithm tries to avoid edges that have the Priority property set.
-      INTERACTIVE The interactive algorithm tries to reverse edges that already pointed leftwards in the input graph. This requires node and port coordinates to have been set to sensible values.*/
       direction: 'UNDEFINED', 
-      /* UNDEFINED, RIGHT, LEFT, DOWN, UP */
       edgeRouting: 'ORTHOGONAL', 
       edgeSpacingFactor: 0.5, 
       feedbackEdges: false, 
       fixedAlignment: 'NONE', 
-      /* NONE Chooses the smallest layout from the four possible candidates.
-      LEFTUP Chooses the left-up candidate from the four possible candidates.
-      RIGHTUP Chooses the right-up candidate from the four possible candidates.
-      LEFTDOWN Chooses the left-down candidate from the four possible candidates.
-      RIGHTDOWN Chooses the right-down candidate from the four possible candidates.
-      BALANCED Creates a balanced layout from the four possible candidates. */
       inLayerSpacingFactor: 1.0, 
       layoutHierarchy: false, 
       linearSegmentsDeflectionDampening: 0.3, 
       mergeEdges: false, 
       mergeHierarchyCrossingEdges: true, 
       nodeLayering: 'NETWORK_SIMPLEX', 
-      /* NETWORK_SIMPLEX This algorithm tries to minimize the length of edges. This is the most computationally intensive algorithm. The number of iterations after which it aborts if it hasn't found a result yet can be set with the Maximal Iterations option.
-      LONGEST_PATH A very simple algorithm that distributes nodes along their longest path to a sink node.
-      INTERACTIVE Distributes the nodes into layers by comparing their positions before the layout algorithm was started. The idea is that the relative horizontal order of nodes as it was before layout was applied is not changed. This of course requires valid positions for all nodes to have been set on the input graph before calling the layout algorithm. The interactive node layering algorithm uses the Interactive Reference Point option to determine which reference point of nodes are used to compare positions. */
       nodePlacement: 'BRANDES_KOEPF', 
-      /* BRANDES_KOEPF Minimizes the number of edge bends at the expense of diagram size: diagrams drawn with this algorithm are usually higher than diagrams drawn with other algorithms.
-      LINEAR_SEGMENTS Computes a balanced placement.
-      INTERACTIVE Tries to keep the preset y coordinates of nodes from the original layout. For dummy nodes, a guess is made to infer their coordinates. Requires the other interactive phase implementations to have run as well.
-      SIMPLE Minimizes the area at the expense of... well, pretty much everything else. */
       randomizationSeed: 1, 
       routeSelfLoopInside: false, 
       separateConnectedComponents: true, 
@@ -7329,10 +7219,6 @@ class AbsGraph1 {
         mergeHierarchyCrossingEdges: true, 
         nodeLayering: 'NETWORK_SIMPLEX', 
         nodePlacement: 'INTERACTIVE', 
-        /* BRANDES_KOEPF Minimizes the number of edge bends at the expense of diagram size: diagrams drawn with this algorithm are usually higher than diagrams drawn with other algorithms.
-        LINEAR_SEGMENTS Computes a balanced placement.
-        INTERACTIVE Tries to keep the preset y coordinates of nodes from the original layout. For dummy nodes, a guess is made to infer their coordinates. Requires the other interactive phase implementations to have run as well.
-        SIMPLE Minimizes the area at the expense of... well, pretty much everything else. */
         randomizationSeed: 1, 
         routeSelfLoopInside: false, 
         separateConnectedComponents: true, 
@@ -7642,100 +7528,6 @@ class Activator {
     if (!this.clickActive) return;
     this.clickActive = false;
     removeEvents(this.ui, 'click');
-  }
-}
-class AddonClass extends LiveObject {
-  constructor(k, dbInfo, userInfo) {
-    super(k);
-    copyKeys(dbInfo, this);
-    copyKeys(userInfo, this);
-    this.running = false;
-    this.uiState = this.immediateStart ? LiveObject.States.ready : LiveObject.States.none;
-    this.startTime = Date.now();
-    this.callback = this.div = this.dContent = null;
-  }
-  //#region internal
-  _createDivs() {
-    this.dInstruction = mDiv(this.dContent);
-    this.dMain = mDiv(this.dContent);
-    this.dHint = mDiv(this.dContent); this.dHint.innerHTML = 'hallo'; this.dHint.style.opacity = 0;
-  }
-  _createScreen() {
-    show(mBy('dAddons'));
-    let bg = colorTrans('silver', .25);
-    let d = mScreen(mBy('dAddons'), { bg: bg, display: 'flex', layout: 'fvcc' });
-    let dContent = mDiv(d, { display: 'flex', layout: 'fvcs', fg: 'contrast', fz: 24, bg: 'silver', patop: 50, pabottom: 50, matop: -50, w: '100vw' });
-    return [d, dContent];
-  }
-  //#endregion
-  checkEndCondition() {
-    let c = this.endsWhen;
-    let res = false;
-    if (isdef(c) && this[c.prop] == c.value) res = true;
-    console.log('condition:', res, 'tNext', this.tNext)
-    return res;
-  }
-  exit() {
-    hide('dAddons');
-    this.tNext *= this.tFactor;
-    this.startTime = Date.now();
-    this.clear();
-    this.callback();
-  }
-  init() {
-    [this.div, this.dContent] = this._createScreen();
-    this._createDivs();
-    this.setRunning();
-    let caption = this.presentInit();
-    mButton(isdef(caption) ? caption : 'Got it!', this.prompt.bind(this), this.dContent, { fz: 32, matop: 10 });
-  }
-  isTimeForAddon() {
-    switch (this.uiState) {
-      case LiveObject.States.none: this.getReady(this.tNext); return false;
-      case LiveObject.States.gettingReady: return false;
-      case LiveObject.States.ready: return true;
-      case LiveObject.States.running: return Date.now() - this.startTime >= this.tNext;
-    }
-  }
-  presentInit() { console.log('presenting initial information'); }
-  presentPrompt() { console.log('prompting user to do something') }
-  prompt() {
-    clearElement(this.dContent);
-    this.trialsNeeded = 0;
-    this._createDivs();
-    this.presentPrompt();
-    this.activate();
-  }
-  processInput() {
-    if (!this.uiActivated) return;
-    this.uiActivated = false;
-    let isCorrect = this.eval(...arguments);
-    if (isCorrect) {
-      this.positive();
-      this.exit();
-    } else {
-      this.negative();
-      this.trialPrompt();
-    }
-  }
-  positive() {
-    this.trialNumber = null;
-    delete this.dHint;
-  }
-  negative() {
-    if (nundef(this.trialNumber)) this.trialNumber = 1; else this.trialNumber += 1;
-  }
-  run() {
-    show('dAddons');
-    if (this.running) { this.prompt(); } else this.init();
-  }
-  trialPrompt() {
-    this.trialsNeeded += 1;
-    let [wr, sp] = this.getHint();
-    this.hintLength = wr.length;
-    if (isdef(sp)) sayRandomVoice(sp);
-    this.dHint.innerHTML = 'Hint: ' + wr; this.dHint.style.opacity = 1;
-    this.activate();
   }
 }
 class ADecisiongen {
@@ -8236,12 +8028,12 @@ class AGraph {
   getPosition(id) {
     let node = this.getNode(id);
     let pos = node.renderedPosition();
-    return pos;
+    return pos; 
   }
   getSize(id) {
     let node = this.getNode(id);
     let pos = node.bb();
-    return pos;
+    return pos; 
   }
   getProp(id, prop) { return this.cy.getElementById(id).data(prop); }
   getDegree(id) { return this.cy.getElementById(id).degree(); }
@@ -8769,79 +8561,6 @@ class AnimationQueue{
   enqueue(anim){
   }
   start(){
-  }
-}
-class APasscode extends AddonClass {
-  constructor(k, dbInfo, userInfo) {
-    super(k, dbInfo, userInfo);
-    this.needNewPasscode = true;
-  }
-  presentInit() {
-    let keys = getRandomKeysFromGKeys(1); 
-    let options = { rows: 1 };
-    this.pictures = getPics(null, {}, options, keys);
-    this.goal = this.pictures[0];
-    this.passcode = this.goal.label;
-    let dParent = this.dContent;
-    let d_title = mDiv(dParent);
-    showInstruction(this.goal.label, Settings.language == 'E' ? 'the passcode is' : 'das Codewort ist', d_title, true);
-    let d_pics = mDiv(dParent);
-    presentItems(this.pictures, d_pics, options.rows);
-    this.TOList.push(setTimeout(anim1, 300, this.goal, 500));
-  }
-  presentPrompt() {
-    let keys = getRandomKeysIncluding(this.numPics, this.goal.key, 'all');
-    let iGoal = keys.indexOf(this.goal.key);
-    let options = { rows: 2, showLabels: true };
-    this.pictures = getPics(this.processInput.bind(this), undefined, { rows: 2, showLabels: true }, keys);
-    this.goal = this.pictures[iGoal];
-    showInstruction('', 'click ' + (Settings.language == 'E' ? 'the passcode' : 'das Codewort'), this.dInstruction, true);
-    presentItems(this.pictures, this.dMain, options.rows);
-  }
-  eval(ev) {
-    ev.cancelBubble = true;
-    let item = findItemFromEvent(this.pictures, ev);
-    Selected = { pic: item, feedbackUI: item.div, sz: getBounds(item.div).height };
-    Selected.reqAnswer = this.goal.label;
-    Selected.answer = item.label;
-    if (item.label == this.goal.label) { return true; } else { return false; }
-  }
-  getHint() {
-    let hintLength, spoken;
-    if (this.trialNumber > this.passcode.length * 2) {
-      hintLength = this.passcode.length;
-      spoken = 'click ' + this.passcode.toUpperCase() + '!!!';
-    } else if (this.trialNumber > this.passcode.length * 2 - 1) {
-      hintLength = this.passcode.length;
-      spoken = (Settings.language == 'E' ? 'REMEMBER ' : 'MERKE DIR ') + this.passcode.toUpperCase() + '!!!';
-    } else if (this.trialNumber > this.passcode.length) {
-      hintLength = (this.trialNumber - this.passcode.length);
-      let letters = this.passcode.substring(0, hintLength);
-      let letters1 = letters.split();
-      spoken = (Settings.language == 'E' ? 'the passcode starts with' : 'das Codewort beginnt mit') + ' ' + letters1.join(', ');
-    } else {
-      hintLength = this.trialNumber;
-      spoken = null;
-    }
-    return [this.passcode.substring(0, hintLength), spoken];
-  }
-}
-class APassword extends AAddress {
-  presentInit() {
-    this.goal = null;
-    Speech.setLanguage('E');
-    let msg = 'create a new password!';
-    this.msgPrompt = 'enter your password';
-    this.lastHintPrompt = 'please complete entering password!';
-    stdInstruction(msg, this.dInstruction, msg, { voice: 'zira' });
-    this.input = stdInputVal(this.dMain, { w: 600, fz: 24 }, 'hallo');
-    this.input.id = this.defaultFocusElement = 'inputAddon';
-    window.onclick = () => mBy(this.defaultFocusElement).focus();
-    return 'set password';
-  }
-  presentPrompt() {
-    if (nundef(this.goal)) this.goal = { label: this.input.value.trim() };
-    super.presentPrompt();
   }
 }
 class ASender {
@@ -9375,24 +9094,16 @@ class Banner {
   }
 }
 class Board {
-  constructor(dParent, rows, cols, handler, cellStyle) {
+  constructor(rows, cols, handler, cellStyle) {
     let styles = isdef(cellStyle) ? cellStyle : { margin: 4, w: 150, h: 150, bg: 'white', fg: 'black' };
-    this.rows = valf(rows, 3);
-    this.cols = valf(cols, 3);
-    let dgrid = this.div = mGrid(this.rows, this.cols, dParent);
-    this.items = [];
-    let index = 0;
-    for (let i = 0; i < this.rows; i++) {
-      for (let j = 0; j < this.cols; j++) {
-        let item = { row: i, col: j, index: index };
-        let d = mDiv(dgrid, styles);
-        mCenterCenterFlex(d);
-        d.onclick = valf(handler, ev => console.log('clicked on item', item));
-        iAdd(item, { div: d });
-        this.items.push(item);
-        index += 1;
-      }
-    }
+    this.rows = rows;
+    this.cols = cols;
+    let items = this.items = iGrid(this.rows, this.cols, dTable, styles);
+    items.map(x => {
+      let d = iDiv(x);
+      mCenterFlex(d);
+      d.onclick = handler;
+    });
   }
   get(ir, c) {
     if (isdef(c)) {
@@ -9411,7 +9122,7 @@ class Board {
     for (let i = 0; i < arr.length; i++) {
       let item = this.items[i];
       let val = arr[i];
-      if (!empty_func(val)) {
+      if (!EmptyFunc(val)) {
         addLabel(item, val, { fz: 60, fg: colors[val] });
       } else item.label = val;
     }
@@ -9427,8 +9138,8 @@ class Board2D {
   constructor(rows, cols, dParent, cellStyles, boardStyles, handler) {
     cellStyles = this.cellStyles = isdef(cellStyles) ? cellStyles : { margin: 4, w: 150, h: 150, bg: 'white', fg: 'black' };
     boardStyles = this.boardStyles = isdef(boardStyles) ? boardStyles : { bg: 'silver', fg: 'black' };
-    this.rows = valf(rows, 3);
-    this.cols = valf(cols, 5);
+    this.rows = rows;
+    this.cols = cols;
     this.dParent = dParent;
     let dBoard = this.dBoard = mDiv(dParent);
     let items = this.items = this.fill(dBoard, this.rows, this.cols, null, cellStyles);
@@ -9472,7 +9183,7 @@ class Board2D {
     for (let i = 0; i < arr.length; i++) {
       let item = this.items[i];
       let val = arr[i];
-      if (!empty_func(val)) {
+      if (!EmptyFunc(val)) {
         addLabel(item, val, { fz: 60, fg: colors[val] });
       } else item.label = val;
     }
@@ -9895,53 +9606,6 @@ class CCanvas {
     return n > 0;
   }
 }
-class CCanvasNoClear extends CCanvas {
-  clear() { }
-}
-class CCanvasPlot extends CCanvas {
-  clear() {
-    cClear(this.cv, this.cx);
-    this.draw_axes();
-  }
-  draw_axes() {
-    let ctx = this.cx;
-    ctx.beginPath();
-    ctx.strokeStyle = "rgb(128,128,128)";
-    ctx.moveTo(this.minx, 0); ctx.lineTo(this.maxx, 0);  
-    ctx.moveTo(0, this.miny); ctx.lineTo(0, this.maxy);  
-    ctx.stroke();
-  }
-  draw() {
-    this.clear();
-    for (const item of this.items) {
-      if (isdef(item.func)) this.plot(item.func, item.color, item.thickness);
-      else {
-        super.draw_item(item);
-      }
-    }
-  }
-  pp(x, y, label = 'hallo', styles = {}) {
-    addKeys({ fg:'silver', bg: 'silver', w: 3, h: 3 }, styles)
-    cEllipse(x, y, styles.w, styles.h, { bg: styles.bg }, 0, this.cx);
-    addKeys({x:x, y:y, offy: 'below 4', offx: 'center', family: 'arial narrow', fz: 20},styles);
-    draw_text(this, label, styles);
-  }
-  plot(func, color, thick, filled = false) {
-    let cx = this.cx;
-    var xx, yy, dx = 4, x0 = 0, y0 = 0, scale = this.scale = 40;
-    var imax = Math.round(this.maxx / dx);
-    var imin = Math.round(this.minx / dx);
-    cx.beginPath();
-    cx.lineWidth = thick;
-    cx.strokeStyle = cx.fillStyle = color;
-    for (var i = imin; i <= imax; i++) {
-      xx = dx * i; yy = scale * func(xx / scale);
-      if (i == imin) cx.moveTo(x0 + xx, y0 - yy);
-      else cx.lineTo(x0 + xx, y0 - yy);
-    }
-    cx.stroke(); if (filled) cx.fill();
-  }
-}
 class CItemWalker {
   constructor(name, options = {}) {
     options.label = name;
@@ -10017,39 +9681,6 @@ class ControllerSolitaire {
       setBadgeLevel(this.g.level);
       this.startLevel();
     } else { this.startRound(); }
-  }
-}
-class ControllerSolitaireMinimal extends ControllerSolitaire {
-  clear() { if (isdef(this.timer)) this.timer.clear(); }
-  startLevel() {
-    Settings.updateGameValues(this.player, this.g);
-    this.g.start_Level();
-    this.startRound();
-  }
-  prompt() {
-    QContextCounter += 1;
-    showStats(false); 
-    this.g.trialNumber = 0;
-    this.g.prompt();
-  }
-  activateUi() {
-    Selected = null;
-    uiActivated = true;
-    if (isdef(this.timer)) this.timer.start(); 
-    this.g.activate();
-  }
-  gotoNext(nextLevel) {
-    onclick = null;
-    removeMarkers();
-    clearTimeouts();
-    if (isdef(this.timer)) this.timer.clear();
-    if (Score.levelChange && nextLevel <= this.g.maxLevel) {
-      this.g.level = nextLevel;
-      setBadgeLevel(this.g.level);
-      this.startLevel();
-    } else {
-      this.startRound();
-    }
   }
 }
 class ControllerTTT {
@@ -10136,17 +9767,59 @@ class CountdownTimer {
     } else this.elem.innerHTML = 'timeover';
   }
 }
-class Counter extends Map {
-  constructor(iter, key = null) {
-    super();
-    this.key = key || (x => x);
-    for (let x of iter) {
-      this.add(x);
+class CTimer {
+  constructor(elem, msTick, onTick, msTotal, onElapsed) {
+    this.elem = elem;
+    this.msTotal = this.msLeft = msTotal;
+    this.onTick = onTick;
+    this.onElapsed = onElapsed;
+    this.interval = msTick;
+    this.running = false;
+    this.paused = false;
+    this.game = G.name;
+    this.button = mButton('click', this.togglePause.bind(this), this.elem, { transition: 'all 1s ease', display: 'inline-block', fz: 20, rounding: 12, bg: GREEN, w: 260 }, 'mybutton');
+    this.TO = null;
+  }
+  togglePause() { if (this.paused) this.continue(); else this.pause(); }
+  clear() { this.stop(); clearElement(this.elem); }
+  continue() {
+    if (!this.running) this.start();
+    else if (!this.paused) return;
+    else { this.paused = false; this.TO = setInterval(this.tickHandler.bind(this), this.interval); }
+  }
+  tickHandler() {
+    this.msLeft -= this.interval;
+    let [ms, unit] = [this.msLeft, this.msTotal / 6];
+    this.msElapsed = this.msTotal - this.msLeft;
+    this.button.innerHTML = timeConversion(Math.max(this.msLeft, 0), 'sh');
+    let bg = ms > unit * 4 ? GREEN : ms > unit * 2 ? YELLOW : ms > unit ? 'orange' : RED;
+    this.button.style.background = bg;
+    if (isdef(this.onTick)) this.onTick();
+    if (this.msLeft <= 0) {
+      this.stop();
+      if (isdef(this.onElapsed)) {
+        console.assert(G.name == this.game,'game not the same!!! '+G.name + ' ' +this.game);
+        this.onElapsed();
+      }
     }
   }
-  add(x) {
-    x = this.key(x);
-    this.set(x, (this.get(x) || 0) + 1);
+  start() {
+    if (this.running) this.stop();
+    this.started = new Date().now;
+    this.msLeft = this.msTotal;
+    this.msElapsed = 0;
+    this.running = true;
+    this.TO = setInterval(this.tickHandler.bind(this), this.interval);
+  }
+  stop() {
+    if (!this.running) return;
+    clearInterval(this.TO);
+    this.running = false;
+  }
+  pause() {
+    if (this.paused || !this.running) return;
+    clearInterval(this.TO);
+    this.paused = true;
   }
 }
 class CTimer_dep {
@@ -10204,7 +9877,7 @@ class CTimer_dep {
     this.paused = true;
   }
 }
-class Deck {
+class DeckClass {
   constructor(f) { this.data = []; if (isdef(f)) if (isString(f)) this['init' + f](); else if (isList(f)) this.init(f); }
   init(arr) { this.data = arr; }
   initEmpty() { this.data = []; }
@@ -10221,7 +9894,7 @@ class Deck {
   count() { return this.data.length; }
   clear() { this.data = []; }
   deal(n) { return this.data.splice(0, n); }
-  dealDeck(n) { let d1 = new Deck(); d1.init(this.data.splice(0, n)); return d1; }
+  dealDeck(n) { let d1 = new DeckClass(); d1.init(this.data.splice(0, n)); return d1; }
   popTop() { return this.data.pop(); }
   popBottom() { return this.data.shift(); }
   remTop() { this.data.pop(); return this; }
@@ -10237,36 +9910,6 @@ class Deck {
   shuffle() { shuffle(this.data); return this; }
   top() { return arrLast(this.data); }
   toString() { return this.data.toString(); }
-}
-class Deck1 extends Array {
-  initTest(n, shuffled = true) { range(0, n).map(x => this.push(Card52.getItem(x))); if (shuffled) this.shuffle(); }
-  initEmpty() { }
-  init52(shuffled = true, jokers = 0) {
-    range(0, 51 + jokers).map(x => this.push(Card52.getItem(x)));
-    if (shuffled) this.shuffle();
-  }
-  add(otherDeck) { while (otherDeck.length > 0) { this.unshift(otherDeck.pop()); } return this; }
-  count() { return this.length; }
-  static transferTopFromToBottom(d1, d2) { let c = d1.pop(); d2.putUnderPile(c); return c; }
-  deal(n) { return this.splice(0, n); }
-  getIndices() { return this.map(x => x.i); }
-  log() { console.log(this); }
-  putUnderPile(x) { this.push(x); }
-  putOnTop(x) { this.unshift(x); }
-  showDeck(dParent, splay, ovPercent = 0, faceUp = undefined, contStyles = {}) {
-    if (isdef(faceUp)) { if (faceUp == true) this.turnFaceUp(); else this.turnFaceDown(); }
-    splayout(this, dParent, contStyles, ovPercent, splay);
-  }
-  shuffle() { shuffle(this); }
-  topCard() { return this[this.length - 1]; }
-  turnFaceUp() {
-    if (isEmpty(this) || this[0].faceUp) return;
-    this.map(x => Card52.turnFaceUp(x));
-  }
-  turnFaceDown() {
-    if (isEmpty(this) || !this[0].faceUp) return;
-    this.map(x => Card52.turnFaceDown(x));
-  }
 }
 class DeckMS {
   constructor(oid, o) {
@@ -10599,76 +10242,6 @@ class G2Player {
   eval() { } 
   activate() { }
 }
-class GAbacus extends Game {
-  constructor(name, o) { super(name, o); }
-  startGame() { this.successFunc = successThumbsUp; this.failFunc = failThumbsDown; this.correctionFunc = this.showCorrectSequence.bind(this); }
-  showCorrectSequence() { let t = correctBlanks(); if (this.level <= 1 && (this.step <= 3 || this.op != 'mult')) showSayHint(3); return t + 1000; }
-  start_Level() { if (!isList(this.steps)) this.steps = [this.steps]; this.numPics = 2; }
-  prompt() {
-    mLinebreak(dTable, 2);
-    showHiddenThumbsUpDown(110);
-    mLinebreak(dTable);
-    this.seq = makeExpSequence();
-    let panel = mDiv(dTable, { bg: '#00000080', padding: 20, rounding: 10 });
-    [this.words, this.letters] = showEquation(this.seq, panel);
-    setNumberSequenceGoal();
-    mLinebreak(dTable, 30);
-    let wr = (this.language == 'E' ? 'calculate' : "rechne");
-    let spOp = this.oop.sp; if (this.language == 'D') spOp = DD[spOp];
-    let sp = this.operand + ' ' + spOp + ' ' + this.step + ' ?';
-    show_instruction(wr, dTitle, sp);
-    if (this.level <= 1 && this.showHint && (this.step <= 3 || this.op != 'mult'))
-      hintEngineStart(getOperationHintString, [0, 1], 5000 + this.level * 1000);
-    this.controller.activateUi.bind(this.controller)();
-  }
-  trialPrompt() {
-    if (this.level <= 1 && this.showHint && (this.step <= 3 || this.op != 'mult')) hintEngineStart(getOperationHintString, [0, 1], 5000 + this.level * 1000);
-    TOMain = setTimeout(() => getWrongChars().map(x => unfillChar(x)), 500);
-    return 600;
-  }
-  activate() { addKeyup('G', this.interact.bind(this)); }
-  interact(ev) {
-    if (!isNumber(ev.key) && ev.key != '-') return;
-    clearFleetingMessage();
-    if (!canAct()) return;
-    let sel = Selected = onKeyWordInput(ev);
-    if (nundef(sel)) return;
-    let lastInputCharFilled = sel.target;
-    console.assert(sel.isMatch == (lastInputCharFilled.letter == sel.ch), lastInputCharFilled, sel.ch);
-    if (sel.isMatch && sel.isVeryLast) {
-      deactivateFocusGroup();
-      this.controller.evaluate.bind(this.controller)(true);
-    } else if (sel.isMatch && sel.isLastOfGroup) {
-      sel.target.isBlank = false;
-      sel.target.group.hasBlanks = false;
-      removeInPlace(Goal.blankWords, sel.target.group);
-      removeInPlace(Goal.blankChars, sel.target);
-      deactivateFocusGroup();
-      console.log('haaaaaaaaaaaalo', Goal.isFocus)
-    } else if (sel.isMatch) {
-      removeInPlace(Goal.blankChars, sel.target);
-      sel.target.isBlank = false;
-    } else if (sel.isVeryLast) {
-      Selected.words = getInputWords();
-      Selected.answer = getInputWordString();
-      Selected.req = getCorrectWordString();
-      deactivateFocusGroup();
-      this.controller.evaluate.bind(this.controller)(false);
-    } else if (sel.isLastOfGroup) {
-      Selected.words = getInputWords();
-      Selected.answer = getInputWordString();
-      Selected.req = getCorrectWordString();
-      deactivateFocusGroup();
-      this.controller.evaluate.bind(this.controller)(false);
-    } else {
-      if (!this.silent) { writeSound(); playSound('incorrect1'); }
-      deactivateFocusGroup();
-      showFleetingMessage('does NOT fit: ' + Selected.ch, 0, { fz: 24 });
-      setTimeout(() => unfillCharInput(Selected.target), 500);
-    }
-  }
-  eval(isCorrect) { return isCorrect; }
-}
 class Game {
   constructor(name, o) {
     this.name = name;
@@ -10706,1020 +10279,7 @@ class Game {
     if (item.label == Goal.label) { return true; } else { return false; }
   }
 }
-class GameTimed extends Game{
-  constructor(name, o) { super(name, o); }
-  clear() { clearInterval(this.TOI); super.clear(); this.timer = null; }
-  makeTimer() {
-    this.timer = true;
-    if (nundef(this.msTotal)) this.msTotal = 5000;
-    if (nundef(this.msInterval)) this.msInterval = 100;
-    let w = this.wTimerOuter = 200;
-    this.dTimeOuter = mDiv(dTable, { w: w, h: 25, border: 'white', rounding: 10, position: 'relative' });
-    [this.wTimer, this.r, this.g] = [0, 0, 255];
-    this.dTimeInner = mDiv(this.dTimeOuter, { h: 25, w: this.wTimer, rounding: 10, bg: `rgb(${this.r},${this.g},0)`, position: 'absolute', left: 0, top: 0 });
-    this.dTimeDisplay = mDiv(this.dTimeOuter, { patop: 2, align: 'center', h: 25, w: w, position: 'absolute', left: 0, top: 0 });
-    mLinebreak(dTable);
-    this.dPause = mDiv(dTable, { cursor: 'pointer', fz: 12, hpadding: 30, vpadding: 10 }, null, 'click to pause');
-    this.dPause.onclick = () => this.pause();
-  }
-  pause() {
-    if (nundef(this.timer)) return;
-    clearInterval(this.TOI);
-    this.dPause.innerHTML = 'click to resume...';
-    this.dPause.onclick = () => this.resume();
-  }
-  resume() {
-    if (nundef(this.timer)) return;
-    this.dPause.innerHTML = 'click to pause...';
-    this.dPause.onclick = () => this.pause();
-    this.TOI = setInterval(this.onTick.bind(this), this.msInterval);
-  }
-  activate() {
-    if (nundef(this.timer)) return;
-    this.msLeft = valf(this.msTotal, 10000);
-    this.dTimeDisplay.innerHTML = timeConversion(this.msLeft, 'sh');
-    this.TOI = setInterval(this.onTick.bind(this), this.msInterval);
-  }
-  onTick() {
-    this.msLeft -= this.msInterval;
-    this.wTimer += this.wTimerOuter * this.msInterval / this.msTotal;
-    let inc_color = 255 * this.msInterval / this.msTotal; 
-    this.r += inc_color; this.g -= inc_color;
-    mStyle(this.dTimeInner, { w: this.wTimer, bg: `rgb(${this.r},${this.g},0)` });
-    this.dTimeDisplay.innerHTML = timeConversion(this.msLeft, 'sh');
-    if (this.msLeft < 100) {
-      clearInterval(this.TOI);
-      this.dPause.style.opacity = 0;
-      this.onTimeup();
-    }
-  }
-}
-class GameTimed1 extends Game{
-  constructor(name, o) { super(name, o); }
-  clear() { clearInterval(this.TOI); super.clear(); }
-  makeTimer() {
-    if (nundef(this.msTotal)) this.msTotal = 5000;
-    if (nundef(this.msInterval)) this.msInterval = 100;
-    let w = this.wTimerOuter = 200;
-    this.dTimeOuter = mDiv(dTable, { w: w, h: 25, border: 'white', rounding: 10, position: 'relative' });
-    [this.wTimer, this.r, this.g] = [0, 0, 255];
-    this.dTimeInner = mDiv(this.dTimeOuter, { h: 25, w: this.wTimer, rounding: 10, bg: `rgb(${this.r},${this.g},0)`, position: 'absolute', left: 0, top: 0 });
-    this.dTimeDisplay = mDiv(this.dTimeOuter, { patop: 2, align: 'center', h: 25, w: w, position: 'absolute', left: 0, top: 0 });
-    mLinebreak(dTable);
-    this.dPause = mDiv(dTable, { cursor: 'pointer', fz: 12, hpadding: 30, vpadding: 10 }, null, 'click to pause');
-    this.dPause.onclick = () => this.pause();
-  }
-  pause() {
-    clearInterval(this.TOI);
-    this.dPause.innerHTML = 'click to resume...';
-    this.dPause.onclick = () => this.resume();
-  }
-  resume() {
-    this.dPause.innerHTML = 'click to pause...';
-    this.dPause.onclick = () => this.pause();
-    this.TOI = setInterval(this.onTick.bind(this), this.msInterval);
-  }
-  activate() {
-    this.msLeft = valf(this.msTotal, 10000);
-    this.dTimeDisplay.innerHTML = timeConversion(this.msLeft, 'sh');
-    this.TOI = setInterval(this.onTick.bind(this), this.msInterval);
-  }
-  onTick() {
-    this.msLeft -= this.msInterval;
-    this.wTimer += this.wTimerOuter * this.msInterval / this.msTotal;
-    let inc_color = 255 * this.msInterval / this.msTotal; 
-    this.r += inc_color; this.g -= inc_color;
-    mStyle(this.dTimeInner, { w: this.wTimer, bg: `rgb(${this.r},${this.g},0)` });
-    this.dTimeDisplay.innerHTML = timeConversion(this.msLeft, 'sh');
-    if (this.msLeft < 100) {
-      clearInterval(this.TOI);
-      this.dPause.style.opacity = 0;
-      this.onTimeup();
-    }
-  }
-}
-class GAnagram_PCOnly extends Game {
-  constructor(name, o) {
-    super(name, o);
-    if (this.language == 'C') {
-      this.realLanguage = this.language;
-      this.language = chooseRandom('E', 'S', 'F', 'D');
-    }
-  }
-  clear() { super.clear(); if (isdef(this.language)) this.language = this.language; }
-  start_Level() {
-    this.keys = setKeysG(this, filterWordByLengthG, 10);
-    if (this.keys.length < 10) { this.keys = setKeysG(this, filterWordByLengthG, 10, 'all'); }
-  }
-  prompt() {
-    myShowPics(null, {}, {});
-    if (this.hidden) {
-      let d = iDiv(Pictures[0]);
-      animate(d, 'aniAppearMinute', 100000);
-    }
-    setGoal();
-    showInstruction(this.showWord ? Goal.label : '', this.language == 'E' ? 'drag letters to form' : "forme", dTitle, true);
-    mLinebreak(dTable, 25);
-    let fz = 120; let word = Goal.label.toUpperCase(); let wlen = word.length;
-    let dpEmpty = createLetterInputsX(word, dTable, { pabottom: 5, bg: 'grey', display: 'inline-block', fz: fz, w: fz, h: fz * 1.1, margin: 4 }); 
-    let inputs = blankInputs(dpEmpty, range(0, wlen - 1), false);
-    for (let i = 0; i < inputs.length; i++) {
-      let l = iDiv(inputs[i]);
-      l.ondragover = ev => ev.preventDefault();
-      l.ondrop = event => { event.preventDefault(); var data = event.dataTransfer.getData("Text"); event.target.innerHTML = data; }
-      makeDraggableInner(l);
-      mClass(l, 'dropzone');
-      l.id = 'input' + i;
-    }
-    this.inputs = inputs;
-    let x = mLinebreak(dTable, 50);
-    fz = 60; word = Goal.label.toUpperCase();
-    let dp = createLetterInputsX(word, dTable, { bg: 'silver', display: 'inline-block', fz: fz, w: fz, h: fz * 1.1, margin: 4 }); 
-    scrambleInputs(dp);
-    let letters = Array.from(dp.children);
-    for (let i = 0; i < letters.length; i++) {
-      let l = letters[i];
-      l.setAttribute('draggable', true);
-      makeDraggableInner(l);
-      l.id = 'letter' + i;
-    }
-    this.letters = letters;
-    mLinebreak(dTable, 50);
-    this.bDone = mButton('Done!', this.controller.evaluate.bind(this.controller), dTable, { fz: 28, matop: 10, rounding: 10, padding: 16, border: 8 }, ['buttonClass']);
-    if (this.hidden) showFleetingMessage('category: ' + Pictures[0].info.subgroup, 5000);
-    else if (!this.showWord) { showLabelPercentHintAfter(50, 6000); }
-    this.controller.activateUi.bind(this.controller)();
-  }
-  trialPrompt() {
-    sayTryAgain();
-    setTimeout(() => {
-      this.inputs.map(x => iDiv(x).innerHTML = '_')
-    }, 1500);
-    return 10;
-  }
-  eval() {
-    let s = this.inputs.map(x => iDiv(x).innerHTML);
-    let w = s = s.join('');
-    let word = Goal.label.toUpperCase();
-    Selected = { answer: w, reqAnswer: word, feedbackUI: iDiv(Goal) };
-    return w == word;
-  }
-}
-class GAnagramBROKEN extends Game {
-  constructor(name, o) {
-    super(name, o);
-    if (this.language == 'C') {
-      this.realLanguage = this.language;
-      this.language = chooseRandom('E', 'S', 'F', 'D');
-    }
-  }
-  clear() { super.clear(); if (isdef(this.language)) this.language = this.language; }
-  start_Level() {
-    this.keys = setKeysG(this, filterWordByLengthG, 10);
-    if (this.keys.length < 10) { this.keys = setKeysG(this, filterWordByLengthG, 10, 'all'); }
-  }
-  prompt() {
-    myShowPics(null, {}, {});
-    if (this.hidden) {
-      let d = iDiv(Pictures[0]);
-      animate(d, 'aniAppearMinute', 100000);
-    }
-    setGoal();
-    let w = this.showWord ? Goal.label : '';
-    let wr = `drag letters to form ${w}`;
-    let sp = `forme ${w}`;
-    show_instruction(wr, dTitle, sp);
-    mLinebreak(dTable, 22);
-    let word = Goal.label.toUpperCase();
-    let wlen = word.length;
-    let wTable = getRect(mBy('table')).w;
-    let wmax = wTable / wlen;
-    let gap = 4;
-    let fzMax = wTable / wlen - 3 * gap;
-    let fz = Math.min(70, fzMax);
-    let dpEmpty = createLetterInputsX(word, dTable, { pabottom: 5, bg: 'grey', display: 'inline-block', fz: fz, w: fz, h: fz * 1.1, margin: gap }); 
-    let inputs = blankInputs(dpEmpty, range(0, wlen - 1), false);
-    for (let i = 0; i < inputs.length; i++) {
-      let l = iDiv(inputs[i]);
-      ipadd(l);
-      mClass(l, 'dropzone');
-      l.id = 'input' + i;
-    }
-    this.inputs = inputs;
-    let x = mLinebreak(dTable, 35);
-    fz = Math.min(60, fzMax);
-    let dp = createLetterInputsX(word, dTable, { bg: 'silver', display: 'inline-block', fz: fz, w: fz, h: fz * 1.1, margin: 4 }); 
-    scrambleInputs(dp);
-    let letters = Array.from(dp.children);
-    for (let i = 0; i < letters.length; i++) {
-      let l = letters[i];
-      l.setAttribute('draggable', true);
-      ipadd(l);
-      l.id = 'letter' + i;
-    }
-    this.letters = letters;
-    mLinebreak(dTable, 35);
-    this.bDone = mButton('Done!', this.controller.evaluate.bind(this.controller), dTable, { fz: 28, matop: 10, rounding: 10, padding: 16, border: 8 }, ['buttonClass']);
-    if (this.hidden) showFleetingMessage('category: ' + Pictures[0].info.subgroup, 5000);
-    else if (!this.showWord) { showLabelPercentHintAfter(50, 6000); }
-    this.controller.activateUi.bind(this.controller)();
-  }
-  trialPrompt() {
-    sayTryAgain();
-    setTimeout(() => {
-      this.inputs.map(x => iDiv(x).innerHTML = '_')
-    }, 1500);
-    return 10;
-  }
-  eval() {
-    let s = this.inputs.map(x => iDiv(x).innerHTML);
-    let w = s = s.join('');
-    let word = Goal.label.toUpperCase();
-    Selected = { answer: w, reqAnswer: word, feedbackUI: iDiv(Goal) };
-    return w == word;
-  }
-  onTimeup() { this.controller.evaluate(); }
-}
 class GAristo { }
-class GC4 extends GTTT {
-  startGame() {
-    super.startGame();
-  }
-  createBoard() {
-    this.board = new Board(this.rows, this.cols, this.controller.uiInteract.bind(this.controller), { margin: 6, w: 60, h: 60, bg: 'white', fg: 'black', rounding: '50%' });
-  }
-  setStartPosition() {
-    let positions = [
-      [[0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0]],
-      [[0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0],
-      ['O', 'X', 0, 0, 0, 0, 0],
-      ['O', 'X', 0, 0, 0, 0, 0]],
-      [[0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0],
-      ['O', 'X', 0, 0, 0, 0, 0],
-      ['O', 'X', 0, 0, 0, 0, 0],
-      ['O', 'X', 0, 0, 0, 0, 0]],
-      [[0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 'O', 0, 0, 0],
-      ['O', 'X', 0, 'O', 0, 0, 0],
-      ['O', 'X', 0, 'O', 0, 0, 0]],
-      [[0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, "X", 0, 0, 0],
-      ["X", 0, 0, "O", 0, 0, 0],
-      ["O", "X", 0, "O", 0, 0, 0],
-      ["O", "X", "O", "O", 0, 0, 0]],
-      [[0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0],
-      ["X", 0, 0, 0, 0, 0, 0],
-      ["X", 0, 0, 0, "O", "O", 0]],
-    ];
-    this.iPosition = 4;
-    if (isdef(this.iPosition)) {
-      let idx = this.iPosition + 1; idx = idx % positions.length; this.iPosition = idx;
-    } else this.iPosition = 0;
-    let state = nundef(this.startPosition) || this.startPosition == 'empty' ? positions[0]
-      : this.startPosition == 'random' ? chooseRandom(positions)
-        : positions[this.iPosition];
-    this.board.setState(state, { X: this.ai.color, O: this.human.color });
-  }
-  checkFinal(state) {
-    if (nundef(state)) state = this.getState();
-    let isTie = false;
-    let isWin = checkWinnerC4(state, this.rows, this.cols, this.stride);
-    if (!isWin) { isTie = checkBoardFull(state); }
-    return isWin ? 2 : isTie ? 1 : 0;
-  }
-  checkLegal(tile) {
-    let col = tile.col;
-    let topmost = this.board.items[col];
-    if (EmptyFunc(topmost.label)) return true; else return false;
-  }
-  findBottomEmptyTileInColumn(col) {
-    let x = lastCond(this.board.items, x => x.col == col && EmptyFunc(x.label));
-    return x;
-  }
-  interact(ev) {
-    let tile = evToItemC(ev);
-    let legal = this.checkLegal(tile);
-    if (!legal) { console.log('illegal move!'); return; } 
-    let pl = this.plTurn;
-    let bottomMost = this.findBottomEmptyTileInColumn(tile.col);
-    addLabel(bottomMost, pl.sym, { fz: 60, fg: pl.color });
-    this.controller.evaluate(tile);
-  }
-  getAvailableMoves(state) {
-    let moves = [];
-    for (let c = 0; c < G.cols; c++) {
-      for (let r = G.rows - 1; r >= 0; r--) {
-        let i = r * G.cols + c;
-        if (EmptyFunc(state[i])) { moves.push(i); break; }
-      }
-    }
-    shuffle(moves)
-    return moves;
-  }
-  evalState(node, depth) {
-    let x = checkWinnerC4(node);
-    if (checkBoardFull(node) || x) {
-      let res = { reached: true, val: (!x ? 0 : (10 - depth) * (x == MAXIMIZER.sym ? 1 : -1)) };
-      return res;
-    }
-    return { reached: false };
-  }
-}
-class GCats extends Game {
-  constructor(name, o) { super(name, o); }
-  startGame() { this.correctionFunc = showCorrectPictureLabels; this.failFunc = failSomePictures; }
-  dropHandler(source, target, isCopy = true) {
-    let dSource = iDiv(source);
-    let dTarget = iDiv(target);
-    if (!isCopy) {
-      mAppend(dTarget, dSource);
-    } else {
-      let dNew = mText(dSource.innerHTML, dTarget, { wmin: 100, fz: 20, padding: 4, margin: 4, display: 'inline-block' });
-      addDDSource(dNew, false);
-    }
-    if (isOverflown(dTarget)) {
-      let d = dTarget.parentNode;
-      let r = getRect(d);
-      let w = r.w + 100;
-      mSize(d, w, r.h);
-      console.log('overflow!!!!', r.w, '=>', w)
-    }
-  }
-  prompt() {
-    let items;
-    let data = this.keysByCat = genCats(this.numCats);
-    this.keylists = [], this.catsByKey = {};
-    for (const cat in data) {
-      this.keylists.push({ keys: data[cat], cat: cat });
-      for (const k of data[cat]) {
-        this.catsByKey[k] = cat;
-      }
-    }
-    this.cats = Object.keys(this.keysByCat);
-    this.allKeys = Object.keys(this.catsByKey);
-    this.options = {}; _extendOptions(this.options);
-    if (this.pickRandom == false) {
-      items = Pictures = getNItemsPerKeylist(this.numPics, this.keylists, this.options);
-    } else {
-      let keys = choose(this.allKeys, this.numPics * this.numCats);
-      items = Pictures = genItemsFromKeys(keys, this.options);
-      items.map(x => x.cat = this.catsByKey[x.key]);
-    }
-    shuffle(items);
-    let wr = this.language == 'E' ? 'drag pictures to categories' : "ordne die bilder in kategorien";
-    show_instruction(wr, dTitle, wr);
-    mLinebreak(dTable);
-    let dArea = mDiv(dTable, { display: 'flex', 'flex-wrap': 'wrap' });
-    let containers, dWordArea;
-    containers = this.containers = createContainers(this.cats, dArea, { w: 'auto', wmin: 150, wmax: 300, hmin: 250, fz: 24, fg: 'contrast' }); 
-    mLinebreak(dTable);
-    dWordArea = this.dWordArea = mDiv(dTable, { h: 70, display: 'flex', 'flex-wrap': 'wrap', layout: 'fhcc' });
-    for (const item of items) { let d = miPic(item, dWordArea); iAdd(item, { div: d }); }
-    enableDD(items, containers, this.dropHandler.bind(this), false);
-    mLinebreak(dTable, 50);
-    mButton('Done!', this.controller.evaluate.bind(this.controller), dTable, { fz: 28, matop: 10, rounding: 10, padding: 16, border: 8 }, ['buttonClass']);
-    this.controller.activateUi.bind(this.controller)();
-  }
-  trialPrompt() {
-    sayTryAgain();
-    TOMain = setTimeout(() => {
-      for (const p of Pictures) {
-        if (!p.isCorrect) {
-          mAppend(this.dWordArea, iDiv(p));
-          if (this.trialNumber == 1) miAddLabel(p, { bg: '#00000080', margin: 4, fz: 20 });
-        }
-      }
-    }, 1000);
-    return 1200;
-  }
-  eval() {
-    this.piclist = Pictures;
-    Selected = { piclist: this.piclist, feedbackUI: this.piclist.map(x => iDiv(x)), sz: getRect(iDiv(this.piclist[0])).h };
-    let isCorrect = true;
-    for (const p of Pictures) {
-      let label = p.label;
-      let d = iDiv(p);
-      let cont = d.parentNode;
-      for (const c of this.containers) {
-        if (iDiv(c) == cont) {
-          p.classified = true;
-          if (p.cat == c.label) p.isCorrect = true;
-          else { p.isCorrect = isCorrect = false; }
-          break;
-        }
-      }
-      if (!p.classified) p.isCorrect = isCorrect = false;
-    }
-    return isCorrect;
-  }
-}
-class GChess extends G2Player {
-  clear() { super.clear(); if (isdef(this.game)) { this.game.reset(); } }
-  startGame() {
-    super.startGame();
-    this.createBoard();
-    this.game = new Chess();
-    this.setStartPosition();
-    let c = this.game.turn();
-    if (c == 'b') { this.plTurn.color = 'black'; this.plOpp.color = 'white'; } else { this.plTurn.color = 'white'; this.plOpp.color = 'black'; }
-    showFleetingMessage(`You play ${this.human.color}`)
-  }
-  createBoard() {
-    let d = mDiv(dTable, { h: 500, w: 500 }, 'dChessBoard');
-    let config = {
-      pieceTheme: '../alibs/chessBoard/img/chesspieces/wikipedia/{piece}.png',
-      draggable: true,
-      onDragStart: this.onDragStart.bind(this),
-      onDrop: this.onDrop.bind(this),
-      onSnapEnd: this.onSnapEnd.bind(this),
-    }
-    this.board = ChessBoard('dChessBoard', config);
-    mLinebreak(dTable);
-  }
-  setStartPosition() {
-    let positions = [
-      'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1', 
-      // //'8/8/8/8/8/8/8/8 b KQkq - 0 1', //black starts
-    ];
-    if (nundef(this.iPosition)) this.iPosition = 0;
-    let state = nundef(this.startPosition) || this.startPosition == 'empty' ? positions[0] : this.startPosition == 'random' ? chooseRandom(positions) : positions[this.iPosition];
-    if (!isString(state)) state = arrToFen(state.arr, state.plStart);
-    this.game.load(state); //'r1bqkbnr/pppp1ppp/2n5/1B2p3/4P3/5N2/PPPP1PPP/RNBQK2R b KQkq - 0 1');
-    this.board.position(this.game.fen());
-    let idx = this.iPosition + 1; idx = idx % positions.length; this.iPosition = idx;
-  }
-  prompt() {
-    let msg = this.plTurn == this.ai && !this.manual ? `Ai (${this.ai.color.toUpperCase()}) thinking...`
-      : `player: ${this.plTurn.color.toUpperCase()}`;
-    showInstruction(this.game.in_check() ? '- CHECK!!!' : '', msg, dTitle, false);
-    this.controller.activateUi();
-  }
-  activate() {
-    let pl = this.plTurn;
-    let autoplay = false;
-    if (autoplay || pl == this.ai) {
-      if (this.ai == pl) { uiActivated = false; aiActivated = true; }
-      this.TO = setTimeout(() => {
-        let color = this.game.turn();
-        if (color === 'b') { var move = getBestMove(this.game, color, globalSum)[0]; }
-        else { var move = getBestMove(this.game, color, -globalSum)[0]; }
-        globalSum = evaluateBoard(move, globalSum, 'b');
-        this.game.move(move);
-        this.board.position(this.game.fen());
-        this.controller.evaluate();
-      }, 100);
-    } else { aiActivated = false; uiActivated = true; }
-  }
-  getTurnColor() { return this.getPlayer(this.game.turn() == 'b' ? 'black' : 'white'); }
-  getOppColor() { return this.getPlayer(this.game.turn() == 'b' ? 'white' : 'black'); }
-  getPlayer(color) { return firstCond(this.players, x => x.color == color); }
-  changePlayer() { this.plTurn = this.game.turn() == 'b' ? this.getPlayer('black') : this.getPlayer('white'); }
-  onDragStart(source, piece, position, orientation) {
-    if (this.game.game_over() || !uiActivated) return false;
-    if ((this.game.turn() === 'w' && piece.search(/^b/) !== -1) ||
-      (this.game.turn() === 'b' && piece.search(/^w/) !== -1)) {
-      return false
-    }
-  }
-  onDrop(source, target) {
-    var move = this.game.move({
-      from: source,
-      to: target,
-      promotion: 'q' 
-    });
-    if (move === null) return 'snapback';
-    this.controller.evaluate();
-  }
-  onSnapEnd() { this.board.position(this.game.fen()) }
-  eval() {
-    this.info = null;
-    let over = this.gameOver = this.game.game_over();
-    if (this.game.in_draw()) { this.tie = true; console.log('in_draw'); this.info = '(draw)'; }
-    if (this.game.in_stalemate()) { this.tie = true; console.log('in_stalemate'); this.info = '(stalemate)'; }
-    if (this.game.in_threefold_repetition()) { this.tie = true; console.log('in_threefold_repetition'); this.info = '(threefold repetition)'; }
-    if (this.game.in_checkmate()) {
-      this.tie = false;
-      this.winner = this.getOppColor();
-      console.log('in_checkmate');
-      this.info = `(${this.winner.color.toUpperCase()})`;
-    }
-  }
-}
-class GColoku extends Game {
-  startGame() {
-    this.correctionFunc = () => {
-      if (this.qName == 'isThisSudokuCorrect') {
-        mStyle(Goal.buttonCorrect, { bg: 'green' });
-        animate(Goal.buttonCorrect, 'komisch', 1000);
-        if (!Goal.correct) {
-          animateColorScale(Goal.correctionFeedbackUI, Goal.item.color, 1.5, 1500);
-          this.dComment.innerHTML = 'rule broken! duplicate in ' + Goal.err.type;
-        } else {
-          this.dComment.innerHTML = 'this coloku is correct!';
-        }
-      } else {
-        this.dWordArea.remove();
-        this.bDone.remove();
-        if (Goal.err) {
-          this.dComment.innerHTML = 'rule broken! duplicate in ' + Goal.err.type;
-          animateColorScale(Goal.correctionFeedbackUI, Goal.item.color, 1.5, 1500);
-        } else {
-          this.dComment.innerHTML = 'Coloku is incomplete!!!!';
-        }
-      }
-      return 20000;
-    };
-    this.failFunc = () => {
-      if (this.qName == 'isThisSudokuCorrect') {
-        if (Goal.choice == Goal.correctChoice) { mStyle(Goal.buttonClicked, { bg: 'green' }); mCheckit(Goal.feedbackUI, 100); }
-        else { mXit(Goal.buttonClicked, 100); }
-      } else {
-        mXit(this.dGrid, 200);
-      }
-    }
-    this.successFunc = () => {
-      if (this.qName == 'isThisSudokuCorrect') {
-        if (Goal.choice == Goal.correctChoice) { mStyle(Goal.buttonClicked, { bg: 'green' }); mCheckit(Goal.feedbackUI, 100); }
-        else { mXit(Goal.buttonClicked, 100); }
-      } else {
-        mCheckit(this.dGrid, 200);
-      }
-    }
-  }
-  prompt() {
-    this.trials = 1;
-    let [rows, cols] = [this.rows, this.cols];
-    this.dGrid = mGrid(rows, cols, dTable, { position: 'relative', w: 400, h: 400, gap: 8, bg: 'white' });
-    let o = getSudokuPatternFromDB(rows, cols);
-    let [pattern, minPuzzle] = [this.pattern, this.minPuzzle] = [o.pattern, o.puzzle];
-    mLinebreak(dTable, 20);
-    this.dChoices = mDiv(dTable);
-    mLinebreak(dTable);
-    this.dComment = mDiv(dTable);
-    mLinebreak(dTable);
-    let qName = this.qName = this.level == 0 && coin() && PROJECTNAME == 'belinda' ? 'isThisSudokuCorrect' : 'solve';
-    this[qName]();
-    this.controller.activateUi.bind(this.controller)();
-  }
-  fillGrid(pattern) {
-    let items = this.items = [];
-    let [rows, cols, dGrid] = [this.rows, this.cols, this.dGrid];
-    let colors = this.colors = rows == 4 ? [RED, YELLOW, BLUE, GREEN]
-      : rows == 6 ? [RED, YELLOW, BLUE, GREEN, PURPLE, ORANGE]
-        : [BLUEGREEN, PURPLE, ORANGE, RED, YELLOW, BLUE, GREEN, LIGHTBLUE, OLIVE];
-    shuffle(colors);
-    for (let r = 0; r < rows; r++) {
-      let arr = [];
-      for (let c = 0; c < cols; c++) {
-        let nch = pattern[r][c];
-        let color = isNumber(nch) ? colors[pattern[r][c]] : null;
-        let d = mDiv(dGrid, { bg: color }, getUID());
-        let item = { row: r, col: c, id: d.id, color: color, val: nch };
-        iAdd(item, { div: d });
-        arr.push(item);
-      }
-      items.push(arr);
-    }
-    return items;
-  }
-  makeLines() {
-    let [wline, dGrid, sz] = [2, this.dGrid, this.rows];
-    let gSize = getSize(dGrid);
-    let rh = sz != 9 ? makeRect((gSize.w - wline) / 2, 0, wline, gSize.h) : makeRect((gSize.w - wline) / 3, 0, wline, gSize.h);
-    let rv = sz == 4 ? makeRect(0, (gSize.h - wline) / 2, gSize.w, wline) : makeRect(0, (gSize.h - wline) / 3, gSize.w, wline);
-    let vLine = mDiv(dGrid, { bg: this.color, position: 'absolute', left: rh.l, top: rh.t, w: rh.w, h: rh.h });
-    if (sz == 9) vLine = mDiv(dGrid, { bg: this.color, position: 'absolute', left: rh.l * 2, top: rh.t, w: rh.w, h: rh.h });
-    let hLine = mDiv(dGrid, { bg: this.color, position: 'absolute', left: rv.l, top: rv.t, w: rv.w, h: rv.h });
-    if (sz != 4) vLine = mDiv(dGrid, { bg: this.color, position: 'absolute', left: rv.l, top: 2 * rv.t, w: rv.w, h: rv.h });
-  }
-  setGoal(pattern) {
-    let err = checkSudokuRule(pattern);
-    let incomplete = false;
-    for (const el of arrFlatten(pattern)) {
-      if (!isNumber(el)) { incomplete = true; break; }
-    }
-    let answer = (err == null) && !incomplete; 
-    Goal = { correct: answer, err: err, incomplete: incomplete };
-  }
-  isThisSudokuCorrect() {
-    this.trials = 1;
-    let [pattern, rows, cols, dGrid] = [this.pattern, this.rows, this.cols, this.dGrid];
-    destroySudokuRule(pattern, rows, cols);
-    this.setGoal(pattern);
-    let items = this.fillGrid(pattern);
-    this.makeLines();
-    let wsp = {
-      D: 'ist dieses coloku korrekt?',
-      E: 'is this coloku correct?',
-      S: 'es este coloku correcto?',
-      F: 'est ce que ce coloku est exacte?',
-    };
-    let sp = wsp[this.language];
-    show_instruction(sp, dTitle, sp);
-    showFleetingMessage('rule: each color must be unique in every row, column and quadrant!', 15000);
-    let correct, incorrect;
-    if (Goal.correct) { correct = { num: 1, text: 'yes' }; incorrect = [{ num: 0, text: 'no' }]; }
-    else { correct = { num: 0, text: 'no' }; incorrect = [{ num: 1, text: 'yes' }]; }
-    let feedbackUI = Goal.correctionFeedbackUI = Goal.correct ? this.dGrid : iDiv(this.items[Goal.err.row][Goal.err.col]);
-    createMultipleChoiceElements(correct, incorrect, this.dChoices, feedbackUI, {});
-    Goal.item = Goal.correct ? this.items[0] : this.items[Goal.err.row][Goal.err.col];
-  }
-  solve() {
-    let [rrand, crand] = [randomNumber(0, this.rows - 1), randomNumber(0, this.cols - 1)];
-    let puzzle = this.puzzle = jsCopy(this.pattern);
-    let [min, rows, cols] = [this.minPuzzle, this.rows, this.cols];
-    let combis = [];
-    for (let r = 0; r < rows; r++) {
-      for (let c = 0; c < cols; c++) {
-        if (min[r][c] === ' ') combis.push({ row: r, col: c });
-      }
-    }
-    let combisToRemove = choose(combis, this.numMissing);
-    for (const o of combisToRemove) {
-      puzzle[o.row][o.col] = ' ';
-    }
-    this.fillGrid(puzzle);
-    this.makeLines();
-    let sp = 'solve this coloku!'
-    show_instruction(sp, dTitle, sp);
-    let itemlist = this.itemlist = arrFlatten(this.items);
-    let containers = this.containers = itemlist.filter(x => x.val === ' ');
-    let dWordArea = this.dWordArea = mDiv(dTable, { h: 70, display: 'flex', 'flex-wrap': 'wrap', layout: 'fhcc' });
-    let colorItems = this.colorItems = [];
-    for (const color of this.colors) {
-      let colorItem = { id: getUID(), color: color };
-      let d = mDiv(dWordArea, { w: 40, h: 40, bg: color, margin: 10, cursor: 'pointer' }, colorItem.id);
-      iAdd(colorItem, { div: d });
-      colorItems.push(colorItem);
-    }
-    enableDD(colorItems, containers, this.dropHandler.bind(this), true);
-    mLinebreak(dTable, 50);
-    this.bDone = mButton('Done!', this.controller.evaluate.bind(this.controller), dTable, { fz: 28, matop: 10, rounding: 10, padding: 16, border: 8 }, ['buttonClass']);
-  }
-  dropHandler(source, target, isCopy = true) {
-    let dSource = iDiv(source);
-    let dTarget = iDiv(target);
-    mStyle(dTarget, { bg: source.color });
-    target.color = source.color;
-    target.val = this.colors.indexOf(source.color);
-  }
-  evalIsCorrect() {
-    Selected = { feedbackUI: Goal.buttonClicked };
-    return Goal.buttonClicked == Goal.buttonCorrect;
-  }
-  evalSolve() {
-    let [items, pattern, rows, cols] = [this.items, this.pattern, this.rows, this.cols];
-    let pat = items.map(x => x.map(y => y.val));
-    this.setGoal(pat);
-    if (Goal.err) {
-      Goal.correctionFeedbackUI = iDiv(this.items[Goal.err.row][Goal.err.col]);
-      Goal.item = this.items[Goal.err.row][Goal.err.col];
-    }
-    Selected = { feedbackUI: this.dGrid };
-    return Goal.correct;
-  }
-  eval() {
-    clearFleetingMessage();
-    return this.qName == 'solve' ? this.evalSolve() : this.evalIsCorrect();
-  }
-  onTimeup() { this.controller.evaluate(); }
-}
-class GElim extends Game {
-  constructor(name, o) { super(name, o); }
-  startGame() {
-    this.correctionFunc = () => { writeSound(); playSound('incorrect1'); return this.spokenFeedback ? 1800 : 300; };
-    this.successFunc = () => { Goal.pics.map(x => iDiv(x).style.opacity = .3); successPictureGoal(); }
-  }
-  start_Level() {
-    super.start_Level();
-    this.keys = this.keys.filter(x => containsColorWord(x));
-  }
-  prompt() {
-    this.piclist = [];
-    let colorKeys = this.numColors > 1 ? choose(this.colors, this.numColors) : null;
-    let showRepeat = this.numRepeat > 1;
-    let rows = this.numColors > 1 ? this.numColors : undefined;
-    myShowPics(this.interact.bind(this), { bg: 'white' },
-      {
-        showRepeat: showRepeat, colorKeys: colorKeys, numRepeat: this.numRepeat,
-        contrast: this.contrast, rows: rows
-      });
-    let [sSpoken, sWritten, piclist] = logicMulti(Pictures);
-    this.piclist = piclist;
-    Goal = { pics: this.piclist, sammler: [] };
-    show_instruction(sWritten, dTitle, sSpoken, { fz: 22, voice: 'zira' });
-    this.controller.activateUi.bind(this.controller)();
-  }
-  trialPrompt() {
-    sayTryAgain();
-    let msg = this.language == 'D' ? 'noch einmal!' : 'try again!'
-    showFleetingMessage(msg, 0, { margin: -8, fz: 22 }, true);
-    return 1000;
-  }
-  activate() {
-    for (const p of this.piclist) { if (p.isSelected) toggleSelectionOfPicture(p); }
-    this.piclist = [];
-  }
-  interact(ev) {
-    ev.cancelBubble = true;
-    if (!canAct()) return;
-    let pic = findItemFromEvent(Pictures, ev);
-    writeSound(); playSound('hit');
-    if (Goal.pics.includes(pic)) {
-      removePicture(pic);
-      Goal.sammler.push(pic);
-    }
-    if (Goal.pics.length == Goal.sammler.length) this.controller.evaluate.bind(this.controller)(true);
-    else if (!Goal.pics.includes(pic)) { this.lastPic = pic; this.controller.evaluate.bind(this.controller)(false); }
-  }
-  eval(isCorrect) {
-    Selected = { piclist: this.piclist, feedbackUI: isCorrect ? Goal.pics.map(x => iDiv(x)) : iDiv(this.lastPic) };
-    return isCorrect;
-  }
-}
-class GGuess extends IClass{
-  setup(){
-  }
-  updatePlayer(pl){
-  }
-  updateOptions(pl){
-    this.options = Array.from('ABCDEFGHIJKLMNOPQRSTUVWXYZ');
-    console.log(this.options);
-  }
-}
-class GHouse extends Game {
-  constructor(name, o) { super(name, o); }
-  startGame() {
-    this.correctionFunc = () => {
-      mStyle(Goal.buttonCorrect, { bg: 'green' });
-      animate(Goal.buttonCorrect, 'komisch', 1000);
-      mStyle(this.dGraph, { opacity: 1 });
-      return 20000;
-    };
-    this.failFunc = () => {
-      if (Goal.choice == Goal.correctChoice) { mStyle(Goal.buttonClicked, { bg: 'green' }); mCheckit(Goal.feedbackUI, 100); }
-      else { mXit(Goal.buttonClicked, 100); }
-      mStyle(this.dGraph, { opacity: 1 });
-    }
-    this.successFunc = () => {
-      if (Goal.choice == Goal.correctChoice) { mStyle(Goal.buttonClicked, { bg: 'green' }); mCheckit(Goal.feedbackUI, 100); }
-      else { mXit(Goal.buttonClicked, 100); }
-      mStyle(this.dGraph, { opacity: 1 });
-    }
-  }
-  prompt() {
-    if (isdef(this.graph)) this.graph.clear();
-    this.trials = 1;
-    let n = randomNumber(this.minRooms, this.maxRooms); 
-    //#region selectQuestion
-    let qFuncs = [this.areRoomsConnected.bind(this)];
-    if (n > 5) qFuncs.push(this.isThereAPath.bind(this));
-    let q = this.q = this.level > 1 ? arrLast(qFuncs) : chooseRandom(qFuncs); 
-    //#endregion
-    //#region make house
-    let s = n;
-    let wTotal = n < 4 || n > 12 ? 700 : n > 10 ? 600 : 500;
-    let dGridOuter = mDiv(dTable, { wmin: wTotal, hmin: 400 });
-    let house = this.house = iHouse(dGridOuter, s, { w: wTotal, h: 400 });
-    let rooms = this.rooms = house.rooms.map(x => Items[x]);
-    this.addLabelsToRooms();
-    //#endregion
-    //#region add doors
-    let dirs = coin() ? ['n', 'w'] : ['s', 'e'];
-    let doors = this.doors = [];
-    for (const r of rooms) {
-      let dir = coin() ? dirs[0] : dirs[1];
-      let door = iDoor(r.id, dir);
-      doors.push(door);
-    }
-    if (q.name.includes('Path')) hideOuterDoors(house);
-    //#endregion
-    //#region prep container for multiple choices
-    mLinebreak(dTable, 20);
-    this.dChoices = mDiv(dTable);
-    mLinebreak(dTable);
-    //#endregion
-    //#region make graph container
-    let r = getRect(dGridOuter); 
-    mStyle(dGridOuter, { position: 'relative' });
-    let dGraph = this.dGraph = mDiv(dGridOuter, { box: true, align: 'left', position: 'absolute', bg: '#ffffff80', top: 0, left: 0, w: r.w, h: r.h });
-    //#endregion
-    let innerStyles = { box: true, align: 'left', position: 'absolute', bg: '#ffffff80', top: 0, left: 0, w: r.w, h: r.h };
-    let g1 = this.graph = new UIGraph(dGraph, { edge: { bg: 'blue' }, outer: { align: 'left', w: wTotal, h: 400 }, inner: innerStyles });
-    convertToGraphElements(g1, house);
-    g1.presetLayout();
-    g1.reset();
-    mStyle(dGraph, { opacity: 0 });
-    q();
-    this.controller.activateUi.bind(this.controller)();
-  }
-  //#region qFuncs
-  isThereAPath() {
-    let house = this.house;
-    let corners = getCornerRoomsDict(house); 
-    let clist = Object.values(corners);  
-    let g = this.graph;
-    let id = g.getNodeWithMaxDegree(clist); 
-    let cornerRoomIds = g.sortNodesByDegree(clist).map(x => x.id());
-    let [r1, r2] = [Items[cornerRoomIds[0]], Items[cornerRoomIds[1]]]; 
-    if (r1 == r2 || areNeighbors(r1, r2) && cornerRoomIds.length > 2) r2 = Items[cornerRoomIds[2]];
-    if (!r1.isW && (r2.isW || !r1.N)) [r1, r2] = [r2, r1];
-    let roomFrom = r1.id; 
-    let funcs = this.dijkstra = g.getShortestPathsFrom(roomFrom);  
-    let roomTo = r2.id; 
-    for (const k in corners) {
-      if (k != 'NW') {
-        let dist = funcs.distanceTo('#' + corners[k]);
-        if (dist != Infinity && dist >= 3) {
-          roomTo = corners[k];
-          break;
-        } 
-      }
-    }
-    if (!roomTo) { roomTo = corners.SE; }
-    //#region spoken and written instruction
-    this.roomFrom = roomFrom;
-    this.roomTo = roomTo;
-    let sp1 = {
-      D: ['gibt es einen weeg von', 'gibt es einen weg von'],
-      E: ['is there a path from', 'is there a path from'],
-      S: ['hay un camino de', 'hay un camino de'],
-      F: ["y a 'til un chemin de", "y a 'til un chemin de"],
-    };
-    let sp2 = {
-      D: ['zu', 'zu'],
-      E: ['to', 'to'],
-      S: ['a', 'a'],
-      F: ['!. a! ', 'à'],
-    };
-    let fill1 = [`. "${Items[roomFrom].id.toUpperCase()}"! `, ` ${Items[roomFrom].id} `];
-    let fill2 = [`. "${Items[roomTo].id.toUpperCase()}"`, ` ${Items[roomTo].id}`];
-    let l = 'E'; 
-    let sp = sp1[l][0] + fill1[0] + sp2[l][0] + fill2[0] + '?';
-    let wr = sp1[l][1] + fill1[1] + sp2[l][1] + fill2[1] + '?';
-    let voice = this.language == 'E' ? coin() ? 'ukMale' : 'zira' : this.language;
-    //#endregion
-    show_instruction(wr, dTitle, sp, { voice: voice });
-    let answer = funcs.distanceTo('#' + roomTo) != Infinity;
-    let correct, incorrect;
-    if (answer) { correct = { num: 1, text: 'yes' }; incorrect = [{ num: 0, text: 'no' }]; }
-    else { correct = { num: 0, text: 'no' }; incorrect = [{ num: 1, text: 'yes' }]; }
-    createMultipleChoiceElements(correct, incorrect, this.dChoices, iDiv(this.house), {});
-  }
-  howMany() {
-    let wr = this.language == 'E' ? 'how many units are there in this house?' : "wieviele wohneinheiten hat dieses haus?";
-    show_instruction(wr, dTitle, wr);
-    let numUnits = this.graph.getNumComponents(); 
-    let otherChoices = [
-      numUnits * 2,
-      Math.round(numUnits / 2),
-      numUnits + randomNumber(1, 10)
-    ];
-    let di = {};
-    for (let i = 0; i < otherChoices.length; i++) {
-      let n = otherChoices[i];
-      while (n == numUnits || isdef(di[n])) { n += 1; } 
-      di[n] = true;
-      otherChoices[i] = n;
-    }
-    createMultipleChoiceElements({ num: numUnits, text: numUnits },
-      otherChoices.map(x => ({ num: x, text: x })), this.dChoices, iDiv(this.house), {});
-  }
-  areRoomsConnected() {
-    let wr = this.language == 'E' ? 'are all rooms connected?' : "sind alle zimmer verbunden?";
-    showInstruction(wr, dTitle, wr);
-    let numUnits = this.graph.getNumComponents(); 
-    let correct, incorrect;
-    if (numUnits == 1) { correct = { num: 1, text: 'yes' }; incorrect = [{ num: 0, text: 'no' }]; }
-    else { correct = { num: 0, text: 'no' }; incorrect = [{ num: 1, text: 'yes' }]; }
-    createMultipleChoiceElements(correct, incorrect, this.dChoices, iDiv(this.house), {});
-  }
-  //#region helpers
-  showPath() {
-    mStyle(this.dGraph, { opacity: 1 });
-  }
-  //#region add stuff to house
-  addLabelsToRooms() {
-    let roomlist = ['bedroom', 'livingroom', 'bathroom', 'kitchen'];
-    sortByFunc(this.rooms, x => x.rect.w * x.rect.h);
-    this.rooms.map(x => addLabel(x, x.ch, {}));
-  }
-  addOneDoorPerRoom(directions) {
-    for (const r of this.rooms) {
-      let door = makeRandomDoor(r, this.house, directions); this.doors.push(door);
-    }
-  }
-  addWallFinderByMouseClick() {
-    dTable.onclick = ev => {
-      console.log(ev.clientX, ev.clientY);
-      let w = findWall(ev.clientX, ev.clientY, this.walls);
-      console.log('found wall', w)
-    }
-  }
-  addFurnitureItems() {
-    let keys = ['bed', 'bathtub', 'chair', 'couch and lamp', 'toilet', 'door', 'table'];
-    let items = Pictures = genItemsFromKeys(keys);
-    console.assert(arrLast(items).key == 'table', 'NOOOOOOO');
-    let itable = arrLast(items);
-    shuffle(items);
-    let dWordArea = this.dWordArea = mDiv(dTable, { h: 70, display: 'flex', 'flex-wrap': 'wrap', layout: 'fhcc' });
-    for (const item of items) { let d = miPic(item, dWordArea); iAdd(item, { div: d }); }
-    mStyle(iDiv(itable), { fg: BROWN });
-    enableDD(items, rooms, this.dropHandler.bind(this), false);
-  }
-  //#endregion
-  eval() {
-    clearFleetingMessage();
-    Selected = { reqAnswer: G.correctAnswer, answer: Goal.choice.text, feedbackUI: Goal.buttonClicked };
-    return (Goal.buttonClicked == Goal.buttonCorrect);
-  }
-}
-class GKrieg extends G2Player {
-  write() { write('game', ...arguments); }
-  startGame() {
-    this.write('start game')
-    super.startGame();
-    let back = this.back = new GKriegBack();
-    this.setStartPosition();
-    this.front = new GKriegFront(130, dTable);
-    this.front.presentState(this.back.get_state());
-    mLinebreak(dTable, 50);
-    this.moveButton = mButton('Move!', this.interact.bind(this), dTable, { fz: 28, matop: 10, rounding: 10, padding: 16, border: 8 }, ['buttonClass']);
-  }
-  setStartPosition() {
-    this.back.load(null); 
-  }
-  prompt() {
-    this.write('prompt')
-    let msg = this.plTurn == this.ai ? 'Ai thinking...' : 'Deterministic: click Move!';
-    showInstruction('', msg, dTitle, false);
-    this.controller.activateUi();
-  }
-  activate() {
-    let pl = this.plTurn;
-    let autoplay = false;
-    let manual = true;
-    if (!manual && (autoplay || pl == this.ai)) {
-      if (this.ai == pl) uiActivated = false;
-      setTimeout(this.interact.bind(this), 500);
-    } else {
-      this.moveButton.style.opacity = 1;
-    }
-  }
-  interact() {
-    if (!canAct()) { console.log('NOPE!!!!', 'ai', aiActivated, 'ui', uiActivated); return; }
-    this.controller.deactivateUi();
-    this.write('interact');
-    let back = this.back;
-    back.make_random_move();
-    this.front.animatePlayerMove(back.turn(), this.onPlayerMoveCompleted.bind(this));
-  }
-  onPlayerMoveCompleted() {
-    let back = this.back;
-    this.front.presentState(this.back.get_state());
-    let x = this.back.resolve();
-    if (isdef(x)) {
-      this.moveButton.style.opacity = .3;
-      this.TO = setTimeout(() => { this.front.animateResolve(x, () => { GC.evaluate(x) }) },  
-        1000
-      );
-    } else this.controller.evaluate(x);
-  }
-  changePlayer() {
-    this.write('change player')
-    this.back.swap_turn();
-    this.plTurn = this.players[this.back.player().index];
-    this.opp = this.players[this.back.opponent().index];
-  }
-  eval(x) {
-    let back = this.back;
-    this.write('eval', x)
-    if (isdef(x)) this.front.presentState(this.back.get_state());
-    if (back.is_out_of_cards()) {
-      this.moveButton.remove();
-      this.gameOver = true;
-      let w = back.winner();
-      if (isdef(w)) this.winner = this.players[w.index];
-      this.bannerPos = -480;
-    }
-  }
-}
 class GKriegBack {
   load(state) {
     this.history = [];
@@ -11730,12 +10290,6 @@ class GKriegBack {
     this.players = [this.pl1, this.pl2];
     this.iturn = 0;
     if (nundef(state)) return;
-    /* example of a state:
-    {
-      pl1: { hand: ['TH', 'QH'], trick: [['QH']] },
-      pl2: { hand: ['TC', 'QC'], trick: [['KC']] },
-    },
-    */
     if (isdef(state.pl1.hand)) this.pl1.hand = parseHand(state.pl1.hand, deck);
     if (isdef(state.pl2.hand)) this.pl2.hand = parseHand(state.pl2.hand, deck);
     if (isdef(state.pl1.trick)) state.pl1.trick.map(x => this.pl1.trick.push(parseHand(x, deck)));
@@ -11953,103 +10507,6 @@ class GKriegFront {
     }
   }
 }
-class GMaze extends Game {
-  constructor(name, o) { super(name, o); }
-  clear() { super.clear(); if (isdef(this.cy)) { this.cy.destroy(); } }
-  startGame() {
-    this.correctionFunc = () => {
-      mStyle(Goal.buttonCorrect, { bg: 'green' });
-      animate(Goal.buttonCorrect, 'komisch', 1000);
-      if (Goal.correctChoice.text == 'yes') this.maze.breadCrumbs(this.path); else this.maze.colorComponents();
-      return 20000;
-    };
-    this.failFunc = () => {
-      if (Goal.choice == Goal.correctChoice) { mStyle(Goal.buttonClicked, { bg: 'green' }); mCheckit(Goal.feedbackUI, 100); }
-      else { mXit(Goal.buttonClicked, 100); }
-    }
-    this.successFunc = () => {
-      if (Goal.choice == Goal.correctChoice) { mStyle(Goal.buttonClicked, { bg: 'green' }); mCheckit(Goal.feedbackUI, 100); }
-      else { mXit(Goal.buttonClicked, 100); }
-    }
-  }
-  startRound() { if (isdef(this.cy)) this.cy.destroy(); clearElement(dTable); } 
-  prompt() {
-    this.trials = 1;
-    let maze = this.maze = new MazeGraph(dTable, this.rows, this.cols, this.sz, this.gap);
-    this.cy = maze.cy;
-    mLinebreak(dTable, 20);
-    this.dChoices = mDiv(dTable);
-    mLinebreak(dTable);
-    this.isThereAPath(maze);
-    this.controller.activateUi.bind(this.controller)();
-  }
-  isThereAPath(maze) {
-    let cellStart = maze.getTopLeftCell();
-    mCellContent(iDiv(cellStart), { w: '50%', h: '50%', fz: '60%', bg: 'green', fg: 'white', rounding: '50%' }, 'A');
-    let cellGoal = maze.getBottomRightCell();
-    mCellContent(iDiv(cellGoal), { w: '50%', h: '50%', fz: '60%', bg: 'red', fg: 'white', rounding: '50%' }, 'B');
-    [this.roomFrom, this.roomTo] = [cellStart.nodeId, cellGoal.nodeId];
-    //#region spoken and written instruction
-    let sp1 = {
-      D: ['gibt es einen weeg von', 'gibt es einen weg von'],
-      E: ['is there a path from', 'is there a path from'],
-      S: ['hay un camino de', 'hay un camino de'],
-      F: ["y a 'til un chemin de", "y a 'til un chemin de"],
-    };
-    let sp2 = {
-      D: ['zu', 'zu'],
-      E: ['to', 'to'],
-      S: ['a', 'a'],
-      F: ['!. a! ', 'à'],
-    };
-    let fill1 = [`. "A"! `, ` A `];
-    let fill2 = [`. "B"`, ` B`];
-    let l = this.language;
-    let sp = sp1[l][0] + fill1[0] + sp2[l][0] + fill2[0] + '?';
-    let wr = sp1[l][1] + fill1[1] + sp2[l][1] + fill2[1] + '?';
-    let voice = this.language == 'E' ? coin() ? 'ukMale' : 'zira' : this.language;
-    show_instruction(wr, dTitle, sp, { voice: voice });
-    //#endregion
-    let path = this.path = maze.getShortestPathFromTo(this.roomFrom, this.roomTo);
-    console.assert(path.length < Infinity, 'WAAAAAAAAAAAAAAS?');
-    if (coin(this.level > 2 ? 50 : 40)) maze.cutPath(this.path, .5, .75);
-    let len = maze.getLengthOfShortestPath(this.roomFrom, this.roomTo); 
-    let answer = len != Infinity;
-    let correct, incorrect;
-    if (answer) { correct = { num: 1, text: 'yes' }; incorrect = [{ num: 0, text: 'no' }]; }
-    else { correct = { num: 0, text: 'no' }; incorrect = [{ num: 1, text: 'yes' }]; }
-    createMultipleChoiceElements(correct, incorrect, this.dChoices, maze.dMaze, {});
-  }
-  eval() {
-    clearFleetingMessage();
-    Selected = { reqAnswer: G.correctAnswer, answer: Goal.choice.text, feedbackUI: Goal.buttonClicked };
-    return (Goal.buttonClicked == Goal.buttonCorrect);
-  }
-}
-class GMem extends Game {
-  constructor(name, o) { super(name, o); }
-  clear() { clearTimeout(this.TO); showMouse(); }
-  prompt() {
-    this.trials = 1;
-    myShowPics(this.interact.bind(this),
-      { border: '3px solid #ffffff80' },
-      {});
-    setGoal();
-    let wr = (this.language == 'E' ? 'remember ' : 'merke dir ') + (this.level > 2 ? (this.language == 'E' ? 'all' : 'alle') : Goal.label);
-    show_instruction(wr, dTitle, wr);
-    let secs = calcMemorizingTime(this.numPics, this.level > 2);
-    hideMouse();
-    TOMain = setTimeout(() => turnCardsAfter(secs), 300, this.level >= 5); 
-  }
-  interact(ev) {
-    ev.cancelBubble = true;
-    if (!canAct()) return;
-    let pic = findItemFromEvent(Pictures, ev);
-    turnFaceUpSimple(pic);
-    if (this.trialNumber == this.trials - 1) turnFaceUpSimple(Goal);
-    TOMain = setTimeout(() => this.controller.evaluate.bind(this.controller)(ev), 300);
-  }
-}
 class GMinimalGame {
   constructor(name, o) {
     this.name = name;
@@ -12062,761 +10519,6 @@ class GMinimalGame {
   clear() { }
   prompt() { }
   activate() { }
-}
-class GMissingLetter extends Game {
-  constructor(name, o) { super(name, o); }
-  start_Level() {
-    super.start_Level();
-    this.maxPosMissing = this.posMissing == 'start' ? this.numMissing - 1 : 100;
-  }
-  prompt() {
-    myShowPics(() => fleetingMessage('just enter the missing letter!'));
-    setGoal();
-    if (this.instruction == 'all') {
-      let wr = (this.language == 'E' ? 'complete ' : "ergänze ") + `<b>${Goal.label.toUpperCase()}</b>`;
-      let sp = (this.language == 'E' ? 'complete ' : "ergänze ") + `${Goal.label}`;
-      show_instruction(wr, dTitle, sp);
-    } else if (this.instruction == 'spokenGoal') {
-      let wr = this.language == 'E' ? 'complete the word' : "ergänze das wort";
-      let sp = (this.language == 'E' ? 'complete' : "ergänze") + ' ' + Goal.label;
-      show_instruction(wr, dTitle, sp);
-    } else {
-      let wr = this.language == 'E' ? 'complete the word' : "ergänze das wort";
-      show_instruction(wr, dTitle, wr);
-    }
-    mLinebreak(dTable, 20);
-    let style = { margin: 6, fg: 'white', display: 'inline', bg: 'transparent', align: 'center', border: 'transparent', outline: 'none', family: 'Consolas', fz: 80 };
-    let d = createLetterInputs(Goal.label.toUpperCase(), dTable, style); 
-    let indices = getIndicesCondi(Goal.label, (x, i) => isAlphaNum(x) && i <= this.maxPosMissing);
-    this.nMissing = Math.min(indices.length, this.numMissing);
-    let ilist = choose(indices, this.nMissing); sortNumbers(ilist);
-    this.inputs = [];
-    for (const idx of ilist) {
-      let inp = d.children[idx];
-      inp.innerHTML = '_';
-      mClass(inp, 'blink');
-      this.inputs.push({ letter: Goal.label[idx].toUpperCase(), div: inp, index: idx });
-    }
-    mLinebreak(dTable);
-    let msg = this.composeFleetingMessage();
-    let ms = this.instruction == 'all' ? 3000 : this.instruction == 'spokenGoal' ? 9000 : 15000;
-    showFleetingMessage(msg, ms);
-    this.controller.activateUi.bind(this.controller)();
-  }
-  trialPrompt() {
-    let selinp = Selected.inp;
-    sayTryAgain();
-    TOMain = setTimeout(() => {
-      let d = selinp.div;
-      d.innerHTML = '_';
-      mClass(d, 'blink');
-    }, 1200);
-    showFleetingMessage(this.composeFleetingMessage(), 3000);
-    return 1500;
-  }
-  activate() {
-    addKeyup('G', ev => {
-      if (!isLetter(ev.key)) return;
-      clearFleetingMessage();
-      if (!canAct()) return;
-      let charEntered = ev.key.toString();
-      if (!isAlphaNum(charEntered)) return;
-      Selected = { lastLetterEntered: charEntered.toUpperCase() };
-      if (this.nMissing == 1) {
-        let d = Selected.feedbackUI = this.inputs[0].div;
-        Selected.positiveFeedbackUI = iDiv(Goal);
-        Selected.lastIndexEntered = this.inputs[0].index;
-        Selected.inp = this.inputs[0];
-        d.innerHTML = Selected.lastLetterEntered;
-        mRemoveClass(d, 'blink');
-        let result = buildWordFromLetters(mParent(d));
-        this.controller.evaluate.bind(this.controller)(result);
-      } else {
-        let ch = charEntered.toUpperCase();
-        for (const inp of this.inputs) {
-          if (inp.letter == ch) {
-            Selected.lastIndexEntered = inp.index;
-            Selected.inp = inp;
-            let d = Selected.feedbackUI = inp.div;
-            d.innerHTML = ch;
-            mRemoveClass(d, 'blink');
-            removeInPlace(this.inputs, inp);
-            this.nMissing -= 1;
-            break;
-          }
-        }
-        if (nundef(Selected.lastIndexEntered)) {
-          showFleetingMessage('you entered ' + Selected.lastLetterEntered);
-          sayRandomVoice('try a different letter!', 'anderer Buchstabe!')
-        }
-        showFleetingMessage(this.composeFleetingMessage(), 3000);
-      }
-    })
-  }
-  eval(word) {
-    let answer = normalize(word, this.language);
-    let reqAnswer = normalize(Goal.label, this.language);
-    Selected.reqAnswer = reqAnswer;
-    Selected.answer = answer;
-    if (answer == reqAnswer) return true;
-    else if (this.language == 'D' && fromUmlaut(answer) == fromUmlaut(reqAnswer)) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-  composeFleetingMessage() {
-    let lst = this.inputs;
-    let msg = lst.map(x => x.letter).join(',');
-    let edecl = lst.length > 1 ? 's ' : ' ';
-    let ddecl = lst.length > 1 ? 'die' : 'den';
-    let s = (this.language == 'E' ? 'Type the letter' + edecl : 'Tippe ' + ddecl + ' Buchstaben ');
-    return s + msg;
-  }
-}
-class GMissingNumber extends Game {
-  constructor(name, o) { super(name, o); }
-  startGame() {
-    this.successFunc = successThumbsUp;
-    this.failFunc = failThumbsDown;
-    this.correctionFunc = this.showCorrectSequence.bind(this);
-  }
-  showCorrectSequence() { return numberSequenceCorrectionAnimation(getNumSeqHint); }
-  start_Level() {
-    if (!isList(this.steps)) this.steps = [this.steps];
-    this.numPics = 2;
-    this.labels = false;
-  }
-  prompt() {
-    mLinebreak(dTable, 12);
-    showHiddenThumbsUpDown(110);
-    mLinebreak(dTable);
-    this.step = chooseRandom(this.steps);
-    this.op = chooseRandom(this.ops);
-    this.oop = OPS[this.op];
-    this.seq = createNumberSequence(this.seqLen, this.minNum, this.maxNum, this.step, this.op);
-    [this.words, this.letters] = showNumberSequence(this.seq, dTable);
-    setNumberSequenceGoal();
-    mLinebreak(dTable);
-    let instr1 = (this.language == 'E' ? 'complete the sequence' : "ergänze die reihe");
-    show_instruction(instr1, dTitle, instr1);
-    if (this.showHint) {
-      hintEngineStart(getNumSeqHintString, [0, 1, 2, 3, 4], 5000 + this.level * 1000);
-    }
-    this.controller.activateUi.bind(this.controller)();
-  }
-  trialPrompt() {
-    let hintlist = this.trialNumber >= 4 ? [this.trialNumber] : range(this.trialNumber, 4);
-    if (this.showHint) hintEngineStart(getNumSeqHintString, hintlist, 3000 + this.level * 1000);
-    TOMain = setTimeout(() => getWrongChars().map(x => unfillChar(x)), 500);
-    return 600;
-  }
-  activate() { addKeyup('G', this.interact.bind(this)); }
-  interact(ev) {
-    if (!isNumber(ev.key) && ev.key != '-') return;
-    clearFleetingMessage();
-    if (!canAct()) return;
-    let sel = Selected = onKeyWordInput(ev);
-    if (nundef(sel)) return;
-    let lastInputCharFilled = sel.target;
-    console.assert(sel.isMatch == (lastInputCharFilled.letter == sel.ch), lastInputCharFilled, sel.ch);
-    if (sel.isMatch && sel.isVeryLast) {
-      deactivateFocusGroup();
-      this.controller.evaluate.bind(this.controller)(true);
-    } else if (sel.isMatch && sel.isLastOfGroup) {
-      sel.target.isBlank = false;
-      sel.target.group.hasBlanks = false;
-      removeInPlace(Goal.blankWords, sel.target.group);
-      removeInPlace(Goal.blankChars, sel.target);
-      deactivateFocusGroup();
-      console.log('haaaaaaaaaaaalo', Goal.isFocus)
-    } else if (sel.isMatch) {
-      removeInPlace(Goal.blankChars, sel.target);
-      sel.target.isBlank = false;
-    } else if (sel.isVeryLast) {
-      Selected.words = getInputWords();
-      Selected.answer = getInputWordString();
-      Selected.req = getCorrectWordString();
-      deactivateFocusGroup();
-      this.controller.evaluate.bind(this.controller)(false);
-    } else if (sel.isLastOfGroup) {
-      Selected.words = getInputWords();
-      Selected.answer = getInputWordString();
-      Selected.req = getCorrectWordString();
-      deactivateFocusGroup();
-      this.controller.evaluate.bind(this.controller)(false);
-    } else {
-      if (!this.silent) { writeSound(); playSound('incorrect1'); }
-      deactivateFocusGroup();
-      showFleetingMessage('does NOT fit: ' + Selected.ch, 0, { fz: 24 });
-      setTimeout(() => unfillCharInput(Selected.target), 500);
-    }
-  }
-  eval(isCorrect) { return isCorrect; }
-}
-class GNamit extends Game {
-  constructor(name, o) { super(name, o); }
-  startGame() { this.correctionFunc = showCorrectPictureLabels; this.failFunc = failSomePictures; }
-  prompt() {
-    this.showLabels = false;
-    myShowPics(null, {}, { rows: 1 });
-    Pictures.map(x => x.correctLabel = x.label);
-    Goal = { pics: Pictures };
-    let wr = this.language == 'E' ? 'drag labels to pictures' : "ordne die texte den bildern zu";
-    show_instruction(wr, dTitle, wr);
-    mLinebreak(dTable);
-    mLinebreak(dTable, 50);
-    let keys = Pictures.map(x => x.key);
-    shuffle(keys);
-    G.showLabels = true;
-    let titems = this.letters = myShowLabels(null, undefined, { rows: 1, showLabels: true }, keys);
-    titems.map(x => iDiv(x).style.cursor = 'pointer');
-    mLinebreak(dTable, 50);
-    enableDD(this.letters, Pictures, this.dropHandler.bind(this), true, false, null);
-    mButton('Done!', this.controller.evaluate.bind(this.controller), dTable, { fz: 32, matop: 10, rounding: 10, padding: 16, border: 8 }, ['buttonClass']);
-    this.controller.activateUi.bind(this.controller)();
-  }
-  dropHandler(source, target, isCopy = true) {
-    let dSource = iDiv(source);
-    let dTarget = iDiv(target);
-    console.log('dropped', source, 'onto', target);
-    let label = iLabel(target);
-    console.log('label', label);
-    let div = iDiv(target);
-    console.log('div', div);
-    addLabel(target, source.label, {});
-  }
-  trialPrompt() {
-    this.failFunc();
-    sayTryAgain();
-    TOMain = setTimeout(() => { removeMarkers(); Pictures.map(x => removeLabel(x)) }, 1200);
-    return 1500;
-  }
-  eval() {
-    console.log('eval in Namit!!!!!')
-    this.piclist = Pictures;
-    Selected = { piclist: this.piclist, feedbackUI: this.piclist.map(x => iDiv(x)), sz: getRect(iDiv(this.piclist[0])).h };
-    let isCorrect = true;
-    for (const p of Pictures) {
-      let correctLabel = p.correctLabel;
-      console.log('correctLabel', correctLabel, p.label);
-      let dLabel = iLabel(p);
-      console.log('dLabel', dLabel);
-      if (nundef(dLabel) || p.label != correctLabel) p.isCorrect = isCorrect = false;
-      else p.isCorrect = true;
-    }
-    return isCorrect;
-  }
-}
-class GPasscode extends Game {
-  constructor(name, o) { super(name, o); this.needNewPasscode = true; }
-  clear() { clearTimeout(this.TO); clearTimeCD(); }
-  startGame() {
-    this.incrementLevelOnPositiveStreak = this.samplesPerGame;
-    this.decrementLevelOnNegativeStreak = this.samplesPerGame;
-  }
-  start_Level() { this.needNewPasscode = true; }
-  prompt() {
-    this.trials = 1;
-    if (this.needNewPasscode) {
-      this.timeout = 1000;
-      this.needNewPasscode = false;
-      let keys = getRandomKeysFromGKeys(this.passcodeLength);
-      myShowPics(null,
-        { border: '3px solid #ffffff80' },
-        { numRepeat: this.numRepeat, sameBackground: true }, keys);
-      Goal = Pictures[0];
-      this.wort = (this.language == 'E' ? 'the passcode' : 'das Codewort');
-      showInstruction(Goal.label, this.wort + (this.language == 'E' ? ' is' : ' ist'), dTitle, true);
-      TOMain = setTimeout(anim1, 300, Goal, 500, showGotItButton);
-    } else {
-      this.timeout *= 2;
-      doOtherStuff();
-    }
-  }
-  eval(x) {
-    CountdownTimer.cancel();
-    let isCorrect = super.eval(x);
-    if (!isCorrect) this.needNewPasscode = true;
-    return isCorrect;
-  }
-}
-class GPremem extends Game {
-  constructor(name, o) { super(name, o); this.piclist = []; }
-  prompt() {
-    this.piclist = [];
-    this.showLabels = false;
-    myShowPics(this.interact.bind(this), { border: '3px solid #ffffff80' }, {});
-    let wr = this.language == 'E' ? 'click any picture' : 'click irgendein Bild';
-    show_instruction(wr, dTitle, wr);
-    this.controller.activateUi.bind(this.controller)();
-  }
-  trialPrompt() {
-    for (const p of this.piclist) { toggleSelectionOfPicture(p); }
-    this.piclist = [];
-    show_instruction('try again: click any picture', dTitle, 'try again: click any picture');
-    return 10;
-  }
-  interact(ev) {
-    ev.cancelBubble = true;
-    if (!canAct()) return;
-    let pic = findItemFromEvent(Pictures, ev);
-    if (!isEmpty(this.piclist) && this.piclist.length < this.numRepeat - 1 && this.piclist[0].label != pic.label) return;
-    toggleSelectionOfPicture(pic, this.piclist);
-    if (isEmpty(this.piclist)) {
-      let wr = this.language == 'E' ? 'click any picture' : 'click irgendein Bild';
-      show_instruction(wr, dTitle, wr);
-    } else if (this.piclist.length < this.numRepeat - 1) {
-      let wr = (this.language == 'E' ? 'click another ' : 'click ein andres Bild mit ');
-      show_instruction(wr + `<b>${pic.label.toUpperCase()}</b>`, dTitle, wr + pic.label);
-    } else if (this.piclist.length == this.numRepeat - 1) {
-      let picGoal = firstCond(Pictures, x => x.label == pic.label && !x.isSelected);
-      setGoal(picGoal.index);
-      let wr = (this.language == 'E' ? 'click the ' + (this.numRepeat == 2 ? 'other ' : 'last ')
-        : 'click das ' + (this.numRepeat == 2 ? 'andere ' : 'letzte ') + ' Bild mit')
-      show_instruction(wr + `<b>${picGoal.label.toUpperCase()}</b>`, dTitle, wr + picGoal.label);
-    } else {
-      this.controller.evaluate.bind(this.controller)(this.piclist);
-    }
-  }
-  eval(piclist) {
-    Selected = { piclist: piclist, feedbackUI: piclist.map(x => iDiv(x)), sz: getRect(iDiv(piclist[0])).h };
-    let req = Selected.reqAnswer = piclist[0].label;
-    Selected.answer = piclist[piclist.length - 1].label;
-    if (Selected.answer == req) { return true; } else { return false; }
-  }
-}
-class GProg extends Game {
-  constructor(name, o) { super(name, o); }
-  prompt() {
-    let c = this.card = cRound(dTable); 
-    let d = c.visual = iDiv(c);
-    visualPropertySetter(this.card);
-    visualAttributeSetter(this.card);
-    d.innerHTML = 'HALLO';
-    mStyle(d, { fg: 'blue' });
-    mLinebreak(dTable, 25);
-    this.ta = this.createTextArea();
-    this.ta.value = `mCenterCenterFlex(card.visual);`; 
-    mLinebreak(dTable, 25);
-    mButton('run', this.runCode.bind(this), dTable, { bg: 'skyblue', fg: 'black', fz: 32 }, 'mybutton');
-  }
-  runCode() {
-    let code = this.ta.value;
-    let prelim = ''; 
-    prelim = 'let card = this.card;'; 
-    code = prelim + code;
-    eval(code);
-  }
-  createTextArea() {
-    let dCode = mDiv(dTable, {});
-    let ta = this.ta = mCreate('textarea');
-    mAppend(dCode, ta);
-    ta.setAttribute('rows', 10);
-    ta.setAttribute('cols', 60);
-    mStyle(ta, { family: 'courier', padding: 10 });
-    return ta;
-  }
-}
-class GProg0 extends Game {
-  constructor(name, o) { super(name, o); }
-  startGame(fen) {
-  }
-  prompt() {
-    let c = this.card0 = cLandscape(dTable);
-    this.card1 = iDiv(c).style;
-    this.card2 = iDiv(c);
-    this.card3 = iDiv(c);
-    show_instruction('write code what rank and suit this card should have', dTitle);
-    mLinebreak(dTable, 25);
-    let dCode = mDiv(dTable, {});
-    let ta = this.ta = mCreate('textarea');
-    mAppend(dCode, ta);
-    ta.setAttribute('rows', 10);
-    ta.setAttribute('cols', 60);
-    mStyle(ta, { family: 'courier', padding: 10 });
-    ta.value = `mStyle(iDiv(G.card0),{bg:'pink'})`; 
-    ta.value = `this.card1.background = 'yellow'`; 
-    ta.value = `this.card2.style.background = 'yellow'`; 
-    ta.value = `this.set('background','red');`; 
-    ta.value = `this.set(this.card1,'background','red');`; 
-    ta.value = `set(card1,'background','red');`; 
-    ta.value = `card.background = 'red';`; 
-    ta.value = `card.color = 'red';`; 
-    ta.value = `card.color = 'red';`; 
-    mLinebreak(dTable, 25);
-    mButton('run', this.runCode.bind(this), dTable, { bg: 'skyblue', fg: 'black', fz: 32 }, 'mybutton');
-    console.log('type of style', typeof this.card1);
-  }
-  set(o, prop, val) {
-    o[prop] = val;
-  }
-  runCode() {
-    let code = this.ta.value;
-    let prelim = ''; 
-    prelim = 'let card = this.card1; '; 
-    prelim = `
-    var card = new ProgObject(this.card0);
-    console.log('card',card);
-    `;
-    prelim = `
-    var obj = {};
-    Object.defineProperty(obj, prop, {
-        get: function() {return this.card1; },
-        set: function(val) { this.card1.val = val; }
-    });
-    `
-    code = prelim + code;
-    console.log('code', code);
-    eval(code);
-  }
-}
-class GProg1 extends Game {
-  constructor(name, o) { super(name, o); }
-  prompt() {
-    let c = this.card = cLandscape(dTable);
-    let d = this.visual = iDiv(c);
-    this.style = d.style;
-    let propertyGiver1 = (o, prop, setter) => {
-      Object.defineProperty(o, prop, {
-        get: function () { return this.val; },
-        set: function (val) { this.val = val; setter(val); }
-      });
-    };
-    let visualPropertySetter1 = (o) => {
-      propertyGiver1(o, 'bg', x => { mStyle(G.visual, { 'bg': x }); }); 
-    }
-    visualPropertySetter1(this.card);
-    d.innerHTML = 'HALLO';
-    mStyle(d, { fg: 'blue' });
-    mLinebreak(dTable, 25);
-    let dCode = mDiv(dTable, {});
-    let ta = this.ta = mCreate('textarea');
-    mAppend(dCode, ta);
-    ta.setAttribute('rows', 10);
-    ta.setAttribute('cols', 60);
-    mStyle(ta, { family: 'courier', padding: 10 });
-    ta.value = `card.bg = 'red'; console.log(card.bg);`; 
-    mLinebreak(dTable, 25);
-    mButton('run', this.runCode.bind(this), dTable, { bg: 'skyblue', fg: 'black', fz: 32 }, 'mybutton');
-    console.log('type of style', typeof this.card1);
-  }
-  runCode() {
-    let code = this.ta.value;
-    let prelim = ''; 
-    prelim = 'let [card,visual,style] = [this.card,this.visual,this.style]; '; 
-    code = prelim + code;
-    console.log('code', code);
-    eval(code);
-  }
-}
-class GReversi extends GTTT {
-  createBoard() {
-    this.board = new Board(this.rows, this.cols, this.controller.uiInteract.bind(this.controller), { margin: 6, w: 60, h: 60, bg: 'white', fg: 'black', rounding: '50%' });
-  }
-  setStartPosition() {
-    let positions = [
-      [[0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0],
-      [0, 0, 'O', 'X', 0, 0],
-      [0, 0, 'X', 'O', 0, 0],
-      [0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0]],
-    ];
-    if (isdef(this.iPosition)) {
-      let idx = this.iPosition + 1; idx = idx % positions.length; this.iPosition = idx;
-    } else this.iPosition = 0;
-    if (this.startPosition == 'empty' || this.rows != 6 || this.cols != 6) {
-      let pos = bCreateEmpty(this.rows, this.cols);
-      let r1 = this.rows / 2 - 1, r2 = this.rows / 2, c1 = this.cols / 2 - 1, c2 = this.cols / 2;
-      pos[r1 * this.cols + c1] = pos[r2 * this.cols + c2] = 'O';
-      pos[r1 * this.cols + c2] = pos[r2 * this.cols + c1] = 'X';
-      positions[0] = pos;
-    }
-    let state = nundef(this.startPosition) || this.startPosition == 'empty' ? positions[0]
-      : this.startPosition == 'random' ? chooseRandom(positions)
-        : positions[this.iPosition];
-    this.board.setState(state, { X: this.ai.color, O: this.human.color });
-  }
-  startGame() {
-    super.startGame();
-    this.setStartPosition();
-  }
-  checkLegal(tile) {
-    let state = this.getState();
-    if (!EmptyFunc(tile.label)) return false;
-    let nei = bNei(state, tile.index, this.rows, this.cols, true);
-    for (const n of nei) {
-      if (!n) continue;
-      let t = state[n];
-      if (!EmptyFunc(t)) return true;
-    }
-    console.log('ILLEGAL MOVE! tile', tile.index, 'does not have neighbor!')
-    return false;
-  }
-  interact(ev) {
-    let tile = evToItemC(ev);
-    if (!this.checkLegal(tile)) return; 
-    let pl = this.plTurn;
-    addLabel(tile, pl.sym, { fz: 60, fg: pl.color });
-    let state = this.getState();
-    let iCapt = bCapturedPieces(pl.sym, state, tile.index, this.rows, this.cols);
-    for (const i of iCapt) {
-      let item = this.board.get(i);
-      modLabel(item, this.plTurn.sym, { fg: this.plTurn.color });
-    }
-    this.controller.evaluate(tile);
-  }
-  activate() {
-    let pl = this.plTurn;
-    let autoplay = false;
-    if (autoplay || pl == this.ai) {
-      if (this.ai == pl) uiActivated = false;
-      setTimeout(() => AIMinimax(this, this.afterComputerMove.bind(this)), 200);
-    }
-  }
-  checkFinal(state, pl1, pl2) {
-    if (nundef(state)) state = this.getState();
-    if (nundef(pl1)) pl1 = this.plTurn;
-    if (nundef(pl2)) pl2 = this.plOpp;
-    return GReversi.checkEnd(state, pl1, pl2);
-  }
-  static checkEnd(state, pl1, pl2) {
-    let hasPl1 = false, hasPl2 = false, s1 = pl1.sym, s2 = pl2.sym, hasEmpty = false;
-    for (const s of state) {
-      if (!hasPl1 && s == s1) hasPl1 = true;
-      else if (!hasPl2 && s == s2) hasPl2 = true;
-      else if (!hasEmpty && EmptyFunc(s)) hasEmpty = true;
-      if (hasPl1 && hasPl2 && hasEmpty) return false;
-    }
-    let winner = !hasPl2 ? pl1 : !hasPl1 ? pl2 : 0;
-    let full = !hasEmpty;
-    if (full) {
-      let n1 = arrCount(state, x => x == s1);
-      let n2 = arrCount(state, x => x == s2);
-      if (!winner && n1 != n2) {
-        if (n1 > n2) winner = pl1; else winner = pl2;
-      }
-    }
-    return winner ? { reached: true, winner: winner } : full ? { reached: true, winner: null } : { reached: false };
-  }
-  heuristic(state, plMax, plMin) {
-    let vmax = 0, vmin = 0;
-    vmax = vmax + arrCount(state, x => x == plMax.sym);
-    vmin = vmin + arrCount(state, x => x == plMin.sym);
-    return vmax - vmin;
-  }
-  heureval(state) {
-    let heurinfo = GReversi.heuristic(state, MAXIMIZER, MINIMIZER);
-    let val = heurinfo.val; 
-    return val;
-  }
-  eval() {
-    this.moveCounter += 1;
-    let info = this.checkFinal();
-    this.gameOver = info.reached;
-    if (this.gameOver) {
-      this.winner = info.winner;
-      this.tie = !info.winner;
-      if (this.winner) {
-        this.loser = this.winner == this.ai ? this.human : this.ai;
-        let state = this.getState();
-        let nWinner = arrCount(state, x => x == this.winner.sym);
-        let nLoser = arrCount(state, x => x == this.loser.sym);
-        this.info = '(' + nWinner + ':' + nLoser + ')';
-      }
-    }
-  }
-  getAvailableMoves(state) {
-    let moves = [];
-    for (let i = 0; i < state.length; i++) {
-      if (EmptyFunc(state[i])) {
-        let nei = bNei(state, i, G.rows, G.cols, true);
-        let iFull = firstCond(nei, x => !EmptyFunc(state[x]));
-        if (iFull != null) moves.push(i);
-      }
-    }
-    return moves;
-  }
-  evalState(state, depth) {
-    let info = GReversi.checkEnd(state, MAXIMIZER, MINIMIZER);
-    let val = info.reached && info.winner ? (100 - depth) * (info.winner == MAXIMIZER ? 1 : -1) : 0;
-    return { reached: info.reached, val: val };
-  }
-  applyMove(state, move, player) {
-    arrReplaceAtInPlace(state, move, player.sym);
-    let iCapt = bCapturedPieces(player.sym, state, move, G.rows, G.cols);
-    for (const i of iCapt) { state[i] = player.sym; }
-  }
-}
-class _grid {
-  constructor(o, pool, boardInfo, fieldInfo) {
-    this.boardInfo = boardInfo;
-    this.fieldInfo = fieldInfo;
-    let { board, fields, corners, edges } = this.skeleton = this.gridSkeleton(o, pool, this.boardInfo, this.fieldInfo);
-    board.oid = o.oid;
-  }
-  gridSkeleton(omap, pool, gridInfoFunc, fieldInfoFunc) {
-    let board = { o: omap, info: gridInfoFunc(omap.rows, omap.cols) };
-    let fields = {};
-    for (const fid of getElements(omap.fields)) {
-      let o = pool[fid];
-      fields[fid] = { oid: fid, o: pool[fid], info: fieldInfoFunc(board.info, o.row, o.col) };
-    }
-    board.info.vertices = correctPolys(Object.values(fields).map(x => x.info.poly), 1);
-    let dhelp = {}; 
-    let corners = {};
-    for (const fid in fields) {
-      let f = fields[fid];
-      let i = 0;
-      for (const cid of getElements(f.o.corners)) {
-        if (cid && nundef(dhelp[cid])) {
-          let pt = f.info.poly[i];
-          corners[cid] = { oid: cid, o: pool[cid], info: { shape: 'circle', memType: 'corner', x: pt.x, y: pt.y, w: 1, h: 1 } };
-          dhelp[cid] = true;
-        }
-        i += 1;
-      }
-    }
-    dhelp = {}; 
-    let edges = {};
-    for (const fid in fields) {
-      let f = fields[fid];
-      for (const eid of getElements(f.o.edges)) {
-        if (eid && nundef(dhelp[eid])) {
-          let el = pool[eid];
-          let n1 = corners[el.corners[0]._obj];
-          let n2 = corners[el.corners[1]._obj];
-          let [x1, y1, x2, y2] = [n1.info.x, n1.info.y, n2.info.x, n2.info.y];
-          edges[eid] = { oid: eid, o: el, info: { shape: 'line', memType: 'edge', x1: x1, y1: y1, x2: x2, y2: y2, x: (x1 + x2) / 2, y: (y1 + y2) / 2, thickness: 1, w: 1, h: 1 } };
-          dhelp[eid] = true;
-        }
-      }
-    }
-    return { board: board, fields: fields, corners: corners, edges: edges };
-  }
-}
-class GRiddle extends Game {
-  constructor(name, o) { super(name, o); }
-  startGame() {
-    this.successFunc = successThumbsUp; this.failFunc = failThumbsDown;
-    this.correctionFunc = () => {
-      mStyle(Goal.buttonCorrect, { bg: 'green' });
-      animate(Goal.buttonCorrect, 'komisch', 1000);
-      return 20000;
-    };
-  }
-  prompt() {
-    this.trials = 1;
-    show_instruction('Solve the Riddle:', dTitle, 'Solve the Riddle:');
-    let wp = this.wp = getRandomWP(this.minIndex, this.maxIndex);
-    let haveResult = wp.isTextResult = instantiateNames(wp);
-    if (!haveResult) instantiateNumbers(wp);
-    mLinebreak(dTable, 2);
-    showHiddenThumbsUpDown(90);
-    mLinebreak(dTable);
-    let dArea = this.textArea = mDiv(dTable, { w: '70%' });
-    let d = mText(wp.text, dArea, { fz: 28 });
-    mLinebreak(dTable, 20);
-    let dResult = this.dResult = mDiv(dTable);
-    Goal = { label: wp.result.text };
-    this.createMultipleChoiceElements();
-    mLinebreak(dTable);
-    this.controller.activateUi.bind(this.controller)();
-  }
-  createMultipleChoiceElements() {
-    let wp = this.wp;
-    let choices = [], nums = [], texts = [];
-    if (wp.isTextResult == true) {
-      texts = Object.values(wp.diNames);
-      for (let i = 0; i < texts.length; i++) { choices.push({ number: 0, text: texts[i] }); }
-      Goal.correctChoice = firstCond(choices, x => x.text == Goal.label);
-    } else if (wp.isFractionResult == true) {
-      let res = wp.result.number; 
-      if (res.n / res.d > 2) {
-        wp.result.isMixed = true;
-        wp.result.mixed = getMixedNumber(res.n, res.d);
-      }
-      nums = get3FractionVariants(res);
-      texts = nums.map(x => getTextForFractionX(x.n, x.d));
-      wp.result.text = texts[0];
-      for (let i = 0; i < texts.length; i++) { choices.push({ number: nums[i], text: texts[i] }); }
-      Goal.correctChoice = firstCond(choices, x => x.text == wp.result.text);
-    } else {
-      let res = wp.result.number;
-      nums = [res, res + randomNumber(1, 25), res / randomNumber(2, 5), res * randomNumber(2, 5)];
-      texts = nums.map(x => (Math.round(x * 100) / 100));
-      for (let i = 0; i < texts.length; i++) { choices.push({ number: nums[i], text: texts[i] }); }
-      Goal.correctChoice = choices[0];
-    }
-    shuffle(choices);
-    if (coin()) shuffle(choices);
-    Goal.choices = choices;
-    let dParent = this.dResult;
-    let idx = 0;
-    for (const ch of choices) {
-      ////'&frac57;', //'&frac12;', 
-      let dButton = mButton(ch.text, this.onClickChoice.bind(this), dParent, { wmin: 100, fz: 36, margin: 20, rounding: 4, vpadding: 4, hpadding: 10 }, ['toggleButtonClass']);
-      dButton.id = 'bChoice_' + idx; idx += 1;
-      if (ch.text == wp.result.text) {
-        Goal.choice = ch.toString();
-        Goal.buttonCorrect = dButton; 
-      }
-    }
-  }
-  onClickChoice(ev) {
-    let id = evToClosestId(ev);
-    let b = mBy(id);
-    let index = Number(stringAfter(id, '_'));
-    Goal.choice = Goal.choices[index];
-    Goal.buttonClicked = b;
-    if (Goal.choice == Goal.correctChoice) { mStyle(b, { bg: 'green' }); mCheckit(this.textArea, 100); }
-    else { mXit(b, 100); }
-    this.controller.evaluate.bind(this.controller)();
-  }
-  eval() {
-    clearFleetingMessage();
-    Selected = { delay: 5000, reqAnswer: this.wp.result.number, answer: Goal.choice.number, feedbackUI: Goal.buttonClicked };
-    if (this.wp.isTextResult) { Selected.reqAnswer = this.wp.result.text; Selected.answer = Goal.choice.text; }
-    return (Goal.buttonClicked == Goal.buttonCorrect);
-  }
-  createInputElements() {
-    this.inputBox = addNthInputElement(this.dResult, 0);
-    this.defaultFocusElement = this.inputBox.id;
-    onclick = () => mBy(this.defaultFocusElement).focus();
-    mBy(this.defaultFocusElement).focus();
-  }
-  activate() { }
-  eval_dep(ev) {
-    console.log('#', this.trialNumber, 'of', this.trials);
-    clearFleetingMessage();
-    Selected = {};
-    let answer = normalize(this.inputBox.value, 'E');
-    let reqAnswer = normalize(this.wp.result.text, 'E');
-    console.log('answer', answer, 'req', reqAnswer);
-    let isCorrect = answer == reqAnswer;
-    Selected = { reqAnswer: reqAnswer, answer: answer, feedbackUI: isCorrect ? Goal.buttonClicked : Goal.buttonCorrect };
-    return (answer == reqAnswer);
-  }
-  trialPrompt_dep() {
-    sayTryAgain();
-    let n = this.trialNumber; 
-    showFleetingMessage('try again!', 0, {}, true);
-    this.inputBox = addNthInputElement(this.dResult, this.trialNumber);
-    this.defaultFocusElement = this.inputBox.id;
-    mLinebreak(dTable);
-    return 10;
-  }
-  activate_input() {
-    this.inputBox.onkeyup = ev => {
-      if (!canAct()) return;
-      if (ev.key === "Enter") {
-        ev.cancelBubble = true;
-        this.controller.evaluate.bind(this.controller)(ev);
-      }
-    };
-    this.inputBox.focus();
-  }
 }
 class gridY {
   constructor({
@@ -12908,626 +10610,6 @@ class gridY {
     return r in this.fields && c in this.fields[r];
   }
 }
-class GSayPic extends Game {
-  constructor(name, o) { super(name, o); }
-  clear() { Speech.stopRecording(); }
-  prompt() {
-    myShowPics();
-    setGoal();
-    let wr = (this.language == 'E' ? 'say: ' : "sage: ");
-    show_instruction(wr + `<b>${Goal.label.toUpperCase()}</b>`, dTitle); 
-    animate(dInstruction, 'pulse800' + bestContrastingColor(this.color, ['yellow', 'red']), 900);
-    mLinebreak(dTable, 25);
-    MicrophoneUi = mMicrophone(dTable, this.color);
-    MicrophoneHide();
-    TOMain = setTimeout(this.controller.activateUi.bind(this.controller), 200);
-  }
-  trialPrompt(nTrial) {
-    sayRandomVoice(nTrial < 2 ? 'speak UP!!!' : 'Louder!!!', 'LAUTER!!!');
-    animate(dInstruction, 'pulse800' + bestContrastingColor(this.color, ['yellow', 'red']), 500);
-    return 600;
-  }
-  activate() {
-    if (Speech.isSpeakerRunning()) {
-      TOMain = setTimeout(this.activate.bind(this), 200);
-    } else {
-      TOMain = setTimeout(() => Speech.startRecording(this.language, this.controller.evaluate.bind(this.controller)), 100);
-    }
-  }
-  eval(isfinal, speechResult, confidence, sessionId) {
-    if (sessionId != SessionId) {
-      alert('NOT THIS BROWSER!!!!!!'); return undefined;
-    }
-    let answer = Goal.answer = normalize(speechResult, this.language);
-    let reqAnswer = Goal.reqAnswer = normalize(Goal.label, this.language);
-    Selected = { reqAnswer: reqAnswer, answer: answer, feedbackUI: iDiv(Goal) };
-    if (isEmpty(answer)) return false;
-    else return isSimilar(answer, reqAnswer) || isList(Goal.info.valid) && firstCond(Goal.info.valid, x => x.toUpperCase() == answer.toUpperCase());
-  }
-}
-class GSentence extends Game {
-  constructor(name, o) {
-    super(name, o);
-    this.prevLanguage = this.language;
-    this.language = 'E';
-  }
-  startGame() {
-    this.correctionFunc = () => {
-      let sent = this.sentenceList[0].join(' ');
-      this.dWordArea.innerHTML = `<h1>${sent}</h1>`;
-      if (this.spokenFeedback) sayRandomVoice(sent);
-      return 3000;
-    }
-    this.successFunc = () => { mCheckit(this.dWordArea, 120); };
-  }
-  clear() { super.clear(); this.language = this.prevLanguage; }
-  start_Level() {
-    this.sentences = [];
-    for (const s of EnglishSentences) {
-      let slist = isList(s) ? s : [s];
-      slist = slist.map(x => x.split(' '));
-      if (slist[0].length <= this.maxWords && slist[0].length >= this.minWords) this.sentences.push(slist);
-    }
-  }
-  dropHandler(source, target, isCopy = false, clearTarget = false) {
-    let prevTarget = source.target;
-    source.target = target;
-    let dSource = iDiv(source);
-    let dTarget = iDiv(target);
-    if (clearTarget) {
-      let ch = dTarget.children[0];
-      let chSource = firstCond(Pictures, x => iDiv(x) == ch);
-      if (chSource) {
-        if (isdef(prevTarget)) {
-          mAppend(iDiv(prevTarget), ch);
-          chSource.target = prevTarget;
-        } else {
-          mAppend(this.dWordArea, ch);
-          delete chSource.target;
-        }
-      }
-      clearElement(dTarget);
-    }
-    if (isCopy) {
-      let dNew = mText(dSource.innerHTML, dTarget, { wmin: 100, fz: 20, padding: 4, margin: 4, display: 'inline-block' });
-      addDDSource(dNew, isCopy, clearTarget);
-    } else {
-      mAppend(dTarget, dSource);
-    }
-  }
-  prompt() {
-    show_instruction('form a correct sentence', dTitle, 'form a correct sentence');
-    mLinebreak(dTable);
-    let sl = this.sentenceList = chooseRandom(this.sentences);
-    let words = this.sentenceList[0];
-    let fz = 32;
-    let h = fz * 1.25, wmin = fz * 1.25;
-    let items = Pictures = [];
-    let containers = this.containers = [];
-    let options = _simpleOptions({ fz: fz, bg: 'transparent', fg: 'white', showPic: false, showLabels: true }, { wmin: wmin });
-    let dArea = mDiv(dTable, { h: 150, display: 'flex', 'flex-wrap': 'wrap', layout: 'fhcc' });
-    mLinebreak(dTable);
-    let dWordArea = this.dWordArea = mDiv(dTable, { h: 70, wmin: 20, display: 'flex', 'flex-wrap': 'wrap', layout: 'fhcc' });
-    let i = 0;
-    for (const word of words) {
-      let item = { label: word, index: i };
-      let container = { label: word, index: i };
-      i += 1;
-      let d = makeItemDiv(item, options);
-      let dCont = mDiv(dArea, { wmin: wmin + 12, hmin: h + 10, bg: colorTrans('beige', .25), fg: 'black', margin: 12 });
-      container.div = dCont;
-      items.push(item);
-      containers.push(container);
-    }
-    shuffle(items);
-    items.map(x => { mAppend(dWordArea, iDiv(x)); mStyle(iDiv(x), { h: h, w: 'auto' }); });
-    enableDD(items, containers, this.dropHandler.bind(this), false, true);
-    mLinebreak(dTable, 50);
-    mButton('Done!', this.controller.evaluate.bind(this.controller), dTable, { fz: 28, matop: 10, rounding: 10, padding: 16, border: 8 }, ['buttonClass']);
-    this.controller.activateUi.bind(this.controller)();
-  }
-  trialPrompt() {
-    sayTryAgain();
-    showFleetingMessage('Try again!', 0, { fg: 'white' });
-    TOMain = setTimeout(() => { Pictures.map(x => mAppend(this.dWordArea, iDiv(x))); }, 1200);
-    return 1500;
-  }
-  eval() {
-    let words = [];
-    for (const cont of this.containers) {
-      let d = iDiv(cont);
-      let ch = d.firstChild;
-      if (ch && isdef(ch.firstChild)) {
-        words.push(ch.firstChild.innerHTML);
-      } else break;
-    }
-    let answer = words.join(' ');
-    let isCorrect = false;
-    for (const sent of this.sentenceList) {
-      let variant = sent.join(' ');
-      if (answer == variant) isCorrect = true;
-    }
-    Selected = { piclist: Pictures, feedbackUI: Pictures.map(x => iDiv(x)), sz: getRect(iDiv(Pictures[0])).h + 10 };
-    return isCorrect;
-  }
-}
-class GSentence1 extends Game {
-  constructor(name, o) {
-    super(name, o);
-    this.prevLanguage = this.language;
-    this.language = 'E';
-  }
-  startGame() {
-    this.correctionFunc = showCorrectPictureLabels;
-    this.failFunc = failSomePictures;
-    this.successFunc = () => { mCheckit(this.dWordArea, 120); };
-  }
-  clear() { super.clear(); this.language = this.prevLanguage; }
-  start_Level() {
-    this.sentences = EnglishSentences.map(x => x.split(' ')).filter(x => x.length <= this.maxWords);
-  }
-  dropHandler(source, target, isCopy = false, clearTarget = false) {
-    let prevTarget = source.target;
-    source.target = target;
-    let dSource = iDiv(source);
-    let dTarget = iDiv(target);
-    if (clearTarget) {
-      let ch = dTarget.children[0];
-      let chSource = firstCond(Pictures, x => iDiv(x) == ch);
-      if (chSource) {
-        if (isdef(prevTarget)) {
-          mAppend(iDiv(prevTarget), ch);
-          chSource.target = prevTarget;
-        } else {
-          mAppend(this.dWordArea, ch);
-          delete chSource.target;
-        }
-      }
-      clearElement(dTarget);
-    }
-    if (isCopy) {
-      let dNew = mText(dSource.innerHTML, dTarget, { wmin: 100, fz: 20, padding: 4, margin: 4, display: 'inline-block' });
-      addDDSource(dNew, isCopy, clearTarget);
-    } else {
-      mAppend(dTarget, dSource);
-    }
-  }
-  prompt() {
-    let words = this.sentence = chooseRandom(this.sentences);
-    showInstruction('', 'drag words into blanks', dTitle, true);
-    mLinebreak(dTable);
-    let fz = 32;
-    let h = fz * 1.25, wmin = fz * 1.25;
-    let items = Pictures = [];
-    let containers = [];
-    let options = _simpleOptions({ fz: fz, bg: 'transparent', fg: 'white', showPic: false, showLabels: true }, { wmin: wmin });
-    let dArea = mDiv(dTable, { h: 150, display: 'flex', 'flex-wrap': 'wrap', layout: 'fhcc' });
-    mLinebreak(dTable);
-    let dWordArea = this.dWordArea = mDiv(dTable, { h: 70, wmin: 20, display: 'flex', 'flex-wrap': 'wrap', layout: 'fhcc' });
-    let i = 0;
-    for (const word of words) {
-      let item = { label: word, index: i };
-      let container = { label: word, index: i };
-      i += 1;
-      let d = makeItemDiv(item, options);
-      let dCont = mDiv(dArea, { wmin: wmin + 12, hmin: h + 10, bg: colorTrans('beige', .25), fg: 'black', margin: 12 });
-      container.div = dCont;
-      items.push(item);
-      containers.push(container);
-    }
-    shuffle(items);
-    items.map(x => { mAppend(dWordArea, iDiv(x)); mStyleX(iDiv(x), { h: h, w: 'auto' }); });
-    enableDD(items, containers, this.dropHandler.bind(this), false, true);
-    mLinebreak(dTable, 50);
-    mButton('Done!', this.controller.evaluate.bind(this.controller), dTable, { fz: 28, matop: 10, rounding: 10, padding: 16, border: 8 }, ['buttonClass']);
-    this.controller.activateUi.bind(this.controller)();
-  }
-  trialPrompt() {
-    sayTryAgain();
-    showFleetingMessage('Try again!', 0, { fg: 'white' });
-    TOMain = setTimeout(() => { Pictures.map(x => mAppend(this.dWordArea, iDiv(x))); }, 1200);
-    return 1500;
-  }
-  eval() {
-    let i = 0;
-    let isCorrect = true;
-    for (const p of Pictures) {
-      let cont = p.target;
-      if (nundef(cont)) p.isCorrect = isCorrect = false;
-      else if (p.index != cont.index) p.isCorrect = isCorrect = false;
-      else p.isCorrect = true;
-    }
-    Selected = { piclist: Pictures, feedbackUI: Pictures.map(x => iDiv(x)), sz: getRect(iDiv(Pictures[0])).h + 10 };
-    return isCorrect;
-  }
-}
-class GSpotit extends GameTimed {
-  constructor(name, o) { super(name, o); }
-  startGame() { this.correctionFunc = showCorrectUis; }
-  start_Level() {
-    super.start_Level();
-    this.colarr = _calc_hex_col_array(this.rows, this.cols);
-    let perCard = arrSum(this.colarr);
-    this.nShared = (this.numCards * (this.numCards - 1)) / 2;
-    this.nUnique = perCard - this.numCards + 1;
-    this.numKeysNeeded = this.nShared + this.numCards * this.nUnique;
-    this.keys = setKeysG(this, (_, x) => !x.includes(' '), this.numKeysNeeded + 1);
-  }
-  deal() {
-    let keys = choose(this.keys, this.numKeysNeeded);
-    let dupls = keys.slice(0, this.nShared); 
-    let uniqs = keys.slice(this.nShared);
-    let infos = [];
-    for (let i = 0; i < this.numCards; i++) {
-      let keylist = uniqs.slice(i * this.nUnique, (i + 1) * this.nUnique);
-      let info = { id: getUID(), shares: {}, keys: keylist, rows: this.rows, cols: this.cols, colarr: this.colarr };
-      infos.push(info);
-    }
-    let iShared = 0;
-    for (let i = 0; i < this.numCards; i++) {
-      for (let j = i + 1; j < this.numCards; j++) {
-        let c1 = infos[i];
-        let c2 = infos[j];
-        let dupl = dupls[iShared++];
-        c1.keys.push(dupl);
-        c1.shares[c2.id] = dupl;
-        c2.shares[c1.id] = dupl;
-        c2.keys.push(dupl);
-      }
-    }
-    for (const info of infos) { shuffle(info.keys); }
-    return infos;
-  }
-  interact(ev) {
-    ev.cancelBubble = true;
-    if (!canAct()) { console.log('no act'); return; }
-    let keyClicked = evToProp(ev, 'key');
-    let id = evToId(ev);
-    if (isdef(keyClicked) && isdef(Items[id])) {
-      this.pause();
-      let item = Items[id];
-      if (Object.values(item.shares).includes(keyClicked)) {
-        let otherCard = spotitFindCardSharingSymbol(item, keyClicked);
-        let cardSymbol = ev.target;
-        let otherSymbol = spotitFindSymbol(otherCard, keyClicked);
-        Selected = { isCorrect: true, feedbackUI: [cardSymbol, otherSymbol] };
-      } else {
-        let cardSymbol = ev.target;
-        Selected = { isCorrect: false, feedbackUI: [cardSymbol], correctUis: this.getSharedSymbols(), correctionDelay: this.items.length * 1500 };
-      }
-      this.controller.evaluate.bind(this.controller)();
-    }
-  }
-  getSharedSymbols() {
-    let result = [];
-    for (const item of this.items) {
-      for (const id in item.shares) {
-        let k = item.shares[id];
-        let ui = iGetl(item, k);
-        result.push(ui);
-      }
-    }
-    return result;
-  }
-  eval() { return Selected.isCorrect; }
-  prompt() {
-    this.trials = 1;
-    show_instruction('find common symbol', dTitle);
-    mLinebreak(dTable, 25);
-    let infos = this.deal(); 
-    let items = this.items = [];
-    for (const info of infos) {
-      let item = spotitCard(info, dTable, { margin: 10 }, this.interact.bind(this));
-      items.push(item);
-    }
-    this.controller.activateUi.bind(this.controller)();
-  }
-  activate(){}
-  onTimeup() {
-    Selected = { isCorrect: false, correctUis: this.getSharedSymbols(), correctionDelay: this.items.length * 2000 };
-    this.controller.evaluate.bind(this.controller)();
-  }
-}
-class GSpotit1 extends GameTimed1 {
-  constructor(name, o) { super(name, o); }
-  startGame() { this.correctionFunc = showCorrectUis; }
-  start_Level() {
-    this.colarr = _calc_hex_col_array(this.rows, this.cols);
-    let perCard = arrSum(this.colarr);
-    this.nShared = (this.numCards * (this.numCards - 1)) / 2;
-    this.nUnique = perCard - this.numCards + 1;
-    this.numKeysNeeded = this.nShared + this.numCards * this.nUnique;
-    this.keys = setKeysG(this, (_, x) => !x.includes(' '), this.numKeysNeeded + 1);
-  }
-  deal() {
-    let keys = choose(this.keys, this.numKeysNeeded);
-    let dupls = keys.slice(0, this.nShared); 
-    let uniqs = keys.slice(this.nShared);
-    let infos = [];
-    for (let i = 0; i < this.numCards; i++) {
-      let keylist = uniqs.slice(i * this.nUnique, (i + 1) * this.nUnique);
-      let info = { id: getUID(), shares: {}, keys: keylist, rows: this.rows, cols: this.cols, colarr: this.colarr };
-      infos.push(info);
-    }
-    let iShared = 0;
-    for (let i = 0; i < this.numCards; i++) {
-      for (let j = i + 1; j < this.numCards; j++) {
-        let c1 = infos[i];
-        let c2 = infos[j];
-        let dupl = dupls[iShared++];
-        c1.keys.push(dupl);
-        c1.shares[c2.id] = dupl;
-        c2.shares[c1.id] = dupl;
-        c2.keys.push(dupl);
-      }
-    }
-    for (const info of infos) { shuffle(info.keys); }
-    return infos;
-  }
-  interact(ev) {
-    ev.cancelBubble = true;
-    if (!canAct()) { console.log('no act'); return; }
-    let keyClicked = evToProp(ev, 'key');
-    let id = evToId(ev);
-    if (isdef(keyClicked) && isdef(Items[id])) {
-      this.pause();
-      let item = Items[id];
-      if (Object.values(item.shares).includes(keyClicked)) {
-        let otherCard = spotitFindCardSharingSymbol(item, keyClicked);
-        let cardSymbol = ev.target;
-        let otherSymbol = spotitFindSymbol(otherCard, keyClicked);
-        Selected = { isCorrect: true, feedbackUI: [cardSymbol, otherSymbol] };
-      } else {
-        let cardSymbol = ev.target;
-        Selected = { isCorrect: false, feedbackUI: [cardSymbol], correctUis: this.getSharedSymbols(), correctionDelay: this.items.length * 1500 };
-      }
-      this.controller.evaluate.bind(this.controller)();
-    }
-  }
-  getSharedSymbols() {
-    let result = [];
-    for (const item of this.items) {
-      for (const id in item.shares) {
-        let k = item.shares[id];
-        let ui = iGetl(item, k);
-        result.push(ui);
-      }
-    }
-    return result;
-  }
-  eval() { return Selected.isCorrect; }
-  prompt() {
-    this.trials = 1;
-    show_instruction('find common symbol', dTitle);
-    this.makeTimer();
-    mLinebreak(dTable, 25);
-    let infos = this.deal(); 
-    let items = this.items = [];
-    for (const info of infos) {
-      let item = spotitCard(info, dTable, { margin: 10 }, this.interact.bind(this));
-      items.push(item);
-    }
-    this.controller.activateUi.bind(this.controller)();
-  }
-  onTimeup() {
-    Selected = { isCorrect: false, correctUis: this.getSharedSymbols(), correctionDelay: this.items.length * 2000 };
-    this.controller.evaluate.bind(this.controller)();
-  }
-}
-class GSteps extends Game {
-  constructor(name, o) { super(name, o); }
-  startGame() { this.correctionFunc = showCorrectWords; }
-  start_Level() {
-    super.start_Level();
-    this.keys = this.keys.filter(x => containsColorWord(x));
-  }
-  prompt() {
-    this.piclist = [];
-    let colorKeys = this.numColors > 1 ? choose(this.colors, this.numColors) : null;
-    let bg = this.numColors > 1 || this.numRepeat > 1 ? 'white' : 'random';
-    let rows = this.numColors > 1 ? this.numColors : undefined;
-    let showRepeat = this.numRepeat > 1;
-    myShowPics(this.interact.bind(this), { bg: bg },
-      { rows: rows, showRepeat: showRepeat, colorKeys: colorKeys, numRepeat: this.numRepeat, contrast: this.contrast });
-    setMultiGoal(this.numSteps);
-    let cmd = 'click';
-    let spoken = [], written = [], corr = [];
-    for (let i = 0; i < this.numSteps; i++) {
-      let goal = Goal.pics[i];
-      let sOrdinal = getOrdinal(goal.iRepeat);
-      [written[i], spoken[i], corr[i]] = getOrdinalColorLabelInstruction(cmd, sOrdinal, goal.color, goal.label);
-      goal.correctionPhrase = corr[i];
-      cmd = 'then';
-    }
-    let sWritten = this.showVisualInstruction ? written.join('; ') : 'listen to instruction!';
-    show_instruction(sWritten, dTitle, spoken.join('. '), { fz: 20 });
-    this.controller.activateUi.bind(this.controller)();
-  }
-  trialPrompt() {
-    sayTryAgain();
-    showFleetingMessage(this.message, 0);
-    return 1000;
-  }
-  activate() {
-    for (const p of this.piclist) { toggleSelectionOfPicture(p); }
-    this.piclist = [];
-  }
-  interact(ev) {
-    ev.cancelBubble = true;
-    if (!canAct()) { console.log('no act'); return; }
-    let pic = findItemFromEvent(Pictures, ev);
-    toggleSelectionOfPicture(pic, this.piclist);
-    if (this.piclist.length == Goal.pics.length) {
-      clearFleetingMessage();
-      Selected = { piclist: this.piclist }; this.controller.evaluate.bind(this.controller)();
-    }
-  }
-  eval() {
-    Selected = { piclist: this.piclist, feedbackUI: this.piclist.map(x => iDiv(x)), sz: getRect(iDiv(this.piclist[0])).h };
-    let isCorrect = true;
-    this.message = this.language == 'D' ? 'beachte die REIHENFOLGE!' : 'mind the ORDER!';
-    for (let i = 0; i < this.piclist.length; i++) {
-      let p = this.piclist[i];
-      if (!Goal.pics.includes(p)) this.message = this.language == 'D' ? 'noch einmal!' : 'try again!';
-      if (this.piclist[i] != Goal.pics[i]) isCorrect = false;
-    }
-    return isCorrect;
-  }
-}
-class GStory extends Game {
-  constructor(name) { super(name); }
-  prompt() {
-    let showLabels = G.showLabels == true && Settings.labels == true;
-    myShowPics(evaluate, {}, { showLabels: showLabels });
-    setGoal();
-    showInstruction(Goal.label, 'click', dTitle, true);
-    activateUi();
-  }
-}
-class GSwap extends Game {
-  constructor(name, o) {
-    super(name, o);
-    if (this.language == 'C') { this.prevLanguage = this.language; this.language = chooseRandom('E', 'D'); }
-    ensureDictionary();
-  }
-  startGame() { this.correctionFunc = showCorrectLabelSwapping; } 
-  clear() { super.clear(); if (isdef(this.prevLanguage)) this.language = this.prevLanguage; }
-  start_Level() {
-    this.keys = setKeysG(this, filterWordByLengthG, 25);
-    if (this.keys.length < 25) { this.keys = setKeysG(this, filterWordByLengthG, 25, 'all'); }
-    this.trials = 2;
-  }
-  dropHandler(source, target, isCopy = false, clearTarget = false) {
-    let prevTarget = source.target;
-    source.target = target;
-    let dSource = iDiv(source);
-    let dTarget = iDiv(target);
-    if (clearTarget) {
-      let ch = dTarget.children[0];
-      let chSource = firstCond(Pictures, x => iDiv(x) == ch);
-      if (chSource) {
-        if (isdef(prevTarget)) {
-          mAppend(iDiv(prevTarget), ch);
-          chSource.target = prevTarget;
-        } else {
-          mAppend(this.dWordArea, ch);
-          delete chSource.target;
-        }
-      }
-      clearElement(dTarget);
-    }
-    if (isCopy) {
-      let dNew = mText(dSource.innerHTML, dTarget, { wmin: 100, fz: 20, padding: 4, margin: 4, display: 'inline-block' });
-      addDDSource(dNew, isCopy, clearTarget);
-    } else {
-      mAppend(dTarget, dSource);
-    }
-  }
-  prompt() {
-    show_instruction('swap letter to form words', dTitle, 'swap letter to form words');
-    mLinebreak(dTable);
-    let fz = 32;
-    let options = _simpleOptions({ language: this.language, w: 200, h: 200, keySet: this.keys, luc: 'u', fz: fz, bg: 'random', fg: 'white', showLabels: true });
-    let n = 2;
-    let items = gatherItems(n, options); 
-    let style = { margin: 3, cursor: 'pointer', fg: 'white', display: 'inline', bg: '#00000020', align: 'center', border: 'transparent', outline: 'none', family: 'Consolas', fz: 80 };
-    for (const item of items) {
-      let d1 = item.container = mDiv(dTable, { hmin: 250 });
-      let d = iLetters(item.label, d1, style); 
-      iAdd(item, { div: d }); 
-      let letters = item.letters = [];
-      for (let i = 0; i < arrChildren(d).length; i++) {
-        let ch = d.children[i];
-        let l = {
-          itemId: item.id, div: ch, i: i, letter: ch.innerHTML,
-          swapInfo: item.swaps[i],
-          state: 'swapped',
-          isBlinking: false, fg: 'white', bg: 'transparent'
-        };
-        letters.push(l);
-        ch.onclick = () => { startBlinking(l, item.letters, true) };
-      }
-      mStyle(d, { margin: 35 });
-      delete item.swaps;
-    }
-    showPictureHints(Pictures, 'container');
-    mLinebreak(dTable, 50);
-    this.buttonDone = mButton('Done!', () => {
-      if (!canAct()) return;
-      for (let i = 0; i < Pictures.length; i++) {
-        let p = Pictures[i];
-        let blinking = getBlinkingLetter(p);
-        if (!blinking) {
-          let msg = 'You need to pick 1 letter to swap in EACH word!!!';
-          Speech.say(msg);
-          sayRandomVoice(msg);
-          showFleetingMessage('You need to pick 1 letter to swap in EACH word!!!', 0, { fz: 30 });
-          return;
-        }
-      }
-      this.controller.evaluate.bind(this.controller)();
-    }, dTable, { fz: 28, matop: 10, rounding: 10, padding: 16, border: 8 }, ['buttonClass']);
-    this.controller.activateUi.bind(this.controller)();
-  }
-  trialPrompt() {
-    if (this.trialNumber % 2 == 0) showPictureHints(Pictures, 'container'); else showTextHints(Pictures, 'container', 'origLabel');
-    TOMain = setTimeout(() => {
-      for (const p of Pictures) {
-        for (const l of p.letters) {
-          l.state = 'swapped';
-          if (isdef(l.swapInfo)) {
-            iDiv(l).innerHTML = p.label[l.i];
-          }
-        }
-      }
-    }, 1500);
-    return 1800;
-  }
-  activate() {
-    if (this.trialNumber >= 1) { sayTryAgain(); showFleetingMessage('Try again!'); }
-    else { showFleetingMessage('click one letter in each word!'); }
-  }
-  eval() {
-    let n = Pictures.length;
-    let blinkInfo = this.blinkInfo = [];
-    clearFleetingMessage();
-    for (let i = 0; i < n; i++) {
-      let p = Pictures[i];
-      let blinking = getBlinkingLetter(p);
-      blinkInfo.push({ i: i, blinking: blinking });
-    }
-    for (let i = 0; i < n; i++) { let l = blinkInfo[i].blinking; if (!l) continue; stopBlinking(l); }
-    for (const blinki of blinkInfo) { if (!blinki.blinking) { return false; } }
-    let isCorrect = true;
-    for (let i = 0; i < n; i++) {
-      let b1 = blinkInfo[i].blinking;
-      let b2 = blinkInfo[(i + 1) % blinkInfo.length].blinking;
-      let item = Items[b1.itemId];
-      let item2 = Items[b2.itemId];
-      let l = item.letters[b1.i];
-      let sw = l.swapInfo;
-      if (nundef(sw)) { sw = l.swapInfo = { correct: { itemId: item.id, index: b1.i, l: b1.letter } }; }
-      sw.temp = { itemId: item2.id, index: b2.i, l: b2.letter };
-      item.testLabel = replaceAtString(item.label, b1.i, b2.letter);
-      iDiv(l).innerHTML = b2.letter;
-      l.state = 'temp';
-    }
-    for (const p of Pictures) { if (p.testLabel != p.origLabel) { isCorrect = false; } }
-    let feedbackList = [];
-    for (let i = 0; i < n; i++) {
-      let item = Pictures[i];
-      let d;
-      if (isCorrect) d = iDiv(item.letters[item.iLetter]);
-      else {
-        let iLetter = blinkInfo[i].blinking.i;
-        if (item.iLetter != iLetter) d = iDiv(item.letters[iLetter]);
-      }
-      if (isdef(d)) feedbackList.push(d);
-    }
-    Selected = { piclist: Pictures, feedbackUI: feedbackList, sz: getRect(iDiv(Pictures[0])).h, delay: 800 };
-    return isCorrect;
-  }
-}
 class gText {
   constructor(g) {
     this.elem = g;
@@ -13541,7 +10623,7 @@ class gText {
       fill = 'white';
       textBg = 'gray';
     }
-    fill = anyColorToStandardString(fill, alpha);
+    fill = colorFrom(fill, alpha);
     return { fill: fill, bg: textBg ? textBg : this.bg };
   }
   setTextFill(r, fill, alpha = 1, textBg = null) {
@@ -13552,7 +10634,7 @@ class gText {
     return textColors.bg;
   }
   setTextBorder(color, thickness = 0) {
-    let c = anyColorToStandardString(color);
+    let c = colorFrom(color);
     let children = arrChildren(this.elem);
     unitTestMS('setTextBorder', children);
     for (const ch of children) {
@@ -13840,212 +10922,6 @@ class gText {
     return this;
   }
 }
-class GTouchColors extends Game {
-  constructor(name, o) { super(name, o); }
-  start_Level() {
-    super.start_Level();
-    this.keys = this.keys.filter(x => containsColorWord(x));
-  }
-  prompt() {
-    let colorKeys = choose(this.colors, this.numColors);
-    let rows = this.numColors;
-    let showLabels = this.lang == 'C' || this.showLabels;
-    console.log('showLabels', showLabels);
-    myShowPics(this.controller.evaluate.bind(this.controller), { bg: 'white' }, { showLabels: showLabels, colorKeys: colorKeys, rows: rows });
-    if (this.shuffle == true) {
-      let dParent = iDiv(Pictures[0]).parentNode;
-      shuffleChildren(dParent);
-    }
-    setGoal(randomNumber(0, Pictures.length - 1));
-    let [written, spoken] = getOrdinalColorLabelInstruction('click'); 
-    show_instruction(written, dTitle, spoken);
-    this.controller.activateUi.bind(this.controller)();
-  }
-  eval(ev) {
-    ev.cancelBubble = true;
-    let item = findItemFromEvent(Pictures, ev);
-    Selected = { answer: item.label, reqAnswer: Goal.label, pic: item, feedbackUI: iDiv(item) };
-    if (item == Goal) { return true; } else { return false; }
-  }
-}
-class GTouchPic extends Game {
-  constructor(name, o) { super(name, o); }
-  prompt() {
-    myShowPics(this.controller.evaluate.bind(this.controller), {}, { showLabels: (this.lang == 'C' || this.showLabels) });
-    setGoal();
-    let wr = 'click ';
-    show_instruction(wr + `<b>${Goal.label.toUpperCase()}</b>`, dTitle, Goal.label);
-    this.controller.activateUi.bind(this.controller)();
-  }
-}
-class GTTT extends G2Player {
-  startGame() {
-    super.startGame();
-    this.createBoard();
-    this.human.sym = 'O';
-    this.ai.sym = 'X';
-    this.setStartPosition();
-  }
-  createBoard() {
-    this.rows = this.cols = this.boardSize;
-    this.board = new Board(this.rows, this.cols, this.controller.uiInteract.bind(this.controller));
-  }
-  setStartPosition() {
-    return;
-    let positions = [
-      new Array(9).fill(null),
-      ['X', 'X', null, 'O', null, null, 'O', null, null],
-      [null, 'X', null, 'X', null, 'O', null, 'O', null],
-      [null, null, null, null, 'X', 'O', null, 'O', null],
-    ];
-    if (isdef(this.iPosition)) {
-      let idx = this.iPosition + 1; idx = idx % positions.length; this.iPosition = idx;
-    } else this.iPosition = 0;
-    let state = nundef(this.startPosition) || this.startPosition == 'empty' ? positions[0]
-      : this.startPosition == 'random' ? chooseRandom(positions)
-        : positions[this.iPosition];
-    this.board.setState(state, { X: this.ai.color, O: this.human.color });
-  }
-  prompt() {
-    let msg = this.plTurn == this.ai ? 'Ai thinking...' : 'click an empty field!';
-    showInstruction('', msg, dTitle, false);
-    this.controller.activateUi();
-  }
-  activate() {
-    let pl = this.plTurn;
-    let autoplay = false;
-    if (autoplay || pl == this.ai) {
-      if (this.ai == pl) uiActivated = false;
-      setTimeout(() => AIMinimax(this, this.afterComputerMove.bind(this)), 200);
-    }
-  }
-  interact(ev) {
-    let tile = evToItemC(ev);
-    if (isdef(tile.label)) return; 
-    let pl = this.plTurn;
-    addLabel(tile, pl.sym, { fz: 60, fg: pl.color });
-    this.controller.evaluate(tile);
-  }
-  afterComputerMove(iMove) {
-    let tile = this.board.items[iMove];
-    this.interact({ target: iDiv(tile) });
-  }
-  eval() {
-    let done = this.checkFinal();
-    this.gameOver = done > 0;
-    if (this.gameOver) { this.winner = done > 1 ? this.plTurn : null; this.tie = done == 1; }
-  }
-  checkFinal(state) {
-    if (nundef(state)) state = this.getState();
-    let isTie = false;
-    let isWin = checkWinnerTTT(state);
-    if (!isWin) { isTie = checkBoardFull(state) || !checkPotentialTTT(state); }
-    return isWin ? 2 : isTie ? 1 : 0;
-  }
-  getState() { return this.board.getState(); }
-  applyMove(state, move, player) { arrReplaceAtInPlace(state, move, player.sym); }
-  undoMove(state, move, player) { arrReplaceAtInPlace(state, move, ' '); }
-  getAvailableMoves(state) {
-    let moves = [];
-    for (let i = 0; i < state.length; i++) {
-      if (EmptyFunc(state[i])) moves.push(i);
-    }
-    shuffle(moves);
-    return moves;
-  }
-  heuristic1(node, depth) { }
-  evalState(node, depth) {
-    let x = checkWinnerTTT(node);
-    if (checkBoardFull(node) || x) {
-      return { reached: true, val: (!x ? 0 : (10 - depth) * (x == MAXIMIZER.sym ? 1 : -1)) };
-    }
-    return { reached: false };
-  }
-  evalStateL(node, depth) {
-    let key = node.join('');
-    let val = DMM[key];
-    let x = isdef(val) ? val : checkWinnerTTT(node);
-    DMM[key] = x;
-    if (checkBoardFull(node) || x) {
-      return { reached: true, val: (!x ? 0 : (10 - depth) * (x == MAXIMIZER.sym ? 1 : -1)) };
-    }
-    return { reached: false };
-  }
-  evalStateL2(node, depth) {
-    let full = checkBoardFull(node);
-    if (full) {
-      let key = JSON.stringify(node);
-      let x = DMM[key];
-      if (nundef(x)) DMM[key] = x = checkWinnerTTT(node);
-      return { reached: true, val: (!x ? 0 : (10 - depth) * (x == MAXIMIZER.sym ? 1 : -1)) };
-    } else {
-      let x = checkWinnerTTT(node);
-      if (x) return { reached: true, val: (!x ? 0 : (10 - depth) * (x == MAXIMIZER.sym ? 1 : -1)) };
-      return { reached: false };
-    }
-  }
-}
-class GWritePic extends Game {
-  constructor(name, o) { super(name, o); }
-  startGame() {
-    this.correctionFunc = showCorrectWordInTitle;
-    onkeydown = ev => {
-      if (!canAct()) return;
-      if (isdef(this.inputBox)) { this.inputBox.focus(); }
-    }
-  }
-  start_Level() {
-    this.keys = setKeysG(this, filterWordByLengthG, 25);
-    if (this.keys.length < 25) { this.keys = setKeysG(this, filterWordByLengthG, 25, 'all'); }
-  }
-  prompt() {
-    let showLabels = this.showLabels == true && this.labels == true;
-    myShowPics(() => mBy(this.defaultFocusElement).focus(), {}, { showLabels: showLabels });
-    setGoal();
-    if (this.instruction == 'all') {
-      let wr = (this.language == 'E' ? 'type ' : "schreib' ");
-      show_instruction(wr + `<b>${Goal.label.toUpperCase()}</b>`, dTitle, wr + Goal.label);
-    } else if (this.instruction == 'spokenGoal') {
-      let wr = this.language == 'E' ? 'type the correct word' : "schreib' das passende wort";
-      let sp = (this.language == 'E' ? 'type' : "schreib'") + ' ' + Goal.label;
-      show_instruction(wr, dTitle, sp);
-    } else {
-      let wr = this.language == 'E' ? 'type the correct word' : "schreib' das passende wort";
-      show_instruction(wr, dTitle, wr);
-    }
-    mLinebreak(dTable, 20);
-    this.inputBox = addNthInputElement(dTable, this.trialNumber);
-    this.defaultFocusElement = this.inputBox.id;
-    this.controller.activateUi.bind(this.controller)();
-  }
-  trialPrompt() {
-    sayTryAgain();
-    let n = this.trialNumber == 1 ? 1 : (this.trialNumber + Math.floor((Goal.label.length - this.trialNumber) / 2));
-    showFleetingMessage(Goal.label.substring(0, n));
-    mLinebreak(dTable);
-    this.inputBox = addNthInputElement(dTable, this.trialNumber);
-    this.defaultFocusElement = this.inputBox.id;
-    return 10;
-  }
-  activate() {
-    this.inputBox.onkeyup = ev => {
-      if (!canAct()) return;
-      if (ev.key === "Enter") {
-        ev.cancelBubble = true;
-        this.controller.evaluate.bind(this.controller)(ev);
-      } 
-    };
-    this.inputBox.focus();
-  }
-  eval(ev) {
-    let answer = normalize(this.inputBox.value, this.language);
-    let reqAnswer = normalize(Goal.label, this.language);
-    let correctPrefix = this.correctPrefix = getCorrectPrefix(Goal.label, this.inputBox.value);
-    Selected = { reqAnswer: reqAnswer, answer: answer, feedbackUI: iDiv(Goal) };
-    if (answer == reqAnswer) { showFleetingMessage(Goal.label); return true; }
-    else { return false; }
-  }
-}
 class hexgridY {
   constructor({
     bid = 'gridY',
@@ -14154,46 +11030,6 @@ class hexgridY {
   isValid(r, c) {
     return r in this.fields && c in this.fields[r];
   }
-}
-class IClass extends LiveObject {
-  constructor(k, U, G, T) {
-    super(k);
-    this.player = {};
-    copyKeys(U, this.player);
-    copyKeys(G, this);
-    copyKeys(T, this);
-    this.running = false;
-    this.uiState = this.immediateStart ? LiveObject.States.ready : LiveObject.States.none;
-    this.startTime = Date.now();
-    this.div = null;
-  }
-  loop() {
-    this.update(); 
-    this.present(); 
-    this.activate();
-  }
-  getState() {
-    return { players: this.players, table: this.table, options: this.options, turn: this.turn };
-  }
-  setState(s) {
-    this.players = s.players;
-    this.table = s.table;
-    this.options = s.options;
-    this.turn = s.turn;
-  }
-  present() {
-    console.log('state', this.getState());
-  }
-  update() {
-    for (const pl of this.players) this.updatePlayer(pl);
-    this.updateTable(); 
-    this.updateTurn();  
-    this.updateOptions(this.player);
-  }
-  updateOptions() { this.options = {}; }
-  updatePlayer() { }
-  updateTable() { this.table = {}; }
-  updateTurn() { this.turn = chooseRandom(this.players).id; }
 }
 class ItemViewerClass {
   constructor(dParent, dButtons, keys) {
@@ -14468,41 +11304,6 @@ class Karte {
 }
 class KeySelection{
 }
-class Layout1 extends Array { 
-  constructor(id, shape='grid', rows=3, cols=3, options = {}) {
-    console.log(';;;;;;;;;',id,shape,rows,cols,options)
-    var fields = Array(rows)
-      .fill()
-      .map(() => Array(cols).fill(0)); 
-    super(...fields);
-    this.options = options; 
-    this.msBase = null; 
-    this.id = id;
-    this.rows = rows;
-    this.cols = cols;
-    this.shape = shape;
-  }
-  addRow(...values) {
-    this.push(values);
-  }
-  addCol(){
-    let i=0;let val = arguments;
-    for (const row of this) {
-      row.push(val[i]);
-    }
-    for (let index = this.length; index < val.length; index++) {
-      this.push([val[index]]);
-    }
-  }
-  getPos(r,c){return this.msBase.getPos;}
-  setCols(c){}
-  setRows(r){}
-  setShape(shape){}
-  isValidIndex(r,c){return this[r][c];}
-  render(){this.renderBase}
-  renderField(r,c){}
-  setOption(key,value){}
-}
 class LazyCache {
   constructor(resetStorage = false) {
     this.caches = {};
@@ -14585,211 +11386,6 @@ class MaxWidthPreserver {
   }
   reset(id) { this.entries[id].elem.styles.minWidth = this.entries[id].minWidth = 0; }
 }
-class MazeGraph extends AGraph {
-  constructor(dParent, rows, cols, sz, gap = 4) {
-    super();
-    [this.cols, this.rows, this.sz, this.gap] = [cols, rows, sz, gap];
-    let m = this.m = this.createMaze(cols, rows, sz, gap);
-    let dMaze = this.dMaze = this.createDiv(dParent, cols, rows, sz, gap);
-    let szMaze = getSize(dMaze);
-    let dGraph = this.dGraph = mDiv(dParent, { align: 'left', w: szMaze.w, h: szMaze.h, bg: 'pink', maleft: 20 }, 'd_graph');
-    this.mazeId = dGraph.id = getUID();
-    let sb = this.sb = mDiv(dParent, { w: 40 }); mCenterCenterFlex(this.sb);
-    hide(dGraph); hide(sb);
-    this.items = this.createCellItems();
-  }
-  clear() { super.clear(); }
-  getTopLeftCell() { return this.getCell(0, 0); }
-  getTopRightCell() { return this.getCell(0, this.cols - 1); }
-  getBottomLeftCell() { return this.getCell(this.rows - 1, 0); }
-  getBottomRightCell() { return this.getCell(this.rows - 1, this.cols - 1); }
-  getCell(row, col) { return this.matrix[row][col]; }
-  getCommonId(row, col) { return '' + row + "-" + col; }
-  getCommonIdTable(row, col) { return 'td_' + this.getCommonId(row, col); }
-  getRCI(edgeId) {
-    let [r1, c1, r2, c2] = allNumbers(edgeId).map(x => Math.abs(x));
-    let i1, i2;
-    i1 = r1 < r2 ? 2 : r1 > r2 ? 0 : c1 < c2 ? 1 : 3;
-    i2 = i1 == 0 ? 2 : i1 == 1 ? 3 : i1 == 2 ? 0 : 1;
-    return [r1, c1, i1, r2, c2, i2];
-  }
-  getRelativeDirections(item1, item2) {
-    let [r1, c1, r2, c2] = [item1.row, item1.col, item2.row, item2.col];
-    let i1, i2;
-    i1 = r1 < r2 ? 2 : r1 > r2 ? 0 : c1 < c2 ? 1 : 3;
-    i2 = i1 == 0 ? 2 : i1 == 1 ? 3 : i1 == 2 ? 0 : 1;
-    return [i1, i2];
-  }
-  createCellItems() {
-    let items = [];
-    this.matrix = [];
-    for (let r = 0; r < this.rows; r++) {
-      this.matrix[r] = [];
-      for (let c = 0; c < this.cols; c++) {
-        let id = this.getCommonId(r, c);
-        let item = { id: id, nid: id, nodeId: id, cellId: this.getCommonIdTable(r, c), row: r, col: c, sz: this.sz, marr: this.m[r, c] };
-        delete Items[id];
-        iAdd(item, { div: mBy(this.getCommonIdTable(r, c)) });
-        items.push(item);
-        this.matrix[r][c] = item;
-      }
-    }
-    return items;
-  }
-  createDiv(dParent, cols, rows, sz, gap = 1) {
-    let [wCell, hCell] = [sz, sz];
-    let [wTotal, hTotal] = [cols * (wCell + gap) + gap, rows * (hCell + gap) + gap];
-    let dGridOuter = this.dMaze = mDiv(dParent, { wmin: wTotal, hmin: hTotal, position: 'relative' });
-    let m = this.m;
-    let [x, y] = [0, 0];
-    let sBorder = `${gap}px solid black`;
-    let noBorder = `${gap}px solid transparent`;
-    this.dCells = [];
-    for (var r = 0; r < m.length; r++) {
-      x = 0;
-      this.dCells[r] = [];
-      for (var c = 0; c < m[r].length; c++) {
-        let info = m[r][c];
-        let dCell = mDiv(dGridOuter, { w: wCell, h: hCell, position: 'absolute', top: y, left: x, bg: 'gray' });
-        dCell.id = this.getCommonIdTable(r, c);
-        dCell.style.borderTop = info[0] == 0 ? sBorder : noBorder;
-        dCell.style.borderRight = info[1] == 0 ? sBorder : noBorder;
-        dCell.style.borderBottom = info[2] == 0 ? sBorder : noBorder;
-        dCell.style.borderLeft = info[3] == 0 ? sBorder : noBorder;
-        x += wCell + gap;
-        this.dCells[r].push(dCell);
-      }
-      y += hCell + gap;
-    }
-    return dGridOuter;
-  }
-  createDiv_orig(dParent, cols, rows, sz, gap) {
-    let [wCell, hCell] = [sz, sz];
-    let [wTotal, hTotal] = [cols * (wCell + gap), rows * (hCell + gap)];
-    let dGridOuter = this.dMaze = mDiv(dParent, { wmin: wTotal, hmin: hTotal });
-    let m = this.m;
-    let id = 'tMaze';
-    setCSSVariable('--wCell', `${wCell}px`);
-    setCSSVariable('--hCell', `${hCell}px`);
-    let tMaze = createElementFromHtml(`
-      <table id="${id}">
-      <tbody></tbody>
-      </table>
-    `);
-    mAppend(dGridOuter, tMaze);
-    let sBorder = `${1}px solid black`;
-    for (var i = 0; i < m.length; i++) {
-      $('#tMaze > tbody').append("<tr>");
-      for (var j = 0; j < m[i].length; j++) {
-        var selector = this.getCommonIdTable(i, j);
-        $('#tMaze > tbody').append("<td id='" + selector + "'>&nbsp;</td>");
-        if (m[i][j][0] == 0) { $('#' + selector).css('border-top', sBorder); }
-        if (m[i][j][1] == 0) { $('#' + selector).css('border-right', sBorder); }
-        if (m[i][j][2] == 0) { $('#' + selector).css('border-bottom', sBorder); }
-        if (m[i][j][3] == 0) { $('#' + selector).css('border-left', sBorder); }
-      }
-      $('tMmaze > tbody').append("</tr>");
-    }
-    return dGridOuter;
-  }
-  createMaze(cols, rows, sz, gap) {
-    var dxy = sz + 2 * gap;
-    var offs = dxy / 2 + gap;
-    var totalCells = cols * rows;
-    var cells = new Array();
-    var unvis = new Array();
-    for (var i = 0; i < rows; i++) {
-      cells[i] = new Array();
-      unvis[i] = new Array();
-      for (var j = 0; j < cols; j++) {
-        cells[i][j] = [0, 0, 0, 0];
-        let pos = { x: offs + dxy * j, y: offs + dxy * i };
-        this.addNode({ id: this.getCommonId(i, j), row: i, col: j, center: pos }, pos);
-        unvis[i][j] = true;
-      }
-    }
-    var currentCell = [Math.floor(Math.random() * rows), Math.floor(Math.random() * cols)];
-    var path = [currentCell];
-    unvis[currentCell[0]][currentCell[1]] = false;
-    var visited = 1;
-    while (visited < totalCells) {
-      var pot = [[currentCell[0] - 1, currentCell[1], 0, 2],
-      [currentCell[0], currentCell[1] + 1, 1, 3],
-      [currentCell[0] + 1, currentCell[1], 2, 0],
-      [currentCell[0], currentCell[1] - 1, 3, 1]];
-      var neighbors = new Array();
-      for (var l = 0; l < 4; l++) {
-        if (pot[l][0] > -1 && pot[l][0] < rows && pot[l][1] > -1 && pot[l][1] < cols && unvis[pot[l][0]][pot[l][1]]) { neighbors.push(pot[l]); }
-      }
-      if (neighbors.length) {
-        let next = neighbors[Math.floor(Math.random() * neighbors.length)];
-        cells[currentCell[0]][currentCell[1]][next[2]] = 1;
-        cells[next[0]][next[1]][next[3]] = 1;
-        let row = currentCell[0];
-        let col = currentCell[1];
-        let row2 = next[0];
-        let col2 = next[1];
-        this.addEdge(this.getCommonId(row, col), this.getCommonId(row2, col2), {});
-        unvis[next[0]][next[1]] = false;
-        visited++;
-        currentCell = [next[0], next[1]];
-        path.push(currentCell);
-      }
-      else {
-        currentCell = path.pop();
-      }
-    }
-    return cells;
-  }
-  setItemBorder(item, dir) {
-    let prop = getBorderPropertyForDirection(dir);
-    iDiv(item).style[prop] = `${this.gap}px solid black`;
-  }
-  setItemColor(item, color) { mStyle(iDiv(item), { bg: color }); }
-  setItemContent(item, text) { iDiv(item).innerHTML = text; }
-  removeItemContent(item) { iDiv(item).innerHTML = ''; }
-  disconnectCells(nid1, nid2) {
-    this.removeEdge(this.getCommonEdgeId(nid1, nid2));
-    let [item1, item2] = [Items[nid1], Items[nid2]];
-    let [dir1, dir2] = this.getRelativeDirections(item1, item2);
-    this.setItemBorder(item1, dir1);
-    this.setItemBorder(item2, dir2);
-  }
-  cutPath(path, min, max) {
-    let edges = path.edges();
-    let len = edges.length;
-    let [imin, imax] = [Math.floor(len * min), Math.floor(len * max)];
-    let i = randomNumber(imin, imax);
-    let edge = edges[i];
-    let [nid1, nid2] = edge.connectedNodes().map(x => x.id());
-    this.disconnectCells(nid1, nid2);
-  }
-  breadCrumbs(path, color = 'sienna', sz = 10) {
-    for (const cell of path.nodes().map(x => Items[x.id()])) {
-      mCellContent(iDiv(cell), { w: sz, h: sz, bg: color, fg: 'white', rounding: '50%' });
-    }
-  }
-  colorComponents() {
-    let comps = this.getComponents();
-    let wheel = getColorWheel('red', comps.length);
-    let i = 0;
-    for (const comp of comps) {
-      this.breadCrumbs(comp, wheel[i]); i += 1;
-    }
-  }
-  showGraph() {
-    this.dGraph.style.opacity = 1;
-    if (this.hasVisual) { show(this.dGraph); return; }
-    this.addVisual(this.dGraph);
-    this.storeCurrentPositions();
-    this.addLayoutControls(this.sb, ['show', 'hide', 'prest', 'grid', 'klay', 'rand', 'euler', 'reset', 'store']);
-  }
-  hideGraph() {
-    if (isdef(this.dGraph) && this.hasVisual) {
-      this.dGraph.style.display = 'none';
-    }
-  }
-}
 class MK { }
 class MKManager{
   clear(){this.clearUIS();this.clearDONE();}
@@ -14852,7 +11448,7 @@ class MOBJ {
       fill = 'white';
       textBg = 'gray';
     }
-    fill = anyColorToStandardString(fill, alpha);
+    fill = colorFrom(fill, alpha);
     return { fill: fill, bg: textBg ? textBg : this.bg };
   }
   setTextFill(r, fill, alpha = 1, textBg = null) {
@@ -14863,7 +11459,7 @@ class MOBJ {
     return textColors.bg;
   }
   setTextBorder(color, thickness = 0) {
-    let c = anyColorToStandardString(color);
+    let c = colorFrom(color);
     let children = arrChildren(this.elem);
     unitTestMS('setTextBorder', children);
     for (const ch of children) {
@@ -15159,7 +11755,7 @@ class MOBJ {
   //#region internal
   _setFill(el, fill, alpha) {
     if (fill != null && fill !== undefined) {
-      fill = anyColorToStandardString(fill, alpha);
+      fill = colorFrom(fill, alpha);
       el.setAttribute('fill', fill);
       return fill;
     }
@@ -15191,7 +11787,7 @@ class MOBJ {
     let bg = this._setFill(r, fill, alpha);
     r.setAttribute('stroke-width', thickness);
     if (thickness > 0) {
-      border = anyColorToStandardString(border, alpha);
+      border = colorFrom(border, alpha);
       r.setAttribute('stroke', border);
     }
     if (this.elem.childNodes.length == 0 || className.includes('ground')) {
@@ -15237,7 +11833,7 @@ class MOBJ {
     }
     r.setAttribute('stroke-width', thickness);
     if (thickness > 0) {
-      border = anyColorToStandardString(border, alpha);
+      border = colorFrom(border, alpha);
       r.setAttribute('stroke', border);
     }
     if (className !== '') {
@@ -15367,7 +11963,7 @@ class MOBJ {
     r.setAttribute('y2', y2);
     if (isdef(cap)) r.setAttribute('stroke-linecap', cap);
     let isFirstChild = this.elem.childNodes.length == 0;
-    let stroke = anyColorToStandardString(fill, alpha);
+    let stroke = colorFrom(fill, alpha);
     if (thickness > 0) {
       r.setAttribute('stroke', stroke);
       r.setAttribute('stroke-width', thickness);
@@ -15412,7 +12008,7 @@ class MOBJ {
       this.bgs.ground = bg; this.fgs.ground = r.getAttribute('stroke');
     }
     if (thickness > 0) {
-      border = anyColorToStandardString(border, alpha);
+      border = colorFrom(border, alpha);
       r.setAttribute('stroke', border);
       r.setAttribute('stroke-width', thickness);
     }
@@ -15988,6 +12584,343 @@ class MOBJ {
     this.elem.removeChild(oldChild);
   }
   toString() { return 'id: ' + this.id + ', ' + this.domType + ', ' + this.x + ', ' + this.y + ', ' + this.w + ', ' + this.h + ', ' + this.bg + ', ' + this.fg + ', ' + this.children; }
+  //#endregion
+}
+class MS {
+  constructor({ parent, id, type = 'g', domel = null, isa = {} } = {}) {
+    if (domel) {
+      if (domel.id == 'R_d_root') {
+        this.handlers = { click: {}, mouseenter: {}, mouseleave: {} }; this.parent = null; this.id = 'R_d_root'; this.type = 'div'; this.cat = 'd'; this.elem = domel; this.parts = { _: this.elem }; this.children = []; return;
+      }
+      this.id = domel.id;
+      this.type = getTypeOf(domel);
+      this.parent = UIS[domel.parentNode.id];
+    } else {
+      this.id = nundef(id) ? getUID() : id;
+      this.type = type;
+      this.parent = parent;
+    }
+    UIS[this.id] = this;
+    this.cat = MSCATS[this.type]; //'d' for dom els and 'g' for svg els
+    this.elem = domel ? domel
+      : this.cat == 'g' || this.type == 'svg' ? document.createElementNS('http://www.w3.org/2000/svg', this.type)
+        : document.createElement(this.type);
+    this.elem.ms = this; 
+    this.elem.id = this.id;
+    if (nundef(this.parent)) this.parent = ROOT; 
+    this.children = [];
+    this.posRef = this.parent; 
+    if (this.cat == 'd' && this.parent.cat == 'g') {
+      let ancestor = closestParent(parent.elem, 'div');
+      console.log('FOUND domParent:', ancestor);
+      this.posRef = this.parent;
+      this.parent = ancestor.ms;
+    } else if (this.parent.cat == 'd' && this.parent.type != 'svg' && this.cat == 'g') {
+      let msSvg = new MMS({ parent: this.parent, type: 'svg' }).setDefaults().attach();
+      this.parent = msSvg;
+      this.posRef = msSvg; 
+    }
+    if (domel) { addIf(this.parent.children, this); } 
+    this.x = 0; this.y = 0; this.w = 0; this.h = 0;
+    for (const d in isa) {
+      if (d == 'id') { continue; }
+      this[d] = isa[d];      
+    }
+    this.isa = Object.keys(isa); 
+    this.parts = { _: this.elem }; 
+    this.uis = []; 
+    this.handlers = { click: {}, mouseenter: {}, mouseleave: {} };
+  }
+  //#region events
+  _handler(ev) {
+    ev.stopPropagation();
+    if (!this.isEnabled) return;
+    let part = ev.currentTarget;
+    let partName = isdef(part.name) ? part.name : '_';
+    let eventName = ev.handleObj.origType;
+    let handler = this.handlers[eventName][partName];
+    if (isdef(handler)) { counters[eventName] += 1; counters.events += 1; handler(this, part); }
+  }
+  addHandler(evName, partName = '_', handler = null, autoEnable = true) {
+    let part = this.parts[partName];
+    if (nundef(part)) { part = this.elem; partName = '_'; } 
+    if (isdef(handler)) { this.handlers[evName][partName] = handler; }
+    $(part).off(evName).on(evName, this._handler.bind(this));
+    if (autoEnable) this.enable();
+  }
+  addClickHandler(partName = '_', handler = null, autoEnable = true) { this.addHandler('click', partName, handler, autoEnable); }
+  addMouseEnterHandler(partName = '_', handler = null, autoEnable = true) { this.addHandler('mouseenter', partName, handler, autoEnable); }
+  addMouseLeaveHandler(partName = '_', handler = null, autoEnable = true) { this.addHandler('mouseleave', partName, handler, autoEnable); }
+  removeEvents() {
+    $(this.elem).off();
+    if (S_showEvents) this.showEvents(this.elem);
+    for (const partName in this.parts) {
+      $(this.parts[partName]).off();
+      if (S_showEvents) this.showEvents(this.parts[partName]);
+    }
+  }
+  //#endregion
+  //#region done
+  clear(startProps = {}) {
+    let ids = this.children.map(x => x.id);
+    for (const id of ids) UIS[id].destroy();
+    for (const k in startProps) {
+      this.elem[k] = startProps[k];
+    }
+    console.log('children after clear', this.children);
+  }
+  destroy() {
+    $(this.elem).remove(); 
+    this.elem = null;
+    removeInPlace(this.parent.children, this);
+    delete UIS[this.id];
+  }
+  //#endregion
+  //#region work
+  title(s, key = 'title') {
+    if (this.parts[key]) {
+      this.parts[key].style.backgroundColor = randomColor();
+      return;
+    }
+    let t = document.createElement('div');
+    t.style.backgroundColor = 'dimgray';
+    this.titleColor = t.style.backgroundColor;
+    t.classList.add('tttitle');
+    t.innerHTML = s;
+    this.elem.appendChild(t);
+    this.parts[key] = t;
+    t.name = key;
+    this.attach();
+    return this;
+  }
+  table(o, keys, key = 'table') {
+    if (this.parts[key]) {
+      let oldTable = this.parts[key];
+      let t = tableElem(o, keys);
+      let t2 = t.innerHTML;
+      oldTable.innerHTML = t2;
+    } else {
+      let t = tableElem(o, keys);
+      this.elem.appendChild(t);
+      this.attach();
+      this.parts[key] = t;
+      t.name = key;
+    }
+    return this;
+  }
+  //#endregion
+  //#region TODO
+  attach() { if (!this.isAttached) { addIf(this.parent.children, this); this.parent.elem.appendChild(this.elem); } return this; } 
+  detach() { if (this.isAttached) { removeIf(this.parent.children, this); this.parent.elem.removeChild(this.elem); } return this; }
+  _onMouseEnter(ev) {
+    if (!this.isEnabled) return;
+    let partName = evToId(ev);
+    if (S_showEvents) {
+      counters.events += 1;
+    }
+    if (typeof this.mouseEnterHandler == 'function') {
+      if (S_showEvents) 
+        this.mouseEnterHandler(ev);
+    }
+  }
+  _onMouseLeave(ev) {
+    if (!this.isEnabled) return;
+    let partName = evToId(ev);
+    if (S_showEvents) {
+      counters.events += 1;
+    }
+    if (typeof this.mouseLeaveHandler == 'function') {
+      if (S_showEvents) 
+        this.mouseLeaveHandler(ev);
+    }
+  }
+  _getRect(x = 0, y = 0, w = 50, h = 25, bg, fg) {
+    let r = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+    r.setAttribute('width', w);
+    r.setAttribute('height', h);
+    r.setAttribute('x', x);
+    r.setAttribute('y', y);
+    if (isdef(bg)) r.setAttribute('fill', bg);
+    if (isdef(fg)) r.setAttribute('stroke', bg);
+    return r;
+  }
+  _getDiv(x, y, w, h, bg, fg) {
+    let r = document.createElement('div');
+    if (this.w < w || this.h < h) { this.setSize(w, h); }
+    if (isdef(x)) {
+      r.style.position = 'absolute';
+      r.style.left = x + 'px';
+      r.style.top = y + 'px';
+    }
+    if (isdef(w)) {
+      r.style.width = w + 'px';
+      r.style.height = h + 'px';
+    }
+    if (isdef(bg)) r.style.backgroundColor = bg;
+    if (isdef(fg)) r.style.color = fg;
+    return r;
+  }
+  addInteractivity(partName, hover = true, click = true) {
+    let part = this.parts[partName];
+    if (nundef(part)) { part = this.elem; } 
+    if (this.part.isInteractive) return;
+    this.part.isInteractive = true;
+    if (click) this.part.clickHandler = null;
+    if (hover) { this.part.mouseEnterHandler = null; this.part.mouseLeaveHandler = null; }
+    this.isEnabled = false;
+    this.enable = () => this.isEnabled = true;
+    this.disable = () => this.isEnabled = false;
+    this.elem.addEventListener('click', this._onClick.bind(this));
+    this.elem.addEventListener('mouseenter', this._onMouseEnter.bind(this));
+    this.elem.addEventListener('mouseleave', this._onMouseLeave.bind(this));
+    return this;
+  }
+  enable() {
+    this.isEnabled = true;
+  }
+  disable() {
+    this.isEnabled = false;
+  }
+  high() {
+    if (isdef(this.parts) && isdef(this.parts.title)) this.parts['title'].style.backgroundColor = '#ccff00';
+    else {
+      this.elem.classList.add('selected');
+      this.elem.backgroundColor = '#ccff00';
+    }
+  } 
+  unhigh() {
+    if (isdef(this.parts) && isdef(this.parts.title)) this.parts['title'].style.backgroundColor = this.titleColor;
+    else {
+      this.elem.classList.remove('selected');
+      this.elem.backgroundColor = this.titleColor;
+    }
+  }
+  sel() { }
+  unsel() { }
+  frame() { }
+  unframe() { }
+  setDefaults({ x, y, w, h, bg, fg } = {}) {
+    if (this.parent.type == 'svg' && isdef(bg) && nundef(w) && nundef(h) && this.domType == 'g') {
+      this.parent.setBg(bg);
+    } else {
+      if (isdef(bg) || this.cat == 'd') {
+        bg = nundef(bg) ? 'transparent' : bg;
+        this.setBg(bg);
+        fg = nundef(fg) ? bg == 'transparent' ? this.parent.fg : colorIdealText(bg) : fg;
+        this.setFg(fg);
+      }
+    }
+    if (this.cat == 'd' && (nundef(this.x) || nundef(this.w))) return this;
+    w = nundef(w) ? this.posRef.w : w;
+    h = nundef(h) ? this.posRef.h : h;
+    this.setSize(w, h);
+    x = nundef(x) ? 0 : this.posRef.x + x;
+    y = nundef(y) ? 0 : this.posRef.y + y;
+    if (this.parent.cat == 'd') { this.parent.elem.style.position = 'absolute'; }
+    this.setPos(x, y);
+    return this;
+  }
+  setBg(c, updateFg = false) {
+    this.bg = c;
+    if (this.cat == 'g') {
+      if (this.domType == 'text') {
+        if (!this.textBackground) {
+        }
+      } else {
+        this.elem.setAttribute('fill', c);
+      }
+    } else {
+      this.elem.style.backgroundColor = c;
+    }
+    if (updateFg) {
+      this.setFg(colorIdealText(c), true);
+    }
+    return this;
+  }
+  setFg(c) {
+    this.fg = c;
+    if (this.cat == 'g') {
+      if (this.domType == 'text') {
+        this.elem.setAttribute('fill', c);
+      } else {
+        this.elem.setAttribute('stroke', c);
+      }
+    } else {
+      this.elem.style.color = c;
+    }
+    return this;
+  }
+  setFullSize() {
+    this.setSize(this.posRef.w, this.posRef.h);
+    this.setPos(0, 0);
+  }
+  setSize(w, h) {
+    this.w = w; this.h = h;
+    if (this.cat == 'g') {
+      if (this.ground) {
+        this.ground.setAttribute('width', w);
+        this.ground.setAttribute('height', h);
+      } else {
+        this.elem.setAttribute('width', w);
+        this.elem.setAttribute('height', h);
+      }
+      if (this.overlay) {
+        this.overlay.setAttribute('width', w);
+        this.overlay.setAttribute('height', h);
+      }
+    } else {
+      this.elem.style.position = 'absolute';
+      this.elem.style.width = w + 'px';
+      this.elem.style.height = h + 'px';
+    }
+    return this;
+  }
+  setPos(x, y) {
+    this.x = x; 
+    this.y = y;
+    if (this.cat == 'g') {
+      this.elem.setAttribute('transform', `translate(${x},${y})`);
+    } else {
+      this.elem.style.position = 'absolute'
+      this.elem.style.left = x + 'px';
+      this.elem.style.top = y + 'px';
+    }
+    return this;
+  }
+  center() {
+    this.setPos(-this.w / 2, -this.h / 2)
+  }
+  centerOrigin() {
+    this.setPos(this.w / 2, this.h / 2);
+  }
+  rect({ x = 0, y = 0, w = 50, h = 25, bg, fg } = {}) {
+    let pa = this.domType == 'g' ? this._getRect(x, y, w, h, bg, fg) : this._getDiv(x, y, w, h, bg, fg);
+    this.elem.appendChild(pa);
+    this.attach();
+    return this;
+  }
+  addBorder(c) {
+    if (this.cat == 'd') {
+      this.elem.style.border = '1px solid ' + c;
+    }
+  }
+  removeBorder() {
+    if (this.cat == 'd') {
+      this.elem.style.border = null;
+    }
+  }
+  selBlack() {
+    if (this.isSelBlack) return;
+    this.elem.classList.add('selBlack');
+    this.isSelBlack = true;
+  }
+  unselBlack() {
+    if (!this.isSelBlack) return;
+    this.elem.classList.remove('selBlack');
+    this.isSelBlack = false;
+  }
+  selRed() { }
+  unselAll() { this.removeBorder(); }
   //#endregion
 }
 class MS_dep {
@@ -16719,100 +13652,6 @@ class Peep {
     ctx.scale(this.scaleX, 1)
     ctx.drawImage(...this.drawArgs)
     ctx.restore()
-  }
-}
-class PerlenSettingsClass extends SettingsClass {
-  setOtherSettings(elem) {
-    console.log('____________elem', elem);
-    let val = elem.value;
-    let key = elem.keyList[0];
-    console.log('val',val,'key',key,'elem.value',elem.value)
-    switch (key) {
-      case 'boardStandard':
-        let data = DB.standardSettings[val];
-        if (nundef(data)) { console.log('NO! key', key); return; }
-        for (const k in data) { 
-          console.log('k',k)
-          this.o[k] = data[k]; 
-        }
-        this.o.boardStandard = val;
-        console.log('settings sollen so geaendert werden:', data);
-        this.createSettingsUi();
-        break;
-    }
-  }
-  setzeEinActiveOptions(dParent, label, optionList, friendlyList, init, skeys) {
-    let d = mDiv(dParent);
-    let val = init;
-    let inp = createElementFromHTML(`<select class="options" onchange="Settings.setOtherSettings(this)"></select>`);
-    for (let i = 0; i < optionList.length; i++) {
-      let opt = optionList[i];
-      let friendly = friendlyList[i];
-      let optElem = createElementFromHTML(`<option value="${opt}">${friendly}</option>`);
-      mAppend(inp, optElem);
-      if (opt == val) optElem.selected = true;
-    }
-    inp.value = val;
-    let labelui = createElementFromHTML(`<label>${label}</label>`);
-    mAppend(d, labelui);
-    mAppend(labelui, inp);
-    mStyleX(inp, { maleft: 12, mabottom: 4 });
-    inp.keyList = skeys;
-  }
-  setzeEinBrowseFile(dParent, label, init, skeys) {
-    let d = mDiv(dParent);
-    let val = lookup(this.o, skeys);
-    if (nundef(val)) val = init;
-    let inp = createElementFromHTML(
-      `<input type="text" class="input" value="${val}"  />`);
-    let labelui = createElementFromHTML(`<label>${label}</label>`);
-    mAppend(d, labelui);
-    mAppend(labelui, inp);
-    var fakeInput = document.createElement("input"); 
-    fakeInput.type = "file";
-    fakeInput.accept = "image/*";
-    fakeInput.multiple = false;
-    inp.onclick = () => { fakeInput.click(); };
-    fakeInput.onchange = () => {
-      let imgFile = fakeInput.files[0];
-      previewBrowsedFile(dTable, imgFile);
-      let val = inp.value = getFilename(imgFile.name);
-      this.hasChanged = true;
-      this.haveChanged.push(skeys);
-      this.o[skeys[0]] = val;
-      this.imgFile = imgFile;
-    };
-    mStyleX(inp, { maleft: 12, mabottom: 4, cursor: 'pointer' });
-    mClass(inp, 'input');
-    inp.keyList = skeys;
-    this.addSetting(skeys[0]);
-  }
-  createSettingsUi() {
-    let dParent = mBy('dSettingsContent'); 
-    mCenterFlex(dParent);
-    clearElement(dParent);
-    this.list = [];
-    let fertigSets = DB.standardSettings;
-    let fsNames = Object.keys(fertigSets); fsNames.unshift('none');
-    let nGroupBoardSettings = this.mInputGroup(dParent);
-    this.setzeEinOptions(nGroupBoardSettings, 'base on standard', fsNames, fsNames, 'shapeShifters', ['boardStandard']);
-    this.setzeEinOptions(nGroupBoardSettings, 'board layout', ['hex1', 'hex', 'quad', 'circle'], ['hex1', 'hex', 'quad', 'circle'], 'hex1', ['boardLayout']);
-    this.setzeEinBrowseFile(nGroupBoardSettings, 'board filename', 'shapeShifters', ['boardFilename']);
-    this.setzeEineZahl(nGroupBoardSettings, 'board rotation', 0, ['boardRotation']);
-    this.setzeEineZahl(nGroupBoardSettings, 'top margin', 10, ['boardMarginTop']);
-    this.setzeEineZahl(nGroupBoardSettings, 'left margin', 20, ['boardMarginLeft']);
-    this.setzeEinenString(nGroupBoardSettings, 'field color', 'transparent', ['fieldColor']);
-    this.setzeEineZahl(nGroupBoardSettings, 'field width', 100, ['dxCenter']);
-    this.setzeEineZahl(nGroupBoardSettings, 'field height', 120, ['dyCenter']);
-    this.setzeEineZahl(nGroupBoardSettings, 'horizontal gap', 10, ['wGap']);
-    this.setzeEineZahl(nGroupBoardSettings, 'vertical gap', 20, ['hGap']);
-    this.setzeEineZahl(nGroupBoardSettings, 'rows', 7, ['rows']);
-    this.setzeEineZahl(nGroupBoardSettings, 'columns', 6, ['cols']);
-    this.setzeEineZahl(nGroupBoardSettings, 'max width', 800, ['wFieldArea']);
-    this.setzeEineZahl(nGroupBoardSettings, 'max height', 800, ['hFieldArea']);
-    let nGroupPerlenSettings = this.mInputGroup(dParent);
-    this.setzeEinOptions(nGroupPerlenSettings, 'pool selection', ['random', 'mixed', 'player'], ['random', 'mixed', 'never'], 'random', ['poolSelection']);
-    this.setzeEineZahl(nGroupPerlenSettings, 'random pool size', 25, ['numPool']);
   }
 }
 class Player {
@@ -17828,12 +14667,6 @@ class SimpleClass7 {
     else { return true; }
   }
 }
-class SimpleGraph extends AbsGraph1 { 
-  constructor(dParent, styles = {}) {
-    super();
-    upgradeToSimpleGraph(this, dParent, styles);
-  }
-}
 class SimpleGrid {
   constructor(id, { mapData, shape = 'hex', rows = 3, cols = 2, idPrefix, hasNodes = false, hasEdges = false, randomizeIds = false } = {}) {
     this.randomizeIds = randomizeIds;
@@ -18686,7 +15519,7 @@ class TestEngine {
   }
 }
 class TimeIt {
-  constructor(msg = '*', showOutput = true) {
+  constructor(msg, showOutput = true) {
     this.showOutput = showOutput;
     this.init(msg);
   }
@@ -18697,7 +15530,7 @@ class TimeIt {
   }
   tacit() { this.showOutput = false; }
   timeStamp(name) {
-    let tNew = new Date();
+    let tNew = new Date(); 
     let tDiff = tNew.getTime() - this.namedTimestamps.start.getTime();
     if (this.showOutput) console.log('___', tDiff, 'msecs * to', name);
     this.t = tNew;
@@ -18710,17 +15543,17 @@ class TimeIt {
     this.namedTimestamps = { start: this.t };
   }
   showSince(name, msg = 'now') {
-    let tNew = new Date();
+    let tNew = new Date(); 
     let tNamed = this.namedTimestamps[name];
-    if (this.showOutput) if (!tNamed) { console.log(name, 'is not a timestamp!'); return; }
+    if (this.showOutput) if (!tNamed) { console.log(name, 'is not a timestamp!'); return; } 
     let tDiff = tNew.getTime() - tNamed.getTime();
     if (this.showOutput) console.log('___', tDiff, 'msecs', name, 'to', msg);
     this.t = tNew;
   }
   format(t) { return '___' + t.getSeconds() + ':' + t.getMilliseconds(); }
   show(msg) { this.showTime(msg); }
-  showTime(msg = '*') {
-    let tNew = new Date();
+  showTime(msg) {
+    let tNew = new Date(); 
     let tDiff = tNew.getTime() - this.t.getTime();
     let tDiffStart = tNew.getTime() - this.namedTimestamps.start.getTime();
     if (this.showOutput) console.log('___ ', tDiff, 'msecs to', msg, '(' + tDiffStart, 'total)');
@@ -18730,7 +15563,7 @@ class TimeIt {
     this.init(msg);
   }
   end_of_cycle(msg) {
-    let tNew = new Date();
+    let tNew = new Date(); 
     let tDiff = tNew.getTime() - this.t.getTime();
     let tDiffStart = tNew.getTime() - this.namedTimestamps.start.getTime();
     if (this.showOutput) console.log('___ ' + tDiff + ' msecs', msg, 'to EOC (total: ' + tDiffStart + ')');
@@ -18850,6 +15683,186 @@ class ToolbarClass {
     this.addButton('retrieveState', onClickRetrieveState, 'retrieve gamestate');
   }
 }
+class UniqueIdEngine {
+  constructor() {
+    this.next = -1;
+  }
+  get() {
+    this.next += 1;
+    return 'a###' + this.next;
+    this.next += 1;
+  }
+}
+class UserManager{}
+class VidCache_dep {
+  constructor(resetStorage = false) {
+    this.live = {};
+    if (resetStorage) this.resetAll();
+  }
+  load(key) {
+    let keys = null; let sKey = key;
+    if (isList(key)) { skey = key.shift(); keys = key; }
+    let res = this.live[sKey];
+    if (res && keys) res = lookup(res, keys);
+    if (res) return res;
+    let sData = localStorage.getItem(sKey);
+    if (sData) {
+      let data = sData[0] == '{' || sData[0] == '[' ? JSON.parse(sData) : isNumber(sData) ? Number(sData) : sData;
+      if (keys) { this.live[sKey] = data; return lookup(data, keys); }
+      return data;
+    } else {
+      return null;
+    }
+  }
+  reset() { this.live = {}; }
+  resetAll() { localStorage.clear(); this.reset(); }
+  saveComplexObject(keys, o) {
+  }
+  save(key, data) {
+    this.live[key] = data;
+    localStorage.setItem(key, JSON.stringify(data));
+  }
+}
+class WeightedSampler {
+  constructor(elements, weights) {
+    this.total = 0;
+    this.elements = Array.from(elements);
+    this.cweights = weights.map(weight => this.total += weight);
+  }
+  get() {
+    let random = Math.random() * this.total;
+    return this.elements.find((element, index) => random < this.cweights[index]);
+  }
+}
+class Layout1 extends Array { 
+  constructor(id, shape='grid', rows=3, cols=3, options = {}) {
+    console.log(';;;;;;;;;',id,shape,rows,cols,options)
+    var fields = Array(rows)
+      .fill()
+      .map(() => Array(cols).fill(0)); 
+    super(...fields);
+    this.options = options; 
+    this.msBase = null; 
+    this.id = id;
+    this.rows = rows;
+    this.cols = cols;
+    this.shape = shape;
+  }
+  addRow(...values) {
+    this.push(values);
+  }
+  addCol(){
+    let i=0;let val = arguments;
+    for (const row of this) {
+      row.push(val[i]);
+    }
+    for (let index = this.length; index < val.length; index++) {
+      this.push([val[index]]);
+    }
+  }
+  getPos(r,c){return this.msBase.getPos;}
+  setCols(c){}
+  setRows(r){}
+  setShape(shape){}
+  isValidIndex(r,c){return this[r][c];}
+  render(){this.renderBase}
+  renderField(r,c){}
+  setOption(key,value){}
+}
+class PerlenSettingsClass extends SettingsClass {
+  setOtherSettings(elem) {
+    console.log('____________elem', elem);
+    let val = elem.value;
+    let key = elem.keyList[0];
+    console.log('val',val,'key',key,'elem.value',elem.value)
+    switch (key) {
+      case 'boardStandard':
+        let data = DB.standardSettings[val];
+        if (nundef(data)) { console.log('NO! key', key); return; }
+        for (const k in data) { 
+          console.log('k',k)
+          this.o[k] = data[k]; 
+        }
+        this.o.boardStandard = val;
+        console.log('settings sollen so geaendert werden:', data);
+        this.createSettingsUi();
+        break;
+    }
+  }
+  setzeEinActiveOptions(dParent, label, optionList, friendlyList, init, skeys) {
+    let d = mDiv(dParent);
+    let val = init;
+    let inp = createElementFromHTML(`<select class="options" onchange="Settings.setOtherSettings(this)"></select>`);
+    for (let i = 0; i < optionList.length; i++) {
+      let opt = optionList[i];
+      let friendly = friendlyList[i];
+      let optElem = createElementFromHTML(`<option value="${opt}">${friendly}</option>`);
+      mAppend(inp, optElem);
+      if (opt == val) optElem.selected = true;
+    }
+    inp.value = val;
+    let labelui = createElementFromHTML(`<label>${label}</label>`);
+    mAppend(d, labelui);
+    mAppend(labelui, inp);
+    mStyleX(inp, { maleft: 12, mabottom: 4 });
+    inp.keyList = skeys;
+  }
+  setzeEinBrowseFile(dParent, label, init, skeys) {
+    let d = mDiv(dParent);
+    let val = lookup(this.o, skeys);
+    if (nundef(val)) val = init;
+    let inp = createElementFromHTML(
+      `<input type="text" class="input" value="${val}"  />`);
+    let labelui = createElementFromHTML(`<label>${label}</label>`);
+    mAppend(d, labelui);
+    mAppend(labelui, inp);
+    var fakeInput = document.createElement("input"); 
+    fakeInput.type = "file";
+    fakeInput.accept = "image/*";
+    fakeInput.multiple = false;
+    inp.onclick = () => { fakeInput.click(); };
+    fakeInput.onchange = () => {
+      let imgFile = fakeInput.files[0];
+      previewBrowsedFile(dTable, imgFile);
+      let val = inp.value = getFilename(imgFile.name);
+      this.hasChanged = true;
+      this.haveChanged.push(skeys);
+      this.o[skeys[0]] = val;
+      this.imgFile = imgFile;
+    };
+    mStyleX(inp, { maleft: 12, mabottom: 4, cursor: 'pointer' });
+    mClass(inp, 'input');
+    inp.keyList = skeys;
+    this.addSetting(skeys[0]);
+  }
+  createSettingsUi() {
+    let dParent = mBy('dSettingsContent'); 
+    mCenterFlex(dParent);
+    clearElement(dParent);
+    this.list = [];
+    let fertigSets = DB.standardSettings;
+    let fsNames = Object.keys(fertigSets); fsNames.unshift('none');
+    let nGroupBoardSettings = this.mInputGroup(dParent);
+    this.setzeEinOptions(nGroupBoardSettings, 'base on standard', fsNames, fsNames, 'shapeShifters', ['boardStandard']);
+    this.setzeEinOptions(nGroupBoardSettings, 'board layout', ['hex1', 'hex', 'quad', 'circle'], ['hex1', 'hex', 'quad', 'circle'], 'hex1', ['boardLayout']);
+    this.setzeEinBrowseFile(nGroupBoardSettings, 'board filename', 'shapeShifters', ['boardFilename']);
+    this.setzeEineZahl(nGroupBoardSettings, 'board rotation', 0, ['boardRotation']);
+    this.setzeEineZahl(nGroupBoardSettings, 'top margin', 10, ['boardMarginTop']);
+    this.setzeEineZahl(nGroupBoardSettings, 'left margin', 20, ['boardMarginLeft']);
+    this.setzeEinenString(nGroupBoardSettings, 'field color', 'transparent', ['fieldColor']);
+    this.setzeEineZahl(nGroupBoardSettings, 'field width', 100, ['dxCenter']);
+    this.setzeEineZahl(nGroupBoardSettings, 'field height', 120, ['dyCenter']);
+    this.setzeEineZahl(nGroupBoardSettings, 'horizontal gap', 10, ['wGap']);
+    this.setzeEineZahl(nGroupBoardSettings, 'vertical gap', 20, ['hGap']);
+    this.setzeEineZahl(nGroupBoardSettings, 'rows', 7, ['rows']);
+    this.setzeEineZahl(nGroupBoardSettings, 'columns', 6, ['cols']);
+    this.setzeEineZahl(nGroupBoardSettings, 'max width', 800, ['wFieldArea']);
+    this.setzeEineZahl(nGroupBoardSettings, 'max height', 800, ['hFieldArea']);
+    let nGroupPerlenSettings = this.mInputGroup(dParent);
+    this.setzeEinOptions(nGroupPerlenSettings, 'pool selection', ['random', 'mixed', 'player'], ['random', 'mixed', 'never'], 'random', ['poolSelection']);
+    this.setzeEineZahl(nGroupPerlenSettings, 'random pool size', 25, ['numPool']);
+  }
+}
 class UIGraph extends AGraph {
   init(dParent, styles = {}) {
     let defOptions = {
@@ -18917,31 +15930,31 @@ class UIGraph extends AGraph {
   comcola() {
     let defaults = {
       name: 'cola',
-      animate: true,
-      refresh: 1,
-      maxSimulationTime: 4000,
-      ungrabifyWhileSimulating: false,
-      fit: true,
-      padding: 30,
-      boundingBox: undefined,
-      nodeDimensionsIncludeLabels: false,
-      ready: function () { },
-      stop: function () { },
-      randomize: false,
-      avoidOverlap: true,
-      handleDisconnected: true,
-      convergenceThreshold: 0.01,
-      nodeSpacing: function (node) { return 10; },
-      flow: undefined,
-      alignment: undefined,
-      gapInequalities: undefined,
-      edgeLength: undefined,
-      edgeSymDiffLength: undefined,
-      edgeJaccardLength: undefined,
-      unconstrIter: undefined,
-      userConstIter: undefined,
-      allConstIter: undefined,
-      infinite: false
+      animate: true, 
+      refresh: 1, 
+      maxSimulationTime: 4000, 
+      ungrabifyWhileSimulating: false, 
+      fit: true, 
+      padding: 30, 
+      boundingBox: undefined, 
+      nodeDimensionsIncludeLabels: false, 
+      ready: function () { }, 
+      stop: function () { }, 
+      randomize: false, 
+      avoidOverlap: true, 
+      handleDisconnected: true, 
+      convergenceThreshold: 0.01, 
+      nodeSpacing: function (node) { return 10; }, 
+      flow: undefined, 
+      alignment: undefined, 
+      gapInequalities: undefined, 
+      edgeLength: undefined, 
+      edgeSymDiffLength: undefined, 
+      edgeJaccardLength: undefined, 
+      unconstrIter: undefined, 
+      userConstIter: undefined, 
+      allConstIter: undefined, 
+      infinite: false 
     };
     let options = {
       name: 'cola',
@@ -18968,12 +15981,10 @@ class UIGraph extends AGraph {
       uniformNodeDimensions: false,
       packComponents: true,
       step: "all",
-      /* spectral layout options */
       samplingType: true,
       sampleSize: 25,
       nodeSeparation: 75,
       piTol: 0.0000001,
-      /* incremental layout options */
       nodeRepulsion: node => 4500,
       idealEdgeLength: edge => 50,
       edgeElasticity: edge => 0.45,
@@ -18987,16 +15998,14 @@ class UIGraph extends AGraph {
       gravityCompound: 1.0,
       gravityRange: 3.8,
       initialEnergyOnIncremental: 0.3,
-      /* constraint options */
       fixedNodeConstraint: undefined,
       alignmentConstraint: undefined,
       relativePlacementConstraint: undefined,
-      /* layout event callbacks */
-      ready: () => { },
-      stop: () => { },
+      ready: () => { }, 
+      stop: () => { }, 
       name: 'fcose',
     };
-    this.cy.layout(defaultOptions).run();
+    this.cy.layout(defaultOptions).run(); 
   }
   gridLayout() { this.cy.layout({ name: 'grid', animate: true }).run(); }
   presetLayout_dep() {
@@ -19006,18 +16015,18 @@ class UIGraph extends AGraph {
     } else {
       let options = {
         name: 'preset',
-        positions: undefined,
-        zoom: undefined,
-        pan: undefined,
-        fit: true,
-        padding: 30,
-        animate: true,
-        animationDuration: 500,
-        animationEasing: undefined,
-        animateFilter: function (node, i) { return true; },
-        ready: undefined,
-        stop: undefined,
-        transform: function (node, position) { return position; }
+        positions: undefined, 
+        zoom: undefined, 
+        pan: undefined, 
+        fit: true, 
+        padding: 30, 
+        animate: true, 
+        animationDuration: 500, 
+        animationEasing: undefined, 
+        animateFilter: function (node, i) { return true; }, 
+        ready: undefined, 
+        stop: undefined, 
+        transform: function (node, position) { return position; } 
       };
       this.cy.layout(options);
       this.reset();
@@ -19031,90 +16040,69 @@ class UIGraph extends AGraph {
   randomLayout() { this.cy.layout({ name: 'random', animate: 'true' }).run(); }
   klay() {
     let klayDefaults = {
-      addUnnecessaryBendpoints: false,
-      aspectRatio: 1.6,
-      borderSpacing: 20,
-      compactComponents: false,
-      crossingMinimization: 'LAYER_SWEEP',
-      /* LAYER_SWEEP The layer sweep algorithm iterates multiple times over the layers, trying to find node orderings that minimize the number of crossings. The algorithm uses randomization to increase the odds of finding a good result. To improve its results, consider increasing the Thoroughness option, which influences the number of iterations done. The Randomization seed also influences results.
-      INTERACTIVE Orders the nodes of each layer by comparing their positions before the layout algorithm was started. The idea is that the relative order of nodes as it was before layout was applied is not changed. This of course requires valid positions for all nodes to have been set on the input graph before calling the layout algorithm. The interactive layer sweep algorithm uses the Interactive Reference Point option to determine which reference point of nodes are used to compare positions. */
-      cycleBreaking: 'GREEDY',
-      /* GREEDY This algorithm reverses edges greedily. The algorithm tries to avoid edges that have the Priority property set.
-      INTERACTIVE The interactive algorithm tries to reverse edges that already pointed leftwards in the input graph. This requires node and port coordinates to have been set to sensible values.*/
-      direction: 'UNDEFINED',
-      /* UNDEFINED, RIGHT, LEFT, DOWN, UP */
-      edgeRouting: 'ORTHOGONAL',
-      edgeSpacingFactor: 0.5,
-      feedbackEdges: false,
-      fixedAlignment: 'NONE',
-      /* NONE Chooses the smallest layout from the four possible candidates.
-      LEFTUP Chooses the left-up candidate from the four possible candidates.
-      RIGHTUP Chooses the right-up candidate from the four possible candidates.
-      LEFTDOWN Chooses the left-down candidate from the four possible candidates.
-      RIGHTDOWN Chooses the right-down candidate from the four possible candidates.
-      BALANCED Creates a balanced layout from the four possible candidates. */
-      inLayerSpacingFactor: 1.0,
-      layoutHierarchy: false,
-      linearSegmentsDeflectionDampening: 0.3,
-      mergeEdges: false,
-      mergeHierarchyCrossingEdges: true,
-      nodeLayering: 'NETWORK_SIMPLEX',
-      /* NETWORK_SIMPLEX This algorithm tries to minimize the length of edges. This is the most computationally intensive algorithm. The number of iterations after which it aborts if it hasn't found a result yet can be set with the Maximal Iterations option.
-      LONGEST_PATH A very simple algorithm that distributes nodes along their longest path to a sink node.
-      INTERACTIVE Distributes the nodes into layers by comparing their positions before the layout algorithm was started. The idea is that the relative horizontal order of nodes as it was before layout was applied is not changed. This of course requires valid positions for all nodes to have been set on the input graph before calling the layout algorithm. The interactive node layering algorithm uses the Interactive Reference Point option to determine which reference point of nodes are used to compare positions. */
-      nodePlacement: 'BRANDES_KOEPF',
-      /* BRANDES_KOEPF Minimizes the number of edge bends at the expense of diagram size: diagrams drawn with this algorithm are usually higher than diagrams drawn with other algorithms.
-      LINEAR_SEGMENTS Computes a balanced placement.
-      INTERACTIVE Tries to keep the preset y coordinates of nodes from the original layout. For dummy nodes, a guess is made to infer their coordinates. Requires the other interactive phase implementations to have run as well.
-      SIMPLE Minimizes the area at the expense of... well, pretty much everything else. */
-      randomizationSeed: 1,
-      routeSelfLoopInside: false,
-      separateConnectedComponents: true,
-      spacing: 20,
-      thoroughness: 7
+      // Following descriptions taken from http://layout.rtsys.informatik.uni-kiel.de:9444/Providedlayout.html?algorithm=de.cau.cs.kieler.klay.layered
+      addUnnecessaryBendpoints: false, 
+      aspectRatio: 1.6, 
+      borderSpacing: 20, 
+      compactComponents: false, 
+      crossingMinimization: 'LAYER_SWEEP', 
+      cycleBreaking: 'GREEDY', 
+      direction: 'UNDEFINED', 
+      edgeRouting: 'ORTHOGONAL', 
+      edgeSpacingFactor: 0.5, 
+      feedbackEdges: false, 
+      fixedAlignment: 'NONE', 
+      inLayerSpacingFactor: 1.0, 
+      layoutHierarchy: false, 
+      linearSegmentsDeflectionDampening: 0.3, 
+      mergeEdges: false, 
+      mergeHierarchyCrossingEdges: true, 
+      nodeLayering: 'NETWORK_SIMPLEX', 
+      nodePlacement: 'BRANDES_KOEPF', 
+      randomizationSeed: 1, 
+      routeSelfLoopInside: false, 
+      separateConnectedComponents: true, 
+      spacing: 20, 
+      thoroughness: 7 
     };
     var options = {
-      nodeDimensionsIncludeLabels: false,
-      fit: true,
-      padding: 20,
-      animate: true,
-      animateFilter: function (node, i) { return true; },
-      animationDuration: 500,
-      animationEasing: undefined,
-      transform: function (node, pos) { return pos; },
-      ready: this.reset.bind(this),
-      stop: undefined,
+      nodeDimensionsIncludeLabels: false, 
+      fit: true, 
+      padding: 20, 
+      animate: true, 
+      animateFilter: function (node, i) { return true; }, 
+      animationDuration: 500, 
+      animationEasing: undefined, 
+      transform: function (node, pos) { return pos; }, 
+      ready: this.reset.bind(this), 
+      stop: undefined, 
       klay: {
-        addUnnecessaryBendpoints: false,
-        aspectRatio: 1.6,
-        borderSpacing: 20,
-        compactComponents: false,
-        crossingMinimization: 'LAYER_SWEEP',
-        cycleBreaking: 'GREEDY',
-        direction: 'UNDEFINED',
-        edgeRouting: 'ORTHOGONAL',
-        edgeSpacingFactor: 0.5,
-        feedbackEdges: false,
-        fixedAlignment: 'NONE',
-        inLayerSpacingFactor: 1.0,
-        layoutHierarchy: false,
+        addUnnecessaryBendpoints: false, 
+        aspectRatio: 1.6, 
+        borderSpacing: 20, 
+        compactComponents: false, 
+        crossingMinimization: 'LAYER_SWEEP', 
+        cycleBreaking: 'GREEDY', 
+        direction: 'UNDEFINED', 
+        edgeRouting: 'ORTHOGONAL', 
+        edgeSpacingFactor: 0.5, 
+        feedbackEdges: false, 
+        fixedAlignment: 'NONE', 
+        inLayerSpacingFactor: 1.0, 
+        layoutHierarchy: false, 
         linearSegmentsDeflectionDampening: 0.3,
-        mergeEdges: false,
-        mergeHierarchyCrossingEdges: true,
-        nodeLayering: 'NETWORK_SIMPLEX',
-        nodePlacement: 'INTERACTIVE',
-        /* BRANDES_KOEPF Minimizes the number of edge bends at the expense of diagram size: diagrams drawn with this algorithm are usually higher than diagrams drawn with other algorithms.
-        LINEAR_SEGMENTS Computes a balanced placement.
-        INTERACTIVE Tries to keep the preset y coordinates of nodes from the original layout. For dummy nodes, a guess is made to infer their coordinates. Requires the other interactive phase implementations to have run as well.
-        SIMPLE Minimizes the area at the expense of... well, pretty much everything else. */
-        randomizationSeed: 1,
-        routeSelfLoopInside: false,
-        separateConnectedComponents: true,
-        spacing: 20,
-        thoroughness: 3
+        mergeEdges: false, 
+        mergeHierarchyCrossingEdges: true, 
+        nodeLayering: 'NETWORK_SIMPLEX', 
+        nodePlacement: 'INTERACTIVE', 
+        randomizationSeed: 1, 
+        routeSelfLoopInside: false, 
+        separateConnectedComponents: true, 
+        spacing: 20, 
+        thoroughness: 3 
       },
       name: 'klay',
-      priority: function (edge) { return null; },
+      priority: function (edge) { return null; }, 
     };
     this.cy.layout(options).run();
   }
@@ -19152,7 +16140,7 @@ class UIGraph extends AGraph {
   //#endregion
   //#region zoom pan fit center
   fit() { this.cy.fit(); }
-  center() { this.cy.center(); }
+  center() { this.cy.center(); } 
   reset() { this.pan0(); this.zoom1(); this.center(); this.fit(); }
   pan0() { this.cy.pan({ x: 0, y: 0 }); }
   zoom1() { this.cy.zoom(1); }
@@ -19184,7 +16172,7 @@ class UIGraph extends AGraph {
     this.cy.resize();
     dContainer.cytoscapeEdgehandles('resize');
   }
-  //#region ui funcs
+  //#region ui functions
   enableDD() { this.enableDragging(); }
   disableDD() { this.disableDragging(); }
   enableDragging() { this.cy.nodes().grabify(); }
@@ -19279,55 +16267,3762 @@ class UIGraph extends AGraph {
   }
   //#endregion
 }
-class UniqueIdEngine {
-  constructor() {
-    this.next = -1;
+class ControllerSolitaireMinimal extends ControllerSolitaire {
+  clear() { if (isdef(this.timer)) this.timer.clear(); }
+  startLevel() {
+    Settings.updateGameValues(this.player, this.g);
+    this.g.start_Level();
+    this.startRound();
   }
-  get() {
-    this.next += 1;
-    return 'a###' + this.next;
-    this.next += 1;
+  prompt() {
+    QContextCounter += 1;
+    showStats(false); 
+    this.g.trialNumber = 0;
+    this.g.prompt();
   }
-}
-class UserManager{}
-class VidCache_dep {
-  constructor(resetStorage = false) {
-    this.live = {};
-    if (resetStorage) this.resetAll();
+  activateUi() {
+    Selected = null;
+    uiActivated = true;
+    if (isdef(this.timer)) this.timer.start(); 
+    this.g.activate();
   }
-  load(key) {
-    let keys = null; let sKey = key;
-    if (isList(key)) { skey = key.shift(); keys = key; }
-    let res = this.live[sKey];
-    if (res && keys) res = lookup(res, keys);
-    if (res) return res;
-    let sData = localStorage.getItem(sKey);
-    if (sData) {
-      let data = sData[0] == '{' || sData[0] == '[' ? JSON.parse(sData) : isNumber(sData) ? Number(sData) : sData;
-      if (keys) { this.live[sKey] = data; return lookup(data, keys); }
-      return data;
+  gotoNext(nextLevel) {
+    onclick = null;
+    removeMarkers();
+    clearTimeouts();
+    if (isdef(this.timer)) this.timer.clear();
+    if (Score.levelChange && nextLevel <= this.g.maxLevel) {
+      this.g.level = nextLevel;
+      setBadgeLevel(this.g.level);
+      this.startLevel();
     } else {
-      return null;
+      this.startRound();
     }
   }
-  reset() { this.live = {}; }
-  resetAll() { localStorage.clear(); this.reset(); }
-  saveComplexObject(keys, o) {
+}
+class MazeGraph extends AGraph {
+  constructor(dParent, rows, cols, sz, gap = 4) {
+    super();
+    [this.cols, this.rows, this.sz, this.gap] = [cols, rows, sz, gap];
+    let m = this.m = this.createMaze(cols, rows, sz, gap);
+    let dMaze = this.dMaze = this.createDiv(dParent, cols, rows, sz, gap);
+    let szMaze = getSize(dMaze);
+    let dGraph = this.dGraph = mDiv(dParent, { align: 'left', w: szMaze.w, h: szMaze.h, bg: 'pink', maleft: 20 }, 'd_graph');
+    this.mazeId = dGraph.id = getUID();
+    let sb = this.sb = mDiv(dParent, { w: 40 }); mCenterCenterFlex(this.sb);
+    hide(dGraph); hide(sb);
+    this.items = this.createCellItems();
   }
-  save(key, data) {
-    this.live[key] = data;
-    localStorage.setItem(key, JSON.stringify(data));
+  clear() { super.clear(); } 
+  getTopLeftCell() { return this.getCell(0, 0); }
+  getTopRightCell() { return this.getCell(0, this.cols - 1); }
+  getBottomLeftCell() { return this.getCell(this.rows - 1, 0); }
+  getBottomRightCell() { return this.getCell(this.rows - 1, this.cols - 1); }
+  getCell(row, col) { return this.matrix[row][col]; }
+  getCommonId(row, col) { return '' + row + "-" + col; }
+  getCommonIdTable(row, col) { return 'td_' + this.getCommonId(row, col); }
+  getRCI(edgeId) {
+    let [r1, c1, r2, c2] = allNumbers(edgeId).map(x => Math.abs(x));  
+    let i1, i2; 
+    i1 = r1 < r2 ? 2 : r1 > r2 ? 0 : c1 < c2 ? 1 : 3;
+    i2 = i1 == 0 ? 2 : i1 == 1 ? 3 : i1 == 2 ? 0 : 1;
+    return [r1, c1, i1, r2, c2, i2];
+  }
+  getRelativeDirections(item1, item2) {
+    let [r1, c1, r2, c2] = [item1.row, item1.col, item2.row, item2.col];
+    let i1, i2; 
+    i1 = r1 < r2 ? 2 : r1 > r2 ? 0 : c1 < c2 ? 1 : 3;
+    i2 = i1 == 0 ? 2 : i1 == 1 ? 3 : i1 == 2 ? 0 : 1;
+    return [i1, i2];
+  }
+  createCellItems() {
+    let items = [];
+    this.matrix = [];
+    for (let r = 0; r < this.rows; r++) {
+      this.matrix[r] = [];
+      for (let c = 0; c < this.cols; c++) {
+        let id = this.getCommonId(r, c);
+        let item = { id: id, nid: id, nodeId: id, cellId: this.getCommonIdTable(r, c), row: r, col: c, sz: this.sz, marr: this.m[r, c] };
+        delete Items[id];
+        iAdd(item, { div: mBy(this.getCommonIdTable(r, c)) });
+        items.push(item);
+        this.matrix[r][c] = item;
+      }
+    }
+    return items;
+  }
+  createDiv(dParent, cols, rows, sz, gap = 1) {
+    let [wCell, hCell] = [sz, sz];
+    let [wTotal, hTotal] = [cols * (wCell + gap) + gap, rows * (hCell + gap) + gap];
+    let dGridOuter = this.dMaze = mDiv(dParent, { wmin: wTotal, hmin: hTotal, position: 'relative' });
+    let m = this.m;
+    let [x, y] = [0, 0];
+    let sBorder = `${gap}px solid black`;
+    let noBorder = `${gap}px solid transparent`;
+    this.dCells = [];
+    for (var r = 0; r < m.length; r++) {
+      x = 0;
+      this.dCells[r] = [];
+      for (var c = 0; c < m[r].length; c++) {
+        let info = m[r][c];
+        let dCell = mDiv(dGridOuter, { w: wCell, h: hCell, position: 'absolute', top: y, left: x, bg: 'gray' });
+        dCell.id = this.getCommonIdTable(r, c);
+        dCell.style.borderTop = info[0] == 0 ? sBorder : noBorder;
+        dCell.style.borderRight = info[1] == 0 ? sBorder : noBorder;
+        dCell.style.borderBottom = info[2] == 0 ? sBorder : noBorder;
+        dCell.style.borderLeft = info[3] == 0 ? sBorder : noBorder;
+        x += wCell + gap;
+        this.dCells[r].push(dCell);
+      }
+      y += hCell + gap;
+    }
+    return dGridOuter;
+  }
+  createDiv_orig(dParent, cols, rows, sz, gap) {
+    let [wCell, hCell] = [sz, sz];
+    let [wTotal, hTotal] = [cols * (wCell + gap), rows * (hCell + gap)];
+    let dGridOuter = this.dMaze = mDiv(dParent, { wmin: wTotal, hmin: hTotal });
+    let m = this.m;
+    let id = 'tMaze';
+    setCSSVariable('--wCell', `${wCell}px`);
+    setCSSVariable('--hCell', `${hCell}px`);
+    let tMaze = createElementFromHtml(`
+      <table id="${id}">
+      <tbody></tbody>
+      </table>
+    `);
+    mAppend(dGridOuter, tMaze);
+    let sBorder = `${1}px solid black`;
+    for (var i = 0; i < m.length; i++) {
+      $('#tMaze > tbody').append("<tr>");
+      for (var j = 0; j < m[i].length; j++) {
+        var selector = this.getCommonIdTable(i, j);
+        $('#tMaze > tbody').append("<td id='" + selector + "'>&nbsp;</td>");
+        if (m[i][j][0] == 0) { $('#' + selector).css('border-top', sBorder); }
+        if (m[i][j][1] == 0) { $('#' + selector).css('border-right', sBorder); }
+        if (m[i][j][2] == 0) { $('#' + selector).css('border-bottom', sBorder); }
+        if (m[i][j][3] == 0) { $('#' + selector).css('border-left', sBorder); }
+      }
+      $('tMmaze > tbody').append("</tr>");
+    }
+    return dGridOuter;
+  }
+  createMaze(cols, rows, sz, gap) {
+    var dxy = sz + 2 * gap;
+    var offs = dxy / 2 + gap;
+    var totalCells = cols * rows;
+    var cells = new Array();
+    var unvis = new Array();
+    for (var i = 0; i < rows; i++) {
+      cells[i] = new Array();
+      unvis[i] = new Array();
+      for (var j = 0; j < cols; j++) {
+        cells[i][j] = [0, 0, 0, 0];
+        let pos = { x: offs + dxy * j, y: offs + dxy * i };
+        this.addNode({ id: this.getCommonId(i, j), row: i, col: j, center: pos }, pos);
+        unvis[i][j] = true;
+      }
+    }
+    var currentCell = [Math.floor(Math.random() * rows), Math.floor(Math.random() * cols)];
+    var path = [currentCell];
+    unvis[currentCell[0]][currentCell[1]] = false;
+    var visited = 1;
+    while (visited < totalCells) {
+      var pot = [[currentCell[0] - 1, currentCell[1], 0, 2],
+      [currentCell[0], currentCell[1] + 1, 1, 3],
+      [currentCell[0] + 1, currentCell[1], 2, 0],
+      [currentCell[0], currentCell[1] - 1, 3, 1]];
+      var neighbors = new Array();
+      for (var l = 0; l < 4; l++) {
+        if (pot[l][0] > -1 && pot[l][0] < rows && pot[l][1] > -1 && pot[l][1] < cols && unvis[pot[l][0]][pot[l][1]]) { neighbors.push(pot[l]); }
+      }
+      if (neighbors.length) {
+        let next = neighbors[Math.floor(Math.random() * neighbors.length)];
+        cells[currentCell[0]][currentCell[1]][next[2]] = 1;
+        cells[next[0]][next[1]][next[3]] = 1;
+        let row = currentCell[0];
+        let col = currentCell[1];
+        let row2 = next[0];
+        let col2 = next[1];
+        this.addEdge(this.getCommonId(row, col), this.getCommonId(row2, col2), {});
+        unvis[next[0]][next[1]] = false;
+        visited++;
+        currentCell = [next[0], next[1]];
+        path.push(currentCell);
+      }
+      else {
+        currentCell = path.pop();
+      }
+    }
+    return cells;
+  }
+  setItemBorder(item, dir) {
+    let prop = getBorderPropertyForDirection(dir);
+    iDiv(item).style[prop] = `${this.gap}px solid black`;
+  }
+  setItemColor(item, color) { mStyle(iDiv(item), { bg: color }); }
+  setItemContent(item, text) { iDiv(item).innerHTML = text; }
+  removeItemContent(item) { iDiv(item).innerHTML = ''; }
+  disconnectCells(nid1, nid2) {
+    this.removeEdge(this.getCommonEdgeId(nid1, nid2));
+    let [item1, item2] = [Items[nid1], Items[nid2]];
+    let [dir1, dir2] = this.getRelativeDirections(item1, item2);
+    this.setItemBorder(item1, dir1);
+    this.setItemBorder(item2, dir2);
+  }
+  cutPath(path, min, max) {
+    let edges = path.edges();
+    let len = edges.length;
+    let [imin, imax] = [Math.floor(len * min), Math.floor(len * max)];
+    let i = randomNumber(imin, imax);
+    let edge = edges[i];
+    let [nid1, nid2] = edge.connectedNodes().map(x => x.id());
+    this.disconnectCells(nid1, nid2);
+  }
+  breadCrumbs(path, color = 'sienna', sz = 10) {
+    for (const cell of path.nodes().map(x => Items[x.id()])) {
+      mCellContent(iDiv(cell), { w: sz, h: sz, bg: color, fg: 'white', rounding: '50%' });
+    }
+  }
+  colorComponents() {
+    let comps = this.getComponents();
+    let wheel = getColorWheel('red', comps.length);
+    let i = 0;
+    for (const comp of comps) {
+      this.breadCrumbs(comp, wheel[i]); i += 1;
+    }
+  }
+  showGraph() {
+    this.dGraph.style.opacity = 1;
+    if (this.hasVisual) { show(this.dGraph); return; }
+    this.addVisual(this.dGraph);
+    this.storeCurrentPositions();
+    this.addLayoutControls(this.sb, ['show', 'hide', 'prest', 'grid', 'klay', 'rand', 'euler', 'reset', 'store']);
+  }
+  hideGraph() {
+    if (isdef(this.dGraph) && this.hasVisual) {
+      this.dGraph.style.display = 'none';
+    }
   }
 }
-class WeightedSampler {
-  constructor(elements, weights) {
-    this.total = 0;
-    this.elements = Array.from(elements);
-    this.cweights = weights.map(weight => this.total += weight);
+class Deck1 extends Array {
+  initTest(n, shuffled = true) { range(0, n).map(x => this.push(Card52.getItem(x))); if (shuffled) this.shuffle(); }
+  initEmpty() { }
+  init52(shuffled = true, jokers = 0) {
+    range(0, 51 + jokers).map(x => this.push(Card52.getItem(x)));
+    if (shuffled) this.shuffle();
   }
-  get() {
-    let random = Math.random() * this.total;
-    return this.elements.find((element, index) => random < this.cweights[index]);
+  add(otherDeck) { while (otherDeck.length > 0) { this.unshift(otherDeck.pop()); } return this; }
+  count() { return this.length; }
+  static transferTopFromToBottom(d1, d2) { let c = d1.pop(); d2.putUnderPile(c); return c; }
+  deal(n) { return this.splice(0, n); }
+  getIndices() { return this.map(x => x.i); }
+  log() { console.log(this); }
+  putUnderPile(x) { this.push(x); }
+  putOnTop(x) { this.unshift(x); }
+  showDeck(dParent, splay, ovPercent = 0, faceUp = undefined, contStyles = {}) {
+    if (isdef(faceUp)) { if (faceUp == true) this.turnFaceUp(); else this.turnFaceDown(); }
+    splayout(this, dParent, contStyles, ovPercent, splay);
+  }
+  shuffle() { shuffle(this); }
+  topCard() { return this[this.length - 1]; }
+  turnFaceUp() {
+    if (isEmpty(this) || this[0].faceUp) return;
+    this.map(x => Card52.turnFaceUp(x));
+  }
+  turnFaceDown() {
+    if (isEmpty(this) || !this[0].faceUp) return;
+    this.map(x => Card52.turnFaceDown(x));
+  }
+}
+class SimpleGraph extends AbsGraph1 { 
+  constructor(dParent, styles = {}) {
+    super();
+    upgradeToSimpleGraph(this, dParent, styles);
+  }
+}
+class GAbacus extends Game {
+  constructor(name, o) { super(name, o); }
+  startGame() { this.successFunc = successThumbsUp; this.failFunc = failThumbsDown; this.correctionFunc = this.showCorrectSequence.bind(this); }
+  showCorrectSequence() { let t = correctBlanks(); if (this.level <= 1 && (this.step <= 3 || this.op != 'mult')) showSayHint(3); return t + 1000; }
+  start_Level() { if (!isList(this.steps)) this.steps = [this.steps]; this.numPics = 2; }
+  prompt() {
+    mLinebreak(dTable, 2);
+    showHiddenThumbsUpDown(110);
+    mLinebreak(dTable);
+    this.seq = makeExpSequence();
+    let panel = mDiv(dTable, { bg: '#00000080', padding: 20, rounding: 10 });
+    [this.words, this.letters] = showEquation(this.seq, panel);
+    setNumberSequenceGoal();
+    mLinebreak(dTable, 30);
+    let wr = (this.language == 'E' ? 'calculate' : "rechne");
+    let spOp = this.oop.sp; if (this.language == 'D') spOp = DD[spOp];
+    let sp = this.operand + ' ' + spOp + ' ' + this.step + ' ?';
+    show_instruction(wr, dTitle, sp);
+    if (this.level <= 1 && this.showHint && (this.step <= 3 || this.op != 'mult'))
+      hintEngineStart(getOperationHintString, [0, 1], 5000 + this.level * 1000);
+    this.controller.activateUi.bind(this.controller)();
+  }
+  trialPrompt() {
+    if (this.level <= 1 && this.showHint && (this.step <= 3 || this.op != 'mult')) hintEngineStart(getOperationHintString, [0, 1], 5000 + this.level * 1000);
+    TOMain = setTimeout(() => getWrongChars().map(x => unfillChar(x)), 500);
+    return 600;
+  }
+  activate() { addKeyup('G', this.interact.bind(this)); }
+  interact(ev) {
+    if (!isNumber(ev.key) && ev.key != '-') return;
+    clearFleetingMessage();
+    if (!canAct()) return;
+    let sel = Selected = onKeyWordInput(ev);
+    if (nundef(sel)) return;
+    let lastInputCharFilled = sel.target;
+    console.assert(sel.isMatch == (lastInputCharFilled.letter == sel.ch), lastInputCharFilled, sel.ch);
+    if (sel.isMatch && sel.isVeryLast) {
+      deactivateFocusGroup();
+      this.controller.evaluate.bind(this.controller)(true);
+    } else if (sel.isMatch && sel.isLastOfGroup) {
+      sel.target.isBlank = false;
+      sel.target.group.hasBlanks = false;
+      removeInPlace(Goal.blankWords, sel.target.group);
+      removeInPlace(Goal.blankChars, sel.target);
+      deactivateFocusGroup();
+      console.log('haaaaaaaaaaaalo', Goal.isFocus)
+    } else if (sel.isMatch) {
+      removeInPlace(Goal.blankChars, sel.target);
+      sel.target.isBlank = false;
+    } else if (sel.isVeryLast) {
+      Selected.words = getInputWords();
+      Selected.answer = getInputWordString();
+      Selected.req = getCorrectWordString();
+      deactivateFocusGroup();
+      this.controller.evaluate.bind(this.controller)(false);
+    } else if (sel.isLastOfGroup) {
+      Selected.words = getInputWords();
+      Selected.answer = getInputWordString();
+      Selected.req = getCorrectWordString();
+      deactivateFocusGroup();
+      this.controller.evaluate.bind(this.controller)(false);
+    } else {
+      if (!this.silent) { writeSound(); playSound('incorrect1'); }
+      deactivateFocusGroup();
+      showFleetingMessage('does NOT fit: ' + Selected.ch, 0, { fz: 24 });
+      setTimeout(() => unfillCharInput(Selected.target), 500);
+    }
+  }
+  eval(isCorrect) { return isCorrect; }
+}
+class GAnagram extends Game {
+  constructor(name, o) {
+    super(name, o);
+    if (this.language == 'C') {
+      this.realLanguage = this.language;
+      this.language = chooseRandom('E', 'S', 'F', 'D');
+    }
+  }
+  clear() { super.clear(); if (isdef(this.language)) this.language = this.language; }
+  start_Level() {
+    this.keys = setKeysG(this, filterWordByLengthG, 10);
+    if (this.keys.length < 10) { this.keys = setKeysG(this, filterWordByLengthG, 10, 'all'); }
+  }
+  prompt() {
+    myShowPics(null, {}, {});
+    if (this.hidden) {
+      let d = iDiv(Pictures[0]);
+      animate(d, 'aniAppearMinute', 100000);
+    }
+    setGoal();
+    let w = this.showWord ? Goal.label : '';
+    let wr = `drag letters to form ${w}`;
+    let sp = `form ${w}`;
+    show_instruction(wr, dTitle, sp);
+    mLinebreak(dTable, 22);
+    let word = Goal.label.toUpperCase();
+    let wlen = word.length;
+    let wTable = getRect(mBy('table')).w;
+    let wmax = wTable / wlen;
+    let gap = 4;
+    let fzMax = wTable / wlen - 3 * gap;
+    let fz = Math.min(70, fzMax);
+    let dpEmpty = createLetterInputsX(word, dTable, { pabottom: 5, bg: 'grey', display: 'inline-block', fz: fz, w: fz, h: fz * 1.1, margin: gap }); 
+    let inputs = blankInputs(dpEmpty, range(0, wlen - 1), false);
+    for (let i = 0; i < inputs.length; i++) {
+      let l = iDiv(inputs[i]);
+      ipadd(l);
+      mClass(l, 'dropzone');
+      l.id = 'input' + i;
+    }
+    this.inputs = inputs;
+    let x = mLinebreak(dTable, 35);
+    fz = Math.min(60, fzMax);
+    let dp = createLetterInputsX(word, dTable, { bg: 'silver', display: 'inline-block', fz: fz, w: fz, h: fz * 1.1, margin: 4 }); 
+    scrambleInputs(dp);
+    let letters = Array.from(dp.children);
+    for (let i = 0; i < letters.length; i++) {
+      let l = letters[i];
+      l.setAttribute('draggable', true);
+      ipadd(l);
+      l.id = 'letter' + i;
+    }
+    this.letters = letters;
+    mLinebreak(dTable, 35);
+    this.bDone = mButton('Done!', this.controller.evaluate.bind(this.controller), dTable, { fz: 28, matop: 10, rounding: 10, padding: 16, border: 8 }, ['buttonClass']);
+    if (this.hidden) showFleetingMessage('category: ' + Pictures[0].info.subgroup, 5000);
+    else if (!this.showWord) { showLabelPercentHintAfter(50, 6000); }
+    this.controller.activateUi.bind(this.controller)();
+  }
+  trialPrompt() {
+    sayTryAgain();
+    setTimeout(() => {
+      this.inputs.map(x => iDiv(x).innerHTML = '_')
+    }, 1500);
+    return 10;
+  }
+  eval() {
+    let s = this.inputs.map(x => iDiv(x).innerHTML);
+    let w = s = s.join('');
+    let word = Goal.label.toUpperCase();
+    Selected = { answer: w, reqAnswer: word, feedbackUI: iDiv(Goal) };
+    return w == word;
+  }
+  onTimeup() { this.controller.evaluate(); }
+}
+class GColoku extends Game {
+  startGame() {
+    this.correctionFunc = () => {
+      if (this.qName == 'isThisSudokuCorrect') {
+        mStyle(Goal.buttonCorrect, { bg: 'green' });
+        animate(Goal.buttonCorrect, 'komisch', 1000);
+        if (!Goal.correct) {
+          animateColorScale(Goal.correctionFeedbackUI, Goal.item.color, 1.5, 1500);
+          this.dComment.innerHTML = 'rule broken! duplicate in ' + Goal.err.type;
+        } else {
+          this.dComment.innerHTML = 'this coloku is correct!';
+        }
+      } else {
+        this.dWordArea.remove();
+        this.bDone.remove();
+        if (Goal.err) {
+          this.dComment.innerHTML = 'rule broken! duplicate in ' + Goal.err.type;
+          animateColorScale(Goal.correctionFeedbackUI, Goal.item.color, 1.5, 1500);
+        } else {
+          this.dComment.innerHTML = 'Coloku is incomplete!!!!';
+        }
+      }
+      return 20000;
+    };
+    this.failFunc = () => {
+      if (this.qName == 'isThisSudokuCorrect') {
+        if (Goal.choice == Goal.correctChoice) { mStyle(Goal.buttonClicked, { bg: 'green' }); mCheckit(Goal.feedbackUI, 100); }
+        else { mXit(Goal.buttonClicked, 100); }
+      } else {
+        mXit(this.dGrid, 200);
+      }
+    }
+    this.successFunc = () => {
+      if (this.qName == 'isThisSudokuCorrect') {
+        if (Goal.choice == Goal.correctChoice) { mStyle(Goal.buttonClicked, { bg: 'green' }); mCheckit(Goal.feedbackUI, 100); }
+        else { mXit(Goal.buttonClicked, 100); }
+      } else {
+        mCheckit(this.dGrid, 200);
+      }
+    }
+  }
+  prompt() {
+    this.trials = 1;
+    let [rows, cols] = [this.rows, this.cols];
+    this.dGrid = mGrid(rows, cols, dTable, { position: 'relative', w: 400, h: 400, gap: 8, bg: 'white' });
+    let o = getSudokuPatternFromDB(rows, cols);
+    let [pattern, minPuzzle] = [this.pattern, this.minPuzzle] = [o.pattern, o.puzzle];
+    mLinebreak(dTable, 20);
+    this.dChoices = mDiv(dTable);
+    mLinebreak(dTable);
+    this.dComment = mDiv(dTable);
+    mLinebreak(dTable);
+    let qName = this.qName = this.level == 0 && coin() && PROJECTNAME == 'belinda' ? 'isThisSudokuCorrect' : 'solve';
+    this[qName]();
+    this.controller.activateUi.bind(this.controller)();
+  }
+  fillGrid(pattern) {
+    let items = this.items = [];
+    let [rows, cols, dGrid] = [this.rows, this.cols, this.dGrid];
+    let colors = this.colors = rows == 4 ? [RED, YELLOW, BLUE, GREEN]
+      : rows == 6 ? [RED, YELLOW, BLUE, GREEN, PURPLE, ORANGE]
+        : [BLUEGREEN, PURPLE, ORANGE, RED, YELLOW, BLUE, GREEN, LIGHTBLUE, OLIVE];
+    shuffle(colors);
+    for (let r = 0; r < rows; r++) {
+      let arr = [];
+      for (let c = 0; c < cols; c++) {
+        let nch = pattern[r][c];
+        let color = isNumber(nch) ? colors[pattern[r][c]] : null;
+        let d = mDiv(dGrid, { bg: color }, getUID());
+        let item = { row: r, col: c, id: d.id, color: color, val: nch };
+        iAdd(item, { div: d });
+        arr.push(item);
+      }
+      items.push(arr);
+    }
+    return items;
+  }
+  makeLines() {
+    let [wline, dGrid, sz] = [2, this.dGrid, this.rows];
+    let gSize = getSize(dGrid);
+    let rh = sz != 9 ? makeRect((gSize.w - wline) / 2, 0, wline, gSize.h) : makeRect((gSize.w - wline) / 3, 0, wline, gSize.h);
+    let rv = sz == 4 ? makeRect(0, (gSize.h - wline) / 2, gSize.w, wline) : makeRect(0, (gSize.h - wline) / 3, gSize.w, wline);
+    let vLine = mDiv(dGrid, { bg: this.color, position: 'absolute', left: rh.l, top: rh.t, w: rh.w, h: rh.h });
+    if (sz == 9) vLine = mDiv(dGrid, { bg: this.color, position: 'absolute', left: rh.l * 2, top: rh.t, w: rh.w, h: rh.h });
+    let hLine = mDiv(dGrid, { bg: this.color, position: 'absolute', left: rv.l, top: rv.t, w: rv.w, h: rv.h });
+    if (sz != 4) vLine = mDiv(dGrid, { bg: this.color, position: 'absolute', left: rv.l, top: 2 * rv.t, w: rv.w, h: rv.h });
+  }
+  setGoal(pattern) {
+    let err = checkSudokuRule(pattern);
+    let incomplete = false;
+    for (const el of arrFlatten(pattern)) {
+      if (!isNumber(el)) { incomplete = true; break; }
+    }
+    let answer = (err == null) && !incomplete; 
+    Goal = { correct: answer, err: err, incomplete: incomplete };
+  }
+  isThisSudokuCorrect() {
+    this.trials = 1;
+    let [pattern, rows, cols, dGrid] = [this.pattern, this.rows, this.cols, this.dGrid];
+    destroySudokuRule(pattern, rows, cols);
+    this.setGoal(pattern);
+    let items = this.fillGrid(pattern);
+    this.makeLines();
+    let wsp = {
+      D: 'ist dieses coloku korrekt?',
+      E: 'is this coloku correct?',
+      S: 'es este coloku correcto?',
+      F: 'est ce que ce coloku est exacte?',
+    };
+    let sp = wsp[this.language];
+    show_instruction(sp, dTitle, sp);
+    showFleetingMessage('rule: each color must be unique in every row, column and quadrant!', 15000);
+    let correct, incorrect;
+    if (Goal.correct) { correct = { num: 1, text: 'yes' }; incorrect = [{ num: 0, text: 'no' }]; }
+    else { correct = { num: 0, text: 'no' }; incorrect = [{ num: 1, text: 'yes' }]; }
+    let feedbackUI = Goal.correctionFeedbackUI = Goal.correct ? this.dGrid : iDiv(this.items[Goal.err.row][Goal.err.col]);
+    createMultipleChoiceElements(correct, incorrect, this.dChoices, feedbackUI, {});
+    Goal.item = Goal.correct ? this.items[0] : this.items[Goal.err.row][Goal.err.col];
+  }
+  solve() {
+    let [rrand, crand] = [randomNumber(0, this.rows - 1), randomNumber(0, this.cols - 1)];
+    let puzzle = this.puzzle = jsCopy(this.pattern);
+    let [min, rows, cols] = [this.minPuzzle, this.rows, this.cols];
+    let combis = [];
+    for (let r = 0; r < rows; r++) {
+      for (let c = 0; c < cols; c++) {
+        if (min[r][c] === ' ') combis.push({ row: r, col: c });
+      }
+    }
+    let combisToRemove = choose(combis, this.numMissing);
+    for (const o of combisToRemove) {
+      puzzle[o.row][o.col] = ' ';
+    }
+    this.fillGrid(puzzle);
+    this.makeLines();
+    let sp = 'solve this coloku!'
+    show_instruction(sp, dTitle, sp);
+    let itemlist = this.itemlist = arrFlatten(this.items);
+    let containers = this.containers = itemlist.filter(x => x.val === ' ');
+    let dWordArea = this.dWordArea = mDiv(dTable, { h: 70, display: 'flex', 'flex-wrap': 'wrap', layout: 'fhcc' });
+    let colorItems = this.colorItems = [];
+    for (const color of this.colors) {
+      let colorItem = { id: getUID(), color: color };
+      let d = mDiv(dWordArea, { w: 40, h: 40, bg: color, margin: 10, cursor: 'pointer' }, colorItem.id);
+      iAdd(colorItem, { div: d });
+      colorItems.push(colorItem);
+    }
+    enableDD(colorItems, containers, this.dropHandler.bind(this), true);
+    mLinebreak(dTable, 50);
+    this.bDone = mButton('Done!', this.controller.evaluate.bind(this.controller), dTable, { fz: 28, matop: 10, rounding: 10, padding: 16, border: 8 }, ['buttonClass']);
+  }
+  dropHandler(source, target, isCopy = true) {
+    let dSource = iDiv(source);
+    let dTarget = iDiv(target);
+    mStyle(dTarget, { bg: source.color });
+    target.color = source.color;
+    target.val = this.colors.indexOf(source.color);
+  }
+  evalIsCorrect() {
+    Selected = { feedbackUI: Goal.buttonClicked };
+    return Goal.buttonClicked == Goal.buttonCorrect;
+  }
+  evalSolve() {
+    let [items, pattern, rows, cols] = [this.items, this.pattern, this.rows, this.cols];
+    let pat = items.map(x => x.map(y => y.val));
+    this.setGoal(pat);
+    if (Goal.err) {
+      Goal.correctionFeedbackUI = iDiv(this.items[Goal.err.row][Goal.err.col]);
+      Goal.item = this.items[Goal.err.row][Goal.err.col];
+    }
+    Selected = { feedbackUI: this.dGrid };
+    return Goal.correct;
+  }
+  eval() {
+    clearFleetingMessage();
+    return this.qName == 'solve' ? this.evalSolve() : this.evalIsCorrect();
+  }
+  onTimeup() { this.controller.evaluate(); }
+}
+class GCats extends Game {
+  constructor(name, o) { super(name, o); }
+  startGame() { this.correctionFunc = showCorrectPictureLabels; this.failFunc = failSomePictures; }
+  dropHandler(source, target, isCopy = true) {
+    let dSource = iDiv(source);
+    let dTarget = iDiv(target);
+    if (!isCopy) {
+      mAppend(dTarget, dSource);
+    } else {
+      let dNew = mText(dSource.innerHTML, dTarget, { wmin: 100, fz: 20, padding: 4, margin: 4, display: 'inline-block' });
+      addDDSource(dNew, false);
+    }
+    if (isOverflown(dTarget)) {
+      let d = dTarget.parentNode;
+      let r = getRect(d);
+      let w = r.w + 100;
+      mSize(d, w, r.h);
+      console.log('overflow!!!!', r.w, '=>', w)
+    }
+  }
+  prompt() {
+    let items;
+    let data = this.keysByCat = genCats(this.numCats);
+    this.keylists = [], this.catsByKey = {};
+    for (const cat in data) {
+      this.keylists.push({ keys: data[cat], cat: cat });
+      for (const k of data[cat]) {
+        this.catsByKey[k] = cat;
+      }
+    }
+    this.cats = Object.keys(this.keysByCat);
+    this.allKeys = Object.keys(this.catsByKey);
+    this.options = {}; _extendOptions(this.options);
+    if (this.pickRandom == false) {
+      items = Pictures = getNItemsPerKeylist(this.numPics, this.keylists, this.options);
+    } else {
+      let keys = choose(this.allKeys, this.numPics * this.numCats);
+      items = Pictures = genItemsFromKeys(keys, this.options);
+      items.map(x => x.cat = this.catsByKey[x.key]);
+    }
+    shuffle(items);
+    let wr = this.language == 'E' ? 'drag pictures to categories' : "ordne die bilder in kategorien";
+    show_instruction(wr, dTitle, wr);
+    mLinebreak(dTable);
+    let dArea = mDiv(dTable, { display: 'flex', 'flex-wrap': 'wrap' });
+    let containers, dWordArea;
+    containers = this.containers = createContainers(this.cats, dArea, { w: 'auto', wmin: 150, wmax: 300, hmin: 250, fz: 24, fg: 'contrast' }); 
+    mLinebreak(dTable);
+    dWordArea = this.dWordArea = mDiv(dTable, { h: 70, display: 'flex', 'flex-wrap': 'wrap', layout: 'fhcc' });
+    for (const item of items) { let d = miPic(item, dWordArea); iAdd(item, { div: d }); }
+    enableDD(items, containers, this.dropHandler.bind(this), false);
+    mLinebreak(dTable, 50);
+    mButton('Done!', this.controller.evaluate.bind(this.controller), dTable, { fz: 28, matop: 10, rounding: 10, padding: 16, border: 8 }, ['buttonClass']);
+    this.controller.activateUi.bind(this.controller)();
+  }
+  trialPrompt() {
+    sayTryAgain();
+    TOMain = setTimeout(() => {
+      for (const p of Pictures) {
+        if (!p.isCorrect) {
+          mAppend(this.dWordArea, iDiv(p));
+          if (this.trialNumber == 1) miAddLabel(p, { bg: '#00000080', margin: 4, fz: 20 });
+        }
+      }
+    }, 1000);
+    return 1200;
+  }
+  eval() {
+    this.piclist = Pictures;
+    Selected = { piclist: this.piclist, feedbackUI: this.piclist.map(x => iDiv(x)), sz: getRect(iDiv(this.piclist[0])).h };
+    let isCorrect = true;
+    for (const p of Pictures) {
+      let label = p.label;
+      let d = iDiv(p);
+      let cont = d.parentNode;
+      for (const c of this.containers) {
+        if (iDiv(c) == cont) {
+          p.classified = true;
+          if (p.cat == c.label) p.isCorrect = true;
+          else { p.isCorrect = isCorrect = false; }
+          break;
+        }
+      }
+      if (!p.classified) p.isCorrect = isCorrect = false;
+    }
+    return isCorrect;
+  }
+}
+class GElim extends Game {
+  constructor(name, o) { super(name, o); }
+  startGame() {
+    this.correctionFunc = () => { writeSound(); playSound('incorrect1'); return this.spokenFeedback ? 1800 : 300; };
+    this.successFunc = () => { Goal.pics.map(x => iDiv(x).style.opacity = .3); successPictureGoal(); }
+  }
+  start_Level() {
+    super.start_Level();
+    this.keys = this.keys.filter(x => containsColorWord(x));
+  }
+  prompt() {
+    this.piclist = [];
+    let colorKeys = this.numColors > 1 ? choose(this.colors, this.numColors) : null;
+    let showRepeat = this.numRepeat > 1;
+    let rows = this.numColors > 1 ? this.numColors : undefined;
+    myShowPics(this.interact.bind(this), { bg: 'white' },
+      {
+        showRepeat: showRepeat, colorKeys: colorKeys, numRepeat: this.numRepeat,
+        contrast: this.contrast, rows: rows
+      });
+    let [sSpoken, sWritten, piclist] = logicMulti(Pictures);
+    this.piclist = piclist;
+    Goal = { pics: this.piclist, sammler: [] };
+    show_instruction(sWritten, dTitle, sSpoken, { fz: 22, voice: 'zira' });
+    this.controller.activateUi.bind(this.controller)();
+  }
+  trialPrompt() {
+    sayTryAgain();
+    let msg = this.language == 'D' ? 'noch einmal!' : 'try again!'
+    showFleetingMessage(msg, 0, { margin: -8, fz: 22 }, true);
+    return 1000;
+  }
+  activate() {
+    for (const p of this.piclist) { if (p.isSelected) toggleSelectionOfPicture(p); }
+    this.piclist = [];
+  }
+  interact(ev) {
+    ev.cancelBubble = true;
+    if (!canAct()) return;
+    let pic = findItemFromEvent(Pictures, ev);
+    writeSound(); playSound('hit');
+    if (Goal.pics.includes(pic)) {
+      removePicture(pic);
+      Goal.sammler.push(pic);
+    }
+    if (Goal.pics.length == Goal.sammler.length) this.controller.evaluate.bind(this.controller)(true);
+    else if (!Goal.pics.includes(pic)) { this.lastPic = pic; this.controller.evaluate.bind(this.controller)(false); }
+  }
+  eval(isCorrect) {
+    Selected = { piclist: this.piclist, feedbackUI: isCorrect ? Goal.pics.map(x => iDiv(x)) : iDiv(this.lastPic) };
+    return isCorrect;
+  }
+}
+class GHouse extends Game {
+  constructor(name, o) { super(name, o); }
+  startGame() {
+    this.correctionFunc = () => {
+      mStyle(Goal.buttonCorrect, { bg: 'green' });
+      animate(Goal.buttonCorrect, 'komisch', 1000);
+      mStyle(this.dGraph, { opacity: 1 });
+      return 20000;
+    };
+    this.failFunc = () => {
+      if (Goal.choice == Goal.correctChoice) { mStyle(Goal.buttonClicked, { bg: 'green' }); mCheckit(Goal.feedbackUI, 100); }
+      else { mXit(Goal.buttonClicked, 100); }
+      mStyle(this.dGraph, { opacity: 1 });
+    }
+    this.successFunc = () => {
+      if (Goal.choice == Goal.correctChoice) { mStyle(Goal.buttonClicked, { bg: 'green' }); mCheckit(Goal.feedbackUI, 100); }
+      else { mXit(Goal.buttonClicked, 100); }
+      mStyle(this.dGraph, { opacity: 1 });
+    }
+  }
+  prompt() {
+    if (isdef(this.graph)) this.graph.clear();
+    this.trials = 1;
+    let n = randomNumber(this.minRooms, this.maxRooms); 
+    //#region selectQuestion
+    let qFuncs = [this.areRoomsConnected.bind(this)];
+    if (n > 5) qFuncs.push(this.isThereAPath.bind(this));
+    let q = this.q = this.level > 1 ? arrLast(qFuncs) : chooseRandom(qFuncs); 
+    //#endregion
+    //#region make house
+    let s = n;
+    let wTotal = n < 4 || n > 12 ? 700 : n > 10 ? 600 : 500;
+    let dGridOuter = mDiv(dTable, { wmin: wTotal, hmin: 400 });
+    let house = this.house = iHouse(dGridOuter, s, { w: wTotal, h: 400 });
+    let rooms = this.rooms = house.rooms.map(x => Items[x]);
+    this.addLabelsToRooms();
+    //#endregion
+    //#region add doors
+    let dirs = coin() ? ['n', 'w'] : ['s', 'e'];
+    let doors = this.doors = [];
+    for (const r of rooms) {
+      let dir = coin() ? dirs[0] : dirs[1];
+      let door = iDoor(r.id, dir);
+      doors.push(door);
+    }
+    if (q.name.includes('Path')) hideOuterDoors(house);
+    //#endregion
+    //#region prep container for multiple choices
+    mLinebreak(dTable, 20);
+    this.dChoices = mDiv(dTable);
+    mLinebreak(dTable);
+    //#endregion
+    //#region make graph container
+    let r = getRect(dGridOuter); 
+    mStyle(dGridOuter, { position: 'relative' });
+    let dGraph = this.dGraph = mDiv(dGridOuter, { box: true, align: 'left', position: 'absolute', bg: '#ffffff80', top: 0, left: 0, w: r.w, h: r.h });
+    //#endregion
+    let innerStyles = { box: true, align: 'left', position: 'absolute', bg: '#ffffff80', top: 0, left: 0, w: r.w, h: r.h };
+    let g1 = this.graph = new UIGraph(dGraph, { edge: { bg: 'blue' }, outer: { align: 'left', w: wTotal, h: 400 }, inner: innerStyles });
+    convertToGraphElements(g1, house);
+    g1.presetLayout();
+    g1.reset();
+    mStyle(dGraph, { opacity: 0 });
+    q();
+    this.controller.activateUi.bind(this.controller)();
+  }
+  //#region qFuncs
+  isThereAPath() {
+    let house = this.house;
+    let corners = getCornerRoomsDict(house); 
+    let clist = Object.values(corners);  
+    let g = this.graph;
+    let id = g.getNodeWithMaxDegree(clist); 
+    let cornerRoomIds = g.sortNodesByDegree(clist).map(x => x.id());
+    let [r1, r2] = [Items[cornerRoomIds[0]], Items[cornerRoomIds[1]]]; 
+    if (r1 == r2 || areNeighbors(r1, r2) && cornerRoomIds.length > 2) r2 = Items[cornerRoomIds[2]];
+    if (!r1.isW && (r2.isW || !r1.N)) [r1, r2] = [r2, r1];
+    let roomFrom = r1.id; 
+    let funcs = this.dijkstra = g.getShortestPathsFrom(roomFrom);  
+    let roomTo = r2.id; 
+    for (const k in corners) {
+      if (k != 'NW') {
+        let dist = funcs.distanceTo('#' + corners[k]);
+        if (dist != Infinity && dist >= 3) {
+          roomTo = corners[k];
+          break;
+        } 
+      }
+    }
+    if (!roomTo) { roomTo = corners.SE; }
+    //#region spoken and written instruction
+    this.roomFrom = roomFrom;
+    this.roomTo = roomTo;
+    let sp1 = {
+      D: ['gibt es einen weeg von', 'gibt es einen weg von'],
+      E: ['is there a path from', 'is there a path from'],
+      S: ['hay un camino de', 'hay un camino de'],
+      F: ["y a 'til un chemin de", "y a 'til un chemin de"],
+    };
+    let sp2 = {
+      D: ['zu', 'zu'],
+      E: ['to', 'to'],
+      S: ['a', 'a'],
+      F: ['!. a! ', 'à'],
+    };
+    let fill1 = [`. "${Items[roomFrom].id.toUpperCase()}"! `, ` ${Items[roomFrom].id} `];
+    let fill2 = [`. "${Items[roomTo].id.toUpperCase()}"`, ` ${Items[roomTo].id}`];
+    let l = 'E'; 
+    let sp = sp1[l][0] + fill1[0] + sp2[l][0] + fill2[0] + '?';
+    let wr = sp1[l][1] + fill1[1] + sp2[l][1] + fill2[1] + '?';
+    let voice = this.language == 'E' ? coin() ? 'ukMale' : 'zira' : this.language;
+    //#endregion
+    show_instruction(wr, dTitle, sp, { voice: voice });
+    let answer = funcs.distanceTo('#' + roomTo) != Infinity;
+    let correct, incorrect;
+    if (answer) { correct = { num: 1, text: 'yes' }; incorrect = [{ num: 0, text: 'no' }]; }
+    else { correct = { num: 0, text: 'no' }; incorrect = [{ num: 1, text: 'yes' }]; }
+    createMultipleChoiceElements(correct, incorrect, this.dChoices, iDiv(this.house), {});
+  }
+  howMany() {
+    let wr = this.language == 'E' ? 'how many units are there in this house?' : "wieviele wohneinheiten hat dieses haus?";
+    show_instruction(wr, dTitle, wr);
+    let numUnits = this.graph.getNumComponents(); 
+    let otherChoices = [
+      numUnits * 2,
+      Math.round(numUnits / 2),
+      numUnits + randomNumber(1, 10)
+    ];
+    let di = {};
+    for (let i = 0; i < otherChoices.length; i++) {
+      let n = otherChoices[i];
+      while (n == numUnits || isdef(di[n])) { n += 1; } 
+      di[n] = true;
+      otherChoices[i] = n;
+    }
+    createMultipleChoiceElements({ num: numUnits, text: numUnits },
+      otherChoices.map(x => ({ num: x, text: x })), this.dChoices, iDiv(this.house), {});
+  }
+  areRoomsConnected() {
+    let wr = this.language == 'E' ? 'are all rooms connected?' : "sind alle zimmer verbunden?";
+    showInstruction(wr, dTitle, wr);
+    let numUnits = this.graph.getNumComponents(); 
+    let correct, incorrect;
+    if (numUnits == 1) { correct = { num: 1, text: 'yes' }; incorrect = [{ num: 0, text: 'no' }]; }
+    else { correct = { num: 0, text: 'no' }; incorrect = [{ num: 1, text: 'yes' }]; }
+    createMultipleChoiceElements(correct, incorrect, this.dChoices, iDiv(this.house), {});
+  }
+  //#region helpers
+  showPath() {
+    mStyle(this.dGraph, { opacity: 1 });
+  }
+  //#region add stuff to house
+  addLabelsToRooms() {
+    let roomlist = ['bedroom', 'livingroom', 'bathroom', 'kitchen'];
+    sortByFunc(this.rooms, x => x.rect.w * x.rect.h);
+    this.rooms.map(x => addLabel(x, x.ch, {}));
+  }
+  addOneDoorPerRoom(directions) {
+    for (const r of this.rooms) {
+      let door = makeRandomDoor(r, this.house, directions); this.doors.push(door);
+    }
+  }
+  addWallFinderByMouseClick() {
+    dTable.onclick = ev => {
+      console.log(ev.clientX, ev.clientY);
+      let w = findWall(ev.clientX, ev.clientY, this.walls);
+      console.log('found wall', w)
+    }
+  }
+  addFurnitureItems() {
+    let keys = ['bed', 'bathtub', 'chair', 'couch and lamp', 'toilet', 'door', 'table'];
+    let items = Pictures = genItemsFromKeys(keys);
+    console.assert(arrLast(items).key == 'table', 'NOOOOOOO');
+    let itable = arrLast(items);
+    shuffle(items);
+    let dWordArea = this.dWordArea = mDiv(dTable, { h: 70, display: 'flex', 'flex-wrap': 'wrap', layout: 'fhcc' });
+    for (const item of items) { let d = miPic(item, dWordArea); iAdd(item, { div: d }); }
+    mStyle(iDiv(itable), { fg: BROWN });
+    enableDD(items, rooms, this.dropHandler.bind(this), false);
+  }
+  //#endregion
+  eval() {
+    clearFleetingMessage();
+    Selected = { reqAnswer: G.correctAnswer, answer: Goal.choice.text, feedbackUI: Goal.buttonClicked };
+    return (Goal.buttonClicked == Goal.buttonCorrect);
+  }
+}
+class GMaze extends Game {
+  constructor(name, o) { super(name, o); }
+  clear() { super.clear(); if (isdef(this.cy)) { this.cy.destroy(); } }
+  startGame() {
+    this.correctionFunc = () => {
+      mStyle(Goal.buttonCorrect, { bg: 'green' });
+      animate(Goal.buttonCorrect, 'komisch', 1000);
+      if (Goal.correctChoice.text == 'yes') this.maze.breadCrumbs(this.path); else this.maze.colorComponents();
+      return 20000;
+    };
+    this.failFunc = () => {
+      if (Goal.choice == Goal.correctChoice) { mStyle(Goal.buttonClicked, { bg: 'green' }); mCheckit(Goal.feedbackUI, 100); }
+      else { mXit(Goal.buttonClicked, 100); }
+    }
+    this.successFunc = () => {
+      if (Goal.choice == Goal.correctChoice) { mStyle(Goal.buttonClicked, { bg: 'green' }); mCheckit(Goal.feedbackUI, 100); }
+      else { mXit(Goal.buttonClicked, 100); }
+    }
+  }
+  startRound() { if (isdef(this.cy)) this.cy.destroy(); clearElement(dTable); } 
+  prompt() {
+    this.trials = 1;
+    let maze = this.maze = new MazeGraph(dTable, this.rows, this.cols, this.sz, this.gap);
+    this.cy = maze.cy;
+    mLinebreak(dTable, 20);
+    this.dChoices = mDiv(dTable);
+    mLinebreak(dTable);
+    this.isThereAPath(maze);
+    this.controller.activateUi.bind(this.controller)();
+  }
+  isThereAPath(maze) {
+    let cellStart = maze.getTopLeftCell();
+    mCellContent(iDiv(cellStart), { w: '50%', h: '50%', fz: '60%', bg: 'green', fg: 'white', rounding: '50%' }, 'A');
+    let cellGoal = maze.getBottomRightCell();
+    mCellContent(iDiv(cellGoal), { w: '50%', h: '50%', fz: '60%', bg: 'red', fg: 'white', rounding: '50%' }, 'B');
+    [this.roomFrom, this.roomTo] = [cellStart.nodeId, cellGoal.nodeId];
+    //#region spoken and written instruction
+    let sp1 = {
+      D: ['gibt es einen weeg von', 'gibt es einen weg von'],
+      E: ['is there a path from', 'is there a path from'],
+      S: ['hay un camino de', 'hay un camino de'],
+      F: ["y a 'til un chemin de", "y a 'til un chemin de"],
+    };
+    let sp2 = {
+      D: ['zu', 'zu'],
+      E: ['to', 'to'],
+      S: ['a', 'a'],
+      F: ['!. a! ', 'à'],
+    };
+    let fill1 = [`. "A"! `, ` A `];
+    let fill2 = [`. "B"`, ` B`];
+    let l = this.language;
+    let sp = sp1[l][0] + fill1[0] + sp2[l][0] + fill2[0] + '?';
+    let wr = sp1[l][1] + fill1[1] + sp2[l][1] + fill2[1] + '?';
+    let voice = this.language == 'E' ? coin() ? 'ukMale' : 'zira' : this.language;
+    show_instruction(wr, dTitle, sp, { voice: voice });
+    //#endregion
+    let path = this.path = maze.getShortestPathFromTo(this.roomFrom, this.roomTo);
+    console.assert(path.length < Infinity, 'WAAAAAAAAAAAAAAS?');
+    if (coin(this.level > 2 ? 50 : 40)) maze.cutPath(this.path, .5, .75);
+    let len = maze.getLengthOfShortestPath(this.roomFrom, this.roomTo); 
+    let answer = len != Infinity;
+    let correct, incorrect;
+    if (answer) { correct = { num: 1, text: 'yes' }; incorrect = [{ num: 0, text: 'no' }]; }
+    else { correct = { num: 0, text: 'no' }; incorrect = [{ num: 1, text: 'yes' }]; }
+    createMultipleChoiceElements(correct, incorrect, this.dChoices, maze.dMaze, {});
+  }
+  eval() {
+    clearFleetingMessage();
+    Selected = { reqAnswer: G.correctAnswer, answer: Goal.choice.text, feedbackUI: Goal.buttonClicked };
+    return (Goal.buttonClicked == Goal.buttonCorrect);
+  }
+}
+class GMem extends Game {
+  constructor(name, o) { super(name, o); }
+  clear() { clearTimeout(this.TO); showMouse(); }
+  prompt() {
+    this.trials = 1;
+    myShowPics(this.interact.bind(this),
+      { border: '3px solid #ffffff80' },
+      {});
+    setGoal();
+    let wr = (this.language == 'E' ? 'remember ' : 'merke dir ') + (this.level > 2 ? (this.language == 'E' ? 'all' : 'alle') : Goal.label);
+    show_instruction(wr, dTitle, wr);
+    let secs = calcMemorizingTime(this.numPics, this.level > 2);
+    hideMouse();
+    TOMain = setTimeout(() => turnCardsAfter(secs), 300, this.level >= 5); 
+  }
+  interact(ev) {
+    ev.cancelBubble = true;
+    if (!canAct()) return;
+    let pic = findItemFromEvent(Pictures, ev);
+    turnFaceUpSimple(pic);
+    if (this.trialNumber == this.trials - 1) turnFaceUpSimple(Goal);
+    TOMain = setTimeout(() => this.controller.evaluate.bind(this.controller)(ev), 300);
+  }
+}
+class GMissingLetter extends Game {
+  constructor(name, o) { super(name, o); }
+  start_Level() {
+    super.start_Level();
+    this.maxPosMissing = this.posMissing == 'start' ? this.numMissing - 1 : 100;
+  }
+  prompt() {
+    myShowPics(() => fleetingMessage('just enter the missing letter!'));
+    setGoal();
+    if (this.instruction == 'all') {
+      let wr = (this.language == 'E' ? 'complete ' : "ergänze ") + `<b>${Goal.label.toUpperCase()}</b>`;
+      let sp = (this.language == 'E' ? 'complete ' : "ergänze ") + `${Goal.label}`;
+      show_instruction(wr, dTitle, sp);
+    } else if (this.instruction == 'spokenGoal') {
+      let wr = this.language == 'E' ? 'complete the word' : "ergänze das wort";
+      let sp = (this.language == 'E' ? 'complete' : "ergänze") + ' ' + Goal.label;
+      show_instruction(wr, dTitle, sp);
+    } else {
+      let wr = this.language == 'E' ? 'complete the word' : "ergänze das wort";
+      show_instruction(wr, dTitle, wr);
+    }
+    mLinebreak(dTable, 20);
+    let style = { margin: 6, fg: 'white', display: 'inline', bg: 'transparent', align: 'center', border: 'transparent', outline: 'none', family: 'Consolas', fz: 80 };
+    let d = createLetterInputs(Goal.label.toUpperCase(), dTable, style); 
+    let indices = getIndicesCondi(Goal.label, (x, i) => isAlphaNum(x) && i <= this.maxPosMissing);
+    this.nMissing = Math.min(indices.length, this.numMissing);
+    let ilist = choose(indices, this.nMissing); sortNumbers(ilist);
+    this.inputs = [];
+    for (const idx of ilist) {
+      let inp = d.children[idx];
+      inp.innerHTML = '_';
+      mClass(inp, 'blink');
+      this.inputs.push({ letter: Goal.label[idx].toUpperCase(), div: inp, index: idx });
+    }
+    mLinebreak(dTable);
+    let msg = this.composeFleetingMessage();
+    let ms = this.instruction == 'all' ? 3000 : this.instruction == 'spokenGoal' ? 9000 : 15000;
+    showFleetingMessage(msg, ms);
+    this.controller.activateUi.bind(this.controller)();
+  }
+  trialPrompt() {
+    let selinp = Selected.inp;
+    sayTryAgain();
+    TOMain = setTimeout(() => {
+      let d = selinp.div;
+      d.innerHTML = '_';
+      mClass(d, 'blink');
+    }, 1200);
+    showFleetingMessage(this.composeFleetingMessage(), 3000);
+    return 1500;
+  }
+  activate() {
+    addKeyup('G', ev => {
+      if (!isLetter(ev.key)) return;
+      clearFleetingMessage();
+      if (!canAct()) return;
+      let charEntered = ev.key.toString();
+      if (!isAlphaNum(charEntered)) return;
+      Selected = { lastLetterEntered: charEntered.toUpperCase() };
+      if (this.nMissing == 1) {
+        let d = Selected.feedbackUI = this.inputs[0].div;
+        Selected.positiveFeedbackUI = iDiv(Goal);
+        Selected.lastIndexEntered = this.inputs[0].index;
+        Selected.inp = this.inputs[0];
+        d.innerHTML = Selected.lastLetterEntered;
+        mRemoveClass(d, 'blink');
+        let result = buildWordFromLetters(mParent(d));
+        this.controller.evaluate.bind(this.controller)(result);
+      } else {
+        let ch = charEntered.toUpperCase();
+        for (const inp of this.inputs) {
+          if (inp.letter == ch) {
+            Selected.lastIndexEntered = inp.index;
+            Selected.inp = inp;
+            let d = Selected.feedbackUI = inp.div;
+            d.innerHTML = ch;
+            mRemoveClass(d, 'blink');
+            removeInPlace(this.inputs, inp);
+            this.nMissing -= 1;
+            break;
+          }
+        }
+        if (nundef(Selected.lastIndexEntered)) {
+          showFleetingMessage('you entered ' + Selected.lastLetterEntered);
+          sayRandomVoice('try a different letter!', 'anderer Buchstabe!')
+        }
+        showFleetingMessage(this.composeFleetingMessage(), 3000);
+      }
+    })
+  }
+  eval(word) {
+    let answer = normalize(word, this.language);
+    let reqAnswer = normalize(Goal.label, this.language);
+    Selected.reqAnswer = reqAnswer;
+    Selected.answer = answer;
+    if (answer == reqAnswer) return true;
+    else if (this.language == 'D' && fromUmlaut(answer) == fromUmlaut(reqAnswer)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+  composeFleetingMessage() {
+    let lst = this.inputs;
+    let msg = lst.map(x => x.letter).join(',');
+    let edecl = lst.length > 1 ? 's ' : ' ';
+    let ddecl = lst.length > 1 ? 'die' : 'den';
+    let s = (this.language == 'E' ? 'Type the letter' + edecl : 'Tippe ' + ddecl + ' Buchstaben ');
+    return s + msg;
+  }
+}
+class GNamit extends Game {
+  constructor(name, o) { super(name, o); }
+  startGame() { this.correctionFunc = showCorrectPictureLabels; this.failFunc = failSomePictures; }
+  prompt() {
+    this.showLabels = false;
+    myShowPics(null, {}, { rows: 1 });
+    Pictures.map(x => x.correctLabel = x.label);
+    Goal = { pics: Pictures };
+    let wr = this.language == 'E' ? 'drag labels to pictures' : "ordne die texte den bildern zu";
+    show_instruction(wr, dTitle, wr);
+    mLinebreak(dTable);
+    mLinebreak(dTable, 50);
+    let keys = Pictures.map(x => x.key);
+    shuffle(keys);
+    G.showLabels = true;
+    let titems = this.letters = myShowLabels(null, undefined, { rows: 1, showLabels: true }, keys);
+    titems.map(x => iDiv(x).style.cursor = 'pointer');
+    mLinebreak(dTable, 50);
+    enableDD(this.letters, Pictures, this.dropHandler.bind(this), true, false, null);
+    mButton('Done!', this.controller.evaluate.bind(this.controller), dTable, { fz: 32, matop: 10, rounding: 10, padding: 16, border: 8 }, ['buttonClass']);
+    this.controller.activateUi.bind(this.controller)();
+  }
+  dropHandler(source, target, isCopy = true) {
+    let dSource = iDiv(source);
+    let dTarget = iDiv(target);
+    console.log('dropped', source, 'onto', target);
+    let label = iLabel(target);
+    console.log('label', label);
+    let div = iDiv(target);
+    console.log('div', div);
+    addLabel(target, source.label, {});
+  }
+  trialPrompt() {
+    this.failFunc();
+    sayTryAgain();
+    TOMain = setTimeout(() => { removeMarkers(); Pictures.map(x => removeLabel(x)) }, 1200);
+    return 1500;
+  }
+  eval() {
+    console.log('eval in Namit!!!!!')
+    this.piclist = Pictures;
+    Selected = { piclist: this.piclist, feedbackUI: this.piclist.map(x => iDiv(x)), sz: getRect(iDiv(this.piclist[0])).h };
+    let isCorrect = true;
+    for (const p of Pictures) {
+      let correctLabel = p.correctLabel;
+      console.log('correctLabel', correctLabel, p.label);
+      let dLabel = iLabel(p);
+      console.log('dLabel', dLabel);
+      if (nundef(dLabel) || p.label != correctLabel) p.isCorrect = isCorrect = false;
+      else p.isCorrect = true;
+    }
+    return isCorrect;
+  }
+}
+class GPremem extends Game {
+  constructor(name, o) { super(name, o); this.piclist = []; }
+  prompt() {
+    this.piclist = [];
+    this.showLabels = false;
+    myShowPics(this.interact.bind(this), { border: '3px solid #ffffff80' }, {});
+    let wr = this.language == 'E' ? 'click any picture' : 'click irgendein Bild';
+    show_instruction(wr, dTitle, wr);
+    this.controller.activateUi.bind(this.controller)();
+  }
+  trialPrompt() {
+    for (const p of this.piclist) { toggleSelectionOfPicture(p); }
+    this.piclist = [];
+    show_instruction('try again: click any picture', dTitle, 'try again: click any picture');
+    return 10;
+  }
+  interact(ev) {
+    ev.cancelBubble = true;
+    if (!canAct()) return;
+    let pic = findItemFromEvent(Pictures, ev);
+    if (!isEmpty(this.piclist) && this.piclist.length < this.numRepeat - 1 && this.piclist[0].label != pic.label) return;
+    toggleSelectionOfPicture(pic, this.piclist);
+    if (isEmpty(this.piclist)) {
+      let wr = this.language == 'E' ? 'click any picture' : 'click irgendein Bild';
+      show_instruction(wr, dTitle, wr);
+    } else if (this.piclist.length < this.numRepeat - 1) {
+      let wr = (this.language == 'E' ? 'click another ' : 'click ein andres Bild mit ');
+      show_instruction(wr + `<b>${pic.label.toUpperCase()}</b>`, dTitle, wr + pic.label);
+    } else if (this.piclist.length == this.numRepeat - 1) {
+      let picGoal = firstCond(Pictures, x => x.label == pic.label && !x.isSelected);
+      setGoal(picGoal.index);
+      let wr = (this.language == 'E' ? 'click the ' + (this.numRepeat == 2 ? 'other ' : 'last ')
+        : 'click das ' + (this.numRepeat == 2 ? 'andere ' : 'letzte ') + ' Bild mit')
+      show_instruction(wr + `<b>${picGoal.label.toUpperCase()}</b>`, dTitle, wr + picGoal.label);
+    } else {
+      this.controller.evaluate.bind(this.controller)(this.piclist);
+    }
+  }
+  eval(piclist) {
+    Selected = { piclist: piclist, feedbackUI: piclist.map(x => iDiv(x)), sz: getRect(iDiv(piclist[0])).h };
+    let req = Selected.reqAnswer = piclist[0].label;
+    Selected.answer = piclist[piclist.length - 1].label;
+    if (Selected.answer == req) { return true; } else { return false; }
+  }
+}
+class GRiddle extends Game {
+  constructor(name, o) { super(name, o); }
+  startGame() {
+    this.successFunc = successThumbsUp; this.failFunc = failThumbsDown;
+    this.correctionFunc = () => {
+      mStyle(Goal.buttonCorrect, { bg: 'green' });
+      animate(Goal.buttonCorrect, 'komisch', 1000);
+      return 20000;
+    };
+  }
+  prompt() {
+    this.trials = 1;
+    show_instruction('Solve the Riddle:', dTitle, 'Solve the Riddle:');
+    let wp = this.wp = getRandomWP(this.minIndex, this.maxIndex);
+    let haveResult = wp.isTextResult = instantiateNames(wp);
+    if (!haveResult) instantiateNumbers(wp);
+    mLinebreak(dTable, 2);
+    showHiddenThumbsUpDown(90);
+    mLinebreak(dTable);
+    let dArea = this.textArea = mDiv(dTable, { w: '70%' });
+    let d = mText(wp.text, dArea, { fz: 28 });
+    mLinebreak(dTable, 20);
+    let dResult = this.dResult = mDiv(dTable);
+    Goal = { label: wp.result.text };
+    this.createMultipleChoiceElements();
+    mLinebreak(dTable);
+    this.controller.activateUi.bind(this.controller)();
+  }
+  createMultipleChoiceElements() {
+    let wp = this.wp;
+    let choices = [], nums = [], texts = [];
+    if (wp.isTextResult == true) {
+      texts = Object.values(wp.diNames);
+      for (let i = 0; i < texts.length; i++) { choices.push({ number: 0, text: texts[i] }); }
+      Goal.correctChoice = firstCond(choices, x => x.text == Goal.label);
+    } else if (wp.isFractionResult == true) {
+      let res = wp.result.number; 
+      if (res.n / res.d > 2) {
+        wp.result.isMixed = true;
+        wp.result.mixed = getMixedNumber(res.n, res.d);
+      }
+      nums = get3FractionVariants(res);
+      texts = nums.map(x => getTextForFractionX(x.n, x.d));
+      wp.result.text = texts[0];
+      for (let i = 0; i < texts.length; i++) { choices.push({ number: nums[i], text: texts[i] }); }
+      Goal.correctChoice = firstCond(choices, x => x.text == wp.result.text);
+    } else {
+      let res = wp.result.number;
+      nums = [res, res + randomNumber(1, 25), res / randomNumber(2, 5), res * randomNumber(2, 5)];
+      texts = nums.map(x => (Math.round(x * 100) / 100));
+      for (let i = 0; i < texts.length; i++) { choices.push({ number: nums[i], text: texts[i] }); }
+      Goal.correctChoice = choices[0];
+    }
+    shuffle(choices);
+    if (coin()) shuffle(choices);
+    Goal.choices = choices;
+    let dParent = this.dResult;
+    let idx = 0;
+    for (const ch of choices) {
+      ////'&frac57;', //'&frac12;', 
+      let dButton = mButton(ch.text, this.onClickChoice.bind(this), dParent, { wmin: 100, fz: 36, margin: 20, rounding: 4, vpadding: 4, hpadding: 10 }, ['toggleButtonClass']);
+      dButton.id = 'bChoice_' + idx; idx += 1;
+      if (ch.text == wp.result.text) {
+        Goal.choice = ch.toString();
+        Goal.buttonCorrect = dButton; 
+      }
+    }
+  }
+  onClickChoice(ev) {
+    let id = evToClosestId(ev);
+    let b = mBy(id);
+    let index = Number(stringAfter(id, '_'));
+    Goal.choice = Goal.choices[index];
+    Goal.buttonClicked = b;
+    if (Goal.choice == Goal.correctChoice) { mStyle(b, { bg: 'green' }); mCheckit(this.textArea, 100); }
+    else { mXit(b, 100); }
+    this.controller.evaluate.bind(this.controller)();
+  }
+  eval() {
+    clearFleetingMessage();
+    Selected = { delay: 5000, reqAnswer: this.wp.result.number, answer: Goal.choice.number, feedbackUI: Goal.buttonClicked };
+    if (this.wp.isTextResult) { Selected.reqAnswer = this.wp.result.text; Selected.answer = Goal.choice.text; }
+    return (Goal.buttonClicked == Goal.buttonCorrect);
+  }
+  createInputElements() {
+    this.inputBox = addNthInputElement(this.dResult, 0);
+    this.defaultFocusElement = this.inputBox.id;
+    onclick = () => mBy(this.defaultFocusElement).focus();
+    mBy(this.defaultFocusElement).focus();
+  }
+  activate() { }
+  eval_dep(ev) {
+    console.log('#', this.trialNumber, 'of', this.trials);
+    clearFleetingMessage();
+    Selected = {};
+    let answer = normalize(this.inputBox.value, 'E');
+    let reqAnswer = normalize(this.wp.result.text, 'E');
+    console.log('answer', answer, 'req', reqAnswer);
+    let isCorrect = answer == reqAnswer;
+    Selected = { reqAnswer: reqAnswer, answer: answer, feedbackUI: isCorrect ? Goal.buttonClicked : Goal.buttonCorrect };
+    return (answer == reqAnswer);
+  }
+  trialPrompt_dep() {
+    sayTryAgain();
+    let n = this.trialNumber; 
+    showFleetingMessage('try again!', 0, {}, true);
+    this.inputBox = addNthInputElement(this.dResult, this.trialNumber);
+    this.defaultFocusElement = this.inputBox.id;
+    mLinebreak(dTable);
+    return 10;
+  }
+  activate_input() {
+    this.inputBox.onkeyup = ev => {
+      if (!canAct()) return;
+      if (ev.key === "Enter") {
+        ev.cancelBubble = true;
+        this.controller.evaluate.bind(this.controller)(ev);
+      }
+    };
+    this.inputBox.focus();
+  }
+}
+class GSentence extends Game {
+  constructor(name, o) {
+    super(name, o);
+    this.prevLanguage = this.language;
+    this.language = 'E';
+  }
+  startGame() {
+    this.correctionFunc = () => {
+      let sent = this.sentenceList[0].join(' ');
+      this.dWordArea.innerHTML = `<h1>${sent}</h1>`;
+      if (this.spokenFeedback) sayRandomVoice(sent);
+      return 3000;
+    }
+    this.successFunc = () => { mCheckit(this.dWordArea, 120); };
+  }
+  clear() { super.clear(); this.language = this.prevLanguage; }
+  start_Level() {
+    this.sentences = [];
+    for (const s of EnglishSentences) {
+      let slist = isList(s) ? s : [s];
+      slist = slist.map(x => x.split(' '));
+      if (slist[0].length <= this.maxWords && slist[0].length >= this.minWords) this.sentences.push(slist);
+    }
+  }
+  dropHandler(source, target, isCopy = false, clearTarget = false) {
+    let prevTarget = source.target;
+    source.target = target;
+    let dSource = iDiv(source);
+    let dTarget = iDiv(target);
+    if (clearTarget) {
+      let ch = dTarget.children[0];
+      let chSource = firstCond(Pictures, x => iDiv(x) == ch);
+      if (chSource) {
+        if (isdef(prevTarget)) {
+          mAppend(iDiv(prevTarget), ch);
+          chSource.target = prevTarget;
+        } else {
+          mAppend(this.dWordArea, ch);
+          delete chSource.target;
+        }
+      }
+      clearElement(dTarget);
+    }
+    if (isCopy) {
+      let dNew = mText(dSource.innerHTML, dTarget, { wmin: 100, fz: 20, padding: 4, margin: 4, display: 'inline-block' });
+      addDDSource(dNew, isCopy, clearTarget);
+    } else {
+      mAppend(dTarget, dSource);
+    }
+  }
+  prompt() {
+    show_instruction('form a correct sentence', dTitle, 'form a correct sentence');
+    mLinebreak(dTable);
+    let sl = this.sentenceList = chooseRandom(this.sentences);
+    let words = this.sentenceList[0];
+    let fz = 32;
+    let h = fz * 1.25, wmin = fz * 1.25;
+    let items = Pictures = [];
+    let containers = this.containers = [];
+    let options = _simpleOptions({ fz: fz, bg: 'transparent', fg: 'white', showPic: false, showLabels: true }, { wmin: wmin });
+    let dArea = mDiv(dTable, { h: 150, display: 'flex', 'flex-wrap': 'wrap', layout: 'fhcc' });
+    mLinebreak(dTable);
+    let dWordArea = this.dWordArea = mDiv(dTable, { h: 70, wmin: 20, display: 'flex', 'flex-wrap': 'wrap', layout: 'fhcc' });
+    let i = 0;
+    for (const word of words) {
+      let item = { label: word, index: i };
+      let container = { label: word, index: i };
+      i += 1;
+      let d = makeItemDiv(item, options);
+      let dCont = mDiv(dArea, { wmin: wmin + 12, hmin: h + 10, bg: colorTrans('beige', .25), fg: 'black', margin: 12 });
+      container.div = dCont;
+      items.push(item);
+      containers.push(container);
+    }
+    shuffle(items);
+    items.map(x => { mAppend(dWordArea, iDiv(x)); mStyle(iDiv(x), { h: h, w: 'auto' }); });
+    enableDD(items, containers, this.dropHandler.bind(this), false, true);
+    mLinebreak(dTable, 50);
+    mButton('Done!', this.controller.evaluate.bind(this.controller), dTable, { fz: 28, matop: 10, rounding: 10, padding: 16, border: 8 }, ['buttonClass']);
+    this.controller.activateUi.bind(this.controller)();
+  }
+  trialPrompt() {
+    sayTryAgain();
+    showFleetingMessage('Try again!', 0, { fg: 'white' });
+    TOMain = setTimeout(() => { Pictures.map(x => mAppend(this.dWordArea, iDiv(x))); }, 1200);
+    return 1500;
+  }
+  eval() {
+    let words = [];
+    for (const cont of this.containers) {
+      let d = iDiv(cont);
+      let ch = d.firstChild;
+      if (ch && isdef(ch.firstChild)) {
+        words.push(ch.firstChild.innerHTML);
+      } else break;
+    }
+    let answer = words.join(' ');
+    let isCorrect = false;
+    for (const sent of this.sentenceList) {
+      let variant = sent.join(' ');
+      if (answer == variant) isCorrect = true;
+    }
+    Selected = { piclist: Pictures, feedbackUI: Pictures.map(x => iDiv(x)), sz: getRect(iDiv(Pictures[0])).h + 10 };
+    return isCorrect;
+  }
+}
+class GSteps extends Game {
+  constructor(name, o) { super(name, o); }
+  startGame() { this.correctionFunc = showCorrectWords; }
+  start_Level() {
+    super.start_Level();
+    this.keys = this.keys.filter(x => containsColorWord(x));
+  }
+  prompt() {
+    this.piclist = [];
+    let colorKeys = this.numColors > 1 ? choose(this.colors, this.numColors) : null;
+    let bg = this.numColors > 1 || this.numRepeat > 1 ? 'white' : 'random';
+    let rows = this.numColors > 1 ? this.numColors : undefined;
+    let showRepeat = this.numRepeat > 1;
+    myShowPics(this.interact.bind(this), { bg: bg },
+      { rows: rows, showRepeat: showRepeat, colorKeys: colorKeys, numRepeat: this.numRepeat, contrast: this.contrast });
+    setMultiGoal(this.numSteps);
+    let cmd = 'click';
+    let spoken = [], written = [], corr = [];
+    for (let i = 0; i < this.numSteps; i++) {
+      let goal = Goal.pics[i];
+      let sOrdinal = getOrdinal(goal.iRepeat);
+      [written[i], spoken[i], corr[i]] = getOrdinalColorLabelInstruction(cmd, sOrdinal, goal.color, goal.label);
+      goal.correctionPhrase = corr[i];
+      cmd = 'then';
+    }
+    let sWritten = this.showVisualInstruction ? written.join('; ') : 'listen to instruction!';
+    show_instruction(sWritten, dTitle, spoken.join('. '), { fz: 20 });
+    this.controller.activateUi.bind(this.controller)();
+  }
+  trialPrompt() {
+    sayTryAgain();
+    showFleetingMessage(this.message, 0);
+    return 1000;
+  }
+  activate() {
+    for (const p of this.piclist) { toggleSelectionOfPicture(p); }
+    this.piclist = [];
+  }
+  interact(ev) {
+    ev.cancelBubble = true;
+    if (!canAct()) { console.log('no act'); return; }
+    let pic = findItemFromEvent(Pictures, ev);
+    toggleSelectionOfPicture(pic, this.piclist);
+    if (this.piclist.length == Goal.pics.length) {
+      clearFleetingMessage();
+      Selected = { piclist: this.piclist }; this.controller.evaluate.bind(this.controller)();
+    }
+  }
+  eval() {
+    Selected = { piclist: this.piclist, feedbackUI: this.piclist.map(x => iDiv(x)), sz: getRect(iDiv(this.piclist[0])).h };
+    let isCorrect = true;
+    this.message = this.language == 'D' ? 'beachte die REIHENFOLGE!' : 'mind the ORDER!';
+    for (let i = 0; i < this.piclist.length; i++) {
+      let p = this.piclist[i];
+      if (!Goal.pics.includes(p)) this.message = this.language == 'D' ? 'noch einmal!' : 'try again!';
+      if (this.piclist[i] != Goal.pics[i]) isCorrect = false;
+    }
+    return isCorrect;
+  }
+}
+class GSwap extends Game {
+  constructor(name, o) {
+    super(name, o);
+    if (this.language == 'C') { this.prevLanguage = this.language; this.language = chooseRandom('E', 'D'); }
+    ensureDictionary();
+  }
+  startGame() { this.correctionFunc = showCorrectLabelSwapping; } 
+  clear() { super.clear(); if (isdef(this.prevLanguage)) this.language = this.prevLanguage; }
+  start_Level() {
+    this.keys = setKeysG(this, filterWordByLengthG, 25);
+    if (this.keys.length < 25) { this.keys = setKeysG(this, filterWordByLengthG, 25, 'all'); }
+    this.trials = 2;
+  }
+  dropHandler(source, target, isCopy = false, clearTarget = false) {
+    let prevTarget = source.target;
+    source.target = target;
+    let dSource = iDiv(source);
+    let dTarget = iDiv(target);
+    if (clearTarget) {
+      let ch = dTarget.children[0];
+      let chSource = firstCond(Pictures, x => iDiv(x) == ch);
+      if (chSource) {
+        if (isdef(prevTarget)) {
+          mAppend(iDiv(prevTarget), ch);
+          chSource.target = prevTarget;
+        } else {
+          mAppend(this.dWordArea, ch);
+          delete chSource.target;
+        }
+      }
+      clearElement(dTarget);
+    }
+    if (isCopy) {
+      let dNew = mText(dSource.innerHTML, dTarget, { wmin: 100, fz: 20, padding: 4, margin: 4, display: 'inline-block' });
+      addDDSource(dNew, isCopy, clearTarget);
+    } else {
+      mAppend(dTarget, dSource);
+    }
+  }
+  prompt() {
+    show_instruction('swap letter to form words', dTitle, 'swap letter to form words');
+    mLinebreak(dTable);
+    let fz = 32;
+    let options = _simpleOptions({ language: this.language, w: 200, h: 200, keySet: this.keys, luc: 'u', fz: fz, bg: 'random', fg: 'white', showLabels: true });
+    let n = 2;
+    let items = gatherItems(n, options); 
+    let style = { margin: 3, cursor: 'pointer', fg: 'white', display: 'inline', bg: '#00000020', align: 'center', border: 'transparent', outline: 'none', family: 'Consolas', fz: 80 };
+    for (const item of items) {
+      let d1 = item.container = mDiv(dTable, { hmin: 250 });
+      let d = iLetters(item.label, d1, style); 
+      iAdd(item, { div: d }); 
+      let letters = item.letters = [];
+      for (let i = 0; i < arrChildren(d).length; i++) {
+        let ch = d.children[i];
+        let l = {
+          itemId: item.id, div: ch, i: i, letter: ch.innerHTML,
+          swapInfo: item.swaps[i],
+          state: 'swapped',
+          isBlinking: false, fg: 'white', bg: 'transparent'
+        };
+        letters.push(l);
+        ch.onclick = () => { startBlinking(l, item.letters, true) };
+      }
+      mStyle(d, { margin: 35 });
+      delete item.swaps;
+    }
+    showPictureHints(Pictures, 'container');
+    mLinebreak(dTable, 50);
+    this.buttonDone = mButton('Done!', () => {
+      if (!canAct()) return;
+      for (let i = 0; i < Pictures.length; i++) {
+        let p = Pictures[i];
+        let blinking = getBlinkingLetter(p);
+        if (!blinking) {
+          let msg = 'You need to pick 1 letter to swap in EACH word!!!';
+          Speech.say(msg);
+          sayRandomVoice(msg);
+          showFleetingMessage('You need to pick 1 letter to swap in EACH word!!!', 0, { fz: 30 });
+          return;
+        }
+      }
+      this.controller.evaluate.bind(this.controller)();
+    }, dTable, { fz: 28, matop: 10, rounding: 10, padding: 16, border: 8 }, ['buttonClass']);
+    this.controller.activateUi.bind(this.controller)();
+  }
+  trialPrompt() {
+    if (this.trialNumber % 2 == 0) showPictureHints(Pictures, 'container'); else showTextHints(Pictures, 'container', 'origLabel');
+    TOMain = setTimeout(() => {
+      for (const p of Pictures) {
+        for (const l of p.letters) {
+          l.state = 'swapped';
+          if (isdef(l.swapInfo)) {
+            iDiv(l).innerHTML = p.label[l.i];
+          }
+        }
+      }
+    }, 1500);
+    return 1800;
+  }
+  activate() {
+    if (this.trialNumber >= 1) { sayTryAgain(); showFleetingMessage('Try again!'); }
+    else { showFleetingMessage('click one letter in each word!'); }
+  }
+  eval() {
+    let n = Pictures.length;
+    let blinkInfo = this.blinkInfo = [];
+    clearFleetingMessage();
+    for (let i = 0; i < n; i++) {
+      let p = Pictures[i];
+      let blinking = getBlinkingLetter(p);
+      blinkInfo.push({ i: i, blinking: blinking });
+    }
+    for (let i = 0; i < n; i++) { let l = blinkInfo[i].blinking; if (!l) continue; stopBlinking(l); }
+    for (const blinki of blinkInfo) { if (!blinki.blinking) { return false; } }
+    let isCorrect = true;
+    for (let i = 0; i < n; i++) {
+      let b1 = blinkInfo[i].blinking;
+      let b2 = blinkInfo[(i + 1) % blinkInfo.length].blinking;
+      let item = Items[b1.itemId];
+      let item2 = Items[b2.itemId];
+      let l = item.letters[b1.i];
+      let sw = l.swapInfo;
+      if (nundef(sw)) { sw = l.swapInfo = { correct: { itemId: item.id, index: b1.i, l: b1.letter } }; }
+      sw.temp = { itemId: item2.id, index: b2.i, l: b2.letter };
+      item.testLabel = replaceAtString(item.label, b1.i, b2.letter);
+      iDiv(l).innerHTML = b2.letter;
+      l.state = 'temp';
+    }
+    for (const p of Pictures) { if (p.testLabel != p.origLabel) { isCorrect = false; } }
+    let feedbackList = [];
+    for (let i = 0; i < n; i++) {
+      let item = Pictures[i];
+      let d;
+      if (isCorrect) d = iDiv(item.letters[item.iLetter]);
+      else {
+        let iLetter = blinkInfo[i].blinking.i;
+        if (item.iLetter != iLetter) d = iDiv(item.letters[iLetter]);
+      }
+      if (isdef(d)) feedbackList.push(d);
+    }
+    Selected = { piclist: Pictures, feedbackUI: feedbackList, sz: getRect(iDiv(Pictures[0])).h, delay: 800 };
+    return isCorrect;
+  }
+}
+class GTouchColors extends Game {
+  constructor(name, o) { super(name, o); }
+  start_Level() {
+    super.start_Level();
+    this.keys = this.keys.filter(x => containsColorWord(x));
+  }
+  prompt() {
+    let colorKeys = choose(this.colors, this.numColors);
+    let rows = this.numColors;
+    let showLabels = this.lang == 'C' || this.showLabels;
+    console.log('showLabels', showLabels);
+    myShowPics(this.controller.evaluate.bind(this.controller), { bg: 'white' }, { showLabels: showLabels, colorKeys: colorKeys, rows: rows });
+    if (this.shuffle == true) {
+      let dParent = iDiv(Pictures[0]).parentNode;
+      shuffleChildren(dParent);
+    }
+    setGoal(randomNumber(0, Pictures.length - 1));
+    let [written, spoken] = getOrdinalColorLabelInstruction('click'); 
+    show_instruction(written, dTitle, spoken);
+    this.controller.activateUi.bind(this.controller)();
+  }
+  eval(ev) {
+    ev.cancelBubble = true;
+    let item = findItemFromEvent(Pictures, ev);
+    Selected = { answer: item.label, reqAnswer: Goal.label, pic: item, feedbackUI: iDiv(item) };
+    if (item == Goal) { return true; } else { return false; }
+  }
+}
+class GTouchPic extends Game {
+  constructor(name, o) { super(name, o); }
+  prompt() {
+    myShowPics(this.controller.evaluate.bind(this.controller), {}, { showLabels: (this.lang == 'C' || this.showLabels) });
+    setGoal();
+    let wr = 'click ';
+    show_instruction(wr + `<b>${Goal.label.toUpperCase()}</b>`, dTitle, Goal.label);
+    this.controller.activateUi.bind(this.controller)();
+  }
+}
+class GWritePic extends Game {
+  constructor(name, o) { super(name, o); }
+  startGame() {
+    this.correctionFunc = showCorrectWordInTitle;
+    onkeydown = ev => {
+      if (!canAct()) return;
+      if (isdef(this.inputBox)) { this.inputBox.focus(); }
+    }
+  }
+  start_Level() {
+    this.keys = setKeysG(this, filterWordByLengthG, 25);
+    if (this.keys.length < 25) { this.keys = setKeysG(this, filterWordByLengthG, 25, 'all'); }
+  }
+  prompt() {
+    let showLabels = this.showLabels == true && this.labels == true;
+    myShowPics(() => mBy(this.defaultFocusElement).focus(), {}, { showLabels: showLabels });
+    setGoal();
+    if (this.instruction == 'all') {
+      let wr = (this.language == 'E' ? 'type ' : "schreib' ");
+      show_instruction(wr + `<b>${Goal.label.toUpperCase()}</b>`, dTitle, wr + Goal.label);
+    } else if (this.instruction == 'spokenGoal') {
+      let wr = this.language == 'E' ? 'type the correct word' : "schreib' das passende wort";
+      let sp = (this.language == 'E' ? 'type' : "schreib'") + ' ' + Goal.label;
+      show_instruction(wr, dTitle, sp);
+    } else {
+      let wr = this.language == 'E' ? 'type the correct word' : "schreib' das passende wort";
+      show_instruction(wr, dTitle, wr);
+    }
+    mLinebreak(dTable, 20);
+    this.inputBox = addNthInputElement(dTable, this.trialNumber);
+    this.defaultFocusElement = this.inputBox.id;
+    this.controller.activateUi.bind(this.controller)();
+  }
+  trialPrompt() {
+    sayTryAgain();
+    let n = this.trialNumber == 1 ? 1 : (this.trialNumber + Math.floor((Goal.label.length - this.trialNumber) / 2));
+    showFleetingMessage(Goal.label.substring(0, n));
+    mLinebreak(dTable);
+    this.inputBox = addNthInputElement(dTable, this.trialNumber);
+    this.defaultFocusElement = this.inputBox.id;
+    return 10;
+  }
+  activate() {
+    this.inputBox.onkeyup = ev => {
+      if (!canAct()) return;
+      if (ev.key === "Enter") {
+        ev.cancelBubble = true;
+        this.controller.evaluate.bind(this.controller)(ev);
+      } 
+    };
+    this.inputBox.focus();
+  }
+  eval(ev) {
+    let answer = normalize(this.inputBox.value, this.language);
+    let reqAnswer = normalize(Goal.label, this.language);
+    let correctPrefix = this.correctPrefix = getCorrectPrefix(Goal.label, this.inputBox.value);
+    Selected = { reqAnswer: reqAnswer, answer: answer, feedbackUI: iDiv(Goal) };
+    if (answer == reqAnswer) { showFleetingMessage(Goal.label); return true; }
+    else { return false; }
+  }
+}
+class GMissingNumber extends Game {
+  constructor(name, o) { super(name, o); }
+  startGame() {
+    this.successFunc = successThumbsUp;
+    this.failFunc = failThumbsDown;
+    this.correctionFunc = this.showCorrectSequence.bind(this);
+  }
+  showCorrectSequence() { return numberSequenceCorrectionAnimation(getNumSeqHint); }
+  start_Level() {
+    if (!isList(this.steps)) this.steps = [this.steps];
+    this.numPics = 2;
+    this.labels = false;
+  }
+  prompt() {
+    mLinebreak(dTable, 12);
+    showHiddenThumbsUpDown(110);
+    mLinebreak(dTable);
+    this.step = chooseRandom(this.steps);
+    this.op = chooseRandom(this.ops);
+    this.oop = OPS[this.op];
+    this.seq = createNumberSequence(this.seqLen, this.minNum, this.maxNum, this.step, this.op);
+    [this.words, this.letters] = showNumberSequence(this.seq, dTable);
+    setNumberSequenceGoal();
+    mLinebreak(dTable);
+    let instr1 = (this.language == 'E' ? 'complete the sequence' : "ergänze die reihe");
+    show_instruction(instr1, dTitle, instr1);
+    if (this.showHint) {
+      hintEngineStart(getNumSeqHintString, [0, 1, 2, 3, 4], 5000 + this.level * 1000);
+    }
+    this.controller.activateUi.bind(this.controller)();
+  }
+  trialPrompt() {
+    let hintlist = this.trialNumber >= 4 ? [this.trialNumber] : range(this.trialNumber, 4);
+    if (this.showHint) hintEngineStart(getNumSeqHintString, hintlist, 3000 + this.level * 1000);
+    TOMain = setTimeout(() => getWrongChars().map(x => unfillChar(x)), 500);
+    return 600;
+  }
+  activate() { addKeyup('G', this.interact.bind(this)); }
+  interact(ev) {
+    if (!isNumber(ev.key) && ev.key != '-') return;
+    clearFleetingMessage();
+    if (!canAct()) return;
+    let sel = Selected = onKeyWordInput(ev);
+    if (nundef(sel)) return;
+    let lastInputCharFilled = sel.target;
+    console.assert(sel.isMatch == (lastInputCharFilled.letter == sel.ch), lastInputCharFilled, sel.ch);
+    if (sel.isMatch && sel.isVeryLast) {
+      deactivateFocusGroup();
+      this.controller.evaluate.bind(this.controller)(true);
+    } else if (sel.isMatch && sel.isLastOfGroup) {
+      sel.target.isBlank = false;
+      sel.target.group.hasBlanks = false;
+      removeInPlace(Goal.blankWords, sel.target.group);
+      removeInPlace(Goal.blankChars, sel.target);
+      deactivateFocusGroup();
+      console.log('haaaaaaaaaaaalo', Goal.isFocus)
+    } else if (sel.isMatch) {
+      removeInPlace(Goal.blankChars, sel.target);
+      sel.target.isBlank = false;
+    } else if (sel.isVeryLast) {
+      Selected.words = getInputWords();
+      Selected.answer = getInputWordString();
+      Selected.req = getCorrectWordString();
+      deactivateFocusGroup();
+      this.controller.evaluate.bind(this.controller)(false);
+    } else if (sel.isLastOfGroup) {
+      Selected.words = getInputWords();
+      Selected.answer = getInputWordString();
+      Selected.req = getCorrectWordString();
+      deactivateFocusGroup();
+      this.controller.evaluate.bind(this.controller)(false);
+    } else {
+      if (!this.silent) { writeSound(); playSound('incorrect1'); }
+      deactivateFocusGroup();
+      showFleetingMessage('does NOT fit: ' + Selected.ch, 0, { fz: 24 });
+      setTimeout(() => unfillCharInput(Selected.target), 500);
+    }
+  }
+  eval(isCorrect) { return isCorrect; }
+}
+class GameTimed extends Game{
+  constructor(name, o) { super(name, o); }
+  clear() { clearInterval(this.TOI); super.clear(); this.timer = null; }
+  makeTimer() {
+    this.timer = true;
+    if (nundef(this.msTotal)) this.msTotal = 5000;
+    if (nundef(this.msInterval)) this.msInterval = 100;
+    let w = this.wTimerOuter = 200;
+    this.dTimeOuter = mDiv(dTable, { w: w, h: 25, border: 'white', rounding: 10, position: 'relative' });
+    [this.wTimer, this.r, this.g] = [0, 0, 255];
+    this.dTimeInner = mDiv(this.dTimeOuter, { h: 25, w: this.wTimer, rounding: 10, bg: `rgb(${this.r},${this.g},0)`, position: 'absolute', left: 0, top: 0 });
+    this.dTimeDisplay = mDiv(this.dTimeOuter, { patop: 2, align: 'center', h: 25, w: w, position: 'absolute', left: 0, top: 0 });
+    mLinebreak(dTable);
+    this.dPause = mDiv(dTable, { cursor: 'pointer', fz: 12, hpadding: 30, vpadding: 10 }, null, 'click to pause');
+    this.dPause.onclick = () => this.pause();
+  }
+  pause() {
+    if (nundef(this.timer)) return;
+    clearInterval(this.TOI);
+    this.dPause.innerHTML = 'click to resume...';
+    this.dPause.onclick = () => this.resume();
+  }
+  resume() {
+    if (nundef(this.timer)) return;
+    this.dPause.innerHTML = 'click to pause...';
+    this.dPause.onclick = () => this.pause();
+    this.TOI = setInterval(this.onTick.bind(this), this.msInterval);
+  }
+  activate() {
+    if (nundef(this.timer)) return;
+    this.msLeft = valf(this.msTotal, 10000);
+    this.dTimeDisplay.innerHTML = timeConversion(this.msLeft, 'sh');
+    this.TOI = setInterval(this.onTick.bind(this), this.msInterval);
+  }
+  onTick() {
+    this.msLeft -= this.msInterval;
+    this.wTimer += this.wTimerOuter * this.msInterval / this.msTotal;
+    let inc_color = 255 * this.msInterval / this.msTotal; 
+    this.r += inc_color; this.g -= inc_color;
+    mStyle(this.dTimeInner, { w: this.wTimer, bg: `rgb(${this.r},${this.g},0)` });
+    this.dTimeDisplay.innerHTML = timeConversion(this.msLeft, 'sh');
+    if (this.msLeft < 100) {
+      clearInterval(this.TOI);
+      this.dPause.style.opacity = 0;
+      this.onTimeup();
+    }
+  }
+}
+class GSpotit extends GameTimed {
+  constructor(name, o) { super(name, o); }
+  startGame() { this.correctionFunc = showCorrectUis; }
+  start_Level() {
+    super.start_Level();
+    this.colarr = _calc_hex_col_array(this.rows, this.cols);
+    let perCard = arrSum(this.colarr);
+    this.nShared = (this.numCards * (this.numCards - 1)) / 2;
+    this.nUnique = perCard - this.numCards + 1;
+    this.numKeysNeeded = this.nShared + this.numCards * this.nUnique;
+    this.keys = setKeysG(this, (_, x) => !x.includes(' '), this.numKeysNeeded + 1);
+  }
+  deal() {
+    let keys = choose(this.keys, this.numKeysNeeded);
+    let dupls = keys.slice(0, this.nShared); 
+    let uniqs = keys.slice(this.nShared);
+    let infos = [];
+    for (let i = 0; i < this.numCards; i++) {
+      let keylist = uniqs.slice(i * this.nUnique, (i + 1) * this.nUnique);
+      let info = { id: getUID(), shares: {}, keys: keylist, rows: this.rows, cols: this.cols, colarr: this.colarr };
+      infos.push(info);
+    }
+    let iShared = 0;
+    for (let i = 0; i < this.numCards; i++) {
+      for (let j = i + 1; j < this.numCards; j++) {
+        let c1 = infos[i];
+        let c2 = infos[j];
+        let dupl = dupls[iShared++];
+        c1.keys.push(dupl);
+        c1.shares[c2.id] = dupl;
+        c2.shares[c1.id] = dupl;
+        c2.keys.push(dupl);
+      }
+    }
+    for (const info of infos) { shuffle(info.keys); }
+    return infos;
+  }
+  interact(ev) {
+    ev.cancelBubble = true;
+    if (!canAct()) { console.log('no act'); return; }
+    let keyClicked = evToProp(ev, 'key');
+    let id = evToId(ev);
+    if (isdef(keyClicked) && isdef(Items[id])) {
+      this.pause();
+      let item = Items[id];
+      if (Object.values(item.shares).includes(keyClicked)) {
+        let otherCard = spotitFindCardSharingSymbol(item, keyClicked);
+        let cardSymbol = ev.target;
+        let otherSymbol = spotitFindSymbol(otherCard, keyClicked);
+        Selected = { isCorrect: true, feedbackUI: [cardSymbol, otherSymbol] };
+      } else {
+        let cardSymbol = ev.target;
+        Selected = { isCorrect: false, feedbackUI: [cardSymbol], correctUis: this.getSharedSymbols(), correctionDelay: this.items.length * 1500 };
+      }
+      this.controller.evaluate.bind(this.controller)();
+    }
+  }
+  getSharedSymbols() {
+    let result = [];
+    for (const item of this.items) {
+      for (const id in item.shares) {
+        let k = item.shares[id];
+        let ui = iGetl(item, k);
+        result.push(ui);
+      }
+    }
+    return result;
+  }
+  eval() { return Selected.isCorrect; }
+  prompt() {
+    this.trials = 1;
+    show_instruction('find common symbol', dTitle);
+    mLinebreak(dTable, 25);
+    let infos = this.deal(); 
+    let items = this.items = [];
+    for (const info of infos) {
+      let item = spotitCard(info, dTable, { margin: 10 }, this.interact.bind(this));
+      items.push(item);
+    }
+    this.controller.activateUi.bind(this.controller)();
+  }
+  activate(){}
+  onTimeup() {
+    Selected = { isCorrect: false, correctUis: this.getSharedSymbols(), correctionDelay: this.items.length * 2000 };
+    this.controller.evaluate.bind(this.controller)();
+  }
+}
+class GSpotitMulti extends GSpotit {
+  constructor(name, o) { super(name, o); }
+  make_players(table) {
+    let players = this.players = {};
+    for (const plname of table.players) {
+      players[plname] = { name: plname, color: getColorDictColor(DB.users[plname].color), imgPath: `../base/assets/images/${plname}.jpg`, score: 0 };
+    }
+    this.player = Session.cur_user;
+    this.me = players[this.player];
+    this.others = Object.values(players).filter(x => x.name != this.player);
+  }
+  startGame() {
+    resetState();
+    this.successFunc = successPictureGoal;
+    this.failFunc = failPictureGoal;
+    this.correctionFunc = showCorrectUis;
+    this.numCards = 2;
+    this.colarr = _calc_hex_col_array(this.rows, this.cols);
+    let perCard = arrSum(this.colarr);
+    this.nShared = (this.numCards * (this.numCards - 1)) / 2;
+    this.nUnique = perCard - this.numCards + 1;
+    this.numKeysNeeded = this.nShared + this.numCards * this.nUnique;
+    this.keys = setKeysG(this, (_, x) => !x.includes(' '), this.numKeysNeeded + 1);
+    resetRound(); 
+    uiActivated = false;
+    QContextCounter += 1;
+    showStats(false);
+    this.update_status(); 
+    show_title(Session.table.friendly);
+    this.trialNumber = 0;
+    hide('sidebar');
+    this.trials = 1;
+    this.startTime = get_timestamp();
+    mLinebreak(dTable, 25);
+    let infos = this.deal(); 
+    let items = this.items = [];
+    for (const info of infos) {
+      let item = spotitCard(info, dTable, { margin: 10 }, this.interact.bind(this));
+      items.push(item);
+    }
+    Selected = null;
+    uiActivated = true;
+  }
+  update_status() {
+    let d = dTitle;
+    clearElement(d);
+    let d1 = mDiv(d, { display: 'flex', 'justify-content': 'center' });
+    for (const plname in this.players) {
+      let pl = this.players[plname];
+      let d2 = mDiv(d1, { vmargin: 10, hmargin: 20, align: 'center' }, null, `<img src='${pl.imgPath}' style="display:block" class='img_person' width=50 height=50>${pl.score}`);
+    }
+  }
+  evaluate() {
+    if (!canAct()) return;
+    uiActivated = false; clearTimeouts();
+    IsAnswerCorrect = Selected.isCorrect;
+    this.me.score += IsAnswerCorrect ? 1 : 0;
+    user_game_status();
+  }
+  //#region spotit
+  interact(ev) {
+    ev.cancelBubble = true;
+    if (!canAct()) { console.log('no act'); return; }
+    let keyClicked = evToProp(ev, 'key');
+    let id = evToId(ev);
+    if (isdef(keyClicked) && isdef(Items[id])) {
+      this.pause();
+      let item = Items[id];
+      if (Object.values(item.shares).includes(keyClicked)) {
+        let otherCard = spotitFindCardSharingSymbol(item, keyClicked);
+        let cardSymbol = ev.target;
+        let otherSymbol = spotitFindSymbol(otherCard, keyClicked);
+        Selected = { isCorrect: true, feedbackUI: [cardSymbol, otherSymbol] };
+      } else {
+        let cardSymbol = ev.target;
+        Selected = { isCorrect: false, feedbackUI: [cardSymbol], correctUis: this.getSharedSymbols(), correctionDelay: this.items.length * 1500 };
+      }
+      this.evaluate.bind(this)();
+    }
+  }
+  deal() {
+    let keys = choose(this.keys, this.numKeysNeeded);
+    let dupls = keys.slice(0, this.nShared); 
+    let uniqs = keys.slice(this.nShared);
+    let infos = [];
+    for (let i = 0; i < this.numCards; i++) {
+      let keylist = uniqs.slice(i * this.nUnique, (i + 1) * this.nUnique);
+      let info = { id: getUID(), shares: {}, keys: keylist, rows: this.rows, cols: this.cols, colarr: this.colarr };
+      infos.push(info);
+    }
+    let iShared = 0;
+    for (let i = 0; i < this.numCards; i++) {
+      for (let j = i + 1; j < this.numCards; j++) {
+        let c1 = infos[i];
+        let c2 = infos[j];
+        let dupl = dupls[iShared++];
+        c1.keys.push(dupl);
+        c1.shares[c2.id] = dupl;
+        c2.shares[c1.id] = dupl;
+        c2.keys.push(dupl);
+      }
+    }
+    for (const info of infos) { shuffle(info.keys); }
+    return infos;
+  }
+  getSharedSymbols() {
+    let result = [];
+    for (const item of this.items) {
+      for (const id in item.shares) {
+        let k = item.shares[id];
+        let ui = iGetl(item, k);
+        result.push(ui);
+      }
+    }
+    return result;
+  }
+  //#endregion
+}
+class GSpotitMulti_mess extends GSpotit {
+  constructor(name, o) { super(name, o); }
+  static start_fen(players) { let fen = {}; for (const pl of players) { fen[pl] = 0; } return fen; }
+  fen_to_state(fen) {
+    console.log('fen', fen);
+    this.playerscores = isDict(fen) ? fen : JSON.parse(fen);
+    for (const plname in this.players) { let pl = this.players[plname]; pl.score = this.playerscores[plname]; }
+    console.log('players', this.players);
+  }
+  make_players(table) {
+    let players = this.players = {};
+    for (const plname of table.players) {
+      players[plname] = { name: plname, color: getColorDictColor(DB.users[plname].color), imgPath: `../base/assets/images/${plname}.jpg`, score: 0 };
+    }
+    this.player = Session.cur_user;
+    this.me = players[this.player];
+    this.others = Object.values(players).filter(x => x.name != this.player);
+  }
+  make_fen_vor_move(table, moves = []) { return table.fen; }
+  make_fen_after_move() {
+    this.me.score += IsAnswerCorrect ? 1 : 0;
+    let fen = {};
+    for (const plname in this.players) {
+      let pl = this.players[plname];
+      fen[plname] = pl.score;
+    }
+    return fen;
+  }
+  startGame(fen) {
+    resetState();
+    this.successFunc = successPictureGoal;
+    this.failFunc = failPictureGoal;
+    this.correctionFunc = showCorrectUis;
+    console.log(this.player);
+    Settings.updateGameValues(this.player, this);
+    super.start_level();
+    this.numCards = 2;
+    this.colarr = _calc_hex_col_array(this.rows, this.cols);
+    let perCard = arrSum(this.colarr);
+    this.nShared = (this.numCards * (this.numCards - 1)) / 2;
+    this.nUnique = perCard - this.numCards + 1;
+    this.numKeysNeeded = this.nShared + this.numCards * this.nUnique;
+    this.keys = setKeysG(this, (_, x) => !x.includes(' '), this.numKeysNeeded + 1);
+    this.fen_to_state(fen);
+    resetRound(); 
+    uiActivated = false;
+    TOMain = setTimeout(() => this.prompt(), 300);
+  }
+  update_status() {
+    let d = dTitle;
+    clearElement(d);
+    let d1 = mDiv(d, { display: 'flex', 'justify-content': 'center' });
+    for (const plname in this.players) {
+      let pl = this.players[plname];
+      let d2 = mDiv(d1, { vmargin: 10, hmargin: 20, align: 'center' }, null, `<img src='${pl.imgPath}' style="display:block" class='img_person' width=50 height=50>${pl.score}`);
+    }
+  }
+  prompt() {
+    QContextCounter += 1;
+    showStats(false);
+    this.update_status(); 
+    show_title(Session.table.friendly);
+    this.trialNumber = 0;
+    hide('sidebar');
+    this.trials = 1;
+    this.startTime = get_timestamp();
+    mLinebreak(dTable, 25);
+    let infos = this.deal(); 
+    let items = this.items = [];
+    for (const info of infos) {
+      let item = spotitCard(info, dTable, { margin: 10 }, this.interact.bind(this));
+      items.push(item);
+    }
+    this.activateUi.bind(this)();
+  }
+  activateUi() {
+    Selected = null;
+    uiActivated = true;
+    this.activate(); 
+  }
+  deal() {
+    let keys = choose(this.keys, this.numKeysNeeded);
+    let dupls = keys.slice(0, this.nShared); 
+    let uniqs = keys.slice(this.nShared);
+    let infos = [];
+    for (let i = 0; i < this.numCards; i++) {
+      let keylist = uniqs.slice(i * this.nUnique, (i + 1) * this.nUnique);
+      let info = { id: getUID(), shares: {}, keys: keylist, rows: this.rows, cols: this.cols, colarr: this.colarr };
+      infos.push(info);
+    }
+    let iShared = 0;
+    for (let i = 0; i < this.numCards; i++) {
+      for (let j = i + 1; j < this.numCards; j++) {
+        let c1 = infos[i];
+        let c2 = infos[j];
+        let dupl = dupls[iShared++];
+        c1.keys.push(dupl);
+        c1.shares[c2.id] = dupl;
+        c2.shares[c1.id] = dupl;
+        c2.keys.push(dupl);
+      }
+    }
+    for (const info of infos) { shuffle(info.keys); }
+    return infos;
+  }
+  interact(ev) {
+    ev.cancelBubble = true;
+    if (!canAct()) { console.log('no act'); return; }
+    let keyClicked = evToProp(ev, 'key');
+    let id = evToId(ev);
+    if (isdef(keyClicked) && isdef(Items[id])) {
+      this.pause();
+      let item = Items[id];
+      if (Object.values(item.shares).includes(keyClicked)) {
+        let otherCard = spotitFindCardSharingSymbol(item, keyClicked);
+        let cardSymbol = ev.target;
+        let otherSymbol = spotitFindSymbol(otherCard, keyClicked);
+        Selected = { isCorrect: true, feedbackUI: [cardSymbol, otherSymbol] };
+      } else {
+        let cardSymbol = ev.target;
+        Selected = { isCorrect: false, feedbackUI: [cardSymbol], correctUis: this.getSharedSymbols(), correctionDelay: this.items.length * 1500 };
+      }
+      this.evaluate.bind(this)();
+    }
+  }
+  evaluate() {
+    if (!canAct()) return;
+    uiActivated = false; clearTimeouts();
+    IsAnswerCorrect = Selected.isCorrect;
+    this.me.score += IsAnswerCorrect ? 1 : 0;
+    user_game_status();
+  }
+  getSharedSymbols() {
+    let result = [];
+    for (const item of this.items) {
+      for (const id in item.shares) {
+        let k = item.shares[id];
+        let ui = iGetl(item, k);
+        result.push(ui);
+      }
+    }
+    return result;
+  }
+  to_move(is_correct, ms_total) { return '' + (is_correct ? 1 : 0) + ' ' + ms_total; }
+  from_move(data) { return { is_correct: (data[0] == '1' ? true : false), ms_total: stringAfter(data, ' ') }; }
+  onTimeup() {
+    Selected = { isCorrect: false, correctUis: this.getSharedSymbols(), correctionDelay: this.items.length * 2000 };
+    this.evaluate.bind(this)();
+  }
+}
+class GProg extends Game {
+  constructor(name, o) { super(name, o); }
+  prompt() {
+    let c = this.card = cRound(dTable); 
+    let d = c.visual = iDiv(c);
+    visualPropertySetter(this.card);
+    visualAttributeSetter(this.card);
+    d.innerHTML = 'HALLO';
+    mStyle(d, { fg: 'blue' });
+    mLinebreak(dTable, 25);
+    this.ta = this.createTextArea();
+    this.ta.value = `mCenterCenterFlex(card.visual);`; 
+    mLinebreak(dTable, 25);
+    mButton('run', this.runCode.bind(this), dTable, { bg: 'skyblue', fg: 'black', fz: 32 }, 'mybutton');
+  }
+  runCode() {
+    let code = this.ta.value;
+    let prelim = ''; 
+    prelim = 'let card = this.card;'; 
+    code = prelim + code;
+    eval(code);
+  }
+  createTextArea() {
+    let dCode = mDiv(dTable, {});
+    let ta = this.ta = mCreate('textarea');
+    mAppend(dCode, ta);
+    ta.setAttribute('rows', 10);
+    ta.setAttribute('cols', 60);
+    mStyle(ta, { family: 'courier', padding: 10 });
+    return ta;
+  }
+}
+class GKrieg extends G2Player {
+  write() { write('game', ...arguments); }
+  startGame() {
+    this.write('start game')
+    super.startGame();
+    let back = this.back = new GKriegBack();
+    this.setStartPosition();
+    this.front = new GKriegFront(130, dTable);
+    this.front.presentState(this.back.get_state());
+    mLinebreak(dTable, 50);
+    this.moveButton = mButton('Move!', this.interact.bind(this), dTable, { fz: 28, matop: 10, rounding: 10, padding: 16, border: 8 }, ['buttonClass']);
+  }
+  setStartPosition() {
+    this.back.load(null); 
+  }
+  prompt() {
+    this.write('prompt')
+    let msg = this.plTurn == this.ai ? 'Ai thinking...' : 'Deterministic: click Move!';
+    showInstruction('', msg, dTitle, false);
+    this.controller.activateUi();
+  }
+  activate() {
+    let pl = this.plTurn;
+    let autoplay = false;
+    let manual = true;
+    if (!manual && (autoplay || pl == this.ai)) {
+      if (this.ai == pl) uiActivated = false;
+      setTimeout(this.interact.bind(this), 500);
+    } else {
+      this.moveButton.style.opacity = 1;
+    }
+  }
+  interact() {
+    if (!canAct()) { console.log('NOPE!!!!', 'ai', aiActivated, 'ui', uiActivated); return; }
+    this.controller.deactivateUi();
+    this.write('interact');
+    let back = this.back;
+    back.make_random_move();
+    this.front.animatePlayerMove(back.turn(), this.onPlayerMoveCompleted.bind(this));
+  }
+  onPlayerMoveCompleted() {
+    let back = this.back;
+    this.front.presentState(this.back.get_state());
+    let x = this.back.resolve();
+    if (isdef(x)) {
+      this.moveButton.style.opacity = .3;
+      this.TO = setTimeout(() => { this.front.animateResolve(x, () => { GC.evaluate(x) }) },  
+        1000
+      );
+    } else this.controller.evaluate(x);
+  }
+  changePlayer() {
+    this.write('change player')
+    this.back.swap_turn();
+    this.plTurn = this.players[this.back.player().index];
+    this.opp = this.players[this.back.opponent().index];
+  }
+  eval(x) {
+    let back = this.back;
+    this.write('eval', x)
+    if (isdef(x)) this.front.presentState(this.back.get_state());
+    if (back.is_out_of_cards()) {
+      this.moveButton.remove();
+      this.gameOver = true;
+      let w = back.winner();
+      if (isdef(w)) this.winner = this.players[w.index];
+      this.bannerPos = -480;
+    }
+  }
+}
+class GTTT extends G2Player {
+  startGame() {
+    super.startGame();
+    this.createBoard();
+    this.human.sym = 'O';
+    this.ai.sym = 'X';
+    this.setStartPosition();
+  }
+  createBoard() {
+    this.rows = this.cols = this.boardSize;
+    this.board = new Board(this.rows, this.cols, this.controller.uiInteract.bind(this.controller));
+  }
+  setStartPosition() {
+    return;
+    let positions = [
+      new Array(9).fill(null),
+      ['X', 'X', null, 'O', null, null, 'O', null, null],
+      [null, 'X', null, 'X', null, 'O', null, 'O', null],
+      [null, null, null, null, 'X', 'O', null, 'O', null],
+    ];
+    if (isdef(this.iPosition)) {
+      let idx = this.iPosition + 1; idx = idx % positions.length; this.iPosition = idx;
+    } else this.iPosition = 0;
+    let state = nundef(this.startPosition) || this.startPosition == 'empty' ? positions[0]
+      : this.startPosition == 'random' ? chooseRandom(positions)
+        : positions[this.iPosition];
+    this.board.setState(state, { X: this.ai.color, O: this.human.color });
+  }
+  prompt() {
+    let msg = this.plTurn == this.ai ? 'Ai thinking...' : 'click an empty field!';
+    showInstruction('', msg, dTitle, false);
+    this.controller.activateUi();
+  }
+  activate() {
+    let pl = this.plTurn;
+    let autoplay = false;
+    if (autoplay || pl == this.ai) {
+      if (this.ai == pl) uiActivated = false;
+      setTimeout(() => AIMinimax(this, this.afterComputerMove.bind(this)), 200);
+    }
+  }
+  interact(ev) {
+    let tile = evToItemC(ev);
+    if (isdef(tile.label)) return; 
+    let pl = this.plTurn;
+    addLabel(tile, pl.sym, { fz: 60, fg: pl.color });
+    this.controller.evaluate(tile);
+  }
+  afterComputerMove(iMove) {
+    let tile = this.board.items[iMove];
+    this.interact({ target: iDiv(tile) });
+  }
+  eval() {
+    let done = this.checkFinal();
+    this.gameOver = done > 0;
+    if (this.gameOver) { this.winner = done > 1 ? this.plTurn : null; this.tie = done == 1; }
+  }
+  checkFinal(state) {
+    if (nundef(state)) state = this.getState();
+    let isTie = false;
+    let isWin = checkWinnerTTT(state);
+    if (!isWin) { isTie = checkBoardFull(state) || !checkPotentialTTT(state); }
+    return isWin ? 2 : isTie ? 1 : 0;
+  }
+  getState() { return this.board.getState(); }
+  applyMove(state, move, player) { arrReplaceAtInPlace(state, move, player.sym); }
+  undoMove(state, move, player) { arrReplaceAtInPlace(state, move, ' '); }
+  getAvailableMoves(state) {
+    let moves = [];
+    for (let i = 0; i < state.length; i++) {
+      if (EmptyFunc(state[i])) moves.push(i);
+    }
+    shuffle(moves);
+    return moves;
+  }
+  heuristic1(node, depth) { }
+  evalState(node, depth) {
+    let x = checkWinnerTTT(node);
+    if (checkBoardFull(node) || x) {
+      return { reached: true, val: (!x ? 0 : (10 - depth) * (x == MAXIMIZER.sym ? 1 : -1)) };
+    }
+    return { reached: false };
+  }
+  evalStateL(node, depth) {
+    let key = node.join('');
+    let val = DMM[key];
+    let x = isdef(val) ? val : checkWinnerTTT(node);
+    DMM[key] = x;
+    if (checkBoardFull(node) || x) {
+      return { reached: true, val: (!x ? 0 : (10 - depth) * (x == MAXIMIZER.sym ? 1 : -1)) };
+    }
+    return { reached: false };
+  }
+  evalStateL2(node, depth) {
+    let full = checkBoardFull(node);
+    if (full) {
+      let key = JSON.stringify(node);
+      let x = DMM[key];
+      if (nundef(x)) DMM[key] = x = checkWinnerTTT(node);
+      return { reached: true, val: (!x ? 0 : (10 - depth) * (x == MAXIMIZER.sym ? 1 : -1)) };
+    } else {
+      let x = checkWinnerTTT(node);
+      if (x) return { reached: true, val: (!x ? 0 : (10 - depth) * (x == MAXIMIZER.sym ? 1 : -1)) };
+      return { reached: false };
+    }
+  }
+}
+class GC4 extends GTTT {
+  startGame() {
+    super.startGame();
+  }
+  createBoard() {
+    this.board = new Board(this.rows, this.cols, this.controller.uiInteract.bind(this.controller), { margin: 6, w: 60, h: 60, bg: 'white', fg: 'black', rounding: '50%' });
+  }
+  setStartPosition() {
+    let positions = [
+      [[0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0]],
+      [[0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0],
+      ['O', 'X', 0, 0, 0, 0, 0],
+      ['O', 'X', 0, 0, 0, 0, 0]],
+      [[0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0],
+      ['O', 'X', 0, 0, 0, 0, 0],
+      ['O', 'X', 0, 0, 0, 0, 0],
+      ['O', 'X', 0, 0, 0, 0, 0]],
+      [[0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 'O', 0, 0, 0],
+      ['O', 'X', 0, 'O', 0, 0, 0],
+      ['O', 'X', 0, 'O', 0, 0, 0]],
+      [[0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, "X", 0, 0, 0],
+      ["X", 0, 0, "O", 0, 0, 0],
+      ["O", "X", 0, "O", 0, 0, 0],
+      ["O", "X", "O", "O", 0, 0, 0]],
+      [[0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0],
+      ["X", 0, 0, 0, 0, 0, 0],
+      ["X", 0, 0, 0, "O", "O", 0]],
+    ];
+    this.iPosition = 4;
+    if (isdef(this.iPosition)) {
+      let idx = this.iPosition + 1; idx = idx % positions.length; this.iPosition = idx;
+    } else this.iPosition = 0;
+    let state = nundef(this.startPosition) || this.startPosition == 'empty' ? positions[0]
+      : this.startPosition == 'random' ? chooseRandom(positions)
+        : positions[this.iPosition];
+    this.board.setState(state, { X: this.ai.color, O: this.human.color });
+  }
+  checkFinal(state) {
+    if (nundef(state)) state = this.getState();
+    let isTie = false;
+    let isWin = checkWinnerC4(state, this.rows, this.cols, this.stride);
+    if (!isWin) { isTie = checkBoardFull(state); }
+    return isWin ? 2 : isTie ? 1 : 0;
+  }
+  checkLegal(tile) {
+    let col = tile.col;
+    let topmost = this.board.items[col];
+    if (EmptyFunc(topmost.label)) return true; else return false;
+  }
+  findBottomEmptyTileInColumn(col) {
+    let x = lastCond(this.board.items, x => x.col == col && EmptyFunc(x.label));
+    return x;
+  }
+  interact(ev) {
+    let tile = evToItemC(ev);
+    let legal = this.checkLegal(tile);
+    if (!legal) { console.log('illegal move!'); return; } 
+    let pl = this.plTurn;
+    let bottomMost = this.findBottomEmptyTileInColumn(tile.col);
+    addLabel(bottomMost, pl.sym, { fz: 60, fg: pl.color });
+    this.controller.evaluate(tile);
+  }
+  getAvailableMoves(state) {
+    let moves = [];
+    for (let c = 0; c < G.cols; c++) {
+      for (let r = G.rows - 1; r >= 0; r--) {
+        let i = r * G.cols + c;
+        if (EmptyFunc(state[i])) { moves.push(i); break; }
+      }
+    }
+    shuffle(moves)
+    return moves;
+  }
+  evalState(node, depth) {
+    let x = checkWinnerC4(node);
+    if (checkBoardFull(node) || x) {
+      let res = { reached: true, val: (!x ? 0 : (10 - depth) * (x == MAXIMIZER.sym ? 1 : -1)) };
+      return res;
+    }
+    return { reached: false };
+  }
+}
+class GReversi extends GTTT {
+  createBoard() {
+    this.board = new Board(this.rows, this.cols, this.controller.uiInteract.bind(this.controller), { margin: 6, w: 60, h: 60, bg: 'white', fg: 'black', rounding: '50%' });
+  }
+  setStartPosition() {
+    let positions = [
+      [[0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0],
+      [0, 0, 'O', 'X', 0, 0],
+      [0, 0, 'X', 'O', 0, 0],
+      [0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0]],
+    ];
+    if (isdef(this.iPosition)) {
+      let idx = this.iPosition + 1; idx = idx % positions.length; this.iPosition = idx;
+    } else this.iPosition = 0;
+    if (this.startPosition == 'empty' || this.rows != 6 || this.cols != 6) {
+      let pos = bCreateEmpty(this.rows, this.cols);
+      let r1 = this.rows / 2 - 1, r2 = this.rows / 2, c1 = this.cols / 2 - 1, c2 = this.cols / 2;
+      pos[r1 * this.cols + c1] = pos[r2 * this.cols + c2] = 'O';
+      pos[r1 * this.cols + c2] = pos[r2 * this.cols + c1] = 'X';
+      positions[0] = pos;
+    }
+    let state = nundef(this.startPosition) || this.startPosition == 'empty' ? positions[0]
+      : this.startPosition == 'random' ? chooseRandom(positions)
+        : positions[this.iPosition];
+    this.board.setState(state, { X: this.ai.color, O: this.human.color });
+  }
+  startGame() {
+    super.startGame();
+    this.setStartPosition();
+  }
+  checkLegal(tile) {
+    let state = this.getState();
+    if (!EmptyFunc(tile.label)) return false;
+    let nei = bNei(state, tile.index, this.rows, this.cols, true);
+    for (const n of nei) {
+      if (!n) continue;
+      let t = state[n];
+      if (!EmptyFunc(t)) return true;
+    }
+    console.log('ILLEGAL MOVE! tile', tile.index, 'does not have neighbor!')
+    return false;
+  }
+  interact(ev) {
+    let tile = evToItemC(ev);
+    if (!this.checkLegal(tile)) return; 
+    let pl = this.plTurn;
+    addLabel(tile, pl.sym, { fz: 60, fg: pl.color });
+    let state = this.getState();
+    let iCapt = bCapturedPieces(pl.sym, state, tile.index, this.rows, this.cols);
+    for (const i of iCapt) {
+      let item = this.board.get(i);
+      modLabel(item, this.plTurn.sym, { fg: this.plTurn.color });
+    }
+    this.controller.evaluate(tile);
+  }
+  activate() {
+    let pl = this.plTurn;
+    let autoplay = false;
+    if (autoplay || pl == this.ai) {
+      if (this.ai == pl) uiActivated = false;
+      setTimeout(() => AIMinimax(this, this.afterComputerMove.bind(this)), 200);
+    }
+  }
+  checkFinal(state, pl1, pl2) {
+    if (nundef(state)) state = this.getState();
+    if (nundef(pl1)) pl1 = this.plTurn;
+    if (nundef(pl2)) pl2 = this.plOpp;
+    return GReversi.checkEnd(state, pl1, pl2);
+  }
+  static checkEnd(state, pl1, pl2) {
+    let hasPl1 = false, hasPl2 = false, s1 = pl1.sym, s2 = pl2.sym, hasEmpty = false;
+    for (const s of state) {
+      if (!hasPl1 && s == s1) hasPl1 = true;
+      else if (!hasPl2 && s == s2) hasPl2 = true;
+      else if (!hasEmpty && EmptyFunc(s)) hasEmpty = true;
+      if (hasPl1 && hasPl2 && hasEmpty) return false;
+    }
+    let winner = !hasPl2 ? pl1 : !hasPl1 ? pl2 : 0;
+    let full = !hasEmpty;
+    if (full) {
+      let n1 = arrCount(state, x => x == s1);
+      let n2 = arrCount(state, x => x == s2);
+      if (!winner && n1 != n2) {
+        if (n1 > n2) winner = pl1; else winner = pl2;
+      }
+    }
+    return winner ? { reached: true, winner: winner } : full ? { reached: true, winner: null } : { reached: false };
+  }
+  heuristic(state, plMax, plMin) {
+    let vmax = 0, vmin = 0;
+    vmax = vmax + arrCount(state, x => x == plMax.sym);
+    vmin = vmin + arrCount(state, x => x == plMin.sym);
+    return vmax - vmin;
+  }
+  heureval(state) {
+    let heurinfo = GReversi.heuristic(state, MAXIMIZER, MINIMIZER);
+    let val = heurinfo.val; 
+    return val;
+  }
+  eval() {
+    this.moveCounter += 1;
+    let info = this.checkFinal();
+    this.gameOver = info.reached;
+    if (this.gameOver) {
+      this.winner = info.winner;
+      this.tie = !info.winner;
+      if (this.winner) {
+        this.loser = this.winner == this.ai ? this.human : this.ai;
+        let state = this.getState();
+        let nWinner = arrCount(state, x => x == this.winner.sym);
+        let nLoser = arrCount(state, x => x == this.loser.sym);
+        this.info = '(' + nWinner + ':' + nLoser + ')';
+      }
+    }
+  }
+  getAvailableMoves(state) {
+    let moves = [];
+    for (let i = 0; i < state.length; i++) {
+      if (EmptyFunc(state[i])) {
+        let nei = bNei(state, i, G.rows, G.cols, true);
+        let iFull = firstCond(nei, x => !EmptyFunc(state[x]));
+        if (iFull != null) moves.push(i);
+      }
+    }
+    return moves;
+  }
+  evalState(state, depth) {
+    let info = GReversi.checkEnd(state, MAXIMIZER, MINIMIZER);
+    let val = info.reached && info.winner ? (100 - depth) * (info.winner == MAXIMIZER ? 1 : -1) : 0;
+    return { reached: info.reached, val: val };
+  }
+  applyMove(state, move, player) {
+    arrReplaceAtInPlace(state, move, player.sym);
+    let iCapt = bCapturedPieces(player.sym, state, move, G.rows, G.cols);
+    for (const i of iCapt) { state[i] = player.sym; }
+  }
+}
+class GChess extends G2Player {
+  clear() { super.clear(); if (isdef(this.game)) { this.game.reset(); } }
+  startGame() {
+    super.startGame();
+    this.createBoard();
+    this.game = new Chess();
+    this.setStartPosition();
+    let c = this.game.turn();
+    if (c == 'b') { this.plTurn.color = 'black'; this.plOpp.color = 'white'; } else { this.plTurn.color = 'white'; this.plOpp.color = 'black'; }
+    showFleetingMessage(`You play ${this.human.color}`)
+  }
+  createBoard() {
+    let d = mDiv(dTable, { h: 500, w: 500 }, 'dChessBoard');
+    let config = {
+      pieceTheme: '../alibs/chessBoard/img/chesspieces/wikipedia/{piece}.png',
+      draggable: true,
+      onDragStart: this.onDragStart.bind(this),
+      onDrop: this.onDrop.bind(this),
+      onSnapEnd: this.onSnapEnd.bind(this),
+    }
+    this.board = ChessBoard('dChessBoard', config);
+    mLinebreak(dTable);
+  }
+  setStartPosition() {
+    let positions = [
+      'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1', 
+      // //'8/8/8/8/8/8/8/8 b KQkq - 0 1', //black starts
+    ];
+    if (nundef(this.iPosition)) this.iPosition = 0;
+    let state = nundef(this.startPosition) || this.startPosition == 'empty' ? positions[0] : this.startPosition == 'random' ? chooseRandom(positions) : positions[this.iPosition];
+    if (!isString(state)) state = arrToFen(state.arr, state.plStart);
+    this.game.load(state); //'r1bqkbnr/pppp1ppp/2n5/1B2p3/4P3/5N2/PPPP1PPP/RNBQK2R b KQkq - 0 1');
+    this.board.position(this.game.fen());
+    let idx = this.iPosition + 1; idx = idx % positions.length; this.iPosition = idx;
+  }
+  prompt() {
+    let msg = this.plTurn == this.ai && !this.manual ? `Ai (${this.ai.color.toUpperCase()}) thinking...`
+      : `player: ${this.plTurn.color.toUpperCase()}`;
+    showInstruction(this.game.in_check() ? '- CHECK!!!' : '', msg, dTitle, false);
+    this.controller.activateUi();
+  }
+  activate() {
+    let pl = this.plTurn;
+    let autoplay = false;
+    if (autoplay || pl == this.ai) {
+      if (this.ai == pl) { uiActivated = false; aiActivated = true; }
+      this.TO = setTimeout(() => {
+        let color = this.game.turn();
+        if (color === 'b') { var move = getBestMove(this.game, color, globalSum)[0]; }
+        else { var move = getBestMove(this.game, color, -globalSum)[0]; }
+        globalSum = evaluateBoard(move, globalSum, 'b');
+        this.game.move(move);
+        this.board.position(this.game.fen());
+        this.controller.evaluate();
+      }, 100);
+    } else { aiActivated = false; uiActivated = true; }
+  }
+  getTurnColor() { return this.getPlayer(this.game.turn() == 'b' ? 'black' : 'white'); }
+  getOppColor() { return this.getPlayer(this.game.turn() == 'b' ? 'white' : 'black'); }
+  getPlayer(color) { return firstCond(this.players, x => x.color == color); }
+  changePlayer() { this.plTurn = this.game.turn() == 'b' ? this.getPlayer('black') : this.getPlayer('white'); }
+  onDragStart(source, piece, position, orientation) {
+    if (this.game.game_over() || !uiActivated) return false;
+    if ((this.game.turn() === 'w' && piece.search(/^b/) !== -1) ||
+      (this.game.turn() === 'b' && piece.search(/^w/) !== -1)) {
+      return false
+    }
+  }
+  onDrop(source, target) {
+    var move = this.game.move({
+      from: source,
+      to: target,
+      promotion: 'q' 
+    });
+    if (move === null) return 'snapback';
+    this.controller.evaluate();
+  }
+  onSnapEnd() { this.board.position(this.game.fen()) }
+  eval() {
+    this.info = null;
+    let over = this.gameOver = this.game.game_over();
+    if (this.game.in_draw()) { this.tie = true; console.log('in_draw'); this.info = '(draw)'; }
+    if (this.game.in_stalemate()) { this.tie = true; console.log('in_stalemate'); this.info = '(stalemate)'; }
+    if (this.game.in_threefold_repetition()) { this.tie = true; console.log('in_threefold_repetition'); this.info = '(threefold repetition)'; }
+    if (this.game.in_checkmate()) {
+      this.tie = false;
+      this.winner = this.getOppColor();
+      console.log('in_checkmate');
+      this.info = `(${this.winner.color.toUpperCase()})`;
+    }
+  }
+}
+class GSayPic extends Game {
+  constructor(name, o) { super(name, o); }
+  clear() { Speech.stopRecording(); }
+  prompt() {
+    myShowPics();
+    setGoal();
+    let wr = (this.language == 'E' ? 'say: ' : "sage: ");
+    show_instruction(wr + `<b>${Goal.label.toUpperCase()}</b>`, dTitle); 
+    animate(dInstruction, 'pulse800' + bestContrastingColor(this.color, ['yellow', 'red']), 900);
+    mLinebreak(dTable, 25);
+    MicrophoneUi = mMicrophone(dTable, this.color);
+    MicrophoneHide();
+    TOMain = setTimeout(this.controller.activateUi.bind(this.controller), 200);
+  }
+  trialPrompt(nTrial) {
+    sayRandomVoice(nTrial < 2 ? 'speak UP!!!' : 'Louder!!!', 'LAUTER!!!');
+    animate(dInstruction, 'pulse800' + bestContrastingColor(this.color, ['yellow', 'red']), 500);
+    return 600;
+  }
+  activate() {
+    if (Speech.isSpeakerRunning()) {
+      TOMain = setTimeout(this.activate.bind(this), 200);
+    } else {
+      TOMain = setTimeout(() => Speech.startRecording(this.language, this.controller.evaluate.bind(this.controller)), 100);
+    }
+  }
+  eval(isfinal, speechResult, confidence, sessionId) {
+    if (sessionId != SessionId) {
+      alert('NOT THIS BROWSER!!!!!!'); return undefined;
+    }
+    let answer = Goal.answer = normalize(speechResult, this.language);
+    let reqAnswer = Goal.reqAnswer = normalize(Goal.label, this.language);
+    Selected = { reqAnswer: reqAnswer, answer: answer, feedbackUI: iDiv(Goal) };
+    if (isEmpty(answer)) return false;
+    else return isSimilar(answer, reqAnswer) || isList(Goal.info.valid) && firstCond(Goal.info.valid, x => x.toUpperCase() == answer.toUpperCase());
+  }
+}
+class GProg0 extends Game {
+  constructor(name, o) { super(name, o); }
+  startGame(fen) {
+  }
+  prompt() {
+    let c = this.card0 = cLandscape(dTable);
+    this.card1 = iDiv(c).style;
+    this.card2 = iDiv(c);
+    this.card3 = iDiv(c);
+    show_instruction('write code what rank and suit this card should have', dTitle);
+    mLinebreak(dTable, 25);
+    let dCode = mDiv(dTable, {});
+    let ta = this.ta = mCreate('textarea');
+    mAppend(dCode, ta);
+    ta.setAttribute('rows', 10);
+    ta.setAttribute('cols', 60);
+    mStyle(ta, { family: 'courier', padding: 10 });
+    ta.value = `mStyle(iDiv(G.card0),{bg:'pink'})`; 
+    ta.value = `this.card1.background = 'yellow'`; 
+    ta.value = `this.card2.style.background = 'yellow'`; 
+    ta.value = `this.set('background','red');`; 
+    ta.value = `this.set(this.card1,'background','red');`; 
+    ta.value = `set(card1,'background','red');`; 
+    ta.value = `card.background = 'red';`; 
+    ta.value = `card.color = 'red';`; 
+    ta.value = `card.color = 'red';`; 
+    mLinebreak(dTable, 25);
+    mButton('run', this.runCode.bind(this), dTable, { bg: 'skyblue', fg: 'black', fz: 32 }, 'mybutton');
+    console.log('type of style', typeof this.card1);
+  }
+  set(o, prop, val) {
+    o[prop] = val;
+  }
+  runCode() {
+    let code = this.ta.value;
+    let prelim = ''; 
+    prelim = 'let card = this.card1; '; 
+    prelim = `
+    var card = new ProgObject(this.card0);
+    console.log('card',card);
+    `;
+    prelim = `
+    var obj = {};
+    Object.defineProperty(obj, prop, {
+        get: function() {return this.card1; },
+        set: function(val) { this.card1.val = val; }
+    });
+    `
+    code = prelim + code;
+    console.log('code', code);
+    eval(code);
+  }
+}
+class GProg1 extends Game {
+  constructor(name, o) { super(name, o); }
+  prompt() {
+    let c = this.card = cLandscape(dTable);
+    let d = this.visual = iDiv(c);
+    this.style = d.style;
+    let propertyGiver1 = (o, prop, setter) => {
+      Object.defineProperty(o, prop, {
+        get: function () { return this.val; },
+        set: function (val) { this.val = val; setter(val); }
+      });
+    };
+    let visualPropertySetter1 = (o) => {
+      propertyGiver1(o, 'bg', x => { mStyle(G.visual, { 'bg': x }); }); 
+    }
+    visualPropertySetter1(this.card);
+    d.innerHTML = 'HALLO';
+    mStyle(d, { fg: 'blue' });
+    mLinebreak(dTable, 25);
+    let dCode = mDiv(dTable, {});
+    let ta = this.ta = mCreate('textarea');
+    mAppend(dCode, ta);
+    ta.setAttribute('rows', 10);
+    ta.setAttribute('cols', 60);
+    mStyle(ta, { family: 'courier', padding: 10 });
+    ta.value = `card.bg = 'red'; console.log(card.bg);`; 
+    mLinebreak(dTable, 25);
+    mButton('run', this.runCode.bind(this), dTable, { bg: 'skyblue', fg: 'black', fz: 32 }, 'mybutton');
+    console.log('type of style', typeof this.card1);
+  }
+  runCode() {
+    let code = this.ta.value;
+    let prelim = ''; 
+    prelim = 'let [card,visual,style] = [this.card,this.visual,this.style]; '; 
+    code = prelim + code;
+    console.log('code', code);
+    eval(code);
+  }
+}
+class IClass extends LiveObject {
+  constructor(k, U, G, T) {
+    super(k);
+    this.player = {};
+    copyKeys(U, this.player);
+    copyKeys(G, this);
+    copyKeys(T, this);
+    this.running = false;
+    this.uiState = this.immediateStart ? LiveObject.States.ready : LiveObject.States.none;
+    this.startTime = Date.now();
+    this.div = null;
+  }
+  loop() {
+    this.update(); 
+    this.present(); 
+    this.activate();
+  }
+  getState() {
+    return { players: this.players, table: this.table, options: this.options, turn: this.turn };
+  }
+  setState(s) {
+    this.players = s.players;
+    this.table = s.table;
+    this.options = s.options;
+    this.turn = s.turn;
+  }
+  present() {
+    console.log('state', this.getState());
+  }
+  update() {
+    for (const pl of this.players) this.updatePlayer(pl);
+    this.updateTable(); 
+    this.updateTurn();  
+    this.updateOptions(this.player);
+  }
+  updateOptions() { this.options = {}; }
+  updatePlayer() { }
+  updateTable() { this.table = {}; }
+  updateTurn() { this.turn = chooseRandom(this.players).id; }
+}
+class GGuess extends IClass{
+  setup(){
+  }
+  updatePlayer(pl){
+  }
+  updateOptions(pl){
+    this.options = Array.from('ABCDEFGHIJKLMNOPQRSTUVWXYZ');
+    console.log(this.options);
+  }
+}
+class AddonClass extends LiveObject {
+  constructor(k, dbInfo, userInfo) {
+    super(k);
+    copyKeys(dbInfo, this);
+    copyKeys(userInfo, this);
+    this.running = false;
+    this.uiState = this.immediateStart ? LiveObject.States.ready : LiveObject.States.none;
+    this.startTime = Date.now();
+    this.callback = this.div = this.dContent = null;
+  }
+  //#region internal
+  _createDivs() {
+    this.dInstruction = mDiv(this.dContent);
+    this.dMain = mDiv(this.dContent);
+    this.dHint = mDiv(this.dContent); this.dHint.innerHTML = 'hallo'; this.dHint.style.opacity = 0;
+  }
+  _createScreen() {
+    show(mBy('dAddons'));
+    let bg = colorTrans('silver', .25);
+    let d = mScreen(mBy('dAddons'), { bg: bg, display: 'flex', layout: 'fvcc' });
+    let dContent = mDiv(d, { display: 'flex', layout: 'fvcs', fg: 'contrast', fz: 24, bg: 'silver', patop: 50, pabottom: 50, matop: -50, w: '100vw' });
+    return [d, dContent];
+  }
+  //#endregion
+  checkEndCondition() {
+    let c = this.endsWhen;
+    let res = false;
+    if (isdef(c) && this[c.prop] == c.value) res = true;
+    console.log('condition:', res, 'tNext', this.tNext)
+    return res;
+  }
+  exit() {
+    hide('dAddons');
+    this.tNext *= this.tFactor;
+    this.startTime = Date.now();
+    this.clear();
+    this.callback();
+  }
+  init() {
+    [this.div, this.dContent] = this._createScreen();
+    this._createDivs();
+    this.setRunning();
+    let caption = this.presentInit();
+    mButton(isdef(caption) ? caption : 'Got it!', this.prompt.bind(this), this.dContent, { fz: 32, matop: 10 });
+  }
+  isTimeForAddon() {
+    switch (this.uiState) {
+      case LiveObject.States.none: this.getReady(this.tNext); return false;
+      case LiveObject.States.gettingReady: return false;
+      case LiveObject.States.ready: return true;
+      case LiveObject.States.running: return Date.now() - this.startTime >= this.tNext;
+    }
+  }
+  presentInit() { console.log('presenting initial information'); }
+  presentPrompt() { console.log('prompting user to do something') }
+  prompt() {
+    clearElement(this.dContent);
+    this.trialsNeeded = 0;
+    this._createDivs();
+    this.presentPrompt();
+    this.activate();
+  }
+  processInput() {
+    if (!this.uiActivated) return;
+    this.uiActivated = false;
+    let isCorrect = this.eval(...arguments);
+    if (isCorrect) {
+      this.positive();
+      this.exit();
+    } else {
+      this.negative();
+      this.trialPrompt();
+    }
+  }
+  positive() {
+    this.trialNumber = null;
+    delete this.dHint;
+  }
+  negative() {
+    if (nundef(this.trialNumber)) this.trialNumber = 1; else this.trialNumber += 1;
+  }
+  run() {
+    show('dAddons');
+    if (this.running) { this.prompt(); } else this.init();
+  }
+  trialPrompt() {
+    this.trialsNeeded += 1;
+    let [wr, sp] = this.getHint();
+    this.hintLength = wr.length;
+    if (isdef(sp)) sayRandomVoice(sp);
+    this.dHint.innerHTML = 'Hint: ' + wr; this.dHint.style.opacity = 1;
+    this.activate();
+  }
+}
+class APasscode extends AddonClass {
+  constructor(k, dbInfo, userInfo) {
+    super(k, dbInfo, userInfo);
+    this.needNewPasscode = true;
+  }
+  presentInit() {
+    let keys = getRandomKeysFromGKeys(1); 
+    let options = { rows: 1 };
+    this.pictures = getPics(null, {}, options, keys);
+    this.goal = this.pictures[0];
+    this.passcode = this.goal.label;
+    let dParent = this.dContent;
+    let d_title = mDiv(dParent);
+    showInstruction(this.goal.label, Settings.language == 'E' ? 'the passcode is' : 'das Codewort ist', d_title, true);
+    let d_pics = mDiv(dParent);
+    presentItems(this.pictures, d_pics, options.rows);
+    this.TOList.push(setTimeout(anim1, 300, this.goal, 500));
+  }
+  presentPrompt() {
+    let keys = getRandomKeysIncluding(this.numPics, this.goal.key, 'all');
+    let iGoal = keys.indexOf(this.goal.key);
+    let options = { rows: 2, showLabels: true };
+    this.pictures = getPics(this.processInput.bind(this), undefined, { rows: 2, showLabels: true }, keys);
+    this.goal = this.pictures[iGoal];
+    showInstruction('', 'click ' + (Settings.language == 'E' ? 'the passcode' : 'das Codewort'), this.dInstruction, true);
+    presentItems(this.pictures, this.dMain, options.rows);
+  }
+  eval(ev) {
+    ev.cancelBubble = true;
+    let item = findItemFromEvent(this.pictures, ev);
+    Selected = { pic: item, feedbackUI: item.div, sz: getBounds(item.div).height };
+    Selected.reqAnswer = this.goal.label;
+    Selected.answer = item.label;
+    if (item.label == this.goal.label) { return true; } else { return false; }
+  }
+  getHint() {
+    let hintLength, spoken;
+    if (this.trialNumber > this.passcode.length * 2) {
+      hintLength = this.passcode.length;
+      spoken = 'click ' + this.passcode.toUpperCase() + '!!!';
+    } else if (this.trialNumber > this.passcode.length * 2 - 1) {
+      hintLength = this.passcode.length;
+      spoken = (Settings.language == 'E' ? 'REMEMBER ' : 'MERKE DIR ') + this.passcode.toUpperCase() + '!!!';
+    } else if (this.trialNumber > this.passcode.length) {
+      hintLength = (this.trialNumber - this.passcode.length);
+      let letters = this.passcode.substring(0, hintLength);
+      let letters1 = letters.split();
+      spoken = (Settings.language == 'E' ? 'the passcode starts with' : 'das Codewort beginnt mit') + ' ' + letters1.join(', ');
+    } else {
+      hintLength = this.trialNumber;
+      spoken = null;
+    }
+    return [this.passcode.substring(0, hintLength), spoken];
+  }
+}
+class AAddress extends APasscode {
+  constructor(k, dbInfo, userInfo) {
+    super(k, dbInfo, userInfo);
+  }
+  clear() { super.clear(); Speech.setLanguage(Settings.language); window.onclick = null; }
+  presentInit() {
+    this.msgPrompt = 'enter your address';
+    this.lastHintPrompt = 'please complete entering address!';
+    this.goal = { label: '17448 NE 98th Way Redmond 98052' };
+    Speech.setLanguage('E')
+    let wr = 'your address is:';
+    let sp = 'your address is 1 7 4 4 8 - North-East 98th Way - Redmond, 9 8 0 5 2';
+    showInstruction(this.goal.label, wr, this.dInstruction, true, sp, 12);
+    this.goal.div = mText(this.goal.label, this.dMain, { fz: 40 });
+    this.TOList.push(setTimeout(anim1, 300, this.goal, 500));
+  }
+  presentPrompt() {
+    Speech.setLanguage('E');
+    stdInstruction(this.msgPrompt, this.dInstruction, this.msgPrompt, { voice: 'zira' });
+    this.input = stdInput(this.dMain, { w: 600, fz: 24 });
+    this.input.id = this.defaultFocusElement = 'inputAddon';
+    this.nCorrect = 0;
+  }
+  activate() {
+    window.onclick = () => mBy(this.defaultFocusElement).focus();
+    this.input.onkeyup = ev => {
+      if (ev.key === "Enter") {
+        ev.cancelBubble = true;
+        this.processInput(ev);
+      }
+    };
+    this.input.focus();
+    super.activate();
+  }
+  eval() {
+    let correctPrefix = this.correctPrefix = getCorrectPrefix(this.goal.label, this.input.value);
+    return correctPrefix == this.goal.label;
+  }
+  getHint() {
+    let oldHintLength = isdef(this.hintLength) ? this.hintLength : 0;
+    if (nundef(this.hintLength)) this.hintLength = 0;
+    this.input.value = this.correctPrefix;
+    let progress = this.correctPrefix.length > this.nCorrect;
+    if (this.correctPrefix.length > this.nCorrect) {
+      this.hintLength = 1;
+      this.nCorrect = this.correctPrefix.length;
+    } else if (this.hintLength < this.goal.label.length - this.nCorrect) this.hintLength += 1;
+    if (this.hintLength == 0) this.hintLength = 1;
+    let wr = substringOfMinLength(this.goal.label, this.correctPrefix.length, this.hintLength);
+    let sp = oldHintLength == this.hintLength && !progress ? this.lastHintPrompt : null;
+    return [wr, sp];
+  }
+}
+class APassword extends AAddress {
+  presentInit() {
+    this.goal = null;
+    Speech.setLanguage('E');
+    let msg = 'create a new password!';
+    this.msgPrompt = 'enter your password';
+    this.lastHintPrompt = 'please complete entering password!';
+    stdInstruction(msg, this.dInstruction, msg, { voice: 'zira' });
+    this.input = stdInputVal(this.dMain, { w: 600, fz: 24 }, 'hallo');
+    this.input.id = this.defaultFocusElement = 'inputAddon';
+    window.onclick = () => mBy(this.defaultFocusElement).focus();
+    return 'set password';
+  }
+  presentPrompt() {
+    if (nundef(this.goal)) this.goal = { label: this.input.value.trim() };
+    super.presentPrompt();
+  }
+}
+class GPasscode extends Game {
+  constructor(name, o) { super(name, o); this.needNewPasscode = true; }
+  clear() { clearTimeout(this.TO); clearTimeCD(); }
+  startGame() {
+    this.incrementLevelOnPositiveStreak = this.samplesPerGame;
+    this.decrementLevelOnNegativeStreak = this.samplesPerGame;
+  }
+  start_Level() { this.needNewPasscode = true; }
+  prompt() {
+    this.trials = 1;
+    if (this.needNewPasscode) {
+      this.timeout = 1000;
+      this.needNewPasscode = false;
+      let keys = getRandomKeysFromGKeys(this.passcodeLength);
+      myShowPics(null,
+        { border: '3px solid #ffffff80' },
+        { numRepeat: this.numRepeat, sameBackground: true }, keys);
+      Goal = Pictures[0];
+      this.wort = (this.language == 'E' ? 'the passcode' : 'das Codewort');
+      showInstruction(Goal.label, this.wort + (this.language == 'E' ? ' is' : ' ist'), dTitle, true);
+      TOMain = setTimeout(anim1, 300, Goal, 500, showGotItButton);
+    } else {
+      this.timeout *= 2;
+      doOtherStuff();
+    }
+  }
+  eval(x) {
+    CountdownTimer.cancel();
+    let isCorrect = super.eval(x);
+    if (!isCorrect) this.needNewPasscode = true;
+    return isCorrect;
+  }
+}
+class GStory extends Game {
+  constructor(name) { super(name); }
+  prompt() {
+    let showLabels = G.showLabels == true && Settings.labels == true;
+    myShowPics(evaluate, {}, { showLabels: showLabels });
+    setGoal();
+    showInstruction(Goal.label, 'click', dTitle, true);
+    activateUi();
+  }
+}
+class GSentence1 extends Game {
+  constructor(name, o) {
+    super(name, o);
+    this.prevLanguage = this.language;
+    this.language = 'E';
+  }
+  startGame() {
+    this.correctionFunc = showCorrectPictureLabels;
+    this.failFunc = failSomePictures;
+    this.successFunc = () => { mCheckit(this.dWordArea, 120); };
+  }
+  clear() { super.clear(); this.language = this.prevLanguage; }
+  start_Level() {
+    this.sentences = EnglishSentences.map(x => x.split(' ')).filter(x => x.length <= this.maxWords);
+  }
+  dropHandler(source, target, isCopy = false, clearTarget = false) {
+    let prevTarget = source.target;
+    source.target = target;
+    let dSource = iDiv(source);
+    let dTarget = iDiv(target);
+    if (clearTarget) {
+      let ch = dTarget.children[0];
+      let chSource = firstCond(Pictures, x => iDiv(x) == ch);
+      if (chSource) {
+        if (isdef(prevTarget)) {
+          mAppend(iDiv(prevTarget), ch);
+          chSource.target = prevTarget;
+        } else {
+          mAppend(this.dWordArea, ch);
+          delete chSource.target;
+        }
+      }
+      clearElement(dTarget);
+    }
+    if (isCopy) {
+      let dNew = mText(dSource.innerHTML, dTarget, { wmin: 100, fz: 20, padding: 4, margin: 4, display: 'inline-block' });
+      addDDSource(dNew, isCopy, clearTarget);
+    } else {
+      mAppend(dTarget, dSource);
+    }
+  }
+  prompt() {
+    let words = this.sentence = chooseRandom(this.sentences);
+    showInstruction('', 'drag words into blanks', dTitle, true);
+    mLinebreak(dTable);
+    let fz = 32;
+    let h = fz * 1.25, wmin = fz * 1.25;
+    let items = Pictures = [];
+    let containers = [];
+    let options = _simpleOptions({ fz: fz, bg: 'transparent', fg: 'white', showPic: false, showLabels: true }, { wmin: wmin });
+    let dArea = mDiv(dTable, { h: 150, display: 'flex', 'flex-wrap': 'wrap', layout: 'fhcc' });
+    mLinebreak(dTable);
+    let dWordArea = this.dWordArea = mDiv(dTable, { h: 70, wmin: 20, display: 'flex', 'flex-wrap': 'wrap', layout: 'fhcc' });
+    let i = 0;
+    for (const word of words) {
+      let item = { label: word, index: i };
+      let container = { label: word, index: i };
+      i += 1;
+      let d = makeItemDiv(item, options);
+      let dCont = mDiv(dArea, { wmin: wmin + 12, hmin: h + 10, bg: colorTrans('beige', .25), fg: 'black', margin: 12 });
+      container.div = dCont;
+      items.push(item);
+      containers.push(container);
+    }
+    shuffle(items);
+    items.map(x => { mAppend(dWordArea, iDiv(x)); mStyleX(iDiv(x), { h: h, w: 'auto' }); });
+    enableDD(items, containers, this.dropHandler.bind(this), false, true);
+    mLinebreak(dTable, 50);
+    mButton('Done!', this.controller.evaluate.bind(this.controller), dTable, { fz: 28, matop: 10, rounding: 10, padding: 16, border: 8 }, ['buttonClass']);
+    this.controller.activateUi.bind(this.controller)();
+  }
+  trialPrompt() {
+    sayTryAgain();
+    showFleetingMessage('Try again!', 0, { fg: 'white' });
+    TOMain = setTimeout(() => { Pictures.map(x => mAppend(this.dWordArea, iDiv(x))); }, 1200);
+    return 1500;
+  }
+  eval() {
+    let i = 0;
+    let isCorrect = true;
+    for (const p of Pictures) {
+      let cont = p.target;
+      if (nundef(cont)) p.isCorrect = isCorrect = false;
+      else if (p.index != cont.index) p.isCorrect = isCorrect = false;
+      else p.isCorrect = true;
+    }
+    Selected = { piclist: Pictures, feedbackUI: Pictures.map(x => iDiv(x)), sz: getRect(iDiv(Pictures[0])).h + 10 };
+    return isCorrect;
+  }
+}
+class CCanvasNoClear extends CCanvas {
+  clear() { }
+}
+class CCanvasPlot extends CCanvas {
+  clear() {
+    cClear(this.cv, this.cx);
+    this.draw_axes();
+  }
+  draw_axes() {
+    let ctx = this.cx;
+    ctx.beginPath();
+    ctx.strokeStyle = "rgb(128,128,128)";
+    ctx.moveTo(this.minx, 0); ctx.lineTo(this.maxx, 0);  
+    ctx.moveTo(0, this.miny); ctx.lineTo(0, this.maxy);  
+    ctx.stroke();
+  }
+  draw() {
+    this.clear();
+    for (const item of this.items) {
+      if (isdef(item.func)) this.plot(item.func, item.color, item.thickness);
+      else {
+        super.draw_item(item);
+      }
+    }
+  }
+  pp(x, y, label = 'hallo', styles = {}) {
+    addKeys({ fg:'silver', bg: 'silver', w: 3, h: 3 }, styles)
+    cEllipse(x, y, styles.w, styles.h, { bg: styles.bg }, 0, this.cx);
+    addKeys({x:x, y:y, offy: 'below 4', offx: 'center', family: 'arial narrow', fz: 20},styles);
+    draw_text(this, label, styles);
+  }
+  plot(func, color, thick, filled = false) {
+    let cx = this.cx;
+    var xx, yy, dx = 4, x0 = 0, y0 = 0, scale = this.scale = 40;
+    var imax = Math.round(this.maxx / dx);
+    var imin = Math.round(this.minx / dx);
+    cx.beginPath();
+    cx.lineWidth = thick;
+    cx.strokeStyle = cx.fillStyle = color;
+    for (var i = imin; i <= imax; i++) {
+      xx = dx * i; yy = scale * func(xx / scale);
+      if (i == imin) cx.moveTo(x0 + xx, y0 - yy);
+      else cx.lineTo(x0 + xx, y0 - yy);
+    }
+    cx.stroke(); if (filled) cx.fill();
+  }
+}
+class GAnagramBROKEN extends Game {
+  constructor(name, o) {
+    super(name, o);
+    if (this.language == 'C') {
+      this.realLanguage = this.language;
+      this.language = chooseRandom('E', 'S', 'F', 'D');
+    }
+  }
+  clear() { super.clear(); if (isdef(this.language)) this.language = this.language; }
+  start_Level() {
+    this.keys = setKeysG(this, filterWordByLengthG, 10);
+    if (this.keys.length < 10) { this.keys = setKeysG(this, filterWordByLengthG, 10, 'all'); }
+  }
+  prompt() {
+    myShowPics(null, {}, {});
+    if (this.hidden) {
+      let d = iDiv(Pictures[0]);
+      animate(d, 'aniAppearMinute', 100000);
+    }
+    setGoal();
+    let w = this.showWord ? Goal.label : '';
+    let wr = `drag letters to form ${w}`;
+    let sp = `forme ${w}`;
+    show_instruction(wr, dTitle, sp);
+    mLinebreak(dTable, 22);
+    let word = Goal.label.toUpperCase();
+    let wlen = word.length;
+    let wTable = getRect(mBy('table')).w;
+    let wmax = wTable / wlen;
+    let gap = 4;
+    let fzMax = wTable / wlen - 3 * gap;
+    let fz = Math.min(70, fzMax);
+    let dpEmpty = createLetterInputsX(word, dTable, { pabottom: 5, bg: 'grey', display: 'inline-block', fz: fz, w: fz, h: fz * 1.1, margin: gap }); 
+    let inputs = blankInputs(dpEmpty, range(0, wlen - 1), false);
+    for (let i = 0; i < inputs.length; i++) {
+      let l = iDiv(inputs[i]);
+      ipadd(l);
+      mClass(l, 'dropzone');
+      l.id = 'input' + i;
+    }
+    this.inputs = inputs;
+    let x = mLinebreak(dTable, 35);
+    fz = Math.min(60, fzMax);
+    let dp = createLetterInputsX(word, dTable, { bg: 'silver', display: 'inline-block', fz: fz, w: fz, h: fz * 1.1, margin: 4 }); 
+    scrambleInputs(dp);
+    let letters = Array.from(dp.children);
+    for (let i = 0; i < letters.length; i++) {
+      let l = letters[i];
+      l.setAttribute('draggable', true);
+      ipadd(l);
+      l.id = 'letter' + i;
+    }
+    this.letters = letters;
+    mLinebreak(dTable, 35);
+    this.bDone = mButton('Done!', this.controller.evaluate.bind(this.controller), dTable, { fz: 28, matop: 10, rounding: 10, padding: 16, border: 8 }, ['buttonClass']);
+    if (this.hidden) showFleetingMessage('category: ' + Pictures[0].info.subgroup, 5000);
+    else if (!this.showWord) { showLabelPercentHintAfter(50, 6000); }
+    this.controller.activateUi.bind(this.controller)();
+  }
+  trialPrompt() {
+    sayTryAgain();
+    setTimeout(() => {
+      this.inputs.map(x => iDiv(x).innerHTML = '_')
+    }, 1500);
+    return 10;
+  }
+  eval() {
+    let s = this.inputs.map(x => iDiv(x).innerHTML);
+    let w = s = s.join('');
+    let word = Goal.label.toUpperCase();
+    Selected = { answer: w, reqAnswer: word, feedbackUI: iDiv(Goal) };
+    return w == word;
+  }
+  onTimeup() { this.controller.evaluate(); }
+}
+class GameTimed1 extends Game{
+  constructor(name, o) { super(name, o); }
+  clear() { clearInterval(this.TOI); super.clear(); }
+  makeTimer() {
+    if (nundef(this.msTotal)) this.msTotal = 5000;
+    if (nundef(this.msInterval)) this.msInterval = 100;
+    let w = this.wTimerOuter = 200;
+    this.dTimeOuter = mDiv(dTable, { w: w, h: 25, border: 'white', rounding: 10, position: 'relative' });
+    [this.wTimer, this.r, this.g] = [0, 0, 255];
+    this.dTimeInner = mDiv(this.dTimeOuter, { h: 25, w: this.wTimer, rounding: 10, bg: `rgb(${this.r},${this.g},0)`, position: 'absolute', left: 0, top: 0 });
+    this.dTimeDisplay = mDiv(this.dTimeOuter, { patop: 2, align: 'center', h: 25, w: w, position: 'absolute', left: 0, top: 0 });
+    mLinebreak(dTable);
+    this.dPause = mDiv(dTable, { cursor: 'pointer', fz: 12, hpadding: 30, vpadding: 10 }, null, 'click to pause');
+    this.dPause.onclick = () => this.pause();
+  }
+  pause() {
+    clearInterval(this.TOI);
+    this.dPause.innerHTML = 'click to resume...';
+    this.dPause.onclick = () => this.resume();
+  }
+  resume() {
+    this.dPause.innerHTML = 'click to pause...';
+    this.dPause.onclick = () => this.pause();
+    this.TOI = setInterval(this.onTick.bind(this), this.msInterval);
+  }
+  activate() {
+    this.msLeft = valf(this.msTotal, 10000);
+    this.dTimeDisplay.innerHTML = timeConversion(this.msLeft, 'sh');
+    this.TOI = setInterval(this.onTick.bind(this), this.msInterval);
+  }
+  onTick() {
+    this.msLeft -= this.msInterval;
+    this.wTimer += this.wTimerOuter * this.msInterval / this.msTotal;
+    let inc_color = 255 * this.msInterval / this.msTotal; 
+    this.r += inc_color; this.g -= inc_color;
+    mStyle(this.dTimeInner, { w: this.wTimer, bg: `rgb(${this.r},${this.g},0)` });
+    this.dTimeDisplay.innerHTML = timeConversion(this.msLeft, 'sh');
+    if (this.msLeft < 100) {
+      clearInterval(this.TOI);
+      this.dPause.style.opacity = 0;
+      this.onTimeup();
+    }
+  }
+}
+class GSpotit1 extends GameTimed1 {
+  constructor(name, o) { super(name, o); }
+  startGame() { this.correctionFunc = showCorrectUis; }
+  start_Level() {
+    this.colarr = _calc_hex_col_array(this.rows, this.cols);
+    let perCard = arrSum(this.colarr);
+    this.nShared = (this.numCards * (this.numCards - 1)) / 2;
+    this.nUnique = perCard - this.numCards + 1;
+    this.numKeysNeeded = this.nShared + this.numCards * this.nUnique;
+    this.keys = setKeysG(this, (_, x) => !x.includes(' '), this.numKeysNeeded + 1);
+  }
+  deal() {
+    let keys = choose(this.keys, this.numKeysNeeded);
+    let dupls = keys.slice(0, this.nShared); 
+    let uniqs = keys.slice(this.nShared);
+    let infos = [];
+    for (let i = 0; i < this.numCards; i++) {
+      let keylist = uniqs.slice(i * this.nUnique, (i + 1) * this.nUnique);
+      let info = { id: getUID(), shares: {}, keys: keylist, rows: this.rows, cols: this.cols, colarr: this.colarr };
+      infos.push(info);
+    }
+    let iShared = 0;
+    for (let i = 0; i < this.numCards; i++) {
+      for (let j = i + 1; j < this.numCards; j++) {
+        let c1 = infos[i];
+        let c2 = infos[j];
+        let dupl = dupls[iShared++];
+        c1.keys.push(dupl);
+        c1.shares[c2.id] = dupl;
+        c2.shares[c1.id] = dupl;
+        c2.keys.push(dupl);
+      }
+    }
+    for (const info of infos) { shuffle(info.keys); }
+    return infos;
+  }
+  interact(ev) {
+    ev.cancelBubble = true;
+    if (!canAct()) { console.log('no act'); return; }
+    let keyClicked = evToProp(ev, 'key');
+    let id = evToId(ev);
+    if (isdef(keyClicked) && isdef(Items[id])) {
+      this.pause();
+      let item = Items[id];
+      if (Object.values(item.shares).includes(keyClicked)) {
+        let otherCard = spotitFindCardSharingSymbol(item, keyClicked);
+        let cardSymbol = ev.target;
+        let otherSymbol = spotitFindSymbol(otherCard, keyClicked);
+        Selected = { isCorrect: true, feedbackUI: [cardSymbol, otherSymbol] };
+      } else {
+        let cardSymbol = ev.target;
+        Selected = { isCorrect: false, feedbackUI: [cardSymbol], correctUis: this.getSharedSymbols(), correctionDelay: this.items.length * 1500 };
+      }
+      this.controller.evaluate.bind(this.controller)();
+    }
+  }
+  getSharedSymbols() {
+    let result = [];
+    for (const item of this.items) {
+      for (const id in item.shares) {
+        let k = item.shares[id];
+        let ui = iGetl(item, k);
+        result.push(ui);
+      }
+    }
+    return result;
+  }
+  eval() { return Selected.isCorrect; }
+  prompt() {
+    this.trials = 1;
+    show_instruction('find common symbol', dTitle);
+    this.makeTimer();
+    mLinebreak(dTable, 25);
+    let infos = this.deal(); 
+    let items = this.items = [];
+    for (const info of infos) {
+      let item = spotitCard(info, dTable, { margin: 10 }, this.interact.bind(this));
+      items.push(item);
+    }
+    this.controller.activateUi.bind(this.controller)();
+  }
+  onTimeup() {
+    Selected = { isCorrect: false, correctUis: this.getSharedSymbols(), correctionDelay: this.items.length * 2000 };
+    this.controller.evaluate.bind(this.controller)();
+  }
+}
+class GAnagram_orig extends Game {
+  constructor(name, o) {
+    super(name, o);
+    if (this.language == 'C') {
+      this.realLanguage = this.language;
+      this.language = chooseRandom('E', 'S', 'F', 'D');
+    }
+  }
+  clear() { super.clear(); if (isdef(this.language)) this.language = this.language; }
+  start_Level() {
+    this.keys = setKeysG(this, filterWordByLengthG, 10);
+    if (this.keys.length < 10) { this.keys = setKeysG(this, filterWordByLengthG, 10, 'all'); }
+  }
+  prompt() {
+    myShowPics(null, {}, {});
+    if (this.hidden) {
+      let d = iDiv(Pictures[0]);
+      animate(d, 'aniAppearMinute', 100000);
+    }
+    setGoal();
+    showInstruction(this.showWord ? Goal.label : '', this.language == 'E' ? 'drag letters to form' : "forme", dTitle, true);
+    mLinebreak(dTable, 25);
+    this.inputs = createDropInputs();
+    let x = mLinebreak(dTable, 50);
+    this.letters = createDragLetters();
+    if (this.hidden) showFleetingMessage('category: ' + Pictures[0].info.subgroup, 5000);
+    else if (!this.showWord) { showLabelPercentHintAfter(50, 6000); }
+    this.controller.activateUi.bind(this.controller)();
+  }
+  trialPrompt() {
+    sayTryAgain();
+    setTimeout(() => {
+      this.inputs.map(x => iDiv(x).innerHTML = '_')
+    }, 1500);
+    return 10;
+  }
+  eval(w, word) {
+    Selected = { answer: w, reqAnswer: word, feedbackUI: iDiv(Goal) }; 
+    return w == word;
+  }
+}
+class GAnagram_MESSY extends Game {
+  constructor(name, o) {
+    super(name, o);
+    if (this.language == 'C') {
+      this.realLanguage = this.language;
+      this.language = chooseRandom('E', 'S', 'F', 'D');
+    }
+  }
+  clear() { super.clear(); if (isdef(this.language)) this.language = this.language; }
+  start_Level() {
+    this.keys = setKeysG(this, filterWordByLengthG, 10);
+    if (this.keys.length < 10) { this.keys = setKeysG(this, filterWordByLengthG, 10, 'all'); }
+  }
+  prompt() {
+    myShowPics(null, {}, {});
+    if (this.hidden) {
+      let d = iDiv(Pictures[0]);
+      animate(d, 'aniAppearMinute', 100000);
+    }
+    setGoal();
+    showInstruction(this.showWord ? Goal.label : '', this.language == 'E' ? 'drag letters to form' : "forme", dTitle, true);
+    mLinebreak(dTable, 25);
+    let fz = 120; let word = Goal.label.toUpperCase(); let wlen = word.length;
+    let dpEmpty = createLetterInputsX(word, dTable, { pabottom: 5, bg: 'grey', display: 'inline-block', fz: fz, w: fz, h: fz * 1.1, margin: 4 }); 
+    let inputs = blankInputs(dpEmpty, range(0, wlen - 1), false);
+    for (let i = 0; i < inputs.length; i++) {
+      let l = iDiv(inputs[i]);
+      l.ondragover = ev => ev.preventDefault();
+      l.ondrop = event => {
+        event.preventDefault();
+        var data = event.dataTransfer.getData("Text");
+        event.target.innerHTML = data;
+      }
+      makeDraggableInner(l);
+      mClass(l, 'dropzone');
+      l.id = 'input' + i;
+    }
+    this.inputs = inputs;
+    let x = mLinebreak(dTable, 50);
+    fz = 60; word = Goal.label.toUpperCase(); 
+    let dp = createLetterInputsX(word, dTable, { bg: 'silver', display: 'inline-block', fz: fz, w: fz, h: fz * 1.1, margin: 4 }); 
+    scrambleInputs(dp);
+    let letters = Array.from(dp.children);
+    for (let i = 0; i < letters.length; i++) {
+      let l = letters[i];
+      l.setAttribute('draggable', true);
+      makeDraggableInner(l);
+      l.id = 'letter' + i;
+    }
+    this.letters = letters;
+    if (this.hidden) showFleetingMessage('category: ' + Pictures[0].info.subgroup, 5000);
+    else if (!this.showWord) { showLabelPercentHintAfter(50, 6000); }
+    this.controller.activateUi.bind(this.controller)();
+  }
+  trialPrompt() {
+    sayTryAgain();
+    setTimeout(() => {
+      this.inputs.map(x => iDiv(x).innerHTML = '_')
+    }, 1500);
+    return 10;
+  }
+  eval(w, word) {
+    Selected = { answer: w, reqAnswer: word, feedbackUI: iDiv(Goal) }; 
+    return w == word;
+  }
+}
+class GAnagram_PCOnly extends Game {
+  constructor(name, o) {
+    super(name, o);
+    if (this.language == 'C') {
+      this.realLanguage = this.language;
+      this.language = chooseRandom('E', 'S', 'F', 'D');
+    }
+  }
+  clear() { super.clear(); if (isdef(this.language)) this.language = this.language; }
+  start_Level() {
+    this.keys = setKeysG(this, filterWordByLengthG, 10);
+    if (this.keys.length < 10) { this.keys = setKeysG(this, filterWordByLengthG, 10, 'all'); }
+  }
+  prompt() {
+    myShowPics(null, {}, {});
+    if (this.hidden) {
+      let d = iDiv(Pictures[0]);
+      animate(d, 'aniAppearMinute', 100000);
+    }
+    setGoal();
+    showInstruction(this.showWord ? Goal.label : '', this.language == 'E' ? 'drag letters to form' : "forme", dTitle, true);
+    mLinebreak(dTable, 25);
+    let fz = 120; let word = Goal.label.toUpperCase(); let wlen = word.length;
+    let dpEmpty = createLetterInputsX(word, dTable, { pabottom: 5, bg: 'grey', display: 'inline-block', fz: fz, w: fz, h: fz * 1.1, margin: 4 }); 
+    let inputs = blankInputs(dpEmpty, range(0, wlen - 1), false);
+    for (let i = 0; i < inputs.length; i++) {
+      let l = iDiv(inputs[i]);
+      l.ondragover = ev => ev.preventDefault();
+      l.ondrop = event => { event.preventDefault(); var data = event.dataTransfer.getData("Text"); event.target.innerHTML = data; }
+      makeDraggableInner(l);
+      mClass(l, 'dropzone');
+      l.id = 'input' + i;
+    }
+    this.inputs = inputs;
+    let x = mLinebreak(dTable, 50);
+    fz = 60; word = Goal.label.toUpperCase();
+    let dp = createLetterInputsX(word, dTable, { bg: 'silver', display: 'inline-block', fz: fz, w: fz, h: fz * 1.1, margin: 4 }); 
+    scrambleInputs(dp);
+    let letters = Array.from(dp.children);
+    for (let i = 0; i < letters.length; i++) {
+      let l = letters[i];
+      l.setAttribute('draggable', true);
+      makeDraggableInner(l);
+      l.id = 'letter' + i;
+    }
+    this.letters = letters;
+    mLinebreak(dTable, 50);
+    this.bDone = mButton('Done!', this.controller.evaluate.bind(this.controller), dTable, { fz: 28, matop: 10, rounding: 10, padding: 16, border: 8 }, ['buttonClass']);
+    if (this.hidden) showFleetingMessage('category: ' + Pictures[0].info.subgroup, 5000);
+    else if (!this.showWord) { showLabelPercentHintAfter(50, 6000); }
+    this.controller.activateUi.bind(this.controller)();
+  }
+  trialPrompt() {
+    sayTryAgain();
+    setTimeout(() => {
+      this.inputs.map(x => iDiv(x).innerHTML = '_')
+    }, 1500);
+    return 10;
+  }
+  eval() {
+    let s = this.inputs.map(x => iDiv(x).innerHTML);
+    let w = s = s.join('');
+    let word = Goal.label.toUpperCase();
+    Selected = { answer: w, reqAnswer: word, feedbackUI: iDiv(Goal) };
+    return w == word;
+  }
+}
+class CounterClass extends Map {
+  constructor(iter, key = null) {
+    super();
+    this.key = key || (x => x);
+    for (let x of iter) {
+      this.add(x);
+    }
+  }
+  add(x) {
+    x = this.key(x);
+    this.set(x, (this.get(x) || 0) + 1);
   }
 }
 function __pictoG(key, x, y, w, h, fg, bg) {
@@ -19356,7 +20051,7 @@ function _addRelatives(id, oid) {
 function _addShape(mobj, w, h, color, shape, { dx = 0, dy = 0, x1, y1, x2, y2, border, thickness, alpha, n = 6, path, idx, rounding } = {}) {
   let r = mobj['_' + shape](); 
   mobj.shape = shape;
-  if (alpha) color = anyColorToStandardString(color, alpha);
+  if (alpha) color = colorFrom(color, alpha);
   mobj.elem.setAttribute('fill', color);
   if (this.isLine) {
     dx = isdef(dx) ? dx + this.x : this.x;
@@ -19619,10 +20314,10 @@ function _createDivs(items, ifs, options) {
       let sShade = '0 0 0 ' + item.textShadowColor;
       if (options.showPics) {
         picStyles['text-shadow'] = sShade;
-        picStyles.fg = anyColorToStandardString('black', item.contrast); //'#00000080' '#00000030' 
+        picStyles.fg = colorFrom('black', item.contrast); //'#00000080' '#00000030' 
       } else {
         textStyles['text-shadow'] = sShade;
-        textStyles.fg = anyColorToStandardString('black', item.contrast); //'#00000080' '#00000030' 
+        textStyles.fg = colorFrom('black', item.contrast); //'#00000080' '#00000030' 
       }
     }
     if (options.showPics) {
@@ -19688,10 +20383,10 @@ function _createDivsS(items, ifs, options) {
       let sShade = '0 0 0 ' + item.textShadowColor;
       if (options.showPics) {
         picStyles['text-shadow'] = sShade;
-        picStyles.fg = anyColorToStandardString('black', item.contrast); //'#00000080' '#00000030' 
+        picStyles.fg = colorFrom('black', item.contrast); //'#00000080' '#00000030' 
       } else {
         textStyles['text-shadow'] = sShade;
-        textStyles.fg = anyColorToStandardString('black', item.contrast); //'#00000080' '#00000030' 
+        textStyles.fg = colorFrom('black', item.contrast); //'#00000080' '#00000030' 
       }
     }
     if (options.showPics) {
@@ -19949,16 +20644,6 @@ function _get_layer(key, options) {
   if (nundef(o)) o = Geo.layerInfo.empty;
   copyKeys(options, o.options);
   return L.tileLayer(o.url, o.options);
-}
-function _getAllCardsIdsFromTable() {
-  let res = [];
-  let t = G.table;
-  for (const k in t) {
-    let cand = t[k];
-    let isCard = cand.generic_type == 'card';
-    if (isCard) res.push(k)
-  }
-  return res;
 }
 function _getChildrenOf(id) { let ui = UIS[id]; return ui.children; }
 function _getCollectionType(o) {
@@ -20380,9 +21065,6 @@ function _makeGroundShape(mobj, x, y, w, h, color, shape, { dx = 0, dy = 0, x1, 
   return mobj;
 }
 function _makeHandArea(key, handAreaName, parentAreaId) {
-  /*
-  ideal code:
-  */
   let parentArea = UIS[parentAreaId];
   if (isdef(parentArea)) {
     let mobj = makeArea(handAreaName, parentAreaId);
@@ -20561,88 +21243,6 @@ function _paramsQ(parr) {
   }
   return parr;
 }
-function _parseCodefile(content, fname) {
-  let di = {}, text = '';
-  let dicode = {};
-  let diregion = {};
-  let lines = content.split('\r\n');
-  let classes_started = true;
-  let parsing = false, code, ending, type, key;
-  let firstletters = [];
-  for (const line of lines) {
-    let l = line;
-    if (!l.includes("'//")){
-      l = replaceAllFast(line, '://', ':@@');
-      l = replaceAllFast(l, '//#', '@@#');
-      l = stringBefore(l, '//');
-      l = replaceAllFast(l, '@@#', '//#');
-      l = replaceAllFast(l, ':@@', '://');
-    }
-    if (isEmptyOrWhiteSpace(l.trim())) continue;
-    if (parsing) { 
-      assertion(classes_started, 'parsing but NOT classes_started!!!!');
-      let l1 = replaceAllSpecialChars(l, '\t', '  ');
-      let ch = l1[0];
-      if (' }'.includes(ch)) code += l1 + '\n';
-      if (ch != ' ') {
-        parsing = false;
-        lookupSetOverride(dicode, [key], code);
-        lookupAddIfToList(di, [type], key);
-        lookupSetOverride(diregion, [fname, CODE.region, key], { name: key, code: code, sig: stringBefore(code, ') {'), region: CODE.region, filename: fname });
-        addIf(firstletters, l[0]);
-      }
-    }
-    if (classes_started && startsWith(l, '//#end')) continue;
-    assertion(!startsWith(l, '//#endregion') || !classes_started, 'ASSERTION!!!');
-    if (parsing) continue;
-    if (startsWith(l, '//#region')) {
-      let region = CODE.region = firstWordAfter(l, 'region');
-      if (startsWith(l, '//#region classes')) classes_started = true;
-      if (!classes_started || startsWith(l, '//#region vars')) text += `\n//#region ${fname} ${region}\n`;
-      continue;
-    } else if (startsWith(l, 'var')) {
-      if (classes_started) console.log('line', l)
-      classes_started = false; 
-      let vs = stringAfter(l, 'var').trim().split(',');
-      vs.map(x => firstWord(x)).map(y => lookupAddToList(di, ['var'], y));
-    } else if (startsWith(l, 'const')) {
-      lookupAddToList(di, ['const'], toWords(l)[1]);
-    } else if (startsWith(l, 'class')) {
-      parsing = true;
-      code = l + '\n';
-      type = 'cla';
-      key = firstWordAfter(l, 'class'); 
-    } else if (startsWith(l, 'async') || startsWith(l, 'function')) {
-      parsing = true;
-      code = l + '\n';
-      type = 'func';
-      key = stringBefore(stringAfter(l, 'function').trim(), '(');
-    }
-    if (!classes_started) text += l + '\n';
-  }
-  console.log('first letters', firstletters)
-  for (const k in di) {
-    di[k].sort();
-  }
-  if (isdef(di.cla)) {
-    text += `\n//#region ${fname} classes\n`;
-    for (const k of di.cla) {
-      text += dicode[k];
-    }
-    text += `//#endregion ${fname} classes\n`;
-  }
-  for (const r in diregion[fname]) {
-    if (r == 'classes') continue;
-    text += `\n//#region ${fname} ${r}\n`;
-    let sorted_keys = get_keys(diregion[fname][r]);
-    sorted_keys.sort((a, b) => { return a.toLowerCase().localeCompare(b.toLowerCase()); });
-    for (const funcname of sorted_keys) { 
-      text += dicode[funcname];
-    }
-    text += `//#endregion ${fname} ${r}\n`;
-  }
-  return { di: di, dicode: dicode, diregion: diregion, text: text };
-}
 function _pickStringForAction(x) {
   if (x.type == 'fixed') return x.val;
   if (x.type == 'obj') return x.ID;
@@ -20744,7 +21344,7 @@ function _prepText1_dep(items, ifs, options) {
     if (isdef(item.textShadowColor)) {
       let sShade = '0 0 0 ' + item.textShadowColor;
       textStyles['text-shadow'] = sShade;
-      textStyles.fg = anyColorToStandardString('black', item.contrast); //'#00000080' '#00000030' 
+      textStyles.fg = colorFrom('black', item.contrast); //'#00000080' '#00000030' 
     }
     if (options.showLabels) {
       textStyles.fg = item.fg;
@@ -21147,11 +21747,6 @@ async function _start() {
   onpagedeactivated(() => { saveEnv(); dbSave(); });
   await load_syms(); 
   await load_db(); 
-  let superdi = CODE.di = await load_codebase(['../game/aaa.js'], true );
-  console.log('superdi',superdi);
-  show_sidebar(sortCaseInsensitive(get_keys(superdi.const)));
-  dTable = mBy('dTable');
-  fiddleInit();
 }
 function _start_game(gamename, players, options) {
 }
@@ -23037,7 +23632,7 @@ function addClassInfo(ui, n) {
 function addColorPicker(c) {
   let form = mBy('myform');
   let img = mBy('imgPreview');
-  let picker = mColorPickerBehavior(anyColorToStandardString(c), img, form,
+  let picker = mColorPickerBehavior(colorFrom(c), img, form,
     (a) => { DA.newColor = a; DA.colorChanged = true; },
     { w: 322, h: 45, bg: 'green', rounding: 6, margin: 'auto', align: 'center' });
   if (is_online()) {
@@ -23263,7 +23858,10 @@ function addGArea(gName, areaName = 'a_d_game', x = 0, y = 0, clearFirst = true)
   g.classList.add('gCentered');
   return dNew;
 }
-function addGFill(id, divParent) { return addSvgg(divParent, id, { originInCenter: true }); }
+function addGFill(id, dParent) {
+  let res = addSvgg(dParent, id, { originInCenter: true });
+  return res;
+}
 function addGrid9To(d, centerW, centerH, gap = '2px') {
   return makeGrid9(d, centerW, centerH, gap);
 }
@@ -23487,14 +24085,14 @@ function addMessage(msg) {
   setMessage(msg); 
   addListItem('events', msg); 
 }
-function addModuleExports(list){
-  let txt=
+function addModuleExports(list) {
+  let txt =
     `if (this && typeof module == "object" && module.exports && this === module.exports) {\r\n`
     + `  module.exports = {\r\n`;
-  for(const s of list){
-    txt+=`    ${s},\r\n`
+  for (const s of list) {
+    txt += `    ${s},\r\n`
   };
-  txt+='  }\r\n}';
+  txt += '  }\r\n}';
   return txt;
 }
 function addMonthToDate(date, months) {
@@ -23624,6 +24222,26 @@ function addOidByParentKeyLocation(oid, key, R) {
     topUids.push({ uid: n1.uid, uidParent: uidParent });
   }
   return topUids;
+}
+function addOnelineVars(superdi, o) { 
+  let [code, type] = [o.code, o.type];
+  let crn = (code.match(/\r\n/g) || []).length;
+  let oneliner = crn == 1; 
+  //let specialword = 'Counter'; //'PORT';
+  if (oneliner && type == 'var' && code.includes(',') && !code.includes('[') && !code.includes('{ ')) {
+    let othervars = stringAfter(code, 'var').trim().split(',');
+    othervars = othervars.map(x => firstWord(x,true));
+    othervars.shift();
+    for (const v of othervars) {
+      let o1 = jsCopy(o);
+      o1.lead = o.key;
+      o1.key = v; 
+      o1.code = '';
+      o.sig = `var ${v};`;
+      if (isNumber(v)) {continue;} 
+      lookupSetOverride(superdi, [type, v], o1);
+    }
+  }
 }
 function addonFeatureInit() {
   ADS = null;
@@ -24708,8 +25326,8 @@ function allIntegers(s) {
     return +v;
   });
 }
-function allLettersContained(sFull, sPart) {
-  for (const ch of sPart) {
+function allLettersContained(sFull,sPart){
+  for(const ch of sPart){
     if (!(sFull.includes(ch))) return false;
   }
   return true;
@@ -24925,6 +25543,24 @@ function aMoveTo(d, dTarget, x, y, ms) {
     duration: ms,
     fill: 'forwards'
   });
+}
+function analyse_tables(user_tables) {
+  user_tables.map(x => console.log('table:', x));
+  let bygame = {}, bytid = {};
+  for (const t of user_tables) {
+    lookupAddToList(bygame, [t.game], t);
+    lookupSet(bytid, [t.id], t);
+  }
+  if (!isEmpty(user_tables)) {
+    Session.cur_table = user_tables[0];
+    Session.cur_tid = Session.cur_table.id;
+  } else {
+    Session.cur_table = null;
+    Session.cur_tid = undefined;
+  }
+  lookupSetOverride(DA, [Session.cur_user, 'tables_by_game'], bygame);
+  lookupSetOverride(DA, [Session.cur_user, 'tables_by_tid'], bytid);
+  return bygame;
 }
 function ani_say(d, fSpeak) {
   if (isdef(fSpeak)) fSpeak(); 
@@ -25417,88 +26053,49 @@ function annotate(sp) {
 function any(arr, cond) {
   return !isEmpty(arr.filter(cond));
 }
-function anyColorToStandardString(cAny, a, allowHsl = false) {
-  if (Array.isArray(cAny)) {
-    if (cAny.length < 3) {
-      return randomHexColor();
-    } else if (cAny.length == 3) {
-      let r = cAny[0];
-      let g = cAny[1];
-      let b = cAny[2];
-      return a == undefined || a == 1 ? `rgb(${r},${g},${b})` : `rgba(${r},${g},${b},${a})`;
-    }
-  } else if (isString(cAny)) {
-    if (cAny[0] == '#') {
-      if (a == undefined) return cAny;
-      cAny = cAny.substring(0, 7);
-      return cAny + (a == 1 ? '' : alphaToHex(a));
-    } else if (cAny[0] == 'r' && cAny[1] == 'g') {
-      if (a == undefined) return cAny;
-      if (cAny[3] == 'a') {
-        if (a < 1) {
-          return stringBeforeLast(cAny, ',') + ',' + a + ')';
-        } else {
-          let parts = cAny.split(',');
-          let r = firstNumber(parts[0]);
-          return 'rgb(' + r + ',' + parts[1] + ',' + parts[2] + ')';
-        }
-      } else {
-        if (a < 1) {
-          return 'rgba' + cAny.substring(3, cAny.length - 1) + ',' + a + ')';
-        } else {
-          return cAny;
-        }
-      }
-    } else if (cAny[0] == 'h' && cAny[1] == 's') {
-      if (allowHsl) {
-        if (a == undefined) return cAny;
-        if (cAny[3] == 'a') {
-          if (a < 1) {
-            return stringBeforeLast(cAny, ',') + ',' + a + ')';
-          } else {
-            let parts = cAny.split(',');
-            let r = firstNumber(parts[0]);
-            return 'hsl(' + r + ',' + parts[1] + ',' + parts[2] + ')';
-          }
-        } else {
-          return a == 1 ? cAny : 'hsla' + cAny.substring(3, cAny.length - 1) + ',' + a + ')'; 
-        }
-      } else {
-        if (cAny[3] == 'a') {
-          cAny = HSLAToRGBA(cAny);
-        } else {
-          cAny = HSLToRGB(cAny);
-        }
-        return anyColorToStandardString(cAny, a, allowHsl);
-      }
-    } else {
-      let newcAny = colorNameToHex(cAny);
-      return anyColorToStandardString(newcAny, a, allowHsl);
-    }
-  } else if (typeof cAny == 'object') {
-    if ('h' in cAny) {
-      let hslString = '';
-      if (a == undefined || a == 1) {
-        hslString = `hsl(${cAny.h},${Math.round(cAny.s <= 1.0 ? cAny.s * 100 : cAny.s)}%,${Math.round(cAny.l <= 1.0 ? cAny.l * 100 : cAny.l)}%)`;
-      } else {
-        hslString = `hsla(${cAny.h},${Math.round(cAny.s <= 1.0 ? cAny.s * 100 : cAny.s)}%,${Math.round(cAny.l <= 1.0 ? cAny.l * 100 : cAny.l)}%,${a})`;
-      }
-      if (allowHsl) {
-        return hslString;
-      } else {
-        return anyColorToStandardString(hslString, a, allowHsl);
-      }
-    } else if ('r' in cAny) {
-      if (a !== undefined && a < 1) {
-        return `rgba(${cAny.r},${cAny.g},${cAny.b},${a})`;
-      } else {
-        return `rgb(${cAny.r},${cAny.g},${cAny.b})`;
-      }
-    }
-  }
-} 
 function anyStartsWith(arr, prefix) {
   return any(arr, el => startsWith(el, prefix));
+}
+function anyString(x, indent = 0, ifDict = 'entries') {
+  if (isLiteral(x)) return x;
+  else if (isListOfLiterals(x)) return x.join(' '); 
+  else if (isEmpty(x)) return x;
+  else if (isList(x)) { return x.map(el => anyString(el, indent + 1, ifDict)).join(' '); }
+  else if (isDict(x)) {
+    let s = '';
+    for (const k in x) { s += '\n' + ' '.repeat(indent) + k + ': ' + anyString(x[k], indent + 1, ifDict); }
+    return s;
+  }
+}
+function anyString2(x, indent = 0, proplist, include = true, toplevelOnly = false) {
+  if (isLiteral(x)) return x;
+  else if (isListOfLiterals(x)) return x.join(' '); 
+  else if (isEmpty(x)) return x;
+  else if (isList(x)) {
+    if (toplevelOnly) proplist = null;
+    return x.map(el => anyString2(el, indent + 1, proplist, include)).join(' ');
+  }
+  else if (isDict(x)) {
+    let plist = proplist;
+    if (toplevelOnly) proplist = null;
+    let s = '';
+    if (isdef(plist)) {
+      if (include) {
+        for (const k of plist) {
+          if (nundef(x[k])) { console.log('continue', x, k); continue; }
+          s += '\n' + ' '.repeat(indent) + k + ': ' + anyString2(x[k], indent + 1, proplist, include);
+        }
+      } else {
+        for (const k of plist) {
+          if (isdef(x[k])) continue;
+          s += '\n' + ' '.repeat(indent) + k + ': ' + anyString2(x[k], indent + 1, proplist, include);
+        }
+      }
+    } else {
+      for (const k in x) { s += '\n' + ' '.repeat(indent) + k + ': ' + anyString2(x[k], indent + 1, proplist, include); }
+    }
+    return s;
+  }
 }
 function anyString3(x, indent = 0, proplist = null, include = true, guard = ['specKey', 'label', 'pool', 'el', 'sub', 'elm', 'cond', 'info', 'o', 'ui', 'source', 'bi']) {
   if (isLiteral(x)) return x;
@@ -25517,6 +26114,15 @@ function anyString3(x, indent = 0, proplist = null, include = true, guard = ['sp
     }
     return s;
   }
+}
+function anyToString1(x, indent = 0, ifDict = 'entries') {
+  if (isList(x) && !isEmpty(x)) { return x.join(' '); }
+  else if (isDict(x)) {
+    return ifDict == 'keys' ? Object.keys(x).join(' ')
+      : ifDict == 'entries' ? Object.entries(x).map(([k, v]) => k + ': ' + dictOrListToString(v, 'ifDict', indent + 2)).join('\n')
+        : Object.entries(x).join(' ');
+  }
+  else return x;
 }
 function anyWordContainedInKeys(dict, keywords) {
   let res = [];
@@ -25671,7 +26277,7 @@ function apply_skin3(item) {
 function applyColorkey(item) {
   let l = item.live;
   let sShade = '0 0 0 ' + item.textShadowColor;
-  item.shadeStyles = { 'text-shadow': sShade, fg: anyColorToStandardString('black', l.options.contrast) };
+  item.shadeStyles = { 'text-shadow': sShade, fg: colorFrom('black', l.options.contrast) };
   let ui = l.options.showPic ? l.dPic : l.dLabel;
   mStyleX(ui, item.shadeStyles);
 }
@@ -25680,7 +26286,7 @@ function applyCssStyles(ui, params) {
   if (domType == 'g') {
     mStyle(ui, params); 
   } else {
-    mStyle(ui, params); 
+    mStyle(ui, params);
   }
 }
 function applySettings(b, s, h=768, topFrame = 0) {
@@ -27972,78 +28578,6 @@ function aristoAIAction(pl, g, key) {
     pl.hand = deck1.cards();
   }
 }
-function aristoBuild(pl, g) {
-  let visToAll = aristoAggregateVisible(g);
-  let visRanks = visToAll.map(x => x % 13);
-  let players = g.allPlayers;
-  let myVis = visToAll.concat(pl.hand);
-  let myRanks = myVis.map(x => x % 13).sort();
-  let rankCount = new Array(13).fill(0);
-  for (let i = 0; i < myRanks.length; i++) { rankCount[myRanks[i]]++; }
-  let i = 0;
-  let buckets = rankCount.map(x => ({ rank: i, count: rankCount[i++] }));
-  myHandRanks = pl.hand.map(x => x % 13);
-  myStallRanks = pl.stall.map(x => x % 13);
-  nActions = pl.nActions = pl.stall.length; 
-  for (const b of buckets) {
-    b.handCount = arrCount(myHandRanks, x => x == b.rank);
-    b.stallCount = arrCount(myStallRanks, x => x == b.rank);
-    b.actionsNeeded = b.count - b.handCount - b.stallCount + 1;
-  }
-  sortByDescending(buckets, 'count');
-  let boundaryToBuild = 3; 
-  let bucketsPossible = buckets.filter(x => x.count >= boundaryToBuild && x.actionsNeeded <= nActions);
-  let canBuild = !isEmpty(bucketsPossible) && pl.coins > 0;
-  if (!canBuild) return false;
-  let best = bucketsPossible[0];
-  let rank = best.rank;
-  while (best.actionsNeeded - 1 > 0) {
-    let marketRanks = g.market.cards.map(x => x % 13);
-    if (marketRanks.includes(rank)) {
-      let iSource = marketRanks.indexOf(rank);
-      let elSource = g.market[iSource];
-      let itemSource = g.marketItems[iSource];
-      let elTarget = firstCond(pl.stall, x => x % 13 != rank);
-      let iTarget = pl.stall.indexOf(elTarget);
-      g.market.cards[iSource] = pl.stall[iTarget];
-      g.marketItems[iSource] = pl.stallItems[iTarget];
-      pl.stall[iTarget] = elSource;
-      pl.stallItems[iTarget] = itemSource;
-    } else {
-      for (const other of players) {
-        if (other == pl) continue;
-        let stallRanks = other.stall.map(x => x % 13);
-        if (stallRanks.includes(rank)) {
-          let iSource = stallRanks.indexOf(rank);
-          let elSource = other.stall[iSource];
-          let itemSource = other.stallItems[iSource];
-          let elTarget = firstCond(pl.stall, x => (x % 13) != rank);
-          let iTarget = pl.stall.indexOf(elTarget);
-          other.stall[iSource] = pl.stall[iTarget];
-          other.stallItems[iSource] = pl.stallItems[iTarget];
-          pl.stall[iTarget] = elSource;
-          pl.stallItems[iTarget] = itemSource;
-          break;
-        }
-      }
-      best.actionsNeeded--;
-    }
-  }
-  console.log('building a farm of', rank);
-  console.log('bucket', best);
-  let handCards = pl.hand.filter(x => x % 13 == rank);
-  console.log('handCards for this farm:', handCards);
-  pl.hand = arrMinus(pl.hand, handCards);
-  console.log('hand will be:', pl.hand);
-  let stallCards = pl.stall.filter(x => x % 13 == rank);
-  console.log('handCards for this farm:', stallCards);
-  pl.stall = arrMinus(pl.stall, stallCards);
-  console.log('stall will be:', pl.stall);
-  let building = handCards.concat(stallCards);
-  console.log('building:', building);
-  lookupAddToList(pl, ['buildings'], building);
-  pl.nActions -= best.actionsNeeded;
-}
 function aristocracy_activate(fen,plname){
   console.log('activating for',plname)
 }
@@ -28346,7 +28880,13 @@ function arrByClassName(classname,d){
 function arrChildren(elem) { return [...toElem(elem).children]; }
 function arrClear(arr) { arr.length = 0; }
 function arrCount(arr, func) { return arr.filter(func).length; }
-function arrCreate(n, func) { let res = []; for (let i = 0; i < n; i++) { res.push(func(i)); } return res; }
+function arrCreate(n, func) {
+  let res = [];
+  for (let i = 0; i < n; i++) {
+    res.push(func(i));
+  }
+  return res;
+}
 function arrCycle(arr, count) { return arrRotate(arr, count); }
 function arrCycleSwap(arr, prop, clockwise = true) {
   let n = arr.length;
@@ -28769,7 +29309,6 @@ function aushaengen(oid, R) {
   }
 }
 function autocomplete(inp, arr) {
-  /* inp...input element, arr...array of possible autocompleted values:*/
   var currentFocus;
   inp = toElem(inp);
   inp.addEventListener('input', e => { /*execute a func when someone writes in the text field:*/
@@ -29544,170 +30083,6 @@ function boamain_start() {
     i++;
   }
 }
-function Board() {
-    var self = this;
-    this.div = document.getElementById("div-board");
-    this.deck = new Deck();
-    this.bunchs = new Array();
-    this.drags = new Array();
-    this.dragX = 0;
-    this.dragY = 0;
-    this.start = function () {
-        self.createBunchs();
-        self.shuffle();
-        self.registerMouse();
-    }
-    this.createBunchs = function () {
-        self.createBunch("pile", 50, 100, 1);
-        self.createBunch("pile", 125, 100, 2);
-        self.createBunch("pile", 200, 100, 3);
-        self.createBunch("pile", 275, 100, 4);
-        self.createBunch("pile", 350, 100, 5);
-        self.createBunch("pile", 425, 100, 6);
-        self.createBunch("pile", 500, 100, 7);
-        self.createBunch("deck", 5, 0, 0, self.createBunch("pair", 80, 0, 2));
-        self.createBunch("end", 275, 0, 0);
-        self.createBunch("end", 350, 0, 0);
-        self.createBunch("end", 425, 0, 0);
-        self.createBunch("end", 500, 0, 0);
-    }
-    this.createBunch = function (type, left, top, initial, pair) {
-        var div = self.createBunchDiv(left, top);
-        var bunch = new Bunch(div, self, type, initial, pair);
-        self.bunchs.push(bunch)
-        self.div.appendChild(div)
-        return (bunch);
-    }
-    this.createBunchDiv = function (left, top) {
-        var id = "bunch" + String(self.bunchs.length);
-        var width = self.deck.cardWidth;
-        var height = self.deck.cardHeight;
-        return (createDiv(id, "bunch", left, top, width, height));
-    }
-    this.shuffle = function () {
-        var index = 0;
-        for (var i = 0; i < self.deck.cardTotal; ++i) {
-            self.createCard(self.bunchs[index], self.deck.throwCard());
-            if (self.bunchs[index].isInitialFull())
-                ++index;
-        }
-    }
-    this.createCard = function (bunch, id) {
-        var reverse = bunch.initialCardReverse();
-        var img = self.createCardImg(bunch, id, reverse);
-        var card = new Card(img, bunch, id, reverse);
-        bunch.addCard(card);
-        self.div.appendChild(img);
-    }
-    this.createCardImg = function (bunch, id, reverse) {
-        var zIndex = bunch.initialCardZIndex();
-        var left = bunch.initialCardLeft();
-        var top = bunch.initialCardTop();
-        var width = self.deck.cardWidth;
-        var height = self.deck.cardHeight;
-        var src = self.deck.cardSrc(id, reverse);
-        return (createImg("card" + String(id), "card", zIndex, left, top, width, height, src));
-    }
-    this.registerMouse = function () {
-        document.ondblclick = self.onDblClick;
-        document.onmousedown = self.onMouseDown;
-        document.onmousemove = self.onMouseMove;
-        document.onmouseup = self.onMouseUp;
-    }
-    this.unregisterMouse = function () {
-        document.ondblclick = null;
-        document.onmousedown = null;
-        document.onmousemove = null;
-        document.onmouseup = null;
-    }
-    this.onDblClick = function (e) {
-        var object = getMouseObject(e);
-        switch (object.className) {
-            case "card": object.card.onDblClick(); break;
-            case "bunch": object.bunch.onDblClick(); break;
-        }
-    }
-    this.onMouseDown = function (e) {
-        var object = getMouseObject(e);
-        if (object.className == "card") {
-            var card = object.card;
-            self.drags = card.bunch.getDrags(card);
-            if (self.drags.length > 0) {
-                self.dragX = pxToNumber(self.drags[0].img.style.left) - getMouseX(e);
-                self.dragY = pxToNumber(self.drags[0].img.style.top) - getMouseY(e);
-                for (var i in self.drags) {
-                    self.drags[i].originalLeft = self.drags[i].img.style.left;
-                    self.drags[i].originalTop = self.drags[i].img.style.top;
-                    self.drags[i].originalZIndex = self.drags[i].img.style.zIndex;
-                    self.drags[i].img.style.zIndex = 1000 + i;
-                }
-                return (false);
-            }
-        }
-    }
-    this.onMouseMove = function (e) {
-        var left = self.dragX + getMouseX(e);
-        var top = self.dragY + getMouseY(e);
-        for (var i in self.drags) {
-            self.drags[i].img.style.left = String(left) + "px";
-            self.drags[i].img.style.top = String(top + (10 * i)) + "px";
-        }
-        return (self.drags.length == 0);
-    }
-    this.onMouseUp = function (e) {
-        if (self.drags.length) {
-            var left = self.dragX + getMouseX(e);
-            var top = self.dragY + getMouseY(e);
-            var bunch = self.getBunchDrop(left, top);
-            if (bunch)
-                for (var i in self.drags)
-                    bunch.adquireCard(self.drags[i]);
-            else
-                for (var i in self.drags) {
-                    self.drags[i].img.style.left = self.drags[i].originalLeft;
-                    self.drags[i].img.style.top = self.drags[i].originalTop;
-                    self.drags[i].img.style.zIndex = self.drags[i].originalZIndex;
-                }
-            self.drags.length = 0;
-            self.checkEnd();
-        }
-    }
-    this.getBunchDrop = function (left, top) {
-        for (var i in self.bunchs) {
-            if (self.collition(left, top, self.bunchs[i].div))
-                if (self.bunchs[i].acceptCards(self.drags))
-                    return (self.bunchs[i]);
-            for (var j in self.bunchs[i].cards)
-                if (self.collition(left, top, self.bunchs[i].cards[j].img))
-                    if (self.bunchs[i].acceptCards(self.drags))
-                        return (self.bunchs[i]);
-        }
-    }
-    this.collition = function (left, top, element) {
-        return ((left >= pxToNumber(element.style.left)) &&
-                (left < pxToNumber(element.style.left) + self.deck.cardWidth) &&
-                (top >= pxToNumber(element.style.top)) &&
-                (top < pxToNumber(element.style.top) + self.deck.cardHeight));
-    }
-    this.tryEnd = function (card) {
-        for (var i in self.bunchs)
-            if (self.bunchs[i].acceptEnd(card)) {
-                self.bunchs[i].adquireCard(card);
-                break;
-            }
-        self.checkEnd();
-    }
-    this.checkEnd = function () {
-        var end = 0;
-        for (var i in self.bunchs)
-            if (self.bunchs[i].isEnded())
-                ++end;
-        if (end == 4) {
-            self.unregisterMouse();
-            alert("Congratulations!!! You have solved the Solitarie.\r\nClose this message and press F5 to play a new game.");
-        }
-    }
-}
 function board_to_fen(board) {
   let result = "";
   for (let y = 0; y < board.length; y++) {
@@ -30337,162 +30712,6 @@ function buildWordFromLetters(dParent) {
   s = s.join('');
   return s;
 }
-function Bunch(div, board, type, initial, pair) {
-    var self = this;
-    this.div = div;
-    this.board = board;
-    this.type = type;
-    this.initial = initial;
-    this.pair = pair;
-    this.cards = new Array();
-    this.div.bunch = self;
-    this.onDblClick = function () {
-        if (self.type == "deck")
-            while (self.pair.cards.length != 0)
-                self.adquireCard(self.pair.onTop());
-    }
-    this.onDblClickCard = function (card) {
-        if (self.type != "end")
-            if (self.isOnTop(card))
-                self.board.tryEnd(card);
-    }
-    this.onDblClickReverse = function (card) {
-        if (self.type == "deck")
-            self.onDblClickReverseDeck(card);
-        else {
-            if (self.isOnTop(card))
-                card.flip();
-        }
-    }
-    this.onDblClickReverseDeck = function (card) {
-        if (self.pair.cards.length > 1)
-            self.pair.onTop().img.style.left = self.pair.div.style.left;
-        if (self.cards.length > 1)
-            self.pair.adquireCard(self.onTop());
-        if (self.cards.length >= 1) {
-            self.pair.adquireCard(self.onTop());
-            self.pair.onTop().img.style.left = String(pxToNumber(self.pair.div.style.left) + 10) + "px";
-        }
-    }
-    this.addCard = function (card) {
-        self.cards.push(card);
-    }
-    this.removeCard = function (card) {
-        var cards = new Array();
-        for (var i in self.cards)
-            if (card.id != self.cards[i].id)
-                cards.push(self.cards[i]);
-        self.cards = cards;
-    }
-    this.adquireCard = function (card) {
-        card.bunch.removeCard(card);
-        self.addCard(card);
-        card.moveTo(self);
-    }
-    this.onTop = function () {
-        return (self.cards[self.cards.length - 1]);
-    }
-    this.isOnTop = function (card) {
-        return (card.id == self.onTop().id);
-    }
-    this.getDrags = function (card) {
-        var drags = new Array();
-        if (!card.reverse)
-            switch (self.type) {
-                case "pair": drags = self.getDragsTop(card); break;
-                case "pile": drags = self.getDragsPile(card); break;
-                case "end": drags = self.getDragsTop(card); break;
-            }
-        return (drags);
-    }
-    this.getDragsTop = function (card) {
-        drags = new Array();
-        if (card.id == self.onTop().id)
-            drags.push(card);
-        return (drags);
-    }
-    this.getDragsPile = function (card) {
-        drags = new Array();
-        for (var i in self.cards)
-            if (self.cards[i].id == card.id) {
-                for (; i < self.cards.length; ++i)
-                    drags.push(self.cards[i]);
-                break;
-            }
-        return (drags);
-    }
-    this.acceptCards = function (cards) {
-        if (self.type == "pile")
-            return (self.acceptCardPile(cards[0]));
-        if ((self.type == "end") && (cards.length == 1))
-            return (self.acceptCardEnd(cards[0]));
-        return (false);
-    }
-    this.acceptCardPile = function (card) {
-        if (self.cards.length == 0)
-            return (card.number == 13);
-        if (self.onTop().reverse == false)
-            if (self.onTop().number == card.number + 1)
-                return (self.onTop().color != card.color);
-        return (false);
-    }
-    this.acceptCardEnd = function (card) {
-        if (self.cards.length == 0)
-            return (card.number == 1);
-        if (self.cards.length == card.number - 1)
-            return (self.cards[0].suit == card.suit);
-        return (false);
-    }
-    this.acceptEnd = function (card) {
-        if (self.type != "end")
-            return (false);
-        return (self.acceptCardEnd(card));
-    }
-    this.isEnded = function () {
-        if (self.type != "end")
-            return (false);
-        return (self.cards.length == self.board.deck.cardSuit);
-    }
-    this.initialCardLeft = function () {
-        var left = pxToNumber(self.div.style.left);
-        return (left + ((self.type == "pair") ? (10 * self.cards.length) : 0));
-    }
-    this.initialCardTop = function () {
-        var top = pxToNumber(self.div.style.top);
-        return (top + ((self.type == "pile") ? (10 * self.cards.length) : 0));
-    }
-    this.initialCardZIndex = function () {
-        return (self.cards.length);
-    }
-    this.initialCardReverse = function () {
-        switch (self.type) {
-            case "deck": return (true);
-            case "pair": return (false);
-            case "pile": return (self.cards.length != self.initial - 1);
-        }
-    }
-    this.isInitialFull = function () {
-        return (self.cards.length == self.initial);
-    }
-    this.cardLeft = function () {
-        return (pxToNumber(self.div.style.left));
-    }
-    this.cardTop = function () {
-        var top = pxToNumber(self.div.style.top);
-        return (top + ((self.type == "pile") ? (10 * (self.cards.length - 1)) : 0));
-    }
-    this.cardZIndex = function () {
-        return (self.cards.length);
-    }
-    this.cardReverse = function () {
-        switch (self.type) {
-            case "deck": return (true);
-            case "pair": return (false);
-            case "pile": return (false);
-            case "end": return (false);
-        }
-    }
-}
 function busy_wait_until_slot(slot) {
   let diff = get_slot_diff(Z.fen);
   let dd;
@@ -30929,6 +31148,22 @@ function calcBoardDimensionsX(nuiBoard, R) {
   nuiBoard.gap = gap;
   nuiBoard.fSize = fSpacing - gap;
 }
+function calcContent_dep(oid, o, path) {
+  if (isString(path)) {
+    if (path[0] != '.') return path;
+    let props = path.split('.').slice(1);
+    let content = isEmpty(props) ? o.obj_type : lookup(o, props);
+    return content;
+  } else if (isDict(path)) {
+    let content = {};
+    for (const k in path) {
+      let c = calcContent_dep(oid, o, path[k]);
+      if (c) content[k] = c;
+    }
+    return content;
+  }
+  return null;
+}
 function calcContentFromData(oid, o, data, R, default_data) {
   if (!o) return data; 
   if (isLiteral(data)) {
@@ -31196,26 +31431,18 @@ function calcRays(n, gParent, R) {
   }
 }
 function calcRowsCols(num, rows, cols) {
-  const table = {
-    2: { rows: 1, cols: 2 },
-    5: { rows: 2, cols: 3 },
-    7: { rows: 2, cols: 4 },
-    11: { rows: 3, cols: 4 },
-  };
   let shape = 'rect';
   if (isdef(rows) && isdef(cols)) {
-  } else if (isdef(table[num])) {
-    return table[num];
   } else if (isdef(rows)) {
     cols = Math.ceil(num / rows);
   } else if (isdef(cols)) {
     rows = Math.ceil(num / cols);
-  } else if (num == 2) {
-    rows = 1; cols = 2;
-  } else if ([4, 6, 9, 12, 16, 20, 25, 30, 36, 42, 49, 56, 64].includes(num)) {
+  } else if (num==2) {
+    rows=1;cols=2;
+  }  else if ([4, 6, 9, 12, 16, 20, 25, 30, 36, 42, 29, 56, 64].includes(num)) {
     rows = Math.floor(Math.sqrt(num));
     cols = Math.ceil(Math.sqrt(num));
-  } else if ([3, 8, 15, 24, 35, 48, 63].includes(num)) {
+  }  else if ([3, 8, 15, 24, 35, 48, 63].includes(num)) {
     let lower = Math.floor(Math.sqrt(num));
     console.assert(num == lower * (lower + 2), 'RECHNUNG FALSCH IN calcRowsCols');
     rows = lower;
@@ -31238,17 +31465,14 @@ function calcRowsColsSizeAbWo(n, wmax, hmax, showLabels, wimax = 200, himax = 20
   let cols = Math.ceil(n / rows);
   return calcSizeAbWo(n, rows, cols, wmax, hmax, wimax, himax, fw, fh);
 }
-function calcRowsColsX(num, rows, cols) {
-  const tableOfDims = {
-    2: { rows: 1, cols: 2 },
-    5: { rows: 2, cols: 3 },
-    7: { rows: 2, cols: 4 },
-    11: { rows: 3, cols: 4 },
-    40: { rows: 5, cols: 8 },
+function calcRowsColsX(num){
+  const table={
+    2:{rows:1,cols:2},
+    5:{rows:2,cols:3},
+    7:{rows:2,cols:4},
+    11:{rows:3,cols:4},
   };
-  if (isdef(rows) || isdef(cols)) return calcRowsCols(num, rows, cols);
-  else if (isdef(tableOfDims[num])) return tableOfDims[num];
-  else return calcRowsCols(num, rows, cols);
+  if (isdef(table[num])) return table[num]; else return calcRowsCols(num);
 }
 function calcScreenSizeNeeded(){
   if (nundef(bodyZoom)) bodyZoom=1.0;
@@ -31464,12 +31688,6 @@ function capitalize(s) {
   if (typeof s !== 'string') return '';
   return s.charAt(0).toUpperCase() + s.slice(1);
 }
-function capitals_in_red(feature) {
-  console.log('feature data', feature.data);
-  let type = lookup(feature, ['data', 'type']);
-  console.log('city', lookup(feature, ['data', 'name']), ':', type)
-  return type == 'capital' ? 'red' : 'yellow';
-}
 function CAPTURED(m) { return (((m) >> 14) & 0xF); }
 function Card(img, bunch, id, reverse) {
     var self = this;
@@ -31600,7 +31818,7 @@ function cardGameTest01() {
   rAreas();
 }
 function cardGameTest02() {
-  setBackgroundColor(null, 'random');
+  setBackgroundColor(null,'random');
   mStyle(dTable, { h: 400, bg: 'black', padding: 10 });
   let SPEC = { layout: ['T', 'H A'], showAreaNames: true };
   let s = '';
@@ -31615,7 +31833,7 @@ function cardGameTest02() {
   console.log('m', m, '\ns', s); return;
 }
 function cardGameTest03_OK() {
-  setBackgroundColor(null, 'random');
+  setBackgroundColor(null,'random');
   mStyle(dTable, { h: 400, bg: 'black', padding: 10 });
   let dGrid = mDiv100(dTable, { display: 'inline-grid' });
   let layout = ['T', 'H A'];
@@ -31624,7 +31842,7 @@ function cardGameTest03_OK() {
   createAreas(dGrid, x, 'a');
 }
 function cardGameTest04() {
-  setBackgroundColor(null, 'random');
+  setBackgroundColor(null,'random');
   let dGrid = mDiv(dTable, { bg: 'red', w: '80%', h: 400, padding: 10, display: 'inline-grid', rounding: 10 }, 'dGrid');
   let layout = ['T', 'H A'];
   let x = createGridLayout(dGrid, layout);
@@ -31632,7 +31850,7 @@ function cardGameTest04() {
   createAreas(dGrid, x, 'dGrid');
 }
 function cardGameTest05() {
-  setBackgroundColor(null, 'random');
+  setBackgroundColor(null,'random');
   let dGrid = mDiv(dTable, { gap: 10, bg: 'white', w: '80%', h: 400, padding: 10, display: 'inline-grid', rounding: 10 }, 'dGrid');
   let layout = ['T', 'H A'];
   let areaStyles = { bg: 'random', rounding: 6 };
@@ -31658,7 +31876,7 @@ function cardGameTest05() {
   return items;
 }
 function cardGameTest06_clean_OK() {
-  setBackgroundColor(null, 'random');
+  setBackgroundColor(null,'random');
   let dGrid = mDiv(dTable, { gap: 10, bg: 'white', w: '90%', hmin: 400, padding: 10, display: 'inline-grid', rounding: 10 }, 'dGrid');
   let layout = ['T', 'H A'];
   let areaStyles = { bg: 'green', rounding: 6 };
@@ -31696,7 +31914,7 @@ function cardGameTest07() {
   }
 }
 function cardGameTest07_helper() {
-  setBackgroundColor(null, 'random');
+  setBackgroundColor(null,'random');
   let dGrid = mDiv(dTable, { gap: 10, bg: 'white', w: '90%', padding: 10, display: 'inline-grid', rounding: 10 }, 'dGrid');
   let layout = ['T', 'H A'];
   let areaStyles = { bg: 'green', rounding: 6 };
@@ -32004,7 +32222,15 @@ function cartesi(l1, l2) {
   }
   return res;
 }
-function cartesian(...a) { return a.reduce((a, b) => a.flatMap(d => b.map(e => [d, e].flat()))); }
+function cartesian(s1, s2, sep = '_') {
+  let res = [];
+  for (const el1 of s1) {
+    for (const el2 of s2) {
+      res.push(el1 + '_' + el2);
+    }
+  }
+  return res;
+}
 function cartesianOf(ll) {
   let cart = ll[0];
   for (let i = 1; i < ll.length; i++) {
@@ -32133,13 +32359,6 @@ function centerFit(d, child) {
   let pady = Math.floor(padding + (hdesChild - bChild.height) / 2);
   d.style.padding = pady + 'px ' + padx + 'px';
 }
-function cha3(cities) {
-  let list = rChoose(cities, 20);
-  for (const o of list) {
-    map_add_city(o);
-  }
-  console.log('source', ensure_city_layer().getSource().getFeatures().map(x => x.data.city_ascii));
-}
 function chainCancel() {
   CancelChain = true;
   clearTimeout(ChainTimeout);
@@ -32152,7 +32371,7 @@ function chainEx(taskChain, onComplete, ifBlocked = 'wait', singleThreaded = tru
     switch (ifBlocked) {
       case 'interrupt': CancelChain = true; setTimeout(() => chainEx(taskChain, onComplete, 'wait'), 300); break;
       case 'wait': setTimeout(() => chainEx(taskChain, onComplete, 'wait'), 300); break;
-      case 'return': default:
+      case 'return': default://just drop it
     }
   } else {
     BlockChain = true;
@@ -32180,21 +32399,6 @@ function chainSendRec(akku, msgChain, callback) {
     callback(akku);
   }
 }
-function chall4() {
-  let caps = M.capitals;
-  let list = caps; 
-  for (const o of list) {
-    map_add_city(o);
-    console.log('city', o)
-  }
-  console.log('source', ensure_city_layer().getSource().getFeatures().map(x => x.data.city_ascii));
-}
-function challenge0() {
-  for (const o of arrTake(cities, 10)) {
-    console.log('o', o)
-    add_circle(Number(o.lng), Number(o.lat), M.map);
-  }
-}
 async function challenge1() {
   let data = await route_path_json('../base/mapdata/gadm36_AUT_2.json');
   var mapOptions = {
@@ -32214,12 +32418,6 @@ async function challenge1() {
     marker.addTo(map);
     marker.bindTooltip(f.properties.NAME_2, { direction: 'center', permanent: true, className: 'mylabel',offset: L.point({x: -30, y: 30}) }); 
   }
-}
-function challenge2() {
-  let layer = map_add_layer('city', M.map); 
-  let feature = map_add_circle_to_layer(16, 48, layer);
-  feature.data = { hallo: 'Vienna' };
-  console.log('source', layer.getSource().getFeatures());
 }
 function change(arr, n) {
   for (let i = 0; i < n; i++) {
@@ -32371,6 +32569,11 @@ function check_poll_bot_send_move(obj) {
   } else {
     BotTicker = setTimeout(poll, DA.poll.ms);
   }
+}
+function check_poll_orig() {
+  let p = DA.long_polling;
+  if (nundef(p)) { console.log('no polling is active!'); return; }
+  to_server(p.data, p.type);
 }
 function check_poll_table_seen(obj) {
   console.assert(isdef(obj.table), 'check_poll_table_seen NO TABLE!!!!');
@@ -32533,6 +32736,19 @@ function checkGameConfigComplete() {
     if (isEmpty(pl.username)) return false;
   }
   return true;
+}
+function checkKey(superdi, key, type) {
+  let types = ['const', 'var', 'cla', 'func'];
+  let itype = types.indexOf(type);
+  for (const t in superdi) {
+    if (lookup(superdi, [t, key])) {
+      let it = types.indexOf(t);
+      if (itype > it) { delete superdi[t][key]; return type; }
+      else if (it > itype) { return type == 'const' ? t : false; }
+      else return type;
+    }
+  }
+  return type;
 }
 function checkPlayer(i) {
   id = getidNum(i); document.getElementById(id).checked = true;
@@ -33326,28 +33542,6 @@ function color_areas(nHues = 2, iButtonHue = 0, areaClass = 'area', gridDiv = 'r
     if (idx % pal[0].length == 0) ihue = (ihue + 1) % pal[0].length;
   }
 }
-function color_by_area(colormap_name = 'autumn') {
-  const min = 1e8; 
-  const max = 2e13; 
-  const steps = 50;
-  const ramp = colorMap({
-    colormap: colormap_name,
-    nshades: steps,
-  });
-  function clamp(value, low, high) {
-    return Math.max(low, Math.min(value, high));
-  }
-  function getColor(feature) {
-    let geo = feature.getGeometry(); let type = geo.getType();
-    let isPoly = type.includes('Polygon'); 
-    if (!isPoly) { console.log('not a poly', type); return '#ff0'; }
-    const area = ol.sphere.getArea(feature.getGeometry());
-    const f = Math.pow(clamp((area - min) / (max - min), 0, 1), 1 / 2);
-    const index = Math.round(f * (steps - 1));
-    return ramp[index];
-  }
-  return getColor;
-}
 function color2trans(color, alpha = 0.5) {
   let hex = standardize_color(color);
   var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
@@ -33398,7 +33592,7 @@ function colorAreas_dep(hue0 = 260, nHues = 25, areaClass = 'area', root = 'root
   let hues = [hue0, hue1];
   let pals = [];
   for (const hue of hues) {
-    let c = anyColorToStandardString(colorFromHue(hue));
+    let c = colorFrom(colorFromHue(hue));
     let pal = colorPalShade(c);
     pals.push(pal);
   }
@@ -33460,8 +33654,8 @@ function colorAreas_wild(fromLocalStorage = true, { className = null } = {}) {
   }
 }
 function colorAreasBlend(c1, c2, areaClass = 'area', root = 'root') {
-  c1 = anyColorToStandardString(c1);
-  c2 = anyColorToStandardString(c2);
+  c1 = colorFrom(c1);
+  c2 = colorFrom(c2);
   let pb = colorPalBlend(c1, c2);
   let pals = [];
   for (const c of pb) {
@@ -33493,7 +33687,7 @@ function colorAreasN(hue0 = 120, nHues = 25, areaClass = 'area', root = 'root') 
   }
   let pals = [];
   for (const hue of hues) {
-    let c = anyColorToStandardString(colorFromHue(hue));
+    let c = colorFrom(colorFromHue(hue));
     let pal = colorPalShade(c);
     pals.push(pal);
   }
@@ -33533,8 +33727,8 @@ function colorB(cAny) {
   return rgb.b;
 } 
 function colorBlend(zero1, c0, c1, log = true) {
-  c0 = anyColorToStandardString(c0);
-  c1 = anyColorToStandardString(c1);
+  c0 = colorFrom(c0);
+  c1 = colorFrom(c1);
   return pSBC(zero1, c0, c1, log);
 } 
 function colorBright(c, percent) {
@@ -33573,7 +33767,7 @@ function colorDark(c, percent = 50, log = true) {
   return pSBC(zero1, c, undefined, !log);
 }
 function colorDarker(c, zero1 = .8, log = true) {
-  c = anyColorToStandardString(c);
+  c = colorFrom(c);
   return pSBC(-zero1, c, undefined, !log);
 } 
 function colorElem(id, setFg = true) {
@@ -33720,7 +33914,7 @@ function colorHex(cAny) {
   }
 }
 function colorHex_RGBAToHex9(cAny) {
-  let c = anyColorToStandardString(cAny);
+  let c = colorFrom(cAny);
   if (c[0] == '#') {
     return c;
   } else if (c[3] == '(') {
@@ -33798,7 +33992,7 @@ function colorLight(c, percent = 20, log = true) {
   return pSBC(zero1, c, undefined, !log);
 }
 function colorLighter(c, zero1 = .2, log = true) {
-  c = anyColorToStandardString(c);
+  c = colorFrom(c);
   return pSBC(zero1, c, undefined, !log);
 } 
 function colorLum(cAny) {
@@ -33941,18 +34135,6 @@ function colorMixer(rgbA, rgbB, amountToMix) {
   var b = colorChannelMixer(rgbA[2], rgbB[2], amountToMix);
   return "rgb(" + r + "," + g + "," + b + ")";
 }
-function colorNameToHex(cName) {
-  let key = cName.toLowerCase();
-  if (!colorDict) {
-    colorDict = {};
-    let names = getColorNames();
-    let hexes = getColorHexes();
-    for (let i = 0; i < names.length; i++) {
-      colorDict[names[i].toLowerCase()] = '#' + hexes[i];
-    }
-  }
-  return key in colorDict ? colorDict[key] : randomHexColor();
-} 
 function colorNameToHexString(str) {
   var ctx = document.createElement('canvas').getContext('2d');
   ctx.fillStyle = str;
@@ -34113,7 +34295,7 @@ function colorsFromBFA(bg, fg, alpha) {
   return [bg, fg];
 }
 function colorShade(plusMinus1, color, log = true) {
-  let c = anyColorToStandardString(color);
+  let c = colorFrom(color);
   return pSBC(plusMinus1, c, undefined, !log);
 } 
 function colorShades(color) {
@@ -34169,13 +34351,11 @@ function comp_2(id) {
 function comp_last(id) {
   return stringAfterLast(id, '_');
 }
-function compactObjectString(o){
-  let s='';
+function compactObjectString(o) {
+  let s = '';
   for (const k in o) {
     if (isSimple(o[k]) && !isComplexColor(o[k])) {
-      if (isDict(o[k])) {
-        console.log('!!!!!!!!!!!!!!!!isDict',o[k]);
-      }
+      if (isDict(o[k])) { error('!!!!!!!!!!!!!!!!isDict', o[k]); }
       s += k + ':' + o[k] + ' ';
     }
   }
@@ -34358,18 +34538,18 @@ function computePresentedKeys(o, isTableObject) {
   for (const k in o) { if (optout[k]) continue; keys.push(k); }
   return keys;
 }
-function consExpand(o,keys,indent=0){
-  console.log('.'.repeat(indent),o);
-  for(const k in o){
+function consExpand(o, keys, indent = 0) {
+  console.log('.'.repeat(indent), o);
+  for (const k in o) {
     if (!keys.includes(k)) continue;
-    let oNew=o[k];
-    console.log('.'.repeat(indent),k+':')
-    if (isList(oNew)){
-      for(const el of oNew){
-        consExpand(el,keys,indent+2);
+    let oNew = o[k];
+    console.log('.'.repeat(indent), k + ':')
+    if (isList(oNew)) {
+      for (const el of oNew) {
+        consExpand(el, keys, indent + 2);
       }
-    }else if (isDict(oNew)){
-      consExpand(oNew,keys,indent+2);
+    } else if (isDict(oNew)) {
+      consExpand(oNew, keys, indent + 2);
     }
   }
 }
@@ -34923,6 +35103,21 @@ function create_menu(dParent, dir = 'h') {
   mTogglebar({ jitter: false }, flag_toggle, { bg: 'lightgreen' }, { bg: '#eee' }, d);
   mLinebreak(dTable, 10);
 }
+function create_new_table(user, game) {
+  user = valf(user, Session.cur_user);
+  game = valf(game, Session.cur_game);
+  let opt = extract_game_options();
+  let t = {};
+  t.friendly = generate_friendly_table_name();
+  t.game = Session.cur_game;
+  t.host = user;
+  t.players = opt.players;
+  t.fen = GSpotitMulti.start_fen(t.players);
+  t.status = 'created';
+  t.player_init = '';
+  DA.next = get_games;
+  to_server(t, 'create_table');
+}
 function create_new_table_and_join_all(user, game) {
   Session.cut_tid = Session.cur_table = null;
   let t = {};
@@ -35438,6 +35633,40 @@ function createElementFromHTML(htmlString) {
   return div.firstChild;
 }
 function createElementFromHtml(s) { return createElementFromHTML(s); }
+function createEmoji({ key, w, h, unit = 'px', fg, bg, padding, cat, parent, border, rounding }) {
+  let emoji = emojiChars[emojiKeys[key]];
+  console.log('emoji', emoji);
+  if (nundef(key)) key = getRandomKey(emojiChars);
+  let ch = emoji.hexcode;
+  console.log('ch', ch)
+  let family = 'emoOpen';
+  let text = emoji.emoji;
+  if (isdef(parent) && isString(parent)) parent = mBy(parent);
+  console.log(parent);
+  console.log(typeof text, text)
+  cat = isdef(cat) ? cat : isdef(parent) ? getTypeOf(parent) == 'div' ? 'd' : 'g' : isdef(cat) ? cat : 'd';
+  let domel;
+  if (cat == 'd') {
+    let d = document.createElement('div');
+    d.style.textAlign = 'center';
+    if (isdef(bg)) {
+      console.log('bg', bg);
+      d.style.backgroundColor = bg;
+    }
+    d.innerHTML = text;
+    domel = d;
+    if (isdef(padding)) d.style.padding = padding + unit;
+    d.style.display = 'inline-block';
+    d.style.height = h + 2 * padding + unit;
+    d.style.width = d.style.height;
+    if (isdef(border)) d.style.border = border;
+    if (isdef(rounding)) d.style.borderRadius = rounding + unit;
+  } else {
+  }
+  domel.key = key;
+  if (parent) parent.appendChild(domel);
+  return domel;
+}
 function createFakeState() {
   let settings = DB.games.gPerlen2;
   let fakeServer = new FakeServerClass(Socket, PerlenDict, settings, null);
@@ -35983,6 +36212,13 @@ function createMultipleChoiceElements(correctAnswer, wrongAnswers, dParent, dFee
     }
   }
 }
+function createNode(sp, idParent, R) {
+  let n = jsCopy(sp);
+  n.idParent = idParent;
+  let id = n.nid = getUid();
+  n.fullPath = R.NODES[idParent].fullPath + '.' + id;
+  return n;
+}
 function createNumberSequence(n, min, max, step, op = 'plus') {
   let fBuild = x => { return op == 'plus' ? (x + step) : op == 'minus' ? (x - step) : x; };
   if (op == 'minus') min += step * (n - 1);
@@ -36112,6 +36348,46 @@ function createPicto({ key, w = 100, h = 100, unit = 'px', fg = 'blue', bg, padd
   if (parent) parent.appendChild(domel);
   return domel;
 }
+function createPictoSimple({ key, w, h, unit = 'px', fg, bg, padding, cat, parent, border, rounding }) {
+  if (nundef(key)) key = getRandomKey(iconChars);
+  let ch = iconChars[key];
+  let family = (ch[0] == 'f' || ch[0] == 'F') ? 'pictoFa' : 'pictoGame';
+  let text = String.fromCharCode('0x' + ch);
+  cat = isdef(cat) ? cat : isdef(parent) ? getTypeOf(parent) == 'div' ? 'd' : 'g' : isdef(cat) ? cat : 'd';
+  if (nundef(w)) w = 25;
+  if (nundef(h)) h = w;
+  let domel;
+  if (cat == 'd') {
+    let d = document.createElement('div');
+    d.style.textAlign = 'center';
+    d.style.fontFamily = family;
+    d.style.fontWeight = 900;
+    d.style.fontSize = h + unit;
+    if (isdef(bg)) d.style.backgroundColor = bg;
+    if (isdef(fg)) d.style.color = fg;
+    d.innerHTML = text;
+    domel = d;
+    if (isdef(padding)) d.style.padding = padding + unit;
+    d.style.display = 'inline-block';
+    d.style.height = h + 2 * padding + unit;
+    d.style.width = d.style.height;
+    if (isdef(border)) d.style.border = border;
+    if (isdef(rounding)) d.style.borderRadius = rounding + unit;
+  } else {
+  }
+  domel.key = key;
+  if (parent) parent.appendChild(domel);
+  return domel;
+}
+function createPictoX(parent, style, classes, titleOptions, pictoOptions, captionOptions) {
+  let d = mDiv(parent);
+  if (isdef(style)) mStyle(d, style);
+  if (isdef(classes)) mClass(d, ...classes);
+  if (isdef(titleOptions)) { titleOptions.parent = d; createText(titleOptions); }
+  if (isdef(pictoOptions)) { pictoOptions.parent = d; createPicto(pictoOptions); }
+  if (isdef(captionOptions)) { captionOptions.parent = d; createText(captionOptions); }
+  return d;
+}
 function createPlayerZone(pl, namePos = 'top', showColor = false) {
   let id = pl.id;
   let z = createCardZone(id, id, namePos);
@@ -36136,7 +36412,7 @@ function createPrototypesForOid(oid, o, R) {
   }
   R.oidNodes[oid] = nlist;
 }
-function createSampleHex1(rows = 5, topcols = 3, w = 25, h = 25) {
+function createSampleHex1(rows = 5, topcols = 3, w = 50, h = 50) {
   initTable();
   let styles = {
     outer: { bg: 'pink', padding: 25 },
@@ -36222,6 +36498,12 @@ function createStaticUi(area, R) {
   let n = R.tree;
   recUi(n, R, area);
 }
+function createSTree(n, idParent, R) {
+  n = createNode(n, idParent, R);
+  if (isContainerType(n.type)) {
+    let prop = RCONTAINERPROP[n.type];
+  }
+}
 function createSubtitledPage(bg = 'silver', title = 'Aristocracy', subtitle = '', footer = 'a game by F. Ludos') {
   setPageBackground(bg);
   createPageDivsFullVisibleArea({
@@ -36257,6 +36539,11 @@ function createTableZone(showColor = false) {
   let z = createCardZone('table');
   if (showColor) mStyleX(z.div, { bg: 'white' });
   return z;
+}
+function createText({ s, parent, style, classes }) {
+  let d = mText(s, parent);
+  if (isdef(style)) mStyle(d, style);
+  if (isdef(classes)) mClass(d, ...classes);
 }
 function createTooltip(oid) {
   $('#' + oid).unbind('mouseover mouseout');
@@ -36495,7 +36782,7 @@ function createWordInputs(words, dParent, idForContainerDiv = 'seqContainer', se
   let wheel = getHueWheel(G.color, 40, numWords <= 4 ? 60 : numWords <= 10 ? 30 : 15, 0);
   wheel = wheel.map(x => colorHSLBuild(x, 100, 50));
   wheel = shuffle(wheel);
-  let wheel1 = colorPalShadeX(anyColorToStandardString(wheel[0]), numWords);
+  let wheel1 = colorPalShadeX(colorFrom(wheel[0]), numWords);
   wheel = jsCopy(wheel1);
   if (G.op == 'plus') wheel.reverse();
   for (const w of words) {
@@ -36654,7 +36941,7 @@ function cTest03_2HandsRandom() {
 function cTest04_2HandsRandom() {
   let iarr = [33, 7, 1, 2, 3, 4], dParent = dTable, id = 'h1';
   let data = DA[id] = {};
-  let h = data.deck = new Deck();
+  let h = data.deck = new DeckClass();
   h.init(iarr);
   let redo = true;
   h = data;
@@ -36677,7 +36964,7 @@ function cTest04_2HandsRandom() {
   setTimeout(cTest03_2Hands_transferStarts, 1000);
 }
 function cTest05() {
-  setBackgroundColor(null, 'random')
+  setBackgroundColor(null,'random')
   mStyle(dTable, { h: 400, bg: 'black', padding: 10 });
   let SPEC = { layout: ['T T', 'H A'], showAreaNames: true };
   let s = '';
@@ -37034,7 +37321,7 @@ function Deck() {
     this.cardHeight = 80;
     this.cardSuit = 13;
     this.cardTotal = 52;
-    this.cardURL = "/cardGame1/Images/cards2/";
+    this.cardURL = "../images/cards2/";
     this.cardReverse = "reverse";
     this.cardName = "";
     this.cardExtension = ".png";
@@ -37106,12 +37393,12 @@ function decodeColor(c) {
   let parts = c.split(' ');
   if (parts.length == 1) return c;
   else if (parts.length == 2 && (parts[1][0] == '.' || parts[1][0] == '0')) {
-    return anyColorToStandardString(parts[0], Number(parts[1]));
+    return colorFrom(parts[0], Number(parts[1]));
   } else {
     let n = Number(parts[1]);
     let lumParam = n / 50 - 1.0;
     let cAltered = colorShade(lumParam, parts[0]);
-    if (parts.length > 2) { cAltered = anyColorToStandardString(cAltered, Number(parts[2])); }
+    if (parts.length > 2) { cAltered = colorFrom(cAltered, Number(parts[2])); }
     return cAltered;
   }
 }
@@ -41325,10 +41612,10 @@ function firstNumber(s) {
 function firstPositiveNumber(s) {
   return s ? Number(s.match(/\d+/).shift()) : -1;
 }
-function firstWord(s) { return toWords(s)[0]; }
-function firstWordAfter(s, sub) {
+function firstWord(s, allow_ = false) { return toWords(s, allow_)[0]; }
+function firstWordAfter(s, sub, allow_ = false) {
   let s1 = stringAfter(s, sub);
-  let s2 = toWords(s1)[0]
+  let s2 = toWords(s1, allow_)[0]
   return s2;
 }
 function fisherYates(arr) {
@@ -41534,16 +41821,16 @@ function formatDate1(d) {
 }
 function formatDate2(d) { if (nundef(d)) d = new Date(); return d.toISOString().slice(0, 19).replace("T", " "); }
 function formatDate3(d) { if (nundef(d)) d = new Date(); return d.toISOString().slice(0, 19).replace(/-/g, "/").replace("T", " "); }
-function formatjson(j) {
-  let s = JSON.stringify(j);
-  s = s.replace(/\s/g, '');
-  return s;
-}
 function formatJson(o){
   let s='';
   for(const k in o){
     if (isSimple(o[k])) s+=k+':'+o[k]+' ';
   }
+  return s;
+}
+function formatjson(j) {
+  let s = JSON.stringify(j);
+  s = s.replace(/\s/g, '');
   return s;
 }
 function formatll(ll) {
@@ -42131,12 +42418,6 @@ function g9(x, mean, stdev) {
 function gaChar(key){
   return String.fromCharCode('0x'+gaChars[key]); //'f520');
 }
-function Game() {
-    this.board = new Board();
-    this.run = function () {
-        this.board.start();
-    }
-}
 function game_add_default_item(ev) {
   evNoBubble(ev);
   let sz = 50;
@@ -42194,6 +42475,12 @@ function GameButton(label) {
   } 
   document.body.appendChild(this.button);
 } 
+function GameFunc() {
+    this.panel = new Panel();
+    this.run = function () {
+        this.panel.start();
+    }
+}
 function gameItem(name, color) { return mItem(name2id(name), null, { color: isdef(color) ? color : randomColor(), name: name }); }
 function gameloop() {
   for (const item of G.items) {
@@ -42380,6 +42667,10 @@ function gaussian_amp(canvas, stdev) {
   f = x => formula(x, v, amp);
   return f;
 }
+function gaussian1(x, m = 0, stdev = 2, amp = 1) {
+  let v = stdev * stdev;
+  return amp * Math.E ** (-((x - m) ** 2) / (2 * v)) / Math.sqrt(v * 2 * Math.PI);
+}
 function gaussianRand() {
   var rand = 0;
   for (var i = 0; i < 6; i += 1) { rand += Math.random(); }
@@ -42528,25 +42819,29 @@ function generalGrid(nuiBoard, R, area) {
   nuiBoard.children = rtreeParent.children;
   nuiBoard.adirty = true;
 }
-function generate(sentence) {
-  let root = C.root;
-  let rules = root.rules;
-  var nextSentence = '';
-  for (var i = 0; i < sentence.length; i++) {
-    var current = sentence.charAt(i);
-    var found = false;
-    for (var j = 0; j < rules.length; j++) {
-      if (current == rules[j].aus) {
-        found = true;
-        nextSentence += rules[j].wird;
+function generate() {
+  numgen++;if (numgen>system.max){
+    clearInterval(interval_id);
+    console.log('done!');
+    return;
+  }
+  len *= factor;
+  let nextSentence = '';
+  for (let i = 0; i < sentence.length; i++) {
+    let current = sentence.charAt(i);
+    let done = false;
+    for (const rule of rules) {
+      if (current == rule.aus) {
+        nextSentence += rule.mach;
+        done = true;
         break;
       }
     }
-    if (!found) {
-      nextSentence += current;
-    }
+    if (!done) nextSentence += current;
   }
-  return nextSentence;
+  sentence = nextSentence;
+  createP(sentence);
+  turtle();
 }
 function generate_friendly_table_name(game, players) {
   const europe_capitals = 'Amsterdam,  Ankara,  Astana,  Athens,  Baku,  Belgrade,  Berlin,  Bern,  Bratislava,  Brussels,  Bucharest,  Budapest,  Chisinau,  Copenhagen,  Dublin,  Helsinki,  Kiev,  Lisbon,  Ljubljana,  London,  Luxembourg,  Madrid,  Minsk,  Monaco,  Moscow,  Nicosia,  Oslo,  Paris,  Podgorica,  Prague,  Reykjavík,  Riga,  Rome,  San Marino,  Sarajevo,  Skopje,  Sofia,  Stockholm,  Tallinn,  Tbilisi,  Tirana,  Vaduz,  Valletta,  Vatican City,  Vienna,  Vilnius,  Warsaw,  Yerevan,  Zagreb';
@@ -44284,6 +44579,12 @@ function get_play(e) {
 function get_play_dep(e) {
   get_data({ username: Session.cur_user, gamename: Session.cur_game, assets: nundef(Syms) }, "play");
 }
+function get_play_NOP(step, move) {
+  Session.cur_menu = 'games';
+  let data = { uname: Session.cur_user, tid: Session.cur_tid };
+  if (isdef(step) && isdef(move)) { data.step = step; data.move = move; }
+  to_server(data, "play");
+}
 function get_play_start() { Session.cur_menu = 'play'; to_server({ uname: Session.cur_user, tid: Session.cur_tid }, 'play_start'); }
 function get_player_options(players, game) { return players.map(x => `${x}:${get_startlevel(x, game)}:${get_preferred_lang(x)}`).join(','); }
 function get_player_score(plname) { ensure_score(plname); return Z.fen.players[plname].score; }
@@ -44537,26 +44838,6 @@ function get_square(board, square) {
 }
 function get_start_data_fen(players, game) { return players.map(x => `${x}:${get_startlevel(x, game)}:${get_preferred_lang(x)}`).join(','); }
 function get_startlevel(user, game) { return lookup(DB.users, [user, 'games', game, 'startlevel']) ?? lookup(DB.games, [game, 'def_startlevel']) ?? 0; }
-function get_style(bg, fg) {
-  let res = new ol.style.Style({
-    fill: new ol.style.Fill({ color: bg }),
-    stroke: new ol.style.Stroke({ color: fg }),
-  });
-  return res;
-}
-function get_style_func(func, bg, fg) {
-  let res = (feature) => {
-    return new ol.style.Style({
-      fill: new ol.style.Fill({
-        color: valf(func(feature), bg)
-      }),
-      stroke: new ol.style.Stroke({
-        color: fg,
-      }),
-    });
-  }
-  return res;
-}
 function get_suitlists_sorted_by_rank(blatt, rankstr = '23456789TJQKA', remove_duplicates = false) {
   let di = {};
   for (const k of blatt) {
@@ -44757,13 +45038,12 @@ function getAsInt(mobj, styleInfo, prop) {
 }
 function getAux() { return getAuxIds.map(x => UIS[x]); }
 function getAuxIds() { return getList(IdOwner.l); }
-function getAuxVisuals(id) { return getVisuals(id, 'aux') }
 function getAvatar(username) { let d = Avatars[username]; if (nundef(d)) d = makeUserAvatar(username); return d; }
 function getBackgroundColor(img, ctx) {
   ctx.drawImage(img, 0, 0);
   var p = ctx.getImageData(1, 1, 1, 1).data;
   let rgb = `rgb(${p[0]},${p[1]},${p[2]})`;
-  let color = anyColorToStandardString(rgb);
+  let color = colorFrom(rgb);
   return color;
 }
 function getBadgeStyles(sContainer, sPic, sText, w, h, picPercent, paddingTop, paddingBot, family, bg = 'blue', bgPic = 'random', fgPic = 'white', fgText = 'white', hasText = true) {
@@ -44859,8 +45139,6 @@ function getBoardScaleFactors(board, { factors, opt, f2nRatio, w, h, margin } = 
   }
   return [fw, fh, nw, nh, ew];
 }
-function getBoat(idx) { return UIS[getBoatId(idx)]; }
-function getBoatId(idx) { return firstCond(getList(IdOwner.a),x=>pureId(x)==idx.toString()); }
 function getBoatIdByIdx(idx) {
   if (!IdOwner.a || isEmpty(IdOwner.a)) return null;
   if (idx < 0) idx += IdOwner.a.length;
@@ -44868,7 +45146,7 @@ function getBoatIdByIdx(idx) {
   return IdOwner.a[idx];
 }
 function getBoatIds() { return getList(IdOwner.a); }
-function getBoats(id) { return getVisuals(id, 'boat') }
+function getBoats() { return getBoatIds().map(x => UIS[x]); }
 function getBoatWith(lst, isGood = true) {
   let boats = getBoats();
   if (!isGood) {
@@ -45466,7 +45744,7 @@ function getCornerPixelColor(img) {
   let rgb = `rgb(${p[0]},${p[1]},${p[2]})`;
   let x = 1, y = 1;
   var coord = "x=" + x + ", y=" + y;
-  let color = anyColorToStandardString(rgb);
+  let color = colorFrom(rgb);
   return color;
 }
 function getCornerRooms(house) {
@@ -45554,8 +45832,8 @@ function getDefaultObjects() { return getDefaultObjectIds(x => UIS[x]); }
 function getDefaultPlayerIds() { return _getChildrenOf(S.settings.player.defaultArea); }
 function getDefaultPlayers() { return getDefaultPlayerIds(x => UIS[x]); }
 function getDefaultVisual(oid) { return UIS[getDefId(oid)]; }
-function getDefId(oid) { return firstCond(getList(oid2ids[oid]),x=>x[0]=='d');}
-function getDefVisual(oid) { return UIS[getDefId(oid)];}
+function getDefId(oid) { return firstCond(oid2ids[oid], x => x[0] == 'd'); }
+function getDefVisual(oid) { return UIS[getDefId(oid)]; }
 function getDiagonallyOpposedCornerRooms(house) {
   if (coin()) return [getRoomNW(house), getRoomSE(house)]; else return [getRoomSW(house), getRoomNE(house)];
 }
@@ -45814,6 +46092,8 @@ function getEllipsePoints(radx, rady, n, disp = 0) {
   return pts;
 }
 function getExtendedColors(bg, fg) {
+  //#region doc 
+  //#endregion 
   bg = computeColor(bg);
   fg = computeColor(fg);
   if (bg == 'inherit' && (nundef(fg) || fg == 'contrast')) {
@@ -45843,7 +46123,7 @@ function getFirstBoat() { if (!IdOwner.a || isEmpty(IdOwner.a)) return null; ret
 function getFirstBoatId() { if (!IdOwner.a || isEmpty(IdOwner.a)) return null; return IdOwner.a[0]; }
 function getFirstId(path){let ids=path2mainIds[path];return ids && ids.length>0?ids[0]:null;}
 function getFirstKey(o) { return Object.keys(o)[0]; }
-function getFirstVisual(oid) { return UIS[oid] ? UIS[oid] : UIS['d@' + oid]; }
+function getFirstVisual(oid) { let res = getVisual(oid); return res ? res : getDefVisual(oid); }
 function getFloatLeftDiv() {
   let d = document.createElement('div');
   d.style.float = 'left';
@@ -45892,6 +46172,14 @@ function getFuncName() {
 }
 function getFunctionCallerName() {
   return new Error().stack.match(/at (\S+)/g)[1].slice(3);
+}
+function getFunctionSignature(firstline,key) {
+  let sig;
+  if (firstline.includes(') {')) sig = stringBefore(firstline, ') {') + ')';
+  else if (firstline.includes('){')) sig = stringBefore(firstline, '){') + ')';
+  else sig = `function ${key}()`;
+  sig += '{}';
+  return sig;
 }
 function getFunctionsNameThatCalledThisFunction() {
   let c1 = getFunctionsNameThatCalledThisFunction.caller;
@@ -46065,14 +46353,6 @@ function getHue(cssHSLA) {
   let h = firstNumber(cssHSLA);
   return h;
 }
-function getHues(colorDict = { Blueberry: '#6B7A8F', Apricot: '#F7882F', Citrus: '#F7C331', AppleCore: ' #DCC7AA' }) {
-  let res = [];
-  for (const k in colorDict) {
-    let hue = colorHue(colorDict[k]);
-    res.push(hue);
-  }
-  return res;
-}
 function getHueWheel(contrastTo, minDiff = 25, mod = 30, start = 0) {
   let hc = colorHue(contrastTo);
   let wheel = [];
@@ -46099,12 +46379,6 @@ function getidAvailable(i) { return 'c_b_mm_plj' + i; }
 function getIdForOid(oid){return 'm_t_'+oid;}
 function getidNum(i) { return 'c_b_mm_pln' + i; }
 function getidPlayermode(mode) { return 'c_b_mm_' + mode; }
-function getIds(id, type = 'all') {
-  let res = id2uids[id];
-  if (nundef(res)) return [];
-  if (isEmpty(res) || type == 'all') return res;
-  return res.filter(x => isdef(x[type]));
-}
 function getIdsInfobox() { return IdOwner.i ? IdOwner.i : []; }
 function getidSpan(i) { return 'sppl' + i; }
 function getidSpanJoin(i) { return 'spplj' + i; }
@@ -46448,7 +46722,6 @@ function getMainAreaPercent(dParent, bg = 'grey', wPercent = 94, hPercent = 96, 
   return dArea;
 }
 function getMainId(oid) { return firstCond(oid2ids[oid], x => x[0] == 'm'); }
-function getMainVisual(oid) { return UIS[oid]; }
 function getMatchingPictoKey(o, key) {
   let sym = o.obj_type;
   if (sym in S.settings.symbols) { sym = S.settings.symbols[sym]; }
@@ -46685,6 +46958,9 @@ function getOuterDivForMenuStyle(){
   return createElementFromHtml(`<div style='max-height:430px;text-align: center; animation: appear 4s ease'>`);
 }
 function getPageHeaderDivForPlayer(oid) { return document.getElementById('c_c_' + G.playersAugmented[oid].username); }
+function getPal(ipal, pal) {
+  return pal[ipal % pal.length];
+}
 function getpal(ipal_dep = -1, ihue = 0, bOrf = 'b', pal) {
   let p = empty(pal) || !pal || pal == undefined ? palette : pal;
   if (!p) return randomColor();
@@ -46696,11 +46972,8 @@ function getpal(ipal_dep = -1, ihue = 0, bOrf = 'b', pal) {
   else if (ihue >= nHues) ihue %= nHues;
   return p[ipal_dep][ihue][bOrf];
 }
-function getPal(ipal, pal) {
-  return pal[ipal % pal.length];
-}
 function getPalette(color, type = 'shade') {
-  color = anyColorToStandardString(color);
+  color = colorFrom(color);
   return colorPalShade(color);
 }
 function getPaletteFromHues(hues) {
@@ -46711,7 +46984,7 @@ function getPaletteFromImage(img) {
   let palette0 = ColorThiefObject.getPalette(img);
   let palette = [];
   for (const pal of palette0) {
-    let color = anyColorToStandardString(pal);
+    let color = colorFrom(pal);
     palette.push(color);
   }
   return palette;
@@ -47034,7 +47307,7 @@ function getRandomPixelColor(img) {
   let rgb = `rgb(${p[0]},${p[1]},${p[2]})`;
   let x = rx, y = ry;
   var coord = "x=" + x + ", y=" + y;
-  let color = anyColorToStandardString(rgb);
+  let color = colorFrom(rgb);
   console.log('pixel', coord, 'has color', color);
   return color;
 }
@@ -47113,7 +47386,6 @@ function getRectInt(elem, relto) {
   extendRect(r4); 
   return r4;
 }
-function getRelativeIds(id){return getList(id2ids[id]);}
 function getRelBounds(elem, elRel) {
   let b1 = elem.getBoundingClientRect();
   if (!elRel) return b1;
@@ -47204,7 +47476,6 @@ function getSizeWithStyles(text, styles) {
   d.innerHTML = text;
   height = d.clientHeight;
   width = d.clientWidth;
-  let b = getBounds(d);
   d.parentNode.removeChild(d);
   return { w: width, h: height };
 }
@@ -47625,8 +47896,14 @@ function getVisibleSet(o) {
   else if ('set' in o.visible) return o.visible.set;
   else return o.visible.xset;
 }
-function getVisual(oid) { return getMainVisual(oid); }
-function getVisuals(id, type = 'all') { return getIds(id, type).map(x => UIS[x]); }
+function getVisual(oid) { return UIS[getMainId(oid)]; }
+function getVisuals(oid){
+  let mk = UIS[getMainId(oid)]; 
+  if (mk || USE_OLD_GRID_FUNCTIONS) return mk;
+  let oids = oid2ids[oid];
+  if (!oids || !IdOwner.m) return null;
+  return intersection(IdOwner.m,oid2ids[oid]).map(x=>UIS[x]); 
+}
 function getVowels(w, except = []) {
   w = w.toLowerCase();
   let vowels = 'aeiouy';
@@ -48672,7 +48949,7 @@ function gTest04() {
   g.addLayoutControls(d);
 }
 function gTest05() {
-  dTable = toElem('map');
+  initTable();
   let hexPoints = [0, -1, 1, -0.5, 1, 0.5, 0, 1, -1, 0.5, -1, -0.5];
   let styles = {
     outer: { bg: 'pink', padding: 25 },
@@ -48680,9 +48957,9 @@ function gTest05() {
     node: { shape: 'polygon', 'shape-polygon-points': hexPoints, w: 90, h: 100, bg: 'black', fg: 'red', fz: 40 }
   };
   let g = new UIGraph(dTable, styles);
-  let nids = g.addNodes(17);
+  let nids = g.addNodes(7);
   console.log('g', g.getNodeIds(), g.getEdgeIds());
-  g.hex1(5, 2, styles.node.w + 2, styles.node.h + 2);
+  g.hex1(3, 2, styles.node.w + 2, styles.node.h + 2);
   g.addLayoutControls();
   g.disableDD(); 
   g.nodeEvent('click', x => { let id = x.id(); console.log('clicked ' + id); g.mStyle(id, { bg: 'yellow', fg: 'blue' }); });
@@ -48820,7 +49097,7 @@ function gTest12() {
   g.showExtent();
 }
 function gTest13() {
-  let g = createSampleHex1(5, 3, 100, 100); let ids = g.getNodeIds(); let id = ids[0]; g.showExtent();
+  let g = createSampleHex1(3, 2, 100, 100); let ids = g.getNodeIds(); let id = ids[0]; g.showExtent();
   let center = g.getProp(id, 'center');
   console.log('center prop', center);
   center = g.posDict['preset'][id];
@@ -48831,7 +49108,6 @@ function gTest13() {
   let node = g.getNode(id);
   let b = node.renderedBoundingBox();
   pN = { x: b.x1 + b.w / 2, y: b.y1 };
-  return;
   let nNew = g.addNode({ width: 25, height: 25 }, pN);
   console.log('new node', nNew);
   let n1 = g.getNode(nNew);
@@ -48886,26 +49162,21 @@ function hallo(control, map) {
   });
 }
 function halloIchZeichneJetzt() {
-  /* Initialise variables */
   let isDrawing = false;
   let x = 0;
   let y = 0;
-  /* Get canvas and context */
   const canvas = document.getElementById('sheet');
   let r = getRect(G.clientBoard.dOuter); r.left = r.x; r.top = r.y;
   console.log('rectBoard', r);
   canvas.width=r.w;
   canvas.height=r.h;
   var context = canvas.getContext('2d');
-  /* Add the event listeners for mousedown, mousemove, and mouseup */
   canvas.onmousedown = e => {
-    /* Drawing begins */
     x = e.offsetX;
     y = e.offsetY;
     isDrawing = true;
   };
   canvas.onmousemove = e => {
-    /* Drawing continues */
     if (isDrawing === true) {
       drawLine(context, x, y, e.offsetX, e.offsetY);
       x = e.offsetX;
@@ -48913,7 +49184,6 @@ function halloIchZeichneJetzt() {
     }
   };
   canvas.onmouseup = e => {
-    /* Drawing ends */
     if (isDrawing === true) {
       drawLine(context, x, y, e.offsetX, e.offsetY);
       x = 0;
@@ -48921,19 +49191,14 @@ function halloIchZeichneJetzt() {
       isDrawing = false;
     }
   };
-  /* Initialise socket */
   var socket = io();
-  /* Receiving Updates from server */
   socket.on('update_canvas', function (data) {
     let { x1, y1, x2, y2, color } = JSON.parse(data);
     drawLine(context, x1, y1, x2, y2, color, true);
   });
-  /* Function to Draw line from (x1,y1) to (x2,y2) */
   function drawLine(context, x1, y1, x2, y2, color = selected_color, from_server = false) {
-    /* Send updates to server (not re-emiting those received from server) */
     if (!from_server)
       socket.emit('update_canvas', JSON.stringify({ x1, y1, x2, y2, color }));
-    /* Draw line with color, stroke etc.. */
     context.beginPath();
     context.strokeStyle = color;
     context.lineWidth = 5;
@@ -49040,8 +49305,6 @@ function handle_command(cmd) {
   console.log('history', G.hist)
   console.log('current selection', G.selist.map(x => x.name));
 }
-function handle_connect(id) { console.log('connected', id); io.emit('message', 'someone logged in!'); }
-function handle_disconnect(x) { console.log('disconnected', x); io.emit('message',x); }
 function handle_drag_and_drop(e) {
   if (e.type == "dragover") {
     e.preventDefault();
@@ -49088,7 +49351,9 @@ function handle_gehtHoch() {
   bluff_change_to_ack_round(fen, nextplayer);
   take_turn_fen();
 }
-function handle_message(x) { console.log('got message', x); io.emit('message', x); }
+function handle_message(x) {
+  console.log('from server:', x.msg);
+}
 function handle_result(result, cmd) {
   if (verbose) console.log('cmd', cmd, '\nresult', result); 
   if (result.trim() == "") return;
@@ -49201,7 +49466,6 @@ function handle_settings(x) {
   console.log('settings:', settings);
   console.log('defaults:', defaults);
 }
-function handle_update(x){ console.log('got update', x); io.emit('update',x);}
 function handleAction(x) {
   return [[x]];
 }
@@ -49308,6 +49572,11 @@ function has_at_most_n_jolly(j, n = 1) { return j.filter(x => is_jolly(x)).lengt
 function has_farm(uname) { return firstCond(UI.players[uname].buildinglist, x => x.type == 'farm'); }
 function has_jolly(j) { return firstCond(j, x => is_jolly(x)); }
 function has_schweine(fenbuilding) { return !isEmpty(fenbuilding.schweine); }
+function hasChildren(n) {
+  let ch = RCONTAINERPROP[n.type];
+  if (nundef(ch)) ch = 'ch';
+  return isdef(n[ch]);
+}
 function hasClickedUI() { uiPaused |= hasClickedMask; }
 function hasDuplicate(arr, efunc) {
   let di = {};
@@ -50561,7 +50830,7 @@ function iH00_dep(iarr, dParent, styles, id) {
     return mZone(dTable, { wmin: sz.w, h: sz.h, padding: padding, rounding: 10 });
   }
   let data = DA[id] = {};
-  let h = data.deck = new Deck();
+  let h = data.deck = new DeckClass();
   h.init(iarr);
   h = data;
   if (nundef(h.zone)) h.zone = iH00Zone(dParent); else clearElement(h.zone);
@@ -50770,14 +51039,14 @@ function iMagnifyX(ui, item, pos) {
 }
 function iMakeHand(iarr, dParent, styles, id) {
   let data = DA[id] = {};
-  let h = data.deck = new Deck();
+  let h = data.deck = new DeckClass();
   h.init(iarr);
   iPresentHand(data, dParent, styles);
   return data;
 }
 function iMakeHand_test(dParent, iarr, id) {
   let data = DA[id] = {};
-  let h = data.deck = new Deck();
+  let h = data.deck = new DeckClass();
   h.init(iarr);
   iPresentHand_test(dParent, data);
   return data;
@@ -50952,11 +51221,11 @@ function indexOfMax(arr, prop) {
       if (max == null || v[prop] > max) {
         max = v[prop];
         imax = i;
-      }
-    } else {
-      if (max == null || v > max) {
-        max = v;
-        imax = i;
+      } else {
+        if (max == null || v > max) {
+          max = v;
+          imax = i;
+        }
       }
     }
   }
@@ -50987,16 +51256,13 @@ function inferPlayerColorFromNameOrInit(plid, index) {
   let ckeys = getKeys(playerColors);
   return playerColors[ckeys[index] % playerColors.length];
 }
-function inferType(n, defType = 'panel') {
-  if (isdef(n.oid)) {
-    let o = R.getO(n.oid);
-    if (isdef(o.loc)) return DEFS.defaultLoc;
+function inferType(val) {
+  for (const t of ['region', 'power', 'unit', 'faction']) {
+    if (isType(t, val)) {
+      return t;
+    }
   }
-  if (isdef(n.children)) {
-    return DEFS.defaultPanel; //'panel';
-  } else {
-    return DEFS.defaultInfo; //'info'; 
-  }
+  return 'unknown';
 }
 function info_from_fen(fen) {
   let all_attrs = gSet_attributes();
@@ -53341,11 +53607,10 @@ function is_just_my_turn() {
 function is_key_down(key) {
   if (nundef(DA.keystate)) {
     DA.keystate = {};
-    window.addEventListener('keyup', (e) => state[e.key] = false);
-    window.addEventListener('keydown', (e) => { state[e.key] = true; });
+    window.addEventListener('keyup', (e) => DA.keystate[e.key] = false);
+    window.addEventListener('keydown', (e) => { DA.keystate[e.key] = true; });
   }
-  let state = DA.keystate;
-  state.hasOwnProperty(key) && state[key] || false;
+  return DA.keystate.hasOwnProperty(key) && DA.keystate[key] || false;
 }
 function is_lat_lng(p) { return isdef(p.lat); }
 function is_lat_long(p) { return is_lat_lng(p); }
@@ -53543,10 +53808,10 @@ function isEmpty(arr) {
 function isEmptyDict(x) { return isDict(x) && isEmpty(Object.keys(x)); }
 function isEmptyOrWhiteSpace(s) { return isEmpty(s.trim()); }
 function isEnglish(lang) { return startsWith(lang.toLowerCase(), 'e'); }
-function isEnglishKeyboardGermanEquivalent(wreq, w) {
-  wreq = fromUmlaut(wreq)
-  w = fromUmlaut(w);
-  return allLettersContained(wreq, w);
+function isEnglishKeyboardGermanEquivalent(wreq,w){
+  wreq=fromUmlaut(wreq)
+  w=fromUmlaut(w);
+  return allLettersContained(wreq,w);
 }
 function isError(d) {
   let kathastrophicError = !(typeof d == 'object');
@@ -53935,7 +54200,7 @@ function isVisible(elem) {
 }
 function isVisible2(elem) { 
   if (isString(elem)) elem = document.getElementById(elem);
-  return (elem.style.display != 'none' || elem.offsetParent !== null);
+  return (elem.style.display!='none' || elem.offsetParent !== null);
 }
 function isVisibleToPlayer(o, player) {
   let vis = getVisibleSet(o);
@@ -54051,6 +54316,7 @@ function iTrim(item, serialize = true) {
 }
 function iUnhigh(item) { let d = iDiv(item); mStyle(d, { bg: 'transparent' }); }
 function iZMax(n) { if (isdef(n)) ZMax = n; ZMax += 1; return ZMax; }
+function join_table(user, tid) { to_server({ uname: user, tid: tid }, 'join_table'); }
 function joinMultiplayerGame(){
 }
 function jolly_matches(key, j, rankstr = 'A23456789TJQKA') {
@@ -54194,7 +54460,7 @@ function kriegTest00(game) {
   for (let i = 0; i < 2; i++) { game.make_random_move(); game.make_random_move(); game.print_state(); if (game.is_out_of_cards()) { console.log('game over!'); break; } }
 }
 function kriegTest00UI() {
-  setBackgroundColor(null, 'random');
+  setBackgroundColor(null,'random');
   clearElement(dTable)
   let back = new GKriegBack();
   back.load({ pl1: { name: 'felix', hand: ['TH', 'KH'] }, pl2: { name: 'tom', hand: ['9C', 'QC'] } }); back.deck.sort(); back.print_state();
@@ -54514,8 +54780,6 @@ function layRow(olist, area, size = 50, gap = 4) {
   });
   return res;
 }
-function lCard52(n,R){
-}
 function leaf_draw(o) {
   let [x, y] = [o.p.x, o.p.y];
   let [w, h] = [o.len * 1.5, o.len];
@@ -54679,15 +54943,6 @@ function LineMatch(BookLine, gameline) {
   }
   return BOOL.TRUE;
 }
-function lineStyleFunction(feature, resolution) {
-  return new Style({
-    stroke: new Stroke({
-      color: 'green',
-      width: 2,
-    }),
-    text: createTextStyle(feature, resolution, myDom.lines),
-  });
-}
 function lineupDecks(msDecks, deckArea) {
   let x = 0;
   let ysign = 1;
@@ -54809,7 +55064,7 @@ async function load_codebase(paths, preserveRegionNames = false) {
     paths = ['basemin', 'board', 'cards', 'gamehelpers', 'select']; 
     paths = paths.map(f => `../basejs/${f}.js`);
   }
-  let superdi = {};
+  let superdi = {cla:{},func:{},const:{},var:{}};
   for (const f of paths) {
     console.log('...processing file', f);
     let current_file = stringBefore(stringAfterLast(f, '/'), '.');
@@ -55275,7 +55530,7 @@ function loadRandomTaeOrPosturePic(dpics) {
 }
 function loadScript(path, callback) {
   var script = document.createElement('script');
-  script.onload = ev => {
+  script.onload = function () {
     if (callback) callback(path);
   };
   script.src = path;
@@ -55660,6 +55915,13 @@ function logVals(title, o) {
   let s = title + ':  ';
   for (const k in o) { s += k + ':' + o[k] + ' '; }
   console.log(s);
+}
+function long_polling_shield_on() {
+  DA.long_polling = { type: 'table_status', data: Session.cur_tid, tid: Session.cur_tid, table: Session.cur_table, polling: true, waiting_for_prop: 'status', waiting_for_val: 'started' };
+  polling_shield_on('waiting for host to start game...');
+  TOMain = setTimeout(() => {
+    check_poll_orig();
+  }, 5000);
 }
 function longest_array(arr) {
   let max = 0;
@@ -58011,21 +58273,6 @@ function makeExpSequence() {
   G.seq = [G.operand, G.oop.wr, G.step, '=', G.result];
   return G.seq;
 }
-function makeFakeCards(gpl) {
-  let ids = _getAllCardsIdsFromTable();
-  let idsHand = gpl.hand._set.map(x => x._obj);
-  let restIds = arrMinus(ids, idsHand);
-  let i = Math.floor(restIds.length / 2);
-  let f1 = { _set: [] };
-  for (let n = 0; n < i; n++) {
-    f1._set.push({ _obj: restIds[n] });
-  }
-  let f2 = { _set: [] };
-  for (let n = i; n < restIds.length; n++) {
-    f2._set.push({ _obj: restIds[n] });
-  }
-  gpl.buildings.farm = [f1, f2];
-}
 function makeFields(pool, board, serverBoard, shape) {
   let serverFieldIds = _setToList(serverBoard.fields).map(x => x._obj);
   board.structInfo.fields = serverFieldIds;
@@ -58193,10 +58440,10 @@ function makeItemDiv(item, options) {
     let sShade = '0 0 0 ' + item.textShadowColor;
     if (options.showPic) {
       options.picStyles['text-shadow'] = sShade;
-      options.picStyles.fg = anyColorToStandardString('black', options.contrast); //'#00000080' '#00000030' 
+      options.picStyles.fg = colorFrom('black', options.contrast); //'#00000080' '#00000030' 
     } else {
       options.labelStyles['text-shadow'] = sShade;
-      options.labelStyles.fg = anyColorToStandardString('black', options.contrast); //'#00000080' '#00000030' 
+      options.labelStyles.fg = colorFrom('black', options.contrast); //'#00000080' '#00000030' 
     }
   }
   let dLabel;
@@ -58424,6 +58671,14 @@ function MakeMove(move) {
     return BOOL.FALSE;
   }
   return BOOL.TRUE;
+}
+function makemove(t) {
+  let myMoves = t.moves[Session.cur_user];
+  Session.cur_step = myMoves.length + 1;
+  myMoves.push(randomNumber(1000, 2000)); 
+  Session.cur_move = arrLast(myMoves);
+  DA.next = get_play_dep(Session.cur_step, Session.cur_move);
+  save_tables();
 }
 function makeNewLayout(g1) {
   let nodes = g1.getNodes();
@@ -59071,34 +59326,11 @@ function map_add_layer(key = 'osm') {
   layer.addTo(M.map);
   return layer;
 }
-function map_add_object(o, options={}) {
-  let layer = valf(options.layer, M.map.getLayers()[0]);
-  let [lon, lat] = [valf(options.lon, o.lon, 16), valf(options.lat, o.lat, 48)];
-  let shape = valf(options.shape, 'circle');
-  let center = ol.proj.fromLonLat([lon, lat]);
-  let feature;
-  switch (shape) {
-    default: feature = new ol.Feature({ geometry: new ol.geom.Circle(center, 25000), data: o }); break;
-  }
-  layer.getSource().addFeature(feature);
-  return feature;
-}
 function map_init(dParent, city, zoom) {
   let o=M.cities[city];
   let center = [o.lat,o.lon];
   var map = L.map(dParent, { center: center, minZoom: 2, zoom: zoom });
   return map;
-}
-function map_init_OSM() {
-  return new ol.Map({
-    target: 'map-container',
-    layers: [
-      new ol.layer.Tile({
-        source: new ol.source.OSM(),
-      }),
-    ],
-    view: new ol.View({ center: ol.proj.fromLonLat([0, 0]), zoom: 2, }),
-  });
 }
 function map_moveby(pin, fx, fy) {
   let pos = pin.getLatLng();
@@ -59300,7 +59532,7 @@ function maPicLabelFitX(info, label, { wmax, hmax, textShadowColor, contrast = .
   if (isdef(textShadowColor)) {
     let sShade = '0 0 0 ' + textShadowColor; 
     picStyles['text-shadow'] = sShade;
-    picStyles.fg = anyColorToStandardString('black', contrast); //'#00000080' '#00000030' 
+    picStyles.fg = colorFrom('black', contrast); //'#00000080' '#00000030' 
   }
   let dPic = maPic(info, d, picStyles, isText, isOmoji);
   let maxchars = 15; let maxlines = 1;
@@ -59977,7 +60209,7 @@ function mColFlex(dParent, chflex = [1, 5, 1], bgs) {
   }
   return res;
 }
-function mColor(d, bg, fg) { return mStyleX(d, { 'background-color': bg, 'color': fg }); }
+function mColor(d, bg, fg) { return mStyle(d, { 'background-color': bg, 'color': fg }); }
 function mColorLetters(s, brightness) {
   return toLetters(s).map(x => `<div style='display:inline-block;transform:rotate(${rChoose([10, 5, -10, -5])}deg);color:${rColor(brightness)}'>${x == ' ' ? '&nbsp;' : x}</div>`).join('');
 }
@@ -60892,6 +61124,7 @@ function mFlexEvenly(d) {
   styles['justify-content'] = 'space-evenly';
   mStyle(d, styles);
 }
+function mFlexLinebreak(d) { if (isString(d)) d = mBy(d); let lb = mDiv(d); mClass(lb, 'linebreak'); return lb; }
 function mFlexLR(d) { mStyle(d, { display: 'flex', 'justify-content': 'space-between', 'align-items': 'center' }); }
 function mFlexSpacebetween(d) { mFlexLR(d); }
 function mFlexWrap(d) { mFlex(d, 'w'); }
@@ -60926,7 +61159,7 @@ function mFromPoint(x, y) {
   elements.reverse();
   return elements;
 }
-function mGap(d, gap) { mText('_', d, { fg: 'transparent', h: gap }); }
+function mGap(d, gap) { d.style.setProperty('margin', gap + 'px'); }
 function mget_map(center = Geo.places.tuerkenschanzpark, zoom = 17) {
   M.center = center;
   M.zoom = zoom;
@@ -61601,7 +61834,7 @@ function mMinBounds(d) {
   let b = getBounds(d);
   mStyle(d, { 'min-width': b.width, 'min-height': b.height }, 'px');
 }
-function mMinSize(d, w, h, unit = 'px') { mStyleX(d, { 'min-width': w, 'min-height': h }, unit); }
+function mMinSize(d, w, h, unit = 'px') { mStyle(d, { 'min-width': w, 'min-height': h }, unit); }
 function mMoveBy(elem, dx, dy) { let rect = getRect(elem); mPos(elem, rect.x + dx, rect.y + dy); }
 function mMultiline(s, tabvalue, dParent, styles, classes) {
   let spc = '&nbsp;';
@@ -61748,6 +61981,21 @@ function modLabel(item,newLabel,styles){
   item.label = newLabel;
   return dLabel;
 }
+function more() {
+  let sz = measureText(text, styles, cx);
+  console.log('sz', sz)
+  let [v, h] = [pos[0], pos[1]];
+  let offy = v == 't' ? -sz.h : 'c' ? -sz.h / 2 : 0;
+  let offx = h == 'l' ? -sz.w : 'c' ? -sz.w / 2 : 0;
+  let [x, y] = [styles.x + offx, styles.y + offy];
+  console.log('pos', pos, styles.x, styles.y, x, y)
+  cx.fillText(text, x, y);
+  return;
+  if (pos[1] == 'c') cx.textAlign = 'center';
+  cx.font = `16px Arial`;
+  cx.fillStyle = color;
+  cx.fillText(`${label}`, x, y + (pos[0] == 'b' ? 20 : -10));
+}
 function MOVE(from, to, captured, promoted, flag) { return (from | (to << 7) | (captured << 14) | (promoted << 20) | flag); }
 function move_down(canvas, item) { item.y += 1; canvas.clamp(item); return true; }
 function move_probs(canvas, item) {
@@ -61838,10 +62086,6 @@ function MoveGUIPiece(move) {
   var file = FilesBrd[flippedTo];
   var rankName = "rank" + (rank + 1);
   var fileName = "file" + (file + 1);
-  /*if(GameController.BoardFlipped == BOOL.TRUE) {
-    rankName += "flip";
-    fileName += "flip";
-  }*/
   $(".Piece").each(function (index) {
     if ((RanksBrd[flippedFrom] == 7 - Math.round($(this).position().top / 60)) && (FilesBrd[flippedFrom] == Math.round($(this).position().left / 60))) {
       $(this).removeClass();
@@ -61959,7 +62203,7 @@ function mPara(text, dParent, styles, classes) {
   if (isdef(classes)) mClass(d, classes);
   return d;
 }
-function mParent(elem) { return elem.parentNode; }
+function mParent(elem){return elem.parentNode;}
 function mPath(p) {
   if (!(p.path.includes('.'))) p.path += '.png';
   return PERLENPATH_FRONT + 'perlen/' + p.path;
@@ -62015,6 +62259,56 @@ function mPic(kItem, dParent, styles, classes) {
   if (isdef(classes)) mClass(dOuter, classes);
   iAdd(item, { div: dOuter, dPic: d });
   return item;
+}
+function mPicButton(key, handler, dParent, styles, classes) {
+  let x = createPicto({
+    key: key, w: 20, h: 20, unit: 'px', fg: 'yellow', bg: 'violet',
+    padding: 2, margin: 0, cat: 'd', parent: dParent, rounding: 4
+  });
+  if (isdef(handler)) x.onclick = handler;
+  if (isdef(styles)) {
+    mStyle(x, styles);
+  }
+  if (isdef(classes)) { mClass(x, ...classes); }
+  else mClass(x, 'picButton');
+  return x;
+}
+function mPicButtonSimple(key, handler, dParent, styles, classes) {
+  let x = createPictoSimple({ key: key, cat: 'd', parent: dParent });
+  if (isdef(handler)) x.onclick = handler;
+  if (isdef(styles)) { mStyle(x, styles); }
+  if (isdef(classes)) { mClass(x, ...classes); }
+  return x;
+}
+function mPicSimple(info, dParent, { w, h, unit = 'px', fg, bg, padding, border, rounding, shape }) {
+  if (nundef(w)) w = 25;
+  if (nundef(h)) h = w;
+  let d = document.createElement('div');
+  if (dParent) dParent.appendChild(d);
+  d.style.textAlign = 'center';
+  d.style.fontFamily = info.family;
+  d.style.fontWeight = 900;
+  d.style.fontSize = h + unit;
+  [bg, fg] = getExtendedColors(bg, fg);
+  if (isdef(bg)) d.style.backgroundColor = bg;
+  if (isdef(fg)) d.style.color = fg;
+  d.innerHTML = info.text;
+  if (isdef(padding)) d.style.padding = padding + unit;
+  d.style.display = 'inline-block';
+  d.style.minHeight = h + padding + unit;
+  d.style.minWidth = w + 2 * padding + unit;
+  if (isdef(border)) d.style.border = border;
+  if (isdef(rounding)) d.style.borderRadius = rounding + unit;
+  else if (isdef(shape) && shape == 'ellipse') {
+    let b = getBounds(d);
+    let vertRadius = b.height / 2;
+    let horRadius = b.width / 2;
+    let r = Math.min(vertRadius, horRadius);
+    console.log(b, r)
+    d.style.borderRadius = `${r}${unit}`;
+  }
+  d.key = info.key;
+  return d;
 }
 function mPicto(n, R, uidParent) {
   let dParent = mBy(n.idUiParent);
@@ -62722,9 +63016,9 @@ function mStyleUndo(ui, styles = {}) {
 }
 function mStyleX(elem, styles, unit = 'px') {
   const paramDict = {
-    align: 'text-align',
     bg: 'background-color',
     fg: 'color',
+    align: 'text-align',
     matop: 'margin-top',
     maleft: 'margin-left',
     mabottom: 'margin-bottom',
@@ -62736,29 +63030,21 @@ function mStyleX(elem, styles, unit = 'px') {
     rounding: 'border-radius',
     w: 'width',
     h: 'height',
-    wmin: 'min-width',
-    hmin: 'min-height',
-    wmax: 'max-width',
-    hmax: 'max-height',
     fontSize: 'font-size',
     fz: 'font-size',
     family: 'font-family',
     weight: 'font-weight',
-    z: 'z-index'
   };
   let bg, fg;
   if (isdef(styles.bg) || isdef(styles.fg)) {
     [bg, fg] = getExtendedColors(styles.bg, styles.fg);
   }
   if (isdef(styles.vmargin) && isdef(styles.hmargin)) {
-    styles.margin = styles.vmargin + unit + ' ' + styles.hmargin + unit;
-    console.log('::::::::::::::', styles.margin)
+    styles.margin = vmargin + unit + ' ' + hmargin + unit;
   }
   if (isdef(styles.vpadding) && isdef(styles.hpadding)) {
-    styles.padding = styles.vpadding + unit + ' ' + styles.hpadding + unit;
-    console.log('::::::::::::::', styles.vpadding, styles.hpadding)
+    styles.padding = vpadding + unit + ' ' + hpadding + unit;
   }
-  if (isdef(styles.box)) styles['box-sizing'] = 'border-box';
   for (const k in styles) {
     let val = styles[k];
     let key = k;
@@ -62777,34 +63063,11 @@ function mStyleX(elem, styles, unit = 'px') {
       elem.style.setProperty(k, s);
       continue;
     } else if (k == 'border') {
-      if (isNumber(val)) val = `solid ${val}px ${isdef(styles.fg) ? styles.fg : '#ffffff80'}`;
       if (val.indexOf(' ') < 0) val = 'solid 1px ' + val;
-    } else if (k == 'layout') {
-      if (val[0] == 'f') {
-        val = val.slice(1);
-        elem.style.setProperty('display', 'flex');
-        elem.style.setProperty('flex-wrap', 'wrap');
-        let hor, vert;
-        if (val.length == 1) hor = vert = 'center';
-        else {
-          let di = { c: 'center', s: 'start', e: 'end' };
-          hor = di[val[1]];
-          vert = di[val[2]];
-        }
-        let justStyle = val[0] == 'v' ? vert : hor;
-        let alignStyle = val[0] == 'v' ? hor : vert;
-        elem.style.setProperty('justify-content', justStyle);
-        elem.style.setProperty('align-items', alignStyle);
-        switch (val[0]) {
-          case 'v': elem.style.setProperty('flex-direction', 'column'); break;
-          case 'h': elem.style.setProperty('flex-direction', 'row'); break;
-        }
-      }
     }
     if (key == 'font-weight') { elem.style.setProperty(key, val); continue; }
     else if (key == 'background-color') elem.style.background = bg;
     else if (key == 'color') elem.style.color = fg;
-    else if (key == 'opacity') elem.style.opacity = val;
     else {
       elem.style.setProperty(key, makeUnitString(val, unit));
     }
@@ -63188,6 +63451,30 @@ function mTranslateByFade(elem, x, y, ms = 800, callback = null) {
   mAnimate(elem, 'transform', [`translateX(${x}px) translateY(${y}px)`], callback, ms, 'ease');
   let a = toElem(elem).animate([{ opacity: .25 }, { opacity: 1 },], { fill: 'both', duration: ms, easing: 'ease' });
 }
+function MUELL() {
+  let [mean, stdev] = [0, 1];
+  let f = x => gaussian_amp(x, mean, stdev);
+  let y = f(0);
+  console.log('y', y);
+  let amp = .9 * (-canvas.miny) / (40 * y);
+  f = x => gaussian_amp(x, mean, stdev, amp);
+  canvas.draw_axes();
+  canvas.plot(f, 'orange', 1);
+  let x = 40 * search_end_point(f, 0, canvas.maxx, .1, .01);
+  console.log('point x', x, canvas.minx, canvas.maxx);
+  y = -40 * f(x / 40)
+  console.log('point y', x, 0, canvas.maxy);
+  console.log('scale', canvas.scale)
+  let xreal = x / 40;
+  let yreal = f(xreal) / (40);
+  x = 0;
+  for (let i = canvas.minx; i < canvas.maxx; i += canvas.scale) {
+    let x1 = Math.round(convert_to_range(x, -4, 4, 50, 150));
+    let x2 = Math.round(convert_to_range(-x, -4, 4, 50, 150));
+    canvas.pp(x * 40, 0, 3, `${x1}`);
+    canvas.pp(-x * 40, 0, 3, `${x2}`); x += 2;
+  }
+}
 function muiCard(key,dParent,styles,classes){
 }
 function multiCartesi() {
@@ -63315,10 +63602,10 @@ function myPresent(dArea, items, options) {
       let sShade = '0 0 0 ' + item.textShadowColor;
       if (options.showPic) {
         picStyles['text-shadow'] = sShade;
-        picStyles.fg = anyColorToStandardString('black', options.contrast); //'#00000080' '#00000030' 
+        picStyles.fg = colorFrom('black', options.contrast); //'#00000080' '#00000030' 
       } else {
         labelStyles['text-shadow'] = sShade;
-        labelStyles.fg = anyColorToStandardString('black', options.contrast); //'#00000080' '#00000030' 
+        labelStyles.fg = colorFrom('black', options.contrast); //'#00000080' '#00000030' 
       }
     }
     let dOuter = mCreate('div', outerStyles, item.id);
@@ -63536,12 +63823,6 @@ function newGameAjax() {
     });
 }
 function NewGameAjax() {
-  /*$.ajax({
-    url : "insertNewGame.php",
-    cache: false
-    }).done(function( html ) {
-      console.log('result:' + html);
-    });*/
 }
 function newItemSelection(item, items, onSelectSelected = null) {
   console.log('===>', item, items)
@@ -63799,8 +64080,7 @@ function normalDistribution(mu, sigma) {
   }
 }
 function normalize(text, language) {
-  if (isEmpty(text)) return '';
-  text = text.toLowerCase().trim();
+  text = text.toLowerCase();
   if (language == 'D') {
     text = convertUmlaute(text);
   }
@@ -63842,6 +64122,13 @@ function normalizeNode(o, num) {
 function normalizeRTree(R) { return normalizeTree(R.rNodes, R); }
 function normalizeSimpleUidProp(o, prop, num) {
   o[prop] = normalizeVal(o[prop], num);
+}
+function normalizeSpec(sp) {
+  let spNew = {};
+  for (const k in sp) {
+    spNew[k] = recNormalize(sp[k], sp);
+  }
+  return spNew;
 }
 function normalizeSpecKeyProp(o, prop, num) {
   let node1 = o[prop];
@@ -63887,9 +64174,9 @@ function notImplemented(msg = '!') {
 function notMyTurn(){
   enableButton('c_b_PollStatus');
 }
-function nRandomNumbers(n, from, to, step) {
-  let arr = range(from, to, step);
-  return choose(arr, n);
+function nRandomNumbers(n,from,to,step){
+  let arr = range(from,to,step);
+  return choose(arr,n);
 }
 function Number(div, board, n) {
     var self = this;
@@ -64195,15 +64482,6 @@ function onclick_by_suit_ferro() {
 function onclick_cancelmenu() { hide('dMenu'); }
 function onClick_cardgames() { closeLeftPane(); }
 function onclick_chat() { if (!menu_enabled('chat')) return; game_interrupt(); get_chat(); }
-function onclick_cities() {
-  let layer = M.layers.city;
-  let capitals = rChoose(M.capitals, 50);
-  console.log('capitals', capitals);
-  for (const c of M.capitals) { 
-    console.log('presenting',c)
-    map_add_object(M.cities[c], { layer: layer });
-  }
-}
 function onclick_clear_selection_ferro() { clear_selection(); }
 function onclick_close_project_editor(ev){	
   console.log('click!!!')
@@ -64295,7 +64573,7 @@ function onclick_gameover_screen() {
 }
 function onclick_games() { if (!menu_enabled('games')) return; stop_game(); get_games(); }
 function onclick_header(ev) { if (!is_admin() && ev.path[0].id != 'header') return; open_sidebar(); close_mini_user_info(); }
-function onclick_home() { stop_game(); start_with_assets(); }
+function onclick_home() { window.location = SERVER; }
 function onclick_inno_ut0() { onclick_ut(inno_ut0_create_staged); }
 function onclick_inno_ut1() { onclick_ut(inno_ut1_create_staged); }
 function onclick_inno_ut2() { onclick_ut(inno_ut2_create_staged); }
@@ -66151,6 +66429,21 @@ function onWhichGame(d) {
   if (currentGame == GAME) existingPlayers(onExistingPlayers);
   else restartHost(onHostStarted);
 }
+function open_game(uname, game, fen) {
+  U = {};
+  copyKeys(DB.users[uname], U);
+  U.session = {}; 
+  G = new (classByName(capitalize(game) + 'Multi'))(game, DB.games[game]);
+  Settings = new SettingsClass(G, dAux);
+  if (nundef(U.games[game])) {
+    if (G.controllerType == 'solitaire') { U.games[game] = { nTotal: 0, nCorrect: 0, nCorrect1: 0, startlevel: 0 }; }
+    else U.games[game] = {};
+  }
+  if (isdef(G.maxlevel)) G.level = Math.min(getUserStartLevel(game), G.maxlevel);
+  if (G.id != 'gAristo') Settings.updateGameValues(U, G); 
+  showGameTitle();
+  return G;
+}
 function open_game_options(gamename) { present_game_options(gamename); }
 function open_game_ui() {
   clear_table_all();
@@ -66229,6 +66522,11 @@ function open_prompt() {
 function open_sidebar() {
   DA.left_panel = 'open';
   mBy('left_panel').style.flex = 1;
+}
+function open_table_dep(tid) {
+  let t = DB.tables[tid];
+  Session.cur_tid = tid;
+  makemove();
 }
 function openAux(title, button) {
   resetActiveButton();
@@ -66602,9 +66900,28 @@ function paletteFromRGBArray(arr) {
   let result = gen_palette(hue, 1, sat);
   return result;
 }
+function panel(areaName, oSpec, oid, o) {
+  let [num,or,split,bg,fg,id,panels,parent]=getParams(areaName,oSpec,oid);
+  if (num>0){
+    parent.style.display = 'grid';
+    clearElement(parent);
+    for (let i = 0; i < num; i++) {
+      let d = mDiv100(parent);
+      d.id = getUID();
+      if (panels.length > i) {
+        if (oid) dynamicArea(d.id,panels[i],oid,o); else staticArea(d.id, panels[i]);
+      }
+    }
+    if (or == 'rows') {
+      console.log('====',split*100);
+      parent.style.gridTemplateColumns = `${split*100}% 1fr`;
+    }
+  }
+  return parent;
+}
 function Panel() {
     var self = this;
-    this.div = document.getElementById("div-board");
+    this.div = document.getElementById("dTable");
     this.receptors = new Array();
     this.numbers = new Array();
     this.drags = new Array();
@@ -66642,25 +66959,6 @@ function Panel() {
         self.div.appendChild(div);
         return (number);
     }
-}
-function panel(areaName, oSpec, oid, o) {
-  let [num,or,split,bg,fg,id,panels,parent]=getParams(areaName,oSpec,oid);
-  if (num>0){
-    parent.style.display = 'grid';
-    clearElement(parent);
-    for (let i = 0; i < num; i++) {
-      let d = mDiv100(parent);
-      d.id = getUID();
-      if (panels.length > i) {
-        if (oid) dynamicArea(d.id,panels[i],oid,o); else staticArea(d.id, panels[i]);
-      }
-    }
-    if (or == 'rows') {
-      console.log('====',split*100);
-      parent.style.gridTemplateColumns = `${split*100}% 1fr`;
-    }
-  }
-  return parent;
 }
 function panelLayout(n, R) {
   let params = n.params;
@@ -66754,6 +67052,16 @@ function parentHasThisChildAlready(uidParent, oid) {
   }
   return hasThisChild;
 }
+function parse_fen(fen) {
+  let parts = fen.split(':');
+  let opt = parts[0];
+  let glob = parts.length > 1 ? parts[1] : null;
+  let pls = [];
+  for (let i = 2; i < parts.length; i++) {
+    pls.push(parts[i]);
+  }
+  return { opt: opt, glob: glob, pls: pls };
+}
 function parse_table(t) {
   set_start_data_from_fen(t.fen, S.game);  
   if (isString(t.options)) t.options = JSON.parse(t.options); 
@@ -66771,7 +67079,7 @@ function parse_table_and_players(obj) {
 function parseCodefile(content, fname, preserveRegionNames = true, info = {}, superdi = {}) {
   let defaultRegions = { cla: 'classes', func: 'funcs' };
   let lines = content.split('\r\n');
-  let parsing = false, code, type, key, regionName, regionOrig; 
+  let parsing = false, code, type, key, regionName, regionOrig;
   let firstletters = [], firstWords = [], iline = 0;
   for (const line of lines) {
     let l = line; iline += 1;
@@ -66786,7 +67094,6 @@ function parseCodefile(content, fname, preserveRegionNames = true, info = {}, su
     if (parsing) {
       let l1 = replaceAllSpecialChars(l, '\t', '  ');
       let ch = l1[0];
-      let oneliner=(type == 'var' && !code.includes('\r\n'));
       if (' }]'.includes(ch)) code += l1 + '\r\n';
       if (ch != ' ') { 
         parsing = false;
@@ -66802,20 +67109,11 @@ function parseCodefile(content, fname, preserveRegionNames = true, info = {}, su
           else sig = `function ${key}()`;
           sig += '{}';
         } else { sig = `${type} ${key}`; }
-        let othervars = [];
-        if (oneliner && code.includes(',') && !code.includes('[') && !code.includes('{')){
-          othervars = stringAfter(l, 'var').trim().split(',');
-          othervars = othervars.map(x => firstWord(x)); 
-          othervars.shift();
-        }
         let o = { name: key, code: code, sig: sig, region: regKey, filename: fname, type: type };
         addKeys(info, o);
-        lookupSetOverride(superdi, [type, key], o);
-        for (const v of othervars) {
-          let o = { lead: key, name: v, code: '', sig: sig, region: regKey, filename: fname, type: type };
-          addKeys(info, o);
-          lookupSetOverride(superdi, [type, v], o);
-        }
+        type = checkKey(superdi, key, type);
+        if (type) lookupSetOverride(superdi, [type, key], o);
+        addOnelineVars(superdi, o); 
         addIf(firstletters, l[0]);
       }
     } else {
@@ -66826,34 +67124,80 @@ function parseCodefile(content, fname, preserveRegionNames = true, info = {}, su
     if (parsing) continue;
     if (startsWith(l, '//#region')) {
       regionOrig = stringAfter(l, 'region').trim();
-      regionName = firstWordAfter(l, 'region');
+      regionName = firstWordAfter(l, 'region', true);
     } else if (startsWith(l, 'var')) {
-      key = firstWordAfter(l, 'var');
-      for(const t of ['const','func','cla']) if (lookup(superdi,[t,key])) continue;
+      key = firstWordAfter(l, 'var', true);
       parsing = true;
       code = l + '\r\n';
       type = 'var';
     } else if (startsWith(l, 'const')) {
-      key = firstWordAfter(l, 'const');
-      for(const t of ['func','cla']) if (lookup(superdi,[t,key])) continue;
-      if (isdef(superdi.var[key])) delete superdi.var[key];
+      key = firstWordAfter(l, 'const', true);
       parsing = true;
       code = l + '\r\n';
       type = 'const';
     } else if (startsWith(l, 'class')) {
-      key = firstWordAfter(l, 'class');
-      for(const t of ['func']) if (lookup(superdi,[t,key])) continue;
-      for(const t of ['var','const']) if (lookup(superdi,[t,key])) delete superdi[t][key];
+      key = firstWordAfter(l, 'class', true);
       parsing = true;
       code = l + '\r\n';
       type = 'cla';
-      key = firstWordAfter(l, 'class');
     } else if (startsWith(l, 'async') || startsWith(l, 'function')) {
       key = stringBefore(stringAfter(l, 'function').trim(), '(');
-      for(const t of ['var','const','cla']) if (lookup(superdi,[t,key])) delete superdi[t][key];
       parsing = true;
       code = l + '\r\n';
       type = 'func';
+    }
+  }
+  return superdi;
+}
+function parseCodefile1(content, fname, preserveRegionNames = true, info = {}, superdi = {}) {
+  let lines = content.split('\r\n');
+  let parsing = false;
+  let code, type, key, star, sig;
+  let multicomment=false;
+  for (const line of lines) {
+    let l = removeCommentsFromLine(line); if (isEmptyOrWhiteSpace(l.trim())) continue;
+    if (l.trim().startsWith('/*')) multicomment=true;
+    if (multicomment){
+      if (l.trim().endsWith('*/')) multicomment = false;
+      continue;
+    }
+    if (parsing) {
+      let l1 = replaceAllSpecialChars(l, '\t', '  ');
+      let ch = l1[0];
+      if (' }]'.includes(ch)) code += l1 + '\r\n';
+      if (ch != ' ') { 
+        parsing = false;
+        let o = { name: key, code: code, sig: sig, region: type, filename: fname, type: type };
+        addKeys(info, o);
+        lookupSetOverride(superdi, [type, key], o);
+        if (type == 'var') addOnelineVars(superdi, o);
+      }
+    }
+    if (startsWith(l, 'async') || startsWith(l, 'function')) {
+      key = stringBefore(stringAfter(l, 'function').trim(), '(');
+      if (key.startsWith('*')) { star = true; key = stringAfter(key, '*').trim(); } else star = false;
+      parsing = true;
+      code = l + '\r\n';
+      type = 'func';
+      sig = getFunctionSignature(l,key);
+    } else if (startsWith(l, 'class')) {
+      key = firstWordAfter(l, 'class', true);
+      parsing = true;
+      code = l + '\r\n';
+      type = 'cla';
+      sig = `class ${key}{}`;
+    } else if (startsWith(l, 'const')) {
+      key = firstWordAfter(l, 'const', true);
+      parsing = true;
+      code = l + '\r\n';
+      type = 'const';
+      sig = `const ${key};`;
+    } else if (startsWith(l, 'var')) {
+      key = firstWordAfter(l, 'var', true);
+      parsing = true;
+      code = l + '\r\n';
+      type = 'var';
+      sig = `var ${key};`;
     }
   }
   return superdi;
@@ -67619,16 +67963,6 @@ function points_to_waypoints(pts = []) { return pts.map(x => L.latLng(x[0], x[1]
 function points2string(listOfPoints) {
   return listOfPoints.map(p => '' + p.x + ',' + p.Y).join(' '); //'0,0 100,0 50,80',
 }
-function pointStyleFunction(feature, resolution) {
-  return new Style({
-    image: new CircleStyle({
-      radius: 10,
-      fill: new Fill({ color: 'rgba(255, 0, 0, 0.1)' }),
-      stroke: new Stroke({ color: 'red', width: 1 }),
-    }),
-    text: createTextStyle(feature, resolution, myDom.points),
-  });
-}
 function poll() {
   if (IS_POLLING_ALLOWED) {
     if (isdef(DA.poll.func)) DA.poll.data = DA.poll.func(DA.poll.data);
@@ -67654,18 +67988,6 @@ function polling_shield_on(msg) {
 function pollStart(){
 }
 function pollStop() { clearTimeout(TO.poll); Clientdata.AUTORESET = true; }
-function polygonStyleFunction(feature, resolution) {
-  return new Style({
-    stroke: new Stroke({
-      color: 'blue',
-      width: 1,
-    }),
-    fill: new Fill({
-      color: 'rgba(0, 0, 255, 0.1)',
-    }),
-    text: createTextStyle(feature, resolution, myDom.polygons),
-  });
-}
 function polyPointsFrom(w, h, x, y, pointArr) {
   x -= w / 2;
   y -= h / 2;
@@ -67822,10 +68144,10 @@ function posBC(d) {
   let dNew = mDiv(dParent, { w: '100%', h: 50, position: 'absolute', bottom: 0, left: 0, bg: 'null', align: 'center' });
   mAppend(dNew, d);
 }
-function posBL(d) { mStyleX(d, { left: 0, bottom: 0, position: 'absolute' }); }
-function posBLR(d) { mStyleX(d, { left: 0, bottom: 0, position: 'absolute' }); mRot(d, 180); }
-function posBR(d) { mStyleX(d, { right: 0, bottom: 0, position: 'absolute' }); }
-function posBRR(d) { mStyleX(d, { right: 0, bottom: 0, position: 'absolute' }); mRot(d, 180); }
+function posBL(d) { mStyle(d, { left: 0, bottom: 0, position: 'absolute' }); }
+function posBLR(d) { mStyle(d, { left: 0, bottom: 0, position: 'absolute' }); mRot(d, 180); }
+function posBR(d) { mStyle(d, { right: 0, bottom: 0, position: 'absolute' }); }
+function posBRR(d) { mStyle(d, { right: 0, bottom: 0, position: 'absolute' }); mRot(d, 180); }
 function posCenterInCenter(d) { d.classList.add('centerCentered'); }
 function posCIC(d) { d = mEnsure(d); d.classList.add('centerCentered'); }
 function posCICB(d) { d = mEnsure(d); d.classList.add('centerCenteredBottomHalf'); }
@@ -68672,7 +68994,7 @@ function posToPoint(pos = 'cc', w, h, offx = 0, offy = 0) {
   let px = pos[1] == 'c' ? w / 2 : di[pos[1]];
   return [px + offx, py + offy];
 }
-function posTR(d) { mStyleX(d, { right: 0, top: 0, position: 'absolute' }); }
+function posTR(d) { mStyle(d, { right: 0, top: 0, position: 'absolute' }); }
 function posXY(d1, dParent, x, y, unit = 'px', position = 'absolute') {
   if (nundef(position)) position = 'absolute';
   if (dParent && !dParent.style.position) dParent.style.setProperty('position', 'relative');
@@ -69202,6 +69524,23 @@ function presentFor(me) {
   me.hand.showDeck(dTable, 'right', 0, false);
   showFleetingMessage('click to play a card!');
 }
+function presentGenerations_dep(indices, area, R, genKey = 'G') {
+  d = mBy(area);
+  let level = 0;
+  let depth = 10;
+  let dLevel = [];
+  for (let i = 0; i < depth; i++) {
+    let d1 = dLevel[i] = mDiv(d);
+    mSize(d1, '100%', 'auto');
+    mFlexWrap(d1)
+    mColor(d1, colorTrans('black', i * .1));
+  }
+  let di = 0;
+  for (const i of indices) {
+    let div = dLevel[di]; di++;
+    presentNodes(R.gens[genKey][i], div);
+  }
+}
 function presentInChatList(result, dParent) {
   let d2 = mDiv(dParent, { display: 'flex', gap: 10, margin: 10, padding: 10, bg: 'white', fg: 'dimgray' });
   d2.setAttribute('username', result.username);
@@ -69369,6 +69708,40 @@ function presentPlayers() {
 }
 function presentPlayersSimple() {
 }
+function presentRoot_dep(n, area, lf, ls, lo) {
+  d = mBy(area);
+  let depth = 10;
+  let dLevel = [];
+  for (let i = 0; i < depth; i++) {
+    let d1 = dLevel[i] = mDiv(d);
+    mColor(d1, colorTrans('black', i * .1));
+  }
+  addIf(lo, 'act');
+  addIf(lo, 'ui');
+  maxLevel = 1 + recPresentFilter(n, 0, dLevel, { lstFlatten: lf, lstShow: ls, lstOmit: lo });
+}
+function presentRootPresetLists_dep(n, area) {
+  let lstFlatten = ['type', 'pool', 'source', 'data', 'content'];
+  let lstShow = ['type', 'oid', 'data', 'content', 'pool'];
+  let lstOmit = ['act', 'bi', 'sub', '_id', '_ref', 'children', 'source', 'specKey', 'params', 'cssParams', 'typParams', 'stdParams', 'uid', 'ui'];
+  d = mBy(area);
+  let level = 0;
+  let depth = 10;
+  let dLevel = [];
+  for (let i = 0; i < depth; i++) {
+    let d1 = dLevel[i] = mDiv(d);
+    mColor(d1, colorTrans('black', i * .1));
+  }
+  maxLevel = 1 + recPresentFilter(n, 0, dLevel, { lstFlatten: lstFlatten, lstShow: lstShow, lstOmit: lstOmit });
+  removeInPlace(lstOmit, 'children');
+}
+function presentServerData(sdata, area) {
+  let d = mBy(area);
+  clearElement(d);
+  for (const [k, v] of Object.entries(sdata)) {
+    mNode(v, { title: k, dParent: d, omitEmpty: true });
+  }
+}
 function presentSimpleVal(d, item) {
   let d1 = mDiv(d, { display: 'inline-block', bg: 'random', rounding: 10, margin: 10, padding: 10 });
   d1.innerHTML = item;
@@ -69487,6 +69860,17 @@ async function presentTree(uiRoot, R) {
   } else {
     trace('UNKNOWN presentationStrategy!!!!!!', R.presentationStrategy)
   }
+}
+function presentTree_dep(n, treeProperty, area, R, lf, ls, lo) {
+  d = mBy(area);
+  let depth = 10;
+  let dLevel = [];
+  for (let i = 0; i < depth; i++) {
+    let d1 = dLevel[i] = mDiv(d);
+    mColor(d1, colorTrans('black', i * .1));
+  }
+  let nDict = R.rNodes;
+  maxLevel = 1 + recPresent(n, 0, dLevel, nDict, treeProperty, { lstFlatten: lf, lstShow: ls, lstOmit: lo });
 }
 function presentVisible(id, ms, o_new, o_old, options) {
   let visPlayers = getVisibleList(o_new);
@@ -70044,7 +70428,7 @@ function processCsvData(allText) {
       let k = headings[i];
       o[k] = values[i];
     }
-    o.order = Number(arrLast(values));
+    o.order = Number(last(values));
     records[o.hexcode] = o;
   }
   return records; 
@@ -70698,7 +71082,6 @@ function pTest0() {
   let d1 = mDiv(dTable);
   let d2 = present_structured1(d1, state);
 }
-function pureId(id){return id.substring(4)}
 function purge(elem) {
   var a = elem.attributes, i, l, n;
   if (a) {
@@ -71084,11 +71467,8 @@ function randomList(len = 3, onlySimple = true, elType) {
   return { content: result, elType: elType };
 }
 function randomName() { return chooseRandom(coin() ? GirlNames : BoyNames); }
-function randomNumber(min = 0, max = 100, step) {
-  if (isdef(step)) {
-    let arr=range(min,max,step); return chooseRandom(arr);
-  }
-  else return Math.floor(Math.random() * (max - min + 1)) + min; 
+function randomNumber(min = 0, max = 100) {
+  return Math.floor(Math.random() * (max - min + 1)) + min; 
 }
 function randomObject(len = 3, onlySimple = true, elTypes) {
   if (nundef(elTypes)) { elTypes = Array.from({ length: len, }, () => randomType(true)); }
@@ -71714,6 +72094,21 @@ function recMergeSpecNode(n, sp, spNew) {
     for (const n1 of n.sub) recMergeSpecNode(n1, sp, spNew);
   }
 }
+function recNormalize(n, sp) {
+  let n1 = jsCopy(n);
+  let t = n1.type = nundef(n.type) ? inferType(n) : n.type;
+  let locProp = 'panel';
+  if (locProp != 'p') {
+    n1.p = n[locProp];
+    delete n1[locProp];
+  }
+  let contProp = 'sub';
+  if (contProp && isdef(n[contProp])) {
+    n1.ch = n[contProp].map(x => recNormalize(x, sp));
+    delete n1[contProp];
+  }
+  return n1;
+}
 function recomputeBestED() {
   for (const k in symbolDict) {
     let info = symbolDict[k];
@@ -71810,6 +72205,30 @@ function recPresent(n, level, dLevel, nDict, treeProp, { lstFlatten, lstShow, ls
   }
   return max;
 }
+function recPresent_dep(n, level, dLevel, { lstFlatten, lstShow, lstOmit } = {}) {
+  let n1 = jsCopy(n);
+  n1 = filterByNoKey(n, lstOmit);
+  mNode(n1, { dParent: dLevel[level], listOfProps: lstFlatten });
+  if (nundef(n.children)) return level;
+  let max = 0;
+  for (const x of n.children) {
+    let newMax = recPresent_dep(x, level + 1, dLevel, { lstFlatten: lstFlatten, lstShow: lstShow, lstOmit: lstOmit });
+    if (newMax > max) max = newMax;
+  }
+  return max;
+}
+function recPresent_dep1(n, level, dLevel, lstFlatten, lstShow) {
+  let n1 = jsCopy(n);
+  n1 = filterByNoKey(n, ['sub', '_id', '_ref', 'children', 'source', 'specKey', 'params', 'cssParams', 'typParams', 'stdParams', 'uid', 'ui'])
+  mNode(n1, { dParent: dLevel[level], listOfProps: lstFlatten });
+  if (nundef(n.children)) return level;
+  let max = 0;
+  for (const x of n.children) {
+    let newMax = recPresent_dep1(x, level + 1, dLevel, lstFlatten, lstShow);
+    if (newMax > max) max = newMax;
+  }
+  return max;
+}
 function recPresentFilter(n, level, dLevel, { lf, ls, lo } = {}) {
   mNodeFilter(n, { dParent: dLevel[level], lstFlatten: lf, lstShow: ls, lstOmit: lo });
   if (nundef(n.children)) return level;
@@ -71864,13 +72283,13 @@ function recShowHintsNext(i, ilist, rc, delay, fProgression) {
   showSayHint(i);
   if (QContextCounter == rc) recShowHints(ilist, rc, delay, fProgression);
 }
-function recShowTree(o, indent, childrenKeys, plus, minus) {
-  showObject(o, indent, true, plus, minus);
+function recShowTree(o, indent, childrenKeys, lstShow, lstOmit) {
+  showObject(o, indent, true, lstShow, lstOmit);
   let chkey = findFirstListKey(o, childrenKeys);
   if (chkey) {
-    console.log(' '.repeat(indent+2) + chkey + ':');
+    console.log(' '.repeat(indent + 2) + chkey + ':');
     for (const ch of o[chkey]) {
-      recShowTree(ch, indent + 4, childrenKeys, plus, minus);
+      recShowTree(ch, indent + 4, childrenKeys, lstShow, lstOmit);
     }
   }
 }
@@ -72247,6 +72666,17 @@ function removeCardsFromTo(deck,iFrom,iTo){
 function removeClass(el, clName) { if (!el) return; el.classList.remove(clName); }
 function removeClickHandler(id) { let ms = UIS[id]; ms.removeHandlers(); }
 function removeColNew(board, cClick) { return reduceBoard(board, board.rows, board.cols - 1, cClick); }
+function removeCommentsFromLine(line) {
+  let l = line;
+  if (!l.includes("`//") && !l.includes("'//") && !l.includes("//'") && !l.includes("http")) {
+    l = replaceAllFast(line, '://', ':@@');
+    l = replaceAllFast(l, '//#', '@@#');
+    l = stringBefore(l, '//');
+    l = replaceAllFast(l, '@@#', '//#');
+    l = replaceAllFast(l, ':@@', '://');
+  }
+  return l;
+}
 function removeDOM(elem) { purge(elem); }
 function removeDuplicates(keys, prop) {
   let di = {};
@@ -72591,6 +73021,12 @@ function replaceSol(sol, diop) {
   return [result, eq];
 }
 function replaceWhite(s, sby = '_') { let w = toWords(s); return w.join(sby); }
+function report_poll(obj) {
+  polling_shield_off();
+  update_cur_table(obj);
+  status_message_off();
+  get_games();
+}
 function repositionCards(msCollection) {
   if (msCollection.numCards == 0) return;
   let dTitle = msCollection.parts.title;
@@ -72778,6 +73214,19 @@ function resplay_container(targetgroup, ovpercent) {
   mContainerSplay(d, 2, card.w, card.h, arrChildren(d).length, ov * card.w);
   let items = arrChildren(d).map(x => Items[x.id]);
   ui_add_cards_to_hand_container(d, items);
+}
+function rest() {
+  styles.al = 'brv'; 
+  cx.textBaseline = "top";
+  cx.fillText("Top", 5, 100);
+  cx.textBaseline = "bottom";
+  cx.fillText("Bottom", 50, 100);
+  cx.textBaseline = "middle";
+  cx.fillText("Middle", 120, 100);
+  cx.textBaseline = "alphabetic";
+  cx.fillText("Alphabetic", 190, 100);
+  cx.textBaseline = "hanging";
+  cx.fillText("Hanging", 290, 100);
 }
 function restart_selection_process() {
   let [plorder, stage, A, fen, uplayer, pl] = [Z.plorder, Z.stage, Z.A, Z.fen, Z.uplayer, Z.fen.players[Z.uplayer]];
@@ -72999,33 +73448,6 @@ function RGBToHex7(c) {
   }
   return '#' + ((1 << 24) + (n[0] << 16) + (n[1] << 8) + n[2]).toString(16).slice(1);
 }
-function rgbToHsl(r, g, b) {
-  (r /= 255), (g /= 255), (b /= 255);
-  var max = Math.max(r, g, b),
-    min = Math.min(r, g, b);
-  var h,
-    s,
-    l = (max + min) / 2;
-  if (max == min) {
-    h = s = 0; 
-  } else {
-    var d = max - min;
-    s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
-    switch (max) {
-      case r:
-        h = (g - b) / d + (g < b ? 6 : 0);
-        break;
-      case g:
-        h = (b - r) / d + 2;
-        break;
-      case b:
-        h = (r - g) / d + 4;
-        break;
-    }
-    h /= 6;
-  }
-  return [h, s, l];
-}
 function RGBToHSL(rgb) {
   let ex = /^rgb\((((((((1?[1-9]?\d)|10\d|(2[0-4]\d)|25[0-5]),\s?)){2}|((((1?[1-9]?\d)|10\d|(2[0-4]\d)|25[0-5])\s)){2})((1?[1-9]?\d)|10\d|(2[0-4]\d)|25[0-5]))|((((([1-9]?\d(\.\d+)?)|100|(\.\d+))%,\s?){2}|((([1-9]?\d(\.\d+)?)|100|(\.\d+))%\s){2})(([1-9]?\d(\.\d+)?)|100|(\.\d+))%))\)$/i;
   if (ex.test(rgb)) {
@@ -73061,6 +73483,33 @@ function RGBToHSL(rgb) {
   } else {
     return 'Invalid input color';
   }
+}
+function rgbToHsl(r, g, b) {
+  (r /= 255), (g /= 255), (b /= 255);
+  var max = Math.max(r, g, b),
+    min = Math.min(r, g, b);
+  var h,
+    s,
+    l = (max + min) / 2;
+  if (max == min) {
+    h = s = 0; 
+  } else {
+    var d = max - min;
+    s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+    switch (max) {
+      case r:
+        h = (g - b) / d + (g < b ? 6 : 0);
+        break;
+      case g:
+        h = (b - r) / d + 2;
+        break;
+      case b:
+        h = (r - g) / d + 4;
+        break;
+    }
+    h /= 6;
+  }
+  return [h, s, l];
 }
 function rgbToHsv(r, g, b) {
   let v = Math.max(r, g, b);
@@ -74085,19 +74534,6 @@ function sayRandomVoice(e, g, voice = 'random') {
 }
 function sayTryAgain() { sayRandomVoice('try again!', 'nochmal'); }
 function Scene() {
-  /*
-  TODO: 
-    AddSprite method
-    Put sprites in linked list
-    Automatically update each sprite in list
-    Add keyboard input (initial version done)
-    array of keydowns like PyGame? (DONE: 2/25/11)
-    keyboard constants (DONE: 2/25/11)
-    Consider drawing canvas directly on page - position absolute
-    (DONE - Scene now creates own canvas)
-    mouse input
-    virtual buttons for portable devices
-  */
   touchable = 'createTouch' in document;
   this.canvas = document.createElement("canvas");
   document.body.appendChild(this.canvas);
@@ -74463,11 +74899,6 @@ function selectColor(color) {
   selected_color = color;
 }
 function selectGame(callback) { let route = '/game/select/' + GAME; _sendRouteJS(route, callback); }
-function selectStyle(feature) {
-  const color = feature.get('COLOR') || '#eeeeee';
-  selected.getFill().setColor(color);
-  return selected;
-}
 function selectText(el) {
   if (el instanceof HTMLTextAreaElement) { el.select(); return; }
   var sel, range;
@@ -74581,6 +75012,11 @@ function send_move() {
   if (me.player_status == 'lamov') me.player_status = 'done';
   let o = { tid: Session.cur_tid, player_status: me.player_status, score: me.score, state: me.state, uname: me.name };
   to_server(o, 'send_move');
+}
+function send_move_dep(game, uname, tid, step, move) {
+  Session.cur_menu = 'games';
+  let data = { game: game, uname: uname, tid: tid, step: step, move: move };
+  to_server(data, "send_move");
 }
 function send_or_sim(o, cmd) {
   Counter.server += 1; 
@@ -75218,11 +75654,6 @@ function set_image_as_background(id, elem) {
     console.log('haaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa')
     let imgData = canvas.toDataURL("image/jpeg", 0.9);
     const rgbArray = buildRgb(imageData.data);
-    /**
-     * Color quantization
-     * A process that reduces the number of colors used in an image
-     * while trying to visually maintin the original image as much as possible
-     */
     const quantColors = quantization(rgbArray, 0);
     buildPalette(quantColors);
   });
@@ -75377,11 +75808,6 @@ function set_state_numbers(otree) {
   otree.phase = phase;
   let plturn = otree.plturn = otree.plorder[iturn];
   return [step, stage, iturn, round, phase, plturn];
-}
-function set_style_from_options(layer, options={}) {
-  let style = isdef(options.colorfunc) ? get_style_func(options.colorfunc, valf(options.bg, 'lime'), valf(options.fg, 'orange'))
-    : get_style(valf(options.bg, 'yellow'), valf(options.fg, 'yellow'));
-  layer.setStyle(style);
 }
 function set_tables_by_game(obj, is_set_cur_id = true) {
   let tables = Session.tables = obj.tables;
@@ -76140,9 +76566,17 @@ function setTransformDOM(el, { x, y, scaleX, scaleY, rotDeg } = {}) {
   el.style.transform = s; 
 }
 function setup() {
-  show_jittering();
-  createCanvas(600, 500); 
-  newtree();
+  axiom = system.axiom;
+  rules = system.rules;
+  factor = valf(system.factor,1);
+  angle = radians(valf(system.angle,60));
+  sentence = axiom;
+  let button = createButton("generate"); button.mousePressed(generate);
+  button = createButton("animate"); button.mousePressed(()=>interval_id=setInterval(generate,500));
+  createCanvas(400, 400);
+  background(51);
+  createP(axiom);
+  turtle();
 }
 function setUpMinuteHands() {
   var containers = document.querySelectorAll('.minutes-container');
@@ -77895,12 +78329,13 @@ function showFleetingMessage(msg, dParent, styles = {}, ms = 3000, msDelay = 0, 
     TOFleetingMessage = setTimeout(() => fleetingMessage(msg, dFleetingMessage, styles, ms, fade), 10);
   }
 }
-function showFullObject(o,indent=0){
-  for(const k in o){
-    if (isSimple(o[k])) console.log(' '.repeat(indent),k,o[k]);
+function showFullObject(o, indent = 0, onlySimple = false) {
+  for (const k in o) {
+    if (isSimple(o[k])) console.log(' '.repeat(indent), k, o[k]);
+    else if (!onlySimple) console.log(' '.repeat(indent), k, anyString3(o[k]));
     else {
-      console.log(' '.repeat(indent),k);
-      showFullObject(o[k],indent+2);
+      console.log(' '.repeat(indent), k);
+      showFullObject(o[k], indent + 2);
     }
   }
 }
@@ -78083,7 +78518,7 @@ function showNumberSequence(words, dParent, idForContainerDiv = 'seqContainer', 
   let wheel = getHueWheel(G.color, 40, numWords <= 4 ? 60 : numWords <= 10 ? 30 : 15, 0);
   wheel = wheel.map(x => colorHSLBuild(x, 100, 50));
   wheel = shuffle(wheel);
-  let wheel1 = colorPalShadeX(anyColorToStandardString(wheel[0]), numWords);
+  let wheel1 = colorPalShadeX(colorFrom(wheel[0]), numWords);
   wheel = jsCopy(wheel1);
   if (G.op == 'plus') wheel.reverse();
   for (const w of words) {
@@ -78119,8 +78554,8 @@ function showNumberSequence(words, dParent, idForContainerDiv = 'seqContainer', 
   return { words: inputGroups, letters: charInputs };
   return [wi.words, wi.letters];
 }
-function showObject(o, indent = 0, simple = true, plus = null, minus = null) {
-  let s=extendedObjectString(o,indent,simple,plus,minus);
+function showObject(o, indent = 0, simple = true, lstShow = null, lstOmit = null) {
+  let s = extendedObjectString(o, indent, simple, lstShow, lstOmit);
   console.log(s);
 }
 function showPackages(data, domid = 'OLDCODE') {
@@ -78367,7 +78802,7 @@ function showTextHints(items, dParentProp, textProp, removeFirst = true) {
     let dHint = item.dHint = mText(hint, d1);
   }
 }
-function showTree(o, childrenKeys = ['panels', 'elm'], plus, minus) {
+function showTree(o, childrenKeys = ['sub', 'elm'], plus, minus) {
   recShowTree(o, 0, childrenKeys, plus, minus);
 }
 function showTrick() {
@@ -78563,6 +78998,15 @@ function simpleSizes_unused(wGame = 1000, hGame = 800, wSide = 200) {
   setCSSVariable('--wLog', wSide + 'px');
   setCSSVariable('--hStatus', 'auto');
   setCSSVariable('--hTesting', '100%');
+}
+function simplest_game_open_for_move_dep(obj) {
+  for (const k in obj) { if (isdef(Session[k])) copyKeys(obj[k], Session[k]); else Session[k] = obj[k]; }
+  Session.cur_table = Session.table;
+  console.assert(isdef(Session.cur_user) && Session.cur_game == Session.table.game && Session.cur_tid == Session.table.id, "SESSION MISMATCH IN GAME_OPEN_FOR_MOVE!!!!!!!!!!!!!!!!!!!!!");
+  open_game_ui();
+  G = open_game(Session.cur_user, Session.cur_game); 
+  G.make_players(Session.table);
+  G.startGame(Session.cur_fen);
 }
 function simplestPerlenGame() {
   hide('dMainContent');
@@ -78798,6 +79242,8 @@ function skype_start() {
   }
 }
 function sleepX(msecs) {
+  //#region doc 
+  //#endregion 
   return new Promise(r => setTimeout(r, msecs));
 }
 function slowlyTurnFaceDown(pic, secs = 5, removeBg = false) {
@@ -78868,15 +79314,6 @@ function socketEmitMessage(msg) {
 }
 function solve(board) {
   let updated = true, solved = false
-  /* 
-      Easy-Hard are solved via iterations where we look at the current
-      board and fill in any 100% guaranteed cells. We keep using the
-      same board, and fill in the gaps until solved.
-      Always do this first.  We can make the board simpler, even if we
-      are unable to crack it entirely this way.
-      Tests show doing this FIRST is quicker for Hard-Evil sudoko as it
-      removes the number of blank cells ahead of the brute force.
-  */
   while (updated && !solved) {
     updated = one_value_cell_constraint(board)
     solved = is_solved(board)
@@ -79196,7 +79633,7 @@ function splayout(elems, dParent, w, h, x, y, overlap = 20, splay = 'right') {
   function splayRight(elems, d, x, y, overlap) {
     for (const c of elems) {
       mAppend(d, c);
-      mStyleX(c, { position: 'absolute', left: x, top: y });
+      mStyle(c, { position: 'absolute', left: x, top: y });
       x += overlap;
     }
     return [x, y];
@@ -79206,7 +79643,7 @@ function splayout(elems, dParent, w, h, x, y, overlap = 20, splay = 'right') {
     let xLast = x;
     for (const c of elems) {
       mAppend(d, c);
-      mStyleX(c, { position: 'absolute', left: x, top: y });
+      mStyle(c, { position: 'absolute', left: x, top: y });
       x -= overlap;
     }
     return [xLast, y];
@@ -79214,7 +79651,7 @@ function splayout(elems, dParent, w, h, x, y, overlap = 20, splay = 'right') {
   function splayDown(elems, d, x, y, overlap) {
     for (const c of elems) {
       mAppend(d, c);
-      mStyleX(c, { position: 'absolute', left: x, top: y });
+      mStyle(c, { position: 'absolute', left: x, top: y });
       y += overlap;
     }
     return [x, y];
@@ -79224,16 +79661,16 @@ function splayout(elems, dParent, w, h, x, y, overlap = 20, splay = 'right') {
     let yLast = y;
     for (const c of elems) {
       mAppend(d, c);
-      mStyleX(c, { position: 'absolute', left: x, top: y });
+      mStyle(c, { position: 'absolute', left: x, top: y });
       y -= overlap;
     }
     return [x, yLast];
   }
   if (isEmpty(elems)) return { w: 0, h: 0 };
-  mStyleX(dParent, { display: 'block', position: 'relative' });
+  mStyle(dParent, { display: 'block', position: 'relative' });
   [x, y] = (eval('splay' + capitalize(splay)))(elems, dParent, x, y, overlap);
   let isHorizontal = splay == 'right' || splay == 'left';
-  let sz = { w: (isHorizontal ? (x - overlap + w) : w), h: (isHorizontal ? (y - overlap + h) : h) };
+  let sz = { w: (isHorizontal ? (x - overlap + w) : w), h: (isHorizontal ? h : (y - overlap + h)) };
   return sz;
 }
 function splitAtAnyOf(s, sep) {
@@ -79728,14 +80165,6 @@ function spread_hand(path, ov) {
   mContainerSplay(cont, hand.splay, card.w, card.h, items.length, ov * card.w);
 }
 function Sprite(scene, imageFile, width, height) {
-  /*
-  TODO:
-    Add collision detection (DONE 2/4/11)
-    Add access modifiers for x,y,dx,dy (DONE 10/26/11)
-    Add multiple boundActions
-    Support multiple images / states (DONE 10/26/11)
-    Sprite element now expects scene rather than canvas
-  */
   this.canvas = scene.canvas;
   this.context = this.canvas.getContext("2d");
   this.image = new Image();
@@ -80367,6 +80796,17 @@ function start_simple_timer(dtimer, msInterval, onTick, msTotal, onElapsed) {
   timer.start();
 }
 function start_sound(){
+}
+function start_table(uname, tid) {
+  to_server({ uname: uname, tid: tid }, 'start_table');
+}
+function start_table_dep(tid) {
+  let t = DB.tables[tid];
+  Session.cur_tid = tid;
+  t.status = 'started';
+  t.moves = {};
+  t.players.map(x => t.moves[x] = []);
+  makemove(t);
 }
 function start_tests() {
   fentest_wise();
@@ -81058,25 +81498,6 @@ function stringBetween(sFull, sStart, sEnd) {
 function stringBetweenLast(sFull, sStart, sEnd) {
   let s1 = stringBeforeLast(sFull, isdef(sEnd) ? sEnd : sStart);
   return stringAfterLast(s1, sStart);
-}
-function stringDivider(str, width, spaceReplacer) {
-  if (str.length > width) {
-    let p = width;
-    while (p > 0 && str[p] != ' ' && str[p] != '-') {
-      p--;
-    }
-    if (p > 0) {
-      let left;
-      if (str.substring(p, p + 1) == '-') {
-        left = str.substring(0, p + 1);
-      } else {
-        left = str.substring(0, p);
-      }
-      const right = str.substring(p + 1);
-      return left + spaceReplacer + stringDivider(right, width, spaceReplacer);
-    }
-  }
-  return str;
 }
 function stringLast(s, n) { return s.substring(s.length - n, s.length); }
 function stringToMatrix(s, rows, cols) {
@@ -82045,10 +82466,6 @@ function test0_show_all_inno_cards() {
     if (ci.exp[0] == 'F') inno_present_card(dTable, k);
   }
 }
-async function test0_simulateClick() {
-  let info = await route_path_yaml_dict('../base/assets/lists/info.yaml');
-  downloadAsYaml(info, 'info');
-}
 function test0_turn_loader_off() {
   mClassReplace(mBy('loader_holder'), 'loader_off');
 }
@@ -82504,7 +82921,6 @@ function test1(map) {
     }
     layer.bindPopup(popupContent);
   }
-  /* global campus, bicycleRental, freeBus, coorsField */
   var bicycleRentalLayer = L.geoJSON([bicycleRental, campus], {
     style: function (feature) {
       return feature.properties && feature.properties.style;
@@ -82605,39 +83021,6 @@ function test1_bw_widget_boa() {
   mFlexSpacebetween(d4);
   let d7 = mDiv(d, { bg: '#eee', fg: 'dimgray', padding: 7 }, null, 'CARDS');
   let d8 = mDiv(d, { bg: 'dodgerblue', fg: 'white' }, null, `<img src='../rechnung/images/rest_bw.jpg'>`);
-}
-async function test1_can_I_get_new_cities(min = 25000) {
-  let info = await route_path_yaml_dict('../base/assets/lists/info.yaml');
-  let text = await route_path_text('../base/mapdata/cities.csv');
-  let cities = M.cities = csv2list(text);
-  let capitals = [];
-  let new_cities = {};
-  let num = 0;
-  for (const o of cities) {
-    let n = o.population;
-    if (nundef(n)) continue;
-    n = Number(n);
-    if (n < min) continue;
-    let w1 = o.city_ascii.toLowerCase();
-    if (nundef(o.country)) {
-      console.log('missing country', o);
-      continue;
-    }
-    num += 1;
-    let land1 = o.country.toLowerCase();
-    for (const k of info.capital) {
-      let w = k.toLowerCase();
-      if (w.includes(w1) && w.includes(land1)) {
-        capitals.push(o);
-        o.capital = 'capital';
-      }
-      let name = o.name = o.city_ascii;
-      if (isdef(new_cities[name]) && new_cities[name].includes('capital')) continue; 
-      new_cities[name] = `${o.lng},${o.lat},${o.country},${o.capital},${o.population}`;
-    }
-  }
-  downloadAsYaml(new_cities, 'cities');
-  return new_cities;
 }
 function test1_car_math() {
   C = new CCanvas(dTable, {}, {}, gameloop_start, gameloop_stop, 'cc', null, true);
@@ -83526,10 +83909,6 @@ function test3_3rows() {
   let dOuter = mDiv(dMain, { bg: 'random', flex: '1 0 auto' }, 'dOuter', 'outer');
   let dFooter = mDiv(dMain, { bg: 'random' }, 'dFooter', 'footer');
   mSize(dHeader, '100%', 50);
-}
-function test3_add_cities_layer(color) {
-  let cities = rChoose(M.capitals, 20);
-  for (const c of cities) map_add_city(M.cities[c]);
 }
 function test3_ari_deck_2_hands(otree) {
   let deck = ui_make_random_deck(10);
@@ -84515,11 +84894,11 @@ function testCard52Cards() {
 }
 function testCardContent0(card) {
   let dCard = iDiv(card);
-  mRows(dCard, spotItPattern(5, 2), { sz: CSZ / 6, fg: 'random', hmargin: 8, vmargin: 4 }, { 'justify-content': 'center' }, { 'justify-content': 'center' }); return;
-  mRows(dCard, spotItPattern(5, 2), { sz: CSZ / 8, fg: 'random', margin: 6 }, { 'justify-content': 'center' }, { 'justify-content': 'center' }); return;
-  mRows(dCard, cardPattern(13, 'spade suit'), { sz: CSZ / 8, fg: 'random', margin: 6 }, { 'justify-content': 'center' }, { 'justify-content': 'center' }); return;
-  mRows(dCard, [['frog', 'frog', 'frog'], ['frog', 'frog'], ['frog', 'frog', 'frog']], { sz: CSZ / 6, fg: 'random' }, { 'justify-content': 'center' }, { 'justify-content': 'center' }); return;
-  mRows(dCard, [['frog', 'frog', 'frog'], ['frog', 'frog'], ['frog', 'frog', 'frog']], { sz: CSZ / 5, fg: 'random' }, { 'justify-content': 'center' }, { 'justify-content': 'space-evenly' }); return;
+  mRows(dCard, spotItPattern(5, 2), { sz: Card.sz / 6, fg: 'random', hmargin: 8, vmargin: 4 }, { 'justify-content': 'center' }, { 'justify-content': 'center' }); return;
+  mRows(dCard, spotItPattern(5, 2), { sz: Card.sz / 8, fg: 'random', margin: 6 }, { 'justify-content': 'center' }, { 'justify-content': 'center' }); return;
+  mRows(dCard, cardPattern(13, 'spade suit'), { sz: Card.sz / 8, fg: 'random', margin: 6 }, { 'justify-content': 'center' }, { 'justify-content': 'center' }); return;
+  mRows(dCard, [['frog', 'frog', 'frog'], ['frog', 'frog'], ['frog', 'frog', 'frog']], { sz: Card.sz / 6, fg: 'random' }, { 'justify-content': 'center' }, { 'justify-content': 'center' }); return;
+  mRows(dCard, [['frog', 'frog', 'frog'], ['frog', 'frog'], ['frog', 'frog', 'frog']], { sz: Card.sz / 5, fg: 'random' }, { 'justify-content': 'center' }, { 'justify-content': 'space-evenly' }); return;
   mSym('frog', dCard, {}, 'cc'); return;
   mRows(iDiv(card), [[['frog', 3], 'HALLO', 'bee'], ['frog', 'HALLO', 'bee'], ['frog', 'HALLO', 4, 'bee'], 'ja das ist es!']);
   return;
@@ -84531,7 +84910,7 @@ function testCardContent0(card) {
       let dc;
       if (isdef(Syms[c])) {
         dc = mDiv(dCol, { fg: 'black' });
-        ds = mSym(dc, dCol, { sz: CSZ / 5, fg: 'random' });
+        ds = mSym(dc, dCol, { sz: Card.sz / 5, fg: 'random' });
       } else {
         dc = mDiv(dCol, { fg: 'black' }, null, c);
       }
@@ -84930,8 +85309,8 @@ function testInno() {
 }
 function testInnoCardPhantasie() {
   dTable = mDiv(mBy('wrapper'), { position: 'absolute', padding: 10, w: '100vw', h: '100vh', bg: 'white' });
-  mStyle(dTable, { gap: 10 }); let card = cBlank(dTable, { fg: 'black', bg: INNO.color.red, w: CSZ, h: CSZ * .65 });
-  let [dCard, sz, szTitle, gap] = [iDiv(card), CSZ / 4, 24, 8];
+  mStyle(dTable, { gap: 10 }); let card = cBlank(dTable, { fg: 'black', bg: INNO.color.red, w: Card.sz, h: Card.sz * .65 });
+  let [dCard, sz, szTitle, gap] = [iDiv(card), Card.sz / 4, 24, 8];
   let [dTitle, dMain] = cTitleArea(card, 32);
   let d = mAddContent(dTitle, 'MetalWorking', { bg: INNO.sym.tower.bg, fg: 'white', h: 32, fz: 23, align: 'center', position: 'relative' });
   mAddContent(d, '5', { float: 'right', hpadding: 10 });
@@ -85015,7 +85394,7 @@ function testJustARect(){
   let rect =new MMS({parent:svg,type:'rect'}).setDefaults({w:50,h:50,bg:'red'}).attach();
 }
 function testKarte0() {
-  mStyle(dTable, { gap: 10 }); let card = cBlank(dTable); let d = iDiv(card); let sz = CSZ;
+  mStyle(dTable, { gap: 10 }); let card = cBlank(dTable); let d = iDiv(card); let sz = Card.sz;
   let suit = mSuit('Pik', d, { h: 300 });  
   let p = suit.firstChild;
   console.log('p', p);
@@ -85106,14 +85485,14 @@ function testKarte3_svg() {
   console.log('card', card); 
   let g = iG(card); console.log('g', g);
   let x = mgSuit('Pik'); console.log('x', x);
-  mgSize(x, CSZ / 2);
+  mgSize(x, Card.sz / 2);
   mgPos(card, x); 
 }
 function testKarte4() {
   mStyle(dTable, { gap: 10 }); let card;
   card = cBlank(dTable);
   let d = iDiv(card);
-  let sz = CSZ;
+  let sz = Card.sz;
   let arr = [];
   let suit = mSuit('Pik');  
   let triangle = mShape('triangle', null, { bg: 'red' }); 
@@ -85152,7 +85531,7 @@ function testKarte8() {
   }
 }
 function testKartePosition1() {
-  mStyle(dTable, { gap: 10 }); let card = cBlank(dTable); let d = iDiv(card); let sz = CSZ / 4;
+  mStyle(dTable, { gap: 10 }); let card = cBlank(dTable); let d = iDiv(card); let sz = Card.sz / 4;
   let s3 = mSuit('Pik', d); mSuitSize(s3, 30); mSuitTL(s3); console.log('s3', s3);
   let s4 = mSuit('Treff', d); mSuitSize(s4, 30); mSuitPos(s4, 'bottom', 'right'); console.log('s4', s4); 
   let s5 = mSuit('Herz', d, { sz: 30 }); mSuitPos(s5, 'bottom', 'left'); console.log('s5', s5); 
@@ -85160,27 +85539,30 @@ function testKartePosition1() {
   return;
   console.log('suit', suit);
   mPos(suit, 0, 0); 
-  mPos(suit1, -10, CHEIGHT - sz); 
-  mPos(suit1, -10 * sz / 100, CHEIGHT - sz); 
+  mPos(suit1, -10, Card.h - sz); 
+  mPos(suit1, -10 * sz / 100, Card.h - sz); 
 }
 function testKartePosition2() {
-  mStyle(dTable, { gap: 10 }); let card = cBlank(dTable); let d = iDiv(card); let sz = CSZ / 4;
+  mStyle(dTable, { gap: 10 }); let card = cBlank(dTable); let d = iDiv(card); let sz = Card.sz / 4;
   let s1 = mSuit('Pik', d, { sz: 25 }, 'tl'); console.log('s1', s1);
   let s2 = mSuit('Karo', d, { sz: 50 }, 'tr'); console.log('s2', s2);
   let s3 = mSuit('Herz', d, { sz: 75 }, 'bl'); console.log('s3', s3);
   let s4 = mSuit('Treff', d, { sz: 100 }, 'br'); console.log('s4', s4);
 }
 function testKartePositionSuit() {
-  let dTable = mBy('dTable'); clearElement(dTable); mStyle(dTable, { hmin: 400 })
-  let card = cBlank(dTable); let d = iDiv(card); let sz = card.h / 6;
-  let i = 0;
-  for (let suit of ['H', 'S', 'D', 'C']) {
-    let s1 = mSuit(suit, d, { w: sz, h: sz }); 
-    mPos(s1, sz * i, 0); i++;
-  }
+  mStyle(dTable, { gap: 10 }); let card = cBlank(dTable); let d = iDiv(card); let sz = Card.sz / 6;
+  let s1 = mSuit('Herz', d, { sz: sz }, 'tc'); 
+  let s2 = mSuit('Herz', d, { sz: sz }, 'cr'); 
+  let s3 = mSuit('Herz', d, { sz: sz }, 'bc'); 
+  let s4 = mSuit('Herz', d, { sz: sz }, 'cl'); 
+  let s5 = mSuit('Pik', d, { sz: sz * 2 }, 'cc'); 
+  s5 = mSuit('Treff', d, { sz: sz * 1.5 }, 'tl'); 
+  s5 = mSuit('Treff', d, { sz: sz * 1.5 }, 'tr'); 
+  s5 = mSuit('Treff', d, { sz: sz * 1.5 }, 'bl'); 
+  s5 = mSuit('Treff', d, { sz: sz * 1.5 }, 'br'); 
 }
 function testKartePositionSuitOuterCenters() {
-  mStyle(dTable, { gap: 10 }); let card = cBlank(dTable); let d = iDiv(card); let sz = CSZ / 4;
+  mStyle(dTable, { gap: 10 }); let card = cBlank(dTable); let d = iDiv(card); let sz = Card.sz / 4;
   let s1 = mSuit('Pik', d, { sz: 60 }, 'tc'); console.log('s1', s1);
   let s2 = mSuit('Karo', d, { sz: 60 }, 'cr'); console.log('s2', s2);
   let s3 = mSuit('Herz', d, { sz: 60 }, 'bc'); console.log('s3', s3);
@@ -85190,7 +85572,7 @@ function testKarteSizing() {
   mStyle(dTable, { gap: 10 }); let card;
   card = cBlank(dTable);
   let d = iDiv(card);
-  let sz = CSZ;
+  let sz = Card.sz;
   let arr = [];
   let suit = mSuit('Pik');  
   let triangle = mShape('triangle', null, { bg: 'red' }); 
@@ -85434,18 +85816,18 @@ function testPos00() {
   console.log(board_to_fen(board));
 }
 function testPosition3() {
-  mStyle(dTable, { gap: 10 }); let card = cBlank(dTable); let d = iDiv(card); let sz = CSZ / 5;
+  mStyle(dTable, { gap: 10 }); let card = cBlank(dTable); let d = iDiv(card); let sz = Card.sz / 5;
   let x1 = mShapeR('hex', null, { w: sz, h: sz, bg: 'random' }); console.log('\nx1', x1);
   for (const p of ['tl', 'tc', 'tr', 'cl', 'cc', 'cr', 'bl', 'bc', 'br']) {
     let x2 = x1.cloneNode(); mAppend(d, x2); mPlace(x2, p, 20);
   }
 }
 function testPositionCardSym() {
-  mStyle(dTable, { gap: 10 }); let card = cBlank(dTable); let d = iDiv(card); let sz = CSZ / 5;
+  mStyle(dTable, { gap: 10 }); let card = cBlank(dTable); let d = iDiv(card); let sz = Card.sz / 5;
   let x1 = mSym('crow', d, { w: sz, h: sz, bg: 'random' }, 'cc'); console.log('\nx1', x1);
 }
 function testPositionPatterns() {
-  mStyle(dTable, { gap: 10 }); let card = cBlank(dTable); let d = iDiv(card); let sz = CSZ / 5;
+  mStyle(dTable, { gap: 10 }); let card = cBlank(dTable); let d = iDiv(card); let sz = Card.sz / 5;
   let x1 = mShapeR('hex', null, { w: sz, h: sz, bg: 'random' }); console.log('\nx1', x1);
   for (const p of ['tl', 'tc', 'tr', 'cl', 'cc', 'cr', 'bl', 'bc', 'br']) {
     let x2 = x1.cloneNode(); mAppend(d, x2);  
@@ -85453,7 +85835,7 @@ function testPositionPatterns() {
   }
 }
 function testPositionPatterns1() {
-  mStyle(dTable, { gap: 10 }); let card = cBlank(dTable); let d = iDiv(card); let sz = CSZ / 5;
+  mStyle(dTable, { gap: 10 }); let card = cBlank(dTable); let d = iDiv(card); let sz = Card.sz / 5;
   let x1 = mShapeR('circle', null, { w: sz, h: sz, bg: 'random' }); console.log('\nx1', x1);
   for (const p of ['tl', 'tr', 'bl', 'br']) {
     let x2 = x1.cloneNode(); mAppend(d, x2);  
@@ -85465,7 +85847,7 @@ function testPositionPatterns1() {
   }
 }
 function testPositionShapeR0() {
-  mStyle(dTable, { gap: 10 }); let card = cBlank(dTable); let d = iDiv(card); let sz = CSZ / 4;
+  mStyle(dTable, { gap: 10 }); let card = cBlank(dTable); let d = iDiv(card); let sz = Card.sz / 4;
   let x1 = mShapeR('triup', d, { sz: sz, bg: 'random' }); console.log('\nx1', x1);
   mPlace(x1, 'tl');
   let x2 = mShapeR('hex', d, { sz: sz, bg: 'random' }); console.log('\nx1', x2);
@@ -85502,8 +85884,8 @@ function testRandomSeriesRec(lst, dInit, G, n, callback) {
   });
 }
 function testRectanglesTextInBoxesW0() {
-  mStyle(dTable, { gap: 10 }); let card = cBlank(dTable, { w: CSZ, h: CSZ * .8 });
-  let [d, sz, szTitle, gap] = [iDiv(card), CSZ / 4, 24, 8];
+  mStyle(dTable, { gap: 10 }); let card = cBlank(dTable, { w: Card.sz, h: Card.sz * .8 });
+  let [d, sz, szTitle, gap] = [iDiv(card), Card.sz / 4, 24, 8];
   let box = mBoxFromMargins(d, szTitle, 10, sz + gap, sz + gap);
   let r = mMeasure(box);
   text = 'das ist ein sehr langer text ich hoffe er ist auf jeden fall zu lang fuer diese box. denn wenn nicht ist es ein echtes problem. dann muss ich einen anderen test machen!';
@@ -85526,8 +85908,8 @@ function testRectanglesTextInBoxesW0() {
   mPlaceText('hallo das ist noch ein echo!!!', [sz, sz, 'tl'], d, { fg: 'blue' }, { bg: 'orange', border: '1px dashed red', rounding: 10 });
 }
 function testRectanglesW1() {
-  mStyle(dTable, { gap: 10 }); let card = cBlank(dTable, { w: CSZ, h: CSZ * .8 });
-  let [d, sz, szTitle, gap] = [iDiv(card), CSZ / 4, 24, 8];
+  mStyle(dTable, { gap: 10 }); let card = cBlank(dTable, { w: Card.sz, h: Card.sz * .8 });
+  let [d, sz, szTitle, gap] = [iDiv(card), Card.sz / 4, 24, 8];
   let text = 'das ist ein sehr langer text ich hoffe er ist auf jeden fall zu lang fuer diese box. denn wenn nicht ist es ein echtes problem. dann muss ich einen anderen test machen!';
   box = mPlaceText(text, [szTitle, 10, sz + gap, sz + gap], d, { fg: 'dimgrey' }, { bg: 'beige', border: '1px solid grey', rounding: 10 });
   text = 'denn wenn nicht ist es ein echtes problem. dann muss ich einen anderen test machen!';
@@ -85703,7 +86085,7 @@ function testShapes() {
   let mobj = makeDrawingElement('el1', 'board');
   let sz = 200;
   let c = 'blue';
-  let c1 = anyColorToStandardString('green', .1);
+  let c1 = colorFrom('green', .1);
   console.log(c1);
   makeVisual(mobj, 0, 0, sz, sz, c1, 'quad');
   mobj.text({ txt: 'hallo', fill: colorDarker(c), fz: 30, y: -sz / 3 });
@@ -86449,8 +86831,8 @@ function toUmlaut(w) {
     return w;
   }
 }
-function toWords(s) {
-  let arr = s.split(/[\W|_]+/);
+function toWords(s, allow_ = false) {
+  let arr = allow_ ? s.split(/[\W]+/) : s.split(/[\W|_]+/);
   return arr.filter(x => !isEmpty(x));
 }
 function toWordsSpeech(s) {
@@ -87718,6 +88100,17 @@ function ui_get_trade_items(uplayer) {
   reindex_items(items);
   return items;
 }
+function ui_ground_zero() {
+  STOPAUS = true;
+  uiActivated = aiActivated = false;
+  clearTimeouts(); 
+  if (isdef(G) && isdef(G.clear)) G.clear();
+  if (isdef(GC) && isdef(GC.clear)) GC.clear();
+  TOMan.clear();
+  clearMarkers();
+  resetUIDs(); 
+  Items = {};
+}
 function ui_make_card_container(n, dParent, styles = { bg: 'random', padding: 10 }) {
   let id = getUID('u');
   let d = mDiv(dParent, styles, id);
@@ -88638,6 +89031,16 @@ function update_car(canvas, item) {
     }
   }
   return false;
+}
+function update_cur_table(obj, color) {
+  let t = Session.cur_table;
+  let tnew = obj.table;
+  if (isdef(obj.player_record)) copyKeys(obj.player_record, tnew);
+  copyKeys(tnew, t);
+  if (isdef(color)) {
+    let d = mBy(`rk_${obj.table.id}`);
+    if (isdef(d)) mStyle(d, { bg: color }); 
+  }
 }
 function update_current_table() {
   let o = Serverdata.table;

@@ -5797,7 +5797,321 @@ action /2: *10:02 AM 1/28/2023-
 310: *12:23 PM 1/28/2023-4:32 PM 1/28/2023
 315: *4:33 PM 1/28/2023-5:21 PM 1/28/2023
 316: *5:36 PM 1/28/2023-7:10 PM 1/28/2023
-331: *7:10 PM 1/28/2023-
+331: *7:10 PM 1/28/2023-7:24 PM 1/28/2023
+333: *7:24 PM 1/28/2023-8:49 PM 1/28/2023
+__________ so 29.1.23 waiting at the airport...   D57
+350: *8:50 PM 1/28/2023-6:12 AM 1/29/2023
+351: *6:12 AM 1/29/2023-6:16 AM 1/29/2023
+352: *6:16 AM 1/29/2023-6:18 AM 1/29/2023
+353: *6:18 AM 1/29/2023-6:21 AM 1/29/2023
+354: *6:21 AM 1/29/2023-6:36 AM 1/29/2023
+355: *6:36 AM 1/29/2023-6:39 AM 1/29/2023
+356: *6:39 AM 1/29/2023-6:40 AM 1/29/2023
+357: *6:40 AM 1/29/2023-7:28 AM 1/29/2023
+359: *7:28 AM 1/29/2023-7:34 AM 1/29/2023
+360: *7:34 AM 1/29/2023-7:39 AM 1/29/2023
+361: *7:39 AM 1/29/2023-7:58 PM 1/29/2023
+__________ mo 30.1.23 waiting at the airport...   D56
+500: *7:59 PM 1/29/2023-6:52 AM 1/30/2023
+505: *6:52 AM 1/30/2023-7:09 AM 1/30/2023
+506: *7:09 AM 1/30/2023-7:12 AM 1/30/2023
+507: *7:12 AM 1/30/2023-7:41 AM 1/30/2023
+prudential das ding ausdrucken!
+levETIRAcetam (Keppra) 500MG tablet
+510: *7:41 AM 1/30/2023-2:06 PM 1/30/2023
+540: *2:06 PM 1/30/2023-6:34 AM 1/31/2023
+__________ di 31.1.23 waiting at the airport...   D55
+620: *6:35 AM 1/31/2023-6:41 AM 1/31/2023
+621: *6:41 AM 1/31/2023-6:43 AM 1/31/2023
+622: *6:43 AM 1/31/2023-6:44 AM 1/31/2023
+623: *6:44 AM 1/31/2023-6:56 AM 1/31/2023
+624: *6:57 AM 1/31/2023-7:00 AM 1/31/2023
+625: *7:00 AM 1/31/2023-7:07 AM 1/31/2023
+626: *7:07 AM 1/31/2023-7:20 AM 1/31/2023
+627: *7:20 AM 1/31/2023-7:22 AM 1/31/2023
+628: *7:23 AM 1/31/2023-7:31 AM 1/31/2023
+629: *7:31 AM 1/31/2023-7:41 AM 1/31/2023
+630: *7:41 AM 1/31/2023-7:42 AM 1/31/2023
+631: *7:43 AM 1/31/2023-7:46 AM 1/31/2023
+632: *7:46 AM 1/31/2023-7:52 AM 1/31/2023
+633: *7:52 AM 1/31/2023-8:14 PM 1/31/2023
+__________ mi 1.2.23 waiting at the airport...   D54
+670: *8:15 PM 1/31/2023-8:27 PM 1/31/2023
+671: *8:27 PM 1/31/2023-8:33 PM 1/31/2023
+672: *8:33 PM 1/31/2023-8:33 PM 1/31/2023
+673: *8:34 PM 1/31/2023-9:16 PM 1/31/2023
+675: *9:16 PM 1/31/2023-9:16 PM 1/31/2023
+676: *9:17 PM 1/31/2023-6:09 AM 2/1/2023
+677: *6:09 AM 2/1/2023-6:11 AM 2/1/2023
+678: *6:11 AM 2/1/2023-6:12 AM 2/1/2023
+679: *6:12 AM 2/1/2023-6:16 AM 2/1/2023
+680: *6:16 AM 2/1/2023-6:19 AM 2/1/2023
+681: *6:19 AM 2/1/2023-6:24 AM 2/1/2023
+682: *6:24 AM 2/1/2023-6:27 AM 2/1/2023
+683: *6:27 AM 2/1/2023-6:42 AM 2/1/2023
+684: *6:42 AM 2/1/2023-6:46 AM 2/1/2023
+685: *6:46 AM 2/1/2023-6:49 AM 2/1/2023
+686: *6:49 AM 2/1/2023-7:09 AM 2/1/2023
+687: *7:09 AM 2/1/2023-7:30 AM 2/1/2023
+688: *7:30 AM 2/1/2023-7:32 AM 2/1/2023
+689: *7:32 AM 2/1/2023-7:38 AM 2/1/2023
+690: *7:38 AM 2/1/2023-7:44 AM 2/1/2023
+691: *7:44 AM 2/1/2023-7:48 AM 2/1/2023
+692: *7:48 AM 2/1/2023-7:48 AM 2/1/2023
+soll:
+path C:\D\a04\game\onclick.js
+path C:\D\a04\game\p5_helpers.js
+path C:\D\a04\game\ui.js
+path C:\D\a04\game\bau1.js
+path C:\D\a04\game\done.js
+path C:\D\a04\game\test.js
+path C:\D\a04\game\bau2.js
+path C:\D\a04\game\all.js
+path C:\D\a04\game\start.js
+path C:\D\a04\game\basemin.js
+classes: 11
+funcs: 1053
+693: *7:48 AM 2/1/2023-
+- jetzt: consts dazu
+__________ do 2.2.23 waiting at the airport...   D53
+720: *6:13 AM 2/2/2023-6:15 AM 2/2/2023
+- const haben IMMER assignment, ODER????????? JA
+721: *6:15 AM 2/2/2023-6:17 AM 2/2/2023
+722: *6:17 AM 2/2/2023-6:20 AM 2/2/2023
+- code dazu
+723: *6:20 AM 2/2/2023-6:21 AM 2/2/2023
+724: *6:21 AM 2/2/2023-6:24 AM 2/2/2023
+725: *6:24 AM 2/2/2023-6:26 AM 2/2/2023
+- jetzt dirlist: 	classes: 139, funcs: 6923
+726: *6:26 AM 2/2/2023-6:27 AM 2/2/2023
+727: *6:27 AM 2/2/2023-6:29 AM 2/2/2023
+728: *6:29 AM 2/2/2023-6:46 AM 2/2/2023
+729: *6:46 AM 2/2/2023-6:47 AM 2/2/2023
+730: *6:47 AM 2/2/2023-6:53 AM 2/2/2023
+731: *6:53 AM 2/2/2023-7:03 AM 2/2/2023
+732: *7:03 AM 2/2/2023-7:05 AM 2/2/2023
+733: *7:05 AM 2/2/2023-7:07 AM 2/2/2023
+734: *7:08 AM 2/2/2023-7:16 AM 2/2/2023
+735: *7:16 AM 2/2/2023-7:19 AM 2/2/2023
+736: *7:19 AM 2/2/2023-7:19 AM 2/2/2023
+737: *7:19 AM 2/2/2023-7:21 AM 2/2/2023
+739: *7:21 AM 2/2/2023-7:48 AM 2/2/2023
+740: *7:49 AM 2/2/2023-9:05 PM 2/2/2023
+__________ fr 3.2.23 waiting at the airport...   D52
+780: *9:05 PM 2/2/2023-5:59 AM 2/3/2023
+781: *5:59 AM 2/3/2023-6:24 AM 2/3/2023
+782: *6:24 AM 2/3/2023-6:42 AM 2/3/2023
+783: *6:42 AM 2/3/2023-6:53 AM 2/3/2023
+785: *6:53 AM 2/3/2023-7:06 AM 2/3/2023
+787: *7:06 AM 2/3/2023-7:08 AM 2/3/2023
+789: *7:08 AM 2/3/2023-7:14 AM 2/3/2023
+791: *7:14 AM 2/3/2023-7:20 AM 2/3/2023
+793: *7:26 AM 2/3/2023-7:27 AM 2/3/2023
+795: *7:27 AM 2/3/2023-7:32 AM 2/3/2023
+- skip file mit require drin! ol.
+796: *7:32 AM 2/3/2023-7:35 AM 2/3/2023
+includesAnyOf( substrings.some(v => str.includes(v))\
+797: *7:37 AM 2/3/2023-7:39 AM 2/3/2023
+colorDict => rename to ColorDict
+alles mit ol. raushauen!
+VectorLayer raushauen
+require
+lCard
+798: *7:39 AM 2/3/2023-7:41 AM 2/3/2023
+PORT, SERVERURL
+cx
+799: *7:42 AM 2/3/2023-8:01 AM 2/3/2023
+900: *8:01 AM 2/3/2023-
+action /3: *8:01 AM 2/3/2023-6:31 PM 2/3/2023
+910: *6:32 PM 2/3/2023-6:33 PM 2/3/2023
+put all js code into an iffi: 
+(function(){..all code here..}());
+911: *6:33 PM 2/3/2023-6:35 PM 2/3/2023
+912: *6:35 PM 2/3/2023-6:36 PM 2/3/2023
+- modules are singleton
+- imported stuff is shared (changes)
+- moduels are file based - have to use bundler to bundle multiple files into 1 module
+913: *6:36 PM 2/3/2023-6:37 PM 2/3/2023
+914: *6:37 PM 2/3/2023-6:53 PM 2/3/2023
+915: *6:53 PM 2/3/2023-6:55 PM 2/3/2023
+916: *6:55 PM 2/3/2023-6:55 PM 2/3/2023
+- named exports
+default exports
+917: *7:01 PM 2/3/2023-7:02 PM 2/3/2023
+- modules wie kann ich das wirklich verwenden? sodass es sinn macht???
+918: *7:02 PM 2/3/2023-7:06 PM 2/3/2023
+919: *7:06 PM 2/3/2023-8:18 PM 2/3/2023
+to import in index.html:
+<script src="start.js" type="module"></script>
+__________ sa 4.2.23 waiting at the airport...   D51
+920: *9:04 PM 2/3/2023-
+
+
+
+
+
+
+
+hack_repair
+BRAUN wird nicht detected!
+
+simplest: var region adden, dann checken!
+- eigentlich muessen auch die vars sortiert werden
+
+- wieso???
+- PORT?!?!?
+
+100 fuer sign
+- brauch ein js forall arr.every
+something else is relevant
+
+
+
+
+
+- extends Game => extends GameClass
+- haben 
+- zuerst alle classes ohne extends
+- dann alle mit extends wo schon vorhanden
+...
+
+- wie muessen die classes sortiert werden damit extends geht?
+- classes duerfen nicht alpha geordnet werden in code file!
+- class Counter soll geskipped werdenn!!!
+- Counter => CounterClass
+- jetzt geht es!!!
+- firstWord ist schon wieder falsch!!!
+- test again
+- rename class Game zu class GameClass
+- function Game muss gekillt werden!!!
+- exclude path C:\D\a04\game\all.js
+- brauch das sieve!!!! 
+test
+- ja so geht es! 
+nur game: 11 1053
+
+- cla zuerst dann func
+zuerst durchgang mit alle func und classes finden!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+- functions muessen prevailen!!!
+- jetzt: add classes
+- jetzt: alle funcs in game
+- geht jetzt
+- THINK!!!
+- node js fs get file info for path
+- mach test13 nur 1 file 
+- falsch!!!
+- sort yaml funcs alpha! 
+- nur die funcs!
+- one by one:
+set_run_state_no_server
+
+- run limited
+- rename _bau1 to all.js
+- nimm mal nur das game dir 
+- alle files copy
+
+- gibt es da kein _bau1.js????
+a file that contains 'require' will NOT be parsed!
+const: sort bei code length
+- vielleicht kann ich zuerst all die oneliner consts machen?
+dann die komplexeren consts
+dann
+muss mir ueberlegen wie ich es mit dem var code halte!
+versuch die reihenfolge der vars NICHT zu aendern?
+const vor var?
+
+=>muell rausgeben rechtzeitig!!!
+
+- remove code!
+- is_key_down ist eingetragen unter 'is'
+- mach einen durchgang mit code in yaml
+- check ob das ein teil von code von voriger var is!
+- is_key_down gibt es als const und als func!!! wieso???
+- remove
+- if a key occurs in type BEFORE type =>delete superdi from that other type
+
+
+- sieve erst nachher!!!!
+
+- muss besser werden!
+2 verschiedene probleme:
+1. catch multiple vars in 1 line (oneliner)
+2. catch duplicates 
+- warum findet er class Counter nicht?
+- dirlist wieder groesser
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+- eintragen welche vars 
+- z_all.yaml soll NICHT den code enthalten!!!
+
+
+
+- PORT!!!
+- PORT ist immer noch als const!!!!
+- PORT immer noch problem!!!
+- output all duplicates!
+=>das heisst er schafft es noch nicht const vor var zu eliminieren
+- SERVER ist in: 
+C:\D\a00\git_archive\dycon_ui_test\base\js\_config.js const
+C:\xampp\htdocs\aroot\games\basemin.js var 
+- server laeuft wiededr
+
+
+=>spaeter nimm auch anderen code rein!
+- was will ich eigentlich?
+- versuch das zu integrieren
+- was es mit dem cardgame auf sich hat?
+C:\DATA\dev\js\08cardGame1\script\
 - how can I automatically detect which files are interesting?
 LG:
 update LG dirs! damit es klappt mit gen files!
