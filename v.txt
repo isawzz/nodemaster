@@ -5944,7 +5944,118 @@ default exports
 to import in index.html:
 <script src="start.js" type="module"></script>
 __________ sa 4.2.23 waiting at the airport...   D51
-920: *9:04 PM 2/3/2023-
+920: *9:04 PM 2/3/2023-6:15 AM 2/4/2023
+921: *6:15 AM 2/4/2023-6:18 AM 2/4/2023
+922: *6:19 AM 2/4/2023-6:28 AM 2/4/2023
+923: *6:28 AM 2/4/2023-6:30 AM 2/4/2023
+924: *6:30 AM 2/4/2023-6:40 AM 2/4/2023
+925: *6:40 AM 2/4/2023-6:58 AM 2/4/2023
+926: *6:58 AM 2/4/2023-7:03 AM 2/4/2023
+- sig bei var ist komplett falsch!!!
+- if trimmed line starts with /* skip until trimmed line ends with */
+://?
+undetected // in middle of a string!
+927: *7:03 AM 2/4/2023-7:12 AM 2/4/2023
+skip vars: lifeView Deck exp
+928: *7:12 AM 2/4/2023-7:24 AM 2/4/2023
+930: *7:24 AM 2/4/2023-7:47 AM 2/4/2023
+riesen probleme!!! modern_palettes
+convert const to var: AREAS USE_LOCAL_STORAGE VERSION CACHE_DEFAULTSPEC
+CACHE_USERSPEC CACHE_CODE TESTING SHOW_SPEC DSPEC_PATH SPEC_PATH
+SERVERDATA_PATH SHAPEFUNCS CLEAR_LOCAL_STORAGE USELIVESERVER
+sobald const MSCATS finde soll ich var MSCATS eintragen! und const MSCATS deleten
+935: *7:47 AM 2/4/2023-8:23 AM 2/4/2023
+936: *8:23 AM 2/4/2023-8:43 AM 2/4/2023
+940: *9:19 AM 2/4/2023-9:30 AM 2/4/2023
+941: *9:30 AM 2/4/2023-6:13 AM 2/5/2023
+__________ so 5.2.23 waiting at the airport...   D50
+980: *6:14 AM 2/5/2023-6:14 AM 2/5/2023
+981: *6:14 AM 2/5/2023-6:15 AM 2/5/2023
+982: *6:15 AM 2/5/2023-6:21 AM 2/5/2023
+983: *6:21 AM 2/5/2023-6:26 AM 2/5/2023
+984: *6:26 AM 2/5/2023-6:34 AM 2/5/2023
+985: *6:34 AM 2/5/2023-6:37 AM 2/5/2023
+986: *6:37 AM 2/5/2023-6:38 AM 2/5/2023
+987: *6:38 AM 2/5/2023-6:38 AM 2/5/2023
+988: *6:38 AM 2/5/2023-6:42 AM 2/5/2023
+989: *6:42 AM 2/5/2023-6:43 AM 2/5/2023
+- endlich!!!!! 
+- warum klappt das nicht???
+- starting with 'brd_' hat 2, andere haben 1 danach!
+- test
+- way shorter!!!!!
+- check was rauskommt
+- choices: extra prop fuer chess
+- extra durchgang nur fuer chess
+990: *6:43 AM 2/5/2023-6:48 AM 2/5/2023
+991: *6:48 AM 2/5/2023-6:49 AM 2/5/2023
+- next: present!
+992: *6:50 AM 2/5/2023-6:56 AM 2/5/2023
+993: *6:57 AM 2/5/2023-6:57 AM 2/5/2023
+994: *6:58 AM 2/5/2023-6:59 AM 2/5/2023
+995: *6:59 AM 2/5/2023-7:00 AM 2/5/2023
+996: *7:00 AM 2/5/2023-7:08 AM 2/5/2023
+997: *7:09 AM 2/5/2023-7:09 AM 2/5/2023
+- mach ein dict fuer code by key
+- rename app.js
+- dafuer brauch ich den code!
+998: *7:09 AM 2/5/2023-7:10 AM 2/5/2023
+999: *7:10 AM 2/5/2023-7:10 AM 2/5/2023
+1000: *7:11 AM 2/5/2023-7:17 AM 2/5/2023
+1: *7:17 AM 2/5/2023-7:26 AM 2/5/2023
+2: *7:26 AM 2/5/2023-7:31 AM 2/5/2023
+3: *7:31 AM 2/5/2023-8:10 AM 2/5/2023
+5: *8:10 AM 2/5/2023-8:31 AM 2/5/2023
+7: *8:31 AM 2/5/2023-
+- mach ein file das nur diese syms hat aus all1.js
+- rem cons
+- wieviele keys sind auch in window?
+- wie fang ich an? mit 1 function
+- fuer die keys, parse z_all.yaml
+- ich glaub ich brauch das nicht wenn ich window nehme!!!
+
+
+- filter out code of all1.js used in a project:
+1. enter all keys in start.js
+2. for each of those keys, enter all keys in its code
+3. do 2 until number does not change
+
+
+
+- wenn ich an etwas arbeite: bau1,2,3
+- wenn fertig: integrate back!
+- wohin mit den 2 base files?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+theoretisch koennt ich modules reinbringen aber will ich das?
 
 
 
