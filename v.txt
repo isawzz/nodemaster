@@ -6013,6 +6013,130 @@ __________ so 5.2.23 waiting at the airport...   D50
 - wie fang ich an? mit 1 function
 - fuer die keys, parse z_all.yaml
 - ich glaub ich brauch das nicht wenn ich window nehme!!!
+__________ mo 6.2.23 waiting at the airport...   D49
+20: *6:05 AM 2/6/2023-6:09 AM 2/6/2023
+21: *6:09 AM 2/6/2023-6:13 AM 2/6/2023
+- test100 war ja nicht drin!!!
+22: *6:13 AM 2/6/2023-6:25 AM 2/6/2023
+25: *6:25 AM 2/6/2023-6:58 AM 2/6/2023
+30: *6:58 AM 2/6/2023-7:00 AM 2/6/2023
+31: *7:00 AM 2/6/2023-7:02 AM 2/6/2023
+32: *7:02 AM 2/6/2023-7:03 AM 2/6/2023
+33: *7:03 AM 2/6/2023-7:09 AM 2/6/2023
+35: *7:09 AM 2/6/2023-7:10 AM 2/6/2023
+36: *7:10 AM 2/6/2023-7:24 AM 2/6/2023
+40: *7:24 AM 2/6/2023-7:41 AM 2/6/2023
+41: *7:41 AM 2/6/2023-7:52 AM 2/6/2023
+43: *7:52 AM 2/6/2023-8:24 AM 2/6/2023
+44: *8:25 AM 2/6/2023-9:01 AM 2/6/2023
+50: *9:01 AM 2/6/2023-7:13 AM 2/7/2023
+__________ di 7.2.23 waiting at the airport...   D48
+- remove file chmultOrig
+- bei oneLiners remove 
+- lass all zeug aus!
+==>discard double small letter vars!!!
+==>2. var code too much!!!! muss ich besser filtern!
+brauch LHS und RHS fuer vars und muss die vars 1 per line schreiben!
+130: *8:51 PM 2/6/2023-7:13 AM 2/7/2023
+131: *7:14 AM 2/7/2023-7:15 AM 2/7/2023
+132: *7:15 AM 2/7/2023-7:17 AM 2/7/2023
+133: *7:17 AM 2/7/2023-7:18 AM 2/7/2023
+134: *7:18 AM 2/7/2023-7:19 AM 2/7/2023
+135: *7:20 AM 2/7/2023-7:26 AM 2/7/2023
+- move v0 ... v3 => version
+- create v4
+- save all1.js to v4
+- add basemin exports to all1.js
+- rename all1.js => allcode.js
+136: *7:26 AM 2/7/2023-7:45 AM 2/7/2023
+137: *7:45 AM 2/7/2023-7:50 AM 2/7/2023
+138: *7:50 AM 2/7/2023-7:51 AM 2/7/2023
+139: *7:51 AM 2/7/2023-8:02 AM 2/7/2023
+140: *8:02 AM 2/7/2023-8:18 AM 2/7/2023
+141: *8:18 AM 2/7/2023-8:22 AM 2/7/2023
+- jsconfig.json vs code show only newest version of function
+- weiter
+- vs code F12 add path above current directory 
+- ich teste jetzt ob wenn ich game dir so wie es ist in aroot gebe und mit live-server starte ob es dann auch klappt!
+- how about a css closure???
+- server.js schluckt leider die consts nicht!!!
+- wo soll allcode.js sein? in a04.js???
+142: *8:22 AM 2/7/2023-8:28 AM 2/7/2023
+143: *8:28 AM 2/7/2023-12:43 PM 2/7/2023
+__________ mi 8.2.23 waiting at the airport...   D47
+170: *12:44 PM 2/7/2023-5:15 AM 2/8/2023
+171: *5:15 AM 2/8/2023-5:17 AM 2/8/2023
+172: *5:17 AM 2/8/2023-5:41 AM 2/8/2023
+173: *5:41 AM 2/8/2023-6:17 AM 2/8/2023
+174: *6:17 AM 2/8/2023-7:30 AM 2/8/2023
+180: *7:30 AM 2/8/2023-
+
+
+- signen fuer: 50
+- hinfahren fuer: 50
+
+- repair database: nimm allcode und dann alle zeilen die mit
+
+- lowerCase vars ausser dT weglassen!!!
+
+
+8073 165th Lane Northeast 749
+8850 Redmond-Woodinville Road Northeast, Unit 405 712
+
+
+
+
+- wie hoch ist header? warum 68?
+- mach test101
+- danach mach test 102 fuer fiddleInit
+was will ich jetzt machen? kann ich einfach so eine closure machen?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+=>suche cards
+=>lib renew!
+
+
+- mingame
+
+- wie soll ich update_all1 machen?
+
+- wenn window[k].toString() 
+fuer computeClosure muss ich gewisse funcs aus all1.js (sowie _start) ueberschreiben!!!
+
+
+- 2 major problems:
+1. update overwritten and project-specific code _start
+ok 2. var code too much!!!! muss ich besser filtern!
+
+
+- und wie garantiere ich dass das richtige _start genommen wird???
+- ja es kommt dasselbe raus!
+- test es nochmal, eigentlich sollte er jetzt test100 drin haben!
+- computeClosure(dir)
+- jetzt mach ich compute closure fuer ein project!!!
+- wie wird o von window object gemacht?
 
 
 - filter out code of all1.js used in a project:

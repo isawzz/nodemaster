@@ -1,7 +1,7 @@
 const DOMCATS = { rect: 'g', g: 'g', circle: 'g', text: 'g', polygon: 'g', line: 'g', body: 'd', svg: 'h', div: 'd', p: 'd', table: 'd', button: 'd', a: 'd', span: 'd', image: 'd', paragraph: 'd', anchor: 'd' };
 const IS_MIRROR = false;
 const FLASK = true;
-const NGROK = false; //'http://849aec381695.ngrok.io/'; // MUSS / am ende!!! 
+const NGROK = false; //'http://849aec381695.ngrok.io/'; // MUSS / am ende!!!
 const SERVER_URL = IS_MIRROR ? 'http://localhost:5555/' : FLASK ? (NGROK ? NGROK : 'http://localhost:' + PORT + '/') : 'http://localhost:5005/';
 const clientData = {};
 const defaultGameplayerAreaName = 'gameplayerArea';
@@ -33,6 +33,9 @@ const PLAYER_CONFIG_FOR_MULTIPLAYER = ['me', 'human', 'human'];
 const CACHE_INITDATA = true;
 const RUNTEST = false;
 const USE_NON_TESTING_DATA = true;
+const DSPEC_VERSION = 3;
+const USPEC_VERSION = '2a';
+const SERVERDATA_VERSION = 1;
 const TEST_PATH = '/zdata/';
 const INIT_CLEAR_LOCALSTORAGE = true;
 const USE_MAX_PLAYER_NUM = false;
@@ -45,6 +48,7 @@ const USE_ALL_GAMES_ROUTE = false;
 const USE_SOCKETIO = false;
 const USE_BACKEND_AI = true;
 const names = ['felix', 'amanda', 'sabine', 'tom', 'taka', 'microbe', 'dwight', 'jim', 'michael', 'pam', 'kevin', 'darryl', 'lauren', 'anuj', 'david', 'holly'];
+const TEST_VERSION = '17';
 const INCREMENTAL_UPDATE = true;
 const VERBOSE = true;
 const SHOW_SERVERDATA = false;
@@ -1081,6 +1085,27 @@ const INNO = {
     HISTORY: "Claim immediately if you have 4 or more echoes in one color (May also be claimed via Photography from Age 7)",
   },
 };
+const mainCOOL = () => {
+  const imgFile = document.getElementById("imgfile");
+  const image = new Image();
+  const file = imgFile.files[0];
+  const fileReader = new FileReader();
+  fileReader.onload = () => {
+    image.onload = () => {
+      const canvas = document.getElementById("canvas");
+      canvas.width = image.width;
+      canvas.height = image.height;
+      const ctx = canvas.getContext("2d");
+      ctx.drawImage(image, 0, 0);
+      const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+      const rgbArray = buildRgb(imageData.data);
+      const quantColors = quantization(rgbArray, 0);
+      buildPalette(quantColors);
+    };
+    image.src = fileReader.result;
+  };
+  fileReader.readAsDataURL(file);
+};
 const DIBOA = {
   home: { link: "../rechnung/index.html", img: 'home.png', align: 'left', pop: false },
   bill: { link: "../rechnung/index.html", img: 'bill.png', align: 'left', pop: false },
@@ -1358,12 +1383,19 @@ const resetPeep = ({ stage, peep }) => {
 const allPeeps = []
 const availablePeeps = []
 const crowd = []
-const CODE = {
-  paths: [],
-  funcs: {},
-  consts: {},
-  index: [],
+const MARGIN_S = '3px 6px';
+const MARGIN_M = '4px 10px';
+const MARGIN_XS = '2px 4px';
+const complementaryColor = color => {
+  const hexColor = color.replace('#', '0x');
+  return `#${('000000' + ('0xffffff' ^ hexColor).toString(16)).slice(-6)}`;
 };
+const immediateStart = true;
+const uiHaltedMask = 1 << 0;
+const beforeActivationMask = 1 << 1;
+const hasClickedMask = 1 << 2;
+const CODE = {};
+const CODE_VERSION = 1;
 const SHOW_CODE = false;
 const SHOW_CODE_DATA = false;
 const Perlin = {
@@ -1381,300 +1413,118 @@ const Perlin = {
   channels: {},
 }
 const MyNames = ['amanda', 'angela', 'erin', 'holly', 'jan', 'karen', 'kelly', 'pam', 'phyllis', 'andy', 'creed', 'darryl', 'david', 'dwight', 'felix', 'gul', 'jim', 'kevin', 'luis', 'michael', 'nil', 'oscar', 'ryan', 'stanley', 'toby', 'wolfgang'];
-const MARGIN_S = '3px 6px';
-const MARGIN_M = '4px 10px';
-const MARGIN_XS = '2px 4px';
-const complementaryColor = color => {
-  const hexColor = color.replace('#', '0x');
-  return `#${('000000' + ('0xffffff' ^ hexColor).toString(16)).slice(-6)}`;
-};
-const immediateStart = true;
-const uiHaltedMask = 1 << 0;
-const beforeActivationMask = 1 << 1;
-const hasClickedMask = 1 << 2;
-const AREAS = {};
-const MSCATS = { rect: 'g', g: 'g', circle: 'g', text: 'g', polygon: 'g', line: 'g', body: 'd', svg: 'd', div: 'd', p: 'd', table: 'd', button: 'd', a: 'd', span: 'd', image: 'd', paragraph: 'd', anchor: 'd' };
-const VERSION = '_ui';
-const DSPEC_VERSION = 3;
-const USPEC_VERSION = '2a';
-const SERVERDATA_VERSION = 1;
-const TEST_VERSION = '17';
-const CODE_VERSION = 1;
-const CACHE_DEFAULTSPEC = false;
-const CACHE_USERSPEC = false;
-const CACHE_CODE = false;
-const SHOW_SPEC = true;
-const CLEAR_LOCAL_STORAGE = false;
-const SHAPEFUNCS = { 'circle': agCircle, 'hex': agHex, 'rect': agRect, };
-const canvas = document.querySelector('#canvas')
-const mainCOOL = () => {
-  const imgFile = document.getElementById("imgfile");
-  const image = new Image();
-  const file = imgFile.files[0];
-  const fileReader = new FileReader();
-  fileReader.onload = () => {
-    image.onload = () => {
-      const canvas = document.getElementById("canvas");
-      canvas.width = image.width;
-      canvas.height = image.height;
-      const ctx = canvas.getContext("2d");
-      ctx.drawImage(image, 0, 0);
-      const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-      const rgbArray = buildRgb(imageData.data);
-      const quantColors = quantization(rgbArray, 0);
-      buildPalette(quantColors);
-    };
-    image.src = fileReader.result;
-  };
-  fileReader.readAsDataURL(file);
-};
-const Geo = {
-  layerInfo: {
-    empty: {
-      url: '',
-      options: { maxZoom: 22 }
-    },
-    ru: {
-      url: 'https:/' + '/core-sat.maps.yandex.net/tiles?l=sat&v=3.1025.0&x={x}&y={y}&z={z}&scale=1&lang=ru_RU',
-      options: { minZoom: 0, maxZoom: 19, }
-    },
-    satellite: {
-      url: 'http:/' + '/server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
-      options: { maxZoom: 19, attribution: '&copy; <a href="http:/"+"www.esri.com/">Esri</a>, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community' }
-    },
-    gsatellite: {
-      url: 'http:/' + '/{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',
-      options: { maxZoom: 22, subdomains: ['mt0', 'mt1', 'mt2', 'mt3'] }
-    },
-    gstreets: {
-      url: 'http:/' + '/{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}',
-      options: { maxZoom: 22, subdomains: ['mt0', 'mt1', 'mt2', 'mt3'] }
-    },
-    ghybrid: {
-      url: 'http:/' + '/{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}',
-      options: { maxZoom: 22, subdomains: ['mt0', 'mt1', 'mt2', 'mt3'] }
-    },
-    gterrain: {
-      url: 'http:/' + '/{s}.google.com/vt/lyrs=p&x={x}&y={y}&z={z}',
-      options: { maxZoom: 22, subdomains: ['mt0', 'mt1', 'mt2', 'mt3'] }
-    },
-    mbsat: {
-      url: 'https:/' + '/api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw',
-      options: { attribution: 'Map data &copy; <a href="https:/"+"/www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https:/"+"/www.mapbox.com/">Mapbox</a>', id: 'mapbox/satellite-v9', tileSize: 512, zoomOffset: -1 }
-    },
-    mbstreets: {
-      url: 'https:/' + '/api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw',
-      options: { attribution: 'Map data &copy; <a href="https:/"+"/www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https:/"+"/www.mapbox.com/">Mapbox</a>', id: 'mapbox/streets-v11', tileSize: 512, zoomOffset: -1 }
-    },
-    mb1: {
-      url: 'https:/' + '/api.mapbox.com/styles/v1/mapbox-map-design/cl4whev1w002w16s9mgoliotw/static/-90,35,2.5,0/840x464?access_token=pk.eyJ1IjoibWFwYm94LW1hcC1kZXNpZ24iLCJhIjoiY2syeHpiaHlrMDJvODNidDR5azU5NWcwdiJ9.x0uSqSWGXdoFKuHZC5Eo_Q',
-      options: { attribution: 'Map data &copy; <a href="https:/"+"/www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https:/"+"/www.mapbox.com/">Mapbox</a>', tileSize: 512, zoomOffset: -1 }
-    },
-    cartolabels: {
-      url: 'https:/' + '/{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}{r}.png',
-      options: {
-        attribution: '&copy; <a href="https:/"+"/www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https:/"+"/carto.com/attributions">CARTO</a>',
-        subdomains: 'abcd',
-        maxZoom: 20
-      }
-    },
-    cartonolabels: {
-      url: 'https:/' + '/{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png',
-      options: {
-        attribution: '&copy; <a href="https:/"+"/www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https:/"+"/carto.com/attributions">CARTO</a>',
-        subdomains: 'abcd',
-        maxZoom: 20
-      }
-    },
-    cartodark: {
-      url: 'https:/' + '/{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png',
-      options: {
-        attribution: '&copy; <a href="https:/"+"/www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https:/"+"/carto.com/attributions">CARTO</a>',
-        subdomains: 'abcd',
-        maxZoom: 20
-      }
-    },
-    osm: {
-      url: 'https:/' + '/tile.openstreetmap.org/{z}/{x}/{y}.png',
-      options: { attribution: '&copy; <a href="https:/"+"/www.openstreetmap.org/copyright">OpenStreetMap</a>', subdomains: ['a', 'b', 'c'] }
-    },
-    osmg: {
-      url: 'https:/' + '/{s}.tile.openstreetmap.de/tiles/osmde/{z}/{x}/{y}.png',
-      options: { attribution: '&copy; <a href="https:/"+"/www.openstreetmap.org/copyright">OpenStreetMap</a>', subdomains: ['a', 'b', 'c'] }
-    },
-    watercolor: {
-      url: 'http:/' + '/{s}.tile.stamen.com/watercolor/{z}/{x}/{y}.jpg',
-      options: { attribution: 'Map tiles by <a href="http:/"+"stamen.com">Stamen Design</a>, under <a href="http:/"+"creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a href="http:/"+"openstreetmap.org">OpenStreetMap</a>, under <a href="http:/"+"creativecommons.org/licenses/by-sa/3.0">CC BY SA</a>.', maxZoom: 18, subdomains: 'abcd', }
-    },
-    labels: {
-      url: "http:/" + "tile.stamen.com/toner-labels/{z}/{x}/{y}.png",
-      options: { attribution: 'Map tiles by <a href="http:/"+"stamen.com">Stamen Design</a>, under <a href="http:/"+"creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a href="http:/"+"openstreetmap.org">OpenStreetMap</a>, under <a href="http:/"+"www.openstreetmap.org/copyright">ODbL</a>.', maxZoom: 18 }
-    },
-    terrain: {
-      url: 'http:/' + '/{s}.tile.stamen.com/terrain/{z}/{x}/{y}.jpg',
-      options: { attribution: 'Map tiles by <a href="http:/"+"stamen.com">Stamen Design</a>, under <a href="http:/"+"creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a href="http:/"+"openstreetmap.org">OpenStreetMap</a>, under <a href="http:/"+"creativecommons.org/licenses/by-sa/3.0">CC BY SA</a>.', maxZoom: 18, }
-    },
-    terrainbg: {
-      url: 'http:/' + '/{s}.tile.stamen.com/terrain-background/{z}/{x}/{y}.jpg',
-      options: { attribution: 'Map tiles by <a href="http:/"+"stamen.com">Stamen Design</a>, under <a href="http:/"+"creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a href="http:/"+"openstreetmap.org">OpenStreetMap</a>, under <a href="http:/"+"creativecommons.org/licenses/by-sa/3.0">CC BY SA</a>.', maxZoom: 18, }
-    },
-    topo: {
-      url: 'https:/' + '/{s}.tile.opentopomap.org/{z}/{x}/{y}.png',
-      options: {
-        maxZoom: 17,
-        attribution: 'Map data: &copy; <a href="https:/"+"/www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, <a href="http:/"+"viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https:/"+"/opentopomap.org">OpenTopoMap</a> (<a href="https:/"+"/creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
-      }
-    }
+const myDom = {
+  points: {
+    text: document.getElementById('points-text'),
+    align: document.getElementById('points-align'),
+    baseline: document.getElementById('points-baseline'),
+    rotation: document.getElementById('points-rotation'),
+    font: document.getElementById('points-font'),
+    weight: document.getElementById('points-weight'),
+    size: document.getElementById('points-size'),
+    height: document.getElementById('points-height'),
+    offsetX: document.getElementById('points-offset-x'),
+    offsetY: document.getElementById('points-offset-y'),
+    color: document.getElementById('points-color'),
+    outline: document.getElementById('points-outline'),
+    outlineWidth: document.getElementById('points-outline-width'),
+    maxreso: document.getElementById('points-maxreso'),
   },
-  places: {
-    tuerkenschanzpark: [48.23562171298636, 16.337871551513675],
-    sievering: [48.245368124489204, 16.342549324035648],
-    zehenthofgasse: [48.24522522864384, 16.34572505950928],
-    vegagasse: [48.23413529351023, 16.346755027771],
+  lines: {
+    text: document.getElementById('lines-text'),
+    align: document.getElementById('lines-align'),
+    baseline: document.getElementById('lines-baseline'),
+    rotation: document.getElementById('lines-rotation'),
+    font: document.getElementById('lines-font'),
+    weight: document.getElementById('lines-weight'),
+    placement: document.getElementById('lines-placement'),
+    maxangle: document.getElementById('lines-maxangle'),
+    overflow: document.getElementById('lines-overflow'),
+    size: document.getElementById('lines-size'),
+    height: document.getElementById('lines-height'),
+    offsetX: document.getElementById('lines-offset-x'),
+    offsetY: document.getElementById('lines-offset-y'),
+    color: document.getElementById('lines-color'),
+    outline: document.getElementById('lines-outline'),
+    outlineWidth: document.getElementById('lines-outline-width'),
+    maxreso: document.getElementById('lines-maxreso'),
   },
-  continents: {
-    Africa: ['Algeria', 'Angola', 'Benin', 'Botswana', 'Burkina Faso', 'Burundi', 'Cameroon', 'Cape Verde', 'Central African Republic', 'Chad', 'Comoros', 'Congo', 'Democratic Republic of the Congo', 'Djibouti', 'Egypt', 'Equatorial Guinea', 'Eritrea', 'Ethiopia', 'Gabon', 'Gambia', 'Ghana', 'Guinea', 'Guinea-Bissau', 'Ivory Coast', 'Kenya', 'Lesotho', 'Liberia', 'Libya', 'Madagascar', 'Malawi', 'Mali', 'Mauritania', 'Mauritius', 'Mayotte', 'Morocco', 'Mozambique', 'Namibia', 'Niger', 'Nigeria', 'Reunion', 'Rwanda', 'Sao Tome And Principe', 'Senegal', 'Seychelles', 'Sierra Leone', 'Somalia', 'South Africa', 'South Sudan', 'Saint Helena', 'Sudan', 'Swaziland', 'Tanzania', 'Togo', 'Tunisia', 'Uganda', 'Zambia', 'Zimbabwe'],
-    Asia: ['Afghanistan', 'Bahrain', 'Bangladesh', 'Bhutan', 'Brunei', 'Myanmar', 'Cambodia', 'China', 'East Timor', 'Hong Kong', 'India', 'Indonesia', 'Iran', 'Iraq', 'Israel', 'Japan', 'Jordan', 'Kazakhstan', 'Macau', 'North Korea', 'South Korea', 'Kuwait', 'Kyrgyzstan', 'Laos', 'Lebanon', 'Malaysia', 'Maldives', 'Mongolia', 'Nepal', 'Oman', 'Pakistan', 'Philippines', 'Qatar', 'Russia', 'Saudi Arabia', 'Singapore', 'Sri Lanka', 'Syria', 'Taiwan', 'Tajikistan', 'Thailand', 'Turkey', 'Turkmenistan', 'United Arab Emirates', 'Uzbekistan', 'Vietnam', 'Yemen'],
-    Europe: ['Albania', 'Andorra', 'Armenia', 'Austria', 'Azerbaijan', 'Belarus', 'Belgium', 'Bosnia And Herzegovina', 'Bulgaria', 'Croatia', 'Cyprus', 'Czechia', 'Denmark', 'Estonia', 'Finland', 'France', 'Georgia', 'Germany', 'Gibraltar', 'Greece', 'Hungary', 'Iceland', 'Ireland', 'Isle Of Man', 'Italy', 'Jersey', 'Kosovo', 'Latvia', 'Liechtenstein', 'Lithuania', 'Luxembourg', 'Macedonia', 'Malta', 'Moldova', 'Monaco', 'Montenegro', 'Netherlands', 'Norway', 'Poland', 'Portugal', 'Romania', 'San Marino', 'Serbia', 'Slovakia', 'Slovenia', 'Spain', 'Sweden', 'Switzerland', 'Ukraine', 'United Kingdom', 'Vatican City'],
-    'North America': ['Antigua and Barbuda', 'Bahamas', 'Barbados', 'Belize', 'Bermuda', 'Cayman Islands', 'Canada', 'Costa Rica', 'Cuba', 'Dominica', 'Dominican Republic', 'El Salvador', 'Grenada', 'Guadeloupe', 'Guatemala', 'Haiti', 'Honduras', 'Jamaica', 'Martinique', 'Mexico', 'Nicaragua', 'Panama', 'Puerto Rico', 'Saint Kitts and Nevis', 'Saint Lucia', 'Saint Vincent And The Grenadines', 'Trinidad And Tobago', 'United States'],
-    Oceania: ['Australia', 'Fiji', 'French Polynesia', 'Kiribati', 'Marshall Islands', 'Micronesia', 'Nauru', 'New Caledonia', 'New Zealand', 'Palau', 'Papua New Guinea', 'Samoa', 'Solomon Islands', 'Tonga', 'Tuvalu', 'Vanuatu'],
-    'South America': ['Argentina', 'Aruba', 'Bolivia', 'Brazil', 'Chile', 'Colombia', 'Curacao', 'Ecuador', 'French Guiana', 'Guam', 'Guyana', 'Paraguay', 'Peru', 'Suriname', 'Uruguay', 'Venezuela']
-  }
+  polygons: {
+    text: document.getElementById('polygons-text'),
+    align: document.getElementById('polygons-align'),
+    baseline: document.getElementById('polygons-baseline'),
+    rotation: document.getElementById('polygons-rotation'),
+    font: document.getElementById('polygons-font'),
+    weight: document.getElementById('polygons-weight'),
+    placement: document.getElementById('polygons-placement'),
+    maxangle: document.getElementById('polygons-maxangle'),
+    overflow: document.getElementById('polygons-overflow'),
+    size: document.getElementById('polygons-size'),
+    height: document.getElementById('polygons-height'),
+    offsetX: document.getElementById('polygons-offset-x'),
+    offsetY: document.getElementById('polygons-offset-y'),
+    color: document.getElementById('polygons-color'),
+    outline: document.getElementById('polygons-outline'),
+    outlineWidth: document.getElementById('polygons-outline-width'),
+    maxreso: document.getElementById('polygons-maxreso'),
+  },
 };
-var jewel = (function () {
-  var settings = {
-    rows: 8,
-    cols: 8,
-    baseScore: 100,
-    baseLevelScore: 1500,
-    baseLevelExp: 1.05,
-    baseLevelTimer: 60000,
-    numJewelTypes: 7,
-    controls: {
-      KEY_UP: "moveUp",
-      KEY_LEFT: "moveLeft",
-      KEY_DOWN: "moveDown",
-      KEY_RIGHT: "moveRight",
-      KEY_ENTER: "selectJewel",
-      KEY_SPACE: "selectJewel",
-      CLICK: "selectJewel",
-      TOUCH: "selectJewel",
-      BUTTON_A: "selectJewel",
-      LEFT_STICK_UP: "moveUp",
-      LEFT_STICK_DOWN: "moveDown",
-      LEFT_STICK_LEFT: "moveLeft",
-      LEFT_STICK_RIGHT: "moveRight"
-    }
-  };
-  var scriptQueue = [],
-    numResourcesLoaded = 0,
-    numResources = 0,
-    executeRunning = false;
-  function executeScriptQueue() {
-    var next = scriptQueue[0],
-      first, script;
-    if (next && next.loaded) {
-      executeRunning = true;
-      scriptQueue.shift();
-      first = document.getElementsByTagName("script")[0];
-      script = document.createElement("script");
-      script.onload = function () {
-        if (next.callback) {
-          next.callback();
-        }
-        executeScriptQueue();
-      };
-      script.src = next.src;
-      first.parentNode.insertBefore(script, first);
-    } else {
-      executeRunning = false;
-    }
+const getText = function (feature, resolution, dom) {
+  const type = dom.text.value;
+  const maxResolution = dom.maxreso.value;
+  let text = feature.get('name');
+  if (resolution > maxResolution) {
+    text = '';
+  } else if (type == 'hide') {
+    text = '';
+  } else if (type == 'shorten') {
+    text = text.trunc(12);
+  } else if (
+    type == 'wrap' &&
+    (!dom.placement || dom.placement.value != 'line')
+  ) {
+    text = stringDivider(text, 16, '\n');
   }
-  function getLoadProgress() {
-    return numResourcesLoaded / numResources;
+  return text;
+};
+const createTextStyle = function (feature, resolution, dom) {
+  const align = dom.align.value;
+  const baseline = dom.baseline.value;
+  const size = dom.size.value;
+  const height = dom.height.value;
+  const offsetX = parseInt(dom.offsetX.value, 10);
+  const offsetY = parseInt(dom.offsetY.value, 10);
+  const weight = dom.weight.value;
+  const placement = dom.placement ? dom.placement.value : undefined;
+  const maxAngle = dom.maxangle ? parseFloat(dom.maxangle.value) : undefined;
+  const overflow = dom.overflow ? dom.overflow.value == 'true' : undefined;
+  const rotation = parseFloat(dom.rotation.value);
+  if (dom.font.value == "'Open Sans'" && !openSansAdded) {
+    const openSans = document.createElement('link');
+    openSans.href = 'https://fonts.googleapis.com/css?family=Open+Sans';
+    openSans.rel = 'stylesheet';
+    document.head.appendChild(openSans);
+    openSansAdded = true;
   }
-  function load(src, callback) {
-    var image, queueEntry;
-    numResources++;
-    queueEntry = {
-      src: src,
-      callback: callback,
-      loaded: false
-    };
-    scriptQueue.push(queueEntry);
-    image = new Image();
-    image.onload = image.onerror = function () {
-      numResourcesLoaded++;
-      queueEntry.loaded = true;
-      if (!executeRunning) {
-        executeScriptQueue();
-      }
-    };
-    image.src = src;
-  }
-  function preload(src) {
-    var image = new Image();
-    image.src = src;
-  }
-  function showScreen(screenId) {
-    var dom = jewel.dom,
-      $ = dom.$,
-      activeScreen = $("#game .screen.active")[0],
-      screen = $("#" + screenId)[0];
-    if (!jewel.screens[screenId]) {
-      alert("This module is not implemented yet!");
-      return;
-    }
-    if (activeScreen) {
-      dom.removeClass(activeScreen, "active");
-    }
-    dom.addClass(screen, "active");
-    jewel.screens[screenId].run();
-  }
-  function isStandalone() {
-    return (window.navigator.standalone !== false);
-  }
-  function hasWebWorkers() {
-    return ("Worker" in window);
-  }
-  function hasWebWorkers() {
-    return ("Worker" in window);
-  }
-  function hasWebGL() {
-    var canvas = document.createElement("canvas"),
-      gl = canvas.getContext("webgl") ||
-        canvas.getContext("experimental-webgl");
-    return !!gl;
-  }
-  function setup() {
-    if (/Android/.test(navigator.userAgent)) {
-      jewel.dom.$("html")[0].style.height = "200%";
-      setTimeout(function () {
-        window.scrollTo(0, 1);
-      }, 0);
-    }
-    jewel.dom.bind(document, "touchmove", function (event) {
-      event.preventDefault();
-    });
-    if (isStandalone()) {
-      showScreen("splash-screen");
-    } else {
-      showScreen("install-screen");
-    }
-  }
-  return {
-    getLoadProgress: getLoadProgress,
-    hasWebWorkers: hasWebWorkers,
-    hasWebGL: hasWebGL,
-    isStandalone: isStandalone,
-    preload: preload,
-    load: load,
-    setup: setup,
-    showScreen: showScreen,
-    settings: settings,
-    screens: {}
-  };
-})();
+  const font = weight + ' ' + size + '/' + height + ' ' + dom.font.value;
+  const fillColor = dom.color.value;
+  const outlineColor = dom.outline.value;
+  const outlineWidth = parseInt(dom.outlineWidth.value, 10);
+  return new Text({
+    textAlign: align == '' ? undefined : align,
+    textBaseline: baseline,
+    font: font,
+    text: getText(feature, resolution, dom),
+    fill: new Fill({ color: fillColor }),
+    stroke: new Stroke({ color: outlineColor, width: outlineWidth }),
+    offsetX: offsetX,
+    offsetY: offsetY,
+    placement: placement,
+    maxAngle: maxAngle,
+    overflow: overflow,
+    rotation: rotation,
+  });
+};
 var currentKey = null;
 var keysDown = new Array(256);
 var virtKeys = false;
@@ -2223,140 +2073,6 @@ var ObjetoSolitario = function () {
     return true;
   };
 };
-var panzoom = (function () {
-  const MIN_SCALE = 0.35;
-  var txStart;
-  var tyStart;
-  var xStart;
-  var yStart;
-  var panning = false;
-  var couldBePanning = false;
-  var totalMaxDelta;
-  function initPanZoom(id) {
-    let map = document.getElementById(id);
-    map.setAttribute("transform", `translate(0,0) scale(${MIN_SCALE})`);
-    map.addEventListener("wheel", ev => {
-      onwheel(ev, map);
-    });
-    map.addEventListener("pointerdown", ev => {
-      onmousedown(ev);
-    });
-    addEventListener("mouseup", ev => {
-      onmouseup(ev, map);
-    });
-    addEventListener("mousemove", ev => {
-      onmousemove(ev, map);
-    });
-    addEventListener("dblclick", ev => reset(ev, map));
-  }
-  function onwheel(ev, board) {
-    let delta = ev.wheelDelta;
-    let z = delta < 0 ? 0.5 : 2;
-    let dir = Math.sign(delta);
-    let currentMouseX = ev.offsetX;
-    let currentMouseY = ev.offsetY;
-    let transOld = getTransformInfo(board);
-    let getLeft = transOld.translateX;
-    let getTop = transOld.translateY;
-    let scale = transOld.scale;
-    if (scale <= MIN_SCALE + 0.1 && dir < 0) return;
-    let dx = (currentMouseX - getLeft) * (z - 1);
-    let dy = (currentMouseY - getTop) * (z - 1);
-    let scaleNew = scale * z;
-    let txNew = getLeft - dx;
-    let tyNew = getTop - dy;
-    const MIN_TX = -(3400 * scaleNew - 3400 * MIN_SCALE);
-    const MIN_TY = -(2200 * scaleNew - 2200 * MIN_SCALE);
-    txNew = Math.min(txNew, 0);
-    txNew = Math.max(txNew, MIN_TX);
-    tyNew = Math.min(tyNew, 0);
-    tyNew = Math.max(tyNew, MIN_TY);
-    let transNew = `translate(${txNew},${tyNew}) scale(${scaleNew})`;
-    board.setAttribute("transform", transNew);
-    transNew = getTransformInfo(board);
-    ev.preventDefault();
-  }
-  function reset(ev, board) {
-    let map = ev.target;
-    let transNew = `translate(0,0) scale(${MIN_SCALE})`;
-    board.setAttribute("transform", transNew);
-  }
-  function onmousedown(ev) {
-    let map = ev.target;
-    let board = ev.path[1];
-    let x = ev.screenX;
-    let y = ev.screenY;
-    let transOld = getTransformInfo(board);
-    let scale = transOld.scale;
-    if (scale <= MIN_SCALE + 0.1) return;
-    xStart = x;
-    yStart = y;
-    txStart = transOld.translateX;
-    tyStart = transOld.translateY;
-    totalMaxDelta = 0;
-    couldBePanning = true;
-  }
-  function onmousemove(ev, board) {
-    let id = ev.target.id;
-    if (id != "imgMap" && id != "mapG") {
-      couldBePanning = false;
-      panning = false;
-      return;
-    }
-    if (couldBePanning) {
-      let x = Math.abs(ev.screenX - xStart);
-      let y = Math.abs(ev.screenY - yStart);
-      totalMaxDelta += Math.max(x, y);
-      if (totalMaxDelta > 10) {
-        panning = true;
-        couldBePanning = false;
-        board.setPointerCapture(true);
-        ev.preventDefault();
-      }
-    } else if (panning) {
-      let x = ev.screenX;
-      let y = ev.screenY;
-      let transOld = getTransformInfo(board);
-      let tx = transOld.translateX;
-      let ty = transOld.translateY;
-      let scale = transOld.scale;
-      let txNew = txStart + x - xStart;
-      let tyNew = tyStart + y - yStart;
-      const MIN_TX = -(3400 * scale - 3400 * MIN_SCALE);
-      const MIN_TY = -(2200 * scale - 2200 * MIN_SCALE);
-      txNew = Math.min(txNew, 0);
-      txNew = Math.max(txNew, MIN_TX);
-      tyNew = Math.min(tyNew, 0);
-      tyNew = Math.max(tyNew, MIN_TY);
-      let transNew = `translate(${txNew},${tyNew}) scale(${scale})`;
-      board.setAttribute("transform", transNew);
-    }
-  }
-  function onmouseup(ev, board) {
-    if (panning) {
-      let map = ev.target;
-      let x = ev.screenX;
-      let y = ev.screenY;
-      let transOld = getTransformInfo(board);
-      let tx = transOld.translateX;
-      let ty = transOld.translateY;
-      let scale = transOld.scale;
-      let txNew = txStart + x - xStart;
-      let tyNew = tyStart + y - yStart;
-      const MIN_TX = -(3400 * scale - 3400 * MIN_SCALE);
-      const MIN_TY = -(2200 * scale - 2200 * MIN_SCALE);
-      txNew = Math.min(txNew, 0);
-      txNew = Math.max(txNew, MIN_TX);
-      tyNew = Math.min(tyNew, 0);
-      tyNew = Math.max(tyNew, MIN_TY);
-      let transNew = `translate(${txNew},${tyNew}) scale(${scale})`;
-      board.setAttribute("transform", transNew);
-      board.releasePointerCapture(true);
-      panning = false;
-    } else couldBePanning = false;
-  }
-  return function (id) { initPanZoom(id); }
-})();
 var unitTestId = 0;
 var visualStructures = {};
 var UID = 0;
@@ -2366,294 +2082,26 @@ var TABLE_UPDATE_BEHAVIOR = [];
 var TABLE_UPDATE_VISUALIZATION = [];
 var TABLE_UPDATE = {};
 var PLAYER_UPDATE = {};
-var modern_palettes = {
-  CD_green_blue: { GreenMountain: '#3d7c47', BlueMountain: '#09868b', LightBlueBackdrop: '#76c1d4', BarelyGrayEdge: '#f7f7f7' },
-  CD_gelb_orange_grau: { Blueberry: '#6B7A8F', Apricot: '#F7882F', Citrus: '#F7C331', AppleCore: ' #DCC7AA' },
-  CD_blue_brown: { FrenchLaundryBlue: '#3a4660', ComfortablyTan: '#c9af98', PeachyKreme: '#ed8a63', BrownBonnet: '#845007' },
-  CD_yellow_grey: { Areyayellow: '#feda6a', SilverFox: '#d4d4dc', DeepMatteGrey: '#393f4d' },
-  CD_fresh_green_grey_yellow: { MorningSky: '#CAE4DB', Honey: '#DCAE1D', Cerulean: '#00303F', Mist: '#7A9D96' },
-  CD_green_beige: { green: '#BFEB55', green2: '#458766', beige: '#F9F68A', beige2: '#FBF1B4' },
-  CD_dark_beach: { c1: 'rgb(3, 74, 166)', c2: 'rgb(0, 6, 13)', c3: 'rgb(83, 119, 166)', c4: 'rgb(64, 95, 115)', c5: 'rgb(62, 89, 86)' },
-  CD_color_beach: { c1: 'rgb(83, 111, 166)', c2: 'rgb(3, 74, 166)', c3: 'rgb(126, 174, 217)', c4: 'rgb(242, 181, 107)', c5: 'rgb(4, 173, 191)' }
-};
-var blues = [
-  '#f7fbff',
-  '#ecf4fc',
-  '#e2eef8',
-  '#d8e7f5',
-  '#cde0f1',
-  '#c0d9ed',
-  '#b0d2e8',
-  '#9fc9e2',
-  '#8bbfdd',
-  '#77b4d8',
-  '#63a8d2',
-  '#529ccc',
-  '#4190c5',
-  '#3382be',
-  '#2575b6',
-  '#1a67ad',
-  '#1059a1',
-  '#0a4c92',
-  '#083e7f',
-  '#08306b'
-];
-var green = [
-  '#f7fcf5',
-  '#eff9ec',
-  '#e7f6e2',
-  '#dcf1d7',
-  '#d0edca',
-  '#c2e7bc',
-  '#b3e0ac',
-  '#a2d99d',
-  '#90d18d',
-  '#7dc87f',
-  '#69be72',
-  '#55b466',
-  '#42a85c',
-  '#339c52',
-  '#268f47',
-  '#18823d',
-  '#0c7433',
-  '#03652a',
-  '#005522',
-  '#00441b'
-];
-var greys = [
-  '#ffffff',
-  '#f9f9f9',
-  '#f2f2f2',
-  '#e9e9e9',
-  '#e0e0e0',
-  '#d5d5d5',
-  '#cacaca',
-  '#bdbdbd',
-  '#aeaeae',
-  '#9f9f9f',
-  '#8f8f8f',
-  '#808080',
-  '#727272',
-  '#636363',
-  '#545454',
-  '#434343',
-  '#313131',
-  '#202020',
-  '#101010',
-  '#000000'
-];
-var oranges = [
-  '#fff5eb',
-  '#ffefdf',
-  '#fee8d1',
-  '#fee0c1',
-  '#fdd6af',
-  '#fdcb9b',
-  '#fdbe85',
-  '#fdb06f',
-  '#fda25a',
-  '#fc9446',
-  '#f98534',
-  '#f57623',
-  '#ee6815',
-  '#e55a0b',
-  '#d84d05',
-  '#c84303',
-  '#b43b02',
-  '#a13403',
-  '#902d04',
-  '#7f2704'
-];
-var purples = [
-  '#fcfbfd',
-  '#f6f5fa',
-  '#f0eff6',
-  '#e9e8f2',
-  '#e0dfee',
-  '#d6d6e9',
-  '#cacae3',
-  '#bebedc',
-  '#b1b0d4',
-  '#a4a2cd',
-  '#9894c6',
-  '#8b87bf',
-  '#8079b8',
-  '#7668af',
-  '#6c56a6',
-  '#63449d',
-  '#5a3294',
-  '#51218c',
-  '#481085',
-  '#3f007d'
-];
-var bluegreen = [
-  '#f7fcfd',
-  '#eff9fb',
-  '#e7f6f8',
-  '#def2f3',
-  '#d2eeeb',
-  '#c4e9e2',
-  '#b1e1d6',
-  '#9cd9c9',
-  '#86d0bb',
-  '#72c7ab',
-  '#5fbe9a',
-  '#4fb587',
-  '#40aa73',
-  '#339d5f',
-  '#268f4d',
-  '#18823e',
-  '#0c7433',
-  '#03652a',
-  '#005522',
-  '#00441b'
-];
-var bluepurple = [
-  '#f7fcfd',
-  '#edf5f9',
-  '#e3eef5',
-  '#d7e5f0',
-  '#c9dbeb',
-  '#bcd1e5',
-  '#aec7e0',
-  '#a2bbd9',
-  '#98add2',
-  '#919eca',
-  '#8d8dc1',
-  '#8c7bb9',
-  '#8b69b0',
-  '#8a57a7',
-  '#88449e',
-  '#853192',
-  '#801e84',
-  '#741073',
-  '#62075f',
-  '#4d004b'
-];
-var cubehelix = [
-  '#000000',
-  '#130918',
-  '#1a1732',
-  '#192a47',
-  '#15414e',
-  '#17584a',
-  '#246b3d',
-  '#3f7632',
-  '#647a30',
-  '#8d7a3c',
-  '#b17959',
-  '#ca7b81',
-  '#d485ac',
-  '#d296d1',
-  '#c9ade9',
-  '#c2c5f3',
-  '#c3dbf2',
-  '#d0ecef',
-  '#e6f7f1',
-  '#ffffff'
-];
-var inferno = [
-  '#000004',
-  '#08051d',
-  '#180c3c',
-  '#2f0a5b',
-  '#450a69',
-  '#5c126e',
-  '#71196e',
-  '#87216b',
-  '#9b2964',
-  '#b1325a',
-  '#c43c4e',
-  '#d74b3f',
-  '#e55c30',
-  '#f1711f',
-  '#f8870e',
-  '#fca108',
-  '#fbba1f',
-  '#f6d543',
-  '#f1ed71',
-  '#fcffa4'
-];
-var magma = [
-  '#000004',
-  '#07061c',
-  '#150e38',
-  '#29115a',
-  '#3f0f72',
-  '#56147d',
-  '#6a1c81',
-  '#802582',
-  '#942c80',
-  '#ab337c',
-  '#c03a76',
-  '#d6456c',
-  '#e85362',
-  '#f4695c',
-  '#fa815f',
-  '#fd9b6b',
-  '#feb47b',
-  '#fecd90',
-  '#fde5a7',
-  '#fcfdbf'
-];
-var purplegreen = [
-  '#40004b',
-  '#5c1768',
-  '#753283',
-  '#8a529a',
-  '#9e74ae',
-  '#b391c1',
-  '#c7acd2',
-  '#dac4e0',
-  '#e9daea',
-  '#f0ebf0',
-  '#ecf2ea',
-  '#def0d9',
-  '#c8e8c2',
-  '#acdca7',
-  '#89c988',
-  '#64b26a',
-  '#409750',
-  '#237b3b',
-  '#0f5f2a',
-  '#00441b'
-];
+const AREAS = {};
+const MSCATS = { rect: 'g', g: 'g', circle: 'g', text: 'g', polygon: 'g', line: 'g', body: 'd', svg: 'd', div: 'd', p: 'd', table: 'd', button: 'd', a: 'd', span: 'd', image: 'd', paragraph: 'd', anchor: 'd' };
+var UIS;
 var DEFAULT_OBJECT_AREA = 'area_objects';
 var DEFAULT_PLAYER_AREA = 'area_players';
-var dHelp, counters, timit;
+var dHelp;
 var TT_JUST_UPDATED = -1;
-var x = {
-  "loc":
-  {
-    "actions":
-    {
-      "_set":
-        [{
-          "_tuple":
-            [{
-              "_set":
-                [{ "ID": "91", "val": "Corner[91]", "type": "obj" },
-                { "ID": "92", "val": "Corner[92]", "type": "obj" },
-                { "ID": "93", "val": "Corner[93]", "type": "obj" },
-                { "ID": "94", "val": "Corner[94]", "type": "obj" },
-                { "ID": "95", "val": "Corner[95]", "type": "obj" },
-                ]
-            }]
-        }]
-    }
-  }
-}
 var maxZIndex = 110;
 var USERNAME = 'felix';
 var GAME = 'ttt';
+var S = {};
+var M = {};
+var IdOwner;
+var G = null;
 var DELETED_IDS = [];
 var DELETED_THIS_ROUND = [];
 var ROOT = null;
 var choiceCompleted = false;
-var frozen = false;
 var boatFilters = [];
 var boatHighlighted = null;
-var cnt = 0;
 var S_startGame = GAME;
 var S_username = USERNAME;
 var S_playMode = PLAYMODE;
@@ -2671,15 +2119,6 @@ var S_autoplayFunction = (_g) => false;
 var loggedIn = false;
 var scenarioQ = [];
 var scenarioRunning = false;
-var collections = {};
-var elements = {};
-var symbols = {
-  knight: 'user-secret',
-  victory_point: 'trophy',
-  road_building: 'road',
-  monopoly: 'umbrella',
-  year_of_plenty: 'tree',
-};
 var symbolColors = {
   knight: 'red',
   victory_point: 'gold',
@@ -2687,23 +2126,23 @@ var symbolColors = {
   monopoly: 'violet',
   year_of_plenty: 'green',
 };
-var ibox4oid = {};
 var COND = {};
 var FUNCS = {};
 var colorPalette;
 var allAreas = {};
 var areaSubTypes = {};
-var vidCache, allGames, playerConfig, c52, C52, cinno, testCards;
-var allGames = null;
-var playerConfig = null;
-var testCards = null
+var vidCache;
 var mkMan = null
 var allGamesC = null;
 var playerConfigC = null;
 var iconCharsC = null;
 var c52C = null;
 var testCardsC = null
+var allGames = null;
+var playerConfig = null;
 var iconChars = null;
+var c52;
+var testCards = null
 var defaultSpecC = null;
 var userSpecC = null;
 var userCodeC = null;
@@ -2713,14 +2152,13 @@ var defaultSpec = null
 var userSpec = null;
 var userCode = null;
 var serverData = null;
-var mappings;
 var mappingsInitialized;
 var mappingTypes;
 var LOG = {};
 var LOGDIVS = [];
+var tupleGroups;
 var prevGamePlid = null;
 var prevWaitingFor = null;
-var t_total = 0;
 var PREFERRED_CARD_HEIGHT = 0;
 var magCounter = 0;
 var evAddCounter = 0;
@@ -2734,48 +2172,9 @@ var bodyZoom = 1.0;
 var browserZoom = Math.round(window.devicePixelRatio * 100);
 var iTHEME = 0;
 var WAITINGFORPLAYER = null;
-var flags = {};
 var UPD = {};
 var PRES = {};
 var DONE = {};
-var cards1 = {
-  'c1':
-  {
-    desc: "Move the Robber. Steal 1 resource card from the owner of an adjacent settlement or city.",
-    name: "Knight",
-    obj_type: "devcard",
-    visible: { _set: ["White", "Red", "Blue", "Orange"] },
-  },
-  'c2':
-  {
-    desc: "1 Victory Point!",
-    name: "Victory Point",
-    obj_type: "devcard",
-    visible: { _set: ["White", "Red", "Blue", "Orange"] },
-  },
-  'c3':
-  {
-    desc: "Take any 2 resources from the bank. Add them to your hand. They can be 2 of the same or 2 different resources.",
-    name: "Year of Plenty",
-    obj_type: "devcard",
-    visible: { _set: ["White", "Red", "Blue", "Orange"] },
-  },
-  'c4':
-  {
-    desc: "Place 2 new roads as if you had just built them.",
-    name: "Road Building",
-    obj_type: "devcard",
-    visible: { _set: ["White", "Red", "Blue", "Orange"] },
-  },
-  'c5':
-  {
-    desc: "When you play this card, announce 1 type of resource. All other players must give you all their resource cards of that type.",
-    name: "Monopoly",
-    obj_type: "devcard",
-    visible: { _set: ["White", "Red", "Blue", "Orange"] },
-  },
-};
-var card1 = cards1['c1'];
 var justExpand = false;
 var colorDict = null;
 var dragStartOffset;
@@ -2829,10 +2228,13 @@ var currentNumPlayers;
 var joinCandidate = null;
 var commandChain = [];
 var firstDomLoad = null;
-var faChars, gaChars, faKeys;
+var gaChars;
+var faKeys;
+var faChars;
 var DEF_LIST_TYPE = 'dom';
 var DEF_ITEM_TYPE = 'dom';
 var DEF_DOM_TAG = 'div';
+var path2mainIds;
 var PLAYMODE = 'hotseat';
 var SEED = 1;
 var S_useSimpleCode = false;
@@ -2842,61 +2244,26 @@ var S_userBehaviors = true;
 var S_deckDetection = true;
 var S_useColorHintForProperties = true;
 var S_useColorHintForObjects = true;
-var view = null;
 var isPlaying = false;
 var isReallyMultiplayer = false;
-var gcs = {
-  ttt: {
-    numPlayers: 2,
-    players: [
-      { id: 'Player1', playerType: 'me', agentType: null, username: USERNAME },
-      { id: 'Player2', playerType: 'me', agentType: null, username: USERNAME + '1' },
-    ]
-  },
-  s1: {
-    numPlayers: 4,
-    players: [
-      { id: 'Player1', playerType: 'me', agentType: null, username: USERNAME },
-      { id: 'Player2', playerType: 'me', agentType: null, username: USERNAME + '1' },
-      { id: 'Player3', playerType: 'me', agentType: null, username: USERNAME + '2' },
-      { id: 'Player4', playerType: 'me', agentType: null, username: USERNAME + '3' },
-    ]
-  },
-  starter: {
-    numPlayers: 2,
-    players: [
-      { id: 'Player1', playerType: 'me', agentType: null, username: USERNAME },
-      { id: 'Player2', playerType: 'me', agentType: null, username: USERNAME + '1' },
-    ]
-  },
-  aristocracy: {
-    numPlayers: 2,
-    players: [
-      { id: 'Player1', playerType: 'me', agentType: null, username: USERNAME },
-      { id: 'Player2', playerType: 'me', agentType: null, username: USERNAME + '1' },
-    ]
-  },
-  catan: {
-    numPlayers: 3,
-    players: [
-      { id: 'White', playerType: 'me', agentType: null, username: USERNAME },
-      { id: 'Red', playerType: 'me', agentType: null, username: USERNAME + '1' },
-      { id: 'Blue', playerType: 'me', agentType: null, username: USERNAME + '2' },
-    ]
-  }
-}
-var route_counter = 0;
+var prevServerData;
+const VERSION = '_ui';
+const CACHE_DEFAULTSPEC = false;
+const CACHE_USERSPEC = false;
+const CACHE_CODE = false;
 var SPEC = null;
 var GAMEPLID = null;
 var PGAMEPLID = null;
-var t_avg = 0;
 var autoplayFunction = () => false;
 var AIThinkingTime = 30;
 var CLICK_TO_SELECT = true;
 var USE_SETTINGS = true;
 var USE_STRUCTURES = true;
 var USE_BEHAVIORS = true;
-var divMain, divPlayer, divOpps, colors, iColor, timit;
+var divPlayer;
+var divOpps;
+var iColor;
+var divMain;
 var FUNCTIONS = {
   instanceof: 'instanceOf',
   prop: (o, v) => isdef(o[v]),
@@ -2917,6 +2284,7 @@ var DSPEC_PATH = '/DATA/defaultSpec';
 var TEST_DIR = '01mini';
 var SPEC_PATH = '/DATA/' + TEST_DIR + '/_spec';
 var SERVERDATA_PATH = '/DATA/' + TEST_DIR + '/server';
+const SHOW_SPEC = true;
 var SHOW_RTREE = false;
 var SHOW_UITREE = false;
 var SHOW_OIDNODES = true;
@@ -2924,8 +2292,9 @@ var SHOW_DICTIONARIES = false;
 var SHOW_IDS_REFS = false;
 var MAX_CYCLES = 500;
 var CYCLES = 0;
+var sData;
 var WR = {};
-var phase = 0;
+var T;
 var TV = {};
 var _audioSources = {
   incorrect1: '../base/assets/sounds/incorrect1.wav',
@@ -2937,9 +2306,12 @@ var _audioSources = {
   hit: "../base/assets/sounds/hit.wav",
   mozart: "../base/assets/music/mozart_s39_4.mp3",
 };
-var TOSound, _sndPlayer, _loaded = false, _qSound, _idleSound = true, _sndCounter = 0;
+var _sndPlayer;
+var _qSound;
+var _idleSound = true;
+var _sndCounter = 0;
+var TOSound;
 var _AUDIOCONTEXT;
-var badges = [];
 var Markers = [];
 var BlockServerSend = false;
 var DragElem = null;
@@ -2949,15 +2321,16 @@ var DropZoneItems = [];
 var DragSource = null;
 var DragSourceItem = null;
 var DragSourceItems = [];
-var TOFleetingMessage, dFleetingMessage, Animation1;
+var TOFleetingMessage;
 var StateDict = {};
 var EmptyFunc = x => nundef(x) || x == ' ';
 var Avatars = [];
 var AvatarTimeout;
-var LastPositionX = 0, LastPositionY = 0;
+var LastPositionY = 0;
+var LastPositionX = 0;
 var MouseMoveCounter = 0;
 var IsCanvasActive = false;
-var StepCounter = 0, Autoreload = false, KeepSessionUser = false;
+var StepCounter = 0;
 var Toolbar;
 var RecogOutput = false;
 var RecogOutputError = true;
@@ -2966,35 +2339,35 @@ var SpeakerOutput = false;
 var MicrophoneUi;
 var SessionId;
 var ZMax = 0;
+const MyEasing = 'cubic-bezier(1,-0.03,.86,.68)';
 var DDInfo = null;
 var FRUIDCounter = -1;
 var ActiveButton = null;
 var HistoryOfStates = {};
 var PIECES = { EMPTY: 0, wP: 1, wN: 2, wB: 3, wR: 4, wQ: 5, wK: 6, bP: 7, bN: 8, bB: 9, bR: 10, bQ: 11, bK: 12 };
 var BRD_SQ_NUM = 120;
-var MAXGAMEMOVES = 2048;
-var MAXPOSITIONMOVES = 256;
-var MAXDEPTH = 64;
-var INFINITE = 30000;
-var MATE = 29000;
-var START_FEN = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";
-var COLUMNS = { COL_A: 0, COL_B: 1, COL_C: 2, COL_D: 3, COL_E: 4, COL_F: 5, COL_G: 6, COL_H: 7, COL_NONE: 8 };
-var ROWS = { ROW_1: 0, ROW_2: 1, ROW_3: 2, ROW_4: 3, ROW_5: 4, ROW_6: 5, ROW_7: 6, ROW_8: 7, ROW_NONE: 8 };
+var FILES = { FILE_A: 0, FILE_B: 1, FILE_C: 2, FILE_D: 3, FILE_E: 4, FILE_F: 5, FILE_G: 6, FILE_H: 7, FILE_NONE: 8 };
+var RANKS = { RANK_1: 0, RANK_2: 1, RANK_3: 2, RANK_4: 3, RANK_5: 4, RANK_6: 5, RANK_7: 6, RANK_8: 7, RANK_NONE: 8 };
 var COLOURS = { WHITE: 0, BLACK: 1, BOTH: 2 };
+var CASTLEBIT = { WKCA: 1, WQCA: 2, BKCA: 4, BQCA: 8 };
 var SQUARES = {
   A1: 21, B1: 22, C1: 23, D1: 24, E1: 25, F1: 26, G1: 27, H1: 28,
   A8: 91, B8: 92, C8: 93, D8: 94, E8: 95, F8: 96, G8: 97, H8: 98, NO_SQ: 99, OFFBOARD: 100
 };
 var BOOL = { FALSE: 0, TRUE: 1 };
-var CASTLEBIT = { WKCA: 1, WQCA: 2, BKCA: 4, BQCA: 8 };
-var ColBrd = new Array(BRD_SQ_NUM);
-var RowBrd = new Array(BRD_SQ_NUM);
-var Sq120ToSq64 = new Array(BRD_SQ_NUM);
-var Sq64ToSq120 = new Array(64);
+var MAXGAMEMOVES = 2048;
+var MAXPOSITIONMOVES = 256;
+var MAXDEPTH = 64;
+var INFINITE = 30000;
+var MATE = 29000;
+var PVENTRIES = 10000;
+var FilesBrd = new Array(BRD_SQ_NUM);
+var RanksBrd = new Array(BRD_SQ_NUM);
+var START_FEN = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";
 var PceChar = ".PNBRQKpnbrqk";
 var SideChar = "wb-";
-var RowChar = "12345678";
-var ColChar = "abcdefgh";
+var RankChar = "12345678";
+var FileChar = "abcdefgh";
 var PieceBig = [BOOL.FALSE, BOOL.FALSE, BOOL.TRUE, BOOL.TRUE, BOOL.TRUE, BOOL.TRUE, BOOL.TRUE, BOOL.FALSE, BOOL.TRUE, BOOL.TRUE, BOOL.TRUE, BOOL.TRUE, BOOL.TRUE];
 var PieceMaj = [BOOL.FALSE, BOOL.FALSE, BOOL.FALSE, BOOL.FALSE, BOOL.TRUE, BOOL.TRUE, BOOL.TRUE, BOOL.FALSE, BOOL.FALSE, BOOL.FALSE, BOOL.TRUE, BOOL.TRUE, BOOL.TRUE];
 var PieceMin = [BOOL.FALSE, BOOL.FALSE, BOOL.TRUE, BOOL.TRUE, BOOL.FALSE, BOOL.FALSE, BOOL.FALSE, BOOL.FALSE, BOOL.TRUE, BOOL.TRUE, BOOL.FALSE, BOOL.FALSE, BOOL.FALSE];
@@ -3012,14 +2385,15 @@ var BiDir = [-9, -11, 11, 9];
 var KiDir = [-1, -10, 1, 10, -9, -11, 11, 9];
 var DirNum = [0, 0, 8, 4, 4, 8, 8, 0, 8, 4, 4, 8, 8];
 var PceDir = [0, 0, KnDir, BiDir, RkDir, KiDir, KiDir, 0, KnDir, BiDir, RkDir, KiDir, KiDir];
-var LoopSlidePce = [PIECES.wB, PIECES.wR, PIECES.wQ, 0, PIECES.bB, PIECES.bR, PIECES.bQ, 0];
 var LoopNonSlidePce = [PIECES.wN, PIECES.wK, 0, PIECES.bN, PIECES.bK, 0];
-var LoopSlideIndex = [0, 4];
 var LoopNonSlideIndex = [0, 3];
-var Kings = [PIECES.wK, PIECES.bK];
+var LoopSlidePce = [PIECES.wB, PIECES.wR, PIECES.wQ, 0, PIECES.bB, PIECES.bR, PIECES.bQ, 0];
+var LoopSlideIndex = [0, 4];
 var PieceKeys = new Array(14 * 120);
 var SideKey;
 var CastleKeys = new Array(16);
+var Sq120ToSq64 = new Array(BRD_SQ_NUM);
+var Sq64ToSq120 = new Array(64);
 var Mirror64 = [
   56, 57, 58, 59, 60, 61, 62, 63,
   48, 49, 50, 51, 52, 53, 54, 55,
@@ -3030,6 +2404,7 @@ var Mirror64 = [
   8, 9, 10, 11, 12, 13, 14, 15,
   0, 1, 2, 3, 4, 5, 6, 7
 ];
+var Kings = [PIECES.wK, PIECES.bK];
 var CastlePerm = [
   15, 15, 15, 15, 15, 15, 15, 15, 15, 15,
   15, 15, 15, 15, 15, 15, 15, 15, 15, 15,
@@ -3044,22 +2419,17 @@ var CastlePerm = [
   15, 15, 15, 15, 15, 15, 15, 15, 15, 15,
   15, 15, 15, 15, 15, 15, 15, 15, 15, 15
 ];
-var GameController = {};
 var MFLAGEP = 0x40000
 var MFLAGPS = 0x80000
 var MFLAGCA = 0x1000000
 var MFLAGCAP = 0x7C000
 var MFLAGPROM = 0xF00000
 var NOMOVE = 0
-var RookOpenCol = 10;
-var RookSemiOpenCol = 5;
-var QueenOpenCol = 5;
-var QueenSemiOpenCol = 3;
-var BishopPair = 30;
-var PawnRowsWhite = new Array(10);
-var PawnRowsBlack = new Array(10);
-var PawnIsolated = -10;
-var PawnPassed = [0, 5, 10, 20, 35, 60, 100, 200];
+var BFGameContr = {};
+var BFUserMove = {};
+var BFBoard = {};
+var MvvLvaValue = [0, 100, 200, 300, 400, 500, 600, 100, 200, 300, 400, 500, 600];
+var MvvLvaScores = new Array(14 * 14);
 var PawnTable = [
   0, 0, 0, 0, 0, 0, 0, 0,
   10, 10, 0, -10, -10, 0, 10, 10,
@@ -3100,59 +2470,9 @@ var RookTable = [
   25, 25, 25, 25, 25, 25, 25, 25,
   0, 0, 5, 10, 10, 5, 0, 0
 ];
-var KingE = [
-  -50, -10, 0, 0, 0, 0, -10, -50,
-  -10, 0, 10, 10, 10, 10, 0, -10,
-  0, 10, 20, 20, 20, 20, 10, 0,
-  0, 10, 20, 40, 40, 20, 10, 0,
-  0, 10, 20, 40, 40, 20, 10, 0,
-  0, 10, 20, 20, 20, 20, 10, 0,
-  -10, 0, 10, 10, 10, 10, 0, -10,
-  -50, -10, 0, 0, 0, 0, -10, -50
-];
-var KingO = [
-  0, 5, 5, -10, -10, 0, 10, 5,
-  -30, -30, -30, -30, -30, -30, -30, -30,
-  -50, -50, -50, -50, -50, -50, -50, -50,
-  -70, -70, -70, -70, -70, -70, -70, -70,
-  -70, -70, -70, -70, -70, -70, -70, -70,
-  -70, -70, -70, -70, -70, -70, -70, -70,
-  -70, -70, -70, -70, -70, -70, -70, -70,
-  -70, -70, -70, -70, -70, -70, -70, -70
-];
-var ENDGAME_MAT = 1 * PieceVal[PIECES.wR] + 2 * PieceVal[PIECES.wN] + 2 * PieceVal[PIECES.wP] + PieceVal[PIECES.wK];
-var UserMove = {};
-var MirrorCols = [COLUMNS.COL_H, COLUMNS.COL_G, COLUMNS.COL_F, COLUMNS.COL_E, COLUMNS.COL_D, COLUMNS.COL_C, COLUMNS.COL_B, COLUMNS.COL_A];
-var MirrorRows = [ROWS.ROW_8, ROWS.ROW_7, ROWS.ROW_6, ROWS.ROW_5, ROWS.ROW_4, ROWS.ROW_3, ROWS.ROW_2, ROWS.ROW_1];
-var VictimScore = [0, 100, 200, 300, 400, 500, 600, 100, 200, 300, 400, 500, 600];
-var MvvLvaScores = new Array(14 * 14);
-var perft_leafNodes;
-var srch_nodes;
-var srch_fh;
-var srch_fhf;
-var srch_depth;
-var srch_time;
-var srch_start;
-var srch_stop;
-var srch_best;
-var srch_thinking;
-var domUpdate_depth;
-var domUpdate_move;
-var domUpdate_score;
-var domUpdate_nodes;
-var domUpdate_ordering;
-var FILES = { FILE_A: 0, FILE_B: 1, FILE_C: 2, FILE_D: 3, FILE_E: 4, FILE_F: 5, FILE_G: 6, FILE_H: 7, FILE_NONE: 8 };
-var RANKS = { RANK_1: 0, RANK_2: 1, RANK_3: 2, RANK_4: 3, RANK_5: 4, RANK_6: 5, RANK_7: 6, RANK_8: 7, RANK_NONE: 8 };
-var PVENTRIES = 10000;
-var FilesBrd = new Array(BRD_SQ_NUM);
-var RanksBrd = new Array(BRD_SQ_NUM);
-var RankChar = "12345678";
-var FileChar = "abcdefgh";
-var BFGameContr = {};
-var BFUserMove = {};
-var BFBoard = {};
-var MvvLvaValue = [0, 100, 200, 300, 400, 500, 600, 100, 200, 300, 400, 500, 600];
+var BishopPair = 30;
 var SearchController = {};
+var perft_leafNodes;
 var BG_CARD_BACK = randomColor();
 var GAME_PLAY_UI = null;
 var PROJECTNAME = 'basinno';
@@ -3160,26 +2480,70 @@ var USELIVESERVER = false;
 var START_IN_MENU = false;
 var DEFAULTUSERNAME = 'gul';
 var USE_LOCAL_STORAGE = true;
+const CLEAR_LOCAL_STORAGE = false;
 var USE_ADDONS = false;
-var sent_audio = new Audio("../base/assets/sounds/message_sent.mp3");
-var received_audio = new Audio("../base/assets/sounds/message_received.mp3");
 var CURRENT_CHAT_USER = "";
 var CURRENT_GAME = "";
 var CURRENT_FEN = "";
 var SEEN_STATUS = false;
-var Daat = {}, DA = {}, Items, ItemsByKey;
+var DA = {};
+var Items = {};
+var Session = {};
+var Daat = {};
 var FenPositionList;
-var DB, M = {}, S = {}, Z, U = null, PL, G = null, C = null, UI = {}, Users, Tables, Basepath, Serverdata = {}, Clientdata = {};
-var Userdata, Username, Serverdata, Live;
-var Pictures = [];
-var Goal, Selected;
+var Cinno;
+var Syms;
+var SymKeys;
+var KeySets;
+var Categories;
+var ByGroupSubgroup;
+var Dictionary;
+var WordP;
+var C52;
+var U = null;
+var Userdata;
+var Username;
+var Serverdata = {};
+var Live;
+var DB;
+var Goal;
+var Selected;
+var Score;
+var TO = {};
+var TOMain;
+var TOTrial;
+var TOList;
 var IsAnswerCorrect;
-var uiActivated = false, Selected, Turn, Prevturn;
-var Settings, SettingsList, SettingsChanged, SelectedMenuKey;
-var Players, PlayerOnTurn, GC, GameCounter;
-var BestMinusScore = Infinity, BestMinusState, BestPlusScore = -Infinity, BestPlusState;
-var F_END, F_MOVES, F_APPLYMOVE, F_UNDOMOVE, F_EVAL, DMAX, MAXIMIZER, MINIMIZER, SelectedMove, CANCEL_AI;
-var DMM = {}, timit, STARTED;
+var QContextCounter = 0;
+var Pictures = [];
+var aiActivated;
+var auxOpen;
+var GameTimer;
+var STOPAUS = false;
+var uiActivated = false;
+var SettingsList;
+var SettingsChanged;
+var SelectedMenuKey;
+var Settings;
+var PlayerOnTurn;
+var GC;
+var GameCounter;
+var Players;
+var BestMinusState;
+var BestPlusScore = -Infinity;
+var BestPlusState;
+var BestMinusScore = Infinity;
+var F_MOVES;
+var F_APPLYMOVE;
+var F_UNDOMOVE;
+var F_EVAL;
+var DMAX;
+var MAXIMIZER;
+var MINIMIZER;
+var SelectedMove;
+var CANCEL_AI;
+var F_END;
+var DMM = {};
 var ShapeKeys = ['hex', 'hexF', 'tri', 'triDown', 'triLeft', 'triRight'];
 var PolyClips = {
   hex: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)',
@@ -3205,59 +2569,166 @@ var ColorNames;
 var levelKeys = ['island', 'justice star', 'materials science', 'mayan pyramid', 'medieval gate',
   'great pyramid', 'meeple', 'smart', 'stone tower', 'trophy cup', 'viking helmet',
   'flower star', 'island', 'justice star', 'materials science', 'mayan pyramid',];
+var TOTicker;
+var TCount;
+var dScore;
+var dGameTitle;
+var dTable;
+var dTitle;
 var dLeiste;
-var TOMan, TO, TOMain, TOTrial, TOList, TOTicker, TCount, TOAnim;
+var TESTING = false;
+var TOMan;
 var Speech;
-var BotTicker, POLL_COUNTER = 0;
+var Tid;
+var Tables;
+var BotTicker;
 var Badges = [];
-var Fen, R, Qu, U, G, A;
+var R;
+var Qu;
+var A;
+var Fen;
+var TOAnim;
+var POLL_COUNTER = 0;
 var Waiting_for = null;
-var TestNumber, TestList, TestRunning, TestSuiteRunning;
+var Autoreload = false;
+var KeepSessionUser = false;
+var TestList;
+var TestRunning;
+var TestSuiteRunning;
+var TestNumber;
 var CSZ = 300;
 var CHEIGHT = CSZ;
 var CWIDTH = CSZ * .7
 var CGAP = CSZ * .05;
-var OVD = .25, OVW = 14, OVH = 20;
+var OVW = 14;
+var OVH = 20;
+var OVD = .25;
 var SUITS = 'SHDC';
 var DECKS = 'br';
 var NUMJOKERS = 0;
 var NUMDECKS = 2;
-var dActions, dActions0, dActions1, dActions2, dActions3, dActions4, dActions5, dError;
-var MAXITER = 200, ITER = 0;
+var Aristocards;
+var Dinno;
+var InnoById;
+var InnoByName;
+var dTableShield;
+var dLinks;
+var dRechts;
+var dOben;
+var dUnten;
+var dPlayerStats;
+var dMessage;
+var dStatus;
+var dActions0;
+var dActions1;
+var dActions2;
+var dActions3;
+var dActions4;
+var dActions5;
+var dError;
+var dActions;
+const SHAPEFUNCS = { 'circle': agCircle, 'hex': agHex, 'rect': agRect, };
+var ITER = 0;
+var MAXITER = 200;
 var FLAG_HINT_ONLY = false;
 var FLAG_AI_CANCELED = false;
+var GameController = {};
+var VictimScore = [0, 100, 200, 300, 400, 500, 600, 100, 200, 300, 400, 500, 600];
 var RookOpenFile = 10;
 var RookSemiOpenFile = 5;
 var QueenOpenFile = 5;
 var QueenSemiOpenFile = 3;
 var PawnRanksWhite = new Array(10);
 var PawnRanksBlack = new Array(10);
+var PawnIsolated = -10;
+var PawnPassed = [0, 5, 10, 20, 35, 60, 100, 200];
+var KingE = [
+  -50, -10, 0, 0, 0, 0, -10, -50,
+  -10, 0, 10, 10, 10, 10, 0, -10,
+  0, 10, 20, 20, 20, 20, 10, 0,
+  0, 10, 20, 40, 40, 20, 10, 0,
+  0, 10, 20, 40, 40, 20, 10, 0,
+  0, 10, 20, 20, 20, 20, 10, 0,
+  -10, 0, 10, 10, 10, 10, 0, -10,
+  -50, -10, 0, 0, 0, 0, -10, -50
+];
+var KingO = [
+  0, 5, 5, -10, -10, 0, 10, 5,
+  -30, -30, -30, -30, -30, -30, -30, -30,
+  -50, -50, -50, -50, -50, -50, -50, -50,
+  -70, -70, -70, -70, -70, -70, -70, -70,
+  -70, -70, -70, -70, -70, -70, -70, -70,
+  -70, -70, -70, -70, -70, -70, -70, -70,
+  -70, -70, -70, -70, -70, -70, -70, -70,
+  -70, -70, -70, -70, -70, -70, -70, -70
+];
+var ENDGAME_MAT = 1 * PieceVal[PIECES.wR] + 2 * PieceVal[PIECES.wN] + 2 * PieceVal[PIECES.wP] + PieceVal[PIECES.wK];
+var domUpdate_depth;
+var domUpdate_move;
+var domUpdate_score;
+var domUpdate_nodes;
+var domUpdate_ordering;
+var UserMove = {};
 var MirrorFiles = [FILES.FILE_H, FILES.FILE_G, FILES.FILE_F, FILES.FILE_E, FILES.FILE_D, FILES.FILE_C, FILES.FILE_B, FILES.FILE_A];
 var MirrorRanks = [RANKS.RANK_8, RANKS.RANK_7, RANKS.RANK_6, RANKS.RANK_5, RANKS.RANK_4, RANKS.RANK_3, RANKS.RANK_2, RANKS.RANK_1];
-var IconSet, lastIndex;
+var lastIndex;
+var IconSet;
 var CCC = 0;
+var dMain;
 var ActiveChats = {};
+var Step = 0;
 var dCurrent = null;
 var paneOpen = false;
 var DELAY_PANE = 100;
 var DELAY_DISAPPEAR = 100;
 var DELAY_APPEAR = 100;
+var Card = {};
+var TestInfo = {};
 var SOCKETSERVER = 'http://localhost:5000'; //geht im spital
-var Pollmode = 'auto', Globals;
-var Info, ColorDi, Items = {}, DA = {}, Card = {}, TO = {};
+var SERVER = 'localhost';
+var Pollmode = 'auto';
+var ColorDi;
 var Counter = { server: 0 };
-var Config, Syms, SymKeys, ByGroupSubgroup, KeySets, C52, Cinno, C52Cards;
+var Socket = null;
+var Info;
+var Turn;
+var Prevturn;
+var UI = {};
+var Users;
+var Basepath;
+var dUsers;
+var dGames;
+var dTables;
+var dLogo;
+var dLoggedIn;
+var dPlayerNames;
+var dInstruction;
+var dTableName;
+var dGameControls;
+var dUserControls;
+var dMoveControls;
+var dSubmitMove;
+var C52Cards;
+var Config;
+var dFleetingMessage;
+var Animation1;
 var PrevUser = null;
-var FORCE_REDRAW = false, TESTING = false;
-var ColorThiefObject, SelectedItem, SelectedColor;
+var User;
+var Table;
+var PL;
+var Z;
+var FORCE_REDRAW = false;
+var SelectedItem;
+var SelectedColor;
+var ColorThiefObject;
 var FirstLoad = true;
+var Clientdata = {};
 var AGAME = {
   stage: {
   }
 };
 var WhichCorner = 0;
 var W_init = 10;
-var is_host, socket, settings, defaults, greenbar, redbar, in_game_screen, lastgreen = 0, lastred = 0, granularity, num_calls = 0, num_painted = 0;
 var DeckA = (function () {
   //#region variables  
   var ____fontSize;
@@ -4055,11 +3526,6 @@ var DeckA = (function () {
   DeckA.translate = translate;
   return DeckA;
 })();
-var prefix = DeckA.prefix;
-var transform = prefix('transform')
-var translate = DeckA.translate
-var container1 = document.getElementById('container')
-var topbar1 = document.getElementById('topbar')
 var bSort = document.createElement('button')
 var bShuffle = document.createElement('button')
 var bBySuit = document.createElement('button')
@@ -4067,7 +3533,6 @@ var bFan = document.createElement('button')
 var bPoker = document.createElement('button')
 var bFlip = document.createElement('button')
 var bDeal = document.createElement('button')
-var deck = DeckA()
 var currentDeck;
 var dummyString = "translateX(-50%) scale(1.2)";
 var DeckB = (function () {
@@ -4867,12 +4332,22 @@ var Script = {
     this._loadedScripts.push(script);
   }
 };
-var symbolDict, symbolKeys, symbolList;
-var svgDict, svgKeys, svgList;
-var symByType, symBySet;
-var symKeysByType, symKeysBySet;
-var symListByType, symListBySet;
-var CorrectWords, CorrectWordsExact, CorrectWordsCorrect, CorrectWordsFailed;
+var symbolKeys;
+var symbolList;
+var symbolDict;
+var svgKeys;
+var svgList;
+var svgDict;
+var symBySet;
+var symByType;
+var symKeysBySet;
+var symKeysByType;
+var symListBySet;
+var symListByType;
+var CorrectWordsExact;
+var CorrectWordsCorrect;
+var CorrectWordsFailed;
+var CorrectWords;
 var selectedEmoSetNames = ['all', 'animal', 'body', 'drink', 'emotion', 'food', 'fruit', 'game', 'gesture', 'kitchen', 'object', 'person', 'place', 'plant', 'sports', 'time', 'transport', 'vegetable'];
 var primitiveSetNames = ['all', 'activity', 'animal', 'body', 'drink',
   'emotion', 'family', 'fantasy', 'food', 'fruit', 'game', 'gesture',
@@ -4944,33 +4419,37 @@ var symbolDictC = null;
 var svgDictC = null;
 var emoCharsC = null;
 var SIGI;
-var pictureSize, TOMain, TOTrial;
-var NumMissingLetters, nMissing, MaxPosMissing;
-var inputs = [];
-var th = ['', 'thousand', 'million', 'billion', 'trillion'];
-var dg = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
-var tn = ['ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'];
-var tw = ['twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'];
+var pictureSize;
+var nMissing;
+var MaxPosMissing;
+var NumMissingLetters;
 var uiActivatedTC;
 var NumColors;
-var interim_transcript = '';
-var final_transcript = '';
-var final_confidence, final_confidence2, final_confidence_sum, final_num;
-var interim_confidence, interim_confidence2, interim_confidence_sum, interim_num;
 var isRunning = false;
-var hasGotResult, hasGotFinalResult;
-var timeout1, timeout2;
+var hasGotFinalResult;
+var hasGotResult;
 var nextIndex = -1;
-var BestKeysD, BestKeysE, BestKeySets;
-var DeDict, EdDict;
+var BestKeysE;
+var BestKeySets;
+var BestKeysD;
+var EdDict;
+var DeDict;
 var symKeysByGroupSub;
-var TimestampStarted, TimeElapsed, OnTimeOver = null, TimeElem, TimeLeft;
+var MenuItems;
+var TimeElapsed;
+var OnTimeOver = null;
+var TimeElem;
+var TimeLeft;
+var TimestampStarted;
+var Gamename;
+var Tablename;
 var I;
-var AD, ADS;
+var P;
+var ADS;
+var AD;
 var App;
 var Zones = {};
 var Options = {};
-var container;
 var DOC_UIS;
 var DOC_vault;
 var DOC_dvIndex;
@@ -4979,7 +4458,10 @@ var DOC_CURRENT_FUNC;
 var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition
 var SpeechGrammarList = SpeechGrammarList || webkitSpeechGrammarList
 var SpeechRecognitionEvent = SpeechRecognitionEvent || webkitSpeechRecognitionEvent
-var words, grammar, lang, matchingWords, recognition, speechRecognitionList, hintMessage, resultMessage;
+var matchingWords;
+var speechRecognitionList;
+var hintMessage;
+var resultMessage;
 var TESTVAR = 0;
 var testDict = {};
 var QuestionCounter = 0;
@@ -5002,113 +4484,35 @@ var SettingTypesCommon = {
   showHint: false,
 }
 var FASTSTART = false && EXPERIMENTAL;
-var MSTimeClock, MSTimeDiff, MSTimeStart, MSTimeCallback, MSTimeTO;
+var MSTimeDiff;
+var MSTimeStart;
+var MSTimeCallback;
+var MSTimeTO;
+var MSTimeClock;
+var ClientId;
 var MessageCounter = 0;
-var PerlenDict, BaseColor, HeaderColor, SidebarColor, IsControlKeyDown = false
+var ItemsByKey;
+var BaseColor;
+var HeaderColor;
+var SidebarColor;
+var IsControlKeyDown = false;
+var PerlenDict;
+var dAux;
+var dAuxContent;
+var STARTED;
 var NiceBaseColors = ['#791900']
 var MAGNIFIER_IMAGE;
 var globalSum = 0
 var positionCount;
-var weights = { 'p': 100, 'n': 280, 'b': 320, 'r': 479, 'q': 929, 'k': 60000, 'k_e': 60000 };
-var pst_w = {
-  'p': [
-    [100, 100, 100, 100, 105, 100, 100, 100],
-    [78, 83, 86, 73, 102, 82, 85, 90],
-    [7, 29, 21, 44, 40, 31, 44, 7],
-    [-17, 16, -2, 15, 14, 0, 15, -13],
-    [-26, 3, 10, 9, 6, 1, 0, -23],
-    [-22, 9, 5, -11, -10, -2, 3, -19],
-    [-31, 8, -7, -37, -36, -14, 3, -31],
-    [0, 0, 0, 0, 0, 0, 0, 0]
-  ],
-  'n': [
-    [-66, -53, -75, -75, -10, -55, -58, -70],
-    [-3, -6, 100, -36, 4, 62, -4, -14],
-    [10, 67, 1, 74, 73, 27, 62, -2],
-    [24, 24, 45, 37, 33, 41, 25, 17],
-    [-1, 5, 31, 21, 22, 35, 2, 0],
-    [-18, 10, 13, 22, 18, 15, 11, -14],
-    [-23, -15, 2, 0, 2, 0, -23, -20],
-    [-74, -23, -26, -24, -19, -35, -22, -69]
-  ],
-  'b': [
-    [-59, -78, -82, -76, -23, -107, -37, -50],
-    [-11, 20, 35, -42, -39, 31, 2, -22],
-    [-9, 39, -32, 41, 52, -10, 28, -14],
-    [25, 17, 20, 34, 26, 25, 15, 10],
-    [13, 10, 17, 23, 17, 16, 0, 7],
-    [14, 25, 24, 15, 8, 25, 20, 15],
-    [19, 20, 11, 6, 7, 6, 20, 16],
-    [-7, 2, -15, -12, -14, -15, -10, -10]
-  ],
-  'r': [
-    [35, 29, 33, 4, 37, 33, 56, 50],
-    [55, 29, 56, 67, 55, 62, 34, 60],
-    [19, 35, 28, 33, 45, 27, 25, 15],
-    [0, 5, 16, 13, 18, -4, -9, -6],
-    [-28, -35, -16, -21, -13, -29, -46, -30],
-    [-42, -28, -42, -25, -25, -35, -26, -46],
-    [-53, -38, -31, -26, -29, -43, -44, -53],
-    [-30, -24, -18, 5, -2, -18, -31, -32]
-  ],
-  'q': [
-    [6, 1, -8, -104, 69, 24, 88, 26],
-    [14, 32, 60, -10, 20, 76, 57, 24],
-    [-2, 43, 32, 60, 72, 63, 43, 2],
-    [1, -16, 22, 17, 25, 20, -13, -6],
-    [-14, -15, -2, -5, -1, -10, -20, -22],
-    [-30, -6, -13, -11, -16, -11, -16, -27],
-    [-36, -18, 0, -19, -15, -15, -21, -38],
-    [-39, -30, -31, -13, -31, -36, -34, -42]
-  ],
-  'k': [
-    [4, 54, 47, -99, -99, 60, 83, -62],
-    [-32, 10, 55, 56, 56, 55, 10, 3],
-    [-62, 12, -57, 44, -67, 28, 37, -31],
-    [-55, 50, 11, -4, -19, 13, 0, -49],
-    [-55, -43, -52, -28, -51, -47, -8, -50],
-    [-47, -42, -43, -79, -64, -32, -29, -32],
-    [-4, 3, -14, -50, -57, -18, 13, 4],
-    [17, 30, -3, -14, 6, -1, 40, 18]
-  ],
-  'k_e': [
-    [-50, -40, -30, -20, -20, -30, -40, -50],
-    [-30, -20, -10, 0, 0, -10, -20, -30],
-    [-30, -10, 20, 30, 30, 20, -10, -30],
-    [-30, -10, 30, 40, 40, 30, -10, -30],
-    [-30, -10, 30, 40, 40, 30, -10, -30],
-    [-30, -10, 20, 30, 30, 20, -10, -30],
-    [-30, -30, 0, 0, 0, 0, -30, -30],
-    [-50, -30, -30, -30, -30, -30, -30, -50]
-  ]
-};
-var pst_b = {
-  'p': pst_w['p'].slice().reverse(),
-  'n': pst_w['n'].slice().reverse(),
-  'b': pst_w['b'].slice().reverse(),
-  'r': pst_w['r'].slice().reverse(),
-  'q': pst_w['q'].slice().reverse(),
-  'k': pst_w['k'].slice().reverse(),
-  'k_e': pst_w['k_e'].slice().reverse()
-}
 var pstOpponent = { 'w': pst_b, 'b': pst_w };
 var pstSelf = { 'w': pst_w, 'b': pst_b };
-var verbose = false;
 var BlockServerSend1 = false;
-var square_coordinates = [
-  [1, 1, 1, 2, 2, 2, 3, 3, 3],
-  [1, 1, 1, 2, 2, 2, 3, 3, 3],
-  [1, 1, 1, 2, 2, 2, 3, 3, 3],
-  [4, 4, 4, 5, 5, 5, 6, 6, 6],
-  [4, 4, 4, 5, 5, 5, 6, 6, 6],
-  [4, 4, 4, 5, 5, 5, 6, 6, 6],
-  [7, 7, 7, 8, 8, 8, 9, 9, 9],
-  [7, 7, 7, 8, 8, 8, 9, 9, 9],
-  [7, 7, 7, 8, 8, 8, 9, 9, 9]
-]
-var EBEF = null, UBEF = null, GBEF = null;
+var F;
+var dParent;
+var UBEF = null;
+var GBEF = null;
+var EBEF = null;
 var PI = Math.pi, interval_id, angle, factor = .67, tree = [], leaves = [], jittering = false;
-var numlayers = 0;
 var requestAnimFrame = (function () {
   return window.requestAnimationFrame ||
     window.webkitRequestAnimationFrame ||
@@ -5119,17 +4523,8 @@ var requestAnimFrame = (function () {
       window.setTimeout(callback, 1000 / 60);
     };
 })();
-var radius = 32;
 var lineWidth = 4;
-var gravity = 0.1;
-var dampening = 0.995;
 var mousePullStrength = 0.005;
-var animate = false;
-var mouse = {
-  x: 0,
-  y: 0,
-  down: false
-};
 var Gaussian = function (mean, variance) {
   if (variance <= 0) {
     throw new Error('Variance must be > 0 (but was ' + variance + ')');
@@ -5323,63 +4718,6 @@ var bicycleRental = {
     }
   ]
 };
-var campus = {
-  "type": "Feature",
-  "properties": {
-    "popupContent": "This is the Auraria West Campus",
-    "style": {
-      weight: 2,
-      color: "#999",
-      opacity: 1,
-      fillColor: "#B0DE5C",
-      fillOpacity: 0.8
-    }
-  },
-  "geometry": {
-    "type": "MultiPolygon",
-    "coordinates": [
-      [
-        [
-          [-105.00432014465332, 39.74732195489861],
-          [-105.00715255737305, 39.74620006835170],
-          [-105.00921249389647, 39.74468219277038],
-          [-105.01067161560059, 39.74362625960105],
-          [-105.01195907592773, 39.74290029616054],
-          [-105.00989913940431, 39.74078835902781],
-          [-105.00758171081543, 39.74059036160317],
-          [-105.00346183776855, 39.74059036160317],
-          [-105.00097274780272, 39.74059036160317],
-          [-105.00062942504881, 39.74072235994946],
-          [-105.00020027160645, 39.74191033368865],
-          [-105.00071525573731, 39.74276830198601],
-          [-105.00097274780272, 39.74369225589818],
-          [-105.00097274780272, 39.74461619742136],
-          [-105.00123023986816, 39.74534214278395],
-          [-105.00183105468751, 39.74613407445653],
-          [-105.00432014465332, 39.74732195489861]
-        ], [
-          [-105.00361204147337, 39.74354376414072],
-          [-105.00301122665405, 39.74278480127163],
-          [-105.00221729278564, 39.74316428375108],
-          [-105.00283956527711, 39.74390674342741],
-          [-105.00361204147337, 39.74354376414072]
-        ]
-      ], [
-        [
-          [-105.00942707061768, 39.73989736613708],
-          [-105.00942707061768, 39.73910536278566],
-          [-105.00685214996338, 39.73923736397631],
-          [-105.00384807586671, 39.73910536278566],
-          [-105.00174522399902, 39.73903936209552],
-          [-105.00041484832764, 39.73910536278566],
-          [-105.00041484832764, 39.73979836621592],
-          [-105.00535011291504, 39.73986436617916],
-          [-105.00942707061768, 39.73989736613708]
-        ]
-      ]
-    ]
-  }
-};
 var coorsField = {
   "type": "Feature",
   "properties": {
@@ -5390,9 +4728,119 @@ var coorsField = {
     "coordinates": [-104.99404191970824, 39.756213909328125]
   }
 };
-var meme;
-var obstacles = [];
-var score, hintWord, bestWord, answerCorrect, currentInfo;
+const Geo = {
+  layerInfo: {
+    empty: {
+      url: '',
+      options: { maxZoom: 22 }
+    },
+    ru: {
+      url: 'https:/' + '/core-sat.maps.yandex.net/tiles?l=sat&v=3.1025.0&x={x}&y={y}&z={z}&scale=1&lang=ru_RU',
+      options: { minZoom: 0, maxZoom: 19, }
+    },
+    satellite: {
+      url: 'http:/' + '/server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+      options: { maxZoom: 19, attribution: '&copy; <a href="http:/"+"www.esri.com/">Esri</a>, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community' }
+    },
+    gsatellite: {
+      url: 'http:/' + '/{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',
+      options: { maxZoom: 22, subdomains: ['mt0', 'mt1', 'mt2', 'mt3'] }
+    },
+    gstreets: {
+      url: 'http:/' + '/{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}',
+      options: { maxZoom: 22, subdomains: ['mt0', 'mt1', 'mt2', 'mt3'] }
+    },
+    ghybrid: {
+      url: 'http:/' + '/{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}',
+      options: { maxZoom: 22, subdomains: ['mt0', 'mt1', 'mt2', 'mt3'] }
+    },
+    gterrain: {
+      url: 'http:/' + '/{s}.google.com/vt/lyrs=p&x={x}&y={y}&z={z}',
+      options: { maxZoom: 22, subdomains: ['mt0', 'mt1', 'mt2', 'mt3'] }
+    },
+    mbsat: {
+      url: 'https:/' + '/api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw',
+      options: { attribution: 'Map data &copy; <a href="https:/"+"/www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https:/"+"/www.mapbox.com/">Mapbox</a>', id: 'mapbox/satellite-v9', tileSize: 512, zoomOffset: -1 }
+    },
+    mbstreets: {
+      url: 'https:/' + '/api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw',
+      options: { attribution: 'Map data &copy; <a href="https:/"+"/www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https:/"+"/www.mapbox.com/">Mapbox</a>', id: 'mapbox/streets-v11', tileSize: 512, zoomOffset: -1 }
+    },
+    mb1: {
+      url: 'https:/' + '/api.mapbox.com/styles/v1/mapbox-map-design/cl4whev1w002w16s9mgoliotw/static/-90,35,2.5,0/840x464?access_token=pk.eyJ1IjoibWFwYm94LW1hcC1kZXNpZ24iLCJhIjoiY2syeHpiaHlrMDJvODNidDR5azU5NWcwdiJ9.x0uSqSWGXdoFKuHZC5Eo_Q',
+      options: { attribution: 'Map data &copy; <a href="https:/"+"/www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https:/"+"/www.mapbox.com/">Mapbox</a>', tileSize: 512, zoomOffset: -1 }
+    },
+    cartolabels: {
+      url: 'https:/' + '/{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}{r}.png',
+      options: {
+        attribution: '&copy; <a href="https:/"+"/www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https:/"+"/carto.com/attributions">CARTO</a>',
+        subdomains: 'abcd',
+        maxZoom: 20
+      }
+    },
+    cartonolabels: {
+      url: 'https:/' + '/{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png',
+      options: {
+        attribution: '&copy; <a href="https:/"+"/www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https:/"+"/carto.com/attributions">CARTO</a>',
+        subdomains: 'abcd',
+        maxZoom: 20
+      }
+    },
+    cartodark: {
+      url: 'https:/' + '/{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png',
+      options: {
+        attribution: '&copy; <a href="https:/"+"/www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https:/"+"/carto.com/attributions">CARTO</a>',
+        subdomains: 'abcd',
+        maxZoom: 20
+      }
+    },
+    osm: {
+      url: 'https:/' + '/tile.openstreetmap.org/{z}/{x}/{y}.png',
+      options: { attribution: '&copy; <a href="https:/"+"/www.openstreetmap.org/copyright">OpenStreetMap</a>', subdomains: ['a', 'b', 'c'] }
+    },
+    osmg: {
+      url: 'https:/' + '/{s}.tile.openstreetmap.de/tiles/osmde/{z}/{x}/{y}.png',
+      options: { attribution: '&copy; <a href="https:/"+"/www.openstreetmap.org/copyright">OpenStreetMap</a>', subdomains: ['a', 'b', 'c'] }
+    },
+    watercolor: {
+      url: 'http:/' + '/{s}.tile.stamen.com/watercolor/{z}/{x}/{y}.jpg',
+      options: { attribution: 'Map tiles by <a href="http:/"+"stamen.com">Stamen Design</a>, under <a href="http:/"+"creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a href="http:/"+"openstreetmap.org">OpenStreetMap</a>, under <a href="http:/"+"creativecommons.org/licenses/by-sa/3.0">CC BY SA</a>.', maxZoom: 18, subdomains: 'abcd', }
+    },
+    labels: {
+      url: "http:/" + "tile.stamen.com/toner-labels/{z}/{x}/{y}.png",
+      options: { attribution: 'Map tiles by <a href="http:/"+"stamen.com">Stamen Design</a>, under <a href="http:/"+"creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a href="http:/"+"openstreetmap.org">OpenStreetMap</a>, under <a href="http:/"+"www.openstreetmap.org/copyright">ODbL</a>.', maxZoom: 18 }
+    },
+    terrain: {
+      url: 'http:/' + '/{s}.tile.stamen.com/terrain/{z}/{x}/{y}.jpg',
+      options: { attribution: 'Map tiles by <a href="http:/"+"stamen.com">Stamen Design</a>, under <a href="http:/"+"creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a href="http:/"+"openstreetmap.org">OpenStreetMap</a>, under <a href="http:/"+"creativecommons.org/licenses/by-sa/3.0">CC BY SA</a>.', maxZoom: 18, }
+    },
+    terrainbg: {
+      url: 'http:/' + '/{s}.tile.stamen.com/terrain-background/{z}/{x}/{y}.jpg',
+      options: { attribution: 'Map tiles by <a href="http:/"+"stamen.com">Stamen Design</a>, under <a href="http:/"+"creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a href="http:/"+"openstreetmap.org">OpenStreetMap</a>, under <a href="http:/"+"creativecommons.org/licenses/by-sa/3.0">CC BY SA</a>.', maxZoom: 18, }
+    },
+    topo: {
+      url: 'https:/' + '/{s}.tile.opentopomap.org/{z}/{x}/{y}.png',
+      options: {
+        maxZoom: 17,
+        attribution: 'Map data: &copy; <a href="https:/"+"/www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, <a href="http:/"+"viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https:/"+"/opentopomap.org">OpenTopoMap</a> (<a href="https:/"+"/creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
+      }
+    }
+  },
+  places: {
+    tuerkenschanzpark: [48.23562171298636, 16.337871551513675],
+    sievering: [48.245368124489204, 16.342549324035648],
+    zehenthofgasse: [48.24522522864384, 16.34572505950928],
+    vegagasse: [48.23413529351023, 16.346755027771],
+  },
+  continents: {
+    Africa: ['Algeria', 'Angola', 'Benin', 'Botswana', 'Burkina Faso', 'Burundi', 'Cameroon', 'Cape Verde', 'Central African Republic', 'Chad', 'Comoros', 'Congo', 'Democratic Republic of the Congo', 'Djibouti', 'Egypt', 'Equatorial Guinea', 'Eritrea', 'Ethiopia', 'Gabon', 'Gambia', 'Ghana', 'Guinea', 'Guinea-Bissau', 'Ivory Coast', 'Kenya', 'Lesotho', 'Liberia', 'Libya', 'Madagascar', 'Malawi', 'Mali', 'Mauritania', 'Mauritius', 'Mayotte', 'Morocco', 'Mozambique', 'Namibia', 'Niger', 'Nigeria', 'Reunion', 'Rwanda', 'Sao Tome And Principe', 'Senegal', 'Seychelles', 'Sierra Leone', 'Somalia', 'South Africa', 'South Sudan', 'Saint Helena', 'Sudan', 'Swaziland', 'Tanzania', 'Togo', 'Tunisia', 'Uganda', 'Zambia', 'Zimbabwe'],
+    Asia: ['Afghanistan', 'Bahrain', 'Bangladesh', 'Bhutan', 'Brunei', 'Myanmar', 'Cambodia', 'China', 'East Timor', 'Hong Kong', 'India', 'Indonesia', 'Iran', 'Iraq', 'Israel', 'Japan', 'Jordan', 'Kazakhstan', 'Macau', 'North Korea', 'South Korea', 'Kuwait', 'Kyrgyzstan', 'Laos', 'Lebanon', 'Malaysia', 'Maldives', 'Mongolia', 'Nepal', 'Oman', 'Pakistan', 'Philippines', 'Qatar', 'Russia', 'Saudi Arabia', 'Singapore', 'Sri Lanka', 'Syria', 'Taiwan', 'Tajikistan', 'Thailand', 'Turkey', 'Turkmenistan', 'United Arab Emirates', 'Uzbekistan', 'Vietnam', 'Yemen'],
+    Europe: ['Albania', 'Andorra', 'Armenia', 'Austria', 'Azerbaijan', 'Belarus', 'Belgium', 'Bosnia And Herzegovina', 'Bulgaria', 'Croatia', 'Cyprus', 'Czechia', 'Denmark', 'Estonia', 'Finland', 'France', 'Georgia', 'Germany', 'Gibraltar', 'Greece', 'Hungary', 'Iceland', 'Ireland', 'Isle Of Man', 'Italy', 'Jersey', 'Kosovo', 'Latvia', 'Liechtenstein', 'Lithuania', 'Luxembourg', 'Macedonia', 'Malta', 'Moldova', 'Monaco', 'Montenegro', 'Netherlands', 'Norway', 'Poland', 'Portugal', 'Romania', 'San Marino', 'Serbia', 'Slovakia', 'Slovenia', 'Spain', 'Sweden', 'Switzerland', 'Ukraine', 'United Kingdom', 'Vatican City'],
+    'North America': ['Antigua and Barbuda', 'Bahamas', 'Barbados', 'Belize', 'Bermuda', 'Cayman Islands', 'Canada', 'Costa Rica', 'Cuba', 'Dominica', 'Dominican Republic', 'El Salvador', 'Grenada', 'Guadeloupe', 'Guatemala', 'Haiti', 'Honduras', 'Jamaica', 'Martinique', 'Mexico', 'Nicaragua', 'Panama', 'Puerto Rico', 'Saint Kitts and Nevis', 'Saint Lucia', 'Saint Vincent And The Grenadines', 'Trinidad And Tobago', 'United States'],
+    Oceania: ['Australia', 'Fiji', 'French Polynesia', 'Kiribati', 'Marshall Islands', 'Micronesia', 'Nauru', 'New Caledonia', 'New Zealand', 'Palau', 'Papua New Guinea', 'Samoa', 'Solomon Islands', 'Tonga', 'Tuvalu', 'Vanuatu'],
+    'South America': ['Argentina', 'Aruba', 'Bolivia', 'Brazil', 'Chile', 'Colombia', 'Curacao', 'Ecuador', 'French Guiana', 'Guam', 'Guyana', 'Paraguay', 'Peru', 'Suriname', 'Uruguay', 'Venezuela']
+  }
+};
 var myGameArea = {
   canvas: document.createElement('canvas'),
   start: function () {
@@ -5407,10 +4855,23 @@ var myGameArea = {
     this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
   },
 };
-var dRight, dSidebar, dTable, dTitle, dTop;
-var dBottom, dButtons, dCenter, dCode, dConsole, dContent, dFiddle, dFooter, dHeader, dLeft, dMap, dMain, dMenu, dMessage, dPage, dPuppet;
-var FR = 50, CX, CV, AU = {}, CONTEXT = null;
-var _TOSound, _sndPlayer, _loaded = false, _qSound, _idleSound = true, _sndCounter = 0;
+var C = null;
+var dPage;
+var dMap;
+var dHeader;
+var dFooter;
+var dPuppet;
+var dMenu;
+var dLeft;
+var dCenter;
+var dRight;
+var dTop;
+var dBottom;
+var CX;
+var CV;
+var FR = 50;
+var _TOSound;
+var Sayings;
 var SCENEWIDTH = 900;
 var SCENEHEIGHT = 600;
 var FRAMERATE = 30;
@@ -5434,9 +4895,14 @@ var EC = {};
 var EID = {};
 var ET = {};
 var ENN = {};
-var Q, TOQ, AkQ;
+var TOQ;
+var AkQ;
+var Q;
 var QCounter = 0;
-var QCancelAutoreset, TOQRunner, QRunnerRunning = false, QRunning = false;
+var TOQRunner;
+var QRunnerRunning = false;
+var QRunning = false;
+var QCancelAutoreset;
 var resizeObserver = new ResizeObserver(entries => {
   for (let entry of entries) {
     let cs = window.getComputedStyle(entry.target);
@@ -5449,283 +4915,13 @@ var resizeObserver = new ResizeObserver(entries => {
       entry.target.handleResize(entry);
   }
 });
-var xxxxxxxxxx = new ResizeObserver(entries => {
-  for (let entry of entries) {
-    let cs = window.getComputedStyle(entry.target);
-    console.log('watching element:', entry.target);
-    console.log(entry.contentRect.top, ' is ', cs.paddingTop);
-    console.log(entry.contentRect.left, ' is ', cs.paddingLeft);
-    console.log(entry.borderBoxSize[0].inlineSize, ' is ', cs.width);
-    console.log(entry.borderBoxSize[0].blockSize, ' is ', cs.height);
-    if (entry.target.handleResize)
-      entry.target.handleResize(entry);
-  }
-});
-var SERVERURL, Socket = null, SERVER = 'localhost', PORT = 3000, LIVE_SERVER, NODEJS, SINGLECLIENT;
-var game = new GameFunc;
+var PORT = 3000;
 var UIDHelpers = 0;
 var NAMED_UIDS = {};
 var palDict = {};
-var sheet = (function () {
-  var style = document.createElement('style');
-  style.appendChild(document.createTextNode(''));
-  document.head.appendChild(style);
-  return style.sheet;
-})();
-var countries = [
-  'Afghanistan',
-  'Albania',
-  'Algeria',
-  'Andorra',
-  'Angola',
-  'Anguilla',
-  'Antigua & Barbuda',
-  'Argentina',
-  'Armenia',
-  'Aruba',
-  'Australia',
-  'Austria',
-  'Azerbaijan',
-  'Bahamas',
-  'Bahrain',
-  'Bangladesh',
-  'Barbados',
-  'Belarus',
-  'Belgium',
-  'Belize',
-  'Benin',
-  'Bermuda',
-  'Bhutan',
-  'Bolivia',
-  'Bosnia & Herzegovina',
-  'Botswana',
-  'Brazil',
-  'British Virgin Islands',
-  'Brunei',
-  'Bulgaria',
-  'Burkina Faso',
-  'Burundi',
-  'Cambodia',
-  'Cameroon',
-  'Canada',
-  'Cape Verde',
-  'Cayman Islands',
-  'Central Arfrican Republic',
-  'Chad',
-  'Chile',
-  'China',
-  'Colombia',
-  'Congo',
-  'Cook Islands',
-  'Costa Rica',
-  'Cote D Ivoire',
-  'Croatia',
-  'Cuba',
-  'Curacao',
-  'Cyprus',
-  'Czech Republic',
-  'Denmark',
-  'Djibouti',
-  'Dominica',
-  'Dominican Republic',
-  'Ecuador',
-  'Egypt',
-  'El Salvador',
-  'Equatorial Guinea',
-  'Eritrea',
-  'Estonia',
-  'Ethiopia',
-  'Falkland Islands',
-  'Faroe Islands',
-  'Fiji',
-  'Finland',
-  'France',
-  'French Polynesia',
-  'French West Indies',
-  'Gabon',
-  'Gambia',
-  'Georgia',
-  'Germany',
-  'Ghana',
-  'Gibraltar',
-  'Greece',
-  'Greenland',
-  'Grenada',
-  'Guam',
-  'Guatemala',
-  'Guernsey',
-  'Guinea',
-  'Guinea Bissau',
-  'Guyana',
-  'Haiti',
-  'Honduras',
-  'Hong Kong',
-  'Hungary',
-  'Iceland',
-  'India',
-  'Indonesia',
-  'Iran',
-  'Iraq',
-  'Ireland',
-  'Isle of Man',
-  'Israel',
-  'Italy',
-  'Jamaica',
-  'Japan',
-  'Jersey',
-  'Jordan',
-  'Kazakhstan',
-  'Kenya',
-  'Kiribati',
-  'Kosovo',
-  'Kuwait',
-  'Kyrgyzstan',
-  'Laos',
-  'Latvia',
-  'Lebanon',
-  'Lesotho',
-  'Liberia',
-  'Libya',
-  'Liechtenstein',
-  'Lithuania',
-  'Luxembourg',
-  'Macau',
-  'Macedonia',
-  'Madagascar',
-  'Malawi',
-  'Malaysia',
-  'Maldives',
-  'Mali',
-  'Malta',
-  'Marshall Islands',
-  'Mauritania',
-  'Mauritius',
-  'Mexico',
-  'Micronesia',
-  'Moldova',
-  'Monaco',
-  'Mongolia',
-  'Montenegro',
-  'Montserrat',
-  'Morocco',
-  'Mozambique',
-  'Myanmar',
-  'Namibia',
-  'Nauro',
-  'Nepal',
-  'Netherlands',
-  'Netherlands Antilles',
-  'New Caledonia',
-  'New Zealand',
-  'Nicaragua',
-  'Niger',
-  'Nigeria',
-  'North Korea',
-  'Norway',
-  'Oman',
-  'Pakistan',
-  'Palau',
-  'Palestine',
-  'Panama',
-  'Papua New Guinea',
-  'Paraguay',
-  'Peru',
-  'Philippines',
-  'Poland',
-  'Portugal',
-  'Puerto Rico',
-  'Qatar',
-  'Reunion',
-  'Romania',
-  'Russia',
-  'Rwanda',
-  'Saint Pierre & Miquelon',
-  'Samoa',
-  'San Marino',
-  'Sao Tome and Principe',
-  'Saudi Arabia',
-  'Senegal',
-  'Serbia',
-  'Seychelles',
-  'Sierra Leone',
-  'Singapore',
-  'Slovakia',
-  'Slovenia',
-  'Solomon Islands',
-  'Somalia',
-  'South Africa',
-  'South Korea',
-  'South Sudan',
-  'Spain',
-  'Sri Lanka',
-  'St Kitts & Nevis',
-  'St Lucia',
-  'St Vincent',
-  'Sudan',
-  'Suriname',
-  'Swaziland',
-  'Sweden',
-  'Switzerland',
-  'Syria',
-  'Taiwan',
-  'Tajikistan',
-  'Tanzania',
-  'Thailand',
-  "Timor L'Este",
-  'Togo',
-  'Tonga',
-  'Trinidad & Tobago',
-  'Tunisia',
-  'Turkey',
-  'Turkmenistan',
-  'Turks & Caicos',
-  'Tuvalu',
-  'Uganda',
-  'Ukraine',
-  'United Arab Emirates',
-  'United Kingdom',
-  'United States of America',
-  'Uruguay',
-  'Uzbekistan',
-  'Vanuatu',
-  'Vatican City',
-  'Venezuela',
-  'Vietnam',
-  'Virgin Islands (US)',
-  'Yemen',
-  'Zambia',
-  'Zimbabwe'
-];
-var extend = function () {
-  var extended = {};
-  var deep = false;
-  var i = 0;
-  if (typeof arguments[0] === 'boolean') {
-    deep = arguments[0];
-    i++;
-  }
-  var merge = function (obj) {
-    for (var prop in obj) {
-      if (obj.hasOwnProperty(prop)) {
-        if (deep && Object.prototype.toString.call(obj[prop]) === '[object Object]') {
-          extended[prop] = extend(true, extended[prop], obj[prop]);
-        } else {
-          extended[prop] = obj[prop];
-        }
-      }
-    }
-  };
-  for (; i < arguments.length; i++) {
-    merge(arguments[i]);
-  }
-  return extended;
-};
-var palette = null;
 var activatedTests = [];
 var Epsilon = 1e-10;
 var lastUpdate = 0;
-var player, ball, opponent, ai;
-var distance = 24;
 var Ball = function () {
   var velocity = [0, 0];
   var position = [0, 0];
@@ -5870,10 +5066,12 @@ var currentCategories = ['nosymbols'];
 var startAtLevel = IS_TESTING ? { gSayPicAuto: 10, gTouchPic: 3, gTouchColors: 6, gWritePic: 10, gMissingLetter: 10, gSayPic: 0 }
   : { gMissingLetter: 3, gTouchPic: 7, gTouchColors: 8, gWritePic: 10, gSayPic: 0 };
 var gameSequence = IS_TESTING ? ['gSayPicAuto', 'gTouchPic', 'gTouchColors', 'gWritePic', 'gMissingLetter', 'gSayPic']
-  : ['gSayPic', 'gTouchColors', 'gWritePic'];//'gMissingLetter','gTouchPic', 
+  : ['gSayPic', 'gTouchColors', 'gWritePic'];//'gMissingLetter','gTouchPic',
 var currentLevel;
 var currentKeys;
-var OnMicrophoneReady, OnMicrophoneGotResult, OnMicrophoneProblem;
+var OnMicrophoneGotResult;
+var OnMicrophoneProblem;
+var OnMicrophoneReady;
 var skipAnimations = IS_TESTING;
 var skipBadgeAnimation = true;
 var StepByStepMode = false;
@@ -5891,28 +5089,61 @@ var MaxWordLength = 100;
 var NumPics;
 var NumLabels;
 var NextPictureIndex = 0;
-var scoringMode, DefaultScoringMode = 'n';
-var minIncrement = 1, maxIncrement = 5, levelDonePoints = 5;
-var numCorrectAnswers, numTotalAnswers, percentageCorrect;
-var levelIncrement, levelPoints;
-var CurrentSessionData, CurrentGameData, CurrentLevelData;
+var DefaultScoringMode = 'n';
+var scoringMode;
+var maxIncrement = 5;
+var levelDonePoints = 5;
+var minIncrement = 1;
+var numTotalAnswers;
+var percentageCorrect;
+var numCorrectAnswers;
+var levelPoints;
+var levelIncrement;
+var CurrentGameData;
+var CurrentLevelData;
+var CurrentSessionData;
 var SessionScore = 0;
 var LevelChange = true;
 var trialNumber;
-var boundary;
-var isSpeakerRunning, isINTERRUPT;
+var isINTERRUPT;
+var isSpeakerRunning;
 var uiPausedStack = [];
 var uiPaused = 0;
-var dLineTopOuter, dLineTop, dLineTopLeft, dLineTopRight, dLineTopMiddle;
-var dLineTitleOuter, dLineTitle, dLineTitleLeft, dLineTitleRight, dLineTitleMiddle;
-var dLineTableOuter, dLineTable, dLineTableLeft, dLineTableRight, dLineTableMiddle;
-var dLineBottomOuter, dLineBottom, dLineBottomLeft, dLineBottomRight, dLineBottomMiddle;
-var dHint, dFeedback, dInstruction, dScore, dLevel;
+var dLineTop;
+var dLineTopLeft;
+var dLineTopRight;
+var dLineTopMiddle;
+var dLineTopOuter;
+var dLineTitle;
+var dLineTitleLeft;
+var dLineTitleRight;
+var dLineTitleMiddle;
+var dLineTitleOuter;
+var dLineTable;
+var dLineTableLeft;
+var dLineTableRight;
+var dLineTableMiddle;
+var dLineTableOuter;
+var dLineBottom;
+var dLineBottomLeft;
+var dLineBottomRight;
+var dLineBottomMiddle;
+var dLineBottomOuter;
+var dFeedback;
+var dLevel;
+var dHint;
 var inputBox;
 var defaultFocusElement;
 var dSettings = mBy('dSettings');
-var synth, inputForm, inputTxt, voiceSelect, pitch, pitchValue, rate, rateValue, voices, utterance;
-var axiom, rules, factor, angle, max, sentence, interval_id;
+var inputForm;
+var inputTxt;
+var voiceSelect;
+var pitchValue;
+var rateValue;
+var hintWord;
+var bestWord;
+var answerCorrect;
+var currentInfo;
 var Simple = {
   axiom: 'A',
   rules: [
@@ -5939,8 +5170,33 @@ var Complex = {
   factor: .5,
   max: 6,
 };
-var system = Complex, len = 100, angle;
-var numgen = 0;
+var NODEJS;
+var SERVERURL;
+var LIVE_SERVER;
+var SINGLECLIENT;
+var dFiddle;
+var Globals;
+var dButtons;
+var dCode;
+var dContent;
+var dSidebar;
+var AU = {};
+var CONTEXT = null;
+var dConsole;
+var COLUMNS = { COL_A: 0, COL_B: 1, COL_C: 2, COL_D: 3, COL_E: 4, COL_F: 5, COL_G: 6, COL_H: 7, COL_NONE: 8 };
+var ROWS = { ROW_1: 0, ROW_2: 1, ROW_3: 2, ROW_4: 3, ROW_5: 4, ROW_6: 5, ROW_7: 6, ROW_8: 7, ROW_NONE: 8 };
+var ColBrd = new Array(BRD_SQ_NUM);
+var RowBrd = new Array(BRD_SQ_NUM);
+var RowChar = "12345678";
+var ColChar = "abcdefgh";
+var RookOpenCol = 10;
+var RookSemiOpenCol = 5;
+var QueenOpenCol = 5;
+var QueenSemiOpenCol = 3;
+var PawnRowsWhite = new Array(10);
+var PawnRowsBlack = new Array(10);
+var MirrorCols = [COLUMNS.COL_H, COLUMNS.COL_G, COLUMNS.COL_F, COLUMNS.COL_E, COLUMNS.COL_D, COLUMNS.COL_C, COLUMNS.COL_B, COLUMNS.COL_A];
+var MirrorRows = [ROWS.ROW_8, ROWS.ROW_7, ROWS.ROW_6, ROWS.ROW_5, ROWS.ROW_4, ROWS.ROW_3, ROWS.ROW_2, ROWS.ROW_1];
 var brd_side = COLOURS.WHITE;
 var brd_pieces = new Array(BRD_SQ_NUM);
 var brd_enPas = SQUARES.NO_SQ;
@@ -5961,7 +5217,6 @@ var brd_PvTable = [];
 var brd_PvArray = new Array(MAXDEPTH);
 var brd_searchHistory = new Array(14 * BRD_SQ_NUM);
 var brd_searchKillers = new Array(3 * MAXDEPTH);
-const MyEasing = 'cubic-bezier(1,-0.03,.86,.68)';
 
 class _grid {
   constructor(o, pool, boardInfo, fieldInfo) {
@@ -20034,7 +19289,37 @@ function __pictoG(key, x, y, w, h, fg, bg) {
   let family = (ch[0] == 'f' || ch[0] == 'F') ? 'pictoFa' : 'pictoGame';
   let text = String.fromCharCode('0x' + ch);
 }
+async function __start() {
+  set_run_state_no_server(); 
+  onpagedeactivated(() => { fiddleSave(); dbSave(); });
+  await load_syms(); 
+  await load_db(); 
+  let dicode = CODE.di = await route_path_yaml_dict('../basejs/z_all.yaml');
+  let dijustcode = CODE.justcode = await route_path_yaml_dict('../basejs/z_allcode.yaml');
+  dTable = mSection({h: window.innerHeight - 68},'dTable'); 
+  computeClosure();
+}
 function _addFilterHighlight(mobj) { mobj.highC('green'); }
+function _addOnelineVars(superdi, o) {
+  let [code, type] = [o.code, o.type];
+  let crn = (code.match(/\r\n/g) || []).length;
+  let oneliner = crn == 1;
+  //let specialword = 'Counter'; //'PORT';
+  if (oneliner && type == 'var' && code.includes(',') && !code.includes('[') && !code.includes('{ ')) {
+    let othervars = stringAfter(code, 'var').trim().split(',');
+    othervars = othervars.map(x => firstWord(x, true));
+    othervars.shift();
+    for (const v of othervars) {
+      let o1 = jsCopy(o);
+      o1.lead = o.key;
+      o1.key = v;
+      o1.code = '';
+      o1.sig = `var ${v};`;
+      if (isNumber(v)) { continue; }
+      lookupSetOverride(superdi, [type, v], o1);
+    }
+  }
+}
 function _addPicto(dParent, key) {
   let pic = picto(key, 0, 0, 50, 50, 'red', 'black');
   dParent.appendChild(pic);
@@ -21747,12 +21032,11 @@ function _standardHandler(handler) {
   return f;
 }
 async function _start() {
-  set_run_state_no_server(); 
+  set_run_state_no_server();
   onpagedeactivated(() => { saveEnv(); dbSave(); });
-  await load_syms(); 
-  await load_db(); 
+  await load_syms();
+  await load_db();
   let dicode = CODE.di = await route_path_yaml_dict('../y/z_all.yaml');
-  let dijustcode = CODE.justcode = await route_path_yaml_dict('../y/z_allcode.yaml');
   let kwindow = get_keys(window);
   test100();
 }
@@ -21761,11 +21045,11 @@ function _start_game(gamename, players, options) {
 async function _start_old() {
   //#region prelim timit set_run_state onpagedeactivated load:syms db codebase
   let timit = new TimeIt('* using timit *');
-  set_run_state_vps(); 
-  onpagedeactivated(save_all); 
-  await load_syms(); 
-  await load_db(); 
-  await load_codebase(); 
+  set_run_state_vps();
+  onpagedeactivated(save_all);
+  await load_syms();
+  await load_db();
+  await load_codebase();
   timit.show();
   //#endregion
   //#region db tests
@@ -21786,6 +21070,15 @@ async function _start0() {
   KeySets = getKeySets();
   TOMan = new TimeoutManager();
   _start();
+}
+async function _start1() {
+  set_run_state_no_server(); 
+  onpagedeactivated(() => { fiddleSave(); dbSave(); });
+  await load_syms(); 
+  await load_db(); 
+  let dicode = CODE.di = await route_path_yaml_dict('../basejs/z_all.yaml');
+  let dijustcode = CODE.justcode = await route_path_yaml_dict('../basejs/z_allcode.yaml');
+  computeClosure(['_start1']);
 }
 function _startHotseat() {
   timit.start_of_cycle(getFunctionCallerName());
@@ -22845,12 +22138,12 @@ function action_close(item) {
   console.log('HALLO CLOSE!!!!!!!!!!!!!!!')
   let o = fromLocalStorage('app');
   let duration = get_now() - o.tStart;
-  let factor = valf(item.val, 3); 
+  let factor = valf(item.val, 3);
   let secs = Math.round(duration / 1000);
   let mins = Math.round(secs / 60);
-  let res = mins; 
+  let res = mins;
   let points = Math.round(res * factor / 5); if (points == 0) points = 1;
-  let t = new Date(o.tStart).toTimeString().substring(0, 5); 
+  let t = new Date(o.tStart).toTimeString().substring(0, 5);
   let s = `a:${t},${res},${points}`;
   console.log('string:', s);
   setTimeout(() => navigator.clipboard.writeText(s), 100)
@@ -24261,18 +23554,26 @@ function addOnelineVars(superdi, o) {
   let crn = (code.match(/\r\n/g) || []).length;
   let oneliner = crn == 1;
   //let specialword = 'Counter'; //'PORT';
+  let signal = false;
   if (oneliner && type == 'var' && code.includes(',') && !code.includes('[') && !code.includes('{ ')) {
     let othervars = stringAfter(code, 'var').trim().split(',');
-    othervars = othervars.map(x => firstWord(x, true));
+    let varkeys = othervars.map(x => firstWord(x, true));
+    assertion(varkeys[0] == o.name, `WTF?!?! ${varkeys[0]} ### ${o.name}?!?!?!?!????????????? addOnelinerVars`);
+    o.code = stringBefore(code, ',') + ';'
     othervars.shift();
-    for (const v of othervars) {
+    if (signal) console.log('othervars', othervars, varkeys)
+    for (const vcode of othervars) {
       let o1 = jsCopy(o);
-      o1.lead = o.key;
-      o1.key = v;
-      o1.code = '';
-      o.sig = `var ${v};`;
-      if (isNumber(v)) { continue; }
-      lookupSetOverride(superdi, [type, v], o1);
+      let code1 = vcode.trim();
+      if (!code1.endsWith(';')) code1 += ';';
+      if (signal) console.log('code1', code1);
+      let k1 = o1.name = firstWord(code1, true);
+      if (signal) console.log('k1', k1);
+      o1.code = 'var ' + code1; // + code1.endsWith(';')?'':';'; //'\r\n':';\r\n';
+      o1.sig = `var ${k1};`;
+      if (isNumber(k1)) { continue; }
+      if (signal) console.log('trage ein', k1, o1)
+      lookupSetOverride(superdi, [type, k1], o1);
     }
   }
 }
@@ -30301,14 +29602,14 @@ function book_open_next_page() {
   book_open_page(page);
 }
 function book_open_page(page) {
-  pauseloop(); iClear(dContent); 
+  pauseloop(); iClear(dContent);
   book_blaettern(page);
   let book = G = book_get(dContent.getAttribute('book'));
   let func = window[`book_${book.id}_${page}`];
   let o = G.canvas = func();
   iReg(o);
   dButtons = G.canvas.controls;
-  addKeys(G, window);  
+  addKeys(G, window);
   o.play();
 }
 function book_open_prev_page() {
@@ -31801,6 +31102,12 @@ function capitalize(s) {
   if (typeof s !== 'string') return '';
   return s.charAt(0).toUpperCase() + s.slice(1);
 }
+function capitals_in_red(feature) {
+  console.log('feature data', feature.data);
+  let type = lookup(feature, ['data', 'type']);
+  console.log('city', lookup(feature, ['data', 'name']), ':', type)
+  return type == 'capital' ? 'red' : 'yellow';
+}
 function CAPTURED(m) { return (((m) >> 14) & 0xF); }
 function Card(img, bunch, id, reverse) {
   var self = this;
@@ -32472,6 +31779,13 @@ function centerFit(d, child) {
   let pady = Math.floor(padding + (hdesChild - bChild.height) / 2);
   d.style.padding = pady + 'px ' + padx + 'px';
 }
+function cha3(cities) {
+  let list = rChoose(cities, 20);
+  for (const o of list) {
+    map_add_city(o);
+  }
+  console.log('source', ensure_city_layer().getSource().getFeatures().map(x => x.data.city_ascii));
+}
 function chainCancel() {
   CancelChain = true;
   clearTimeout(ChainTimeout);
@@ -32512,6 +31826,21 @@ function chainSendRec(akku, msgChain, callback) {
     callback(akku);
   }
 }
+function chall4() {
+  let caps = M.capitals;
+  let list = caps;
+  for (const o of list) {
+    map_add_city(o);
+    console.log('city', o)
+  }
+  console.log('source', ensure_city_layer().getSource().getFeatures().map(x => x.data.city_ascii));
+}
+function challenge0() {
+  for (const o of arrTake(cities, 10)) {
+    console.log('o', o)
+    add_circle(Number(o.lng), Number(o.lat), M.map);
+  }
+}
 async function challenge1() {
   let data = await route_path_json('../base/mapdata/gadm36_AUT_2.json');
   var mapOptions = {
@@ -32531,6 +31860,12 @@ async function challenge1() {
     marker.addTo(map);
     marker.bindTooltip(f.properties.NAME_2, { direction: 'center', permanent: true, className: 'mylabel', offset: L.point({ x: -30, y: 30 }) });
   }
+}
+function challenge2() {
+  let layer = map_add_layer('city', M.map);
+  let feature = map_add_circle_to_layer(16, 48, layer);
+  feature.data = { hallo: 'Vienna' };
+  console.log('source', layer.getSource().getFeatures());
 }
 function change(arr, n) {
   for (let i = 0; i < n; i++) {
@@ -34622,6 +33957,47 @@ function compute_hidden(plname) {
   else if (Z.mode == 'hotseat') hidden = (pl.playmode == 'bot' || plname != uplayer);
   else hidden = plname != Z.uname;
   return hidden;
+}
+function computeClosure(symlist) {
+  let keys = {};
+  for (const k in CODE.di) { for (const k1 in CODE.di[k]) keys[k1] = CODE.di[k][k1]; }
+  CODE.all = keys;
+  CODE.keylist = Object.keys(keys)
+  let inter = intersection(Object.keys(keys), Object.keys(window));
+  let done = {};
+  let tbd = valf(symlist,['_start']); 
+  let MAX = 1007, i = 0;
+  let alltext = '';
+  while (!isEmpty(tbd)) {
+    if (++i > MAX) break;
+    let sym = tbd[0];
+    let o = CODE.all[sym];
+    if (nundef(o)) o = getObjectFromWindow(sym);
+    if (o.type == 'var' && !o.name.startsWith('d') && o.name == o.name.toLowerCase()) {tbd.shift(); continue; }
+    if (o.type != 'func') { tbd.shift(); lookupSet(done, [o.type, sym], o); continue; }
+    let olive = window[sym];
+    if (nundef(olive)) { tbd.shift(); lookupSet(done, [o.type, sym], o); continue; }
+    let text = olive.toString();
+    if (!isEmpty(text)) alltext += text + '\r\n';
+    let words = toWords(text, true); 
+    words = words.filter(x=>text.includes(' '+x));
+    for (const w of words) {
+      if (nundef(done[w]) && w != sym && isdef(CODE.all[w])) addIf(tbd, w);
+    }
+    tbd.shift();
+    lookupSet(done, [o.type, sym], o); 
+  }
+  let tres = '';
+  for (const k of ['const', 'var', 'cla', 'func']) {
+    console.log('done', k, done[k])
+    let o = done[k]; if (nundef(o)) continue;
+    let klist = get_keys(o);
+    if (k == 'func') klist = sortCaseInsensitive(klist);
+    for (const k1 of klist) { 
+      let code = CODE.justcode[k1];
+      if (!isEmptyOrWhiteSpace(code)) tres += code + '\r\n';
+    }
+  }
 }
 function computeColor(c) { return (c == 'random') ? randomColor() : c; }
 function computeColorX(c) {
@@ -37854,19 +37230,19 @@ function describe(d) {
   console.log('firstChild', d.firstChild);
   console.log('d', d)
 }
+function DeSelectSq(sq) {
+  $('.Square').each(function (index) {
+    if (PieceIsOnSq(sq, $(this).position().top, $(this).position().left) == BOOL.TRUE) {
+      $(this).removeClass('SqSelected');
+    }
+  });
+}
 function DeselectSq(sq) {
   if (GameController.BoardFlipped == BOOL.TRUE) {
     sq = MIRROR120(sq);
   }
   $(".Square").each(function (index) {
     if ((RanksBrd[sq] == 7 - Math.round($(this).position().top / 60)) && (FilesBrd[sq] == Math.round($(this).position().left / 60))) {
-      $(this).removeClass('SqSelected');
-    }
-  });
-}
-function DeSelectSq(sq) {
-  $('.Square').each(function (index) {
-    if (PieceIsOnSq(sq, $(this).position().top, $(this).position().left) == BOOL.TRUE) {
       $(this).removeClass('SqSelected');
     }
   });
@@ -41217,7 +40593,7 @@ function filter_codebase() {
   AU.ta.value = '';
   for (const r of records) {
     let k = r.name;
-    AU.ta.value += di[k].body + '\n'; 
+    AU.ta.value += di[k].body + '\n';
   }
 }
 function filter_list() {
@@ -41228,11 +40604,11 @@ function filter_list() {
   let records = di_values.filter(x => x.body.includes(words[0]));
   console.log('records', records)
   mClear(dSidebar)
-  for (const rec of records) { 
+  for (const rec of records) {
     let key = rec.name;
-    let d=mDiv(dSidebar, { cursor:'pointer',wmin: 100 }, null, key,'hop1') 
+    let d = mDiv(dSidebar, { cursor: 'pointer', wmin: 100 }, null, key, 'hop1')
     let info = rec.body;
-    d.onclick = ()=>AU.ta.value=info; 
+    d.onclick = () => AU.ta.value = info;
   }
 }
 function filter_sig() {
@@ -41245,7 +40621,7 @@ function filter_sig() {
   AU.ta.value = '';
   for (const r of records) {
     let k = r.name;
-    AU.ta.value += di[k].sig + '\n'; 
+    AU.ta.value += di[k].sig + '\n';
   }
 }
 function filterByKey(o, desiredKeys) {
@@ -45210,6 +44586,7 @@ function getAsInt(mobj, styleInfo, prop) {
 }
 function getAux() { return getAuxIds.map(x => UIS[x]); }
 function getAuxIds() { return getList(IdOwner.l); }
+function getAuxVisuals(id) { return getVisuals(id, 'aux') }
 function getAvatar(username) { let d = Avatars[username]; if (nundef(d)) d = makeUserAvatar(username); return d; }
 function getBackgroundColor(img, ctx) {
   ctx.drawImage(img, 0, 0);
@@ -45311,6 +44688,8 @@ function getBoardScaleFactors(board, { factors, opt, f2nRatio, w, h, margin } = 
   }
   return [fw, fh, nw, nh, ew];
 }
+function getBoat(idx) { return UIS[getBoatId(idx)]; }
+function getBoatId(idx) { return firstCond(getList(IdOwner.a), x => pureId(x) == idx.toString()); }
 function getBoatIdByIdx(idx) {
   if (!IdOwner.a || isEmpty(IdOwner.a)) return null;
   if (idx < 0) idx += IdOwner.a.length;
@@ -46551,6 +45930,12 @@ function getidAvailable(i) { return 'c_b_mm_plj' + i; }
 function getIdForOid(oid) { return 'm_t_' + oid; }
 function getidNum(i) { return 'c_b_mm_pln' + i; }
 function getidPlayermode(mode) { return 'c_b_mm_' + mode; }
+function getIds(id, type = 'all') {
+  let res = id2uids[id];
+  if (nundef(res)) return [];
+  if (isEmpty(res) || type == 'all') return res;
+  return res.filter(x => isdef(x[type]));
+}
 function getIdsInfobox() { return IdOwner.i ? IdOwner.i : []; }
 function getidSpan(i) { return 'sppl' + i; }
 function getidSpanJoin(i) { return 'spplj' + i; }
@@ -46894,6 +46279,7 @@ function getMainAreaPercent(dParent, bg = 'grey', wPercent = 94, hPercent = 96, 
   return dArea;
 }
 function getMainId(oid) { return firstCond(oid2ids[oid], x => x[0] == 'm'); }
+function getMainVisual(oid) { return UIS[oid]; }
 function getMatchingPictoKey(o, key) {
   let sym = o.obj_type;
   if (sym in S.settings.symbols) { sym = S.settings.symbols[sym]; }
@@ -47039,6 +46425,18 @@ function getNumSeqHintString(i) {
 }
 function getO(n, R) { let oid = n.oid; if (isdef(oid)) return R.getO(oid); else return null; }
 function getObject(id) { return G.table[id]; }
+function getObjectFromWindow(key) {
+  let code, sig, type;
+  let f = window[key];
+  if (typeof f != 'function') return null;
+  code = f.toString();
+  sig = getFunctionSignature(stringBefore(code, '\n'), key);
+  type = 'func';
+  let o = { name: key, code: code, sig: sig, region: type, filename: '', path: '', type: type };
+  CODE.justcode[key] = code;
+  CODE.all[key] = CODE.di[type][key] = o;
+  return o;
+}
 function getObjectsWithSame(olist, props, o, up = true, breakWhenDifferent = true) {
   let res = [];
   let val = lookup(o, props);
@@ -47558,6 +46956,7 @@ function getRectInt(elem, relto) {
   extendRect(r4);
   return r4;
 }
+function getRelativeIds(id) { return getList(id2ids[id]); }
 function getRelBounds(elem, elRel) {
   let b1 = elem.getBoundingClientRect();
   if (!elRel) return b1;
@@ -49477,6 +48876,8 @@ function handle_command(cmd) {
   console.log('history', G.hist)
   console.log('current selection', G.selist.map(x => x.name));
 }
+function handle_connect(id) { console.log('connected', id); io.emit('message', 'someone logged in!'); }
+function handle_disconnect(x) { console.log('disconnected', x); io.emit('message', x); }
 function handle_drag_and_drop(e) {
   if (e.type == "dragover") {
     e.preventDefault();
@@ -49638,6 +49039,7 @@ function handle_settings(x) {
   console.log('settings:', settings);
   console.log('defaults:', defaults);
 }
+function handle_update(x) { console.log('got update', x); io.emit('update', x); }
 function handleAction(x) {
   return [[x]];
 }
@@ -50524,11 +49926,9 @@ function howto_open(item) {
   iClear('dTable')
   if (nundef(item)) item = DB.apps.howto;
   dSearch = mBy('dSearch'); mClear(dSearch);
-  show_sidebar(CODE.index,show_code);
-  show_code();
-  toggle_apps();
+  show_sidebar(Object.keys(CODE.justcode), show_code);
   mStyle(dSearch, { bg: item.color });
-  mInputLineWithButtons(dSearch,{Code:filter_codebase,Signatures:filter_sig})
+  mInputLineWithButtons(dSearch, { Code: filter_codebase, Signatures: filter_sig })
 }
 function HPLayout() {
   if (isdef(UI.DRR)) UI.DRR.remove();
@@ -51516,27 +50916,6 @@ function initAutoplayToActionButtons() {
 function initAux() {
   dAux = mBy('dAux');
 }
-function initBoardSquares() {
-  var light = 0;
-  var rowName;
-  var colName;
-  var divString;
-  var lightString;
-  var lastLight = 0;
-  for (rowIter = ROWS.ROW_8; rowIter >= ROWS.ROW_1; rowIter--) {
-    light = lastLight ^ 1;
-    lastLight ^= 1;
-    rowName = "row" + (rowIter + 1);
-    for (colIter = COLUMNS.COL_A; colIter <= COLUMNS.COL_H; colIter++) {
-      colName = "col" + (colIter + 1);
-      if (light == 0) lightString = "Light";
-      else lightString = "Dark";
-      divString = "<div class=\"Square clickElement " + rowName + " " + colName + " " + lightString + "\"/>";
-      light ^= 1;
-      $("#Board").append(divString);
-    }
-  }
-}
 function InitBoardSquares() {
   var light = 0;
   var rankName;
@@ -51555,6 +50934,27 @@ function InitBoardSquares() {
       divString = "<div class=\"Square clickElement " + rankName + " " + fileName + " " + lightString + "\"/>";
       light ^= 1;
       $("#ChessBoard").append(divString);
+    }
+  }
+}
+function initBoardSquares() {
+  var light = 0;
+  var rowName;
+  var colName;
+  var divString;
+  var lightString;
+  var lastLight = 0;
+  for (rowIter = ROWS.ROW_8; rowIter >= ROWS.ROW_1; rowIter--) {
+    light = lastLight ^ 1;
+    lastLight ^= 1;
+    rowName = "row" + (rowIter + 1);
+    for (colIter = COLUMNS.COL_A; colIter <= COLUMNS.COL_H; colIter++) {
+      colName = "col" + (colIter + 1);
+      if (light == 0) lightString = "Light";
+      else lightString = "Dark";
+      divString = "<div class=\"Square clickElement " + rowName + " " + colName + " " + lightString + "\"/>";
+      light ^= 1;
+      $("#Board").append(divString);
     }
   }
 }
@@ -55125,6 +54525,15 @@ function LineMatch(BookLine, gameline) {
     if (gameline[len] != BookLine[len]) { return BOOL.FALSE; }
   }
   return BOOL.TRUE;
+}
+function lineStyleFunction(feature, resolution) {
+  return new Style({
+    stroke: new Stroke({
+      color: 'green',
+      width: 2,
+    }),
+    text: createTextStyle(feature, resolution, myDom.lines),
+  });
 }
 function lineupDecks(msDecks, deckArea) {
   let x = 0;
@@ -61763,9 +61172,9 @@ function mInputLineWithButtons(dParent, opts) {
   let handler;
   for (const cap in opts) {
     handler = opts[cap];
-    mButton(cap,opts[cap],elem,{},'hop1');
+    mButton(cap, opts[cap], elem, {}, 'hop1');
   }
-  elem.onsubmit = (ev)=>{ev.preventDefault();};  
+  elem.onsubmit = (ev) => { ev.preventDefault(); };
   return elem;
 }
 function mInputX(dParent, styles, { textPadding, label, value, submitOnEnter, autoComplete, autoFocus, autoSelect, handler, createContainer } = {}) {
@@ -64013,6 +63422,8 @@ function NewGame(fen) {
     PreSearch();
   }
 }
+function NewGameAjax() {
+}
 function newGameAjax() {
   console.log('new Game Ajax');
   $.ajax({
@@ -64021,8 +63432,6 @@ function newGameAjax() {
   }).done(function (html) {
     console.log('result:' + html);
   });
-}
-function NewGameAjax() {
 }
 function newItemSelection(item, items, onSelectSelected = null) {
   console.log('===>', item, items)
@@ -64682,6 +64091,15 @@ function onclick_by_suit_ferro() {
 function onclick_cancelmenu() { hide('dMenu'); }
 function onClick_cardgames() { closeLeftPane(); }
 function onclick_chat() { if (!menu_enabled('chat')) return; game_interrupt(); get_chat(); }
+function onclick_cities() {
+  let layer = M.layers.city;
+  let capitals = rChoose(M.capitals, 50);
+  console.log('capitals', capitals);
+  for (const c of M.capitals) {
+    console.log('presenting', c)
+    map_add_object(M.cities[c], { layer: layer });
+  }
+}
 function onclick_clear_selection_ferro() { clear_selection(); }
 function onclick_close_project_editor(ev) {
   console.log('click!!!')
@@ -67372,8 +66790,8 @@ function parseCodefile1(content, fname, preserveRegionNames = true, info = {}, s
         let o = { name: key, code: code, sig: sig, region: type, filename: fname, type: type };
         addKeys(info, o);
         if (o.type == 'var' && o.fname == 'chess.js' && o.name.startsWith('brd_')) { lookupSet(superdi, ['chessvar', o.name], true); }
-        lookupSetOverride(superdi, [type, key], o);
         if (type == 'var') addOnelineVars(superdi, o);
+        lookupSetOverride(superdi, [type, key], o);
       }
     }
     if (startsWith(l, 'async') || startsWith(l, 'function')) {
@@ -68166,6 +67584,16 @@ function points_to_waypoints(pts = []) { return pts.map(x => L.latLng(x[0], x[1]
 function points2string(listOfPoints) {
   return listOfPoints.map(p => '' + p.x + ',' + p.Y).join(' '); //'0,0 100,0 50,80',
 }
+function pointStyleFunction(feature, resolution) {
+  return new Style({
+    image: new CircleStyle({
+      radius: 10,
+      fill: new Fill({ color: 'rgba(255, 0, 0, 0.1)' }),
+      stroke: new Stroke({ color: 'red', width: 1 }),
+    }),
+    text: createTextStyle(feature, resolution, myDom.points),
+  });
+}
 function poll() {
   if (IS_POLLING_ALLOWED) {
     if (isdef(DA.poll.func)) DA.poll.data = DA.poll.func(DA.poll.data);
@@ -68191,6 +67619,18 @@ function polling_shield_on(msg) {
 function pollStart() {
 }
 function pollStop() { clearTimeout(TO.poll); Clientdata.AUTORESET = true; }
+function polygonStyleFunction(feature, resolution) {
+  return new Style({
+    stroke: new Stroke({
+      color: 'blue',
+      width: 1,
+    }),
+    fill: new Fill({
+      color: 'rgba(0, 0, 255, 0.1)',
+    }),
+    text: createTextStyle(feature, resolution, myDom.polygons),
+  });
+}
 function polyPointsFrom(w, h, x, y, pointArr) {
   x -= w / 2;
   y -= h / 2;
@@ -71285,6 +70725,7 @@ function pTest0() {
   let d1 = mDiv(dTable);
   let d2 = present_structured1(d1, state);
 }
+function pureId(id) { return id.substring(4) }
 function purge(elem) {
   var a = elem.attributes, i, l, n;
   if (a) {
@@ -74570,7 +74011,7 @@ function saveAnswerStatistic() {
   downloadAsYaml({ correct: saveable }, 'CORRECT');
 }
 function saveEnv() {
-  fiddleSave(); 
+  fiddleSave();
 }
 function saveFile(name, type, data) {
   if (data != null && navigator.msSaveBlob) return navigator.msSaveBlob(new Blob([data], { type: type }), name);
@@ -75091,6 +74532,11 @@ function selectColor(color) {
   selected_color = color;
 }
 function selectGame(callback) { let route = '/game/select/' + GAME; _sendRouteJS(route, callback); }
+function selectStyle(feature) {
+  const color = feature.get('COLOR') || '#eeeeee';
+  selected.getFill().setColor(color);
+  return selected;
+}
 function selectText(el) {
   if (el instanceof HTMLTextAreaElement) { el.select(); return; }
   var sel, range;
@@ -76000,6 +75446,11 @@ function set_state_numbers(otree) {
   otree.phase = phase;
   let plturn = otree.plturn = otree.plorder[iturn];
   return [step, stage, iturn, round, phase, plturn];
+}
+function set_style_from_options(layer, options = {}) {
+  let style = isdef(options.colorfunc) ? get_style_func(options.colorfunc, valf(options.bg, 'lime'), valf(options.fg, 'orange'))
+    : get_style(valf(options.bg, 'yellow'), valf(options.fg, 'yellow'));
+  layer.setStyle(style);
 }
 function set_tables_by_game(obj, is_set_cur_id = true) {
   let tables = Session.tables = obj.tables;
@@ -77224,13 +76675,16 @@ function show_click_vocab() {
     Speech.say(vocab, 1, .8, .9, voice);
   }));
 }
-function show_code(res) {
+function show_code(res, download = false) {
+  if (isdef(res.target)) { res.key = res.target.innerHTML; res.text = CODE.justcode[res.key]; }
   dTable = mBy('dTable');
-  let ta = mTextarea(null, null, dTable, { w: '90vw', h: '90vh' });
+  let ta = dTable.getElementsByTagName('textarea')[0];
   let text = res.text;
+  if (nundef(ta)) ta = mTextarea(null, null, dTable, { w: '100%', h:'100%' });
   ta.value = text;
-  downloadAsText(text, 'hallo', 'js');
-  console.log('res', res)
+  if (download) downloadAsText(text, 'hallo', 'js');
+  ta.scrollTop = ta.scrollHeight;
+  return res;
 }
 function show_code_editor() {
   mHide('fSearch')
@@ -79623,6 +79077,20 @@ function sortKeys(o) {
   }
   return o;
 }
+function sortKeys (o) {
+  if (Array.isArray(o)) {
+    return o.map(sortKeys); 
+  } else if (isObject(o)) {
+    return Object
+      .keys(o)
+      .sort()
+      .reduce(function (a, k) {
+        a[k] = sortKeys(o[k]);
+        return a;
+      }, {});
+  }
+  return o;
+}
 function sortKeysNonRecursive(o) {
   if (Array.isArray(o)) {
     return o.map(sortKeysNonRecursive);
@@ -81680,6 +81148,25 @@ function stringBetweenLast(sFull, sStart, sEnd) {
   let s1 = stringBeforeLast(sFull, isdef(sEnd) ? sEnd : sStart);
   return stringAfterLast(s1, sStart);
 }
+function stringDivider(str, width, spaceReplacer) {
+  if (str.length > width) {
+    let p = width;
+    while (p > 0 && str[p] != ' ' && str[p] != '-') {
+      p--;
+    }
+    if (p > 0) {
+      let left;
+      if (str.substring(p, p + 1) == '-') {
+        left = str.substring(0, p + 1);
+      } else {
+        left = str.substring(0, p);
+      }
+      const right = str.substring(p + 1);
+      return left + spaceReplacer + stringDivider(right, width, spaceReplacer);
+    }
+  }
+  return str;
+}
 function stringLast(s, n) { return s.substring(s.length - n, s.length); }
 function stringToMatrix(s, rows, cols) {
   if (isNumber(s)) s = String(s);
@@ -82647,6 +82134,10 @@ function test0_show_all_inno_cards() {
     if (ci.exp[0] == 'F') inno_present_card(dTable, k);
   }
 }
+async function test0_simulateClick() {
+  let info = await route_path_yaml_dict('../base/assets/lists/info.yaml');
+  downloadAsYaml(info, 'info');
+}
 function test0_turn_loader_off() {
   mClassReplace(mBy('loader_holder'), 'loader_off');
 }
@@ -83203,6 +82694,39 @@ function test1_bw_widget_boa() {
   let d7 = mDiv(d, { bg: '#eee', fg: 'dimgray', padding: 7 }, null, 'CARDS');
   let d8 = mDiv(d, { bg: 'dodgerblue', fg: 'white' }, null, `<img src='../rechnung/images/rest_bw.jpg'>`);
 }
+async function test1_can_I_get_new_cities(min = 25000) {
+  let info = await route_path_yaml_dict('../base/assets/lists/info.yaml');
+  let text = await route_path_text('../base/mapdata/cities.csv');
+  let cities = M.cities = csv2list(text);
+  let capitals = [];
+  let new_cities = {};
+  let num = 0;
+  for (const o of cities) {
+    let n = o.population;
+    if (nundef(n)) continue;
+    n = Number(n);
+    if (n < min) continue;
+    let w1 = o.city_ascii.toLowerCase();
+    if (nundef(o.country)) {
+      console.log('missing country', o);
+      continue;
+    }
+    num += 1;
+    let land1 = o.country.toLowerCase();
+    for (const k of info.capital) {
+      let w = k.toLowerCase();
+      if (w.includes(w1) && w.includes(land1)) {
+        capitals.push(o);
+        o.capital = 'capital';
+      }
+      let name = o.name = o.city_ascii;
+      if (isdef(new_cities[name]) && new_cities[name].includes('capital')) continue;
+      new_cities[name] = `${o.lng},${o.lat},${o.country},${o.capital},${o.population}`;
+    }
+  }
+  downloadAsYaml(new_cities, 'cities');
+  return new_cities;
+}
 function test1_car_math() {
   C = new CCanvas(dTable, {}, {}, gameloop_start, gameloop_stop, 'cc', null, true);
   C.add({ w: 30, h: 25, color: 'red', draw: draw_car, update: update_car, turn_inc: 10, v: { a: 280, mag: 5 } });
@@ -83498,34 +83022,38 @@ function test100() {
   CODE.all = keys;
   CODE.keylist = Object.keys(keys)
   let inter = intersection(Object.keys(keys), Object.keys(window));
-  let f = CODE.all._start;
-  let f1 = window._start;
-  let text = f1.toString();
-  let done = {}, n_old = 0;
-  let tbd = ['_start'], n_new = 1;
+  let done = {};
+  let tbd = ['_start'];
   let MAX = 1007, i = 0;
   let alltext = '';
   while (!isEmpty(tbd)) {
     if (++i > MAX) break;
     let sym = tbd[0];
     let o = CODE.all[sym];
-    if (o.type != 'func'){tbd.shift(); lookupSet(done,[o.type,sym],o); continue; } 
+    if (nundef(o)) o = getObjectFromWindow(sym);
+    if (o.type != 'func') { tbd.shift(); lookupSet(done, [o.type, sym], o); continue; }
     let olive = window[sym];
-    if (nundef(olive)) { tbd.shift(); lookupSet(done,[o.type,sym],o); continue; } 
+    if (nundef(olive)) { tbd.shift(); lookupSet(done, [o.type, sym], o); continue; }
     let text = olive.toString();
     if (!isEmpty(text)) alltext += text + '\r\n';
-    let words = toWords(text, true); 
+    let words = toWords(text, true);
     for (const w of words) {
-      if (nundef(done[w]) && w!=sym && isdef(CODE.all[w])) addIf(tbd, w);
+      if (nundef(done[w]) && w != sym && isdef(CODE.all[w])) addIf(tbd, w);
     }
     tbd.shift();
-    lookupSet(done,[o.type,sym],o); 
+    lookupSet(done, [o.type, sym], o);
   }
-  console.log('_______________after',i,'iter:')
-  console.log('done', done); 
-  console.log('tbd', tbd);
-  let tres='';
-  for(const k in done){
+  let tres = '';
+  for (const k of ['const', 'var', 'cla', 'func']) {
+    console.log('done', k, done[k])
+    let o = done[k]; if (nundef(o)) continue;
+    let klist = get_keys(o);
+    if (k == 'func') klist = sortCaseInsensitive(klist);
+    for (const k1 of klist) {
+      if (isLetter(k1) && k1 == k1.toLowerCase()) continue;
+      let code = CODE.justcode[k1];
+      if (!isEmptyOrWhiteSpace(code)) tres += code;
+    }
   }
 }
 function test100_partial_sequences() {
@@ -84126,6 +83654,10 @@ function test3_3rows() {
   let dOuter = mDiv(dMain, { bg: 'random', flex: '1 0 auto' }, 'dOuter', 'outer');
   let dFooter = mDiv(dMain, { bg: 'random' }, 'dFooter', 'footer');
   mSize(dHeader, '100%', 50);
+}
+function test3_add_cities_layer(color) {
+  let cities = rChoose(M.capitals, 20);
+  for (const c of cities) map_add_city(M.cities[c]);
 }
 function test3_ari_deck_2_hands(otree) {
   let deck = ui_make_random_deck(10);
@@ -89230,13 +88762,6 @@ function untie_card(card) {
   let oldindex = isdef(oldgroup) ? oldgroup.ids.indexOf(card.id) : null;
   if (isdef(oldgroup)) removeInPlace(oldgroup.ids, card.id);
   return [oldgroup, oldindex];
-}
-function update(time) {
-  var t = time - lastUpdate;
-  lastUpdate = time;
-  ball.update(t);
-  ai.update();
-  requestAnimationFrame(update);
 }
 function update_car(canvas, item) {
   let di = { ArrowUp: canvas.math ? 90 : 270, ArrowDown: canvas.math ? 270 : 90, ArrowLeft: 180, ArrowRight: 0 };
