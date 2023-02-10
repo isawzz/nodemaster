@@ -6069,31 +6069,77 @@ __________ mi 8.2.23 waiting at the airport...   D47
 172: *5:17 AM 2/8/2023-5:41 AM 2/8/2023
 173: *5:41 AM 2/8/2023-6:17 AM 2/8/2023
 174: *6:17 AM 2/8/2023-7:30 AM 2/8/2023
-180: *7:30 AM 2/8/2023-
+180: *7:30 AM 2/8/2023-4:50 PM 2/8/2023
+jeslyn zeug
+220: *4:50 PM 2/8/2023-4:50 PM 2/8/2023
+250: *4:50 PM 2/8/2023-4:50 PM 2/8/2023
+weiteres jeslyn zeug,post,crossover
+#50 fuer ausdruck sign und send crossover zeug
+__________ do 9.2.23 waiting at the airport...   D46
+300: *9:00 PM 2/8/2023-6:19 AM 2/9/2023
+301: *6:19 AM 2/9/2023-6:26 AM 2/9/2023
+302: *6:26 AM 2/9/2023-6:38 AM 2/9/2023
+303: *6:38 AM 2/9/2023-7:20 AM 2/9/2023
+- runcode mit result undefined ERROR
+- jetzt will ich dass wenn click on name soll der text in die current fiddle gehen
+- ok es geht wieder aber ich kann keine echte closre machen unless dirlist prior veraendere!
+310: *7:20 AM 2/9/2023-7:24 AM 2/9/2023
+- ich will die info fuer von wo er den code genommen hat!
+__________ fr 10.2.23 waiting at the airport...   D45
 
 
-- signen fuer: 50
-- hinfahren fuer: 50
 
-- repair database: nimm allcode und dann alle zeilen die mit
 
-- lowerCase vars ausser dT weglassen!!!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 8073 165th Lane Northeast 749
 8850 Redmond-Woodinville Road Northeast, Unit 405 712
-
-
-
-
-- wie hoch ist header? warum 68?
-- mach test101
-- danach mach test 102 fuer fiddleInit
-was will ich jetzt machen? kann ich einfach so eine closure machen?
-
-
-
-
 
 
 
