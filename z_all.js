@@ -1383,17 +1383,6 @@ const resetPeep = ({ stage, peep }) => {
 const allPeeps = []
 const availablePeeps = []
 const crowd = []
-const MARGIN_S = '3px 6px';
-const MARGIN_M = '4px 10px';
-const MARGIN_XS = '2px 4px';
-const complementaryColor = color => {
-  const hexColor = color.replace('#', '0x');
-  return `#${('000000' + ('0xffffff' ^ hexColor).toString(16)).slice(-6)}`;
-};
-const immediateStart = true;
-const uiHaltedMask = 1 << 0;
-const beforeActivationMask = 1 << 1;
-const hasClickedMask = 1 << 2;
 const CODE = {};
 const CODE_VERSION = 1;
 const SHOW_CODE = false;
@@ -1413,6 +1402,17 @@ const Perlin = {
   channels: {},
 }
 const MyNames = ['amanda', 'angela', 'erin', 'holly', 'jan', 'karen', 'kelly', 'pam', 'phyllis', 'andy', 'creed', 'darryl', 'david', 'dwight', 'felix', 'gul', 'jim', 'kevin', 'luis', 'michael', 'nil', 'oscar', 'ryan', 'stanley', 'toby', 'wolfgang'];
+const MARGIN_S = '3px 6px';
+const MARGIN_M = '4px 10px';
+const MARGIN_XS = '2px 4px';
+const complementaryColor = color => {
+  const hexColor = color.replace('#', '0x');
+  return `#${('000000' + ('0xffffff' ^ hexColor).toString(16)).slice(-6)}`;
+};
+const immediateStart = true;
+const uiHaltedMask = 1 << 0;
+const beforeActivationMask = 1 << 1;
+const hasClickedMask = 1 << 2;
 const myDom = {
   points: {
     text: document.getElementById('points-text'),
@@ -2049,7 +2049,7 @@ var ObjetoSolitario = function () {
         do {
           for (c = 7; c > 0; c--) {
             if (this.CartaValida(Carta, Columna[c])) {
-              return true; /* Aun se pueden poner cartas en los mazos de las columnas */
+              return true;
             }
           }
           Carta = Carta.parent();
@@ -2062,13 +2062,13 @@ var ObjetoSolitario = function () {
             Valor = (Solucion[s].prop("tagName") === "CARTA") ? parseInt(Solucion[s].attr("valor")) : -1;
             Palo = (Solucion[s].prop("tagName") === "CARTA") ? Solucion[s].attr("palo") : Carta.attr("palo");
             if (Valor + 1 === parseInt(Carta.attr("valor")) && Palo === Carta.attr("palo")) {
-              return true; /* Aun se pueden poner cartas en los mazos de las soluciones */
+              return true;
             }
           }
           Carta = Carta.parent();
         } while (Carta.prop("tagName") === "CARTA");
       }
-      return false; /* No quedan movimientos posibles */
+      return false;
     }
     return true;
   };
@@ -4504,8 +4504,6 @@ var NiceBaseColors = ['#791900']
 var MAGNIFIER_IMAGE;
 var globalSum = 0
 var positionCount;
-var pstOpponent = { 'w': pst_b, 'b': pst_w };
-var pstSelf = { 'w': pst_w, 'b': pst_b };
 var BlockServerSend1 = false;
 var F;
 var dParent;
@@ -4916,6 +4914,18 @@ var resizeObserver = new ResizeObserver(entries => {
   }
 });
 var PORT = 3000;
+var Globals;
+var LIVE_SERVER;
+var NODEJS;
+var SINGLECLIENT;
+var SERVERURL;
+var dButtons;
+var dCode;
+var dContent;
+var dFiddle;
+var dSidebar;
+var AU = {};
+var CONTEXT = null;
 var UIDHelpers = 0;
 var NAMED_UIDS = {};
 var palDict = {};
@@ -5170,18 +5180,6 @@ var Complex = {
   factor: .5,
   max: 6,
 };
-var NODEJS;
-var SERVERURL;
-var LIVE_SERVER;
-var SINGLECLIENT;
-var dFiddle;
-var Globals;
-var dButtons;
-var dCode;
-var dContent;
-var dSidebar;
-var AU = {};
-var CONTEXT = null;
 var dConsole;
 var COLUMNS = { COL_A: 0, COL_B: 1, COL_C: 2, COL_D: 3, COL_E: 4, COL_F: 5, COL_G: 6, COL_H: 7, COL_NONE: 8 };
 var ROWS = { ROW_1: 0, ROW_2: 1, ROW_3: 2, ROW_4: 3, ROW_5: 4, ROW_6: 5, ROW_7: 6, ROW_8: 7, ROW_NONE: 8 };
@@ -5197,6 +5195,8 @@ var PawnRowsWhite = new Array(10);
 var PawnRowsBlack = new Array(10);
 var MirrorCols = [COLUMNS.COL_H, COLUMNS.COL_G, COLUMNS.COL_F, COLUMNS.COL_E, COLUMNS.COL_D, COLUMNS.COL_C, COLUMNS.COL_B, COLUMNS.COL_A];
 var MirrorRows = [ROWS.ROW_8, ROWS.ROW_7, ROWS.ROW_6, ROWS.ROW_5, ROWS.ROW_4, ROWS.ROW_3, ROWS.ROW_2, ROWS.ROW_1];
+var dTest;
+var dTestButtons;
 var brd_side = COLOURS.WHITE;
 var brd_pieces = new Array(BRD_SQ_NUM);
 var brd_enPas = SQUARES.NO_SQ;
@@ -19290,13 +19290,13 @@ function __pictoG(key, x, y, w, h, fg, bg) {
   let text = String.fromCharCode('0x' + ch);
 }
 async function __start() {
-  set_run_state_no_server(); 
+  set_run_state_no_server();
   onpagedeactivated(() => { fiddleSave(); dbSave(); });
-  await load_syms(); 
-  await load_db(); 
+  await load_syms();
+  await load_db();
   let dicode = CODE.di = await route_path_yaml_dict('../basejs/z_all.yaml');
   let dijustcode = CODE.justcode = await route_path_yaml_dict('../basejs/z_allcode.yaml');
-  dTable = mSection({h: window.innerHeight - 68},'dTable'); 
+  dTable = mSection({ h: window.innerHeight - 68 }, 'dTable');
   computeClosure();
 }
 function _addFilterHighlight(mobj) { mobj.highC('green'); }
@@ -19559,6 +19559,48 @@ function _cloneIfNecessary(value, optionsArgument) {
 function _closeInfoboxesForBoatOids(boat) {
   let oids = boat.o.oids;
   for (const oid of oids) hideInfobox(oid);
+}
+function _computeClosure(symlist) {
+  let keys = {};
+  for (const k in CODE.di) { for (const k1 in CODE.di[k]) keys[k1] = CODE.di[k][k1]; }
+  CODE.all = keys;
+  CODE.keylist = Object.keys(keys)
+  let inter = intersection(Object.keys(keys), Object.keys(window));
+  let done = {};
+  let tbd = valf(symlist, ['_start']);
+  let MAX = 1007, i = 0;
+  let alltext = '';
+  while (!isEmpty(tbd)) {
+    if (++i > MAX) break;
+    let sym = tbd[0];
+    let o = CODE.all[sym];
+    if (nundef(o)) o = getObjectFromWindow(sym);
+    if (o.type != 'func' && o.type != 'cla') { tbd.shift(); lookupSet(done, [o.type, sym], o); continue; }
+    let olive = window[sym];
+    if (nundef(olive)) { tbd.shift(); lookupSet(done, [o.type, sym], o); continue; }
+    let text = olive.toString();
+    if (!isEmpty(text)) alltext += text + '\r\n';
+    let words = toWords(text, true);
+    for (const w of words) {
+      if (nundef(done[w]) && w != sym && isdef(CODE.all[w])) addIf(tbd, w);
+    }
+    tbd.shift();
+    lookupSet(done, [o.type, sym], o);
+  }
+  let tres = '';
+  for (const k of ['const', 'var', 'cla', 'func']) {
+    console.log('done', k, done[k])
+    let o = done[k]; if (nundef(o)) continue;
+    let klist = get_keys(o);
+    if (k == 'func') klist = sortCaseInsensitive(klist);
+    else if (k == 'cla') klist = sortClassKeys(done);
+    else if (k == 'const') klist = sortConstKeys(done).map(x => x.key);
+    for (const k1 of klist) {
+      let code = CODE.justcode[k1];
+      if (!isEmptyOrWhiteSpace(code)) tres += code + '\r\n';
+    }
+  }
+  return done;
 }
 function _createDeck({ hasJokers = false } = {}) {
   let deck = null;
@@ -21072,10 +21114,10 @@ async function _start0() {
   _start();
 }
 async function _start1() {
-  set_run_state_no_server(); 
+  set_run_state_no_server();
   onpagedeactivated(() => { fiddleSave(); dbSave(); });
-  await load_syms(); 
-  await load_db(); 
+  await load_syms();
+  await load_db();
   let dicode = CODE.di = await route_path_yaml_dict('../basejs/z_all.yaml');
   let dijustcode = CODE.justcode = await route_path_yaml_dict('../basejs/z_allcode.yaml');
   computeClosure(['_start1']);
@@ -24670,7 +24712,7 @@ function allLettersContained(sFull, sPart) {
 }
 function allNumbers(s) {
   let m = s.match(/\-.\d+|\-\d+|\.\d+|\d+\.\d+|\d+\b|\d+(?=\w)/g);
-  if (m) return m.map(v => Number(v)); else return null;
+  if (m) return m.map(v => +v); else return null;
 }
 function allNumbers_dep(s) {
   return s.match(/\d+\.\d+|\d+\b|\d+(?=\w)/g).map(v => {
@@ -28645,23 +28687,23 @@ function aushaengen(oid, R) {
 function autocomplete(inp, arr) {
   var currentFocus;
   inp = toElem(inp);
-  inp.addEventListener('input', e => { /*execute a func when someone writes in the text field:*/
-    var a, b, i, val = this.value;    /*close any already open lists of autocompleted values*/
+  inp.addEventListener('input', e => {
+    var a, b, i, val = this.value;
     autocomplete_closeAllLists();
     if (!val) { return false; }
     currentFocus = -1;
-    a = document.createElement('DIV'); /*create a DIV element that will contain the items (values):*/
+    a = document.createElement('DIV');
     a.setAttribute('id', this.id + 'autocomplete-list');
     a.setAttribute('class', 'autocomplete-items');
-    this.parentNode.appendChild(a); /*append the DIV element as a child of the autocomplete container:*/
+    this.parentNode.appendChild(a);
     for (i = 0; i < arr.length; i++) {
       if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
-        b = document.createElement('DIV'); /*create a DIV element for each matching element:*/
-        b.innerHTML = '<strong>' + arr[i].substr(0, val.length) + '</strong>'; /*make the matching letters bold:*/
+        b = document.createElement('DIV');
+        b.innerHTML = '<strong>' + arr[i].substr(0, val.length) + '</strong>';
         b.innerHTML += arr[i].substr(val.length);
-        b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>"; /*insert a input field that will hold the current array item's value:*/
+        b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
         b.addEventListener('click', e => {
-          inp.value = this.getElementsByTagName('input')[0].value; /*insert the value for the autocomplete text field:*/
+          inp.value = this.getElementsByTagName('input')[0].value;
           autocomplete_closeAllLists();
         });
         a.appendChild(b);
@@ -28712,7 +28754,7 @@ function autocomplete_removeActive(x) {
 function autoGameScreen() {
 }
 function autopoll(ms) { TO.poll = setTimeout(_poll, valf(ms, valf(Z.options.poll, 2000))); }
-function autoselect_action(r, action, uname, item) {	/*item is added to simulated ui clicks only!*/	select_action(r, action, uname, item); }
+function autoselect_action(r, action, uname, item) { select_action(r, action, uname, item); }
 function autosend(plname, slot) {
   Z.uplayer = plname;
   take_turn_collect_open();
@@ -33965,7 +34007,7 @@ function computeClosure(symlist) {
   CODE.keylist = Object.keys(keys)
   let inter = intersection(Object.keys(keys), Object.keys(window));
   let done = {};
-  let tbd = valf(symlist,['_start']); 
+  let tbd = valf(symlist, ['_start']);
   let MAX = 1007, i = 0;
   let alltext = '';
   while (!isEmpty(tbd)) {
@@ -33973,19 +34015,19 @@ function computeClosure(symlist) {
     let sym = tbd[0];
     let o = CODE.all[sym];
     if (nundef(o)) o = getObjectFromWindow(sym);
-    if (o.type == 'var' && !o.name.startsWith('d') && o.name == o.name.toLowerCase()) {tbd.shift(); continue; }
+    if (o.type == 'var' && !o.name.startsWith('d') && o.name == o.name.toLowerCase()) { tbd.shift(); continue; }
     if (o.type != 'func') { tbd.shift(); lookupSet(done, [o.type, sym], o); continue; }
     let olive = window[sym];
     if (nundef(olive)) { tbd.shift(); lookupSet(done, [o.type, sym], o); continue; }
     let text = olive.toString();
     if (!isEmpty(text)) alltext += text + '\r\n';
-    let words = toWords(text, true); 
-    words = words.filter(x=>text.includes(' '+x));
+    let words = toWords(text, true);
+    words = words.filter(x => text.includes(' ' + x));
     for (const w of words) {
       if (nundef(done[w]) && w != sym && isdef(CODE.all[w])) addIf(tbd, w);
     }
     tbd.shift();
-    lookupSet(done, [o.type, sym], o); 
+    lookupSet(done, [o.type, sym], o);
   }
   let tres = '';
   for (const k of ['const', 'var', 'cla', 'func']) {
@@ -33993,7 +34035,7 @@ function computeClosure(symlist) {
     let o = done[k]; if (nundef(o)) continue;
     let klist = get_keys(o);
     if (k == 'func') klist = sortCaseInsensitive(klist);
-    for (const k1 of klist) { 
+    for (const k1 of klist) {
       let code = CODE.justcode[k1];
       if (!isEmptyOrWhiteSpace(code)) tres += code + '\r\n';
     }
@@ -39354,7 +39396,7 @@ function executeFrame() {
   if (mouse.down)
     drawLineToMouse();
 }
-function executeFunctionByName(functionName, context /*, args */) {
+function executeFunctionByName(functionName, context) {
   var args = Array.prototype.slice.call(arguments, 2);
   var namespaces = functionName.split('.');
   var func = namespaces.pop();
@@ -39614,6 +39656,12 @@ function extractColorsFromCss() {
     }
   }
   return di;
+}
+function extractKeywords(text) {
+  let words = toWords(text, true);
+  let res = [];
+  for (const w of words) { if (isdef(CODE.all[w])) addIf(res, w); }
+  return res;
 }
 function extractPixel(str) {
   if (isNumber(str)) return str;
@@ -40494,7 +40542,6 @@ function fiddleEnterResize(ev) {
   if (ev.key == 'Enter') {
     console.log('hallo!');
     let ta = ev.target;
-    return;
     let x = ta.value;
     let lines = x.split('\n');
     let min = lines.length + 1;
@@ -54876,6 +54923,28 @@ function loadCode0(text, codeToRunWhenScriptLoaded = null, callback = null) {
   scriptTag.text = callback ? [text, codeToRunWhenScriptLoaded].join('\n') : text;
   document.getElementsByTagName("body")[0].appendChild(scriptTag);
 }
+async function loadCodebase(dir) {
+  let path_js=isdef(dir)?(dir+'/z_all.js'):'../allcode.js';
+  dir = isdef(dir)?dir:'../basejs';
+  let text = CODE.text = await route_path_text(path_js);
+  let keysSorted = [];
+  let lines = text.split('\r\n');
+  for (const l of lines) {
+    if (['var', 'const', 'cla', 'func'].some(x => l.startsWith(x))) {
+      let key = firstWordAfter(l, ' ', true);
+      keysSorted.push(key);
+    }
+  }
+  CODE.keysSorted = keysSorted;
+  CODE.di = await route_path_yaml_dict(dir+'/z_all.yaml');
+  CODE.justcode = await route_path_yaml_dict(dir+'/z_allcode.yaml');
+  CODE.codelist=dict2list(CODE.justcode,'key');
+  CODE.history = await route_path_yaml_dict(dir+'/z_allhistory.yaml');
+  let keys = {};
+  for (const k in CODE.di) { for (const k1 in CODE.di[k]) keys[k1] = CODE.di[k][k1]; }
+  CODE.all = keys;
+  CODE.keylist = Object.keys(keys)
+}
 async function loadCorrectWords() {
   CorrectKeysByLanguage = { E: [], EB: [], D: [] };
   CorrectByKey = {};
@@ -60085,7 +60154,7 @@ function mDiv(dParent, styles, id, inner, classes, sizing) {
   if (isdef(sizing)) { setRect(d, sizing); }
   return d;
 }
-function mDiv100(dParent, styles, id, sizing = true) { let d = mDiv(dParent, styles, id); mSize(d, 100, 100, '%', sizing); return d; }
+function mDiv100(dParent, styles, id, sizing = false) { let d = mDiv(dParent, styles, id); mSize(d, 100, 100, '%', sizing); return d; }
 function mDivCenteredAt(pt, dParent, styles = {}, id, inner, classes) {
   [w, h] = detect_size_from_styles(styles);
   addKeys({ position: 'relative' }, dParent);
@@ -60146,6 +60215,30 @@ function mdo(o, p, d) {
   p = { x: p.x, y: p.y + d };
   if (o) o.setPos(p.x, p.y);
   return p;
+}
+function mDom(dParent, styles = {}, opts = {}) {
+  let tag = valf(opts.tag, 'div');
+  let d = document.createElement(tag);
+  mAppend(dParent, d);
+  if (tag == 'textarea') styles.wrap = 'hard';
+  const aliases = {
+    classes: 'className',
+    inner: 'innerHTML',
+    html: 'innerHTML',
+  };
+  for (const opt in opts) { d[valf(aliases[opt], opt)] = opts[opt] };
+  mStyle(d, styles);
+  return d;
+}
+function mDom100(dParent, styles, opts) {
+  if (nundef(styles.w) && nundef(styles.wrest)) addKeys({ w100: true }, styles);
+  if (nundef(styles.h) && nundef(styles.hrest)) addKeys({ h100: true }, styles);
+  return mDom(dParent, styles, opts);
+}
+function mDomRest(dParent, styles, opts) {
+  if (nundef(styles.w) && nundef(styles.w100)) addKeys({ wrest: true }, styles);
+  if (nundef(styles.h) && nundef(styles.h100)) addKeys({ hrest: true }, styles);
+  return mDom(dParent, styles, opts);
 }
 function mDover(dParent, styles = {}, sizing = true) {
   let d = mDiv(dParent, styles);
@@ -60807,6 +60900,23 @@ function mGrid(rows, cols, dParent, styles = {}) {
   d.style.padding = valf(styles.padding, styles.gap) + 'px';
   return d;
 }
+function mGridFrom(d, m, cols, rows, cellstyles = {}) {
+  let gta = '';
+  let words = [];
+  for (const line of m) {
+    gta = gta + `'${line}' `;
+    let warr = toWords(line);
+    for (const w of warr) if (!words.includes(w)) words.push(w);
+  }
+  let dParent = mDom100(d, { display: 'grid', 'grid-template-areas': gta });
+  dParent.style.gridTemplateColumns = cols;
+  dParent.style.gridTemplateRows = rows;
+  for (const w of words) {
+    let st = copyKeys({ 'grid-area': w, bg: rColor(50) }, cellstyles);
+    let cell = window[w] = mDom(dParent, st, { id: w });
+  }
+  return dParent;
+}
 function mgShape(key) {
 }
 function mgSize(el, h, w) {
@@ -61160,11 +61270,11 @@ function mInputGroup(dParent, styles) {
   if (isdef(styles)) styles = deepmergeOverride(baseStyles, styles); else styles = baseStyles;
   return mDiv(dParent, styles);
 }
-function mInputLineWithButtons(dParent, opts) {
+function mInputLineWithButtons(dParent, opts, val = '') {
   let html = `
     <form id="fSearch" action="javascript:void(0);" class='form' autocomplete='off'>
       <label>Keywords:</label>
-      <input id="iKeywords" type="text" name="keywords" style="flex-grow:1" />
+      <input id="iKeywords" type="text" name="keywords" style="flex-grow:1" value="${val}" />
     </form>
     `;
   let elem = mCreateFrom(html);
@@ -62473,6 +62583,24 @@ function msToTime(ms) {
 }
 function mStyle(elem, styles, unit = 'px') {
   elem = toElem(elem);
+  if (isdef(styles.whrest)) { delete styles.whrest; styles.w = styles.h = 'rest'; } else if (isdef(styles.wh100)) { styles.w = styles.h = '100%'; delete styles.wh100; }
+  if (isdef(styles.w100)) styles.w = '100%'; else if (isdef(styles.wrest)) styles.w = 'rest';
+  if (isdef(styles.h100)) styles.h = '100%'; else if (isdef(styles.hrest)) styles.h = 'rest';
+  let dParent = elem.parentNode;
+  let pad = parseInt(valf(dParent.style.padding, '0'));
+  let rp = getRect(dParent);
+  let r = getRect(elem, dParent);
+  if (styles.w == 'rest') {
+    let left = r.l;
+    let w = rp.w;
+    let wrest = w - left - pad;
+    styles.w = wrest;
+  }
+  if (styles.h == 'rest') {
+    let r1 = getRect(dParent.lastChild, dParent);
+    let hrest = rp.h - (r1.y) - pad;
+    styles.h = hrest;
+  }
   let bg, fg;
   if (isdef(styles.bg) || isdef(styles.fg)) {
     [bg, fg] = colorsFromBFA(styles.bg, styles.fg, styles.alpha);
@@ -62561,7 +62689,7 @@ function mStyle(elem, styles, unit = 'px') {
     else if (key == 'background-color') elem.style.background = bg;
     else if (key == 'color') elem.style.color = fg;
     else if (key == 'opacity') elem.style.opacity = val;
-    else if (key == 'wrap') elem.style.flexWrap = 'wrap';
+    else if (key == 'wrap') { if (val == 'hard') elem.setAttribute('wrap', 'hard'); else elem.style.flexWrap = 'wrap'; }
     else if (startsWith(k, 'dir')) {
       isCol = val[0] == 'c';
       elem.style.setProperty('flex-direction', 'column');
@@ -62899,6 +63027,12 @@ function mTag(tag, inner = null, dParent = null, styles = {}, id = null, classes
   if (classes) mClass(el, classes);
   return el;
 }
+function mTaPlain(dParent, styles = {}, opts = {}) {
+  opts.tag = 'textarea';
+  let ta = mDom(dParent, styles, opts);
+  mClass(ta, 'plain');
+  return ta;
+}
 function mText(text, dParent, styles, classes) {
   if (!isString(text)) text = text.toString();
   let d = mDiv(dParent);
@@ -63185,6 +63319,14 @@ function myMinimax(node, depth, alpha, beta, maxDepth, maxim) {
   }
   return maxim ? alpha : beta;
 }
+function myOnclickCodeInSidebar(ev) {
+  let key = isString(ev) ? ev : ev.target.innerHTML;
+  let text = CODE.justcode[key];
+  AU.ta.value = text;
+  let download = false;
+  if (download) downloadAsText(text, 'hallo', 'js');
+  return text;
+}
 function myPresent(dArea, items, options) {
   let showLabels = options.showLabels;
   let w = options.w * valf(options.fw, .9);
@@ -63229,6 +63371,24 @@ function myPresent(dArea, items, options) {
   mStyleX(dArea, { display: 'inline-grid', gap: gap, 'grid-template-columns': `repeat(${cols},${wi}px)` });
   items.map(x => mAppend(dArea, iDiv(x)));
   return getRect(dArea);
+}
+function mySearch(kws) {
+  console.log(`'${kws}'`); return;
+  let arr = CODE.codelist; 
+  let patt = isList(kws) ? kws.join('|') : replaceAll(kws, ' ', '|');
+  let regex = new RegExp(`\\b${patt}\\b`);
+  console.log('patt',patt)
+  let res = arr.filter(x => regex.test(x.value)); 
+  let keys = res.map(x => x.key);
+  console.log('keys', keys);
+  show_sidebar(keys, myOnclickCodeInSidebar);
+  return;
+  let di = CODE.justcode;
+  let dilist = dict2list(di, 'key');
+  let records = dilist.filter(x => words.some(w => x.key.match(new RegExp(`\\${w}\\b`, 'i'))));
+  console.log('records', records)
+  show_sidebar(records.map(x => x.key), myOnclickCodeInSidebar);
+  return records;
 }
 function myShowLabels(onClickPictureHandler, ifs = {}, options = {}, keys, labels) {
   options.wimax = 200; options.himax = 50;
@@ -64860,6 +65020,29 @@ async function onClickClearTable() {
   mBy('table').style.minWidth = 0; mBy('table').style.minHeight = 0;
   resetUIDs();
 }
+function onclickCodeInSidebar(ev) {
+  let key = isString(ev) ? ev : ev.target.innerHTML;
+  let text = CODE.justcode[key];
+  let ta = AU.ta; let dParent = null;
+  if (nundef(ta)) {
+    dParent = valf(dFiddle, dTable, document.body);
+    let talist = dTable.getElementsByTagName('textarea');
+    if (isEmpty(talist)) ta = mTextarea(null, null, dParent, { w: '100%' });
+    else ta = talist[0];
+  } else dParent = ta.parentNode;
+  ta.value = text;
+  let hideal = ta.scrollHeight;
+  console.log('ta.scrollheight', hideal)
+  let hsidebar = window.innerHeight - 68;
+  mStyle(dParent, { hmax: hsidebar });
+  let lines = text.split('\n');
+  let min = lines.length + 1;
+  mStyle(ta, { h: hideal, hmin: 50, hmax: hsidebar - 44 });
+  ta.scrollTop = 0;
+  let download = false;
+  if (download) downloadAsText(text, 'hallo', 'js');
+  return text;
+}
 function onClickCollapse() { collapseAll(); }
 function onClickComputer() { }
 function onClickConnect(port) { initSocket(port); }
@@ -65660,6 +65843,9 @@ function onClickTemple() {
 function onClickTempleLobby() {
   START_IN_MENU = true;
   initGameScreen();
+}
+function onclickTest(x) {
+  console.log('TEST!', x)
 }
 function onClickToggle(b, key) {
   let content = b.textContent;
@@ -72319,6 +72505,7 @@ function removeCommentsFromLine(line) {
     l = replaceAllFast(l, '@@#', '//#');
     l = replaceAllFast(l, ':@@', '://');
   }
+  if (l.trim().endsWith('*/')) l = stringBefore(l, '/*');
   return l;
 }
 function removeDOM(elem) { purge(elem); }
@@ -73852,7 +74039,7 @@ function runcode(code, callback = null) {
   if (callback) callback(x);
   else {
     console.log('===>result:', x);
-    if (isdef(dMessage)) dMessage.innerHTML = isDict(x) ? JSON.stringify(x) : x.toString();
+    if (isdef(dMessage)) dMessage.innerHTML = isDict(x) ? JSON.stringify(x) : isdef(x) ? x.toString() : x;
   }
 }
 function runderkreis(color, id) {
@@ -75818,7 +76005,7 @@ function setGoal(index) {
 }
 function setGradientImageBackground(d, path, color1 = 'red', color2 = 'green') {
   d.style.background = color1;
-  d.style.backgroundImage = `url(${path})`;/* fallback */
+  d.style.backgroundImage = `url(${path})`;
   d.style.backgroundImage = `url(${path}), linear-gradient(${color1}, ${color2})`;
   d.style.backgroundSize = '100%';
 }
@@ -76680,7 +76867,7 @@ function show_code(res, download = false) {
   dTable = mBy('dTable');
   let ta = dTable.getElementsByTagName('textarea')[0];
   let text = res.text;
-  if (nundef(ta)) ta = mTextarea(null, null, dTable, { w: '100%', h:'100%' });
+  if (nundef(ta)) ta = mTextarea(null, null, dTable, { w: '100%', h: '100%' });
   ta.value = text;
   if (download) downloadAsText(text, 'hallo', 'js');
   ta.scrollTop = ta.scrollHeight;
@@ -77320,7 +77507,7 @@ function show_shield(msg) {
   mBy('dShield').innerHTML = msg;
 }
 function show_sidebar(list, handler) {
-  dSidebar = mBy('dSidebar'); mStyle(dSidebar, { w: 300, h: window.innerHeight - 68, overy: 'auto' });
+  dSidebar = mBy('dSidebar'); mClear(dSidebar); mStyle(dSidebar, { w: 200, h: window.innerHeight - 68, overy: 'auto' });
   for (const k of list) {
     let d = mDiv(dSidebar, { cursor: 'pointer', wmin: 100 }, null, k, 'hop1')
     if (isdef(handler)) d.onclick = handler;
@@ -79062,6 +79249,53 @@ function sortCardItemsToSequence(items, rankstr = '23456789TJQKA', jolly_allowed
 function sortCaseInsensitive(list) {
   list.sort((a, b) => { return a.toLowerCase().localeCompare(b.toLowerCase()); });
   return list;
+}
+function sortClassKeys(di) {
+  let classes = dict2list(di.cla, 'key');
+  let classesWithoutExtends = classes.filter(x => !x.code.includes(' extends '));
+  let keys = sortCaseInsensitive(classesWithoutExtends.map(x => x.key));
+  let dinew = {};
+  for (const el of keys) { dinew[el] = di.cla[el]; }
+  let classesWithExtends = classes.filter(x => x.code.includes(' extends '));
+  let MAX = 150, i = 0;
+  console.log('starting class loop')
+  while (!isEmpty(classesWithExtends)) {
+    if (++i > MAX) { console.log("WRONG!!!"); return []; }
+    let o = classesWithExtends.find(x => {
+      let ext = firstWordAfter(x.code, 'extends', true).trim();
+      if (nundef(di.cla[ext])) return true;
+      return isdef(dinew[ext]);
+    });
+    if (isdef(o)) { dinew[o.key] = o; removeInPlace(classesWithExtends, o); }
+  }
+  return Object.keys(dinew);
+}
+function sortConstKeys(di) {
+  let tbd = dict2list(di.const, 'key');
+  let donelist = [];
+  tbd = sortBy(tbd, x => x.code.length);
+  let dinew = {};
+  let MAX = 3000, i1 = 0, i2 = 0, i3 = 0;
+  console.log('starting const loop');
+  console.log('const keys', tbd.length);
+  while (!isEmpty(tbd)) {
+    if (++i1 > MAX) { console.log("WRONG!!!"); return donelist; }
+    let o = null;
+    i2 = 0;
+    for (const c of tbd) {
+      if (++i2 > MAX) { console.log("WRONG!!!"); return donelist; }
+      i3 = 0;
+      let ok = true;
+      for (const c1 of tbd) {
+        if (++i3 > MAX) { console.log("WRONG!!!"); return donelist; }
+        if (c1 == c) continue;
+        if (c.code.includes(c1.key)) ok = false;
+      }
+      if (ok) { o = c; break; }
+    }
+    if (isdef(o)) { donelist.push(o); dinew[o.key] = o; removeInPlace(tbd, o); }
+  }
+  return donelist;
 }
 function sortKeys(o) {
   if (Array.isArray(o)) {
@@ -82141,6 +82375,19 @@ async function test0_simulateClick() {
 function test0_turn_loader_off() {
   mClassReplace(mBy('loader_holder'), 'loader_off');
 }
+async function test00() {
+  set_run_state_no_server(); 
+  onpagedeactivated(() => { fiddleSave(); dbSave(); });
+  await load_syms(); 
+  await load_db(); 
+  let dicode = CODE.di = await route_path_yaml_dict('../basejs/z_all.yaml');
+  let dijustcode = CODE.justcode = await route_path_yaml_dict('../basejs/z_allcode.yaml');
+  let dihistory = CODE.history = await route_path_yaml_dict('../basejs/z_allhistory.yaml');
+  dTable = mSection({ h: window.innerHeight - 68 }, 'dTable');
+  fiddleInit();
+  show_sidebar(sortCaseInsensitive(get_keys(dicode.func)), onclickCodeInSidebar);
+  onclickCodeInSidebar('mAutocomplete')
+}
 function test00_div_mit_sidebar() {
   let dMain = mBy('dMain');
   mStyleX(dMain, { h: '100%', w: '100%', box: true, bg: 'silver', padding: 10 });
@@ -82178,6 +82425,22 @@ function test01_show_w3colors() {
   for (const c of [wblue, wred, worange, wgreen, wamber, wyellow, wbrown]) {
     let d = mDiv(dMain, { w: 100, h: 100, bg: c, margin: 10 });
   }
+}
+function test02() {
+  let code = AU.ta.value;
+  let disub = computeClosure(code);
+  let keys = {};
+  for (const type in disub) {
+    let klist = sortCaseInsensitive(get_keys(disub[type]));
+    klist.map(x => keys[x] = disub[type][x]);
+  }
+  CODE.lastClosure = disub;
+  CODE.closureKeys = keys;
+  let ksorted = [];
+  for (const k of CODE.keysSorted) {
+    if (isdef(CODE.closureKeys[k])) ksorted.push(k);
+  }
+  CODE.closureKeysSorted = ksorted;
 }
 function test02_div_mit_sidebar() {
   let dMain = mBy('dMain');
@@ -82224,6 +82487,12 @@ function test02_turnDeckFaceDown() {
   showCards52(hand, 'down');
   console.log(hand[0].faceUp)
   hand.turnFaceDown();
+}
+function test03() {
+  if (nundef(CODE.closureKeysSorted)) test1();
+  console.log('closure', CODE.closureKeysSorted);
+  let text = CODE.closureKeysSorted.map(x => CODE.justcode[x]).join('\r\n');
+  downloadAsText(text, 'hallo', 'js');
 }
 function test03_2Hands() {
   let h1 = iMakeHand([0, 1, 2, 3, 4], 'h1');
@@ -82435,6 +82704,12 @@ function test03_trash() {
   mAppend(item.div, dover);
   anim1(item.div, 'left', 0, 200, 1000);
 }
+function test04() {
+  dTable = mSection({ h: window.innerHeight - 68 }, 'dTable');
+  dSearch = mSection({}, 'dSearch'); mInputLineWithButtons(dSearch, { Go: fiddleSearch }, 'grid');
+  show_sidebar(sortCaseInsensitive(get_keys(CODE.di.func)), onclickCodeInSidebar);
+  onclickCodeInSidebar(rChoose(CODE.keylist)); //'mAutocomplete')
+}
 function test04_div_mit_sidebar() {
   let dMain = mBy('dMain');
   mStyleX(dMain, { h: '100%', w: '100%', box: true, bg: 'silver', padding: 10 });
@@ -82466,6 +82741,12 @@ function test04_textItems() {
   console.log('items', items)
   presentItems(items, dTable, 4);
 }
+function test05() {
+  dTable = mSection({ h: window.innerHeight - 128 }, 'dTable');
+  dSearch = mSection({ padding: 2 }, 'dSearch'); mInputLineWithButtons(dSearch, { Go: fiddleSearch }, 'grid');
+  show_sidebar(sortCaseInsensitive(get_keys(CODE.di.func)), onclickCodeInSidebar);
+  onclickCodeInSidebar('SimpleGrid');
+}
 function test05_deck_in_grid() {
   let d1 = addDivToBody(100, 50, '%')
   let deck = createDeckWithJokers();
@@ -82479,6 +82760,23 @@ function test05_div_mit_sidebar() {
   let dSide = mDiv(d, { bg: 'silver' });
   let dContent = mDiv(d, { bg: worange });
   let sb = iSidebar(d, dSide, dContent, b, 120, false);
+}
+function test06() {
+  let divnames = get_keys(CODE.di.var);
+  divnames = divnames.filter(x => x[0] == 'd' && x[1] == x[1].toUpperCase() && !isNumber(x[x.length - 1]));
+  show_sidebar(sortCaseInsensitive(divnames), onclickCodeInSidebar);
+  console.log('divnames', divnames.join());
+  let s = 'dActions,dAux,dAuxContent,dBottom,dButtons,dCenter,dCode,dConsole,dContent,dCurrent,dError';
+  let s1 = 'dFeedback,dFiddle,dFleetingMessage,dFooter,dGameControls,dGames,dGameTitle,dHeader,dHelp,dHint';
+  let s2 = 'dInstruction,dLeft,dLeiste,dLevel';
+  let s3 = 'dLineBottom,dLineBottomLeft,dLineBottomMiddle,dLineBottomOuter,dLineBottomRight';
+  let s4 = 'dLineTable,dLineTableLeft,dLineTableMiddle,dLineTableOuter,dLineTableRight';
+  let s5 = 'dLineTitle,dLineTitleLeft,dLineTitleMiddle,dLineTitleOuter,dLineTitleRight';
+  let s6 = 'dLineTop,dLineTopLeft,dLineTopMiddle,dLineTopOuter,dLineTopRight';
+  let s7 = 'dLinks,dLoggedIn,dLogo,dMain,dMap,dMenu,dMessage,dMoveControls,dOben';
+  let s7a = 'dPage,dParent,dPlayerNames,dPlayerStats';
+  let s8 = 'dPuppet,dRechts,dRight,dScore,dSettings,dSidebar,dStatus,dSubmitMove';
+  let s9 = 'dTable,dTableName,dTables,dTableShield,dTitle,dTop,dUnten,dUserControls,dUsers';
 }
 function test06_coButtonSidebarDiv() {
   let dMain = mBy('dMain');
@@ -83153,6 +83451,14 @@ async function test12_iconviewer() {
 }
 function test12_try_svg() {
 }
+function test13() {
+  let d = document.body;
+  dTable = mDiv(d, { box: true, padding: 4, w: '100vw', h: '100vh', bg: GREEN }, 'dTable');
+  dFiddle = mDiv(dTable, { w: 200, h: 200, bg: RED, padding: 4 }, 'dFiddle');
+  dTitle = mDiv(dFiddle, {}, null, 'Fiddle');
+  AU.ta = mDom(dFiddle, { w: '100%', h: 'rest', bg: '#ffffff80' }, { id: 'ta', className: 'plain', tag: 'textarea' });
+  console.log('AU.ta class', AU.ta)
+}
 function test13_doubleDD() {
   let dParent = addDivToBody();
   dParent.id = 'dParent';
@@ -83378,6 +83684,23 @@ function test14_function() {
   C.add({ astep: .1, a: 0, bstep: .1, b: 0, color: 'skyblue', thickness: 1, basefunc: x => -x * (-Math.sign(x)), func: x => Math.sin(x), update: oscillator });
   C.play();
 }
+function test15() {
+  let d = document.body; mClass(d, 'fullpage');
+  let areas = [
+    'dTestButtons dTestButtons',
+    'dSearch dSidebar',
+    'dFiddle dSidebar',
+    'dTable dSidebar',
+  ];
+  let cols = '1fr 200px';
+  let rows = 'auto auto auto 1fr';
+  dGrid = mGridFrom(d, areas, cols, rows);
+  for (const ch of arrChildren(dGrid)) {
+    console.log('rect', ch.id, getRect(ch))
+  }
+  mStyle(dGrid, { fg: 'white', bg: 'silver' })
+  test15_weiter();
+}
 function test15_addDivU() {
   let dParent = addDivU({ dParent: document.body, bg: 'yellow', margin: 10, w: 300, h: 200, unit: 'px', float: 'right' });
   let d = addDivU({ dParent: dParent, x: 20, y: 50, w: 100, h: 100, unit: 'px', position: 'absolute', bg: 'red' });
@@ -83409,6 +83732,31 @@ function test15_qa() {
     stq: { padding: 12, weight: 'bold', family: 'opensans', fz: 28 },
   };
   q0();
+}
+function test15_weiter() {
+  mStyle(dFiddle, { padding: 4, h: 400 });
+  mClear(dFiddle)
+  dTestButtons.innerHTML = 'Test Buttons'
+  mDom(dFiddle, {}, { html: 'Fiddle' })
+  AU.ta = mDom(dFiddle, { w100: true, hrest: true, bg: '#ffffff80' }, { tag: 'textarea', id: 'ta', className: 'plain hop1' });
+  console.log('AU.ta', AU.ta)
+}
+function test16() {
+  let d = document.body; mClass(d, 'fullpage');
+  let areas = [
+    'dTestButtons dTestButtons',
+    'dSearch dSidebar',
+    'dFiddle dSidebar',
+    'dTable dSidebar',
+  ];
+  let cols = '1fr 200px';
+  let rows = 'auto auto auto 1fr';
+  dPage = mGridFrom(d, areas, cols, rows);
+  mStyle(dPage, { fg: 'white', bg: 'silver' })
+  mStyle(dFiddle, { h: 400, padding: 14, box: true });
+  mDom(dFiddle, {}, { html: 'Fiddle' });
+  AU.ta = mDom(dFiddle, { w100: true, box: true, h: 'rest', bg: '#ffffff80' }, { tag: 'textarea', id: 'ta', className: 'plain hop1' });
+  maButton('test', onclickTest, dTestButtons, { className: 'a' });
 }
 function test16_fa_animation() {
   dTable = mBy('map');
@@ -83463,6 +83811,25 @@ function test16_g() {
 }
 function test16_yt() {
   playt();
+}
+function test16a() {
+  let d = document.body; mClass(d, 'fullpage');
+  let areas = [
+    'dTestButtons dTestButtons',
+    'dSearch dSidebar',
+    'dFiddle dSidebar',
+    'dTable dSidebar',
+  ];
+  let cols = '1fr 200px';
+  let rows = 'auto auto auto 1fr';
+  dPage = mGridFrom(d, areas, cols, rows, { padding: 4, box: true });
+  mStyle(dPage, { fg: 'white', bg: 'silver' }); 
+  let elem = mSearch('keywords:',mySearch,dSearch); 
+  mStyle(dFiddle, { h: 400 }); 
+  mDom(dFiddle, {}, { html: 'Edit Code:' });
+  AU.ta = mDom(dFiddle, { w100: true, box: true, h: 'rest', bg: '#ffffff80' }, { tag: 'textarea', id: 'ta', className: 'plain hop1' });
+  mFlex(dTestButtons);
+  mButton('TEST', onclickTest, dTestButtons); 
 }
 function test17_load_save_texte() {
   mStyle(dTable, { h: '100%', family: 'opensans', fz: 20, bg: ORANGE, fg: 'white', position: 'relative' }); mCenterFlex(dTable);

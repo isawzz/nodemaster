@@ -1,0 +1,2251 @@
+AGraph:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+Board:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+Board2D:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+Card52:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+Cardz:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+DeckClass:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+Karte:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+SimpleTimer:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+UIGraph:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+MazeGraph:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+Deck1:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+_poll:
+  - C:\xampp\htdocs\aroot\bundle\apiserver.js
+autopoll:
+  - C:\xampp\htdocs\aroot\bundle\apiserver.js
+ensure_polling:
+  - C:\xampp\htdocs\aroot\bundle\apiserver.js
+handle_result:
+  - C:\xampp\htdocs\aroot\bundle\apiserver.js
+load_assets:
+  - C:\xampp\htdocs\aroot\bundle\apiserver.js
+phpPost:
+  - C:\xampp\htdocs\aroot\bundle\apiserver.js
+pollStop:
+  - C:\xampp\htdocs\aroot\bundle\apiserver.js
+processServerdata:
+  - C:\xampp\htdocs\aroot\bundle\apiserver.js
+send_or_sim:
+  - C:\xampp\htdocs\aroot\bundle\apiserver.js
+stopPolling:
+  - C:\xampp\htdocs\aroot\bundle\apiserver.js
+unpack_table:
+  - C:\xampp\htdocs\aroot\bundle\apiserver.js
+update_table:
+  - C:\xampp\htdocs\aroot\bundle\apiserver.js
+apiphp:
+  - C:\xampp\htdocs\aroot\bundle\apisimphp.js
+data_from_client:
+  - C:\xampp\htdocs\aroot\bundle\apisimphp.js
+db_clear_players:
+  - C:\xampp\htdocs\aroot\bundle\apisimphp.js
+db_new_table:
+  - C:\xampp\htdocs\aroot\bundle\apisimphp.js
+db_read_playerdata:
+  - C:\xampp\htdocs\aroot\bundle\apisimphp.js
+db_read_table:
+  - C:\xampp\htdocs\aroot\bundle\apisimphp.js
+db_table_exists:
+  - C:\xampp\htdocs\aroot\bundle\apisimphp.js
+db_write_fen:
+  - C:\xampp\htdocs\aroot\bundle\apisimphp.js
+db_write_player:
+  - C:\xampp\htdocs\aroot\bundle\apisimphp.js
+get_now:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+  - C:\xampp\htdocs\aroot\bundle\apisimphp.js
+sendSIMSIM:
+  - C:\xampp\htdocs\aroot\bundle\apisimphp.js
+addIf:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+addKeys:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+addMonthToDate:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+addWeekToDate:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+aFlip:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+agCircle:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+agColoredShape:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+agEllipse:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+agG:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+agHex:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+agLine:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+agPoly:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+agRect:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+agShape:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+allNumbers:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+alphaToHex:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+aMove:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+animateProperty:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+animatePropertyX:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+aRotate:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+aRotateAccel:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+arr_get_max:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+arr_get_min:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+arrBuckets:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+arrChildren:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+arrClear:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+arrCount:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+arrCycle:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+arrExtend:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+arrFirst:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+arrFlatten:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+arrFromIndex:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+arrFromTo:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+arrFunc:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+arrIndices:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+arrLast:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+arrLastOfLast:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+arrMax:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+arrMin:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+arrMinMax:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+arrMinus:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+arrPlus:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+arrRange:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+arrRemove:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+arrRemoveLast:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+arrRemovip:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+arrRepeat:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+arrReplace:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+arrReplace1:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+arrReverse:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+arrRotate:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+arrShufflip:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+arrSplitAtIndex:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+arrSplitByIndices:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+arrSum:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+arrSwap:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+arrTake:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+arrTakeLast:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+arrTakeWhile:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+arrWithout:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+arrZip:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+assertion:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+aSvg:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+aSvgg:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+aTranslateBy:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+aTranslateByEase:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+aTranslateFadeBy:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+bottom_elem_from_to:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+bottom_elem_from_to_top:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+calculateDaysBetweenDates:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+capitalize:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+choose:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+chooseRandom:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+clear_timeouts:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+clearElement:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+clearFleetingMessage:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+coin:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+colorDark:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+colorFrom:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+colorFromHSL:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+colorHex:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+colorHSL:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+colorHSLBuild:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+colorHue:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+colorHueWheel:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+colorIdealText:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+colorLight:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+colorPalette:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+colorPaletteFromImage:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+colorPaletteFromUrl:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+colorRGB:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+colorsFromBFA:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+colorShades:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+colorTrans:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+colorTransPalette:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+colorWheel:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+contains:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+copyKeys:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+date2locale:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+dict2list:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+divInt:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+draw_from_deck_to:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+draw_from_deck_to_board:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+drawFlatHex:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+drawHex:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+drawPlainCircle:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+drawShape:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+drawSym:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+drawText:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+drawTriangle:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+elem_from_to:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+elem_from_to_top:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+endsWith:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+ensureColorDict:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+errlog:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+evNoBubble:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+evToClass:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+evToClosestId:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+evToId:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+evToProp:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+evToTargetAttribute:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+find_minimum:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+find_minimum_by_function:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+findAncestorElemOfType:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+findAncestorElemWithParentOfType:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+findAttributeInAncestors:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+findChildOfType:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+findChildrenOfType:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+findChildWithClass:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+findChildWithId:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+findDescendantOfType:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+findDescendantWithId:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+findKeys:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+findParentWithClass:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+findParentWithId:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+fireClick:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+fireKey:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+fireWheel:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+firstCond:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+firstCondDict:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+firstCondDictKey:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+firstCondDictKeys:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+firstNCond:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+firstNumber:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+fisherYates:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+fleetingMessage:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+forAll:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+format_currency:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+format_date:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+gBg:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+gCanvas:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+gCreate:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+gEllipse:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+genCats:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+get_keys:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+get_mouse_pos:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+get_values:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+get_weekday:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+getAnimals:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+getColorHexes:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+getColorNames:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+getFunctionCallerName:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+getFunctionsNameThatCalledThisFunction:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+getGSGElements:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+getKeySets:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+getNature:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+getRect:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+getSizeNeeded:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+getStyleProp:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+getTextSize:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+getTextSizeX:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+getTextSizeX1:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+getTextWidth:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+getTypeOf:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+getUID:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+gFg:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+gG:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+gHex:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+gLine:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+gPoly:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+gPos:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+gRect:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+gRounding:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+gShape:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+gSize:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+gSizeToContent:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+gStroke:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+gSvg:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+hasWhiteSpace:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+hexAToHSLA:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+hexToHSL:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+hide:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+HSLAToRGBA:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+hslToHex:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+HSLToRGB:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+iAdd:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+iDiv:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+if_stringified_or_dict:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+if_stringified_or_list:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+if_stringified_or_string:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+iG:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+iMeasure:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+incInput:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+iRegister:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+isAlphaNum:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+isdef:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+isDict:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+isDictOrList:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+isDigit:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+isDOM:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+isEmpty:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+isEmptyOrWhiteSpace:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+isLetter:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+isList:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+isListOf:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+isLiteral:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+isNumber:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+isOverflown:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+isString:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+isSvg:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+iSvg:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+isVisible:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+isWhiteSpace:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+isWhiteSpace2:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+isWhiteSpaceString:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+jsClean:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+jsCopy:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+jsCopySafe:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+jsonToYaml:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+last_elem_from_to:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+lastCond:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+lastDescendantOfType:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+list2dict:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+load_assets_direct:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+load_assets_fetch:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+load_syms:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+loader_off:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+loader_on:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+log_array:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+log_object:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+lookup:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+lookupAddIfToList:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+lookupAddToList:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+lookupSet:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+lookupSetOverride:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+makeCategories:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+makeUnitString:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mAnimate:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mAnimateList:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mAnimateTo:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mAppear:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mAppend:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mAttrs:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mBackground:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mBoxFromMargins:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mButton:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mButtonX:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mBy:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mCard:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mCardButton:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mCardText:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mCenterCenterFlex:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mCenterFlex:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mClass:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mClass0:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mClassRemove:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mClassReplace:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mClear:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mColFlex:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mColorLetters:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mColorPickerBehavior:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mColorPickerControl:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mCreate:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mCreateFrom:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mDataTable:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mDiv:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mDiv100:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mDivItem:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mDivLR:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mDover:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mDraggable:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mDroppable:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+measure_fieldset:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+measureTextX:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mEdit:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mEditableInput:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mEditableOnEdited:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mEditNumber:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mEditRange:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mEditX:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mFade:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mFadeClear:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mFadeClearShow:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mFadeRemove:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mFall:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mFlex:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mFlexColumn:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mFlexEvenly:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mFlexLR:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mFlexSpacebetween:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mFlexWrap:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mForm:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mFromPoint:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mGetStyle:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mGrid:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mgSvg:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mgTag:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mgText:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mHide:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mIfNotRelative:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mImage:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mImg:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mInput:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mInsert:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mInsertAfter:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mInsertAt:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mInsertFirst:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+miPic:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mItem:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mLine:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mLinebreak:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mLinebreakFlex:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mLink:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mMagnifyOnHoverControl:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mMagnifyOnHoverControlPopup:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mMagnifyOnHoverControlRemove:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mMeasure:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mNode:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mPlace:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mPopup:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mPos:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mPulse:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mPulse1:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mPulse2:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mPulse3:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mRadio:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mRadio1:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mRadioGroup:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mRadioToggle:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mRemove:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mRemoveChildrenFromIndex:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mRise:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mScale:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mSelectTableRow:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mShield:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mShieldsOff:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mShow:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mShrink:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mShrinkTranslate:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mShrinkUp:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mSize:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mStamp:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mStyle:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mStyleRemove:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mSuit:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mSym:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mSymText:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mTable:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mTableCol:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mTableCommandify:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mTableCommandifyList:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mTableHeader:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mTableRow:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mTableTransition:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mText:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mTextArea:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mTranslate:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mTranslateBy:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mTranslateByFade:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+mYaml:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+normalize_string:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+nundef:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+old_mButtonX:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+oneWordKeys:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+plural:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+pSBC:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+rAlphanums:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+randomColor:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+range:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+rCard:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+rChoose:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+rCoin:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+rColor:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+rDate:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+rDigits:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+recConvertLists:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+removeDuplicates:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+removeInPlace:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+replaceAll:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+replaceAllFast:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+replaceAllSafe:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+replaceAllSpecialChars:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+replaceAllX:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+replaceAtString:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+replaceEvery:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+return_elem_to_deck_from:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+reverse:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+RGBAToHex9:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+RGBAToHSLA:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+rgbToHex:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+RGBToHex7:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+RGBToHSL:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+rHue:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+rLetter:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+rLetters:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+rNumber:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+route_path_yaml_dict:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+rPassword:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+rPrimaryColor:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+rRank:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+rSuit:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+sameList:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+selectText:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+setKeys:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+setRect:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+show:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+show_special_message:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+showFleetingMessage:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+shuffle:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+shuffle_children:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+shuffleChildren:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+sortBy:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+sortByDescending:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+sortByFunc:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+sortByFuncDescending:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+sortNumbers:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+splitAtAnyOf:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+splitIntoNumbersAndWords:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+start_simple_timer:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+startsWith:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+stop_simple_timer:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+stringAfter:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+stringAfterLast:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+stringBefore:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+stringBeforeLast:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+stringBetween:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+stringBetweenLast:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+stripToKeys:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+timeConversion:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+toElem:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+toggleSelection:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+toggleSelectionOfPicture:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+toLetters:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+top_elem_from_to:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+top_elem_from_to_top:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+toWords:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+unfocusOnEnter:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+valf:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+valfi:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+accuse_get_card:
+  - C:\xampp\htdocs\aroot\bundle\cards.js
+accuse_get_card_func:
+  - C:\xampp\htdocs\aroot\bundle\cards.js
+aggregate_player_hands_by_rank:
+  - C:\xampp\htdocs\aroot\bundle\cards.js
+anim_face_down:
+  - C:\xampp\htdocs\aroot\bundle\cards.js
+anim_face_up:
+  - C:\xampp\htdocs\aroot\bundle\cards.js
+anim_toggle_face:
+  - C:\xampp\htdocs\aroot\bundle\cards.js
+ari_get_card:
+  - C:\xampp\htdocs\aroot\bundle\cards.js
+ari_get_card_large:
+  - C:\xampp\htdocs\aroot\bundle\cards.js
+calc_hand_value:
+  - C:\xampp\htdocs\aroot\bundle\cards.js
+cardFromInfo:
+  - C:\xampp\htdocs\aroot\bundle\cards.js
+colored_jolly:
+  - C:\xampp\htdocs\aroot\bundle\cards.js
+correct_handsorting:
+  - C:\xampp\htdocs\aroot\bundle\cards.js
+create_card_assets_c52:
+  - C:\xampp\htdocs\aroot\bundle\cards.js
+create_fen_deck:
+  - C:\xampp\htdocs\aroot\bundle\cards.js
+face_down:
+  - C:\xampp\htdocs\aroot\bundle\cards.js
+face_down_alt:
+  - C:\xampp\htdocs\aroot\bundle\cards.js
+face_up:
+  - C:\xampp\htdocs\aroot\bundle\cards.js
+ferro_get_card:
+  - C:\xampp\htdocs\aroot\bundle\cards.js
+find_index_of_jolly:
+  - C:\xampp\htdocs\aroot\bundle\cards.js
+find_jolly_rank:
+  - C:\xampp\htdocs\aroot\bundle\cards.js
+get_c52j_info:
+  - C:\xampp\htdocs\aroot\bundle\cards.js
+get_color_of_card:
+  - C:\xampp\htdocs\aroot\bundle\cards.js
+get_container_styles:
+  - C:\xampp\htdocs\aroot\bundle\cards.js
+get_containertitle_styles:
+  - C:\xampp\htdocs\aroot\bundle\cards.js
+get_group_rank:
+  - C:\xampp\htdocs\aroot\bundle\cards.js
+get_joker_info:
+  - C:\xampp\htdocs\aroot\bundle\cards.js
+get_sequence_suit:
+  - C:\xampp\htdocs\aroot\bundle\cards.js
+has_at_most_n_jolly:
+  - C:\xampp\htdocs\aroot\bundle\cards.js
+has_jolly:
+  - C:\xampp\htdocs\aroot\bundle\cards.js
+heritage_card_deco:
+  - C:\xampp\htdocs\aroot\bundle\cards.js
+is_card_key:
+  - C:\xampp\htdocs\aroot\bundle\cards.js
+is_joker:
+  - C:\xampp\htdocs\aroot\bundle\cards.js
+is_jolly:
+  - C:\xampp\htdocs\aroot\bundle\cards.js
+is_overlapping_set:
+  - C:\xampp\htdocs\aroot\bundle\cards.js
+jolly_matches:
+  - C:\xampp\htdocs\aroot\bundle\cards.js
+luxury_card_deco:
+  - C:\xampp\htdocs\aroot\bundle\cards.js
+pop_top:
+  - C:\xampp\htdocs\aroot\bundle\cards.js
+remove_card_shadow:
+  - C:\xampp\htdocs\aroot\bundle\cards.js
+replace_jolly:
+  - C:\xampp\htdocs\aroot\bundle\cards.js
+set_card_border:
+  - C:\xampp\htdocs\aroot\bundle\cards.js
+set_card_style:
+  - C:\xampp\htdocs\aroot\bundle\cards.js
+set_card_style_works:
+  - C:\xampp\htdocs\aroot\bundle\cards.js
+sheriff_card:
+  - C:\xampp\htdocs\aroot\bundle\cards.js
+sort_cards:
+  - C:\xampp\htdocs\aroot\bundle\cards.js
+sortByRank:
+  - C:\xampp\htdocs\aroot\bundle\cards.js
+sortCardItemsByRank:
+  - C:\xampp\htdocs\aroot\bundle\cards.js
+sortCardItemsBySuit:
+  - C:\xampp\htdocs\aroot\bundle\cards.js
+sortCardItemsToSequence:
+  - C:\xampp\htdocs\aroot\bundle\cards.js
+spread_hand:
+  - C:\xampp\htdocs\aroot\bundle\cards.js
+symbolcolor:
+  - C:\xampp\htdocs\aroot\bundle\cards.js
+to_aristocard:
+  - C:\xampp\htdocs\aroot\bundle\cards.js
+to_commissioncard:
+  - C:\xampp\htdocs\aroot\bundle\cards.js
+to_luxurycard:
+  - C:\xampp\htdocs\aroot\bundle\cards.js
+to_rumorcard:
+  - C:\xampp\htdocs\aroot\bundle\cards.js
+toggle_face:
+  - C:\xampp\htdocs\aroot\bundle\cards.js
+ui_add_cards_to_deck_container:
+  - C:\xampp\htdocs\aroot\bundle\cards.js
+ui_add_cards_to_hand_container:
+  - C:\xampp\htdocs\aroot\bundle\cards.js
+ui_add_container_title:
+  - C:\xampp\htdocs\aroot\bundle\cards.js
+ui_make_container:
+  - C:\xampp\htdocs\aroot\bundle\cards.js
+ui_make_deck_container:
+  - C:\xampp\htdocs\aroot\bundle\cards.js
+ui_make_hand_container:
+  - C:\xampp\htdocs\aroot\bundle\cards.js
+ui_type_building:
+  - C:\xampp\htdocs\aroot\bundle\cards.js
+ui_type_church:
+  - C:\xampp\htdocs\aroot\bundle\cards.js
+ui_type_deck:
+  - C:\xampp\htdocs\aroot\bundle\cards.js
+ui_type_hand:
+  - C:\xampp\htdocs\aroot\bundle\cards.js
+ui_type_lead_hand:
+  - C:\xampp\htdocs\aroot\bundle\cards.js
+ui_type_market:
+  - C:\xampp\htdocs\aroot\bundle\cards.js
+ui_type_rank_count:
+  - C:\xampp\htdocs\aroot\bundle\cards.js
+activate_playerstats:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+activate_ui:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+aggregate_elements:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+ai_move:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+ai_schummler:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+animate_card_approx:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+animate_card_exchange:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+animate_card_transfer:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+animate_title:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+animatedTitle:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+ari_show_handsorting_buttons_for:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+beautify_history:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+clear_screen:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+clear_status:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+clear_title:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+clearPlayers:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+collect_game_specific_options:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+complexCompare:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+compute_hidden:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+deactivate_ui:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+delete_table:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+ev_to_gname:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+exchange_by_index:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+find_card:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+gamestep:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+generate_table_name:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+get_admin_player:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+get_checked_radios:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+get_default_options:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+get_game_color:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+get_logout_button:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+get_multi_trigger:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+get_next_human_player:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+get_next_in_list:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+get_next_player:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+get_playmode:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+get_present_order:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+get_present_order_accuse:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+get_screen_distance:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+get_texture:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+get_user_color:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+get_user_pic:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+get_user_pic_and_name:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+get_user_pic_html:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+get_waiting_html:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+hFunc:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+hide_buildings:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+HPLayout:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+HRPLayout:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+i_am_acting_host:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+i_am_host:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+i_am_trigger:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+if_hotseat_autoswitch:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+if_plural:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+if_stringified:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+intersection:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+is_advanced_user:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+is_ai_player:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+is_collect_mode:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+is_color:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+is_current_player_bot:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+is_human_player:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+is_just_my_turn:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+is_loggedin:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+is_multi_stage:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+is_multi_trigger:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+is_player:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+is_playerdata_set:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+is_playing:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+is_shield_mode:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+is_stringified:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+mFlip:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+new_cards_animation:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+object2string:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+path2fen:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+path2UI:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+PHLayout:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+player_stat_count:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+prep_move:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+PRHLayout:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+remove_hourglass:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+remove_player:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+round_change_animation:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+sendgameover:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+set_player:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+set_player_strategy:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+set_user:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+shield_off:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+shield_on:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+show_admin_ui:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+show_fleeting_message:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+show_game_menu:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+show_game_options:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+show_games:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+show_handsorting_buttons_for:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+show_history:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+show_history_layout:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+show_history_popup:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+show_home_logo:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+show_hourglass:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+show_instruction:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+show_message:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+show_MMM:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+show_options_popup:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+show_player_button:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+show_playerdatastate:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+show_polling_signal:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+show_progress:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+show_role:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+show_settings:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+show_status:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+show_strategy_popup:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+show_tables:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+show_title:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+show_username:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+show_users:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+show_view_buildings_button:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+show_waiting_for_ack_message:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+show_waiting_message:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+show_winners:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+shuffletest:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+simpleCompare:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+sss:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+sss1:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+start:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+start_game_with_players:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+start_with_assets:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+startgame:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+staticTitle:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+status_message_new:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+stopgame:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+switch_uname:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+tableLayoutMR:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+take_feedback_host:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+take_turn:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+take_turn_fen:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+take_turn_fen_clear:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+take_turn_fen_write:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+take_turn_multi:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+take_turn_spotit:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+take_turn_state1:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+take_turn_state2:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+take_turn_waiting:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+take_turn_write:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+ui_player_info:
+  - C:\xampp\htdocs\aroot\bundle\gamehelpers.js
+_calc_hex_col_array:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+_calc_hex_col_array_old:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+addRowsCols:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+anim1:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+applyStyles:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+ari_deck_add_safe:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+aristoUi:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+arrToMatrix:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+bCapturedPieces:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+bCheck:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+bCreateEmpty:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+bFreeRayDir:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+bFreeRayDir1:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+bFullCol:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+bFullDiag:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+bFullDiag2:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+bFullRow:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+bGetChunks:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+bGetChunksWithIndices:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+bGetCol:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+bGetCols:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+bGetRow:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+bGetRows:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+bGetSubMatrix:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+bGetSubMatrixWithIndices:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+bNei:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+bNeiDir:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+boardArrOmitFirstRowCol:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+boardToNode:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+bPartialCol:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+bPartialDiag:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+bPartialDiag2:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+bPartialRow:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+bRayDir:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+bStrideCol:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+bStrideColFrom:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+bStrideDiag2From:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+bStrideDiagFrom:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+bStrideRow:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+bStrideRowFrom:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+cardInno1:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+cardPattern:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+cardZone:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+catanBoard:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+cBlank:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+cBlankSvg:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+cCircle:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+check_complete_set:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+checkBoardEmpty:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+checkBoardFull:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+checkPotentialTTT:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+checkSudokuRule:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+checkSudokuRule_trial1:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+checkwinners:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+checkwinnersC4:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+checkwinnersPossible:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+checkwinnersTTT:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+circleCenters:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+cLandscape:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+clearStatus:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+clearTable:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+correctPolys:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+cPortrait:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+create_set_card:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+cRound:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+cTitleArea:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+dachain:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+dachainext:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+deck_add:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+deck_deal:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+destroySudokuRule:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+draw_set_card:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+draw_set_card_test:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+expandBoard:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+fen_from_info:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+fillColarr:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+fitFont:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+fitSvg:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+gameItem:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+get_card_div:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+get_card_key52:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+get_create_staged:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+get_random_attr_val:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+get_splay_number:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+get_splay_word:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+getCenters:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+getCentersFromAreaSize:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+getCentersFromRowsCols:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+getCornerVertices:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+getSudokuPattern:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+getSudokuPatternFromDB:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+giRep:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+gSet_attributes:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+has_farm:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+hasDuplicate:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+hex1Board:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+hex1Centers:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+hex1Count:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+hex1Indices:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+hexCenters:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+hexCornerNodes:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+hide_history_popup:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+hide_options_popup:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+i52:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+iAppend52:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+id2name:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+iFace:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+iFaceDown:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+iFaceUp:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+iFromRowCol:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+iH00:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+iH00_dep:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+iH01:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+iHand52:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+iHandZone:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+iHandZone_test:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+iMakeHand:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+iMakeHand_test:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+indexDiff:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+info_from_fen:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+inno_calc_visible_syms:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+inno_calc_visible_syms_pile:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+inno_card:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+inno_card_fixed_font:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+inno_create_card_assets:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+inno_get_basic_deck_age:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+inno_get_cardinfo:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+inno_get_deck_age:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+inno_get_hand_actions:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+inno_get_id:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+inno_get_object_keys:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+inno_get_phase:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+inno_get_player_age:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+inno_get_splay:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+inno_get_top_card_actions:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+inno_get_top_card_info:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+inno_get_top_card_keys:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+inno_present_board:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+inno_present_card:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+inno_present_cards:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+inno_present_hand:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+inno_setup:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+inno_show_other_player_info:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+inno_shuffle_decks:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+inno_stat_sym:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+innoAgeNumber:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+innoBonusNumber:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+innoEcho:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+innoFlag:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+innoInspire:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+innoSym:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+innoSymInline:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+innoText:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+insertColNew:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+insertRowNew:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+iPresentHand:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+iPresentHand_test:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+iRemakeHand:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+iResize52:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+is_card:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+isOppPiece:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+iSortHand:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+iSortHand_test:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+iSplay52:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+iTableBounds:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+iToRowCol:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+make_goal_set:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+make_set_deck:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+makeEdge:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+makeInfobox:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+makeInnoNumberDiv:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+makeInnoSymbolDiv:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+makeNumberSpan:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+makeSymbolSpan:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+mCols:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+mColsX:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+mContainerSplay:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+mContainerSplay_WORKS:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+mContent:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+mContentX:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+mFillText:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+mgPos:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+mgShape:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+mgSize:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+mgSuit:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+mgSuit1:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+mgSym:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+mItemSplay:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+mPlaceText:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+mRows:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+mRowsX:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+mSymbol:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+mSymFramed:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+mSymInDiv:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+mSymInDivShrink:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+mSymInline:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+mSymSizeToBox:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+mSymSizeToFz:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+mSymSizeToH:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+mSymSizeToW:
+  - C:\xampp\htdocs\aroot\bundle\basemin.js
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+mTableCommands:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+name2id:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+neighborhood:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+netHandSize:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+onclick_lamp:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+onclick_last_test:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+onclick_pause_continue:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+onclick_player_in_gametable:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+onclick_reset_past:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+onclick_run_tests:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+onclick_step:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+onclick_ut_n:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+oneCircleCenters:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+placeSymbol:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+printBoard:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+printMatrix:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+printState:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+quadCenters:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+randomC52:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+randomCard52:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+randomRank:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+randomSuit:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+reduceBoard:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+removeColNew:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+removeRowNew:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+rPlayerOrder:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+set_card_constants:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+setSymLabel:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+show_advanced_ui:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+show_card:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+show_medium_ui:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+show_settings_orig:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+show_simple_ui_orig:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+show_status_orig:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+show_title_left:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+show_title_right:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+show_user:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+show_x_button:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+showCards:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+sort_cards_orig:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+splayout:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+spotitCard:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+spotitDeal:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+spotitFindCardSharingSymbol:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+spotitFindSymbol:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+spotitOnClickSymbol:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+stdCardsContainer:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+stdColOverlapContainer:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+stdDeckContainer:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+stdGridContainer:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+stdHandContainer:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+stdRowOverlapContainer:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+stdRowsColsContainer:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+stringToMatrix:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+sudokuSampleToIndexMatrix:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+test_add_building:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+test_add_schwein:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+test_endgame:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+test_skip_to_actions:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+test_skip_to_tax:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+testanim0:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+testanim1:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+testjourney0:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+testSplitIntoNumbersAndWords:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+toBoardString:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+toggle_games_off:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+toggle_games_on:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+toggle_tables_off:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+toggle_tables_on:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+toggle_users_off:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+toggle_users_on:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+useSymbolElemNO:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+onclick_ack:
+  - C:\xampp\htdocs\aroot\bundle\onclick.js
+onclick_advanced_menu:
+  - C:\xampp\htdocs\aroot\bundle\onclick.js
+onclick_advanced_mode:
+  - C:\xampp\htdocs\aroot\bundle\onclick.js
+onclick_advanced_test:
+  - C:\xampp\htdocs\aroot\bundle\onclick.js
+onclick_by_rank:
+  - C:\xampp\htdocs\aroot\bundle\onclick.js
+onclick_by_suit:
+  - C:\xampp\htdocs\aroot\bundle\onclick.js
+onclick_cancelmenu:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+  - C:\xampp\htdocs\aroot\bundle\onclick.js
+onclick_experience:
+  - C:\xampp\htdocs\aroot\bundle\onclick.js
+onclick_game_menu_item:
+  - C:\xampp\htdocs\aroot\bundle\onclick.js
+onclick_home:
+  - C:\xampp\htdocs\aroot\bundle\legacy.js
+  - C:\xampp\htdocs\aroot\bundle\onclick.js
+onclick_logout:
+  - C:\xampp\htdocs\aroot\bundle\onclick.js
+onclick_random:
+  - C:\xampp\htdocs\aroot\bundle\onclick.js
+onclick_reload:
+  - C:\xampp\htdocs\aroot\bundle\onclick.js
+onclick_reload_after_switching:
+  - C:\xampp\htdocs\aroot\bundle\onclick.js
+onclick_remove_host:
+  - C:\xampp\htdocs\aroot\bundle\onclick.js
+onclick_reset_all:
+  - C:\xampp\htdocs\aroot\bundle\onclick.js
+onclick_restart:
+  - C:\xampp\htdocs\aroot\bundle\onclick.js
+onclick_restart_move:
+  - C:\xampp\htdocs\aroot\bundle\onclick.js
+onclick_skip:
+  - C:\xampp\htdocs\aroot\bundle\onclick.js
+onclick_skip_membership_selection:
+  - C:\xampp\htdocs\aroot\bundle\onclick.js
+onclick_start_spotit:
+  - C:\xampp\htdocs\aroot\bundle\onclick.js
+onclick_status:
+  - C:\xampp\htdocs\aroot\bundle\onclick.js
+onclick_table:
+  - C:\xampp\htdocs\aroot\bundle\onclick.js
+onclick_tables:
+  - C:\xampp\htdocs\aroot\bundle\onclick.js
+onclick_tithe_all:
+  - C:\xampp\htdocs\aroot\bundle\onclick.js
+onclick_user:
+  - C:\xampp\htdocs\aroot\bundle\onclick.js
+onclick_view_buildings:
+  - C:\xampp\htdocs\aroot\bundle\onclick.js
+onclick_vote_1:
+  - C:\xampp\htdocs\aroot\bundle\onclick.js
+onclick_vote_empty:
+  - C:\xampp\htdocs\aroot\bundle\onclick.js
+onclick_vote_president:
+  - C:\xampp\htdocs\aroot\bundle\onclick.js
+onclick_vote_random:
+  - C:\xampp\htdocs\aroot\bundle\onclick.js
+onclick_vote_red:
+  - C:\xampp\htdocs\aroot\bundle\onclick.js
+style_advanced_button:
+  - C:\xampp\htdocs\aroot\bundle\onclick.js
+style_not_playing:
+  - C:\xampp\htdocs\aroot\bundle\onclick.js
+style_playing_as_bot:
+  - C:\xampp\htdocs\aroot\bundle\onclick.js
+style_playing_as_human:
+  - C:\xampp\htdocs\aroot\bundle\onclick.js
+test_start_aristo:
+  - C:\xampp\htdocs\aroot\bundle\onclick.js
+test_start_ferro:
+  - C:\xampp\htdocs\aroot\bundle\onclick.js
+toggle_select:
+  - C:\xampp\htdocs\aroot\bundle\onclick.js
+add_transaction:
+  - C:\xampp\htdocs\aroot\bundle\select.js
+ari_make_selectable:
+  - C:\xampp\htdocs\aroot\bundle\select.js
+ari_make_selected:
+  - C:\xampp\htdocs\aroot\bundle\select.js
+ari_make_unselectable:
+  - C:\xampp\htdocs\aroot\bundle\select.js
+ari_make_unselected:
+  - C:\xampp\htdocs\aroot\bundle\select.js
+clear_selection:
+  - C:\xampp\htdocs\aroot\bundle\select.js
+clear_transaction:
+  - C:\xampp\htdocs\aroot\bundle\select.js
+continue_after_error:
+  - C:\xampp\htdocs\aroot\bundle\select.js
+make_card_selectable:
+  - C:\xampp\htdocs\aroot\bundle\select.js
+make_card_selected:
+  - C:\xampp\htdocs\aroot\bundle\select.js
+make_card_unselectable:
+  - C:\xampp\htdocs\aroot\bundle\select.js
+make_card_unselected:
+  - C:\xampp\htdocs\aroot\bundle\select.js
+make_container_selectable:
+  - C:\xampp\htdocs\aroot\bundle\select.js
+make_container_selected:
+  - C:\xampp\htdocs\aroot\bundle\select.js
+make_container_unselectable:
+  - C:\xampp\htdocs\aroot\bundle\select.js
+make_container_unselected:
+  - C:\xampp\htdocs\aroot\bundle\select.js
+make_deck_selectable:
+  - C:\xampp\htdocs\aroot\bundle\select.js
+make_deck_selected:
+  - C:\xampp\htdocs\aroot\bundle\select.js
+make_deck_unselectable:
+  - C:\xampp\htdocs\aroot\bundle\select.js
+make_deck_unselected:
+  - C:\xampp\htdocs\aroot\bundle\select.js
+make_hand_selectable:
+  - C:\xampp\htdocs\aroot\bundle\select.js
+make_hand_selected:
+  - C:\xampp\htdocs\aroot\bundle\select.js
+make_hand_unselectable:
+  - C:\xampp\htdocs\aroot\bundle\select.js
+make_hand_unselected:
+  - C:\xampp\htdocs\aroot\bundle\select.js
+make_market_selectable:
+  - C:\xampp\htdocs\aroot\bundle\select.js
+make_market_selected:
+  - C:\xampp\htdocs\aroot\bundle\select.js
+make_market_unselectable:
+  - C:\xampp\htdocs\aroot\bundle\select.js
+make_market_unselected:
+  - C:\xampp\htdocs\aroot\bundle\select.js
+make_string_selectable:
+  - C:\xampp\htdocs\aroot\bundle\select.js
+make_string_selected:
+  - C:\xampp\htdocs\aroot\bundle\select.js
+make_string_unselectable:
+  - C:\xampp\htdocs\aroot\bundle\select.js
+make_string_unselected:
+  - C:\xampp\htdocs\aroot\bundle\select.js
+pack_table:
+  - C:\xampp\htdocs\aroot\bundle\select.js
+remove_from_selection:
+  - C:\xampp\htdocs\aroot\bundle\select.js
+restart_selection_process:
+  - C:\xampp\htdocs\aroot\bundle\select.js
+select_add_items:
+  - C:\xampp\htdocs\aroot\bundle\select.js
+select_clear_previous_level:
+  - C:\xampp\htdocs\aroot\bundle\select.js
+select_confirm_weiter:
+  - C:\xampp\htdocs\aroot\bundle\select.js
+select_error:
+  - C:\xampp\htdocs\aroot\bundle\select.js
+select_highlight:
+  - C:\xampp\htdocs\aroot\bundle\select.js
+select_last:
+  - C:\xampp\htdocs\aroot\bundle\select.js
+select_timer:
+  - C:\xampp\htdocs\aroot\bundle\select.js
+select_toggle:
+  - C:\xampp\htdocs\aroot\bundle\select.js
+start_transaction:
+  - C:\xampp\htdocs\aroot\bundle\select.js
+stop_timer:
+  - C:\xampp\htdocs\aroot\bundle\select.js
+add_to_chain:
+  - C:\xampp\htdocs\aroot\bundle\sim.js
+ari_test_hand_to_discard:
+  - C:\xampp\htdocs\aroot\bundle\sim.js
+ari_ut0_create_staged:
+  - C:\xampp\htdocs\aroot\bundle\sim.js
+ari_ut1_create_staged:
+  - C:\xampp\htdocs\aroot\bundle\sim.js
+ari_ut10_create_staged:
+  - C:\xampp\htdocs\aroot\bundle\sim.js
+ari_ut100_create_staged:
+  - C:\xampp\htdocs\aroot\bundle\sim.js
+ari_ut101_create_staged:
+  - C:\xampp\htdocs\aroot\bundle\sim.js
+ari_ut102_create_staged:
+  - C:\xampp\htdocs\aroot\bundle\sim.js
+ari_ut103_create_staged:
+  - C:\xampp\htdocs\aroot\bundle\sim.js
+ari_ut104_create_staged:
+  - C:\xampp\htdocs\aroot\bundle\sim.js
+ari_ut105_create_staged:
+  - C:\xampp\htdocs\aroot\bundle\sim.js
+ari_ut106_create_staged:
+  - C:\xampp\htdocs\aroot\bundle\sim.js
+ari_ut107_create_staged:
+  - C:\xampp\htdocs\aroot\bundle\sim.js
+ari_ut108_create_staged:
+  - C:\xampp\htdocs\aroot\bundle\sim.js
+ari_ut109_create_staged:
+  - C:\xampp\htdocs\aroot\bundle\sim.js
+ari_ut11_create_staged:
+  - C:\xampp\htdocs\aroot\bundle\sim.js
+ari_ut110_create_staged:
+  - C:\xampp\htdocs\aroot\bundle\sim.js
+ari_ut111_create_staged:
+  - C:\xampp\htdocs\aroot\bundle\sim.js
+ari_ut112_create_staged:
+  - C:\xampp\htdocs\aroot\bundle\sim.js
+ari_ut113_create_staged:
+  - C:\xampp\htdocs\aroot\bundle\sim.js
+ari_ut12_create_staged:
+  - C:\xampp\htdocs\aroot\bundle\sim.js
+ari_ut13_create_staged:
+  - C:\xampp\htdocs\aroot\bundle\sim.js
+ari_ut14_create_staged:
+  - C:\xampp\htdocs\aroot\bundle\sim.js
+ari_ut15_create_staged:
+  - C:\xampp\htdocs\aroot\bundle\sim.js
+ari_ut16_create_staged:
+  - C:\xampp\htdocs\aroot\bundle\sim.js
+ari_ut2_create_staged:
+  - C:\xampp\htdocs\aroot\bundle\sim.js
+ari_ut206_create_staged:
+  - C:\xampp\htdocs\aroot\bundle\sim.js
+ari_ut3_create_staged:
+  - C:\xampp\htdocs\aroot\bundle\sim.js
+ari_ut306_create_staged:
+  - C:\xampp\htdocs\aroot\bundle\sim.js
+ari_ut4_create_staged:
+  - C:\xampp\htdocs\aroot\bundle\sim.js
+ari_ut5_create_staged:
+  - C:\xampp\htdocs\aroot\bundle\sim.js
+ari_ut6_create_staged:
+  - C:\xampp\htdocs\aroot\bundle\sim.js
+ari_ut7_create_staged:
+  - C:\xampp\htdocs\aroot\bundle\sim.js
+ari_ut8_create_staged:
+  - C:\xampp\htdocs\aroot\bundle\sim.js
+ari_ut9_create_staged:
+  - C:\xampp\htdocs\aroot\bundle\sim.js
+arisim_stage_3:
+  - C:\xampp\htdocs\aroot\bundle\sim.js
+arisim_stage_4:
+  - C:\xampp\htdocs\aroot\bundle\sim.js
+arisim_stage_4_all:
+  - C:\xampp\htdocs\aroot\bundle\sim.js
+arisim_stage_4_all_mimi_starts:
+  - C:\xampp\htdocs\aroot\bundle\sim.js
+ferro_ut0_create_staged:
+  - C:\xampp\htdocs\aroot\bundle\sim.js
+inno_undo_random_deal:
+  - C:\xampp\htdocs\aroot\bundle\sim.js
+inno_ut0_create_staged:
+  - C:\xampp\htdocs\aroot\bundle\sim.js
+inno_ut1_create_staged:
+  - C:\xampp\htdocs\aroot\bundle\sim.js
+inno_ut10_create_staged:
+  - C:\xampp\htdocs\aroot\bundle\sim.js
+inno_ut11_create_staged:
+  - C:\xampp\htdocs\aroot\bundle\sim.js
+inno_ut12_create_staged:
+  - C:\xampp\htdocs\aroot\bundle\sim.js
+inno_ut2_create_staged:
+  - C:\xampp\htdocs\aroot\bundle\sim.js
+inno_ut3_create_staged:
+  - C:\xampp\htdocs\aroot\bundle\sim.js
+inno_ut4_create_staged:
+  - C:\xampp\htdocs\aroot\bundle\sim.js
+inno_ut5_create_staged:
+  - C:\xampp\htdocs\aroot\bundle\sim.js
+inno_ut6_create_staged:
+  - C:\xampp\htdocs\aroot\bundle\sim.js
+inno_ut7_create_staged:
+  - C:\xampp\htdocs\aroot\bundle\sim.js
+inno_ut8_create_staged:
+  - C:\xampp\htdocs\aroot\bundle\sim.js
+inno_ut9_create_staged:
+  - C:\xampp\htdocs\aroot\bundle\sim.js
+stage_building:
+  - C:\xampp\htdocs\aroot\bundle\sim.js
+stage_building_new:
+  - C:\xampp\htdocs\aroot\bundle\sim.js
+stage_correct_buildings:
+  - C:\xampp\htdocs\aroot\bundle\sim.js
+test_engine_run_next:
+  - C:\xampp\htdocs\aroot\bundle\sim.js
+verify_unit_test:
+  - C:\xampp\htdocs\aroot\bundle\sim.js

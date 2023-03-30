@@ -6086,3791 +6086,1692 @@ __________ do 9.2.23 waiting at the airport...   D46
 310: *7:20 AM 2/9/2023-7:24 AM 2/9/2023
 - ich will die info fuer von wo er den code genommen hat!
 __________ fr 10.2.23 waiting at the airport...   D45
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-8073 165th Lane Northeast 749
-8850 Redmond-Woodinville Road Northeast, Unit 405 712
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-=>suche cards
-=>lib renew!
-
-
-- mingame
-
-- wie soll ich update_all1 machen?
-
-- wenn window[k].toString() 
-fuer computeClosure muss ich gewisse funcs aus all1.js (sowie _start) ueberschreiben!!!
-
-
-- 2 major problems:
-1. update overwritten and project-specific code _start
-ok 2. var code too much!!!! muss ich besser filtern!
-
-
-- und wie garantiere ich dass das richtige _start genommen wird???
-- ja es kommt dasselbe raus!
-- test es nochmal, eigentlich sollte er jetzt test100 drin haben!
-- computeClosure(dir)
-- jetzt mach ich compute closure fuer ein project!!!
-- wie wird o von window object gemacht?
-
-
-- filter out code of all1.js used in a project:
-1. enter all keys in start.js
-2. for each of those keys, enter all keys in its code
-3. do 2 until number does not change
-
-
-
-- wenn ich an etwas arbeite: bau1,2,3
-- wenn fertig: integrate back!
-- wohin mit den 2 base files?
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-theoretisch koennt ich modules reinbringen aber will ich das?
-
-
-
-
-
-
-
-hack_repair
-BRAUN wird nicht detected!
-
-simplest: var region adden, dann checken!
-- eigentlich muessen auch die vars sortiert werden
-
-- wieso???
-- PORT?!?!?
-
-100 fuer sign
-- brauch ein js forall arr.every
-something else is relevant
-
-
-
-
-
-- extends Game => extends GameClass
-- haben 
-- zuerst alle classes ohne extends
-- dann alle mit extends wo schon vorhanden
-...
-
-- wie muessen die classes sortiert werden damit extends geht?
-- classes duerfen nicht alpha geordnet werden in code file!
-- class Counter soll geskipped werdenn!!!
-- Counter => CounterClass
-- jetzt geht es!!!
-- firstWord ist schon wieder falsch!!!
-- test again
-- rename class Game zu class GameClass
-- function Game muss gekillt werden!!!
-- exclude path C:\D\a04\game\all.js
-- brauch das sieve!!!! 
-test
-- ja so geht es! 
-nur game: 11 1053
-
-- cla zuerst dann func
-zuerst durchgang mit alle func und classes finden!
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-- functions muessen prevailen!!!
-- jetzt: add classes
-- jetzt: alle funcs in game
-- geht jetzt
-- THINK!!!
-- node js fs get file info for path
-- mach test13 nur 1 file 
-- falsch!!!
-- sort yaml funcs alpha! 
-- nur die funcs!
-- one by one:
-set_run_state_no_server
-
-- run limited
-- rename _bau1 to all.js
-- nimm mal nur das game dir 
-- alle files copy
-
-- gibt es da kein _bau1.js????
-a file that contains 'require' will NOT be parsed!
-const: sort bei code length
-- vielleicht kann ich zuerst all die oneliner consts machen?
-dann die komplexeren consts
-dann
-muss mir ueberlegen wie ich es mit dem var code halte!
-versuch die reihenfolge der vars NICHT zu aendern?
-const vor var?
-
-=>muell rausgeben rechtzeitig!!!
-
-- remove code!
-- is_key_down ist eingetragen unter 'is'
-- mach einen durchgang mit code in yaml
-- check ob das ein teil von code von voriger var is!
-- is_key_down gibt es als const und als func!!! wieso???
-- remove
-- if a key occurs in type BEFORE type =>delete superdi from that other type
-
-
-- sieve erst nachher!!!!
-
-- muss besser werden!
-2 verschiedene probleme:
-1. catch multiple vars in 1 line (oneliner)
-2. catch duplicates 
-- warum findet er class Counter nicht?
-- dirlist wieder groesser
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-- eintragen welche vars 
-- z_all.yaml soll NICHT den code enthalten!!!
-
-
-
-- PORT!!!
-- PORT ist immer noch als const!!!!
-- PORT immer noch problem!!!
-- output all duplicates!
-=>das heisst er schafft es noch nicht const vor var zu eliminieren
-- SERVER ist in: 
-C:\D\a00\git_archive\dycon_ui_test\base\js\_config.js const
-C:\xampp\htdocs\aroot\games\basemin.js var 
-- server laeuft wiededr
-
-
-=>spaeter nimm auch anderen code rein!
-- was will ich eigentlich?
-- versuch das zu integrieren
-- was es mit dem cardgame auf sich hat?
-C:\DATA\dev\js\08cardGame1\script\
-- how can I automatically detect which files are interesting?
-LG:
-update LG dirs! damit es klappt mit gen files!
-get ready,spaz
-
-- duplicate names have NO way
-priority: function,class,const,var
-=> MSCATS var weg
-ok => AREAS var weg
-
-- weiter gehts
-
-
-=>how about: keys HAVE to start with letter or '_'
-=>bei var line: if contains '{' or '[' do NOT split!!!!!
-- weiter
-- einfach durchsieben bis code ok ist!
-- something else is relevant... =>spa!
-- das ending: '];' muss es auch geben!
-- ne nuetzt nichts! wenn ich es so mache dann muss ich leidedr vom server aus gehen!!!
-- hol mir das ding
-
-- brauch ich wirklich im yaml file den code?
-- wo hab ich all die exports gemacht???
-- vars und consts muessen zu exports gegeben werden!!!
-- goto code toggle_fiddle
-- click fiddle soll open close die echte fiddle MIT search bar!
-- rem cons bau1 9624
-
-something else is relevant
-something else is relevant.
-
-
-
-
-
-
-sa airport 25
-so jeslyn 100
-
-
-
-- wenn enter click in ta soll vergroessern wenn noetig!!!
-- jetzt moecht ich const def laden in textarea so gross wie lines!
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-versuch es mit const
-
-- wo wird show_code verwendet? ,
-
-kann ich einfach so show_sidebar aufrufen?
-- jetzt zeige alle wieder 
-- das mit den vars haut nicht hin!!!
-- bin komplett ko leider was hab ich fuer eine krankheit?
-- info superdi
-
-- only keep superdi!
-- multiple vars in 1 line???
-
-
-
-
-
-
-
-
-
-- ich koennte varblocks machen mit:
-code: sowie func code
-varnames: 
-- versuch statt aaa und bau1 einfach _bau1 zu implrten!
-- how to handle var and const?
-
-
-
-
-
-
-
-
-- und: region info fehlt auch!!! sollte path und region haven!
-- und: sehr viele vars und consts fehlen jetzt!!!
-- folding geht nicht fuer so ein langes file!!!
-- neues load_codebase >>bau1
-was nun?
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-- click link in code file in vs code editor: unable to open File is a directory
-- vs code Unable to open file is a directory
-- brauch eine option dass er mir den path angibt!!!
-- >300
-- next example
-- wie also?
-- test ob fromFile functioniert!
-nimm erstes file mit ueber 100 byte
-- size
-- was gibt es noch in fs.statSync(file).size
-- sort files by length
-- output ist bei nodemaster
-for some reason ist kein code in regions?
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-- ich muss es im client machen!
-- ok so einfach geht es nicht
-- parse a random code file and save it as z.txt
-- die beiden kommen in region import und region export
-- mach einen test: schreibe export vor irgendeine func in aaa
-- js export function
-- server version hat einfach nur:
-module.exports = {
-alle funcs
-};
-open baseminserver
-
-ich koennte all diese files
-ok 0. sort by timestamp
-1. read
-2. open new file
-enter full path 
-enter full code sorted in: var const class function
-name: t_000 ... t_688.js
-
-
-weiters:
-search for '= function('
-convert const WORD = function(...){ into: function WORD(...){
-
-was koennt ich jetzt machen?
-habe 688 files! 
-
-
-
-
-
-
-
-
-
-
-
-
-- nimm mtime
-- format fs.stats.mtimeMs as date time
-- hol den code rein!
-
-- jetzt soll nur noch dazukommen das alte zeug von den books
-
-exclude words like min. and copy
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-C:\xampp\htdocs\aroot\_other\bg\js
-C:\xampp\htdocs\aroot\_other\bg\js
-C:\xampp\htdocs\aroot\_other\bg\js
-C:\xampp\htdocs\aroot\_other\bg\js
-C:\xampp\htdocs\aroot\_other\bg\js
-
-
-
-
-
-
-
-
-jetzt hab ich alle files
-jetzt koennte ich noch alle aus aroot holen
-
-- kann ich die fileinfo(datemodified) irgendwie sehen?
-- kann ich all die dirs in 1 dir umkopieren?
-
-gu sonntag: 3-6
-mittwoch + freitag 11h30-1
-
-
-
-
-
-
-
-nodemaster
-aroot
-a04
-
-
-
-
-
-UCODE MUELL z... rest trash
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-die andere moeglichkeit waere, haendisch die files durchzusuchen
-ich sag ihm die root dirs
-exclude all files or dirs: _* node_modules 
-
-
-- das muss jetzt von app.js aus gemacht werden!!!
-duplicate handling:
-sort all files by date
-do NOT use alibs,node_modules
-gib ihm die roots fuer search und er searched tree down
-
-
-===>- er sieht nur noch duplicates im selben file!!!
-- trotzdem noch die duplicate functions!!!
-- ja klar, er gleicht es aus wenn es alles aus 1 file kommt, ist ok denk ich
-- jetzt das neue!
-- copy paste
-- nochmal das alte!
-- jetzt das neue
-- nochmal das alte!
-- mach die lines, ersetze durch \r\n bei save
-- wo wird regionName gesetzt?
-- goto bau1 line 29
-- wie kann es duplicate funcs geben in different regions?
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-- preserve region!!!!!
-- test mit 2 files
-- multiple files!!!
-
-eine zeile kann nur entweder mit
-async function o
-function
-//#region
-//
-empty
-}
-class
-
-starten
-
-
-- rem cons
-- multiple files!
-
-
-bei basemin ist es so:
-//#region
-var
-...
-//#region classes
-*
-
-bei allen anderen ist es so:
-*
-
-- es genuegt wenn ich die codebase clean mache
-- legacy code wird abandoned! ab a04
-- kann aber jederzeit legacy code analysen und function wise zu base addierren
-- automatisch toCamelCase fuer alle funcs im gesamten text!!!
-=>muss aber checken ob diese camelcased schon existierrt!!!!
-- provision fuer multiple files!!!
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-- WAY SHORTER!!!
-- wenn ich die vars will, muss ich bis function oder class text copieren
-- next: mach nur die section mit den vars selbst, rest 
-- download text as text
-- text next
-- jetzt den text!
-- test: output regions und ueberlege ob ich zu 2letter beginnings machen kann?
-- output funcnames und ueberlege die verbs
-
-renaming functions:
--:
-1. breaks former code! unless rename in aroot and nodemaster as well!
-2. sehr viel arbeit
-+:
-1. kann region/filename removen
-2. consistenteres besseres naming
-3. arbeit ist leicht
-4. intellisense geht besser!
-
-on the other hand: koennte auch search nach region machen 
-
-- oder ich koennte die region info fuer renamings verwenden?
-ich habe zu jedem zeitpunkt die current region und current filename!
-ich koennte noch ein 3ttest dict machen sorted by filename and region?
-
-
-- text: 
-- what about the text for download? soll ich die regions machen?
-- back to code parsing!
-- goto code: fiddleSave
-- Viewer - code ist dasselbe wie fiddle
-- mach eine fiddle app
-- fiddle? ist das jetzt eine app oder was? ja die fiddle app
-- save env: remote / localhost / localStorage (alle die moeglich!)
-- load env: localStorage / localhost | remote host / defaults
-- save env: wenn server laeuft: auf db
-- falls ich keinen server laufen habe: load env from localhost
-- env.fiddle was soll ich saven hier?
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-- was macht db_save_client? saves to localhost!!! das will ich nicht oder? das geht nur wenn der local server laeuft!!!
-- back to code parsing!!!
-=>reverse engineer basemin.js
-
-
-
-==>code parsing!
-- action / 3 9:40 AM 1/17/2023-
-- mach einen solve button der round restartet
-
-
-
-behavior vs person
-abgrenzung: erwachsen have to take care of my inner state vs inner state just a mirror of umfeld
-judgement: expose or not
-aber: do we actually have a choice? is this question even meaningfull?
-=>ma notes
-
-
-
-
-
-
-
-
-4. jeder schreibt seine version
-5. alles wird collected (playerdata)
-6. zeige alle kompletten sayings including the correct one
-7. jeder voted
-8. votes werden collected
-9. scoring!
-- im select_saying phase soll einfach 
-- was ist dieses a_game?
-- warum zeigt er mir die options nicht???
-- show games
-- config brauch ein wise mit owl
-- wenn ankomme: handle
-- loading assets
-- assets aus asset/games/wise
-- what does it take to implement a simple game on telecave?
-
-
-- upload game und base
-- how to start a simple server on vps
-- das muesst eigentlich gehen!
-
-
-
-
-
-
-
-
-- var
+350: *6:27 AM 2/10/2023-6:27 AM 2/10/2023
+351: *6:27 AM 2/10/2023-6:40 AM 2/10/2023
+- das problem ist bei den extra vars!!!
+355: *6:40 AM 2/10/2023-6:52 AM 2/10/2023
+356: *6:52 AM 2/10/2023-7:08 AM 2/10/2023
+357: *7:08 AM 2/10/2023-7:09 AM 2/10/2023
+358: *7:09 AM 2/10/2023-7:12 AM 2/10/2023
+359: *7:12 AM 2/10/2023-7:15 AM 2/10/2023
+360: *7:15 AM 2/10/2023-7:20 AM 2/10/2023
+361: *7:20 AM 2/10/2023-7:33 AM 2/10/2023
+362: *7:33 AM 2/10/2023-7:39 AM 2/10/2023
+363: *7:40 AM 2/10/2023-7:40 AM 2/10/2023
+364: *7:40 AM 2/10/2023-8:06 AM 2/10/2023
+365: *8:06 AM 2/10/2023-8:07 AM 2/10/2023
+366: *8:07 AM 2/10/2023-8:09 AM 2/10/2023
+367: *8:09 AM 2/10/2023-8:28 AM 2/10/2023
+368: *8:28 AM 2/10/2023-8:50 AM 2/10/2023
+369: *8:50 AM 2/10/2023-9:23 AM 2/10/2023
+375: *9:23 AM 2/10/2023-9:24 AM 2/10/2023
+376: *9:24 AM 2/10/2023-9:40 AM 2/10/2023
+377: *9:40 AM 2/10/2023-6:56 AM 2/11/2023
+- mAutocomplete und alles autocomplete ist muell geht nur in map zeug
+50# gu unterschrift online
+100# fuer livingwell zeug
+- wie teste ich es? in einem test div?
+__________ sa 11.2.23 waiting at the airport...   D44
+520: *6:56 AM 2/11/2023-7:03 AM 2/11/2023
+521: *7:03 AM 2/11/2023-7:05 AM 2/11/2023
+522: *7:05 AM 2/11/2023-7:08 AM 2/11/2023
+523: *7:08 AM 2/11/2023-7:13 AM 2/11/2023
+524: *7:13 AM 2/11/2023-7:20 AM 2/11/2023
+525: *7:20 AM 2/11/2023-7:32 AM 2/11/2023
+527: *7:32 AM 2/11/2023-8:05 AM 2/11/2023
+528: *8:05 AM 2/11/2023-9:23 AM 2/11/2023
+530: *9:23 AM 2/11/2023-9:27 AM 2/11/2023
+531: *9:27 AM 2/11/2023-9:32 AM 2/11/2023
+action /3 *9:32 AM 2/11/2023-8:49 PM 2/11/2023
+__________ so 12.2.23 waiting at the airport...   D43
+580: *8:49 PM 2/11/2023-6:58 AM 2/12/2023
+581: *6:58 AM 2/12/2023-7:05 AM 2/12/2023
+582: *7:06 AM 2/12/2023-7:09 AM 2/12/2023
+583: *7:09 AM 2/12/2023-7:32 AM 2/12/2023
+584: *7:32 AM 2/12/2023-7:35 AM 2/12/2023
+585: *7:36 AM 2/12/2023-8:06 AM 2/12/2023
+590: *8:06 AM 2/12/2023-8:14 AM 2/12/2023
+591: *8:14 AM 2/12/2023-8:48 AM 2/12/2023
+592: *8:48 AM 2/12/2023-9:03 AM 2/12/2023
+593: *9:03 AM 2/12/2023-9:20 AM 2/12/2023
+594: *9:20 AM 2/12/2023-5:49 AM 2/13/2023
+__________ mo 13.2.23 waiting at the airport...   D42
+610: *5:49 AM 2/13/2023-5:51 AM 2/13/2023
+611: *5:51 AM 2/13/2023-5:52 AM 2/13/2023
+textarea wrap="hard" text preserve newline
+612: *5:52 AM 2/13/2023-6:02 AM 2/13/2023
+613: *6:02 AM 2/13/2023-6:11 AM 2/13/2023
+614: *6:11 AM 2/13/2023-6:21 AM 2/13/2023
+615: *6:21 AM 2/13/2023-6:26 AM 2/13/2023
+616: *6:26 AM 2/13/2023-6:26 AM 2/13/2023
+617: *6:27 AM 2/13/2023-6:36 AM 2/13/2023
+618: *6:36 AM 2/13/2023-6:36 AM 2/13/2023
+619: *6:37 AM 2/13/2023-6:38 AM 2/13/2023
+620: *6:38 AM 2/13/2023-6:54 AM 2/13/2023
+621: *6:54 AM 2/13/2023-7:07 AM 2/13/2023
+622: *7:07 AM 2/13/2023-7:14 AM 2/13/2023
+623: *7:14 AM 2/13/2023-7:14 AM 2/13/2023
+624: *7:14 AM 2/13/2023-7:45 AM 2/13/2023
+625: *7:45 AM 2/13/2023-7:45 AM 2/13/2023
+626: *7:46 AM 2/13/2023-9:03 AM 2/13/2023
+- style wrap darf bei textarea NICHT zu flex-wrap converten!!!!!
+way shorter
+mDom aliases and defaults!
+aliases: classes className, innerHTML inner html, 
+- how to update mStyle? mit rest
+- mDiv100
+- js t.class= ==> use t.className = 'plain'
 - way shorter!!!!
-- ich muss mir das mit dem prefix ueberlegen!
-
-- can I reconstruct the codebase?
-dazu muss ich mir merken in welches file welche func gehoert und unter welchem region sie laeuft!
-- mach eine func: compile
-- woher nehm ich den code fuer compile?
-- ang ich verwende basejs nicht mehr
-
-
-- wie koennt ich den cycle am besten machen?
-- mDiv overhaul
-- mDivC(dParent,styles,opts)
-
-
-
-- what does it take to add a search bar to sidebar?
-es waer gut wenn die fiddle eine search bar haette
-noch besser wenn die sidebar eine filter bar haette!
-
-- goto runcode
-- LHS RHS
-- jetzt moecht ich die constants
-
-
-
-==>tv: camelCase ueberall!
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-- hol mir das tribute.js nochmal? echt?
-- super slow heute! ganz viele punkte sammeln!!!
-=>mach ein eigenes autocomplete das tribute ist mist
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-TarekRaafat:
-https://github.com/TarekRaafat/autoComplete.js
-
-
-- rem cons aaa 2904 (+)
-
-- hideMenu sollte das richtige sein!
-
-- get focused element
-- somehow cannot focus on a textarea!!!
-- Ctrl - remove all empty fiddles!
-- gibt es ein dFiddle??? JA
-arrAtDist([0,1,2,3,4,5], 1, -1, 1,13); //5
-- modulo wenn unter 0!
-besser
-- get_next_in_list =>arrNext(arr,el,imin,imax)
-- min 1
-- arrowUp
-
-
-patrick bet-david
-plötzlich und unerwartet
-assistance 18776534732
-mail a poa paj
-
-- save all fiddles, restore all fiddles
-- fgu
-- camel case!!!
-- fiddle_add_below,fiddle_add_above,fiddle_execute,fiddle_clear,fiddle_set_current
-- aendern sodass control allein nur die zeile executed
-- mach ein aRestore dass transform loescht
-- on top of textarea will ich ein div fuer info sowie params
-
+- fehler!!! Number function does not work!!!!
+- way shorter!!!
+- wie hol ich eine number raus?
+- why is the textarea larger than div?
+- textarea plain style
+627: *9:03 AM 2/13/2023-9:23 AM 2/13/2023
+628: *9:24 AM 2/13/2023-9:24 AM 2/13/2023
+629: *9:24 AM 2/13/2023-6:56 AM 2/14/2023
+__________ di 14.2.23 waiting at the airport...   D41
+700: *6:57 AM 2/14/2023-7:09 AM 2/14/2023
+701: *7:09 AM 2/14/2023-7:10 AM 2/14/2023
+702: *7:10 AM 2/14/2023-7:13 AM 2/14/2023
+703: *7:13 AM 2/14/2023-7:15 AM 2/14/2023
+- gibt es ein dPage? JA
+704: *7:15 AM 2/14/2023-2:22 PM 2/14/2023
+750: *2:22 PM 2/14/2023-6:53 PM 2/14/2023
+755: *6:53 PM 2/14/2023-8:12 PM 2/14/2023
+- dGrid => dPage
+katze fuettern #10
+gu #10
+kit cl #3
+__________ mi 15.2.23 waiting at the airport...   D40
+780: *8:12 PM 2/14/2023-6:20 AM 2/15/2023
+781: *6:21 AM 2/15/2023-6:31 AM 2/15/2023
+783: *6:31 AM 2/15/2023-7:05 AM 2/15/2023
+785: *7:05 AM 2/15/2023-7:09 AM 2/15/2023
+787: *7:09 AM 2/15/2023-7:28 AM 2/15/2023
+790: *7:28 AM 2/15/2023-7:31 AM 2/15/2023
+791: *7:31 AM 2/15/2023-8:50 AM 2/15/2023
+- ausdrucken form 2x, 1x leer und 1x jeslyn reply
+- jeslyn reply fragen listen
+- form ausfuellen
+- diana skype
+- post liste
+- gu pass zeug das requested ist fuerr morgen
+- post scanning
+795: *8:55 AM 2/15/2023-9:00 AM 2/15/2023
+796: *9:00 AM 2/15/2023-7:48 PM 2/15/2023
+__________ do 16.2.23 waiting at the airport...   D39
+850: *6:09 AM 2/16/2023-6:26 AM 2/16/2023
+851: *6:26 AM 2/16/2023-6:33 AM 2/16/2023
+853: *6:33 AM 2/16/2023-6:56 AM 2/16/2023
+855: *6:57 AM 2/16/2023-6:57 AM 2/16/2023
+856: *6:57 AM 2/16/2023-7:15 AM 2/16/2023
+857: *7:15 AM 2/16/2023-8:06 PM 2/16/2023
+- rem cons
+__________ fr 17.2.23 waiting at the airport...   D38
+920: *8:07 PM 2/16/2023-6:22 AM 2/17/2023
+- mach eine richtig gute search
+- macht man: regex.test(text) or text.test(regex).
+- mach mal loadcode
+921: *6:23 AM 2/17/2023-6:40 AM 2/17/2023
+923: *6:40 AM 2/17/2023-7:01 AM 2/17/2023
+925: *7:02 AM 2/17/2023-7:54 AM 2/17/2023
+926: *7:55 AM 2/17/2023-8:31 AM 2/17/2023
+950: *8:31 AM 2/17/2023-9:52 AM 2/17/2023
+#25 anrufen himmel!
+951: *9:53 AM 2/17/2023-9:54 AM 2/17/2023
+952: *9:56 AM 2/17/2023-
+action /3: *9:56 AM 2/17/2023-10:52 AM 2/17/2023
+953: *10:53 AM 2/17/2023-7:07 PM 2/17/2023
+__________ sa 18.2.23 waiting at the airport...   D37 halsweh
+980: *7:07 PM 2/17/2023-5:58 AM 2/18/2023
+981: *5:58 AM 2/18/2023-6:01 AM 2/18/2023
+982: *6:06 AM 2/18/2023-6:11 AM 2/18/2023
+983: *6:12 AM 2/18/2023-6:21 AM 2/18/2023
+984: *6:22 AM 2/18/2023-6:26 AM 2/18/2023
+985: *6:26 AM 2/18/2023-6:36 AM 2/18/2023
+986: *6:36 AM 2/18/2023-6:57 AM 2/18/2023
+987: *6:58 AM 2/18/2023-8:19 PM 2/18/2023
+.*[^(author)(Autowired)(Override)(param)(SuppressWarnings)].*
+(?!author|Autowired|Override|param|SuppressWarnings)\S+
+^(?!.*details\.cfm).*selector=size.*$
+example: key contains Q but NOT n
+js regex contains one string and does not contain another string
+- js regex: does NOT contains strings
+mehrere minus
+- lookahead scheint extremely costly!!!
+hsla(355, 100%, 70%, 0.25)
+__________ so 19.2.23 waiting at the airport...   D36 auskurieren
+1: *8:01 PM 2/18/2023-7:28 AM 2/19/2023
+2: *7:28 AM 2/19/2023-7:37 AM 2/19/2023
+3: *7:37 AM 2/19/2023-7:49 AM 2/19/2023
+4: *7:49 AM 2/19/2023-7:56 AM 2/19/2023
+5: *7:56 AM 2/19/2023-8:06 AM 2/19/2023
+7: *8:06 AM 2/19/2023-8:08 AM 2/19/2023
+- input text NICHT pointer cursor!!!
+- anywhere, start, end, fullword
+- how to impl?
+- impl fulltext vs name
+- searchoptions wieder dazu: key or text
+8: *8:08 AM 2/19/2023-8:17 AM 2/19/2023
+9: *8:17 AM 2/19/2023-8:20 AM 2/19/2023
+10: *8:20 AM 2/19/2023-8:23 AM 2/19/2023
+- mach das fuer die buttons!
+grid-column: 1 / span 2;
+- wie macht man eine rrow im grid die 3 columns covered?
+11: *8:23 AM 2/19/2023-8:26 AM 2/19/2023
+12: *8:26 AM 2/19/2023-8:26 AM 2/19/2023
+13: *8:26 AM 2/19/2023-8:31 AM 2/19/2023
+14: *8:31 AM 2/19/2023-8:37 AM 2/19/2023
+15: *8:37 AM 2/19/2023-9:22 AM 2/19/2023
+- contentEditable div js
+- need autocomplete off
+- js select text on enter input element onClick="this.select();"
+- wie mach ich input on enter select?
+20: *9:22 AM 2/19/2023-9:25 AM 2/19/2023
+ok - paid xfinity, check email
+action /3: *9:43 AM 2/19/2023-11:36 AM 2/19/2023 110=>35
+__________ mo 20.2.23 waiting at the airport...   D35 auskurieren
+55: *11:37 AM 2/19/2023-6:19 AM 2/20/2023
+56: *6:19 AM 2/20/2023-6:24 AM 2/20/2023
+57: *6:24 AM 2/20/2023-6:27 AM 2/20/2023
+edx cs50 intro to AI w/ python
+lecture 0: https://video.cs50.io/WbzNRTTrX0g?screen=0Towr-pBuzw
+cs50 folder: C:/D/cs
+58: *6:27 AM 2/20/2023-6:28 AM 2/20/2023
+search
+how to start jupyter nb:
+explorer C:\D\cs50\py
+Shift+rightclick => open powershell window here
+>jupyter notebook
+59: *6:33 AM 2/20/2023-6:37 AM 2/20/2023
+agent
+actions(state)
+transition model: result(state,action) ...is a new state
+60: *6:37 AM 2/20/2023-6:44 AM 2/20/2023
+state space: all reachable states
+61: *6:44 AM 2/20/2023-6:29 AM 2/21/2023
+__________ di 21.2.23 waiting at the airport...   D34 auskurieren
+120: *6:30 AM 2/21/2023-5:00 PM 2/21/2023
+420: *5:00 PM 2/21/2023-8:23 PM 2/21/2023
+__________ mi 22.2.23 waiting at the airport...   D33 auskurieren
+430: *8:24 PM 2/21/2023-6:55 AM 2/22/2023
+440: *7:37 AM 2/22/2023-8:43 AM 2/22/2023
+443: *8:43 AM 2/22/2023-9:08 AM 2/22/2023
+445: *9:08 AM 2/22/2023-7:42 AM 2/23/2023
+__________ do 23.2.23 waiting at the airport...   D32 auskurieren
+550: *7:43 AM 2/23/2023-7:43 AM 2/23/2023
+551: *7:43 AM 2/23/2023-8:32 AM 2/23/2023
+553: *8:32 AM 2/23/2023-8:34 AM 2/23/2023
+wget https://pyscript.net/alpha/pyscript.css -o pyscript.css
+554: *8:34 AM 2/23/2023-8:35 AM 2/23/2023
+https://pyscript.net/alpha/pyscript.js
+555: *8:35 AM 2/23/2023-9:06 AM 2/23/2023
+556: *9:06 AM 2/23/2023-9:08 AM 2/23/2023
+- wieso will ich python lernen? will ich es ueberhaupt?
+https://pyscript.net/alpha/pyscript.py
+open a04 and google
+blick in die schoene natur und beruhige dein gemuet ueber das muessende 
+557: *9:08 AM 2/23/2023-9:08 AM 2/23/2023
+--------------
+558: *9:08 AM 2/23/2023-9:14 AM 2/23/2023
+tech w/ tim python machine learning
+https://www.youtube.com/watch?v=ujTCoH21GlA&list=PLzMcBGfZo4-mP7qA9cagf68V06sko5otr
+559: *9:15 AM 2/23/2023-9:30 AM 2/23/2023
+conda create -m tensor python=3.6 (geht nicht! target prefix errror)
+conda env create -m tensor python=3.6 geht alles nicht
+560: *9:30 AM 2/23/2023-9:30 AM 2/23/2023
+das geht: in vs code, goto a04/py dir:
+conda create -n tensor python
+conda activate tensor
+561: *9:31 AM 2/23/2023-9:33 AM 2/23/2023
+pip install tensorflow
+562: *9:33 AM 2/23/2023-7:38 AM 2/24/2023
+__________ fr 24.2.23 waiting at the airport...   D31 auskurieren
+670: *7:38 AM 2/24/2023-7:41 AM 2/24/2023
+change conda env in pycharm:
+File, Settings, Python Python Interpreter, Conda Environments, existing env, tensor
+671: *7:41 AM 2/24/2023-7:49 AM 2/24/2023
+672: *7:49 AM 2/24/2023-7:49 AM 2/24/2023
+statt import keras muss ich sagen: from tensorflow.python.keras import backend as K
+673: *7:49 AM 2/24/2023-7:54 AM 2/24/2023
+techwithtim.net wahnsinns cool!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+674: *7:55 AM 2/24/2023-7:55 AM 2/24/2023
+python tutorial beginner level: https://youtu.be/OFrLs22MDAw
+https://www.techwithtim.net/tutorials/python-programming/beginner-python-tutorials/variables-data-types/
+675: *7:55 AM 2/24/2023-7:56 AM 2/24/2023
+python IDLE
+676: *8:08 AM 2/24/2023-8:09 AM 2/24/2023
+https://www.youtube.com/watch?v=QQrcd_62VWM
+https://www.techwithtim.net/tutorials/python-programming/beginner-python-tutorials/basic-operators-input/
+C:\D\a04\py\twtbeginner
+677: *8:09 AM 2/24/2023-8:11 AM 2/24/2023
+678: *8:11 AM 2/24/2023-8:16 AM 2/24/2023
+- operators
+python multiline comment: '''
+679: *8:16 AM 2/24/2023-8:33 AM 2/24/2023
+- comparison operators
+683: *8:33 AM 2/24/2023-8:58 AM 2/24/2023
+685: *8:58 AM 2/24/2023-10:49 AM 2/24/2023
+spaz action /3 +list =35
+720: *11:02 AM 2/24/2023-7:54 PM 2/24/2023
+800: *7:56 PM 2/24/2023-8:23 PM 2/24/2023
+__________ sa 25.2.23 waiting at the airport...   D30 auskurieren
+801: *7:08 AM 2/25/2023-7:18 AM 2/25/2023
+802: *7:18 AM 2/25/2023-7:19 AM 2/25/2023
+py tuples are immutable! 
+803: *7:20 AM 2/25/2023-7:21 AM 2/25/2023
+iteration by item
+804: *7:22 AM 2/25/2023-7:37 AM 2/25/2023
+805: *7:37 AM 2/25/2023-7:47 AM 2/25/2023
+- intellisense ist besser in pycharm!
+string methods
+806: *7:47 AM 2/25/2023-7:59 AM 2/25/2023
+810: *7:59 AM 2/25/2023-8:36 AM 2/25/2023
+functions
+815: *8:36 AM 2/25/2023-9:48 AM 2/25/2023
+865: *10:22 AM 2/25/2023-1:18 PM 2/25/2023
+action /3 fgu
+doch das macht echt spass adict ist sehr cool!
+890: *1:18 PM 2/25/2023-1:19 PM 2/25/2023
+891: *1:19 PM 2/25/2023-1:20 PM 2/25/2023
+- weiter functions
+892: *1:20 PM 2/25/2023-1:22 PM 2/25/2023
+893: *1:22 PM 2/25/2023-1:46 PM 2/25/2023
+- file IO
+__________ so 26.2.23 waiting at the airport...   D29 auskurieren
+970: *7:38 AM 2/26/2023-7:59 AM 2/26/2023
+971: *7:59 AM 2/26/2023-8:44 AM 2/26/2023
+980: *8:44 AM 2/26/2023-9:15 AM 2/26/2023
+jupyter geht viel besser in vs code, aber keyboard has been customized!!!
+Ctrl+Shift+P, keyboard shortcuts, jupyter
+list methods
+985: *9:15 AM 2/26/2023-7:59 AM 2/27/2023
+- komisch jetzt geht es ploetzlich!!!
+- schau ob ich vom fe das omni-belt holen kann!
+__________ mo 27.2.23 waiting at the airport...   D28 auskurieren
+1: *8:00 AM 2/27/2023-8:00 AM 2/27/2023
+2: *8:01 AM 2/27/2023-3:04 PM 2/27/2023
+25: *3:06 PM 2/27/2023-3:06 PM 2/27/2023
+__________ di 28.2.23 waiting at the airport...   D27 auskurieren
+100: *8:38 PM 2/27/2023-7:37 AM 2/28/2023
+101: *7:37 AM 2/28/2023-7:38 AM 2/28/2023
+102: *7:38 AM 2/28/2023-8:25 AM 2/28/2023
+110: *8:25 AM 2/28/2023-8:27 AM 2/28/2023
+black
+reproduce black formatting error: there was an error in py code:
+in a function global v1 = 1 GEHT NICHT!!!!!!!!!!!!!!
+=>menu, View, Output, dann in dropdown: Black Formatter
+111: *8:28 AM 2/28/2023-8:38 AM 2/28/2023
+something else is relevant
+do not utter a word before bb
+__________ mi 1.3.23 waiting at the airport...   D26 auskurieren
+180: *6:00 PM 2/28/2023-7:35 AM 3/1/2023
+181: *7:35 AM 3/1/2023-7:36 AM 3/1/2023
+182: *7:36 AM 3/1/2023-7:40 AM 3/1/2023
+hat der fe mit black formattiert? ja sogar 8
+183: *7:40 AM 3/1/2023-8:01 AM 3/1/2023
+184: *8:01 AM 3/1/2023-8:02 AM 3/1/2023
+open omnibelt in vs code
+tech with tim: Python OOP: https://www.youtube.com/watch?v=JeznW_7DlB0
+185: *8:02 AM 3/1/2023-6:40 PM 3/1/2023
+colors ['blue', 'cyan', 'green', 'magenta', 'yellow', 'red', 'header', 'warning', 'fail']
+formatting ['bold', 'underline']
+186: *6:40 PM 3/1/2023-7:37 PM 3/1/2023
+286: *7:37 PM 3/1/2023-7:56 PM 3/1/2023
+__________ do 2.3.23 waiting at the airport...   D26 auskurieren
+287: *6:37 AM 3/2/2023-6:48 AM 3/2/2023
+open chrome
+288: *6:48 AM 3/2/2023-8:20 AM 3/2/2023
+dir(x) ist wirklich sehr useful!
+Black
+Maroon
+Green
+Olive
+Navy
+Purple
+Teal
+Silver
+Grey
+Red
+Lime
+Yellow
+Blue
+Fuchsia
+Aqua
+White
+Grey0
+NavyBlue
+DarkBlue
+Blue3
+Blue3
+Blue1
+DarkGreen
+DeepSkyBlue4
+DeepSkyBlue4
+DeepSkyBlue4
+DodgerBlue3
+DodgerBlue2
+Green4
+SpringGreen4
+Turquoise4
+DeepSkyBlue3
+DeepSkyBlue3
+DodgerBlue1
+Green3
+SpringGreen3
+DarkCyan
+LightSeaGreen
+DeepSkyBlue2
+DeepSkyBlue1
+Green3
+SpringGreen3
+SpringGreen2
+Cyan3
+DarkTurquoise
+Turquoise2
+Green1
+SpringGreen2
+SpringGreen1
+MediumSpringGreen
+Cyan2
+Cyan1
+DarkRed
+DeepPink4
+Purple4
+Purple4
+Purple3
+BlueViolet
+Orange4
+Grey37
+MediumPurple4
+SlateBlue3
+SlateBlue3
+RoyalBlue1
+Chartreuse4
+DarkSeaGreen4
+PaleTurquoise4
+SteelBlue
+SteelBlue3
+CornflowerBlue
+Chartreuse3
+DarkSeaGreen4
+CadetBlue
+CadetBlue
+SkyBlue3
+SteelBlue1
+Chartreuse3
+PaleGreen3
+SeaGreen3
+Aquamarine3
+MediumTurquoise
+SteelBlue1
+Chartreuse2
+SeaGreen2
+SeaGreen1
+SeaGreen1
+Aquamarine1
+DarkSlateGray2
+DarkRed
+DeepPink4
+DarkMagenta
+DarkMagenta
+DarkViolet
+Purple
+Orange4
+LightPink4
+Plum4
+MediumPurple3
+MediumPurple3
+SlateBlue1
+Yellow4
+Wheat4
+Grey53
+LightSlateGrey
+MediumPurple
+LightSlateBlue
+Yellow4
+DarkOliveGreen3
+DarkSeaGreen
+LightSkyBlue3
+LightSkyBlue3
+SkyBlue2
+Chartreuse2
+DarkOliveGreen3
+PaleGreen3
+DarkSeaGreen3
+DarkSlateGray3
+SkyBlue1
+Chartreuse1
+LightGreen
+LightGreen
+PaleGreen1
+Aquamarine1
+DarkSlateGray1
+Red3
+DeepPink4
+MediumVioletRed
+Magenta3
+DarkViolet
+Purple
+DarkOrange3
+IndianRed
+HotPink3
+MediumOrchid3
+MediumOrchid
+MediumPurple2
+DarkGoldenrod
+LightSalmon3
+RosyBrown
+Grey63
+MediumPurple2
+MediumPurple1
+Gold3
+DarkKhaki
+NavajoWhite3
+Grey69
+LightSteelBlue3
+LightSteelBlue
+Yellow3
+DarkOliveGreen3
+DarkSeaGreen3
+DarkSeaGreen2
+LightCyan3
+LightSkyBlue1
+GreenYellow
+DarkOliveGreen2
+PaleGreen1
+DarkSeaGreen2
+DarkSeaGreen1
+PaleTurquoise1
+Red3
+DeepPink3
+DeepPink3
+Magenta3
+Magenta3
+Magenta2
+DarkOrange3
+IndianRed
+HotPink3
+HotPink2
+Orchid
+MediumOrchid1
+Orange3
+LightSalmon3
+LightPink3
+Pink3
+Plum3
+Violet
+Gold3
+LightGoldenrod3
+Tan
+MistyRose3
+Thistle3
+Plum2
+Yellow3
+Khaki3
+LightGoldenrod2
+LightYellow3
+Grey84
+LightSteelBlue1
+Yellow2
+DarkOliveGreen1
+DarkOliveGreen1
+DarkSeaGreen1
+Honeydew2
+LightCyan1
+Red1
+DeepPink2
+DeepPink1
+DeepPink1
+Magenta2
+Magenta1
+OrangeRed1
+IndianRed1
+IndianRed1
+HotPink
+HotPink
+MediumOrchid1
+DarkOrange
+Salmon1
+LightCoral
+PaleVioletRed1
+Orchid2
+Orchid1
+Orange1
+SandyBrown
+LightSalmon1
+LightPink1
+Pink1
+Plum1
+Gold1
+LightGoldenrod2
+LightGoldenrod2
+NavajoWhite1
+MistyRose1
+Thistle1
+Yellow1
+LightGoldenrod1
+Khaki1
+Wheat1
+Cornsilk1
+Grey100
+Grey3
+Grey7
+Grey11
+Grey15
+Grey19
+Grey23
+Grey27
+Grey30
+Grey35
+Grey39
+Grey42
+Grey46
+Grey50
+Grey54
+Grey58
+Grey62
+Grey66
+Grey70
+Grey74
+Grey78
+Grey82
+Grey85
+Grey89
+Grey93
+300: *8:20 AM 3/2/2023-8:21 AM 3/2/2023
+listed dir die members in define order oder in alph? alpha!
+301: *8:21 AM 3/2/2023-8:54 AM 3/2/2023
+jetzt will ich eine class die mir die 
+305: *8:54 AM 3/2/2023-10:07 AM 3/2/2023
+405: *11:59 AM 3/2/2023-
+50 fuer fgu,tkd,kochen
+100 fuer delivery von check
+py indexOf
+__________ fr 3.3.23 waiting at the airport...   D25 auskurieren
+455: *6:56 AM 3/3/2023-7:00 AM 3/3/2023
+456: *7:00 AM 3/3/2023-7:36 AM 3/3/2023
+- was fuer eine class will ich?
+['__class__', '__delattr__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__le__', '__lt__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__']
+460: *7:36 AM 3/3/2023-8:34 AM 3/3/2023
+myworld
+470: *8:34 AM 3/3/2023-11:04 AM 3/3/2023
+Oleg tel
+520: *11:04 AM 3/3/2023-11:04 AM 3/3/2023
+A spa
+530: *11:04 AM 3/3/2023-7:29 PM 3/3/2023
+filter(lambda score: score >= 70, scores)
+self.__class__.__dict__
+__________ sa 4.3.23 waiting at the airport...   D25 auskurieren
+550: *7:29 PM 3/3/2023-7:57 AM 3/4/2023
+weiter python oop dann nachher mach wieder flash zeug
+python as fast as possible
+https://www.youtube.com/watch?v=VchuKL44s6E
+d.get('key') statt d['key']
+100 ionos setup
+580: *3:09 PM 3/4/2023-3:11 PM 3/4/2023
+600: *7:00 PM 3/4/2023-7:39 PM 3/4/2023
+__________ so 5.3.23 waiting at the airport...  
+620: *7:39 PM 3/4/2023-8:41 PM 3/4/2023
+621: *8:41 PM 3/4/2023-8:49 PM 3/4/2023
+630: *8:49 PM 3/4/2023-9:14 PM 3/4/2023
+633: *9:14 PM 3/4/2023-5:43 AM 3/5/2023
+634: *5:43 AM 3/5/2023-5:49 AM 3/5/2023
+635: *5:49 AM 3/5/2023-5:53 AM 3/5/2023
+636: *5:53 AM 3/5/2023-6:01 AM 3/5/2023
+637: *6:01 AM 3/5/2023-6:05 AM 3/5/2023
+638: *6:06 AM 3/5/2023-6:13 AM 3/5/2023
+639: *6:13 AM 3/5/2023-6:22 AM 3/5/2023
+640: *6:22 AM 3/5/2023-6:23 AM 3/5/2023
+641: *6:23 AM 3/5/2023-6:32 AM 3/5/2023
+642: *6:33 AM 3/5/2023-6:48 AM 3/5/2023
+643: *6:48 AM 3/5/2023-7:10 AM 3/5/2023
+644: *7:10 AM 3/5/2023-7:24 AM 3/5/2023
+645: *7:24 AM 3/5/2023-7:34 AM 3/5/2023
+647: *7:34 AM 3/5/2023-7:42 AM 3/5/2023
+648: *7:42 AM 3/5/2023-7:50 AM 3/5/2023
+649: *7:50 AM 3/5/2023-7:52 AM 3/5/2023
+650: *7:52 AM 3/5/2023-7:56 AM 3/5/2023
+651: *7:56 AM 3/5/2023-7:57 AM 3/5/2023
+652: *7:57 AM 3/5/2023-7:59 AM 3/5/2023
+653: *7:59 AM 3/5/2023-7:59 AM 3/5/2023
+654: *8:00 AM 3/5/2023-8:25 AM 3/5/2023
+655: *8:25 AM 3/5/2023-9:53 AM 3/5/2023
+670: *9:53 AM 3/5/2023-10:10 AM 3/5/2023
+671: *10:10 AM 3/5/2023-10:17 AM 3/5/2023
+672: *10:17 AM 3/5/2023-10:22 AM 3/5/2023
+- let ais vote empty on hand
+673: *10:22 AM 3/5/2023-10:37 AM 3/5/2023
+674: *10:37 AM 3/5/2023-10:42 AM 3/5/2023
+675: *10:43 AM 3/5/2023-10:55 AM 3/5/2023
+676: *10:55 AM 3/5/2023-10:58 AM 3/5/2023
+677: *10:58 AM 3/5/2023-11:14 AM 3/5/2023
+678: *11:14 AM 3/5/2023-11:27 AM 3/5/2023
+679: *11:27 AM 3/5/2023-11:53 AM 3/5/2023
+680: *11:53 AM 3/5/2023-12:09 PM 3/5/2023
+681: *12:09 PM 3/5/2023-12:32 PM 3/5/2023
+682: *12:32 PM 3/5/2023-12:49 PM 3/5/2023
+- action accuse is only possible if president is not provisional or has at least 1 hand card
+683: *12:49 PM 3/5/2023-1:19 PM 3/5/2023
+687: *1:19 PM 3/5/2023-2:24 PM 3/5/2023
+688: *2:24 PM 3/5/2023-5:15 PM 3/5/2023
+695: *5:15 PM 3/5/2023-7:07 PM 3/5/2023
+__________ mo 6.3.23 waiting at the airport...  
+700: *6:30 AM 3/6/2023-6:48 AM 3/6/2023
+		if (fen.isprovisional){
+			select_add_items(ui_get_hand_items(uplayer), pay_for_accuse_action, 'must pay a card for accuse action', 1, 1);
+701: *6:48 AM 3/6/2023-6:50 AM 3/6/2023
+702: *6:50 AM 3/6/2023-6:52 AM 3/6/2023
+703: *6:52 AM 3/6/2023-7:34 AM 3/6/2023
+710: *7:34 AM 3/6/2023-12:25 PM 3/6/2023
+715: *12:25 PM 3/6/2023-12:30 PM 3/6/2023
+716: *12:30 PM 3/6/2023-1:03 PM 3/6/2023
+717: *1:03 PM 3/6/2023-1:27 PM 3/6/2023
+718: *1:28 PM 3/6/2023-1:47 PM 3/6/2023
+- output Z.playerdata.filter(x=>['felix','mimi'].includes(x.name)).map(x=> isEmpty(x.state)?'()':x.state.card)
+- brauch ein 
+- vote empty => remove from validvoters
+validvoters
+IONOS geloest
+818: *1:47 PM 3/6/2023-1:48 PM 3/6/2023
+GOTT WIRD ES SO MACHEN WIE ES DAS BESTE IST - BESSER ALS ICH MIR DAS VORSTELLEN KANN JETZT - EINFACH GARNICHTS TUN UND ABWARTEN
+819: *1:48 PM 3/6/2023-6:16 PM 3/6/2023
+820: *6:16 PM 3/6/2023-6:34 PM 3/6/2023
+821: *6:34 PM 3/6/2023-8:32 PM 3/6/2023
+822: *8:32 PM 3/6/2023-8:39 PM 3/6/2023
+823: *8:39 PM 3/6/2023-8:40 PM 3/6/2023
+__________ di 7.3.23 waiting at the airport...  
+825: *8:41 PM 3/6/2023-8:49 PM 3/6/2023
+826: *8:49 PM 3/6/2023-7:18 AM 3/7/2023
+827: *7:19 AM 3/7/2023-7:21 AM 3/7/2023
+828: *7:22 AM 3/7/2023-7:27 AM 3/7/2023
+829: *7:27 AM 3/7/2023-7:35 AM 3/7/2023
+830: *7:36 AM 3/7/2023-7:36 AM 3/7/2023
+- es ist jetzt so dass wenn 1 player weiter clickt dann triggert es: test
+ack button gibt es bei bluff
+=>wo ist es?
+=>all running out of cards is like empty vote: end of session, no points!
+mach ack button!
+831: *7:36 AM 3/7/2023-7:40 AM 3/7/2023
+=>replace alliance defect action wird nicht gemacht!
+832: *7:40 AM 3/7/2023-7:40 AM 3/7/2023
+833: *7:42 AM 3/7/2023-7:42 AM 3/7/2023
+834: *7:42 AM 3/7/2023-7:47 AM 3/7/2023
+- gameover: phase variable
+100: test,winners setzen in gameover
+835: *7:48 AM 3/7/2023-7:53 AM 3/7/2023
+836: *7:53 AM 3/7/2023-7:56 AM 3/7/2023
+837: *7:57 AM 3/7/2023-8:00 AM 3/7/2023
+- policies option
+838: *8:00 AM 3/7/2023-8:03 AM 3/7/2023
+- test mit 2 policies
 rem cons
-
-- gesamten code mit AU raushauen!!!
-- goto parse_functions
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-- js fit textarea columns to parent element
-- what does it take to make a jupyter shell?
-
-
-1. bevor ich das fiddle oeffne, save ich die Globals in ReservedKeys
-2. dann eval ich immer nur block wise
-
-=>besser ist: wie bei jupiter machen!!!
-Ctrl+'+'=>open div danach
-
-2a. ein block ist alles 
-wenn line ein '=' enthaelt, LHS wird neue window key unless in Reserved: error
-otherwise 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-- ordne nach types
-
-
-- wenn ich eine function mache und sie nachherr zu window zuordne dann geht es!
-
-- eval: can I define new function that stays?
-- es sind 1000 funcs
-?wann wird es zusammengeschrieben?
-
-aufteilen:
-alles bis //#endregion classes gehoert in basemin
-
-- ich koennte erstmal
-#region file
-#endregion machen
-
-- im interface: alle func names im code sind links zu funcs
-choices:
-l = layout
-a = animation
-add = add stuff to other stuff
-arr = arrays
-b = board
-c = canvas
-ca = card
-co = color
-d = div names (=globals!) (dTable...)
-r = random
-g = game
-get = get stuff
-set = set stuff
-sv = svg
-ui = ui types
-
-=>library 1pm office 2021, osa, TKD
-
-agCircle => svCircle(gParent
-
-=>bad?
-=>suche gu costco card!!! 6060 =>fahre zu costco nachmittag 1pm?
-tanken+einkaufen
-
-
-
-
-
-eigentlich will ich doch zuerst org functions machen!
-
-also: die signatures sollen links sein, click=replace bei code!
-noch besser: +- davor
-
-
-
-
-
-
-- was will ich ueberhaupt??? ==> decide how to org basejs?
-how to org basejs:
-choices:
-1. einzelne files beibehalten oder 1 fettes base file?
-2. wie und wo mach ich updates?
-3. how to org functions? by tag? by subject?
-problem: there are definitely multiple ways to sort functions!
-also: remove empty line between! sicherr hilfreich!
-
-
-
-
-
-- ich brauch irgendeine art wie ich functions tags zuweise damit ich besser sortieren kann nach tags
-- ich brauch eine outer codebase und eine innercodebase
-- magically: click on refactor, dann macht er 1 file wo er clean alle funcs mit clean code hat, das kann ich dann gemeinsam mit index in ein neues dir pasten und schon hab ich eine neue codebase!
-
-
-
-
-
-
-
-
-- geniale idee: allfuncs code machen damit ich jederzeit neu anfangen kann!
-- was ist ein toggle element?
-hat einen triggerbutton
-hat einen on_state und einen off_state
-im on_state muss der button das reflecten!
-
-
-
-- ich brauch erstmal ein principle um ein toggle element zu machen
-- ich muss wirklich komplett neu anfangen!
-- show_sidebar(list,handler)
-handler takes as input a list element
-- show_sidebar is flawed!
-- basemin: Codebase statt DA.funcs
-choices:wenn auf fiddle click
-=>1. soll er sidebar+fiddle zeigen!
-2. fiddle soll einfach eine app sein
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-- mach ein HOME logo
-- restart SIMPLE
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-- alles irgendwie falsch!!!
-- was ich eigentlich will ist: wenn open app minimize_apps
-- filter immer dazu
-- way shorter!!!
-- google chrome clear suggestions select
-
-
-
-
->>> find out WHY it is showing the code when press enter??? ist it doing all 3 of them?!?!?!?!?
-
-
-
-
-- way shorter!!!
-- filter, signatures, code
-- signatures only! mit plus dazu??????
-- class muss entfernt werden: special treatment!
-- brauch die async zu den functions!
-- als erstes die search!
-
-howto zu viewer renamen, 
-viewer soll code icons fa images haben
-
-
-Fiddle und Sidebar sind eigentlich dev tools
-
-
-- und eine code synthesizer die soll alle funcs aus code wieder zusammensetzen! brauch aber tags!!!
-- dann brauch ich noch eine iconViewer und eine imageViewer
-in der howto will ich die sidebar soll ergebnisse filtern,fiddle offen und table zu
-in der books app will ich die sidebar zuschaltbar, fiddle min height
-in der codeviewer app will ich die sidebar + fiddle gleich hoch
-
-
-
-
-
-- sollte daraus eine app machen! genauso wie iconViewer codeViewer
-- getPoly ist eine gute test function!
-- way shorter!
-waer echt cool wenn end of line comments auch removen koennte!!!
-show_fiddle mit cols
-
-- versuch nochmal ta
-- was jetzt???
-- show_sidebar => boau2
-- way shorter!!!!
-- body remove all comments!!!! // to end of line!!!
-- load_codebase => bau1
-- jsyaml.dump und jsyaml.load muss besser werden!
-- das load_codebase muss besser werden!!!
-- convert to yaml!
-- wenn auf ein sidebar ding clicke soll er body in fiddle zeigen!
-- sort wieder
-=>darf nicht 'function' nehmen (wenn type abfrage)
-- do not sort keys
-- search sidebar_load
-- test sidebar
-- restart all!!!
-how to populate the sidebar?
-- some app tiles (that have long menus) may use sidebar for menu!
-examples f stacks:
-State=
-are apps games Fiddle open?
-what is the content of fiddle?
-which app tile are open?
-which app or game is open on table?
-what tables exist? (chronologische reihenfolge oder wo bin ich dran)
-open,close,show,hide,
-wo wird appstate gesaved? am besten in db,
-
-zusaetzlich sollte state IMMER (auf server oder local) gesaved werden
-damit wenn open wieder state restored wird!
-
-
-
-
-hierarchy: top menu - tiles - dTable
-tile app/game: 
-wenn app or game open: clear dTable!
-- rem cons
-- G aufbauen! G is an app or a game
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-DA.item = Items._1;
-get_keys(Items);
-get_keys(DA.item);
-DA.item.x=0;DA.item.y=0;//DA.item.draw=draw_random_walk;
-rPosition(DA.item)
-DA.item.draw = x=>{ cClear(x.live.cv,x.live.cx);rPosition(x);cRect(x.x,x.y,10,10,{bg:'blue'},x.live.cx);};
-DA.item.play();
-DA.item.pause();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-- page mit footer und header:
-<div style="display: grid;grid-template-rows: auto 1fr auto;height: 100vh;">
-<div id="dToolbar" style="background:orange;min-height:10px"></div>
-<div id="dTable"></div>
-<div id="dStatusbar" style="background:orange;min-height:10px"></div>
-</div>		
-
-* {
-  box-sizing: border-box;
-}
-/* Create two equal columns that floats next to each other */
-.column {
-  float: left;
-	height: calc( 100vh - 60px );
-
-}
-/* Clear floats after the columns */
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-.hmost {
-	height: calc( 100vh - 60px );
-}
-
-
-- show_elems oder show_constants
-- was will ich jetzt als naechstes?
-- globals waer gut zu haben!!!
-- wenn AU.selected ist darf enter nicht genommen werden
-- ich koennte das popup im size limiten und y-overflow auto setzen???
-- WAY SHORTER!!!
-- ich moecht ein zweites popup bei dem ich ein help display mit params
-- remove last char from a string js:  slice(0, -1) 
-- enter!
-- backspace!!!
-- simple intellisense
-
-spital abfahrt 10h
-
-
-
-
-
-
-
-
-
-
-- hol mir p5.min.js
-- schau mir lieber das ganze an: extract p5.zip
-- der canvas selbst ist global in p5
-- this is an exercise
-- suche p5.js damit ich weiss was ich brauche
-- p5 engine
-- zuerst muss ich die table machen!
-
-
-- noc FR loop
-
-die botschaften der barmherzigkeit der jesusmutter maria fuer die welt
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-crowded zone: voll, die natur: voll
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-CRUD:
-Create: appname create 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-- kann ich ein programm machen dass mir ein dir nimmt und alle js functions daraus in 1 einziges js file copiert, wobei neuere versionen aeltere ueberschreiben und duplicate names in verschiedenen filenames mit dem filename versehen werden?
-
-am ende sollte ich von jeder function die ich je geschrieben habe die neueste version haben
-
-das gilt jetzt fuer js files, classes und functions
-(what about globals = const)?
-what about regions?
-what about nodejs?
-what about css?
-
-
-
-- brauch etwas um gesamte codebase zu searchen!!!!
-- wie mach ich das jetzt mit der table?
-- was wenn ich eine app ploetzlich 
-- die howto app hat ein search window
-- howto app und magic app
-how to make today a perfect day?
-1. learn something and keep it in my howto app
-perfect day
-be as if you were perfect 
-in the meantime what could I do that does make sense?
-if I had a half-goal, that is a goal that motivates to action but does not stress out
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-- now what?
-
-
-
-
-
-
-
-
-since music IS transcending time, music is one of the best solutions
-the body is a prison but this prison is dissolving itself and I I have to do to transcend it is transcending time
-was soll ueberhaupt diese aussage: the body is a temple
-- is the body a temple or much rather a prison?!?!?
-- es ist so aehnlich wie den traum im traum selbst zurechtbiegen
-- stimmt es dass replacing neg thoughts by positive thoughts is very shortlived? not a great solution
-bliss
-die befreiung ist immer da - es ist einfach der channel auf dem bliss immer gespielt wird
-es ist nicht moeglich irgendwas zu verstehen oder irgendwas zu erklaeren
-was aber ist das leben? das leben und der tod sind dasselbe - alle concepts sind dasselbe im grunde
-es ist ein unterschied zwischen gewalt und befreiung: der tod ist befreiung und geschieht von selbst, ungerufen, ALL THE TIME
-das ego muss eradicated werden, aber nicht umgebracht.
-ist es eigentlich wahr dass angst vermieden werden soll???
-nuetzt es was, narratives zu konstruieren? sind narratives die sprache von der mind?
-wie kann ich alles in win-win turnen was ich sehe?
-aber wie kann ich mir das vergegenwaertigen?
-und doch bin ich leicht und rein wie zuvor denn das ego ist illusion und existiert nicht
-jetzt liegt ueberall geruempel herum auch das mit den gebaeuden, das mit den messern das mit den moving boxes das mit dem job, all diese samskaras sind dazugekommen
-danach hat immer mehr und mehr das ego den platz verwuestet
-noch mit 12 gab es einen grossteil reinheit in mir
-dieses wissen wurde irgendwie zugeschuettet von dem geruempel das der ego channel produziert von frueh bis spaet
-- ich hab einmal vor langer zeit herausgefunden wie man magic macht und wie man zeit verschwinden laesst, was dasselbe ist
-- oracle sollt es auch geben oder es heist zaubern
-- was will ich damit machen?
-- ich hab jetzt ein base/assets/apps/meditate mit mp3 files
-open audio
-soll ich yt video oder einfach mp3 verwenden
-das problem ist dass meine wuensche nicht mehr lange genug halten
-sie kommen und gehen bevor ich was dazu tue
-koenntenicht bei meditation eine von den 5 minute meditations kommen?
-
-
-
-
-
-
-
-
-
-
-- fuer die apps gibt es jeweils nur 1 instance
-- fen saven
-- du bist dran
-
-
-
-
-- build your own inner world which is beautiful
-- just open another channel for that
-- wie genau
-- erstelle einen calendar
-- data structures
-- eintrag fitbit 16.12.
-- was soll bei open fitbit passieren???
-
-
-
-
-
-
-
-heino ferch
-silke bodenbender
-
-
-
-
-- items haben keinen name!!!
-- test it
-- js format Date.now: new Date().toLocaleDateString().padStart(10, '0')
-- search localStorage in basemin
-- js write to clipboard: navigator.clipboard.writeText(copyText.value); 
-simplest:
-open: save time and key to localStorage
-close: output result to console / clipboard
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-how can I eliminate the strategizing mind?
-es koennt noch ein RH geben
-was soll bei fitbit passieren?
-
-I am dying at 10am
-
-- SIMPLEST!!!!!!!
-- wenn ich auf action clicke:
-localstorage store start time
-show a stop button
-
-- key fuer meditate und fuer action
-- am besten waer ein gutes system fuer all die ui_types
-- eine bessere idee waer es mit ui_type_item zu gehen
-
-
-- simpelst way to do it!!!!
-was kann an einer app geaendert werden?
-die options
-
-- bei apps sollte ich so states haben: icon,info,page
-die steps von heute sollen ein editable div sein
-
-apps gehen einfach auf dh werden groesser
-fitbit soll so ausschauen: das logo geht ins eck
-dann steht
-
-
-
-
-- bei therapy soll ich ein 'record' drauf haben?
-- pro tag eine fen adden
-- mach eine abteilung fuer apps
-- iconViewer fuer fitbit
-
-
-
-- show players
-
-wannIstEsSoweit?
-- brauch einen title
-- settings gute idee
-- wo muss ich da hingehen?y config.yaml
-- gib eine player number zu options
-- hue wheel
-- maButton bekommt noch styles!
-- jetzt brauch ich justify style
-- warum wird mLink nicht gezeigt???
-- hue theme ist eigentlich eine gute idee!!!
-- class .a aus schoen
-- hol jetzt das a zeug fuerr start cancel buttons
-how often do you reincarnate in one day
-
-
-
-
-- mach ein maButton
-- 
-- ich koennt eines nehmen das heisst: keyframes.css oder alle keyframes zu den transitions dazugeben
-fa.min.cs: keyframes: fa-beat fa-bounce fa-fade fa-beat-fade fa-flip fa-shake fa-spin
-- transition-style:
-- moecht alle keyframes in 1 file haben!
-
-- wie geht es besser mit aniations?
-- what next? das settings menu!
-
-
-- mach eines fuer goalnumber in hue160
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-- wie krieg ich einen background?
-- airport was nun?
-
-
-
-
-
-
-- POST EINWERFEN!!!
-- library 10am
-- kaufe essen
-- gu TKD guertel 3pm
-- tel PSE address change
-- oasis eiskasten abdrehen!
-
-=>danach direct editing mit update!
-=>delete button
-=>howto parsing
-=>adding to how to
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-POST!
-- von gu holen
-- zahlen
-- scannen
-
-
-
-
-
-
-eine table ist ein base-level dict
-db read => goto OneNote CRUD picture!
-fuer codesamples waer es so:
-
-GET /code ... list all code samples
-POST /code ... add a code sample
-GET /code?kw=a+b+c ... list code samples search
-
-how to update a code sample??? dazu bracuht es eine id!
-
-code sample:
-lang:[
-code
-link
-kw
-]
-
-was wenn ich nie code samples loesche? dann geht es doch! einfach max nehmen
-oder wenn sie als list gespeichrt werden
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-airport zeug!
-- wenn ich TESTING = live setze dann muss ich local server starten
-- update fonts on server!!!
-- cool! it looks like I can connect to vps from live server!!!!!!!
-somehow that works like a miracle
-- ich kann live server zu vps, live server zu localhost:3000 UND vps und localhost:3000 machen!
-
-
-
-
-
-
-
-- connect to vps
-- als erstes check ob das zeug auch am vps geht!
-- got it! jetzt geht es wirklich!!!
-- rename to cita
-- WAY SHORTER! repait server.js!
-- such ein socket beispiel mit disconnect
-- test
-- brauch das http zeug!!!
-- start.js
-- server end!
-- socket io server tests!
-- was ist wenn socketio dazunehme? goto nodemaster socketstarter!
-- jetzt hab ich eine db
-- save data button
-
-
-
-
-
-
-
-- minimize server mit file read filewrite db load db modify
-- mach eine db am server!
-- way shorter!!!
-- hau das yaml raus, hol das js-yaml rein!
-- parse yaml file content to json object
-const inputYML = 'input.yml';
-const outputJSON = 'output.json';
-const yaml = require('js-yaml');
-const fs = require('fs');
-const obj = yaml.load(fs.readFileSync(inputYML, {encoding: 'utf-8'})); 
-//this code if you want to save file locally
-fs.writeFileSync(outputJSON, JSON.stringify(obj, null, 2));
-- button for file
-
-- now open a file as db on server, on post update this file!
-- need to take 'y' dir out of files being watched by live-server!!!
-- mach einen test
-- do not reload on link click
-- ausgabe von return value!
-- aber zuerst: getfile
-
-
-- spaeter behalt ich dann den file content object live am server und veraendere es nur!
-- write yaml file
-- brauch ich den body-parser? NEIN =>remove it
-- test
-- is fs ein package? nicht sicher
-- wo find ich einen server der yaml required?
-- mach minimal yaml server
-- minimal model
-
-heaven is math and music, light and sound, pure consciousness, limitless
-
-in that other world there is no time and money and possession
-everything is pure light and sound in that other world
-goto that other world
-in that other world there are no needs
-
-
-- gehe eine runde dann eine runde mit dem guggi
-- ich will das alles ganichtmehr ich will endlich sterben ist doch eh alles kaputt
-- open 
-- ich brauch jetzt ein tiny model fuer mongo db
-- also was jetzt?
-- links wie macht man js bei links anstatt leaving page?
-- WAY SHORTER
-- region block
-- jsyaml wird gebraucht
-- genau das sollte eben irgendwo stehen!!!
-- brauch das json settings zeug fuer paths F12
-- komplett simple app
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-aber ini wirklichkeit ist was zaehlt die innere welt oder?
-- mach einen mongosink local und einen mongosink cloud
-- das ist ein interface das IMMER laeuft
-
-
-
-
-
-
-
-
-
-
-- kann ich das nicht einfacher machen? mit einer codebase
-- alles totaler mist!!!!
-- redirect
-link
-- WAY SHORTER!!! just give it all up then you are free
-Not allowed to load local resource: file:///C:/D/a03/nodemaster
-it does not matter: C:\D\a03\nodemaster
-=>schau in howto wie man eine db created!
-- besser waere: keyswords,link und groessere box fuer description
-add input field for link
-field: stackoverflow link
-
-
-es gibt eine moeglichkeit!
-die moeglichkeit ist:
-1- 
-
-was ich mir wuensche?
-allein zu sein irgendwo in der welt mein eigener herr zu sein
-frei zu sein 
-tot zu sein und nie wieder reincarnieren zu muessen
-NIE NIE NIE NIE MEHR!
-dass mir niemand mehr irgendwas bedeutet dass ich nie mehr angst habe vor irgendeinem menschen seiner meinung oder seinem verhalten
-irgendwo in ruhe zu leben und fuer niemanden mehr mitdenken
-allein als ein programmierer zu leben
-nichts den ganzen tag lang tun als programmieren
-garnichts fuer irgendwen tun muessen an niemanden denken muessen
-allein fuer mich in einer simplen welt zu sein
-einen simplen job ein simples gehalt ein einziges simples bankkonto und sonst nichts
-wohnen koennen wo ich will nicht fuer irgendwelche building schaeden zustaendig zu sein
-eine simple billige wohnung mieten, zu fuss zur arbeit, eine simple arbeit die ich gut kann, that's all!
-
-
-
-- wenn auf update click wird snippet nicht updated
-- how to make textarea rows fit content
-- gehen!
-
-- search ist falsch
-- WAY SHORTER!!!!
-- search code moecht ich keine dates und keyswords statt Title
-- WAY SHORTER!!!
-heut ist samstag
-WAY SHORTER!
-- header!
-- copy soul project
-- bootstrap ein coding das mir jedes ding wirklich als example liefert!
-- nodejs add cors
-
-- jetzt muss cors adden und dann muss authors route machen!
-- header?
-- restart vs code!
-- mach ich jetzt mit dem doofen views zeug weiter oder einfach mit wunderschoenem index.html???
-- jetzt koennt ich doch statt books soulplaces machen oder?
-- tutorial weiter!!!
-- beispiel mit preview
-- was jetzt? 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-- auf und gu essen machen!
-- tel dustin
-
-- runde mit musik 
-- mach einen filepond test
-- hol das filepond zeug!
-statt views directory mach 1 index.html file
-- will es wieder mit live server laufen lassen!
-- filepond
-- look up filepond
-- statt books werden das jetzt soul places wo man hineingehen kann
-- mach automatisch 100 books 
-- mach ein book named: airport
-- er hat jetzt wirklich das bild selbst in der db! data ist jetzt schon 300MB!!!
-- weired! ist es local?
-geh zur mongodb
-
-
-
-
-3pm tuesday
-- noch eines
-- such noch airport images
-- edit airpot1
-- use css
-- stretch image
-- w3schools background-image
-- mach nicht ein css sondern hol mir das basemin.js
-- copy base from nodemaster
-- in public
-- schau wo das css sein soll logisch
-- background bg
-- search background-image
-
-
-- nimm das airport terminal als 
-- airport feeling
-- where to begin?
-- erstmal list alles was ich lerne im leben:
-1. ubuntu / vps
-2. nodejs
-3. vs code
-4. js
-5. html
-6. css
-7. monkeymind = dummes geplapper, phased out
-8. body = eat drink sleep move
-9. words = communicate with family, core beliefs
-10. actions = communicate with world, make decisions, do something
-11. energy stages & advice how to handle 8 .. 11 as per stage
-12. life skills (eg., backen, handwerk)
-13. python, flask, jupyter
-14. dashboard fuer ideen
-15. klavier, geige
-
-
-
-- how to start?
-
-- all das auf meinem vps! in nodejs! mit mongodb
-- und eine eigene art von mood calendar! mit tips
-- und wo ich searchen kann => +eine advancced search!
-- auch all die howtos reintue!
-- sowie eine eigene website wo ich all die snippets reintue
-- kann ich irgendwie das zeug das ich lerne mir selbst zugaenglich machen???
-- mongodb filter
-- db.authors.deleteMany({name:{$ne:'felix'}})
-- delete authors w/ name != 'felix': {name:{$ne:'felix'}}
-- how to delete all records in mongodb collection? db.movies.deleteMany({})
-- versuch rauszufinden ob er jetzt formfields verwendet?
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-- get dir struct von nodemaster!
-
-
-
-
-
-
-
-- check ob ufw alle ports durchlaesst
-- goto file: 
-
-SHA256:YuUJ5aiMk6ioyh6skZowJBmu298NqYLhLu0hfV9YNx8.
-- try:
-sudo apt install curl
-curl -sL https://deb.nodesource.com/setup_14.x | sudo bash -
-sudo apt install -y nodejs
-- ubuntu install nodejs version 14
-- was hab ich installiert?8
-- 
-download and install putty
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-ich koennt mittagschlaefchen machen jetzt mit de mello
-
-
-
-
-
-
-
-
-
-
-
-
-
-- check who is listening on port 80 ubuntu
-- ich kann ueberhaupt nicht mehr zu meinem server connecten!
-- ping 0000:2607:f1c0:1801:0117:0000:0001:0000
-ok - ping www.vidulusludorum.com GEHT NICHT!!!
-ok - ping 216.250.112.218 GEHT NICHT!
-- ich muss einen server starten!
-- connect to vps: ssh root@216.250.112.218
-jetzt cannot access VPS ip address and port
-
-- echt confusing! wie soll ich das machen???
-- vs code terminal position 2022
-- vs code show terminal bottom
-goto IONOS
-
-- 
-- try >nginx -s stop
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-- hab alles gekillt und kenn mich ueberhaupt nicht aus!!!
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-tcp6       0      0 :::3000                 :::*                    LISTEN      1025198/node
-- geht nicht, geh mal zu IONOS
-- browse to 216.250.112.218:3000/
-- auf ntest, just run node server.js
-- nachdem PORT 3000 schon offen ist, brauch ich kein allow firewall
-- nachdem express schon auf root ist, brauch ich kein npm install!!!
-- navigate to ntest 
-- connect to root: ssh root@216.250.112.218
-- copy project to VPS using WinSCP
-- (keep PORT 3000)
-- copy code from nodemaster/all/starters/express
-- create server.js file
-- open terminal: npm init (server.js ist name of entry point)
-- open in vs code
-- in a4, create a dir ntest
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1- full life cycle node js app
-2- versuch was ganz simples: mach eine node js starter app 
-
-3- how to allow connection from IPaddress to MongoDB
-- in mongodb com need to allow vps IP address!!!
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1- copy .env file into testmongo
-- I guess I have to add an .env file to VPS now!
-- also: locally kann ich schon connecten!!!
-
-- test
-1- goto mongodb.com iwg@g mp...mdb
-2- project: animasimple
-3- next to Cluster0, click connect
-4- username: admin pwd: (auto) PGJpyMmWw0Npmd2e
-5- click create user
-6- click choose a connection method
-
-- https://cloud.mongodb.com/v2/60cd5dae4f51021a7e4411ec#clusters
-- brauch mein password
-- klar, ich hab dort kein .env file! hance kein connection string!
-- git clone https://github.com/isawzz/testmongo.git ... ist jetzt auf VPS
-- versuch auf VPS das tutfullstack zu clonen
-- versuch ob ich einfach mongoose 
-- download package-lock.json from VPS
-3- ssh root@216.250.112.218
-2- suche steps fuer VPS
-1- open onenote
-- how to publish this thing to a server?!?!?
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-am sa MUSS zur library fuer Raspberry pi buecher!!!
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-breggin and I
-america out loud
-dr peter breggin
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-- brauchen wir die memory?
-- am allerliebsten wuerd ich einen assistant machen der  mich beraet und meine mind killt
-- am liebsten moecht ich ein multi reversi machen
-choices:
-- multireversi? macht das sinn?
-- simplere spiele
-- async patterns
-- noc
-- patterns
-- html game
-- fix ferrocarril?
-- ferrocarril bot?
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-- open examples mit dem aspectRatio
-- hol die baselayout styles rein!
-gu schwimmen org
-- simpler!!!
-- mach ein mTag sowie mDiv
-- next html line
-- next
-- base styles fuer layouts!
-- test20_aspect_ratio_image_card
-- one by one it does not really matter!
-alle layouts: test
-
-
-
-
-
-
-
-- music is the first stage with NO permanence (not time-bound)
-- thoughts have almost no permanence
-- emotions have a more volatile permanence, but still some
-- this body seemingly has a certain permanence 
-
-- when I have understood that hell is not inflicted and that this body is just a part of it created by my soul with a slightly higher permanence than simple thoughts
-- the reason to goto hell is to learn that it is self-chosen not inflicted
-- it is only my chosen state that decides where I am
-- when I leave the space of nirvigelpa samadhi and start paying attention to the sick mind = ego, I am suffering (=hell)
-- when I am not suffering I am in the neutral space of nirvigelpa samadhi (=heaven)
-- ich moecht die layouts kennenlernen! die sind cool!
-- autobot???
-- echt???
-- life IS suffering
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-=>it has to be things that have nothing to do with ego (eg money, time, people, things)
-wie kann ich das feststellen? wenn auch nur slightest unease habe
-
-
-- the best way to clear your mind is to obey random orders
-- you have to clear your mind
-- test it!
-- ich koennte sowas wie lineup machen dass alle divs in position relative verwandelt: was wuerde dann passieren?
-- oder ich sage timed dann schreibt er immer vorher die start zeit zeit
-- wenn ich schreibe timer 20 oder cd20 macht er sowas
-
-
-
-
-- test 114
-- how to save a file on server directly?
-- ich muss auf einfache are ein wort eingeben koennen
-- es muss immer alles sofort persistent gemacht werden - am besten in einem file
-- ui:
-a program to direct my spinning thoughts
-
-
-
-sasha Latipova
-Reese truth for health foundation
-
-
-
-
-remove yourself from the outer world - this self is dommed with all the others there is nothing you can do - but you can turn inside and create a new world
-
-
-
-
-
-
-
-
-not doing is slow but more efficient
-you knew that as long as you look forward or backward you will suffer!
-this is not about the outer world or money. this is a training for you to wake up
-
-
-
-
-- go through materials
-- social interaction: be quiet do what you are told as long as it is ok
-dont bother about outcome
-- ich muss von der praxis herkommen!
-- rewards: essen,taschengeld,tv time,lesen
-- motivation: music,bewegung,schlaf
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-- ich moecht das games vereinfacht machen!
-- geh mal zu dem ari select
-- wie kann ich es gestalten?
-- wie kann ich rausfinden was ich will?
-- wie kann ich mich selbst zu magic bringen?
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-ueberlegen was ich eigentlich will
-- besseren output!
-- immer noch nicht klar was da passiert!
-- was muss passieren wenn back clicke
-
-ich kann localStorage fuer score verwenden!
-dazu kann ich auch noch score saven mit node js
-PAUSE BIS >=1h30
-
-
-
-
-
-
-
-do your magic: my recipe for you:
-baby steps!
-1. switch to rChoose(['tm','music','piano','ask spazier fcfs',
-was soll fuer q2 kommen? choices
-- es soll ein pensum geben: 
-zeitrahmen? woche vielleicht
-the world is benign
-- das ding soll actually aware sein of wieviel pause/ wieviel action 
-- onclick clear geht nicht!!!!
-
-choices: (standard choices in jeder lage!)
-1. start action w/ music
-2. start action w/ piano
-3. 321 - then action
-4. start action w/ femto
-5. start action w/ fempto gu
-
-
-
-
-
-
-
-
-
-
-rh evolves from current state:
-
-
-
-
-someactivities you can focus on will 
-some things you can listen to will effectively reduce your worries to nothing
-- https://www.youtube.com/watch?v=3pNpHZ1yv3I&t=2465s
-- what aspect of these worries is in your control, what aspect is out of your control?
-- what can you actually do about it?
-- what are you worried about?
-if it is time:
-- make todo list easy enough to handle it
-- stick to it, with 321 in between every 2 points
-if it is money:
-- if this was you last day, would you to worry about it?
-- consider that someone else is taking care of the 'future', you just plan for today.
-- you do know that YOU dont need money for anything and neither does anyone else.
-if it about a mistake in the past:
-- it is past. from now try to do it better
-if it is about possible making a mistake: 
-1. list mistakes/opportunnities just for TODAY
-2. for each of these think how ideally you would handle that
-3. if nothing comes to mind, just be quiet, answer questions or write down questions say will come back to you about that
-4. minimize challenges for TODAY
-5. determine islands of relaxation between challenges
-- if it is something material
-1. imagine you would die today. then the material world would become dreamlike. then after a few minutes, the emotions created in dream state would fade, so that after some time it would be hard for you even to imagine having those emotions.
-
-
-
-- remedy for worry
-- q2
-- weiter
-- weiter
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-- wo muss die history recorded werden???
-
-
-
-
-
-
-
-
-
-
-- next: inc q counter, 
-- WAYYYYYYYYYYYYYYYYYY SHORTER!!!!!!!!!!!!!!!!!!!!!!!
-- next button
-- WAY SHORTER!!!!!!
+839: *8:04 AM 3/7/2023-8:06 AM 3/7/2023
+99: test: wo ist das membership??????
+840: *8:06 AM 3/7/2023-8:20 AM 3/7/2023
+98: history bei change membership
+841: *8:20 AM 3/7/2023-8:22 AM 3/7/2023
+842: *8:22 AM 3/7/2023-8:37 AM 3/7/2023
+- wenn winner message will ich all die memberships sehen!!!!!!!!!
+97: keep history of sessions/ memberships
+baustelle 98 color
+843: *8:37 AM 3/7/2023-8:40 AM 3/7/2023
+- when gameover show sessions!
+844: *8:40 AM 3/7/2023-8:41 AM 3/7/2023
+845: *8:41 AM 3/7/2023-8:47 AM 3/7/2023
+846: *8:48 AM 3/7/2023-10:43 AM 3/7/2023
+847: *10:44 AM 3/7/2023-10:52 AM 3/7/2023
+848: *10:52 AM 3/7/2023-10:53 AM 3/7/2023
+main player is unten mitte
+der player left is links,die ubrigen oben,der rechts is rechts
+849: *10:54 AM 3/7/2023-11:33 AM 3/7/2023
+855: *11:33 AM 3/7/2023-11:34 AM 3/7/2023
+856: *11:34 AM 3/7/2023-1:51 PM 3/7/2023
+860: *1:51 PM 3/7/2023-3:10 PM 3/7/2023
+861: *3:10 PM 3/7/2023-4:00 PM 3/7/2023
+862: *4:00 PM 3/7/2023-4:22 PM 3/7/2023
+863: *4:23 PM 3/7/2023-4:37 PM 3/7/2023
+865: *4:37 PM 3/7/2023-5:13 PM 3/7/2023
+870: *5:13 PM 3/7/2023-9:08 PM 3/7/2023
+__________ mi 8.3.23 waiting at the airport...  
+900: *9:09 PM 3/7/2023-9:40 PM 3/7/2023
+901: *9:40 PM 3/7/2023-6:41 AM 3/8/2023
+defect geht immer noch nicht!!!???? ari_history_list!
+ok =>validvoters: nach president runde wieder alle in den poll?
+902: *6:41 AM 3/8/2023-6:47 AM 3/8/2023
+903: *6:47 AM 3/8/2023-7:05 AM 3/8/2023
+904: *7:05 AM 3/8/2023-7:19 AM 3/8/2023
+905: *7:19 AM 3/8/2023-7:21 AM 3/8/2023
+906: *7:21 AM 3/8/2023-7:32 AM 3/8/2023
+907: *7:32 AM 3/8/2023-7:36 AM 3/8/2023
+=>ueberall replace fen.starter by Z.host
+=>fen.starter soll host sein!
+als uname=host=fen.starter
+- wenn NUR ein bot dran ist muss ich das auch irgendwie machen!!!!!!!
+- wie sollen die bots gemoved werden?
+908: *7:36 AM 3/8/2023-7:37 AM 3/8/2023
+909: *7:37 AM 3/8/2023-7:40 AM 3/8/2023
+910: *7:40 AM 3/8/2023-7:40 AM 3/8/2023
+also ist doch die einfachste art, die bots zu spielen!
+wenn ankomme und es ist ein bot, mach einfach den move
+als host
+bots koennen in ALLEN stages eine rolle haben!!!!!!!!!!!!!!!!!!!
+welche stages sammeln pldata? hand membership round
+SIMPLEST WAY TO SOLVE THIS PROBLEM???????
+920: *8:26 AM 3/8/2023-6:18 PM 3/8/2023
+921: *6:18 PM 3/8/2023-8:20 PM 3/8/2023
+bot,human!!!
+950: *8:20 PM 3/8/2023-8:28 PM 3/8/2023
+951: *8:28 PM 3/8/2023-
+- unter player soll stehen: handsize,score
+- wie start ich die erste table?
+- show score!!! instead of card
+__________ do 9.3.23 waiting at the airport...  
+1000: *9:21 PM 3/8/2023-5:47 AM 3/9/2023
+1: *5:47 AM 3/9/2023-5:51 AM 3/9/2023
+2: *5:51 AM 3/9/2023-7:18 AM 3/9/2023
+10: *7:18 AM 3/9/2023-12:29 PM 3/9/2023
+- if there are no policies, mach es anders!!!
+11: *12:29 PM 3/9/2023-1:11 PM 3/9/2023
+rem cons
+12: *1:28 PM 3/9/2023-1:43 PM 3/9/2023
+13: *1:43 PM 3/9/2023-1:46 PM 3/9/2023
+container is really a card container!
+ich brauch eines fuer player
+- was ist es bei ui_type_hand?
+14: *1:46 PM 3/9/2023-1:46 PM 3/9/2023
+15: *1:46 PM 3/9/2023-1:58 PM 3/9/2023
+16: *1:58 PM 3/9/2023-4:05 PM 3/9/2023
+- selecting a color! soll nicht einen string zeigen!
+- ich muss jetzt zu 
+- wie bekomm ich ein playerimage?
+17: *4:06 PM 3/9/2023-4:17 PM 3/9/2023
+18: *4:17 PM 3/9/2023-4:27 PM 3/9/2023
+19: *4:27 PM 3/9/2023-6:07 AM 3/10/2023
+- cannot exchange with self! parlay
+true weggeben
+__________ fr 10.3.23 waiting at the airport...  
+40: *6:07 AM 3/10/2023-6:13 AM 3/10/2023
+41: *6:13 AM 3/10/2023-6:23 AM 3/10/2023
+42: *6:23 AM 3/10/2023-6:25 AM 3/10/2023
+43: *6:25 AM 3/10/2023-6:27 AM 3/10/2023
+44: *6:27 AM 3/10/2023-6:29 AM 3/10/2023
+45: *6:29 AM 3/10/2023-6:29 AM 3/10/2023
+46: *6:29 AM 3/10/2023-6:48 AM 3/10/2023
+47: *6:48 AM 3/10/2023-6:49 AM 3/10/2023
+48: *6:49 AM 3/10/2023-6:56 AM 3/10/2023
+- 9 zeigt membership von uplayer statt von uname!!!
+ok - BUG!!!!!10 membership wird falsch gezeigt!
+- WO genau?
+- versuch es mit show_message(msg)
+- kann ich sowas wie bandmessage machen wenn pres geguessed hat?
+- ob president guesses correctly or not sollte auch irgendwo stehen!!!
+49: *7:00 AM 3/10/2023-11:10 AM 3/10/2023\
+50: *11:10 AM 3/10/2023-11:18 AM 3/10/2023
+55: *11:19 AM 3/10/2023-11:24 AM 3/10/2023
+57: *11:24 AM 3/10/2023-12:34 PM 3/10/2023
+58: *12:34 PM 3/10/2023-7:27 AM 3/11/2023
+__________ sa 11.3.23 waiting at the airport...  
+80: *7:27 AM 3/11/2023-8:09 AM 3/11/2023
+85: *8:09 AM 3/11/2023-8:10 AM 3/11/2023
+86: *8:10 AM 3/11/2023-8:16 AM 3/11/2023
+87: *8:16 AM 3/11/2023-11:41 AM 3/11/2023
+88: *11:41 AM 3/11/2023-12:40 PM 3/11/2023
+89: *12:40 PM 3/11/2023-12:48 PM 3/11/2023
+- ich koennt assertions einbauen fuer how many cards should everyone have!
+90: *12:48 PM 3/11/2023-1:13 PM 3/11/2023
+91: *1:13 PM 3/11/2023-1:28 PM 3/11/2023
+- wenn empty vote ist hat err beim scoren keine farbe!
+- aber er sollte doch
+- es muss auch in activate gehen wenn es hand ist fuer den host even if he did not vote!@
+- ganz am anfang geb ich zu jedem ein pl.hz: soviele cards sollte der player haben!
+92: *5:19 PM 3/11/2023-5:26 PM 3/11/2023
+93: *5:26 PM 3/11/2023-5:37 PM 3/11/2023
+94: *5:37 PM 3/11/2023-5:50 PM 3/11/2023
+95: *5:50 PM 3/11/2023-8:28 PM 3/11/2023
+__________ so 12.3.23 waiting at the airport...  
+130: *8:28 PM 3/11/2023-8:41 PM 3/11/2023
+141: *8:41 PM 3/11/2023-6:23 AM 3/12/2023
+142: *6:24 AM 3/12/2023-6:58 AM 3/12/2023
+143: *6:58 AM 3/12/2023-7:29 AM 3/12/2023
+144: *7:29 AM 3/12/2023-7:30 AM 3/12/2023
+145: *7:30 AM 3/12/2023-7:52 AM 3/12/2023
+- die bots haben ihre membership card nicht gezahlt!!!
+- bots haben falsche karten anzahl!!!!!
+- da steht: felix wins presidency, mimi accuses gul!!!!!!!!!!!!!!!!!!
+es soll einfacher werden mit uname und uplayer
+multi: 
+1. uname soll IMMER uplayer sein
+147: *7:52 AM 3/12/2023-8:11 AM 3/12/2023
+148: *8:11 AM 3/12/2023-8:23 AM 3/12/2023
+149: *8:23 AM 3/12/2023-8:49 AM 3/12/2023
+150: *8:49 AM 3/12/2023-9:08 AM 3/12/2023
+151: *9:08 AM 3/12/2023-9:19 AM 3/12/2023
+155: *9:25 AM 3/12/2023-9:50 PM 3/12/2023
+__________ mo 13.3.23 waiting at the airport...  
+200: *9:50 PM 3/12/2023-8:15 AM 3/13/2023
+201: *8:16 AM 3/13/2023-8:19 AM 3/13/2023
+202: *8:19 AM 3/13/2023-8:20 AM 3/13/2023
+203: *8:25 AM 3/13/2023-8:30 AM 3/13/2023
+204: *8:30 AM 3/13/2023-8:31 AM 3/13/2023
+205: *8:31 AM 3/13/2023-8:33 AM 3/13/2023
+206: *8:33 AM 3/13/2023-8:35 AM 3/13/2023
+207: *8:35 AM 3/13/2023-8:35 AM 3/13/2023
+208: *8:35 AM 3/13/2023-8:49 AM 3/13/2023
+209: *8:49 AM 3/13/2023-8:53 AM 3/13/2023
+210: *8:53 AM 3/13/2023-9:00 AM 3/13/2023
+211: *9:00 AM 3/13/2023-9:01 AM 3/13/2023
+212: *9:01 AM 3/13/2023-9:06 AM 3/13/2023
+213: *9:06 AM 3/13/2023-9:06 AM 3/13/2023
+214: *9:07 AM 3/13/2023-10:58 AM 3/13/2023
+224: *10:58 AM 3/13/2023-3:04 PM 3/13/2023
+225: *3:04 PM 3/13/2023-9:00 PM 3/13/2023
+__________ di 14.3.23 waiting at the airport...  
+246: *9:00 PM 3/13/2023-6:54 AM 3/14/2023
+247: *6:55 AM 3/14/2023-7:31 AM 3/14/2023
+248: *7:31 AM 3/14/2023-7:32 AM 3/14/2023
+249: *7:33 AM 3/14/2023-8:02 AM 3/14/2023
+- mach einen button fuer: hotseat-just me-takeover
+- wer soll uname sein? current uname wenn on turn sonst pls[0]
+- accuse IMMER im multi mode: config!
+- geh zurueck zu games
+- nimm alle files von aroot/accuse ausser all.js
+- aber weenn ich front end und back end trennen wuerde dann muesst ich das nicht!!!!!
+- das testing ist wegen dem live-server: da muss ich php umgehen!
+what does it take as a minimum?
+1. statt It's your turn mach ich: hotseat: uname's turn
+2. advanced players can takeover hotseat mode
+- manual multi: click on player to switch:
+das ist gut wenn man einzelne players emulieren will
+- jetzt mach ich es so dass
+250: *8:02 AM 3/14/2023-8:16 AM 3/14/2023
+251: *8:16 AM 3/14/2023-8:27 AM 3/14/2023
+==>resetting to advanced secretuser!!!!!!!!!
+252: *8:45 AM 3/14/2023-8:53 AM 3/14/2023
+253: *8:53 AM 3/14/2023-8:54 AM 3/14/2023
+254: *8:54 AM 3/14/2023-8:58 AM 3/14/2023
+- role ist falsch!!!
+255: *8:58 AM 3/14/2023-9:04 AM 3/14/2023
+256: *5:14 PM 3/14/2023
+20: post holen / gu post holen / post check / muss was bezahlet werden?
+- show_role sollte eigentliich auch show_title_animated oder nicht machen!!!!!!
+- its your turn muss weg!!!!!!!
+- switch to takeover should immediately show otherr users is not active!!!
+- implement tie: last policy is reinforced?
+276: *8:03 PM 3/14/2023-8:03 PM 3/14/2023
+__________ mi 15.3.23 waiting at the airport...  
+277: *8:08 PM 3/14/2023-7:24 AM 3/15/2023
+278: *7:24 AM 3/15/2023-7:25 AM 3/15/2023
+- geht jetzt
+- test telecave
+revert
+279: *7:25 AM 3/15/2023-7:26 AM 3/15/2023
+- last feature?war keine
+280: *7:27 AM 3/15/2023-7:29 AM 3/15/2023
+281: *7:29 AM 3/15/2023-7:34 AM 3/15/2023
+- stop telecave
+282: *7:35 AM 3/15/2023-7:43 AM 3/15/2023
+283: *7:43 AM 3/15/2023-7:52 AM 3/15/2023
+284: *7:52 AM 3/15/2023-7:56 AM 3/15/2023
+- rem cons!
+285: *7:56 AM 3/15/2023-8:02 AM 3/15/2023
+286: *8:02 AM 3/15/2023-8:06 AM 3/15/2023
+287: *8:06 AM 3/15/2023-8:18 AM 3/15/2023
+288: *8:18 AM 3/15/2023-8:28 AM 3/15/2023
+289: *8:28 AM 3/15/2023-8:40 AM 3/15/2023
+290: *8:41 AM 3/15/2023-8:45 AM 3/15/2023
+291: *8:45 AM 3/15/2023-8:51 AM 3/15/2023
+292: *8:51 AM 3/15/2023-9:00 AM 3/15/2023
+293: *9:00 AM 3/15/2023-9:35 AM 3/15/2023
+300: *9:35 AM 3/15/2023-8:48 PM 3/15/2023
++100: 1pm LIB!!!!!!=>morgen zahnarzt und post! +lib return Seizure!!!!!!!!
++20: zahlen library fines!!!! +get holds!!!!! =>QFC:petersilie
+__________ do 16.3.23 waiting at the airport...  
+430: *8:49 PM 3/15/2023-7:25 AM 3/16/2023
+431: *7:25 AM 3/16/2023-7:30 AM 3/16/2023
+432: *7:30 AM 3/16/2023-7:40 AM 3/16/2023
+433: *7:40 AM 3/16/2023-7:45 AM 3/16/2023
+434: *7:45 AM 3/16/2023-7:50 AM 3/16/2023
+435: *7:50 AM 3/16/2023-8:10 AM 3/16/2023
+437: *8:10 AM 3/16/2023-8:10 AM 3/16/2023
+438: *8:10 AM 3/16/2023-8:12 AM 3/16/2023
+439: *8:12 AM 3/16/2023-8:21 AM 3/16/2023
+440: *8:21 AM 3/16/2023-8:28 AM 3/16/2023
+441: *8:28 AM 3/16/2023-8:28 AM 3/16/2023
+442: *8:28 AM 3/16/2023-8:28 AM 3/16/2023
+443: *8:28 AM 3/16/2023-8:32 AM 3/16/2023
+444: *8:32 AM 3/16/2023-8:34 AM 3/16/2023
+445: *8:34 AM 3/16/2023-8:35 AM 3/16/2023
+446: *8:35 AM 3/16/2023-8:46 AM 3/16/2023
+447: *8:46 AM 3/16/2023-8:55 AM 3/16/2023
+448: *8:55 AM 3/16/2023-9:10 AM 3/16/2023
+449: *9:10 AM 3/16/2023-9:10 AM 3/16/2023
+450: *9:10 AM 3/16/2023-9:12 AM 3/16/2023
+451: *9:12 AM 3/16/2023-9:12 AM 3/16/2023
+452: *9:12 AM 3/16/2023-9:16 AM 3/16/2023
+453: *9:16 AM 3/16/2023-9:19 AM 3/16/2023
+454: *9:20 AM 3/16/2023-9:23 AM 3/16/2023
+455: *9:23 AM 3/16/2023-9:23 AM 3/16/2023
+456: *9:23 AM 3/16/2023-11:59 AM 3/16/2023
+486: *11:59 AM 3/16/2023-12:00 PM 3/16/2023
+487: *12:00 PM 3/16/2023-12:05 PM 3/16/2023
+488: *12:05 PM 3/16/2023-12:08 PM 3/16/2023
+489: *12:08 PM 3/16/2023-12:09 PM 3/16/2023
+firstNumber('1_r')
+- mach jetzt test
+- add option consensus coup d'etat
+490: *12:09 PM 3/16/2023-12:10 PM 3/16/2023
+491: *12:10 PM 3/16/2023-12:11 PM 3/16/2023
+492: *12:11 PM 3/16/2023-12:11 PM 3/16/2023
+- its a vote not a card: {plname, card}
+493: *12:11 PM 3/16/2023-12:11 PM 3/16/2023
+494: *12:11 PM 3/16/2023-12:21 PM 3/16/2023
+495: *12:21 PM 3/16/2023-12:22 PM 3/16/2023
+- output votes
+- find returns object or undefined
+- coup detat NEIN
+- wie geht coup d'etat?
+- coup detat: consensus variant
+- ok das ganze ist obsolete!!!!! 	
+- onclick_weiter
+- now what???
+- restart
+- restart
+- new table
+- delete games
+- state.card muss geaendert werden zu state.item
+- wo geb ich den test hin? index.html
+- test fuer tied_consensus!
 - WAY SHORTER!!!!!
-- WAY SHORTER!!!!!!!!!
-- toggle_select soll auch mit selclass gehen!
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-- fragen jeslyn
-- costco?
-- spa
-
-
-- finde ein anderes gelb fuer worried OR mach all die farben blasser
-- JA GEHT!!!!!
-- try !important at end of css rule
-- js how to make class more important than set style
-- ja das ist der fall!!!!
-- do NOT set background in styles!
-- wahrscheinlich weil ich den style setze! teste das!
-- selected class soll bg setzen
-- mClass
-- noch krasser
-- baustelle toggleSelection
-- toggleSelection ?
-- wenn das prompt eine list hat und einen handler, 
-= line break
-- back to my soul place though!
-- cd timer: soul place ann auch heissen: edu yt paar minuten!
-- back to my soul place
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-- 
-- simple steps!
-- developers.notion.com/docs
-- open gui-challenges
-
-- rem cons
-- abfahrt
-
-
-
-hochzeit invitations
-mo 3.juli
-save the date
-ideen 20 Juni - Juni
-rsvp settings preferences
-optionen
-
-
-
-1500 pro monat wenn zuviel =>1400... 1000 ist minimum
-auto 50
-essen 500
-ausgehen 100
-katzen 200
-anschaffungen 150
-========
-=1000 min - 1500 max
-
-+vet+edu/sport
-aktiv
-
-- dict_remove(di,keys)
-- iStrip entfernt live!
-- wie sieht G aus?
-
-- weiter
-- bug sta 40
-- ui_type_sym_text_line
-
-
-
-
-
-
-lets play the game of life!
-- earned: ernte!!!
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-___________________ game: 'real world' restrict to 8h max!
-20 / spa
-10 / eink kochen
-40 oasis putz
-100 4 zoom
-- deep cleaning?
-- repair drawer?
-10 TKD
-
-
-
-
-
-
-something else is relevant all this is not real it is a dream
-
-die seele 
-liste
-=>prompt, loop muss besser werden!!!
-
-
-
-13150 102nd Lane Northeast, Unit 2
-kirkland 98034
-
-toilet seat                      ...  $39
-shower head                      ...  $30
-handyman repair kitchen,bathroom ... $200
-professional cleaning            ... $390
-days Nov 1-5 (pro-rated)         ... $340 
-total ----------------               $999
-1999-999 => 1000
-
-
-
-Julia, please: here is a list of things that I found after thoroughly going through the apartment:
-1. a terribly dirty tile on the balcony has to be cleaned
-2. the toilet is not flushing well and the seat is extremely dirty (clean or replace)
-3. the bathtub is very dirty, needs to be cleaned inside and around
-4. in the kitchen there is a drawer that is detached: needs to be fixed
-5. the windows and especially screens are very dirty
-6. appliances have to be cleaned inside! (microwave, dishwasher)
-7. fireplace: I am not sure if this is supposed to be like this (loose on the top)
-8. tiles in entrance are very dirty
-9. plus general cleaning of floors, etc.
-
-all these items show as ok on our last inspection list, so please try and clean/fix whatever you can.
-
-When you are done please tell me and I will inspect again. Ideally you should be present!
-
-
-
-
-
-
-
-
-
-
-
-
-
-- es muss so simpel sein wie fitbit und ein gutes feedback geben!
-==>mach ein besseres example!!!
-- alle params die aendern kann!!!
-1. wie aendere ich minute?
-mach ein onclick event
-- youtube does not start autoplay unless mute=1
-- read yt embed zeug!
-- start yt at a certain place (from ... to)
-
-
-Puget Sound Energy
-1-888-225-5773
-Hours: Mon-Fri 7:30 a.m. - 6:30 p.m.
-address von apartment: 701 122nd Ave NE #405 Bellevue 98005
-701 122nd Ave NE #405 98005 Bellevue WA
-
-Julia phone: 4256917683
-Julia email: ladyjkh@gmail.com
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-- kann ich ein yt von meinem program aus starten? in einem frame?
-- einen assistant will ich auch
-- work on the library
-- waers nicht cool wenn ich einfach tools haette ein game wirklich schnell zu definieren? und dann eine ai dazu
-und dann ais gegeneinander spielen lassen
-
-
-
-
-
-
-- at this point something else is relevant
-
-- hole mir das heft / materialund gehe es durch
-
-
-
-- emotion scale colors
-- add colors
-
-
-
-
-email:20
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-- overwhelmed
-
-- weiter scales!
-- match faces mit emos
-- bored
-- ok, back to code!, scale
-- schau ob ich die perlen habe
-- zurueck zur emo scale!
-- perlen idee!!!!! vorlaeufig ehm ich mal das emoticons
-- geh zurueck zu den emos
-- open one note
-- test!
-remove duplicates from array
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-125# oasis
-airport 
-
-
-- load_syms
-- iconviewer
-- volume
-- pitch 0 [1] 2
-- lang
-- $ => mBy
-- geht ja garnicht!!!
-irgendeine spielregel
-bee game: be what you want to see
-aber NOW
-kala meets your consciousness NOW, NOW, NOW
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-- super simples beispiel duckduckgoose: geht so: spieler der dran ist clickt auf irgendeinen anderen spieler. sobald das passiert
-bekommen beide gleichzeitige eine frage und der erste der sie richtig beantwortet gewinnt. wenn spieler gewinnt muss ein neuer 
-- mach das ganze mal nur mit dem pollen
-- 85/100 ganz generell halten!
-- 86/100 wenn es 
-ich frier mich tot ich muss mich bewegen!!!!!!!
-- 87/100 
-- 88/100 er sendet ein post/json wenn es nicht ein filename ist,
-was ist es dann? save in memory G object
-- 89/100 toYamlFile
-- 90/100 dazu brauch ich fs und yaml
-- 91/100 need utils from chatApp
-- 92/100 freeze server solution!
-- 93/100 test route_post_json
-- 94/100 dazu noch ein route_post_json
-- 95/100 freeze post_json
-- 96/100 hat geklappt! jetzt muss ich es freezen!
-- 97/100: client side
-- 98/100: simplest!!!
-- 99/100: fail
-=>9. post json save as yaml file node js 1/10
-
-
-
-choices what to do next?
-1. brot starten
-2. walk+music
-3. kartoffel kochen
-4. gu fleisch einfrieren
-5. brot einfrieren
-6. TK ordnen
-7. schlafen
-8. file upload node js solve
-=>9. post&save as yaml file node js 1/10
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-- suche wo so ein post gemacht wird
-krank
-PERLEN_DATA_PATH
-- utils
-- was macht addPerle
-- einfach nur ein file am server saven in node js
-- wie hab ich files am server gesaved?
-
-
-
-2- if an item has a x,y it is positioned absolutely (das ist eh in styles drin!
-3- mach ein 2D board 3x3
-
-
-aber beides homogeneity und heterogeneity sind aspekte des spiels
-=>hier kommt: pure view of the mind vs pure view of the heart
-heart macht aus allem eine riesen passierte suppe, homogen
-- das alles ist es was ein spiel ausmacht
-
-- das coolste ist: reproduction of types: wie entwickeln sich generations? das ist das interessanteste: rules und learning
-inheritance rules und learned behavior
-=>hierr kommt das environment dazu und die goals (eg survival in presence of predators...)
-
-- wie sehr sind die verschiedenen aspekte eines type interrelated?
-can I just wildly mix and match them???? das waer ja grad das lustige!
-
-
-type kann sein: structure of information (list,formula,matrix,...)
-type kann sein: sources of information (url, english dictionary...)
-type kann sein: unstructured content (text, symbols,...)
-type kann sein: positioned content (text+pos, shape+position...)
-type kann sein: default behaviors und functions (get_neighbors in board)
-type kann sein: ein trait (inheritable abstract property, zB 'dark')
-
-
-- was sind das fuer types? list,matrix,
-=>diese types sind es eigentlich die eine lib implementiert
-- kann auch einen type haben den es schon gibt!
-(zB card52)...
-
-
-
-
-was ist ein generic game item?
-- es hat styles (includes classname!)
-- sollte haben children
-- kann haben parent
-- kann haben text
-- kann behaviors sowie draggable, onclick, anim... haben
-- kann info fuer seine children haben (board zB)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-- wie wird ein go created?
-- way shorter the wound is bleeding 
-- localStorage.getItem
-- something else...
-- stringify
-
-
-
+win,add policy
+way shorter!!!
+- wenn cards n_c sind
+consensus mit tie
+496: *12:22 PM 3/16/2023-12:43 PM 3/16/2023
+497: *12:43 PM 3/16/2023-1:06 PM 3/16/2023
+498: *1:06 PM 3/16/2023-2:27 PM 3/16/2023
+499: *2:27 PM 3/16/2023-2:29 PM 3/16/2023
+500: *2:29 PM 3/16/2023-2:35 PM 3/16/2023
+post1:ok
+501: *2:35 PM 3/16/2023-8:34 PM 3/16/2023
+__________ fr 17.3.23 waiting at the airport...  
+560: *8:34 PM 3/16/2023-8:35 PM 3/16/2023
+551: *8:35 PM 3/16/2023-8:53 PM 3/16/2023
+552: *6:16 AM 3/17/2023-6:17 AM 3/17/2023
+553: *6:17 AM 3/17/2023-6:18 AM 3/17/2023
+stability: 5, ea
+554: *6:19 AM 3/17/2023-6:19 AM 3/17/2023
+555: *6:19 AM 3/17/2023-6:20 AM 3/17/2023
+556: *6:20 AM 3/17/2023-6:20 AM 3/17/2023
+557: *6:20 AM 3/17/2023-6:22 AM 3/17/2023
+558: *6:22 AM 3/17/2023-6:25 AM 3/17/2023
+- explorer
+SAFE VERSION!
+559: *6:25 AM 3/17/2023-6:30 AM 3/17/2023
+- replace session => generation
+560: *6:34 AM 3/17/2023-6:43 AM 3/17/2023
+- president end: start_new_poll
+561: *6:43 AM 3/17/2023-6:46 AM 3/17/2023
+562: *6:47 AM 3/17/2023-7:00 AM 3/17/2023
+563: *7:00 AM 3/17/2023-7:00 AM 3/17/2023
+564: *7:00 AM 3/17/2023-7:01 AM 3/17/2023
+565: *7:01 AM 3/17/2023-7:07 AM 3/17/2023
+566: *7:07 AM 3/17/2023-7:15 AM 3/17/2023
+567: *7:15 AM 3/17/2023-7:15 AM 3/17/2023
+WAY SHORTER!!!
+568: *7:15 AM 3/17/2023-7:24 AM 3/17/2023
+569: *7:24 AM 3/17/2023-7:25 AM 3/17/2023
+- start new generation started ja mit membership, von da gehts zu start_new_poll!!!
+check_enough_policies_or_new_poll
+- mach einen vote empty und einen vote random button
+test
+wau shorter!
+570: *7:25 AM 3/17/2023-7:26 AM 3/17/2023
+571: *7:26 AM 3/17/2023-7:27 AM 3/17/2023
+572: *7:27 AM 3/17/2023-7:31 AM 3/17/2023
+573: *7:31 AM 3/17/2023-7:36 AM 3/17/2023
+574: *7:36 AM 3/17/2023-7:51 AM 3/17/2023
+575: *7:51 AM 3/17/2023-7:57 AM 3/17/2023
+576: *7:57 AM 3/17/2023-7:59 AM 3/17/2023
+577: *7:59 AM 3/17/2023-8:44 AM 3/17/2023
+578: *8:44 AM 3/17/2023-8:47 AM 3/17/2023
+579: *8:47 AM 3/17/2023-8:51 AM 3/17/2023
+- wieso guest wins presidency?
+580: *8:53 AM 3/17/2023-9:10 AM 3/17/2023
+581: *9:10 AM 3/17/2023-9:10 AM 3/17/2023
+- way shorter!!!!!!!!!!!!!!!
+582: *9:10 AM 3/17/2023-11:20 AM 3/17/2023
+682: *11:21 AM 3/17/2023-2:27 PM 3/17/2023
+700: *2:28 PM 3/17/2023-2:33 PM 3/17/2023
+701: *2:33 PM 3/17/2023-2:33 PM 3/17/2023
+702: *2:33 PM 3/17/2023-2:36 PM 3/17/2023
+703: *2:36 PM 3/17/2023-2:50 PM 3/17/2023
+704: *2:50 PM 3/17/2023-9:09 PM 3/17/2023
+__________ sa 18.3.23 waiting at the airport... lib renew: 22.3.23
+725: *9:09 PM 3/17/2023-7:04 AM 3/18/2023
+726: *7:04 AM 3/18/2023-7:15 AM 3/18/2023
+727: *7:15 AM 3/18/2023-7:16 AM 3/18/2023
+728: *7:16 AM 3/18/2023-7:18 AM 3/18/2023
+729: *7:18 AM 3/18/2023-7:24 AM 3/18/2023
+730: *7:24 AM 3/18/2023-7:26 AM 3/18/2023
+731: *7:26 AM 3/18/2023-7:28 AM 3/18/2023
+732: *7:28 AM 3/18/2023-7:29 AM 3/18/2023
+- obwohl uname=uplayer=mimi, (host), zeigt er mimi oben in show_takeover_ui
+- bug 633
+- SHORTER!!!
+- test.js
+mach ein shortcut: 5player,6player...
+WAY SHORTER
+733: *7:29 AM 3/18/2023-7:32 AM 3/18/2023
+734: *7:32 AM 3/18/2023-7:35 AM 3/18/2023
+735: *7:35 AM 3/18/2023-7:38 AM 3/18/2023
+736: *7:38 AM 3/18/2023-7:40 AM 3/18/2023
+737: *7:40 AM 3/18/2023-7:41 AM 3/18/2023
+738: *7:41 AM 3/18/2023-7:46 AM 3/18/2023
+739: *7:46 AM 3/18/2023-7:51 AM 3/18/2023
+740: *7:51 AM 3/18/2023-7:54 AM 3/18/2023
+741: *7:54 AM 3/18/2023-7:59 AM 3/18/2023
+742: *7:59 AM 3/18/2023-8:00 AM 3/18/2023
+- was genau muss ich nach accused_replaced_membership machen?
+if (wrong_guesses >= 3 
+- was passiert bei accuse_action_provisional
+shorter!!!
+- implement stability and crisis:
+ok 1. set fen.stability laut options (constant)
+ok 2. count consecutive wrong guesses: WRONG
+ok 3. if (wrong_guesses >= 3) fen.crisis = 1, start_new_poll
+ok 4. reset wrong_guesses each poll start OR correct guess
+ok 4b. reset crisis each generation start!
+ok 5. when calc enough policies: stability - crisis
+ok 6. inc wrong_guesses each WRONG guess
+743: *8:00 AM 3/18/2023-8:03 AM 3/18/2023
+744: *8:03 AM 3/18/2023-8:03 AM 3/18/2023
+745: *8:04 AM 3/18/2023-8:05 AM 3/18/2023
+746: *8:05 AM 3/18/2023-8:13 AM 3/18/2023
+747: *8:13 AM 3/18/2023-8:13 AM 3/18/2023
+748: *8:13 AM 3/18/2023-8:16 AM 3/18/2023
+749: *8:17 AM 3/18/2023-8:25 AM 3/18/2023
+750: *8:25 AM 3/18/2023-8:53 AM 3/18/2023
+770: *8:53 AM 3/18/2023-9:00 AM 3/18/2023
+771: *9:00 AM 3/18/2023-9:01 AM 3/18/2023
+772: *9:01 AM 3/18/2023-9:03 AM 3/18/2023
+773: *9:03 AM 3/18/2023-9:06 AM 3/18/2023
+774: *9:06 AM 3/18/2023-9:09 AM 3/18/2023
+- what are the options for empty_votes
+arrLast returns null if arr empty!
+- empty vote: no policy new poll
+775: *9:09 AM 3/18/2023-9:10 AM 3/18/2023
+zeug
+790: *11:55 AM 3/18/2023-12:06 PM 3/18/2023
+791: *12:06 PM 3/18/2023-12:09 PM 3/18/2023
+792: *12:09 PM 3/18/2023-12:12 PM 3/18/2023
+793: *12:12 PM 3/18/2023-12:32 PM 3/18/2023
+794: *12:32 PM 3/18/2023-12:37 PM 3/18/2023
+795: *12:37 PM 3/18/2023-12:40 PM 3/18/2023
+796: *12:40 PM 3/18/2023-12:42 PM 3/18/2023
+797: *12:43 PM 3/18/2023-12:47 PM 3/18/2023
+798: *12:47 PM 3/18/2023-12:50 PM 3/18/2023
+799: *12:50 PM 3/18/2023-9:30 PM 3/18/2023
+__________ so 19.3.23 waiting at the airport... lib renew: 22.3.23
+880: *9:31 PM 3/18/2023-7:17 AM 3/19/2023
+881: *7:17 AM 3/19/2023-7:24 AM 3/19/2023
+882: *7:24 AM 3/19/2023-7:25 AM 3/19/2023
+883: *7:25 AM 3/19/2023-7:28 AM 3/19/2023
+- wie verwende state1 und state2?
+- indiv is now erweitert!!!
+- wie macht man das mit sql?
+- vielleicht kann ich noch paar state dazu geben bei indiv! (easy)
+884: *7:28 AM 3/19/2023-7:34 AM 3/19/2023
+885: *7:34 AM 3/19/2023-7:45 AM 3/19/2023
+886: *7:45 AM 3/19/2023-7:47 AM 3/19/2023
+887: *7:47 AM 3/19/2023-7:54 AM 3/19/2023
+- goto take turn
+888: *7:55 AM 3/19/2023-7:57 AM 3/19/2023
+- soll ich ein clear fuer alle machen??? ja erstmal
+- ich koennt das clear lassen dann muss jeder selbst clearen
+- jetzt wird es so gemacht in php
+- soll clear_players alle clearen?
 choices:
-- make a function out of it!
-- what now?????
-- sit down! by clicking on a place
-- html canvas: arched door
-=>seniorcenter
-- mTexture?
-- sit n players around table
-- getEllipsePoints 
-- das dParent muss pos relative haben!
-- jetzt moecht ich circle centers von board
-- 
-- basemin was fuer divs gibt es?
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-=>vermeide vergleiche und vermeide judgements
-- was fuer divs gibt es in globals?
-- 2 players each has its space and there is a common space
-- first live game: 
-- life games - just my world
-- mimo game a random life game
-- hover => activate player (test: all players visible)
-- wie fang ich an? 4 player game mit ich,ai,2random players
-- was spielen die? 
-choices fuer spiel:
-lost cities (2 player)
-ticket to ride
-snake
-spotit
-stadtland
-catan
-repair the world
-psychotherapy (dazu brauch ich wahrscheinlich web scraping?)
-=> behavioral therapy: bt
-so ein spiel:
-ein spiel bei dem man punkte bekommt fuer real life stuff
-what are the rewards? 
-
-https://www.youtube.com/watch?v=vc0_cJs3Rmg
-https://www.youtube.com/channel/UCKHteH3r5M6WSqXibRcch_Q/videos
-
-ja, das ist ganz schoen zutreffend. eindeutig so funktioniert das nasi. das eine laengere komentar drunter sind auch zutreffend mit dieser alten frau im altersheim und wir muessen einfach echt mal realizen dass man da keine aenderung erwarten kann. ich glaub dazu funktioniert der mechanismus fuer sie einfach zu gut. 
-
-das mit dem koedern hab ich voll so ein gefuehl.
-
-ich hab ueberhaupt permanent zu tun mit massiven schuldgefuehlen und kann garnichtmehr unterscheiden ob ich jetzt was falsches gemacht / gesagt/ ... habe oder nicht. echt schwierig.
-
-wir koennten irgendwann wieder mal skypen wenn du lust / zeit hast
-
-diese Christina Junge ist auch unsre generation. sicher ist das sehr weit verbreitet in unsrer gen. oder ist das einfach so bei allen menschen?
-
-ich schau auch viel interessantes in diesem channel an: https://www.youtube.com/channel/UCPkjivIYL5XhVBYEnJwG9Gw/videos
-
--Angelika
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-- eigentlich will ich so ein spiel wo ich 2,3, oder 4 spieler sehe und 1 davon ist ich die anderen ais und ich kann die ais live onscreen steuern. all das zeug laeuft nur im browser!
-- ich sollte mit nosockets starten koennen aber schnell auch local spawn multiple players and ais wo ich dann die alle spielen sehen kann
-- nosockets heisst einfach nur: static website just client code is all!
-- kann ich nicht einfach ein json file nehmen??? vorlaeufig mit client download??? 
-- ein game ist nichts andres als fen speichern
-- wenn sockets habe brauch ich ja auch keinen trick mehr
-- schau mal in welcher reihenfolge die messages abgearbeitet werden
-- der server muss schon existieren bei sockets!!!
--
-
-- was wollt ich eigentlich?
-- wo bin ich da gelandet?!?!?
-- simplest human readable database?
-- mach es nach dem fen prinzip!
-how about this: obj has an id, and uids, Items has id (same as div)
-obj can also have name (ser)
-when loaded: all new ids are created!
-when saved: 
-
-- unique id is better!
-- html is it ok to have multiple elements with same id but different parent nodes
-
-
-- wie mach ich das mit items und ids???
-
-- item can have: draw, autoupdate, onevent
-- im uebrigen: auch all die ids werden NICHT stimmen wenn getUID verwende!!!! also brauch ich die auch nicht serializen!!!
-fuer iDiv und iGet brauch ich live!
-aber iDiv geht nicht mehr!!!! weil es live voraussetzt!!!
-1 und 2 untersccheiden sich nicht wirklich: in beiden faellen brauch ich eine indirection! 2 ist slightly more flexible find ich
-choice:
-1. alles was nicht serializable ist MUSS in item.live sein
-=>2. alles was nicht serializable ist wird NUR in Items[item.id] 
-gesaved
-3. es gibt bestimmte standards fuer welche props serializable sind und welche nicht
-
-
-
-ich kann auch safe serialiation haben 
-was das heisst ist: serialize G ganz einfach!
-wie waers wenn ich die gesamten daten download unter: cai.yaml???
-- saven ann ich entweder localStorage (wenig daten, unreliable) oder client download(beliebig, muss aber laden!)
-- if TESTING == nosockets muss alles genauso functionieren! halt am client locally
-
-deshalb muss client code transparent to whether server is running or not sein!
-- problem: db und sockets geht nur mit server
-
-
-
-
-
-
-
-
-
-
-
-- leider brauch ich eine database!
-- das init ist so aehnlich wie das ui_get_...
-...und wenn G auch ein item ist
-- wie waers wenn ein item hat: iInit iRefresh iLoad iSave
-- dann brauch ich ein init und ein refresh! 
-- kann ich nicht fuerr item creation das new function verwenden???
-item impl sollte in iAdd, iRegister... sein!
-idealerweise sollte im item selbst nur serializable, init, refresh, live sein
-wie soll ich wissen was ana einem item serializable ist?
-
-
-- unterscheide bei jedem game object: reconstructable, serializable, transient properties
-- was ist da los?
-was soll das extra zeug?
-- iGrid geht weg!
-- iGrid soll in Board gehen
-- way shorter!!!
-- hol mir iGrid
-- will immer noch ein start, stop, set FR
-- random walker wie will ich starten???
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-- fa anschauen ist eh dasgleiche!
-- create_div_marker => alles renamen!!!
-- probiere fa icon
+- ein take_turn_indiv machen das verwendet Z.state1
+- in write_player das ganze mit Z.state1 oder state2 statt Z.state
+- alle states (state,state1,state2) in o copy / read
+- Z.playerdata hat einfach auch wieder state1 und state2 optionally
+- schau mal zu php
+889: *7:57 AM 3/19/2023-8:03 AM 3/19/2023
+890: *8:03 AM 3/19/2023-8:28 AM 3/19/2023
+891: *8:28 AM 3/19/2023-8:28 AM 3/19/2023
+892: *8:28 AM 3/19/2023-8:33 AM 3/19/2023
+893: *8:33 AM 3/19/2023-4:19 PM 3/19/2023
+- generalized select
+- WAY SHORTER!!!!!
+- mach jetzt einen button: send experience to playerr
+- jetzt kann ich auf channel2 extra senden
+894: *4:55 PM 3/19/2023-5:10 PM 3/19/2023
+895: *5:10 PM 3/19/2023-5:45 PM 3/19/2023
+896: *5:45 PM 3/19/2023-7:29 PM 3/19/2023
+- ich moecht das wieder mit true starten!!!
+897: *7:29 PM 3/19/2023-7:51 PM 3/19/2023
+898: *7:51 PM 3/19/2023-8:34 PM 3/19/2023
+899: *8:35 PM 3/19/2023-8:41 PM 3/19/2023
+900: *8:41 PM 3/19/2023-8:47 PM 3/19/2023
+901: *8:47 PM 3/19/2023-8:51 PM 3/19/2023
+- es war das null????? kein ahnung was es wirklich war!!!
+- maybe it is the number!
+- fehler wenn experience points sende und danach clear mache!!!
+- show_special_message
+gen select zeile
+__________ mo 20.3.23 waiting at the airport... lib renew: 22.3.23
+902: *5:12 AM 3/20/2023-5:20 AM 3/20/2023
+903: *5:20 AM 3/20/2023-5:22 AM 3/20/2023
+904: *5:22 AM 3/20/2023-5:30 AM 3/20/2023
+905: *5:30 AM 3/20/2023-5:30 AM 3/20/2023
+906: *5:30 AM 3/20/2023-5:34 AM 3/20/2023
+907: *5:35 AM 3/20/2023-5:38 AM 3/20/2023
+908: *5:38 AM 3/20/2023-5:50 AM 3/20/2023
+909: *5:51 AM 3/20/2023-6:03 AM 3/20/2023
+910: *6:03 AM 3/20/2023-6:30 AM 3/20/2023
+911: *6:30 AM 3/20/2023-6:31 AM 3/20/2023
+912: *6:31 AM 3/20/2023-6:34 AM 3/20/2023
+913: *6:34 AM 3/20/2023-6:38 AM 3/20/2023
+914: *6:38 AM 3/20/2023-6:40 AM 3/20/2023
+- range must start at 1
+- index.html
+- brauch eines fuer president
+- experience nur wenn > 0 experience points und 1,2
+- wenn ich fen schreibe, process_state1
+- stats muss breiter sein!!!
+- eval_president
+- goto stats
+- show experience points auf status
+- rem cons
+implications wenn ich write_fen mit autoclear players mache???
+koennt auch sowas wie host_turn machen
+915: *6:41 AM 3/20/2023-6:45 AM 3/20/2023
+916: *6:45 AM 3/20/2023-6:46 AM 3/20/2023
+917: *6:46 AM 3/20/2023-7:54 AM 3/20/2023
+997: *7:54 AM 3/20/2023-8:03 AM 3/20/2023
+998: *7:54 AM 3/20/2023-8:03 AM 3/20/2023
+999: *8:03 AM 3/20/2023-8:12 AM 3/20/2023
+1000: *8:12 AM 3/20/2023-8:13 AM 3/20/2023
+1: *8:13 AM 3/20/2023-8:17 AM 3/20/2023
+2: *8:17 AM 3/20/2023-8:24 AM 3/20/2023
+3: *8:25 AM 3/20/2023-8:29 AM 3/20/2023
+4: *8:29 AM 3/20/2023-10:52 AM 3/20/2023
+extremer stress!
+204: *4:19 PM 3/20/2023-9:21 PM 3/20/2023
+205: *9:21 PM 3/20/2023-9:21 PM 3/20/2023
+__________ di 21.3.23 waiting at the airport... lib renew: 25.3.23
+300: *9:22 PM 3/20/2023-6:25 AM 3/21/2023
+301: *6:25 AM 3/21/2023-6:42 AM 3/21/2023
+302: *6:42 AM 3/21/2023-6:46 AM 3/21/2023
+303: *6:47 AM 3/21/2023-7:02 AM 3/21/2023
+304: *7:02 AM 3/21/2023-7:02 AM 3/21/2023
+305: *7:03 AM 3/21/2023-7:18 AM 3/21/2023
+306: *7:18 AM 3/21/2023-7:22 AM 3/21/2023
+- evaluate cards button!
+307: *7:22 AM 3/21/2023-7:22 AM 3/21/2023
+308: *7:22 AM 3/21/2023-7:23 AM 3/21/2023
+309: *7:23 AM 3/21/2023-7:24 AM 3/21/2023
+310: *7:24 AM 3/21/2023-7:25 AM 3/21/2023
+311: *7:25 AM 3/21/2023-7:30 AM 3/21/2023
+- mach das 5er spiel mit 2 policies needed
+312: *7:30 AM 3/21/2023-7:30 AM 3/21/2023
+- stage? 'round'
+313: *7:30 AM 3/21/2023-7:31 AM 3/21/2023
+314: *7:31 AM 3/21/2023-7:42 AM 3/21/2023
+315: *7:42 AM 3/21/2023-7:42 AM 3/21/2023
+shorter!!!
+316: *7:42 AM 3/21/2023-7:43 AM 3/21/2023
+317: *7:43 AM 3/21/2023-7:45 AM 3/21/2023
+318: *7:45 AM 3/21/2023-7:50 AM 3/21/2023
+319: *7:50 AM 3/21/2023-7:57 AM 3/21/2023
+320: *7:57 AM 3/21/2023-7:59 AM 3/21/2023
+321: *7:59 AM 3/21/2023-8:10 AM 3/21/2023
+322: *8:10 AM 3/21/2023-8:11 AM 3/21/2023
+rem cons baustelle 5
+- button fuer 4!!!
+323: *8:11 AM 3/21/2023-8:21 AM 3/21/2023
+324: *8:21 AM 3/21/2023-8:34 AM 3/21/2023
+325: &8:34 AM 3/21/2023-8:34 AM 3/21/2023
+way shorter!!!
+326: *8:34 AM 3/21/2023-8:36 AM 3/21/2023
+327: *8:37 AM 3/21/2023-9:01 AM 3/21/2023
+427: *9:01 AM 3/21/2023-9:10 AM 3/21/2023
+ok - beautify_history fuer jolly geht noch nicht!!!
+ok - stern vom jolly
+ok - es geht nicht weil es ein reused symbol ist!!!!!!!
+ok - sollte jolly als *Hn oder *Sn darstellen!!!!
+ok - wie mach ich jolly in beautify
+ok - jokers 1jn, 0jn dont show in history!!!!! beautify
+ok - goto code wo man uplayer stats sieht!
+ok - im stage round soll man die membership cards als netcards ueber jedem player sehen! (oder hinter jedem player sowie bei mimi
+428: *9:10 AM 3/21/2023-9:13 AM 3/21/2023
+528: *9:16 AM 3/21/2023-9:19 AM 3/21/2023
+529: *9:20 AM 3/21/2023-11:58 AM 3/21/2023
+629: *11:58 AM 3/21/2023-5:44 PM 3/21/2023
+630: *5:44 PM 3/21/2023-
+__________ mi 22.3.23 waiting at the airport... lib renew: 25.3.23
+631: *6:53 AM 3/22/2023-6:56 AM 3/22/2023
+632: *6:56 AM 3/22/2023-7:01 AM 3/22/2023
+633: *7:01 AM 3/22/2023-7:07 AM 3/22/2023
+634: *7:07 AM 3/22/2023-7:18 AM 3/22/2023
+635: *7:18 AM 3/22/2023-7:20 AM 3/22/2023
+636: *7:20 AM 3/22/2023-7:24 AM 3/22/2023
+637: *7:24 AM 3/22/2023-7:27 AM 3/22/2023
+- wenn Z.phase > Z.optionss.rounds soll state sagen: game over!
+- statt needs 0 more policies soll stehen: Red wins generation
+- set to last gen bei 4
+- schau was bei check_gameover gemacht wird!
+for i=1;i<order.length-1;i++
+ show card idleft
+- gameover soll man net cards sehen!
+638: *7:28 AM 3/22/2023-7:29 AM 3/22/2023
+639: *7:29 AM 3/22/2023-7:39 AM 3/22/2023
+640: *7:39 AM 3/22/2023-7:40 AM 3/22/2023
+641: *7:40 AM 3/22/2023-7:41 AM 3/22/2023
+642: *7:41 AM 3/22/2023-7:45 AM 3/22/2023
+- where is the code?
+- instead soll er dann das bild bei stats mit membership farbenen border umranden!!!!!
+- wenn er auf weiter clickt und es ist gameoverr dann zoll er NICHT membership loeschen!!!!!!!
+ok - tie break!
+ok - take experience into account at scoring!!!!!
+643: *7:45 AM 3/22/2023-7:50 AM 3/22/2023
+- ari_history_list gift!
+- show experience button if possible on table
+644: *8:00 AM 3/22/2023-8:00 AM 3/22/2023
+645: *8:01 AM 3/22/2023-8:31 AM 3/22/2023
+646: *8:31 AM 3/22/2023-8:32 AM 3/22/2023
+647: *8:32 AM 3/22/2023-8:32 AM 3/22/2023
+648: *8:32 AM 3/22/2023-9:49 AM 3/22/2023
+- open at present
+- go step by step!!!!
+- complex solution vielleicht doch besser!
+- simplest first!!!
+- muss mittelpunkt zwischen je 2 stats ausrechnen!!!
+- oder noch besser: mach ein zwischen feld (ist aberr komplizierter!)
+649: *9:49 AM 3/22/2023-9:49 AM 3/22/2023
 - WAY SHORTER!!!
-- size of icon on map! leaflet L.point(50,50)
-- goto 1717
-- zuerst in einer factory prepariere das div
-- danach add it to map
-
-
-
-5- unclog waschbecken
-100- fej
-50- ash
-5- gu check meds
-
-
-- fe: finde den zettel von der property tax, rechnung vom auto
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-- leaflet create empty layer access its div
-- wie mach ich mir meinen eigenen layer?
-- get the div!
-- set url
-- leaflet marker icon image 
-- als erstes mach ein andres icon! (city icon)
-- 
-- european capitals
-- sieht nicht so gut aus!
-- cities within austria
-- wie macht man eine map?
-- test11_oest
-- map tests weiter:
-- beispiel 1: random 30 capitals in europe
-- kochen!
-- js call function foreach element in array
-
-
-
-
-- WAY SHORTER!!!!!!!!!!!!!!!!!!!!!!!
-- adjacency!
-- w3school canvas
-- alles klar: auf einem canvas KANN MAN DIE POS VON EINEM ELEMENT NICHT VERAENDERN!!! der ganze canvas wird gezeichnet as is!
-- create a full size canvas =>goto code wo ich das overlay mach!
-- do the same thing on a canvas
-- jetzt kommen die mini-rules
-- hat das mStyle ein x,y?
-- erstmal NUR vertices
-algo: make a grid
-remove randomly nodes+ all their edges!
-while
-- neue test serie: graphs
-- simplest: draw graph on div
-- draw a graph on a canvas or div or map
-
-
-
-- next bstp???? 
-
-
-
-plan: gehen und bei jedem abschnitt 1 schritt planen
-- schritte koennen sein: 
-a) bstplan machen
-b) 
-- idee: make my own ttr map or generate one
-- generate public transportation graph from osm 
-- wie waers mit enie function 'road_network' die mir einen graphen ueber die map zeichnet
-- graph zwischen cities ist einfach
-- kann ich eigentlich ganz leicht so ein ticket to ride machen?
-- mit cities schon
-- aber was ist innerhalb von 1 city?
+650: *9:49 AM 3/22/2023-9:53 AM 3/22/2023
+651: *9:53 AM 3/22/2023-9:58 AM 3/22/2023
+652: *9:58 AM 3/22/2023-10:16 AM 3/22/2023
+653: *10:16 AM 3/22/2023-10:16 AM 3/22/2023
+__________ do 23.3.23 waiting at the airport... lib renew: 25.3.23
+684: *10:16 AM 3/22/2023-7:19 AM 3/23/2023
+685: *7:19 AM 3/23/2023-7:21 AM 3/23/2023
+686: *7:21 AM 3/23/2023-7:23 AM 3/23/2023
+687: *7:23 AM 3/23/2023-7:24 AM 3/23/2023
+- clean concept for cards
+688: *7:24 AM 3/23/2023-7:26 AM 3/23/2023
+=>hier ist jetzt noch was besseres:
+cards are just integers (irank_isuit)
+fen.ranks,fen.suits according to cardtype (fen.cardtype)
+es gibt ein sortby rank und ein sortby suit 
+689: *7:26 AM 3/23/2023-7:38 AM 3/23/2023
+- wo fang ich an? was brauch ich wirklich?
+gencard_byRank(list,isDesc=true)=>sorts list by rank, default highest first
+gencard_bySuit(list,isDesc=true)=>sorts list by suit and rank, default highest first
+gencard_ui(ckey,opts) =>creates ui for card
+opts can have type,h,w,...
+generates ckeys
+gencard_higher(c1,c2)
+690: *7:39 AM 3/23/2023-7:58 AM 3/23/2023
+691: *7:58 AM 3/23/2023-7:58 AM 3/23/2023
+WAY SHORTER!!!
+692: *7:58 AM 3/23/2023-8:21 AM 3/23/2023
+693: *8:21 AM 3/23/2023-8:29 AM 3/23/2023
+694: *8:29 AM 3/23/2023-8:30 AM 3/23/2023
+695: *accuse setup sollte NICHT touched werden, aber start_new_generation schon
+- simplest!!!!
+- wuerde es reichen wenn ich die ranks als liste habe?
+696: *8:34 AM 3/23/2023-8:51 AM 3/23/2023
+- alles mit network cards lass ich erstmal!
+697: *8:52 AM 3/23/2023-10:24 AM 3/23/2023
+700: *10:24 AM 3/23/2023-10:24 AM 3/23/2023
+WAYYYYYYYY SHORTER!!!!!!!!!!!!!!!!!!
+701: *10:24 AM 3/23/2023-10:30 AM 3/23/2023
+702: *10:30 AM 3/23/2023-10:33 AM 3/23/2023
+703: *10:33 AM 3/23/2023-11:43 AM 3/23/2023
+704: *11:43 AM 3/23/2023-11:51 AM 3/23/2023
+705: *11:51 AM 3/23/2023-11:51 AM 3/23/2023
+706: *11:51 AM 3/23/2023-11:55 AM 3/23/2023
+707: *12:01 PM 3/23/2023-12:01 PM 3/23/2023
+shorter!!!
+708: *12:01 PM 3/23/2023-12:02 PM 3/23/2023
+709: *12:02 PM 3/23/2023-12:04 PM 3/23/2023
+710: *12:04 PM 3/23/2023-12:06 PM 3/23/2023
+711: *12:06 PM 3/23/2023-12:56 PM 3/23/2023
+712: *12:56 PM 3/23/2023-12:59 PM 3/23/2023
+713: *12:59 PM 3/23/2023-1:08 PM 3/23/2023
+714: *1:08 PM 3/23/2023-1:11 PM 3/23/2023
+715: *1:11 PM 3/23/2023-1:14 PM 3/23/2023
+716: *1:14 PM 3/23/2023-1:20 PM 3/23/2023
+717: *1:20 PM 3/23/2023-1:21 PM 3/23/2023
+718: *1:21 PM 3/23/2023-1:30 PM 3/23/2023
+719: *1:31 PM 3/23/2023-1:41 PM 3/23/2023
+720: *1:41 PM 3/23/2023-1:46 PM 3/23/2023
+721: *1:46 PM 3/23/2023-8:42 PM 3/23/2023
+__________ fr 24.3.23 waiting at the airport... lib renew: 
+780: *8:42 PM 3/23/2023-8:44 PM 3/23/2023
+781: *9:01 PM 3/23/2023-9:13 PM 3/23/2023
+782: *9:14 PM 3/23/2023-7:42 AM 3/24/2023
+784: *7:42 AM 3/24/2023-7:44 AM 3/24/2023
+- hol eval_consensus
+785: *8:01 AM 3/24/2023-8:03 AM 3/24/2023
+786: *8:04 AM 3/24/2023-8:10 AM 3/24/2023
+- policy cards sollen anders ausschauen oder anders presented werden
+- coup disable
+something else is relevant
+- fehler wenn nur 1 voted!!!
+- abstain from poll nach tie! =>tests!!!
+787: *8:10 AM 3/24/2023-8:10 AM 3/24/2023
+788: *8:10 AM 3/24/2023-8:20 AM 3/24/2023
+789: *8:20 AM 3/24/2023-8:31 AM 3/24/2023
+790: *8:31 AM 3/24/2023-8:44 AM 3/24/2023
+791: *8:44 AM 3/24/2023-8:46 AM 3/24/2023
+792: *8:46 AM 3/24/2023-8:52 AM 3/24/2023
+793: *8:52 AM 3/24/2023-8:56 AM 3/24/2023
+- bug: enact a policy!
+- rem cons!
+- bribe button!
+- moecht ein colormix
+- bribe button! nur wenn uplayer has experience points
+something else is relevant
+794: *8:56 AM 3/24/2023-9:07 AM 3/24/2023
+beautify_ geht nicht mit nc cards oder color cards!
+795: *9:07 AM 3/24/2023-9:14 AM 3/24/2023
+796: *9:14 AM 3/24/2023-9:16 AM 3/24/2023
+ok - bug! parley doesnt take into acct #cards of other!!!
+797: *9:16 AM 3/24/2023-9:27 AM 3/24/2023
+798: *9:27 AM 3/24/2023-5:44 PM 3/24/2023
+- bei all den test buttons soll der host NICHT IMMER MIMI SEIN!!!!!!!!!!!!!!!!!!!!!!!!!! sondern uname!!!
+800: *5:44 PM 3/24/2023-
+- now what?
+__________ sa 25.3.23 waiting at the airport... lib 29.3 
+830: *5:53 PM 3/24/2023-5:54 PM 3/24/2023
+831: *5:54 PM 3/24/2023-8:04 PM 3/24/2023
+832: *8:04 PM 3/24/2023-7:38 AM 3/25/2023
+- test in hotseat mode!
+833: *7:38 AM 3/25/2023-7:41 AM 3/25/2023
+834: *7:42 AM 3/25/2023-7:44 AM 3/25/2023
+835: *7:45 AM 3/25/2023-7:55 AM 3/25/2023
+836: *7:55 AM 3/25/2023-8:18 AM 3/25/2023
+837: *8:18 AM 3/25/2023-8:18 AM 3/25/2023
+838: *8:18 AM 3/25/2023-8:20 AM 3/25/2023
+839: *8:20 AM 3/25/2023-8:33 AM 3/25/2023
+840: *8:33 AM 3/25/2023-8:37 AM 3/25/2023
+841: *8:37 AM 3/25/2023-8:40 AM 3/25/2023
+842: *8:40 AM 3/25/2023-8:47 AM 3/25/2023
+843: *8:47 AM 3/25/2023-8:48 AM 3/25/2023
+844: *8:48 AM 3/25/2023-8:59 AM 3/25/2023
+U.name MUST be playerb!!!
+- comment (nach players) kleine zeile
+- clear players button und shift for multiselect!
+- mimi ist jetzt 2 mal in der player list!!!
+- find index of item.uname in list
+WAY SHORTER!!!!!!!!!!!!!!!!!
+- alle zwischen ersten in Serverdata.users und letzten in Serverdata.users
+- ich kann auch click+shift auf player alle dazwischen nehmen
+- mach einen button n random players
+- mach einen button testing
+- accepting how you feel in the moment
 - was jetzt?
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-*** ratschlag ***: halte dich im himmel auf nicht in der hoelle!
-1. minimalistischer himmel: bei sonnenschein auf einer wiese unter einem baum liegen und in den himmel schauen
-2. minimalistischer himmel bei eiseskaelte: irgendwo schlafen egal wo bis es wieder warm ist und dann goto 1
-==>radical heaven:
-plan a: be the unicorn 
-plan b: do what has to be done to be the unicorn
-no need to fear for anything really. it starts and end with the unicorn
-
-himmel: bunte kinderwelt, mathe, spiele, programmieren, music, backen, kochen, haushalt, spazierengehen, library, klavier, violine, gu, a, fe, di, mac, tage, die menschen allgemein, yt prog, philo oder sunshine, flughafen, farben, zahlen, worte, fractals, zaubern, maerchen, unicorn, lernen
-
-hoelle: schwarz-graue erwachsenenwelt, ALLES andere auf dieser welt! speziell aber: nasi(!!!), skype, geld, besitzt, post, haus, wohnung, wien, redmond, seattle, nachrichten oder yt/sonstige ueber great reset oae, medizin, biologie, auto, staedte, kaufen von sachen, einzelne menschen und ihre themen, gesellschaft, politik, reisen, planen, geschaeftliche gespraeche, fast alles in tv,yt,netflix... oder andere platforms, strategizing, angst, greed
-
-
-alles mit geld, menschen, zeit, orte ist schmerzhaft!
-greif nicht hin! es ist alles hoellenfeuer!
-
-naomi wolf
-julian huxley
-rainer fuellmich
-john o'loony
-steve kirsch
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-- WAY SHORTER!!!
-- WAY SHORTER!!!
-- weiter
-- leaflet remove marker
-
-
-
-- eigentlich will ich einen graph mit nodes!
-- sort coordinates
+845: *8:59 AM 3/25/2023-9:25 AM 3/25/2023
+846: *9:25 AM 3/25/2023-9:30 AM 3/25/2023
+847: *9:30 AM 3/25/2023-9:43 AM 3/25/2023
+- wieso muss der president nochmal zu president zurueckgehen wenn ein provisional president gewaehlt wird???
+rem cons!
+848: *9:44 AM 3/25/2023-11:38 AM 3/25/2023
+- show: generation / max gens!
+849: *11:39 AM 3/25/2023-11:39 AM 3/25/2023
+850: *11:39 AM 3/25/2023-11:39 AM 3/25/2023
+851: *11:40 AM 3/25/2023-11:42 AM 3/25/2023
+852: *11:42 AM 3/25/2023-11:44 AM 3/25/2023
+853: *11:44 AM 3/25/2023-11:45 AM 3/25/2023
+854: *11:45 AM 3/25/2023-11:51 AM 3/25/2023
+855: *11:51 AM 3/25/2023-11:53 AM 3/25/2023
+856: *11:53 AM 3/25/2023-12:20 PM 3/25/2023
+857: *12:20 PM 3/25/2023-12:24 PM 3/25/2023
+- display none or null
+- toggle_visibility(show,hide,DA.showTestButtons)
+- advancedmenu nur fuer advanced users!!!
+- get_logout_button
+- how to show testbuttons?
+- unicode menu
+- look for logout
+- advanced button wo soll ersein? maybe right next to logout button!
+858: *12:24 PM 3/25/2023-12:25 PM 3/25/2023
+859: *12:25 PM 3/25/2023-12:25 PM 3/25/2023
+860: *12:25 PM 3/25/2023-12:27 PM 3/25/2023
+861: *12:27 PM 3/25/2023-12:28 PM 3/25/2023
+862: *12:28 PM 3/25/2023-4:30 PM 3/25/2023
+1000: *4:30 PM 3/25/2023-4:30 PM 3/25/2023
+alles zeug gemacht
+1: *4:30 PM 3/25/2023-4:51 PM 3/25/2023
+40: *4:51 PM 3/25/2023-7:44 PM 3/25/2023
+- katze,kit cl!
+50: *8:09 PM 3/25/2023-8:40 PM 3/25/2023
+__________ so 26.3.23 waiting at the airport... lib 29.3 
+51: *8:40 PM 3/25/2023-7:30 AM 3/26/2023
+52: *7:30 AM 3/26/2023-7:34 AM 3/26/2023
+53: *7:34 AM 3/26/2023-7:38 AM 3/26/2023
+54: *7:38 AM 3/26/2023-7:40 AM 3/26/2023
+55: *7:40 AM 3/26/2023-7:43 AM 3/26/2023
+56: *7:43 AM 3/26/2023-7:45 AM 3/26/2023
+57: *7:46 AM 3/26/2023-7:46 AM 3/26/2023
+- tab title ist eigentlich ok!!!
+- Z.isWaiting is true!!! wird aber erst in activate gesetzt!
+- what about title active...?
+- wo wird show_role aufgerufen? gamestep:
+58: *7:46 AM 3/26/2023-7:49 AM 3/26/2023
+59: *7:49 AM 3/26/2023-8:16 AM 3/26/2023
+99: *8:16 AM 3/26/2023-8:29 AM 3/26/2023
+100: *8:29 AM 3/26/2023-8:52 AM 3/26/2023
+101: *8:52 AM 3/26/2023-9:18 AM 3/26/2023
+- click on button soll eigentlich lieber 
+hotseat:uplayer
+1. show_admin_ui
+2. show_role
+3. present
+102: *9:18 AM 3/26/2023-9:20 AM 3/26/2023
+103: *9:20 AM 3/26/2023-9:23 AM 3/26/2023
+104: *9:23 AM 3/26/2023-9:24 AM 3/26/2023
+105: *9:24 AM 3/26/2023-9:29 AM 3/26/2023
+106: *9:29 AM 3/26/2023-9:59 AM 3/26/2023
+107: *9:59 AM 3/26/2023-10:10 AM 3/26/2023
+108: *10:10 AM 3/26/2023-10:24 AM 3/26/2023
+109: *10:24 AM 3/26/2023-10:30 AM 3/26/2023
+110: *10:30 AM 3/26/2023-10:30 AM 3/26/2023
+111: *10:30 AM 3/26/2023-12:44 PM 3/26/2023
+112: *12:44 PM 3/26/2023-12:45 PM 3/26/2023
+113: *12:45 PM 3/26/2023-4:37 PM 3/26/2023
+114: *4:37 PM 3/26/2023-5:30 PM 3/26/2023
+115: *5:30 PM 3/26/2023-5:32 PM 3/26/2023
+116: *5:32 PM 3/26/2023-7:21 PM 3/26/2023
+117: *7:22 PM 3/26/2023-8:31 PM 3/26/2023
+118: *8:31 PM 3/26/2023-8:31 PM 3/26/2023
+__________ so 26.3.23 waiting at the airport... lib 29.3 
+140: *8:32 PM 3/26/2023-8:55 PM 3/26/2023
+142: *8:55 PM 3/26/2023-9:44 PM 3/26/2023
+150: *9:44 PM 3/26/2023-6:45 AM 3/27/2023
+151: *6:45 AM 3/27/2023-6:48 AM 3/27/2023
+152: *6:48 AM 3/27/2023-6:55 AM 3/27/2023
+153: *6:57 AM 3/27/2023-6:59 AM 3/27/2023
+154: *6:59 AM 3/27/2023-7:00 AM 3/27/2023
+155: *7:01 AM 3/27/2023-7:03 AM 3/27/2023
+156: *7:03 AM 3/27/2023-7:04 AM 3/27/2023
+157: *7:04 AM 3/27/2023-7:07 AM 3/27/2023
+158: *7:07 AM 3/27/2023-7:15 AM 3/27/2023
+159: *7:15 AM 3/27/2023-7:22 AM 3/27/2023
+160: *7:22 AM 3/27/2023-7:39 AM 3/27/2023
+161: *7:39 AM 3/27/2023-7:58 AM 3/27/2023
+162: *7:58 AM 3/27/2023-8:18 AM 3/27/2023
+163: *8:18 AM 3/27/2023-9:24 AM 3/27/2023
+243: *9:24 AM 3/27/2023-9:33 AM 3/27/2023
+244: *9:33 AM 3/27/2023-9:44 AM 3/27/2023
+245: *9:44 AM 3/27/2023-10:00 AM 3/27/2023
+246: *10:00 AM 3/27/2023-10:00 AM 3/27/2023
+247: *10:00 AM 3/27/2023-10:01 AM 3/27/2023
+248: *10:01 AM 3/27/2023-11:06 AM 3/27/2023
+250: *11:06 AM 3/27/2023-12:38 PM 3/27/2023
+260: *12:38 PM 3/27/2023-12:53 PM 3/27/2023
+261: *12:53 PM 3/27/2023-1:07 PM 3/27/2023
+262: *1:07 PM 3/27/2023-1:10 PM 3/27/2023
+263: *1:10 PM 3/27/2023-1:17 PM 3/27/2023
+264: *1:17 PM 3/27/2023-1:38 PM 3/27/2023
+265: *1:39 PM 3/27/2023-1:39 PM 3/27/2023
+266: *1:39 PM 3/27/2023-8:51 PM 3/27/2023
+__________ di 28.3.23 waiting at the airport... lib 29.3 
+300: *8:51 PM 3/27/2023-7:25 AM 3/28/2023
+301: *7:25 AM 3/28/2023-7:31 AM 3/28/2023
+302: *7:31 AM 3/28/2023-7:36 AM 3/28/2023
+303: *7:36 AM 3/28/2023-7:39 AM 3/28/2023
+304: *7:39 AM 3/28/2023-7:39 AM 3/28/2023
+305: *7:39 AM 3/28/2023-7:56 AM 3/28/2023
+306: *7:56 AM 3/28/2023-8:27 AM 3/28/2023
+307: *8:27 AM 3/28/2023-8:27 AM 3/28/2023
+- way shorter!!!!
+308: *8:27 AM 3/28/2023-8:28 AM 3/28/2023
+309: *8:28 AM 3/28/2023-8:51 AM 3/28/2023
+- eine show_code app in telecave!!!! das waer cool!!!
+310: *8:51 AM 3/28/2023-9:03 AM 3/28/2023
+311: *9:03 AM 3/28/2023-9:17 AM 3/28/2023
+350: *9:17 AM 3/28/2023-9:21 AM 3/28/2023
+351: *9:21 AM 3/28/2023-9:29 AM 3/28/2023
+352: *9:29 AM 3/28/2023-9:29 AM 3/28/2023
+353: *9:29 AM 3/28/2023-9:30 AM 3/28/2023
+354: *9:31 AM 3/28/2023-9:36 AM 3/28/2023
+355: *9:36 AM 3/28/2023-9:41 AM 3/28/2023
+356: *9:41 AM 3/28/2023-9:41 AM 3/28/2023
+- goto function!
+- goto handle_result
+- how to translate from result to dict?
+- how to api call?
+- php load a yaml file
+- coding: wie bekomm ich justcode?
+357: *9:41 AM 3/28/2023-10:56 AM 3/28/2023
+358: *10:56 AM 3/28/2023-10:58 AM 3/28/2023
+359: *10:58 AM 3/28/2023-11:23 AM 3/28/2023
+360: *11:23 AM 3/28/2023-11:48 AM 3/28/2023
+361: *11:48 AM 3/28/2023-11:48 AM 3/28/2023
+362: *11:48 AM 3/28/2023-12:02 PM 3/28/2023
+363: *12:02 PM 3/28/2023-12:18 PM 3/28/2023
+364: *12:18 PM 3/28/2023-12:20 PM 3/28/2023
+365: *12:20 PM 3/28/2023-12:21 PM 3/28/2023
+366: *12:21 PM 3/28/2023-12:24 PM 3/28/2023
+367: *12:24 PM 3/28/2023-12:32 PM 3/28/2023
+368: *12:32 PM 3/28/2023-8:19 PM 3/28/2023
+__________ mi 29.3.23 waiting at the airport... lib 29.3 
+500: *8:19 PM 3/28/2023-8:20 PM 3/28/2023
+501: *7:24 AM 3/29/2023-7:27 AM 3/29/2023
+502: *7:27 AM 3/29/2023-7:30 AM 3/29/2023
+503: *7:30 AM 3/29/2023-7:41 AM 3/29/2023
+504: *7:41 AM 3/29/2023-8:00 AM 3/29/2023
+505: *8:00 AM 3/29/2023-8:01 AM 3/29/2023
+506: *8:01 AM 3/29/2023-8:14 AM 3/29/2023
+507: *8:14 AM 3/29/2023-8:14 AM 3/29/2023
+508: *8:15 AM 3/29/2023-8:23 AM 3/29/2023
+509: *8:23 AM 3/29/2023-8:26 AM 3/29/2023
+- wie lade ich zeug mit dem live-server?
+- yaml loaden muesste doch gehen wenn ich live-server verwende???
+- mSearch is in dse
+- mach ganz viele tests mit mDom!
+- mit test geht es!
+- ie art zu arbeiten geht so nicht!!!
+510: *8:26 AM 3/29/2023-8:27 AM 3/29/2023
+511: *8:27 AM 3/29/2023-6:42 AM 3/30/2023
+__________ do 30.3.23 waiting at the airport... lib 10.4
+550: *6:43 AM 3/30/2023-6:45 AM 3/30/2023
+551: *6:45 AM 3/30/2023-6:48 AM 3/30/2023
+552: *6:48 AM 3/30/2023-6:51 AM 3/30/2023
+553: *6:51 AM 3/30/2023-6:53 AM 3/30/2023
+554: *6:53 AM 3/30/2023-7:05 AM 3/30/2023
+555: *7:05 AM 3/30/2023-7:06 AM 3/30/2023
+556: *7:06 AM 3/30/2023-7:07 AM 3/30/2023
+557: *7:07 AM 3/30/2023-7:09 AM 3/30/2023
+558: *7:09 AM 3/30/2023-7:11 AM 3/30/2023
+559: *7:11 AM 3/30/2023-7:15 AM 3/30/2023
+560: *7:15 AM 3/30/2023-7:16 AM 3/30/2023
+- ideally:
+1. allcode.js kann in a_globals + 2 alpha func files geteilt werden
+=>a_globals,a04anfang,a04ende
+2. a_rootbundle wird ganz neu aus bestimmten files produziert (alles in bundle!
+561: *7:16 AM 3/30/2023-7:21 AM 3/30/2023
+1. load C:\xampp\htdocs\aroot\coding\cb2\z_all.yaml
+const yaml = require("yaml");
+let yamlString = `
+name: Janet 
+age: 24
+city: Manhattan
+`;
+let obj = yaml.parse(yamlString);
+let name = obj.name;
+562: *7:35 AM 3/30/2023-7:35 AM 3/30/2023
+563: *7:35 AM 3/30/2023-7:45 AM 3/30/2023
+564: *7:45 AM 3/30/2023-7:46 AM 3/30/2023
+565: *7:46 AM 3/30/2023-7:46 AM 3/30/2023
+566: *7:46 AM 3/30/2023-7:51 AM 3/30/2023
+567: *7:52 AM 3/30/2023-7:55 AM 3/30/2023
+568: *7:55 AM 3/30/2023-7:56 AM 3/30/2023
+- schau mal wohini er yaml gegeben hat? nodemaster
+569: *7:56 AM 3/30/2023-8:00 AM 3/30/2023
+570: *8:00 AM 3/30/2023-8:06 AM 3/30/2023
+571: *8:08 AM 3/30/2023-8:09 AM 3/30/2023
+572: *8:09 AM 3/30/2023-8:10 AM 3/30/2023
+573: *8:10 AM 3/30/2023-8:13 AM 3/30/2023
+574: *8:13 AM 3/30/2023-8:24 AM 3/30/2023
+575: *8:24 AM 3/30/2023-8:30 AM 3/30/2023
+576: *8:30 AM 3/30/2023-8:31 AM 3/30/2023
+577: *8:31 AM 3/30/2023-8:48 AM 3/30/2023
+578: *8:48 AM 3/30/2023-8:50 AM 3/30/2023
+579: *8:50 AM 3/30/2023-8:50 AM 3/30/2023
+hol nochmal cb2 von a04
+- jetzt ist es in aroot/base/cb2
+- andre idee:redoCodebase!
+- ich koennt eine etwas kleinere codebase machen???
+- lohnt es sich gitarchives/simple rauszuhauen????
+- kann ich da eine correction routine machen???
+- is it viable to replace RUPDATE ueberall by rUpdate()?
+- edit codebase! justcode fuer die paar extra const / var
+- diall hast const var cla func + names
+- open z_all
+redoCodebase: loads dicts, outputs allglobals,allclasses,allam,allnz js
+applications:
+1. function mybundle:
+bundles files from bundle dir
+? soll die reihenfolge festgelegt werden>???
+2. function updateCodebase: update codebase w/ bundle
+loads codebase
+adds info from bundle dicts zu codebase
+3. function createclosure: create min closure for a project
+takes a function or file
+collects ALL const,var,cla,func that are touched
+output: closure.js
+- declare cb2 als clean start
+- kann ich einen clean start nehmen: JA KLAR!!!
+es kann repeats geben, naemlich die overrides!
+1. mach ein neues superdi fuer bundle
+2. compare to superdi von vorher
+3. fuer die files:
+const,var,classes gesamt:a0allglobals
+const,var,classes von bundle:abuglobals
+funcs A-
+580: *8:52 AM 3/30/2023-8:54 AM 3/30/2023
+581: *8:54 AM 3/30/2023-9:03 AM 3/30/2023
+582: *9:03 AM 3/30/2023-9:23 AM 3/30/2023
+583: *9:24 AM 3/30/2023-9:27 AM 3/30/2023
+584: *9:27 AM 3/30/2023-
 - 
-add_agent_at
-=>call click map handler: set_agent
-=>call route button handler: show_route_through_agents
+- soll ich das frisieren oder wirklich radikal durchsuchen????
+- wann werden die sortiert????
+synthesize:
+1. diall.const und var =>globalshuge.js
 
 
->> ibaef das hier ist nur eine zwischenstation!
->> I just have to be radical enough
+do 30.3.23
+- (1pm?A) e debbie oasis clear
+- flugtickets condor
+- email gilbert skypen! Amanda anmelden ecard?
 
 
 
@@ -9921,7 +7822,14 @@ add_agent_at
 
 
 
+3. check duplicates in 
 
+- wie heissen noch wichtige base files?
+- code generation: dicts machen wie?
+- wie werden spaetere bundle files gehandelt???
+- wie kann ich updaten sodass ich auch den neuen code habe?
+- wenn 
+- was ist wenn ich edit code full screen/halfscreen togglen will?
 
 
 
@@ -9934,62 +7842,17 @@ add_agent_at
 
 
 
-- was will ich ueberhaupt machen???
-was war das neue polygon?
-- rote punkte sind besser!
 
-- make a polygon out of a Multipolygon
-- fgu(5)
-- was ist s???
-- check nach was bei Amstetten mit dem poly los ist!!!
-- function my_poly_center(f)
-- how to add acircle?
-- mach einen circle im center von poly!
-- show x,y
-- get center of a convex polygon
 
 
-open base mapdata
 
-- map.fitBounds(feature.getBounds())
-- add us data to leaf92
-- load this example!
-choropleth countries per population
 
-- bottom empty
 
-- bottom line startet spaeter
 
 
 
-var scaleControl = L.control.scale({maxWidth: 150}).addTo(map);
 
-- leaflet controls scale control, zoom control
-- leaflet custom control
-- leaflet distance measure control
 
-- dTop darf nicht 100% width haben!
-stop browsing!!!!!!!!!!!!!!!!!!!!!!!!
-- aber height ist falsch!!!
-- find dInfo
-- remove schierchen grauen rand!!!!
-- M.map muss zugewiesen werden!!!
-- set_bounds
-- osm data von Geo!
-- satellite and satellite streets
-- mapbox geh hin!
-- cartonolabels
-- providers!
-- hol mit cartoDB positron labels
-- schau zu providers mapbox
-- add mapbox data to Geo
-- na gut, dann ist es eh gut!
-- check ob das mein mapbox id ist NEIN!
-- start 18 bug
-- center 0,0
-- wie genau erzeugt err den marker?
-- alle cities hol list
-- goto code
 
 
 
@@ -9998,32 +7861,7 @@ stop browsing!!!!!!!!!!!!!!!!!!!!!!!!
 
 
 
-- ich bin so muede und kaputt
-- rename cities citylist
-- 3' pause
-- neustart!!!
-- nein, vielleicht ist der fehler bei get_layer!
-- schau ob irgendwo minZoom ist!
-- just copy from example!
-- ich lern immer noch die sprache!
-- ne das ist ein layergroup!!!
-- krabbeln: goto get_marker
-- jetzt krabbel ich nur noch herum
-- ich bin extrem traurig aber dann wieder doch nicht
-ich bin traurig weil ich den fe vermisse aber ich bin froh weil der fe mich nicht vermisst
-- get cities w/ more than 1 million population
 
-- kann es auch anders machen: mget_layers(...)
-danach mget_map(center,zoom,layer,overlay)
-mshow_layercontrol
-mhide
-- anstatt layergroup mach ich empty overlay: geht das?
-- weiter tutorial!
-- oder soll ich sagen mapget mapset 
-- mach ein mget_map(center,zoom)
-- mget_, mset_, fuer map get und map set using M
-- code cleanup
-- tutorial wo bin ich?
 
 
 
@@ -10041,8 +7879,54 @@ mhide
 
 
 
+- way shorter!!!!!
+- mach clean games!
+- bundle!
+- gib modified start in das bundle
+or: sort start functions into bundle!!!
 
+- regions dazugeben!!!
+- mach ein failedaroot
+- alles weg und neues hallo ohne die vielen files!
+=>neues bundle
+- open dir
+- test!
+- way shorter!!!
+- copy files from games to games_3
+- reihenfolge vielleicht aeendern? zu:
+- it is way too complex!!!!!!!
+- copy games to games_2
+- bei delete tables muss ich dTablename clearen!!!
+- list!
+- getSortedCodefileList
 
+- no inputs where found in jsconfig.json
+{
+  "compilerOptions": {
+    "moduleResolution": "node"
+  }
+}
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es6"
+  },
+	"include": ["games/**/*", "games_2/**/*","allcode.js"],
+  "exclude": ["node_modules", "temp","*UCODE*","y*", "_ignore","*hallo*","**/*closure.js"]
+}
+{
+  // This file is required for VSCode to understand webpack aliases
+  "compilerOptions": {
+		"target": "ESNext",
+    // This must be specified if "paths" is set
+    "baseUrl": ".",
+    // Relative to "baseUrl"
+    "paths": {
+      "@/*": ["../base/js/*"],
+			"~/*": ["./src/*"]
+		}
+  }
+}
 
 
 
@@ -10052,12 +7936,44 @@ mhide
 
 
 
+- elim baustellen in games!!!
+- bundle(files in dieser reihenfolge)
+- gib erstmal alle in 1 dir die ich bindlen will!
+mach ein allcode mit basemin,
 
+- baustellen machen!
+- versuch es mit processServerrdata(obj,cmd)
+- alles komplett unverstaendlich!!!
+onclick_user zeigt die tables nicht!!!
+weiter bei show_admin_ui!
+- kit cl!
+- for now lass transactions (und ferro) aus!
+- das mit den 
+- was koennt man einfacher machen? ideal code?
 
+- riesen refactoring und code cleanup is in order!!!
+- fgu, muspah
+- wieso zeigt er home nicht mehr bei onclick login???
+- immer noch mist!!!
+- cannot switch to hotseat mode!!!!!!!
+- 3 strich menu wird T
+- what would change if I change options.mode?
+- table.mode = table.options.mode
+- kann man mode aendern?
+- wie ist es mit mode???
 
+- geh zu show_takeover_ui
 
 
 
+wenn allein bin dann mach es so:
+1. kprog bis v, weiter bis 10
+2. spahmusic
+3. invites, klavier, violine
+(4. essen, nap)
+(5. kprog)
+(6. spahmusic)
+7. sl
 
 
 
@@ -10077,14 +7993,8 @@ mhide
 
 
 
-- kl
 
-- schlafen dann aufwachen und nochmal dasselbe wie in der frueh?
-=>back to something NORMAL!!!! oder ein tutorial!!!
-- simplify code!
-- wozu hab ich mapillary ueberhaupt gemacht???
 
-- try to find out more about mapillary
 
 
 
@@ -10093,50 +8003,311 @@ mhide
 
 
 
+- it's your turn soll nur gezeigt werden wenn nicht playerdata habe!!!
+- dTest display should be grid[leftside,rightside]
+- check if dTest display=block
+- where is it? dTablename
+- ok also battle of edinburgh of seven seas soll in der mitte stehen
 
+test
 
 
 
 
-- where is Bing streetside available?
-- start setView: 
-- copier es rueber mit bing!
-- mach eine streetview von vegagasse
-integrate
 
-- plaetze! onclick, add to dictionary: lat lng name
-- mach eine streetview!
+Thomas Metzinger
+Olaf Blanke
+Peter Russell Let go
+Susan Blackmore
 
 
 
-what about looking inside and disregarding? warum bringt es mich immer noch auf? 
-kann ich nicht einfach davon ausgehen dass es nur zahlen sind?
-it is pure fear and greed it is just fear and greed and nothing else
-i will not support fear and greed
-i need to let it be for now but not feed it by acting on it or reinforcing those thoughts
-all the narratives about fear and greed should be let go
 
+
+- make sure dass die non-voters nicht mehr voten duerfen!!!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+gencard_deck(opts ctype,total,repeatEach,colors,....) 
+
+
+
+
+each card needs
+type (c52,color,num,...)
+from type =>can get to converter:ckey=>card
+rank
+suit
+irank
+isuit
+isort
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+- carttype option
+- accuse_get_card tracken!
+- telecave safe: SAFE: games_c52
+- new cards! (zuerst SAFE!)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Lisa Schüller
+franzoesisch  Lisa Schüller ORF
+
+Name: Gunter Leeb 
+Routing number: 111000025
+Account Number: 004772782490
+SWIFT: BOFAUS3N 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+sweet buns
+30' proof buns after shaping, 200deg (=400F) 18'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+- brauch einen schwarzen jolly
+- show 0Jn und 1Jn
+- nimm kleinstes mit jokers?
+- gen startgamewithplayers
+- rem cons
+- es koennte noch was extra sein: pldata.state nicht sondern pldata.
+- wie kann ich dem php host was senden das nicht in die db kommt?
+- es koennte ueber den host gehen!
+- es koennte ein special message sein sowie reload
+- es koennte sein: reload + deposit paket at host
+- next time host comes by: 
+- such PROBLEM!!!
+- 1. experience counter at the beginning=0
+- increase every time one wins the election
+- make a button: give experience points aber wann???
+The president receives one experience counter for winning the election. Experience counters are kept for the remainder of the game, but may also freely be exchanged between players.
+
+email: pay earnest money and also waive the 2 days for HOA review
+waive Homeowners’ Association Review Period
+
+- does the president still have to pay for accuse?
+- riesen problem mit jokers!!!!!
+- button fuer vote red
+WAY SHORTER!!!
+- start new generation
+- implement free policy am anfang!
+- 1. phase '1' is a string!!!!!!!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+- test stability!
+
+
+
+- stability = starting stability, crisis wird subtracted bei policies_needed
+- brauch options separat von stbility oder goto setup
+- stability 5 start of generation
+- if it is not the first round: free policy am anfang der runde!
+- scheint zu gehen: was jetzt?
+cards customize!
+
+
+
+wie schauen jokers aus?
+- adjust table!
+- von der round
+- free policy am anfang! von was?
+
+- fgu
+- round end ist ein problem!!!
 - 
-- this is exactly what I am talking about!!!
-- wie geht das spiel?
-- vielleicht kann man wuerfeln?
-phantom turn actions:
-1. take airplane to a different continent - you can do that no more than once within the game
-2. take train to a different city on same continent
-3. reveal yourself to bind one letter in player's city name
-4. take a guess
-turn:
-which person would you like t
+- fen.pldata sofort wieder loeschen!!!
+- wieso zeigt err die votes nicht in handresolve?
+- sobald complete ist: trage playerdata in fen.pldata ein, uebergib an host
+- was genau passoert VPR evaluate?
+- instead of eval will ich reveal und send to host
+- test
+- reveal membership cards at end of poll
 
-- was fuer hints koennte es geben?
-- gibt es irgendwas super leichtes was man machen koennte?
-- start animation!
-- 
 
 
+100:jeslyn
+70:alles uebrige
 
 
+nach eval_consensus muss ich eval president
+votes.push({ plname: plname, card: card });
+new poll: fen.crisis=0
+new generation:
 
+If three accusations are incorrect since the last poll, then the state is “in crisis” and the stability is decreased by 1 for the remainder of the generation.
 
 
 
@@ -10155,18 +8326,28 @@ which person would you like t
 
 
 
+fen.policies_needed is a variable!
+The stability of each generation begins at 5.
 
+If this is not the first generation, then the side that won the previous generation receives one free policy at the beginning.
 
+membership cards revealed at end of round
+network cards revealed at end of game
 
+experience counter: +1 if becomes president
+experience points can be exchanged? bribes?
 
+parley ist extra action!
 
 
 
+- was ist wenn tie UND consensus ist? beide hoechsten weeg
+- wo?
+- weak consensus: policy card dazu option
 
 
 
 
-?- brauch ich wirklich ein vectorLayer?
 
 
 
@@ -10206,7 +8387,21 @@ which person would you like t
 
 
 
+- was macht er bei logout?
+- warum wartet er so lange???
+- start local test
+- teste was bei bots passiert!
+- definitiv keine schlechte idee: hotseat mach show_takeover_ui
+- am besten ist das hotseat so zu machen!
+- something else
+warum passiert nix wenn ich auf Felix clicke?
+warum wird jetzt der felix gezeigt?
 
+- hochladen!!!
+- rem cons!
+- erstens brauch ich ein restart session!
+- mach beim host einen button fill_stage
+- bots selecten membership card von der mimi (=host!!!!!)
 
 
 
@@ -10226,48 +8421,12 @@ which person would you like t
 
 
 
-MS info
-URL: https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}
-Z min: 0
-Z max: 19
-Y origin top: True
-==>gu schwimmen!!!
-- es gilt ja NUR FUER DIE OVERLAYS!!!!!!!!!!!!!!!
-- brauch einen showlayers button!!!!!
 
-- add a slider to layers control leaflet
-- ich moecht einen slider unterdem overlay zu sagen wie opacity sein soll!
-- empty baselayer option
-- stamen terrain background???
-- on map click
-- load other maps!
 
-kompletter bloedsinn!!!
-- free imagery world map leaflet
-- onclick map add feature at that point with category: 
-leaflet add feature to specific layer
-leaflet how to get the layer where features have been added?
-=>features added to map are added directly to map!
-- if I say: should be 10px at zoomlevel 15
-- how can I add features independently of zoom level?
-WAY SHORTER!!!!!!!!!!!!!!!!!!!
-- nicht ganz
-- api call
-D! name 1 leaflet circle option and how I would call this property
-- api: L.circle(center,options
-- how to add a circle at lat lon?
-- goto code leaf93
 
-add a vector layer
-- suche bei code
-- create a cities layer add all capitals and add it as vektor layer
-- jump to other city!
->>>- darf nicht mehr reden garnicht mehr meine ich!
 
 
 
-schwimmen um 11:20
-Asp 20	
 
 
 
@@ -10283,35 +8442,33 @@ Asp 20
 
 
 
+uname = mimi
+uplayer = 
+multi
+uname is host
+role is not active
+host not on turn 
 
 
 
 
 
 
-___________easy tv:
-1- mach ein layerdict from https://bl.ocks.org/Xatpy/raw/854297419bd7eb3421d0/
-2- Notions all about leaflet
-3- HERE maps account machen
-4- explore weitere providers und test providers interface!
-5- zeichne style in jawg und upload!
-6- add bookmark fuer jawg
-7- sort bookmarks to e8=maps
-8- angular course + challenges => OneNote
 
 
-- layer control: switch between satellite and map
-setView(center, zoom); // which also sets the map center
-flyTo(center, zoom); // like setView but with a smooth animation
-zoomIn() / zoomIn(delta); // zooms in delta zoom levels, 1 by default
-zoomOut() / zoomOut(delta); // zooms out delta zoom levels, 1 by default
-setZoomAround(fixedPoint, zoom); // sets the zoom level while keeping a point fixed(what scrollwheel zooming does)
-fitBounds(bounds);  //automatically calculates the zoom to fit a rectangular area on the map
+wie soll es geloest werden wenn host nicht in voters?
+collect bei hand gibt es ein votesready das kann im prinzip jeder machen
 
+sessions.color=wincolor, sess.players = [{amanda:membership,///...]
+- wenn no one wins dann haut es ihn auf!
+- misterioeses verschwinden!
 
 
+- unten ein chat window
+card_3H: '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="card" face="3H" height="100%" preserveAspectRatio="none" viewBox="-120 -168 240 336" width="100%"><symbol id="SH3" viewBox="-600 -600 1200 1200" preserveAspectRatio="xMinYMid"><path d="M0 -300C0 -400 100 -500 200 -500C300 -500 400 -400 400 -250C400 0 0 400 0 500C0 400 -400 0 -400 -250C-400 -400 -300 -500 -200 -500C-100 -500 0 -400 -0 -300Z" fill="red"></path></symbol><symbol id="VH3" viewBox="-500 -500 1000 1000" preserveAspectRatio="xMinYMid"><path d="M-250 -320L-250 -460L200 -460L-110 -80C-100 -90 -50 -120 0 -120C200 -120 250 0 250 150C250 350 170 460 -30 460C-230 460 -260 300 -260 300" stroke="red" stroke-width="80" stroke-linecap="square" stroke-miterlimit="1.5" fill="none"></path></symbol><rect width="239" height="335" x="-119.5" y="-167.5" rx="12" ry="12" fill="white" stroke="black"></rect><use xlink:href="#VH3" height="32" x="-114.4" y="-156"></use><use xlink:href="#SH3" height="26.769" x="-111.784" y="-119"></use><use xlink:href="#SH3" height="70" x="-35" y="-135.501"></use><use xlink:href="#SH3" height="70" x="-35" y="-35"></use><g transform="rotate(180)"><use xlink:href="#VH3" height="32" x="-114.4" y="-156"></use><use xlink:href="#SH3" height="26.769" x="-111.784" y="-119"></use><use xlink:href="#SH3" height="70" x="-35" y="-135.501"></use></g></svg>'
 
 
+face=
 
 
 
@@ -10326,9 +8483,19 @@ fitBounds(bounds);  //automatically calculates the zoom to fit a rectangular are
 
 
 
+0: 48, z: 90
+(42 verschiedene zahlen)
 
 
+- svgnumbercard
+- 13+jolly
+mach option to start game w/ n players mit fe+mimi
+- RIESEN BUG!!!! jetzt bekommt ploetzlich niemand cards bei session start!!!
+- scoring glitch!!!!
+- defect exchange!
 
+- handsize hoeher: mehr cards ins spiel bringen!
+- at this point most important is making a good robot!
 
 
 
@@ -10345,7 +8512,6 @@ fitBounds(bounds);  //automatically calculates the zoom to fit a rectangular are
 
 
 
-quinoa lentils yogurt peas pumpkin seeds peanuts beans mushrooms
 
 
 
@@ -10359,401 +8525,204 @@ quinoa lentils yogurt peas pumpkin seeds peanuts beans mushrooms
 
 
 
-- map meeds a layer to display!
-- maphelpers
-- load yaml dict	
-- goto base/mapdata
-- jetzt lies wieder die city data ein!
-- close all others!
-- how to create OSM map in leaflet
-- update to leaf
-- mach ein dir: leaf
-- mach mal ein map_init_OSM
-- create_map url
-- wie wuerde eine leaflet app fuer nodemaster ausschauen?
-choices: =>therapy!!!!!!!
-1. leaflet app fuer nodemaster
-2. start online python training
-3. weiter mit meinem noc
 
-- I need to stay recluse 
-beantworte keine fragen mehr
-stelle keine fragen mehr
-default: just counting
 
-- dann brauch ich auch noch das mit den arrows!
-- leaflet-topography ist das richtige tool!
-- schau mir topography an!
-- what are the data in heatmap?
-- heatmap.js
-- center map at ?
 
 
 
 
 
+10: test multi:
+- robots ziehen nicht! (mimi+felix waiting!)
+- stage oben wieder falsch!!!!
+- kann ich irgendwie space evenly machen?
 
+- ich brauch ein fen.cardsrevealed
+- how to turn card face down?
 
+- brauch ein phase: reveal table cards
+- table cards sollen unter die players geplaced werden, zu
+- in phase: hand sollen die table cards zu unter die players geplaced werden!
 
+mBy('dTitleLeft')
+the phase 1 of the major Exterior Repair that was listed on the Reserve Study?
+- grid muss 100% width haben!!!!
+- kann ploetzlich nicht mehr clicken!!!! GO button ist weg!
+wie bekomm ich meinen linken nachbar? es ist der nach mir
 
-9h20 fgu
-9h40 Jeslyn!!!!!!!
-=>post einscannen wenn geht!(oder morgen)
+- show sitting order
+- simplest way to do this is place verdeckte left/right is between players
+- show layout of table!
 
 
-- restart mit leaflet!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#100 mi 2h30 jeslyn spazier
+#200 punkte fuer: 100 bugs+100 unittests!
+dann erst auf telecave geben!
+- rem cons
+weg mit consensus message auf dTable
+- history
+
+
+
+- add history
+- brauch ein redraw hand!
+- brauch ein discard_from_hand(plname,card)
 slow down!!!
 
 
+- parlay geht nur wenn mindestens 1 andrer player noch hand cards hat!
+- rem cons
+- show policies
+- unterscheide new session vs new poll round
 
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-- do I have to pay for using maptiler? cant find that out!!!
-- tiff map download
-- ok ich versuch leaflet
-- noch besser: mach einen map folder in nodemodules
-- darin install everything mit dem scheiss vite
-- eine idee waere: in testlocal mach ich ein extra maps folder
-=>nimm eh den todo folder!
-- mach den todo folder auch fuer online
-- das meiste zeug von assets brauch ich eh nicht
-- aber leider brauch ich basemin!
-- stackblitz.com
-- write text on the map
-- how to write text on the map?
-- ab einem bestimmten zoom level moecht ich den namen der stadt auch sehen
-
-
-N'Djamena capital of Chad
-- das problem ist: 
-New Prague ueberschreibt Prague
-- open cities
-- Prag fehlt!
-
-- bug 86
-- wieso seh ich keine cities?
-
-
-
-- try add city to base layer
-- mach das 
-- impl: map_add_object(M.cities[c],options)
-- how to set layer color?
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-- es muss irgendwie herausgefunden werden wie man am besten da durch kommt?
-1. nicht reden garnix tun
-2. viel gehen
-3. strictly nach plan essen und arbeiten
-4. beobachten
-wissen dass aendern der aeusseren umstaende NICHTS verbessert! es lindert die symptome, jedoch sobald die wirkung aufhoert kommt die entzugserscheinung!!! wie eine droge, garnicht anders
-und auch die sucht ist so stark wie bei einer droge
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-- these are NOT capitals!!!
-
-
-
-
-
-- gu auto
-- chall4: only capitals
-3- 
-- map_add_city(data,map)
-
-
-- API entscheidung!
-- das geht!!!!!!
-- chall2 openlayers add values to a feature
-- was wird bei addFeature returned?
-?- soll ich create_style sagen und dann aus den styles immer einen waehlen
-0der
-jedes layer hat schon seinen eigenen style
-- chall2: map_set_layer_style(key,style)
-- color
-- can I add these points to the same layer???????
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-- read text file
-- zuerst brauch ich den text!!!
-- read csv file into db: wo hatte ich sowas???
-- try sorting in excel!
-- open testlocal
-- open cities and save as
-- heut ist frei: flugtag!!!
-- ignore
-
-- does ARCgis API for javascript cost something?
-- npx
-- welches?
-favicon and title
-finde heraus wie ich eine query zu arcgis machen kann?
-- cleanup
-- arcgis zeug
-- was fuer eine query kann ich bei opencagedata machen?
-
-
-
-
-
-
-
-
-
-
-===>aggregate features from:
-- ol-layerswitcher-master
-- olmini
-- olex
-- olselect
-- olsimplified
-
-
-
-
-
-
-
-
-
-1- select
-2- onclick
-3- mach eine function add_circle(pos,color,size)
-
-
-
-
-
-
-
-
-
-
-
-- wie bekomm ich die lon lat von countries geojson
-- what is EPSG:4326
-- wo war das beispiel mit den running coords???
-
-- set to 3'
-???
-- test
-- what next?
-- check mal nach???
-
-- check spaeter wieder ob das alles geklappt hat
-calc_areas
-
-?- how to convert geogson to shp or tiff
-==>- alle maps auf RA geben!
-- brauch ein reset tool: select source
-- create v0.js
-- mach next version!
-- vesuch vector examples : style
-- vielleicht bei den examples?
-- araxis basemin.js
-- was soll es wirklich sein?
-- find lerp
-- createColormap
-- mach colormap utility
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-heavy stuff:
-https://www.youtube.com/watch?v=l05GRJcHWgE
-https://www.youtube.com/watch?v=Ix-4L2dRmRg
-https://www.youtube.com/watch?v=IE_5oBATJT0
-https://www.youtube.com/watch?v=7Xk4FoDZAIo
-
-lighter stuff:
-tiff tutorial workshop weiter
-
-middle:
-sehr langes tutorial aber vielleicht lern ich was davon!
-https://www.youtube.com/watch?v=J61mpJV6hAI
-
-erklaert colormap: https://javascript.hotexamples.com/examples/colormap/-/default/javascript-default-function-examples.html
-
-mach einfach statt colormap eine haendische colormap von 50 colors
-
-zuerst die colormaps: look at colorScale.js!
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-- dynamically change favicon
-- dynamically modify favicon
-
-- kann ich irgendwie die data auf meinem server als directory haben und serven?
-- such ein geojson online
-1. link zu vidulusludorum.com/olmini
-2. link zu
-- fe vorbereiten!
-- geojson fehlt!!!
-- html paste emoji character directly into favicon
-Head to https://emojipedia.org/
-Find your emoji.
-Right-Click on the emoji style you prefer (I'm an Apple person)
-Copy the link and insert into your <head> tag like so: <link rel="icon" href="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/apple/155/books_1f4da.png">
-
-nur das favicon und title
-- braowse to https://www.vidulusludorum.com/olmini
-===>JA NIE MEHR DAS GANZE NODEMASTER UPLOADEN!!!!!!!!!!!!!!!!!!
-- upload das zeug
-- olmini muss in den nodemaster
-- olmini auf den server spielen und testen!
-- test
-- skypack imports
-- mach minimized version mit skypack olmini
-- wie mach ich eine minimale app?
-- ok, leave it as is, versuch das ganze zu server rueber
-- problem muss immer noch import verwenden!!!
-- versuch skypack
-- stop das andere
+- only players that have at least 1 card in hand can be accused!!!
 - 
-probier es aus! goto ohnenode
+- fgu, president!
+- auto weiter bei bots
+- delete membership card!
+- stage=membership
+
+- fgu
+- was soll passieren bei consensus? score, new session
+- back to code!
+- statt market muss stehen: alliance
+- goto setup
+- ich muss noch eine phase: select membership machen!!!
+=>mach ein neues ballots deck!
+=>deal
+=>
+- goto rules!
+- goto setup
+- was ist eigentlich in der discardpile?
+
+
+
+ist das die color von consensus bzw 5 policies of same color? was wenn keines von beiden passiert?
+
+
+- how to resolve hand???
+all cards same color: consensus
+highest rank card: player president,card =>discard pile
+tie: another round of voting
+empty card: out of turn
+
+=>if winner: each player gets their cards back except for the highest card
+that player becomes president
+
+president's turn: stage=president
+accuse action:
+pres selects player w/ at least 1 card,guesses membership
+resolve accuse
+
+parlay action:
+select hand cards and target
+
+defect action:
+discard membership card and replace
+
+resign action: =>new poll
+
+
+- besser waere nextplayer nicht nexthumanplayer!
+if humanscomplete && iamhost:
+fill all bots=>fen
+- kann ein humanscomplete machen!
+- open php
+hand: each player picks a hand card or not pldata '' or QHn
+hand & hostcomplete: pick for bot
+hand & complete => 
+fen.players .vote=pldata.state.card
+	.canvote = .vote non-empty
+
+
+
+
+- wenn mimi writes, write random for all bots
+- rem cons!!!
+- wie kann ich machen dass die bots ziehen?
+- wo zieht die AI?
+- was fuer stages gibt es?
+- ich brauch jetzt die players oben so wie bei bluff oder spotit
+- rem cons
 
 
 
 
 
 
-?- wie kann ich zu einer source weitere daten DAZUGEBEN bei dd?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+do/fr oasis: post, check $200 => julia, starbucks, uwajimaja
+
+
+
+
+
+
+
 
 
 
