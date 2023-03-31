@@ -7760,18 +7760,106 @@ funcs A-
 581: *8:54 AM 3/30/2023-9:03 AM 3/30/2023
 582: *9:03 AM 3/30/2023-9:23 AM 3/30/2023
 583: *9:24 AM 3/30/2023-9:27 AM 3/30/2023
-584: *9:27 AM 3/30/2023-
-- 
-- soll ich das frisieren oder wirklich radikal durchsuchen????
-- wann werden die sortiert????
-synthesize:
-1. diall.const und var =>globalshuge.js
+584: *9:27 AM 3/30/2023-1:05 PM 3/30/2023
+585: *1:06 PM 3/30/2023-1:12 PM 3/30/2023
+ok - (1pm?A) e debbie oasis clear
+ok - flugtickets condor
+ok - email gilbert skypen! Amanda anmelden ecard?
+closed! bis morgen 9am!
+685: *1:12 PM 3/30/2023-1:13 PM 3/30/2023
+686: *1:14 PM 3/30/2023-1:21 PM 3/30/2023
+687: *1:21 PM 3/30/2023-3:24 PM 3/30/2023
+688: *3:24 PM 3/30/2023-3:25 PM 3/30/2023
+689: *3:25 PM 3/30/2023-3:26 PM 3/30/2023
+699: *3:26 PM 3/30/2023-3:28 PM 3/30/2023
+700: *3:28 PM 3/30/2023-6:41 PM 3/30/2023
+701: *6:41 PM 3/30/2023-6:43 PM 3/30/2023
+- araxis merge: es war nur das boa pwd
+702: *6:43 PM 3/30/2023-6:44 PM 3/30/2023
+703: *6:44 PM 3/30/2023-6:45 PM 3/30/2023
+704: *6:45 PM 3/30/2023-6:52 PM 3/30/2023
+705: *6:52 PM 3/30/2023-8:53 PM 3/30/2023
+__________ fr 31.3.23 waiting at the airport... lib 10.4
+706: *8:53 PM 3/30/2023-7:16 AM 3/31/2023
+707: *7:16 AM 3/31/2023-7:17 AM 3/31/2023
+708: *7:17 AM 3/31/2023-7:19 AM 3/31/2023
+709: *7:19 AM 3/31/2023-7:20 AM 3/31/2023
+710: *7:20 AM 3/31/2023-7:21 AM 3/31/2023
+711: *7:21 AM 3/31/2023-7:23 AM 3/31/2023
+test
+reject more
+reject all that contain =>
+open server.js
+was will ich?
+712: *7:23 AM 3/31/2023-7:24 AM 3/31/2023
+----------> alle die => containen umaendern!!!
+713: *7:24 AM 3/31/2023-7:28 AM 3/31/2023
+714: *7:28 AM 3/31/2023-7:29 AM 3/31/2023
+aber zum testen: mach nur js files for now!
+715: *7:29 AM 3/31/2023-7:55 AM 3/31/2023
+716: *7:55 AM 3/31/2023-7:57 AM 3/31/2023
+717: *7:57 AM 3/31/2023-
+- klar ich hab es ja nicht in dicts geschrieben!!!
 
 
-do 30.3.23
-- (1pm?A) e debbie oasis clear
-- flugtickets condor
-- email gilbert skypen! Amanda anmelden ecard?
+
+
+
+
+
+- jetzt muss ich dann auch alle dicts neu schreiben!
+- dict output soll zu aroot/base/codebase/cbnew gehen
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+- open yaml files, generate z_all.js file
+- ich fang an in aroot\\base\\cb2\\
+
+eigentlich kann ich ruhig nur die dicts nehmen!!!
+wenn nach => { kommt, dann ist {} der func body
+otherwise ist {return [rest];} der func body
+- welche info aendert sich? eigentlich nur code
+- if constcode.includes(' => (')
+mach draus eine functions:
+und zwar so:
+keu bleibt gleich
+type wird function
+code wird:
+params = stringBefore(stringAfter(code,'('),')')
+function ${c.key}(${}
+
+- wie wuerde ich das machen?
 
 
 
