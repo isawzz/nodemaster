@@ -7798,17 +7798,318 @@ was will ich?
 aber zum testen: mach nur js files for now!
 715: *7:29 AM 3/31/2023-7:55 AM 3/31/2023
 716: *7:55 AM 3/31/2023-7:57 AM 3/31/2023
-717: *7:57 AM 3/31/2023-
+717: *7:57 AM 3/31/2023-8:37 AM 3/31/2023
+718: *8:37 AM 3/31/2023-8:43 AM 3/31/2023
+720: *8:43 AM 3/31/2023-8:46 AM 3/31/2023
+721: *8:47 AM 3/31/2023-7:03 AM 4/1/2023
+__________ sa 1.4.23 waiting at the airport... lib 10.4
+800: *7:03 AM 4/1/2023-7:14 AM 4/1/2023
+801: *7:14 AM 4/1/2023-7:28 AM 4/1/2023
+802: *7:28 AM 4/1/2023-7:48 AM 4/1/2023
+803: *7:48 AM 4/1/2023-8:01 AM 4/1/2023
+804: *8:01 AM 4/1/2023-8:02 AM 4/1/2023
+- wie soll ich es einteilen???? damit er nicht nervt mit restart
+805: *8:02 AM 4/1/2023-8:14 AM 4/1/2023
+806: *8:14 AM 4/1/2023-8:14 AM 4/1/2023
+807: *8:14 AM 4/1/2023-8:19 AM 4/1/2023
+=>basejs ==> telecave!!!! iconViewer,videos
+- basejs/cb0 ist orig!
+- basejs/cb0
+- basejs/cb1 ist neues
+808: *8:19 AM 4/1/2023-8:20 AM 4/1/2023
+809: *8:20 AM 4/1/2023-8:21 AM 4/1/2023
+OPS is fine! =>skip it
+810: *8:23 AM 4/1/2023-8:24 AM 4/1/2023
+Perlin fine!
+811: *8:24 AM 4/1/2023-8:25 AM 4/1/2023
+812: *8:25 AM 4/1/2023-8:27 AM 4/1/2023
+813: *8:28 AM 4/1/2023-8:29 AM 4/1/2023
+814: *8:29 AM 4/1/2023-9:05 AM 4/1/2023
+815: *9:05 AM 4/1/2023-9:08 AM 4/1/2023
+=>modify aroot/basejs/cb0/z_allcode.yaml
+ALLTESTS 
+816: *9:08 AM 4/1/2023-9:10 AM 4/1/2023
+check
+EMO ?? wo fliegt das raus?
+RCREATE 
+817: *9:10 AM 4/1/2023-9:10 AM 4/1/2023
+RUPDATE
+818: *9:11 AM 4/1/2023-9:13 AM 4/1/2023
+GFUNC
+819: *9:13 AM 4/1/2023-9:13 AM 4/1/2023
+CRIMSON
+820: *9:14 AM 4/1/2023-9:14 AM 4/1/2023
+walks
+821: *9:14 AM 4/1/2023-9:15 AM 4/1/2023
+822: *9:15 AM 4/1/2023-9:17 AM 4/1/2023
+ALLTESTS lasse als const!
+ok !test!
+823: *9:17 AM 4/1/2023-9:21 AM 4/1/2023
+824: *9:21 AM 4/1/2023-9:30 AM 4/1/2023
+- moment! redocodebase macht ja all die files!
+- jetzt die vars auch zu allglobalshuge.js
+825: *9:30 AM 4/1/2023-9:33 AM 4/1/2023
+826: *9:33 AM 4/1/2023-9:35 AM 4/1/2023
+827: *9:36 AM 4/1/2023-9:36 AM 4/1/2023
+- soll var mit function inside geskipped werden oder was???????
+- const + vars = globalshuge.js
+828: *9:36 AM 4/1/2023-9:37 AM 4/1/2023
+- wieviel sind die classes??? coding: const+var+class = 20K lines
+829: *9:37 AM 4/1/2023-9:40 AM 4/1/2023
+830: *9:41 AM 4/1/2023-9:41 AM 4/1/2023
+831: *9:41 AM 4/1/2023-9:42 AM 4/1/2023
+- JEDE LINE INSIDE von class endregion,REGION MUSS GELOESCHT WERDEN!!!!!!!
+- region endregion problem!!!!! wieder da!!!!!
+- add classes
+832: *9:45 AM 4/1/2023-9:46 AM 4/1/2023
+833: *9:47 AM 4/1/2023-9:47 AM 4/1/2023
+ok - check das ging errstaunlich schnell!!!!
+834: *9:47 AM 4/1/2023-10:03 AM 4/1/2023
+835: *10:03 AM 4/1/2023-10:03 AM 4/1/2023
+way shorter!!!!
+836: *10:03 AM 4/1/2023-10:05 AM 4/1/2023
+837: *10:05 AM 4/1/2023-10:05 AM 4/1/2023
+838: *10:05 AM 4/1/2023-10:14 AM 4/1/2023
+839: *10:14 AM 4/1/2023-10:15 AM 4/1/2023
+ab M neues file!!!!
+- test
+- jetzt funcs by start letter!!!! region func A
+840: *10:15 AM 4/1/2023-11:41 AM 4/1/2023
+ok - music + fgu + min 3K
+845: *11:42 AM 4/1/2023-11:50 AM 4/1/2023
+846: *11:50 AM 4/1/2023-11:50 AM 4/1/2023
+847: *11:51 AM 4/1/2023-12:04 PM 4/1/2023
+848: *12:05 PM 4/1/2023-12:08 PM 4/1/2023
+849: *12:08 PM 4/1/2023-1:17 PM 4/1/2023
+850: *1:17 PM 4/1/2023-1:18 PM 4/1/2023
+851: *1:18 PM 4/1/2023-1:20 PM 4/1/2023
+852: *1:20 PM 4/1/2023-1:28 PM 4/1/2023
+- wie soll der code ausschauen???
+- goto server.js
+- wie kann ich es achieven?
+- ALLTESTS muss eine function werden!!! in cb1
+- in welchem file? in cb1/z_allcode
+- nochmal ALLTESTS: fstruct alle als string machen!!!
+853: *1:28 PM 4/1/2023-1:29 PM 4/1/2023
+854: *1:29 PM 4/1/2023-1:29 PM 4/1/2023
+mach die globals nochmal, check ob ALLTESTS noch in allglobalshuge ist!!!
+test
+- sollte testen ob das alles hinhaut!!!!!
+855: *1:29 PM 4/1/2023-1:40 PM 4/1/2023
+856: *1:40 PM 4/1/2023-2:22 PM 4/1/2023
+857: *2:22 PM 4/1/2023-2:24 PM 4/1/2023
+858: *2:24 PM 4/1/2023-2:40 PM 4/1/2023
+859: *2:40 PM 4/1/2023-7:50 PM 4/1/2023
+__________ so 2.4.23 waiting at the airport... lib 10.4
+880: *7:50 PM 4/1/2023-6:52 AM 4/2/2023
+881: *6:52 AM 4/2/2023-6:53 AM 4/2/2023
+882: *6:53 AM 4/2/2023-6:53 AM 4/2/2023
+883: *6:53 AM 4/2/2023-6:55 AM 4/2/2023
+884: *6:56 AM 4/2/2023-6:57 AM 4/2/2023
+- run all 3!!!
+- where code? server.js
+- return alltests mit } am ende!
+885: *6:58 AM 4/2/2023-7:03 AM 4/2/2023
+886: *7:03 AM 4/2/2023-7:05 AM 4/2/2023
+887: *7:05 AM 4/2/2023-7:06 AM 4/2/2023
+888: *7:06 AM 4/2/2023-7:19 AM 4/2/2023
+- correctur sollte eigentlich schon in repair yaml sein!!!
+- was ist AREAS???
+- code starts with const => replaceFirstWord by var
+889: *7:19 AM 4/2/2023-7:22 AM 4/2/2023
+890: *7:22 AM 4/2/2023-7:24 AM 4/2/2023
+891: *7:24 AM 4/2/2023-7:25 AM 4/2/2023
+892: *7:25 AM 4/2/2023-7:36 AM 4/2/2023
+893: *7:36 AM 4/2/2023-7:36 AM 4/2/2023
+894: *7:36 AM 4/2/2023-7:38 AM 4/2/2023
+895: *7:38 AM 4/2/2023-7:40 AM 4/2/2023
+896: *7:40 AM 4/2/2023-7:41 AM 4/2/2023
+897: *7:41 AM 4/2/2023-7:57 AM 4/2/2023
+898: *7:57 AM 4/2/2023-7:57 AM 4/2/2023
+WAY SHORTER@!!@!
+899: *7:58 AM 4/2/2023-8:09 AM 4/2/2023
+900: *8:09 AM 4/2/2023-8:21 AM 4/2/2023
+901: *8:21 AM 4/2/2023-8:21 AM 4/2/2023
+902: *8:21 AM 4/2/2023-8:22 AM 4/2/2023
+903: *8:22 AM 4/2/2023-8:22 AM 4/2/2023
+904: *8:22 AM 4/2/2023-8:24 AM 4/2/2023
+- das bundle ist in SAFE/bundle
+- wo ist das bundle???
+- es heisst dass rColor in bundle falsch ist!
+- was heisst das?
+- elim die a04 dinger!!!
+- yes anschauen 17026 in funcs_m
+- kann ich es nicht eh so machen wie bei den consts?
+- chessvars muessen anders sortiert werden!!!!!
+agCircle 4386
+SHORTER!!!
+- again!
+3195
+- wieso????
+- alle nehmen
+- correct var:
+im code wird einfach 
+- vars sind KOMPLETT FALSCH!!!! in z_all.yaml!!!!!!!!!
+- wie hab ich dir vars frueher gemacht???
+- alle vars sind falsch!!!!!
+==>die von cb2 werden included,
+==>die yaml files von cb1 werden fuer info verwendet!!!
+- weiter forschen!!!
+- ws ist da los????
+- sig = 
+- sig : schau wie func sigs funktionieren!
+- sig,region,type alles muss func sein!
+- bei functions am ende soll kein }; stehen!
 - klar ich hab es ja nicht in dicts geschrieben!!!
-
-
-
-
-
-
-
 - jetzt muss ich dann auch alle dicts neu schreiben!
 - dict output soll zu aroot/base/codebase/cbnew gehen
+905: *8:25 AM 4/2/2023-8:26 AM 4/2/2023
+906: *8:26 AM 4/2/2023-8:26 AM 4/2/2023
+907: *8:26 AM 4/2/2023-8:28 AM 4/2/2023
+- compare mStyle in basemin und in allfuncs_m
+- wahrscheinlich das w100??? mStyle
+- was ist da lost????
+908: *8:28 AM 4/2/2023-8:31 AM 4/2/2023
+- ok, now click
+909: *8:32 AM 4/2/2023-8:38 AM 4/2/2023
+910: *8:38 AM 4/2/2023-8:42 AM 4/2/2023
+911: *8:42 AM 4/2/2023-8:46 AM 4/2/2023
+912: *8:46 AM 4/2/2023-8:58 AM 4/2/2023
+913: *8:58 AM 4/2/2023-8:58 AM 4/2/2023
+WAY SHORTER!!!!!!!!!!!!!!!!!!
+914: *8:58 AM 4/2/2023-9:39 AM 4/2/2023
+- brauch das neue toWords!!!!
+- neben Edit Code mach einen button closure
+- versuch eine closure zu machen!!!
+- mach ein allcode!
+- wie mach ich eine closure?
+915: *9:39 AM 4/2/2023-9:39 AM 4/2/2023
+- complett falsch!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+916: *9:39 AM 4/2/2023-10:10 AM 4/2/2023
+WAY SHORTER!!!
+917: *10:10 AM 4/2/2023-10:10 AM 4/2/2023
+918: *10:10 AM 4/2/2023-12:07 PM 4/2/2023
+930: *12:07 PM 4/2/2023-12:38 PM 4/2/2023
+if (Object.prototype.hasOwnProperty.call(obj, key)) {
+	var val = obj[key];
+	console.log('val',key)
+	// use val
+}
+931: *12:38 PM 4/2/2023-12:38 PM 4/2/2023
+932: *12:39 PM 4/2/2023-12:52 PM 4/2/2023
+933: *12:52 PM 4/2/2023-
+- was passiert bei rColor???
+1000: *7:57 PM 4/2/2023-7:57 PM 4/2/2023
+__________ mo 3.4.23 waiting at the airport... lib 10.4
+1: *9:09 PM 4/2/2023-6:55 AM 4/3/2023
+- was ist wenn ich NICHT \r fuer saving file reingebe
+2: *6:55 AM 4/3/2023-6:56 AM 4/3/2023
+3: *6:56 AM 4/3/2023-7:01 AM 4/3/2023
+4: *7:01 AM 4/3/2023-7:05 AM 4/3/2023
+5: *7:05 AM 4/3/2023-7:10 AM 4/3/2023
+6: *7:10 AM 4/3/2023-7:13 AM 4/3/2023
+7: *7:13 AM 4/3/2023-7:17 AM 4/3/2023
+8: *7:18 AM 4/3/2023-7:20 AM 4/3/2023
+9: *7:20 AM 4/3/2023-7:23 AM 4/3/2023
+10: *7:23 AM 4/3/2023-7:32 AM 4/3/2023
+11: *7:33 AM 4/3/2023-7:38 AM 4/3/2023
+- in z_allcode.yaml soll code sauber sein!
+- test
+- nix gemacht!!!
+- bei const to func muss 1 less \n sein nach return!!!
+- formatting errors!!!
+- server 390
+- goto repair_yaml
+- can I regenerate code in allcode un alle \r raushauen?
+12: *7:38 AM 4/3/2023-7:42 AM 4/3/2023
+13: *7:42 AM 4/3/2023-7:43 AM 4/3/2023
+14: *7:43 AM 4/3/2023-7:44 AM 4/3/2023
+15: *7:44 AM 4/3/2023-7:49 AM 4/3/2023
+16: *7:49 AM 4/3/2023-8:16 AM 4/3/2023
+17: *8:16 AM 4/3/2023-8:25 AM 4/3/2023
+20: *8:26 AM 4/3/2023-8:37 AM 4/3/2023
+21: *8:37 AM 4/3/2023-8:42 AM 4/3/2023
+22: *8:42 AM 4/3/2023-8:46 AM 4/3/2023
+23: *8:46 AM 4/3/2023-8:46 AM 4/3/2023
+24: *8:46 AM 4/3/2023-8:47 AM 4/3/2023
+25: *8:47 AM 4/3/2023-10:27 AM 4/3/2023
+- email,spaa
+40: *10:28 AM 4/3/2023-10:37 AM 4/3/2023
+41: *10:37 AM 4/3/2023-10:38 AM 4/3/2023
+42: *10:38 AM 4/3/2023-10:38 AM 4/3/2023
+43: *10:38 AM 4/3/2023-10:41 AM 4/3/2023
+44: *10:41 AM 4/3/2023-10:48 AM 4/3/2023
+45: *10:48 AM 4/3/2023-12:00 PM 4/3/2023
+46: *12:00 PM 4/3/2023-12:18 PM 4/3/2023
+47: *12:18 PM 4/3/2023-12:31 PM 4/3/2023
+48: *12:31 PM 4/3/2023-7:00 AM 4/4/2023
+__________ di 4.4.23 waiting at the airport... lib 10.4
+100: *7:00 AM 4/4/2023-7:03 AM 4/4/2023
+- test!!!
+- warum wird pSBCr nicht genommen???
+- immer noch falsch!!!
+- rem z_all.js aus cb0!!!!!!!
+- recom
+- correct record of pSBCr in cb0 z_all.yaml
+- irgendwas wurde ueberschrieben!
+- das mit dem , wahrscheinlich!!!!
+- schon wieder getColorNames weg!!! WTF?!?!?!?!?!?
+WAY SHORTER!!!
+- replace pSBC in basemin bundle!!!
+- kann nur hoffen das es jetzt geht!!!
+- test
+- pSBC readable code
+- warum geht onclick_closure nicht???
+- rem cons baustelle 21
+- JA es ist in disub!!!
+- geh zu donelist und check ob getColorNames drin ist!
+- und jetzt???? back to test.html
+- was ist mit dem getColorNames? wieso ist es nicht in closure?
+101: *7:03 AM 4/4/2023-7:04 AM 4/4/2023
+102: *7:04 AM 4/4/2023-7:10 AM 4/4/2023
+103: *7:10 AM 4/4/2023-7:23 AM 4/4/2023
+104: *7:23 AM 4/4/2023-7:24 AM 4/4/2023
+105: *7:24 AM 4/4/2023-7:33 AM 4/4/2023
+106: *7:33 AM 4/4/2023-9:32 AM 4/4/2023
+107: *9:32 AM 4/4/2023-9:38 AM 4/4/2023
+108: *9:38 AM 4/4/2023-4:37 PM 4/4/2023
+240: *4:37 PM 4/4/2023-6:35 PM 4/4/2023
+241: *6:35 PM 4/4/2023-6:44 AM 4/5/2023
+__________ mi 5.4.23 waiting at the airport... lib 10.4
+260: *6:47 AM 4/5/2023-7:19 AM 4/5/2023
+261: *7:19 AM 4/5/2023-7:19 AM 4/5/2023
+262: *7:19 AM 4/5/2023-7:23 AM 4/5/2023
+263: *7:23 AM 4/5/2023-7:23 AM 4/5/2023
+- rem cons i
+264: *7:23 AM 4/5/2023-7:29 AM 4/5/2023
+265: *7:29 AM 4/5/2023-7:30 AM 4/5/2023
+266: *7:30 AM 4/5/2023-7:46 AM 4/5/2023
+267: *7:46 AM 4/5/2023-8:20 AM 4/5/2023
+268: *8:20 AM 4/5/2023-8:20 AM 4/5/2023
+269: *8:20 AM 4/5/2023-8:20 AM 4/5/2023
+270: *8:23 AM 4/5/2023-8:36 AM 4/5/2023
+271: *8:36 AM 4/5/2023-
+
+
+- typeof(eval('MS'))
+- js reflection how to get a defined function body by its name
+- nur if not undef!
+check ob getWindowObject einen type gibt!!!
+- ich versteh nicht warum write_code_text_file nicht in closure drin ist?!?!?
+
+- sieht so aus als haetten multiline consts am ende 1 linebreaak im code!
+- how to go about that???
+- jetzt kommt der grosse test mit games - wird wild!
+
+- brauche linebreak vor vars
+
+
+
+
+
+
+
+
 
 
 
