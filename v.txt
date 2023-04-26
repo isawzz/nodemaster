@@ -8093,7 +8093,2035 @@ __________ mi 5.4.23 waiting at the airport... lib 10.4
 273: *1:46 PM 4/5/2023-1:48 PM 4/5/2023
 274: *1:48 PM 4/5/2023-1:49 PM 4/5/2023
 275: *1:49 PM 4/5/2023-1:58 PM 4/5/2023
-276: *1:58 PM 4/5/2023-
+276: *1:58 PM 4/5/2023-8:15 PM 4/5/2023
+__________ do 6.4.23 waiting at the airport... lib 10.4
+400: *8:15 PM 4/5/2023-8:26 PM 4/5/2023
+401: *8:26 PM 4/5/2023-8:26 PM 4/5/2023
+402: *8:26 PM 4/5/2023-6:20 AM 4/6/2023
+403: *6:20 AM 4/6/2023-6:23 AM 4/6/2023
+404: *6:23 AM 4/6/2023-6:25 AM 4/6/2023
+405: *6:25 AM 4/6/2023-6:28 AM 4/6/2023
+406: *6:28 AM 4/6/2023-6:32 AM 4/6/2023
+407: *6:32 AM 4/6/2023-6:32 AM 4/6/2023
+408: *6:32 AM 4/6/2023-6:35 AM 4/6/2023
+409: *6:35 AM 4/6/2023-6:36 AM 4/6/2023
+410: *6:37 AM 4/6/2023-6:37 AM 4/6/2023
+411: *6:37 AM 4/6/2023-6:42 AM 4/6/2023
+412: *6:42 AM 4/6/2023-6:44 AM 4/6/2023
+- grid should NOT be included!!!
+- geh nochmal zurueck zu test.html
+- class Peep und MS sollten NICHT dabei sein!!! woher kommen die?
+- same with Peep
+413: *6:45 AM 4/6/2023-7:02 AM 4/6/2023
+414: *7:02 AM 4/6/2023-7:04 AM 4/6/2023
+415: *7:04 AM 4/6/2023-7:06 AM 4/6/2023
+416: *7:06 AM 4/6/2023-7:10 AM 4/6/2023
+417: *7:10 AM 4/6/2023-7:15 AM 4/6/2023
+418: *7:15 AM 4/6/2023-7:22 AM 4/6/2023
+419: *7:22 AM 4/6/2023-7:23 AM 4/6/2023
+420: *7:23 AM 4/6/2023-7:26 AM 4/6/2023
+421: *7:26 AM 4/6/2023-7:33 AM 4/6/2023
+- es ist wegen onresize!!!!!!!!!!!!!!!!!!!!!!
+- es funktioniert nicht!!!!!
+- WAY SHORTER!
+- test
+- has_duplicates
+- create_left_side ist 2x drin!!!!!
+422: *7:33 AM 4/6/2023-7:34 AM 4/6/2023
+423: *7:34 AM 4/6/2023-8:20 AM 4/6/2023
+- make sure that closure_games has last version!!!!
+- jetzt will ich nur die available funcs live haben!
+424: *8:21 AM 4/6/2023-8:26 AM 4/6/2023
+425: *8:26 AM 4/6/2023-8:27 AM 4/6/2023
+- ich brauch es nur locally! also reicht test.html
+- rename index.html to indexphp.html
+- wie mach ich es?????
+426: *8:28 AM 4/6/2023-8:59 AM 4/6/2023
+427: *8:59 AM 4/6/2023-9:00 AM 4/6/2023
+428: *9:00 AM 4/6/2023-9:32 AM 4/6/2023
+438: *9:32 AM 4/6/2023-9:44 AM 4/6/2023
+439: *9:44 AM 4/6/2023-9:45 AM 4/6/2023
+440: *9:45 AM 4/6/2023-9:56 AM 4/6/2023
+441: *9:56 AM 4/6/2023-9:56 AM 4/6/2023
+- WAY SHORTER!!!
+442: *9:56 AM 4/6/2023-10:57 AM 4/6/2023
+452: *10:58 AM 4/6/2023-11:32 AM 4/6/2023
+453: *11:32 AM 4/6/2023-4:28 PM 4/6/2023
+463: *4:28 PM 4/6/2023-6:23 AM 4/7/2023
+__________ fr 7.4.23 waiting at the airport... lib 10.4
+470: *6:24 AM 4/7/2023-6:31 AM 4/7/2023
+471: *6:31 AM 4/7/2023-6:32 AM 4/7/2023
+478: *6:32 AM 4/7/2023-6:55 AM 4/7/2023
+479: *6:55 AM 4/7/2023-7:04 AM 4/7/2023
+480: *7:04 AM 4/7/2023-7:04 AM 4/7/2023
+481: *7:04 AM 4/7/2023-7:21 AM 4/7/2023
+482: *7:21 AM 4/7/2023-7:22 AM 4/7/2023
+483: *7:22 AM 4/7/2023-7:22 AM 4/7/2023
+484: *7:22 AM 4/7/2023-7:24 AM 4/7/2023
+485: *7:24 AM 4/7/2023-7:29 AM 4/7/2023
+486: *7:29 AM 4/7/2023-7:37 AM 4/7/2023
+487: *7:37 AM 4/7/2023-7:42 AM 4/7/2023
+488: *7:42 AM 4/7/2023-7:46 AM 4/7/2023
+489: *7:46 AM 4/7/2023-7:46 AM 4/7/2023
+490: *7:46 AM 4/7/2023-7:49 AM 4/7/2023
+491: *7:49 AM 4/7/2023-7:54 AM 4/7/2023
+492: *7:54 AM 4/7/2023-8:02 AM 4/7/2023
+493: *8:02 AM 4/7/2023-8:03 AM 4/7/2023
+494: *8:03 AM 4/7/2023-8:05 AM 4/7/2023
+495: *8:05 AM 4/7/2023-8:14 AM 4/7/2023
+496: *8:14 AM 4/7/2023-8:14 AM 4/7/2023
+497: *8:14 AM 4/7/2023-8:18 AM 4/7/2023
+498: *8:18 AM 4/7/2023-8:33 AM 4/7/2023
+499: *8:33 AM 4/7/2023-8:33 AM 4/7/2023
+500: *8:33 AM 4/7/2023-1:05 PM 4/7/2023
+510: *1:05 PM 4/7/2023-8:13 PM 4/7/2023
+- no matter what happens if he attacks me this is just a body not ME
+__________ sa 8.4.23 waiting at the airport... lib 10.4
+550: *8:13 PM 4/7/2023-6:34 AM 4/8/2023
+551: *6:34 AM 4/8/2023-6:39 AM 4/8/2023
+- no global variables in code! =>global vars MUST be declared in globals
+- global DA settings MUST be done at the beginning of start!
+552: *6:39 AM 4/8/2023-6:54 AM 4/8/2023
+553: *6:55 AM 4/8/2023-6:55 AM 4/8/2023
+554: *6:55 AM 4/8/2023-6:58 AM 4/8/2023
+555: *6:58 AM 4/8/2023-7:00 AM 4/8/2023
+556: *7:00 AM 4/8/2023-7:02 AM 4/8/2023
+557: *7:02 AM 4/8/2023-7:06 AM 4/8/2023
+558: *7:06 AM 4/8/2023-7:06 AM 4/8/2023
+559: *7:07 AM 4/8/2023-7:08 AM 4/8/2023
+560: *7:08 AM 4/8/2023-7:09 AM 4/8/2023
+561: *7:09 AM 4/8/2023-7:11 AM 4/8/2023
+562: *7:11 AM 4/8/2023-7:12 AM 4/8/2023
+563: *7:12 AM 4/8/2023-7:14 AM 4/8/2023
+564: *7:14 AM 4/8/2023-7:21 AM 4/8/2023
+565: *7:21 AM 4/8/2023-7:21 AM 4/8/2023
+566: *7:22 AM 4/8/2023-7:24 AM 4/8/2023
+567: *7:24 AM 4/8/2023-7:24 AM 4/8/2023
+568: *7:25 AM 4/8/2023-7:27 AM 4/8/2023
+569: *7:27 AM 4/8/2023-7:28 AM 4/8/2023
+570: *7:28 AM 4/8/2023-7:32 AM 4/8/2023
+571: *7:32 AM 4/8/2023-7:34 AM 4/8/2023
+572: *7:34 AM 4/8/2023-7:35 AM 4/8/2023
+573: *7:35 AM 4/8/2023-7:35 AM 4/8/2023
+- github!
+- easing nochmal!
+- gut jetzt hab ich games2
+- correct includes in games2 make it like in games_last_telecave index.html
+- prepare index.html
+- mach ein neues games mit dem bundle und dem hybrid aber ohne dem all.js
+- save games_last_telecave
+- save orig version as it is now!
+- schau mal was grad auf telecave ist!
+dAdminMiddle muss eine minwidth haben!
+- ich muss die changes in basemin.js machen!!!!!! all.js wird NICHT verwendet!
+- mach den change mit DA.showTextButtons
+- mach den change mit firsttime=false
+- search myEasing
+- open hybrid all.js
+- hybrid weg => safe/gameshybrid
+- bundle geht, jetzt gib die files rein! und mach das bundle out of viele kleine files (ohne das all.js!)
+- ich brauch ein var firsttime
+WAY SHORTER!!!!
+- copy index.html file, replace script block in body by 
+- da muss ich was machen!
+- download file!
+- richtig cool!
+- mach einen test mit toy!
+- region wird 1 zu frueh geschrieben und region not clean!!!
+WAY SHORTER!!!!
+- nein das ist falsch!!!! schau was fuer eine region bei 'start
+- wenn fname changes muss ich region='' machen!
+- assembly: key by key einfach reinschreiben
+- combine regions???
+- ich hab jetzt gesamten code, also bundle, aber noch nicht closure!!!!
+- was ist ueberhaupt derzeit das goal???
+- was jetzt??????
+- duplicates anschauen!
+- test
+- loeschen heisst: ckeys[idx]=null
+- keys must be unique!!!
+=>byKey overriden,
+danach geh ich zwar durch aber wenn byKey nicht dieselben merkmale hat, dann skip
+- jetzt was?
+- alert
+574: *7:36 AM 4/8/2023-7:38 AM 4/8/2023
+575: *7:38 AM 4/8/2023-7:39 AM 4/8/2023
+576: *7:39 AM 4/8/2023-7:43 AM 4/8/2023
+577: *7:43 AM 4/8/2023-7:45 AM 4/8/2023
+578: *7:45 AM 4/8/2023-7:46 AM 4/8/2023
+579: *7:46 AM 4/8/2023-7:46 AM 4/8/2023
+580: *7:46 AM 4/8/2023-7:53 AM 4/8/2023
+581: *7:53 AM 4/8/2023-8:00 AM 4/8/2023
+582: *8:00 AM 4/8/2023-8:15 AM 4/8/2023
+583: *8:15 AM 4/8/2023-8:21 AM 4/8/2023
+584: *8:21 AM 4/8/2023-8:22 AM 4/8/2023
+585: *8:22 AM 4/8/2023-8:33 AM 4/8/2023
+586: *8:33 AM 4/8/2023-8:33 AM 4/8/2023
+587: *8:33 AM 4/8/2023-8:43 AM 4/8/2023
+588: *8:44 AM 4/8/2023-8:51 AM 4/8/2023
+589: *8:51 AM 4/8/2023-8:55 AM 4/8/2023
+590: *8:55 AM 4/8/2023-8:55 AM 4/8/2023
+591: *8:55 AM 4/8/2023-9:05 AM 4/8/2023
+592: *9:05 AM 4/8/2023-9:34 AM 4/8/2023
+593: *9:34 AM 4/8/2023-9:34 AM 4/8/2023
+594: *9:34 AM 4/8/2023-9:37 AM 4/8/2023
+595: *9:37 AM 4/8/2023-9:42 AM 4/8/2023
+596: *9:42 AM 4/8/2023-9:47 AM 4/8/2023
+- letzte func von jedem file MISSING!!!
+- lass es in der keylist aber trage das zweite NICHT ein!!!
+- duplicate: nimm das prev,trage keinen key ein!
+- WAY SHORTER!!!!!!!!!!!!!!!!!!!
+- top level comments werden nicht gedropped!!!!
+597: *9:47 AM 4/8/2023-9:47 AM 4/8/2023
+- 21818 mit comments
+598: *9:48 AM 4/8/2023-9:58 AM 4/8/2023
+599: *9:58 AM 4/8/2023-10:02 AM 4/8/2023
+600: *10:02 AM 4/8/2023-10:08 AM 4/8/2023
+601: *10:08 AM 4/8/2023-10:08 AM 4/8/2023
+- 19163 lines fuer games!
+602: *10:08 AM 4/8/2023-11:53 AM 4/8/2023
+612: *11:54 AM 4/8/2023-11:58 AM 4/8/2023
+- brauch eigentlich ein outputdir fuer das project
+WTF?!?!?!
+- comment lines entfernen klappt nicht!
+613: *11:58 AM 4/8/2023-2:07 PM 4/8/2023
+614: *2:07 PM 4/8/2023-2:08 PM 4/8/2023
+624: *2:08 PM 4/8/2023-2:20 PM 4/8/2023
+625: *2:20 PM 4/8/2023-2:21 PM 4/8/2023
+- rem cons!
+- hab immer noch den blocktype!
+- jetzt die closure!
+626: *2:21 PM 4/8/2023-2:24 PM 4/8/2023
+627: *2:24 PM 4/8/2023-2:25 PM 4/8/2023
+628: *2:25 PM 4/8/2023-2:41 PM 4/8/2023
+629: *2:41 PM 4/8/2023-3:20 PM 4/8/2023
+630: *3:20 PM 4/8/2023-3:21 PM 4/8/2023
+631: *3:21 PM 4/8/2023-5:39 PM 4/8/2023
+641: *5:40 PM 4/8/2023-8:24 PM 4/8/2023
+__________ so 9.4.23 waiting at the airport... lib 10.4
+670: *8:25 PM 4/8/2023-8:28 PM 4/8/2023
+671: *8:28 PM 4/8/2023-7:00 AM 4/9/2023
+672: *7:00 AM 4/9/2023-7:17 AM 4/9/2023
+673: *7:17 AM 4/9/2023-7:17 AM 4/9/2023
+674: *7:17 AM 4/9/2023-7:18 AM 4/9/2023
+675: *7:18 AM 4/9/2023-7:24 AM 4/9/2023
+676: *7:24 AM 4/9/2023-7:25 AM 4/9/2023
+677: *7:25 AM 4/9/2023-7:27 AM 4/9/2023
+678: *7:27 AM 4/9/2023-7:41 AM 4/9/2023
+679: *7:41 AM 4/9/2023-7:43 AM 4/9/2023
+680: *7:43 AM 4/9/2023-7:48 AM 4/9/2023
+681: *7:48 AM 4/9/2023-7:48 AM 4/9/2023
+682: *7:48 AM 4/9/2023-7:49 AM 4/9/2023
+683: *7:49 AM 4/9/2023-7:50 AM 4/9/2023
+684: *7:50 AM 4/9/2023-7:52 AM 4/9/2023
+685: *7:52 AM 4/9/2023-7:53 AM 4/9/2023
+686: *7:53 AM 4/9/2023-7:56 AM 4/9/2023
+- was mach ich mit games? == games_last_telecave also loeschen!
+687: *7:57 AM 4/9/2023-7:58 AM 4/9/2023
+- WAS MACH ICH MIT GAMES2? =>rename to games_full, auch in index.html!
+688: *7:58 AM 4/9/2023-8:18 AM 4/9/2023
+689: (8:18 AM 4/9/2023-8:18 AM 4/9/2023
+- WAY SHORTER!!!
+690: *8:19 AM 4/9/2023-8:20 AM 4/9/2023
+691: *8:20 AM 4/9/2023-8:43 AM 4/9/2023
+692: *8:43 AM 4/9/2023-8:44 AM 4/9/2023
+ich moechte so gern einfach nur ALLEIN sein dass niemand mich bedraengt und bedroht!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+693: *8:44 AM 4/9/2023-8:48 AM 4/9/2023
+beste strategie: solange wie moeglich verstecken. dann spazierengehen und sobald es geht wieder abseilen
+werde ich jemals ruhe finden oder erst im grab?
+694: *8:49 AM 4/9/2023-8:55 AM 4/9/2023
+695: *8:55 AM 4/9/2023-9:04 AM 4/9/2023
+- inputhtml
+- wie mach ich ein bundle aus dem belinda code???
+- ich muss bei basemin.css auch das dir aendern!
+- es fehlt ../ beide male!
+- bau3 muss auch dirout verwenden!!!
+- games2test => games
+- games2=>games_official_full
+- loesche gamestest
+- close in vs code
+- loesche downloads
+WAY SHORTER!!!
+- mach ein 
+- es scheint zu gehen!!!!!
+split('onclick=").shift()
+- die onclick functions fehlen!!!!! in closure
+- bei closure muss ich die regions beibehalten!
+WAY SHORTER!!!!!
+- ich muss die vars die nicht in 1 eigenen zeile sind trennen!!!
+- was ist da los mit zB iGrid oder getState setState
+- achtung! vars muessen complete copied werden!!!!
+- watch out for blocktype async
+696: *9:04 AM 4/9/2023-9:10 AM 4/9/2023
+697: *9:11 AM 4/9/2023-9:11 AM 4/9/2023
+698: *9:11 AM 4/9/2023-9:20 AM 4/9/2023
+699: *9:20 AM 4/9/2023-9:23 AM 4/9/2023
+700: *9:23 AM 4/9/2023-9:30 AM 4/9/2023
+701: *9:30 AM 4/9/2023-9:30 AM 4/9/2023
+702: *9:30 AM 4/9/2023-9:49 AM 4/9/2023
+703: *9:49 AM 4/9/2023-9:49 AM 4/9/2023
+704: *9:49 AM 4/9/2023-9:53 AM 4/9/2023
+- das SPACE ist das problem!!!
+WAY SHORTER!!!
+- mach ein belinda SAFE!!!!
+- warum hab ich module.exports in base?????
+- mach einen button fuer belindabundle
+- mach ein bundle aus all den files in files
+705: *9:53 AM 4/9/2023-10:02 AM 4/9/2023
+706: *10:02 AM 4/9/2023-10:05 AM 4/9/2023
+707: *10:05 AM 4/9/2023-10:06 AM 4/9/2023
+708: *10:06 AM 4/9/2023-12:35 PM 4/9/2023
+ok - #20: fgu, spa, muell hinaus!
+728: *12:35 PM 4/9/2023-12:41 PM 4/9/2023
+729: *12:41 PM 4/9/2023-12:44 PM 4/9/2023
+730: *12:45 PM 4/9/2023-12:45 PM 4/9/2023
+731: *12:45 PM 4/9/2023-12:46 PM 4/9/2023
+732: *12:46 PM 4/9/2023-12:49 PM 4/9/2023
+733: *12:49 PM 4/9/2023-12:52 PM 4/9/2023
+734: *12:53 PM 4/9/2023-12:55 PM 4/9/2023
+735: *12:56 PM 4/9/2023-12:56 PM 4/9/2023
+736: *12:56 PM 4/9/2023-1:04 PM 4/9/2023
+737: *1:04 PM 4/9/2023-1:07 PM 4/9/2023
+738: *1:07 PM 4/9/2023-1:08 PM 4/9/2023
+739: *1:08 PM 4/9/2023-1:09 PM 4/9/2023
+740: *1:09 PM 4/9/2023-1:10 PM 4/9/2023
+741: *1:10 PM 4/9/2023-1:11 PM 4/9/2023
+742: *1:11 PM 4/9/2023-1:15 PM 4/9/2023
+743: *1:15 PM 4/9/2023-1:20 PM 4/9/2023
+744: *1:20 PM 4/9/2023-1:28 PM 4/9/2023
+ok - das mit dem projectname belinda!!!!!!!!!!!!!
+ok - ControllerSolitaireMinimal
+ok - start ist nicht beim bundle dabei!!!
+ok - output files, schau ob start.js richtig ist! bei bundle
+scheinbar fehlt alles was in start ist!!!!! er nimmt schon wieder das falsche start!
+TimeoutManager
+getKeySets
+csv2list
+SpeechAPI
+745: *1:28 PM 4/9/2023-1:32 PM 4/9/2023
+746: *1:32 PM 4/9/2023-3:17 PM 4/9/2023
+747: *3:17 PM 4/9/2023-3:33 PM 4/9/2023
+ok chess 2188 2199 2451 2458 2534
+ok - belinda rem cons! (das muss ich in belindafull machen!!!!
+748: *3:33 PM 4/9/2023-7:16 PM 4/9/2023
+760: *7:16 PM 4/9/2023-7:29 PM 4/9/2023
+761: *7:29 PM 4/9/2023-7:30 PM 4/9/2023
+762: *7:30 PM 4/9/2023-8:18 PM 4/9/2023
+- es waer cool wenn er jedes file so machen koennte dass er zuerst die
+const, var, classes, und dann die functions alphabetically schreibt
+- so belinda ist jetzt auch uptodate!
+- drag labels to pictures
+- variables auflisten!!! line by line
+- rename belinda to belindafull und bella to belinda: replacements!!!!!
+__________ mo 10.4.23 waiting at the airport... lib 10.4
+763: *8:19 PM 4/9/2023-6:35 AM 4/10/2023
+764: *6:35 AM 4/10/2023-6:38 AM 4/10/2023
+765: *6:38 AM 4/10/2023-6:48 AM 4/10/2023
+766: *6:48 AM 4/10/2023-6:53 AM 4/10/2023
+767: *6:53 AM 4/10/2023-6:59 AM 4/10/2023
+768: *6:59 AM 4/10/2023-7:00 AM 4/10/2023
+769: *7:00 AM 4/10/2023-7:08 AM 4/10/2023
+770: *7:08 AM 4/10/2023-7:09 AM 4/10/2023
+771: *7:09 AM 4/10/2023-7:10 AM 4/10/2023
+772: *7:10 AM 4/10/2023-7:13 AM 4/10/2023
+773: *7:13 AM 4/10/2023-7:15 AM 4/10/2023
+774: *7:15 AM 4/10/2023-7:16 AM 4/10/2023
+775: *7:16 AM 4/10/2023-7:20 AM 4/10/2023
+776: *7:21 AM 4/10/2023-7:21 AM 4/10/2023
+updated allSyms.yaml in base/assets in aroot and a04
+- goto belindafull items.js 79
+- key not found carousel horse: key different from yaml key!
+777: *7:21 AM 4/10/2023-7:23 AM 4/10/2023
+- test belinda!
+- check
+- 177
+WAY SHORTER!
+- vergleiche mit UCODE!
+WAY SHORTER!!!!!
+- totaler mist!!!! geht garnicht!!! brauch byfile und bytype
+- versuchs nochmal! mit belinda
+- soll ich gleich byFilenameType machen?
+noch besser waer schon alle zu sortieren
+=>functions sortieren!
+778: *7:23 AM 4/10/2023-7:26 AM 4/10/2023
+- upload belinda!
+779: *7:26 AM 4/10/2023-7:33 AM 4/10/2023
+- generate games
+780: *7:33 AM 4/10/2023-7:34 AM 4/10/2023
+- sieht gut aus!
+- ich koennte bessere sortierung machen aber muss nicht sein!
+781: *7:34 AM 4/10/2023-7:38 AM 4/10/2023
+782: *7:38 AM 4/10/2023-7:48 AM 4/10/2023
+783: *7:48 AM 4/10/2023-7:52 AM 4/10/2023
+784: *7:52 AM 4/10/2023-7:56 AM 4/10/2023
+785: *7:56 AM 4/10/2023-8:13 AM 4/10/2023
+786: *8:13 AM 4/10/2023-11:34 AM 4/10/2023
+787: *11:35 AM 4/10/2023-11:35 AM 4/10/2023
+788: *11:35 AM 4/10/2023-11:36 AM 4/10/2023
+789: *11:36 AM 4/10/2023-11:37 AM 4/10/2023
+790: *11:37 AM 4/10/2023-11:48 AM 4/10/2023
+795: *11:49 AM 4/10/2023-11:55 AM 4/10/2023
+796: *11:55 AM 4/10/2023-11:56 AM 4/10/2023
+797: *11:56 AM 4/10/2023-12:04 PM 4/10/2023
+798: *12:04 PM 4/10/2023-7:45 AM 4/11/2023
+- mach es mit einem test file!!! nicht dem ganzen games ding!
+- button oder halt in start
+- read css file
+- look at basemin.css
+- erstmal ein beispiel fuer das css: games/closure.js und games/basemin.css
+- ich koennte ein dir mit ALLEN css files machen
+- was war nochmal mein plan?aja, css zeug
+- erstmal Aspa
+- will ich das wirklich machen?
+__________ di 11.4.23 waiting at the airport... lib 10.4
+820: *7:45 AM 4/11/2023-7:47 AM 4/11/2023
+821: *7:47 AM 4/11/2023-8:00 AM 4/11/2023
+822: *8:00 AM 4/11/2023-8:00 AM 4/11/2023
+823: *8:00 AM 4/11/2023-8:01 AM 4/11/2023
+824: *8:01 AM 4/11/2023-8:03 AM 4/11/2023
+825: *8:03 AM 4/11/2023-8:04 AM 4/11/2023
+826: *8:04 AM 4/11/2023-8:05 AM 4/11/2023
+827: *8:05 AM 4/11/2023-8:06 AM 4/11/2023
+- code: erstmal code einlesen!!!
+- ob class verwendet wird: search "'[class]'"
+esgibt: . letter # @ /* space emptyline
+- toy erweitern!
+- die simplen css dinger ohne '.' muss reingeben!
+WAY SHORTER
+- wenn mit . anfaengt ist class name
+828: *8:06 AM 4/11/2023-8:12 AM 4/11/2023
+829: *8:12 AM 4/11/2023-8:12 AM 4/11/2023
+830: *8:12 AM 4/11/2023-8:13 AM 4/11/2023
+831: *8:13 AM 4/11/2023-8:16 AM 4/11/2023
+832: *8:16 AM 4/11/2023-8:19 AM 4/11/2023
+833: *8:19 AM 4/11/2023-8:20 AM 4/11/2023
+834: *8:20 AM 4/11/2023-8:22 AM 4/11/2023
+835: *8:23 AM 4/11/2023-8:23 AM 4/11/2023
+836: *8:23 AM 4/11/2023-8:32 AM 4/11/2023
+837: *8:32 AM 4/11/2023-8:33 AM 4/11/2023
+- just ride the wave all else DOES NOT MATTER NOT EVEN HOW I BEHAVE OR WHAT I SAY DOWN THE DRAIN!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+838: *8:33 AM 4/11/2023-8:34 AM 4/11/2023
+839: *8:34 AM 4/11/2023-8:35 AM 4/11/2023
+NOT EVEN HOW THIS BODY FEELS OR EMOTIONS OR THOUGHTS
+NOTHING MATTERS OR MEANS ANYTHING!!!!!!!!!!!!!!!!
+- btnX suchen
+- bug 55
+840: *8:36 AM 4/11/2023-8:54 AM 4/11/2023
+841: *8:54 AM 4/11/2023-8:54 AM 4/11/2023
+842: *8:54 AM 4/11/2023-8:55 AM 4/11/2023
+WAY SHORTER!!!!!!!!!!!!!!!!
+- super weired!!!! btnX codelines!!!!
+- codelines is a array of valid lines
+- was wenn es mehrere snd?
+- jetzt kommt: firstWord
+- each part can start wth : or not
+- discard frst one
+- wieder durch all die	 lines gehen
+- for each class, suche .[CLASS]
+- jetzt den code von den classes einlesen!
+843: *8:55 AM 4/11/2023-9:04 AM 4/11/2023
+844: *9:04 AM 4/11/2023-9:05 AM 4/11/2023
+845: *9:06 AM 4/11/2023-9:13 AM 4/11/2023
+846: *9:13 AM 4/11/2023-9:13 AM 4/11/2023
+847: *9:13 AM 4/11/2023-9:13 AM 4/11/2023
+848: *9:13 AM 4/11/2023-9:14 AM 4/11/2023
+849: *9:14 AM 4/11/2023-9:14 AM 4/11/2023
+DISSOCIATE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+SO WHAT IF I AM FEELING TERRIBLE INSIDE
+WAY SHORTER!!!
+850: *9:14 AM 4/11/2023-9:23 AM 4/11/2023
+- muss parts wieder in lines einteilen und dann bis zur ersten line die mit '}' started gehen!
+- jetzt kommen die keyframes
+851: *9:23 AM 4/11/2023-9:26 AM 4/11/2023
+852: *9:26 AM 4/11/2023-9:27 AM 4/11/2023
+853: *9:27 AM 4/11/2023-9:28 AM 4/11/2023
+854: *9:28 AM 4/11/2023-9:32 AM 4/11/2023
+855: *9:32 AM 4/11/2023-9:32 AM 4/11/2023
+WAY SHORTER!!!
+- in ALLEN basemin.css kann ich move durch css_move_animation ersetzen!
+- noch besser: check ob belinda von basejs basemin imported!
+- only rename it bei gamesfull und bei games
+- wo im bundle kommt 'move' vor??? ok, also move muss ausgeschlossen werden!!!! just rename keyframs!
+856: *9:32 AM 4/11/2023-9:33 AM 4/11/2023
+check was es noch gibt!
+857: *9:33 AM 4/11/2023-9:34 AM 4/11/2023
+858: *9:34 AM 4/11/2023-9:37 AM 4/11/2023
+- such solche lines!
+# how to handle that?????
+esgibt: . letter # @ /* space emptyline
+859: *9:37 AM 4/11/2023-9:38 AM 4/11/2023
+860: *9:38 AM 4/11/2023-10:35 AM 4/11/2023
+861: *10:48 AM 4/11/2023-10:49 AM 4/11/2023
+862: *10:49 AM 4/11/2023-10:51 AM 4/11/2023
+863: *10:51 AM 4/11/2023-10:51 AM 4/11/2023
+864: *10:51 AM 4/11/2023-10:52 AM 4/11/2023
+- include ich basecss in coding index.html? JA
+865: *10:52 AM 4/11/2023-10:53 AM 4/11/2023
+866: *10:53 AM 4/11/2023-10:54 AM 4/11/2023
+- wo startet das zeug?
+- open basecss und schrib rein dSurprise
+- also: 
+- einfach super viel zeit GARNICHTS TUN
+- wie kann ich das testen?
+was passiert weenn man ein div mit einer id created NACHDEM die class deinifert wurde? wird dann automatisch diese class drauf angewendet?
+867: *10:55 AM 4/11/2023-10:55 AM 4/11/2023
+868: *10:55 AM 4/11/2023-10:56 AM 4/11/2023
+869: *10:56 AM 4/11/2023-10:57 AM 4/11/2023
+870: *10:57 AM 4/11/2023-10:58 AM 4/11/2023
+- wie bei classes, nur halt mit #
+- ich muss erstmal alle # im css suchen
+- ja es funktioniert!!!!
+871: *10:58 AM 4/11/2023-10:59 AM 4/11/2023
+- next was bleibt zu tun?
+872: *10:59 AM 4/11/2023-11:08 AM 4/11/2023
+- if startsWith(letter)
+esgibt: . letter # @ /* space emptyline
+873: *11:09 AM 4/11/2023-11:17 AM 4/11/2023
+874: *11:18 AM 4/11/2023-11:23 AM 4/11/2023
+875: *11:24 AM 4/11/2023-11:26 AM 4/11/2023
+876: *11:26 AM 4/11/2023-11:27 AM 4/11/2023
+877: *11:28 AM 4/11/2023-11:29 AM 4/11/2023
+878: *11:29 AM 4/11/2023-11:31 AM 4/11/2023
+879: *11:31 AM 4/11/2023-11:40 AM 4/11/2023
+880: *11:40 AM 4/11/2023-11:46 AM 4/11/2023
+881: *11:46 AM 4/11/2023-2:48 PM 4/11/2023
+882: *2:49 PM 4/11/2023-2:50 PM 4/11/2023
+883: *2:50 PM 4/11/2023-2:55 PM 4/11/2023
+884: *2:56 PM 4/11/2023-3:00 PM 4/11/2023
+885: *3:00 PM 4/11/2023-3:06 PM 4/11/2023
+886: *3:06 PM 4/11/2023-3:54 PM 4/11/2023
+887: *3:54 PM 4/11/2023-7:28 PM 4/11/2023
+__________ mi 12.4.23 waiting at the airport lib 10 
+900: *6:58 AM 4/12/2023-7:07 AM 4/12/2023
+901: *7:07 AM 4/12/2023-7:07 AM 4/12/2023
+902: *7:08 AM 4/12/2023-7:12 AM 4/12/2023
+903: *7:12 AM 4/12/2023-7:15 AM 4/12/2023
+904: *7:15 AM 4/12/2023-7:17 AM 4/12/2023
+905: *7:17 AM 4/12/2023-7:35 AM 4/12/2023
+906: *7:36 AM 4/12/2023-7:42 AM 4/12/2023
+909: *7:42 AM 4/12/2023-7:42 AM 4/12/2023
+910: *7:42 AM 4/12/2023-7:47 AM 4/12/2023
+911: *7:47 AM 4/12/2023-7:49 AM 4/12/2023
+912: *7:49 AM 4/12/2023-7:53 AM 4/12/2023
+913: *7:53 AM 4/12/2023-7:53 AM 4/12/2023
+914: *7:53 AM 4/12/2023-8:03 AM 4/12/2023
+915: *8:03 AM 4/12/2023-8:03 AM 4/12/2023
+WAY SHORTER!!!!!
+916: *8:03 AM 4/12/2023-8:12 AM 4/12/2023
+917: *8:12 AM 4/12/2023-8:26 AM 4/12/2023
+918: *8:26 AM 4/12/2023-8:28 AM 4/12/2023
+919: *8:28 AM 4/12/2023-8:33 AM 4/12/2023
+920: *8:34 AM 4/12/2023-8:34 AM 4/12/2023
+921: *8:34 AM 4/12/2023-8:35 AM 4/12/2023
+922: *8:35 AM 4/12/2023-8:35 AM 4/12/2023
+923: *8:36 AM 4/12/2023-8:36 AM 4/12/2023
+924: *8:36 AM 4/12/2023-8:40 AM 4/12/2023
+925: *8:40 AM 4/12/2023-8:45 AM 4/12/2023
+926: *8:45 AM 4/12/2023-8:51 AM 4/12/2023
+- beim zusammenbauen lass \n nach chunk aus!
+- repair keyframes!
+- wie wird index durchsucht??? bei classes
+- es fehlen classes!!!!!!!
+- in basemin?
+- gibt es eine class mCenterFlex NEIN!!!!
+- glitch bei show_users
+- tags
+- test ids!!!
+- css parsing ist TOTALER MIST!!!!!!!
+- last chunk ist nicht dabei!!!
+- cleanup!!!!!
+- wieso ist wood nicht da???????
+- soll ich common code herausholen?????
+- test nur keyframes!
+- teste NUR tags
+- tags hat fehler!!!
+- nochmal nur class
+- parse tags?
+927: *8:51 AM 4/12/2023-6:56 AM 4/13/2023
+__________ do 13.4.23 waiting at the airport lib 10 
+960: *6:56 AM 4/13/2023-6:59 AM 4/13/2023
+961: *6:59 AM 4/13/2023-7:02 AM 4/13/2023
+962: *7:02 AM 4/13/2023-7:07 AM 4/13/2023
+963: *7:07 AM 4/13/2023-7:07 AM 4/13/2023
+964: *7:07 AM 4/13/2023-7:09 AM 4/13/2023
+965: *7:09 AM 4/13/2023-7:11 AM 4/13/2023
+966: *7:11 AM 4/13/2023-7:13 AM 4/13/2023
+967: *7:13 AM 4/13/2023-7:17 AM 4/13/2023
+968: *7:17 AM 4/13/2023-7:20 AM 4/13/2023
+games ist abgespeckt!!!!! soll ich noch bundle removen? ja, wechsel es aus
+- kommt GARNICHT vor, also in games streichen!
+- rem svg symbols???
+- mach abgespecktes css in games: basemin.css
+- outcome ist dasselbe!
+- teste es fuer games closure
+- prettycss(cssfile,bundle,html)
+969: *7:21 AM 4/13/2023-7:21 AM 4/13/2023
+970: *7:22 AM 4/13/2023-7:22 AM 4/13/2023
+971: *7:22 AM 4/13/2023-7:27 AM 4/13/2023
+972: *7:27 AM 4/13/2023-7:34 AM 4/13/2023
+973: *7:34 AM 4/13/2023-7:36 AM 4/13/2023
+- noch ein games test!
+- code cleanup bau1
+- coding starttest=>start, rem startstest
+974: *7:36 AM 4/13/2023-7:40 AM 4/13/2023
+975: *7:40 AM 4/13/2023-7:41 AM 4/13/2023
+976: *7:41 AM 4/13/2023-7:42 AM 4/13/2023
+977: *7:43 AM 4/13/2023-7:43 AM 4/13/2023
+978: *7:43 AM 4/13/2023-7:45 AM 4/13/2023
+979: *7:45 AM 4/13/2023-7:46 AM 4/13/2023
+980: *7:46 AM 4/13/2023-7:47 AM 4/13/2023
+981: *7:48 AM 4/13/2023-7:48 AM 4/13/2023
+982: *7:48 AM 4/13/2023-7:49 AM 4/13/2023
+983: *7:49 AM 4/13/2023-7:51 AM 4/13/2023
+984: *7:51 AM 4/13/2023-7:55 AM 4/13/2023
+985: *7:55 AM 4/13/2023-8:00 AM 4/13/2023
+986: *8:00 AM 4/13/2023-8:06 AM 4/13/2023
+987: *8:07 AM 4/13/2023-8:14 AM 4/13/2023
+- make sure same keyword does not appear in both primary and secondary!
+- vielleicht bei compose?
+- how to handle
+html,
+body,
+#md,
+#rightSide {
+  /* height: 100%; */
+  padding: 0;
+  margin: 0;
+  font: 20px Arial;
+}
+- isKeywordLine
+- can assume each key on eigene line! (Ctrl+D formatting!)
+- mach einen pass: remove_secondary_keys after included_classes habe!
+- whe parse and have , sind die words zwischen commas und vor { secondary keys (muessen aus included_classes raus!)
+- when parse and have more lines before {
+- first part (gather and search in code sollte gehen!!!
+=>ensure invisible in all classes
+- mach ein zweites di mit secondaries, die ich zwar suche in code aberr nicht write ins final
+- einbauen: handle .cl1, newline
+- jetzt belinda: generate,copy to final.css,test
+=>belinda
+988: *8:15 AM 4/13/2023-8:15 AM 4/13/2023
+WAY SHORTER!!!
+989: *8:15 AM 4/13/2023-8:18 AM 4/13/2023
+- after manually making sure intersection is empty, can proceed!
+fonts base chess shapes cards
+990: *8:18 AM 4/13/2023-8:21 AM 4/13/2023
+991: *8:21 AM 4/13/2023-8:22 AM 4/13/2023
+992: *8:22 AM 4/13/2023-8:26 AM 4/13/2023
+993: *8:26 AM 4/13/2023-8:26 AM 4/13/2023
+994: *8:26 AM 4/13/2023-8:27 AM 4/13/2023
+- clauses die multiple keywords haben werden copiert
+- ich muss es per clause machen!!!!
+- normalise ist viel bessere loesung!!!!
+- bessere idee: cssCheckIfNeeded(allkeys,
+- fuer check if needed: use concat
+- fuer code gen use prim
+995: *8:27 AM 4/13/2023-8:38 AM 4/13/2023
+996: *8:38 AM 4/13/2023-8:38 AM 4/13/2023
+it is the day I stopped worrying
+997: *8:39 AM 4/13/2023-8:43 AM 4/13/2023
+998: *8:43 AM 4/13/2023-8:44 AM 4/13/2023
+have allkeys, check which ones are needed!!!
+999: *8:44 AM 4/13/2023-8:47 AM 4/13/2023
+1000: *8:47 AM 4/13/2023-8:47 AM 4/13/2023
+1: *8:48 AM 4/13/2023-8:59 AM 4/13/2023
+2: *8:59 AM 4/13/2023-9:08 AM 4/13/2023
+3: *9:08 AM 4/13/2023-9:11 AM 4/13/2023
+4: *9:11 AM 4/13/2023-9:39 AM 4/13/2023
+5: *9:39 AM 4/13/2023-12:20 PM 4/13/2023
+6: *12:20 PM 4/13/2023-12:25 PM 4/13/2023
+17: *12:25 PM 4/13/2023-12:26 PM 4/13/2023
+18: *12:26 PM 4/13/2023-12:28 PM 4/13/2023
+19: *12:28 PM 4/13/2023-12:35 PM 4/13/2023
+20: *12:35 PM 4/13/2023-1:21 PM 4/13/2023
+21: *1:21 PM 4/13/2023-2:37 PM 4/13/2023
+31: *2:37 PM 4/13/2023-2:40 PM 4/13/2023
+32: *2:40 PM 4/13/2023-2:52 PM 4/13/2023
+33: *2:53 PM 4/13/2023-3:07 PM 4/13/2023
+34: *3:07 PM 4/13/2023-3:08 PM 4/13/2023
+35: *3:08 PM 4/13/2023-6:54 PM 4/13/2023
+- kw soll sein stringBefore(...).trim()
+- was fehlt ist :root block und children css eg #dButtons div
+- da ist ein glitch am ende!
+45: *6:55 PM 4/13/2023-5:56 AM 4/14/2023
+- schau ob die newlines trimmed sind!
+- wo added er die clauses?
+- jetzt bin ich muede! 
+- close all!
+- bau1 start css gen, bau2 clean clause
+- digits must be allowed in kw
+- keyframes fehlt!
+- comments muessen aus den clauses raus!!!!!
+__________ fr 14.4.23 waiting at the airport lib 10 
+75: *5:56 AM 4/14/2023-5:58 AM 4/14/2023
+76: *5:58 AM 4/14/2023-5:59 AM 4/14/2023
+77: *5:59 AM 4/14/2023-6:05 AM 4/14/2023
+78: *6:05 AM 4/14/2023-6:13 AM 4/14/2023
+79: *6:13 AM 4/14/2023-6:13 AM 4/14/2023
+80: *6:13 AM 4/14/2023-6:15 AM 4/14/2023
+81: *6:15 AM 4/14/2023-6:30 AM 4/14/2023
+82: *6:30 AM 4/14/2023-6:39 AM 4/14/2023
+83: *6:39 AM 4/14/2023-6:51 AM 4/14/2023
+84: *6:51 AM 4/14/2023-6:58 AM 4/14/2023
+85: *6:58 AM 4/14/2023-6:59 AM 4/14/2023
+86: *6:59 AM 4/14/2023-7:14 AM 4/14/2023
+87: *7:14 AM 4/14/2023-7:24 AM 4/14/2023
+88: *7:24 AM 4/14/2023-8:05 AM 4/14/2023
+89: *8:05 AM 4/14/2023-8:29 AM 4/14/2023
+90: *8:29 AM 4/14/2023-8:31 AM 4/14/2023
+91: *8:31 AM 4/14/2023-8:31 AM 4/14/2023
+92: *8:32 AM 4/14/2023-8:36 AM 4/14/2023
+93: *8:36 AM 4/14/2023-8:39 AM 4/14/2023
+94: *8:39 AM 4/14/2023-8:41 AM 4/14/2023
+95: *8:41 AM 4/14/2023-8:49 AM 4/14/2023
+96: *8:49 AM 4/14/2023-8:53 AM 4/14/2023
+97: *8:53 AM 4/14/2023-10:14 AM 4/14/2023
+107: *10:14 AM 4/14/2023-10:17 AM 4/14/2023
+108: *10:17 AM 4/14/2023-10:55 AM 4/14/2023
+- klavier
+118: *10:55 AM 4/14/2023-7:19 AM 4/15/2023
+__________ sa 15.4.23 waiting at the airport lib 10 
+150: *7:19 AM 4/15/2023-7:24 AM 4/15/2023
+151: *7:24 AM 4/15/2023-7:32 AM 4/15/2023
+=>NUMBER
+ich kann in wien egal wie schlecht ich schlafe in der frueh von zuhause weggehen und den tag in cafes verbringen mit dazwischen spazierengehen
+#60flug buchen wenn gu approved
+161: *11:00 AM 4/15/2023-11:03 AM 4/15/2023
+beispiel:
+f= ./js/hallo.js
+dirhtml='../iconViewer
+dann ist f: ../iconViewer/js/hallo.html
+162: *11:03 AM 4/15/2023-12:03 PM 4/15/2023
+163: *12:03 PM 4/15/2023-12:04 PM 4/15/2023
+164: *12:04 PM 4/15/2023-12:07 PM 4/15/2023
+165: *12:07 PM 4/15/2023-12:11 PM 4/15/2023
+166: *12:11 PM 4/15/2023-12:18 PM 4/15/2023
+167: *12:18 PM 4/15/2023-12:21 PM 4/15/2023
+168: *12:21 PM 4/15/2023-1:18 PM 4/15/2023
+169: *1:19 PM 4/15/2023-1:36 PM 4/15/2023
+170: *1:36 PM 4/15/2023-4:09 PM 4/15/2023
+180: *4:09 PM 4/15/2023-7:45 PM 4/15/2023
+__________ so 16.4.23 waiting at the airport lib 10 
+210: *7:45 PM 4/15/2023-6:52 AM 4/16/2023
+211: *6:53 AM 4/16/2023-6:54 AM 4/16/2023
+212: *6:55 AM 4/16/2023-7:09 AM 4/16/2023
+213: *7:09 AM 4/16/2023-7:09 AM 4/16/2023
+214: *7:09 AM 4/16/2023-7:25 AM 4/16/2023
+215: *7:25 AM 4/16/2023-7:25 AM 4/16/2023
+216: *7:25 AM 4/16/2023-7:30 AM 4/16/2023
+217: *7:30 AM 4/16/2023-7:31 AM 4/16/2023
+218: *7:31 AM 4/16/2023-7:35 AM 4/16/2023
+219: *7:35 AM 4/16/2023-7:40 AM 4/16/2023
+220: *7:40 AM 4/16/2023-7:44 AM 4/16/2023
+221: *7:44 AM 4/16/2023-7:45 AM 4/16/2023
+222: *7:46 AM 4/16/2023-7:47 AM 4/16/2023
+223: *7:47 AM 4/16/2023-7:55 AM 4/16/2023
+224: *7:56 AM 4/16/2023-7:57 AM 4/16/2023
+225: *7:57 AM 4/16/2023-8:03 AM 4/16/2023
+226: *8:03 AM 4/16/2023-8:07 AM 4/16/2023
+227: *8:08 AM 4/16/2023-8:13 AM 4/16/2023
+228: *8:13 AM 4/16/2023-8:25 AM 4/16/2023
+229: *8:25 AM 4/16/2023-8:26 AM 4/16/2023
+230: *8:26 AM 4/16/2023-8:32 AM 4/16/2023
+231: *8:32 AM 4/16/2023-8:34 AM 4/16/2023
+232: *8:34 AM 4/16/2023-8:42 AM 4/16/2023
+233: *8:42 AM 4/16/2023-6:23 PM 4/16/2023
+__________ mo 17.4.23 waiting at the airport lib 10 
+260: *6:24 PM 4/16/2023-7:19 AM 4/17/2023
+261: *7:19 AM 4/17/2023-7:26 AM 4/17/2023
+262: *7:26 AM 4/17/2023-7:28 AM 4/17/2023
+263: *7:28 AM 4/17/2023-7:30 AM 4/17/2023
+264: *7:30 AM 4/17/2023-7:34 AM 4/17/2023
+265: *7:34 AM 4/17/2023-7:35 AM 4/17/2023
+266: *7:35 AM 4/17/2023-7:36 AM 4/17/2023
+267: *7:36 AM 4/17/2023-7:39 AM 4/17/2023
+268: *7:39 AM 4/17/2023-7:42 AM 4/17/2023
+269: *7:42 AM 4/17/2023-7:46 AM 4/17/2023
+270: *7:46 AM 4/17/2023-7:49 AM 4/17/2023
+271: *7:49 AM 4/17/2023-7:54 AM 4/17/2023
+272: *7:54 AM 4/17/2023-7:56 AM 4/17/2023
+273: *7:56 AM 4/17/2023-8:00 AM 4/17/2023
+274: *8:00 AM 4/17/2023-8:00 AM 4/17/2023
+- mach ich wann anders!
+- versuch css * rule zu adden!
+- css * rule copy
+275: *8:00 AM 4/17/2023-8:06 AM 4/17/2023
+276: *8:06 AM 4/17/2023-8:16 AM 4/17/2023
+277: *8:16 AM 4/17/2023-8:24 AM 4/17/2023
+278: *8:24 AM 4/17/2023-8:24 AM 4/17/2023
+279: *8:24 AM 4/17/2023-3:53 PM 4/17/2023
+290: *3:53 PM 4/17/2023-4:00 PM 4/17/2023
+291: *4:00 PM 4/17/2023-4:08 PM 4/17/2023
+292: *4:08 PM 4/17/2023-4:15 PM 4/17/2023
+293: *4:15 PM 4/17/2023-4:18 PM 4/17/2023
+294: *4:18 PM 4/17/2023-4:24 PM 4/17/2023
+295: *4:24 PM 4/17/2023-4:30 PM 4/17/2023
+296: *4:30 PM 4/17/2023-4:31 PM 4/17/2023
+297: *4:31 PM 4/17/2023-8:52 PM 4/17/2023
+wow das war schwer
+__________ di 18.4.23 waiting at the airport lib 10 
+5418789
+400: *8:52 PM 4/17/2023-7:26 AM 4/18/2023
+401: *7:26 AM 4/18/2023-7:29 AM 4/18/2023
+402: *7:29 AM 4/18/2023-7:37 AM 4/18/2023
+403: *7:37 AM 4/18/2023-7:37 AM 4/18/2023
+404: *7:37 AM 4/18/2023-7:38 AM 4/18/2023
+405: *7:38 AM 4/18/2023-7:39 AM 4/18/2023
+406: *7:39 AM 4/18/2023-7:43 AM 4/18/2023
+407: *7:44 AM 4/18/2023-7:57 AM 4/18/2023
+408: *7:57 AM 4/18/2023-7:57 AM 4/18/2023
+409: *7:57 AM 4/18/2023-7:59 AM 4/18/2023
+410: *7:59 AM 4/18/2023-8:00 AM 4/18/2023
+411: *8:00 AM 4/18/2023-8:07 AM 4/18/2023
+412: *8:07 AM 4/18/2023-8:09 AM 4/18/2023
+413: *8:09 AM 4/18/2023-8:10 AM 4/18/2023
+414: *8:10 AM 4/18/2023-8:34 AM 4/18/2023
+415: *8:34 AM 4/18/2023-8:41 AM 4/18/2023
+416: *8:41 AM 4/18/2023-8:43 AM 4/18/2023
+417: *8:43 AM 4/18/2023-8:44 AM 4/18/2023
+418: *8:44 AM 4/18/2023-8:46 AM 4/18/2023
+419: *8:46 AM 4/18/2023-8:46 AM 4/18/2023
+- araxis compare closure und closuretest JA, ist invariant!!!!!!! cool!!!!
+- open games index.html
+- eigenes project: copy coding
+- ok mach fuer jededs project eine zusaetzl liste nogo fuer das minimizecode ding!
+- mach das ganze mal OHNE alle regions
+=>es koennte probleme geben wenn eine constante oder var def ueberschrieben wird, aber das caused sowieso errors
+- habe list of keys in eingelesener reihenfolge (first declaration!)
+- regions sollen genau wie bei einlesen sein! const var classes dann alpha
+- allcode region order MUST be preserved!!!!
+rem cons bau1 140
+- way shorter!
+- fname wo wird gesetzt?
+- convention: wenn das file mit allc oder allf oder allg startet dann preserve regions!
+- ja geht!
+- test ohne remove
+shorter!!!
+- testKoffer weg
+- ich muss die <!-- <script src=" lines aus dem index.html raushauen!!!!!
+- ich sollte allcode 
+- warum sind da immer 2 gleich?
+- open start true
+- parseCodeFile hat was get_user_pic_and_name!!!!!!!
+- WAS IST DA LOSSSSSSSSSSSSSS?????
+- createDiv_orig ist muell woher kommt das? muss wieder zu a04!!!
+await
+- return value
+- file extraction erweeitern!
+- rem cons!
+- gen filenames
+- output css files
+- find paths of included css files
+- return text
+- wie macht man nochmal das css?
+- mach ein coding project self contained!
+420: *8:47 AM 4/18/2023-8:47 AM 4/18/2023
+421: *8:47 AM 4/18/2023-8:51 AM 4/18/2023
+422: *8:51 AM 4/18/2023-9:03 AM 4/18/2023
+423: *9:03 AM 4/18/2023-10:45 AM 4/18/2023
+433: *10:46 AM 4/18/2023-10:47 AM 4/18/2023
+434: *10:48 AM 4/18/2023-10:48 AM 4/18/2023
+435: *10:48 AM 4/18/2023-10:51 AM 4/18/2023
+436: *10:51 AM 4/18/2023-12:31 PM 4/18/2023
+437: *12:31 PM 4/18/2023-12:37 PM 4/18/2023
+438: *12:37 PM 4/18/2023-12:39 PM 4/18/2023
+439: *12:39 PM 4/18/2023-3:50 PM 4/18/2023
+- zahnarzt
+539: *3:50 PM 4/18/2023-7:49 PM 4/18/2023
+540: *7:49 PM 4/18/2023-8:15 PM 4/18/2023
+- verify that new closure == closure
+- execute codingfull w/ project codingfull
+- wieso geht es wieder nicht? nogo brauch  startsWith
+- codingfull update index
+- wie sollen die regions sein?
+- hol mir start.js
+- regions wieder reingeben!!!
+__________ mi 19.4.23 waiting at the airport lib 10 
+541: *8:15 PM 4/18/2023-5:46 AM 4/19/2023
+542: *5:46 AM 4/19/2023-5:46 AM 4/19/2023
+543: *5:46 AM 4/19/2023-5:48 AM 4/19/2023
+544: *5:48 AM 4/19/2023-5:52 AM 4/19/2023
+545: *5:52 AM 4/19/2023-5:54 AM 4/19/2023
+546: *5:54 AM 4/19/2023-5:55 AM 4/19/2023
+547: *5:55 AM 4/19/2023-5:56 AM 4/19/2023
+548: *5:56 AM 4/19/2023-6:08 AM 4/19/2023
+549: *6:08 AM 4/19/2023-6:09 AM 4/19/2023
+550: *6:09 AM 4/19/2023-6:14 AM 4/19/2023
+551: *6:14 AM 4/19/2023-6:15 AM 4/19/2023
+552: *6:15 AM 4/19/2023-6:15 AM 4/19/2023
+553: *6:15 AM 4/19/2023-6:17 AM 4/19/2023
+554: *6:17 AM 4/19/2023-6:17 AM 4/19/2023
+555: *6:18 AM 4/19/2023-6:18 AM 4/19/2023
+556: *6:18 AM 4/19/2023-6:23 AM 4/19/2023
+557: *6:23 AM 4/19/2023-6:23 AM 4/19/2023
+558: *6:23 AM 4/19/2023-6:24 AM 4/19/2023
+- hol front end raus!
+- mach ein start und ein npx live-server
+- arbeiten wir bisschen mit videmo! nur so zum spass!
+STRICTLY RANDOM SILENT MIRROR
+- dann noch loading simplify!
+- ich muss eigentlich nur runhost in js implementieren sonst garnichts!
+- for now, just integrate into codebase!
+- wie kann ich das zeug zum laufen bringen? node backend machen!
+- try open in pycharm
+- dafuer muss der flask server laufen!
+- videmo
+- ja scheint zu gehen!
+- now try closuretest
+- ./cb2 should have codebase!
+- root bei css muss ich noch machen!
+ok =>muell raus!!!
+only number
+559: *6:24 AM 4/19/2023-6:32 AM 4/19/2023
+560: *6:32 AM 4/19/2023-6:33 AM 4/19/2023
+561: *6:33 AM 4/19/2023-7:13 AM 4/19/2023
+562: *7:13 AM 4/19/2023-7:15 AM 4/19/2023
+563: *7:15 AM 4/19/2023-7:16 AM 4/19/2023
+fonts include
+- let's start!!!
+564: *7:16 AM 4/19/2023-7:18 AM 4/19/2023
+565: *7:18 AM 4/19/2023-7:19 AM 4/19/2023
+iconChars existiert ja schon in allcode!!!
+566: *7:19 AM 4/19/2023-7:46 AM 4/19/2023
+567: *7:46 AM 4/19/2023-7:49 AM 4/19/2023
+568: *8:12 AM 4/19/2023-7:00 AM 4/20/2023
+__________ do 20.4.23 waiting at the airport lib 10 
+600: *7:01 AM 4/20/2023-7:05 AM 4/20/2023
+601: *7:05 AM 4/20/2023-7:09 AM 4/20/2023
+602: *7:10 AM 4/20/2023-7:11 AM 4/20/2023
+603: *7:11 AM 4/20/2023-7:12 AM 4/20/2023
+604: *7:12 AM 4/20/2023-7:14 AM 4/20/2023
+605: *7:14 AM 4/20/2023-7:15 AM 4/20/2023
+606: *7:15 AM 4/20/2023-7:18 AM 4/20/2023
+607: *7:18 AM 4/20/2023-7:18 AM 4/20/2023
+608: *7:18 AM 4/20/2023-7:23 AM 4/20/2023
+609: *7:23 AM 4/20/2023-7:24 AM 4/20/2023
+610: *7:24 AM 4/20/2023-7:27 AM 4/20/2023
+611: *7:28 AM 4/20/2023-7:30 AM 4/20/2023
+612: *7:30 AM 4/20/2023-7:32 AM 4/20/2023
+613: *7:32 AM 4/20/2023-7:33 AM 4/20/2023
+614: *7:33 AM 4/20/2023-7:35 AM 4/20/2023
+615: *7:35 AM 4/20/2023-7:36 AM 4/20/2023
+- soll ich aroot/basejs/cb0 als basis fuer dirlist nehmen? dann spar ich mir sehr viel arbeit!
+616: *7:36 AM 4/20/2023-7:40 AM 4/20/2023
+617: *7:41 AM 4/20/2023-7:41 AM 4/20/2023
+- best version ist: aroot/allcode
+- dann brauch ich vielleicht ueberhaupt kein servercode.js!!!!
+- der neueste ist der in aroot/allcode.js
+- datum!
+- compare allcode in cb2 mit allcode in basejs
+- was mit basejs?
+- update aroot dirs!
+- dirlist!
+- mach einen neuen server.js: servercode.js
+- key dafuer ist eine ordentliche dirlist!
+- ich haett gern eine moeglichkeit allcode zu regeneraten als codebase, und dann von da aus die einzelnen project closures zu generaten!
+- sind verschieden!
+- compare allcode in aroot und a04
+- schau mal zu mDom
+- mach einen iconviewer mit diesen
+- check ob pictoFa und pictoGame verschieden sind
+618: *7:41 AM 4/20/2023-7:51 AM 4/20/2023
+619: *7:51 AM 4/20/2023-7:53 AM 4/20/2023
+- add newest allcode zu a04, ud auch z_all.yaml...
+loesche alles ausser: aroot/cb0,cb1,cb2,aroot/allcode
+620: *7:53 AM 4/20/2023-7:54 AM 4/20/2023
+- allcode von aroot
+621: *7:54 AM 4/20/2023-7:54 AM 4/20/2023
+622: *7:54 AM 4/20/2023-8:06 AM 4/20/2023
+- such mir einen stick fuer code von vorher!
+- entferne stuff
+623: *8:06 AM 4/20/2023-8:06 AM 4/20/2023
+- way shorter!
+624: *8:06 AM 4/20/2023-8:09 AM 4/20/2023
+625: *8:09 AM 4/20/2023-8:38 AM 4/20/2023
+gu strategie: absorb!silence!
+- hole eine perm marker!
+626: *8:38 AM 4/20/2023-8:41 AM 4/20/2023
+- beschrifte markers!
+627: *8:41 AM 4/20/2023-8:47 AM 4/20/2023
+628: *8:47 AM 4/20/2023-8:48 AM 4/20/2023
+629: *8:48 AM 4/20/2023-8:48 AM 4/20/2023
+630: *8:49 AM 4/20/2023-8:51 AM 4/20/2023
+631: *8:51 AM 4/20/2023-10:28 AM 4/20/2023
+- main projects sind: 
+aroot, a04, nodemaster, videmo, chatapp
+- HD alt: alles zeug in b18/software
+- suche weitere sticks! und HDs!!!!!
+641: *10:28 AM 4/20/2023-10:32 AM 4/20/2023
+642: *10:32 AM 4/20/2023-10:35 AM 4/20/2023
+643: *10:35 AM 4/20/2023-10:45 AM 4/20/2023
+644: *10:45 AM 4/20/2023-10:47 AM 4/20/2023
+645: *10:47 AM 4/20/2023-10:48 AM 4/20/2023
+646: *10:48 AM 4/20/2023-10:52 AM 4/20/2023
+647: *10:52 AM 4/20/2023-10:53 AM 4/20/2023
+648: *10:53 AM 4/20/2023-10:55 AM 4/20/2023
+-ich muss one finden das verwendet wird!
+OneNote:
+- TODO is in onedrive (online)
+- den,pl,uni,index,SORT sind in D:/one 1GB
+649: *10:57 AM 4/20/2023-10:58 AM 4/20/2023
+650: *10:59 AM 4/20/2023-10:59 AM 4/20/2023
+651: *10:59 AM 4/20/2023-11:00 AM 4/20/2023
+652: *11:00 AM 4/20/2023-11:01 AM 4/20/2023
+- wieviel platz ist noch auf der alten HD?
+653: *11:01 AM 4/20/2023-11:03 AM 4/20/2023
+654: *11:03 AM 4/20/2023-11:06 AM 4/20/2023
+655: *11:06 AM 4/20/2023-11:07 AM 4/20/2023
+656: *11:08 AM 4/20/2023-11:09 AM 4/20/2023
+=>
+- schau mal ob dirlist in DATA ventured> JA!
+657: *11:09 AM 4/20/2023-11:16 AM 4/20/2023
+658: *11:16 AM 4/20/2023-11:16 AM 4/20/2023
+659: *11:17 AM 4/20/2023-11:28 AM 4/20/2023
+660: *11:28 AM 4/20/2023-11:29 AM 4/20/2023
+661: *11:29 AM 4/20/2023-2:43 PM 4/20/2023
+__________ fr 21.4.23 waiting at the airport lib 10 
+691: *5:56 PM 4/20/2023-5:57 PM 4/20/2023
+692: *5:57 PM 4/20/2023-7:20 PM 4/20/2023
+693: *7:34 PM 4/20/2023-8:11 PM 4/20/2023
+694: *6:30 AM 4/21/2023-6:34 AM 4/21/2023
+695: *6:34 AM 4/21/2023-6:36 AM 4/21/2023
+696: *6:36 AM 4/21/2023-6:41 AM 4/21/2023
+- alle assets sollen auf 
+- dixit und mysterium brauch ich
+1. erstmal ALLES dev von nil auf TRUST 
+2. auf DATA ist jetzt dev2023D (alles von D)
+3. TRUST is done!
+697: *6:42 AM 4/21/2023-6:44 AM 4/21/2023
+698: *6:44 AM 4/21/2023-6:46 AM 4/21/2023
+699: *6:46 AM 4/21/2023-6:48 AM 4/21/2023
+700: *6:48 AM 4/21/2023-6:48 AM 4/21/2023
+701: *6:48 AM 4/21/2023-6:49 AM 4/21/2023
+702: *6:49 AM 4/21/2023-6:51 AM 4/21/2023
+703: *6:52 AM 4/21/2023-6:53 AM 4/21/2023
+704: *6:53 AM 4/21/2023-6:57 AM 4/21/2023
+705: *6:57 AM 4/21/2023-6:58 AM 4/21/2023
+706: *6:58 AM 4/21/2023-6:59 AM 4/21/2023
+707: *6:59 AM 4/21/2023-7:00 AM 4/21/2023
+708: *7:00 AM 4/21/2023-7:03 AM 4/21/2023
+709: *7:03 AM 4/21/2023-7:05 AM 4/21/2023
+710: *7:05 AM 4/21/2023-7:05 AM 4/21/2023
+711: *7:05 AM 4/21/2023-7:19 AM 4/21/2023
+712: *7:19 AM 4/21/2023-7:19 AM 4/21/2023
+713: *7:19 AM 4/21/2023-7:25 AM 4/21/2023
+- move fa.min.css into new dir in alibs called fa
+- move webfonts into alibs
+- convert base/alibs/fa.min.css to base/alibs/fa/fa.min.css
+- open beethoven
+- close all
+- beethoven soll die base von aroot haben
+- trotzdem mach jetzt einen start folder der heisst 
+714: *7:25 AM 4/21/2023-7:29 AM 4/21/2023
+715: *7:29 AM 4/21/2023-7:35 AM 4/21/2023
+716: *7:35 AM 4/21/2023-7:48 AM 4/21/2023
+717: *7:48 AM 4/21/2023-7:49 AM 4/21/2023
+- codebase works!
+- git commit initial!
+- wo soll das allcode sein? und soll es die globals,funcs,funcsm geben?
+- base/codebase das sind die yaml files
+718: *7:49 AM 4/21/2023-7:51 AM 4/21/2023
+719: *7:52 AM 4/21/2023-7:56 AM 4/21/2023
+720: *7:56 AM 4/21/2023-7:59 AM 4/21/2023
+721: *7:59 AM 4/21/2023-8:00 AM 4/21/2023
+722: *8:00 AM 4/21/2023-8:02 AM 4/21/2023
+723: *8:02 AM 4/21/2023-8:02 AM 4/21/2023
+724: *8:02 AM 4/21/2023-8:04 AM 4/21/2023
+725: *8:05 AM 4/21/2023-8:09 AM 4/21/2023
+726: *8:09 AM 4/21/2023-8:11 AM 4/21/2023
+727: *8:11 AM 4/21/2023-8:12 AM 4/21/2023
+728: *8:12 AM 4/21/2023-8:19 AM 4/21/2023
+=> goto bai1
+CODE.di = z_all.yaml
+CODE.justcode = z_allcode.yaml
+CODE.history = z_allhistory.yaml
+- wie lade ich superdi?
+- updateCodebase muss alle 3 yamls renewen!!!!!
+- deshalb brauch ich ein updateCodebase das ein neues code z_allcode
+- wenn ein project durch beethoven geht, soll es nachher consistens mit allcode sein!
+- maintaining a consistent codebase: duplicates have to be handled!!!!
+- I could add a provision dass alle neuen functions in yaml eingegliedert werden
+729: *8:19 AM 4/21/2023-8:35 AM 4/21/2023
+730: *8:35 AM 4/21/2023-9:26 AM 4/21/2023
+music!!! katze
+740: *9:26 AM 4/21/2023-9:28 AM 4/21/2023
+- updateCodebase('coding') das ist das project
+741: *9:29 AM 4/21/2023-9:45 AM 4/21/2023
+742: *9:45 AM 4/21/2023-9:57 AM 4/21/2023
+743: *9:57 AM 4/21/2023-9:58 AM 4/21/2023
+744: *9:58 AM 4/21/2023-10:00 AM 4/21/2023
+745: *10:00 AM 4/21/2023-10:19 AM 4/21/2023
+746: *10:19 AM 4/21/2023-11:35 AM 4/21/2023
+747: *11:35 AM 4/21/2023-11:39 AM 4/21/2023
+748: *11:39 AM 4/21/2023-11:43 AM 4/21/2023
+749: *11:43 AM 4/21/2023-11:57 AM 4/21/2023
+750: *11:57 AM 4/21/2023-12:17 PM 4/21/2023
+751: *12:17 PM 4/21/2023-12:57 PM 4/21/2023
+752: *1:00 PM 4/21/2023-6:55 PM 4/21/2023
+__________ sa 22.4.23 waiting at the airport lib 10 
+800: *6:55 PM 4/21/2023-6:57 PM 4/21/2023
+801: *6:57 PM 4/21/2023-7:18 PM 4/21/2023
+802: *7:18 PM 4/21/2023-6:18 AM 4/22/2023
+803: *6:18 AM 4/22/2023-6:19 AM 4/22/2023
+804: *6:19 AM 4/22/2023-6:24 AM 4/22/2023
+805: *6:24 AM 4/22/2023-6:30 AM 4/22/2023
+806: *6:30 AM 4/22/2023-6:31 AM 4/22/2023
+a) there is no prev: eintrage neues object
+b) prev with same code: ignore
+c) prev with changed code: notify!
+807: *6:31 AM 4/22/2023-6:38 AM 4/22/2023
+808: *6:39 AM 4/22/2023-6:45 AM 4/22/2023
+809: *6:45 AM 4/22/2023-6:55 AM 4/22/2023
+810: *6:55 AM 4/22/2023-7:04 AM 4/22/2023
+811: *7:04 AM 4/22/2023-7:04 AM 4/22/2023
+812: *7:04 AM 4/22/2023-7:21 AM 4/22/2023
+813: *7:21 AM 4/22/2023-7:22 AM 4/22/2023
+814: *7:22 AM 4/22/2023-7:25 AM 4/22/2023
+815: *7:26 AM 4/22/2023-7:38 AM 4/22/2023
+816: *7:38 AM 4/22/2023-7:38 AM 4/22/2023
+817: *7:38 AM 4/22/2023-7:39 AM 4/22/2023
+818: *7:39 AM 4/22/2023-7:39 AM 4/22/2023
+819: *7:39 AM 4/22/2023-7:40 AM 4/22/2023
+820: *7:40 AM 4/22/2023-7:43 AM 4/22/2023
+821: *7:43 AM 4/22/2023-7:49 AM 4/22/2023
+822: *7:49 AM 4/22/2023-7:52 AM 4/22/2023
+823: *7:52 AM 4/22/2023-7:59 AM 4/22/2023
+824: *7:59 AM 4/22/2023-8:00 AM 4/22/2023
+825: *8:00 AM 4/22/2023-8:09 AM 4/22/2023
+826: *8:09 AM 4/22/2023-8:09 AM 4/22/2023
+827: *8:09 AM 4/22/2023-8:11 AM 4/22/2023
+828: *8:11 AM 4/22/2023-8:11 AM 4/22/2023
+829: *8:11 AM 4/22/2023-8:56 AM 4/22/2023
+830: *8:56 AM 4/22/2023-8:56 AM 4/22/2023
+831: *8:56 AM 4/22/2023-8:56 AM 4/22/2023
+832: *8:56 AM 4/22/2023-11:22 AM 4/22/2023
+842: *11:22 AM 4/22/2023-11:47 AM 4/22/2023
+852: *11:47 AM 4/22/2023-1:25 PM 4/22/2023
+853: *1:25 PM 4/22/2023-1:26 PM 4/22/2023
+854: *1:27 PM 4/22/2023-1:28 PM 4/22/2023
+855: *1:28 PM 4/22/2023-1:31 PM 4/22/2023
+856: *1:31 PM 4/22/2023-1:39 PM 4/22/2023
+857: *1:39 PM 4/22/2023-1:40 PM 4/22/2023
+858: *1:40 PM 4/22/2023-1:53 PM 4/22/2023
+859: *1:53 PM 4/22/2023-2:06 PM 4/22/2023
+869: *2:06 PM 4/22/2023-2:40 PM 4/22/2023
+880: *2:40 PM 4/22/2023-3:36 PM 4/22/2023
+881: *3:36 PM 4/22/2023-4:34 PM 4/22/2023
+882: *4:34 PM 4/22/2023-4:39 PM 4/22/2023
+883: *4:39 PM 4/22/2023-4:43 PM 4/22/2023
+884: *4:44 PM 4/22/2023-4:52 PM 4/22/2023
+885: *4:52 PM 4/22/2023-4:56 PM 4/22/2023
+886: *4:56 PM 4/22/2023-4:57 PM 4/22/2023
+887: *4:58 PM 4/22/2023-5:13 PM 4/22/2023
+- http://
+- jetzt allfuncs
+- hat functioniert!!!!
+- araxis test.js vs globals.js
+- simplified!
+- replace tabs by two space!
+- faster string.split? or 
+- jetzt brauch ich das bundle!
+- also die keys hab ich jetzt
+- was jetzt?
+- \W matches non-word characters
+- A word character is a character a-z, A-Z, 0-9, including _ (underscore).
+- mach ein loadCodebase das CODE populated! nenn es lieber populateCODE
+- open aroot and a04
+888: *5:13 PM 4/22/2023-5:27 PM 4/22/2023
+889: *5:27 PM 4/22/2023-5:58 AM 4/23/2023
+__________ so 23.4.23 waiting at the airport lib 10 
+900: *5:58 AM 4/23/2023-6:02 AM 4/23/2023
+901: *6:03 AM 4/23/2023-6:18 AM 4/23/2023
+902: *6:18 AM 4/23/2023-6:27 AM 4/23/2023
+903: *6:27 AM 4/23/2023-6:27 AM 4/23/2023
+904: *6:27 AM 4/23/2023-6:36 AM 4/23/2023
+905: *6:36 AM 4/23/2023-6:42 AM 4/23/2023
+906: *6:42 AM 4/23/2023-6:43 AM 4/23/2023
+907: *6:43 AM 4/23/2023-6:44 AM 4/23/2023
+908: *6:44 AM 4/23/2023-6:48 AM 4/23/2023
+909: *6:48 AM 4/23/2023-7:00 AM 4/23/2023
+910: *7:00 AM 4/23/2023-7:11 AM 4/23/2023
+911: *7:11 AM 4/23/2023-7:12 AM 4/23/2023
+912: *7:12 AM 4/23/2023-7:12 AM 4/23/2023
+913: *7:12 AM 4/23/2023-7:13 AM 4/23/2023
+914: *7:13 AM 4/23/2023-8:10 AM 4/23/2023
+915: *8:10 AM 4/23/2023-8:42 AM 4/23/2023
+916: *8:42 AM 4/23/2023-8:43 AM 4/23/2023
+917: *8:43 AM 4/23/2023-8:49 AM 4/23/2023
+918: *8:50 AM 4/23/2023-8:54 AM 4/23/2023
+919: *8:54 AM 4/23/2023-8:57 AM 4/23/2023
+920: *8:57 AM 4/23/2023-8:58 AM 4/23/2023
+921: *8:58 AM 4/23/2023-11:21 AM 4/23/2023
+__________ mo 24.4.23 waiting at the airport lib 10 
+970: *11:21 AM 4/23/2023-8:24 PM 4/23/2023
+971: *6:23 AM 4/24/2023-6:26 AM 4/24/2023
+972: *6:26 AM 4/24/2023-6:30 AM 4/24/2023
+973: *6:30 AM 4/24/2023-6:32 AM 4/24/2023
+974: *6:32 AM 4/24/2023-6:38 AM 4/24/2023
+975: *6:38 AM 4/24/2023-6:38 AM 4/24/2023
+976: *6:39 AM 4/24/2023-6:47 AM 4/24/2023
+977: *6:47 AM 4/24/2023-6:57 AM 4/24/2023
+978: *6:57 AM 4/24/2023-7:00 AM 4/24/2023
+979: *7:00 AM 4/24/2023-7:08 AM 4/24/2023
+980: *7:09 AM 4/24/2023-7:13 AM 4/24/2023
+981: *7:13 AM 4/24/2023-7:15 AM 4/24/2023
+982: *7:15 AM 4/24/2023-7:17 AM 4/24/2023
+983: *7:17 AM 4/24/2023-7:18 AM 4/24/2023
+984: *7:18 AM 4/24/2023-7:19 AM 4/24/2023
+985: *7:19 AM 4/24/2023-7:25 AM 4/24/2023
+986: *7:25 AM 4/24/2023-7:25 AM 4/24/2023
+987: *7:25 AM 4/24/2023-7:26 AM 4/24/2023
+988: *7:26 AM 4/24/2023-7:28 AM 4/24/2023
+989: *7:28 AM 4/24/2023-7:30 AM 4/24/2023
+990: *7:30 AM 4/24/2023-7:35 AM 4/24/2023
+991: *7:35 AM 4/24/2023-7:40 AM 4/24/2023
+992: *7:40 AM 4/24/2023-7:48 AM 4/24/2023
+993: *7:48 AM 4/24/2023-7:50 AM 4/24/2023
+994: *7:50 AM 4/24/2023-8:20 AM 4/24/2023
+995: *8:21 AM 4/24/2023-8:27 AM 4/24/2023
+996: *8:27 AM 4/24/2023-9:19 AM 4/24/2023
+997: *9:19 AM 4/24/2023-9:25 AM 4/24/2023
+998: *9:25 AM 4/24/2023-9:27 AM 4/24/2023
+999: *9:27 AM 4/24/2023-10:08 AM 4/24/2023
+1000: *10:08 AM 4/24/2023-10:08 AM 4/24/2023
+1: *10:11 AM 4/24/2023-2:18 PM 4/24/2023
+2: *2:18 PM 4/24/2023-2:19 PM 4/24/2023
+ok - * rules sind ein problem!!!!!
+ok - habe * { eliminiert by removing reset.css from list!
+- what to do about * rules?
+3: *2:19 PM 4/24/2023-2:19 PM 4/24/2023
+4: *2:19 PM 4/24/2023-2:21 PM 4/24/2023
+5: *2:21 PM 4/24/2023-2:21 PM 4/24/2023
+6: *2:21 PM 4/24/2023-2:24 PM 4/24/2023
+7: *2:24 PM 4/24/2023-2:26 PM 4/24/2023
+8: *2:26 PM 4/24/2023-2:35 PM 4/24/2023
+9: *2:35 PM 4/24/2023-2:42 PM 4/24/2023
+weiter
+- first check :root
+- add a divControls > div rule!
+- .triangle.type3::before '.' geht nicht!
+- im moment wird :root garnicht genommen!!!
+- was ist wenn es mehrere root gibt? testen!
+10: *2:42 PM 4/24/2023-3:16 PM 4/24/2023
+11: *3:16 PM 4/24/2023-3:16 PM 4/24/2023
+12: *3:16 PM 4/24/2023-3:39 PM 4/24/2023
+13: *3:39 PM 4/24/2023-3:40 PM 4/24/2023
+14: *3:40 PM 4/24/2023-3:53 PM 4/24/2023
+15: *3:54 PM 4/24/2023-3:55 PM 4/24/2023
+16: *3:55 PM 4/24/2023-4:06 PM 4/24/2023
+17: *4:06 PM 4/24/2023-4:09 PM 4/24/2023
+18: *4:09 PM 4/24/2023-4:12 PM 4/24/2023
+19: *4:12 PM 4/24/2023-4:13 PM 4/24/2023
+20: *4:13 PM 4/24/2023-4:15 PM 4/24/2023
+21: *4:15 PM 4/24/2023-4:26 PM 4/24/2023
+22: *4:26 PM 4/24/2023-6:26 PM 4/24/2023
+50: *6:26 PM 4/24/2023-6:45 PM 4/24/2023
+test belinda!
+base/alibs/chess.css
+- wo wird chess.css reingeladen? da muss es in alibs gehen!!!!!
+- ich sollt einfach eine option geben fuer 
+- einzeln durchnehmen!!!
+base ist ok!
+- root not multiple clauses!!!!
+- root muss als erstes kommen!!!!
+s.charCodeAt(0) //s string
+51: *6:45 PM 4/24/2023-7:53 PM 4/24/2023
+__________ di 25.4.23 waiting at the airport lib 29.4 
+52: *7:56 PM 4/24/2023-8:24 PM 4/24/2023
+53: *8:24 PM 4/24/2023-6:34 AM 4/25/2023
+54: *6:34 AM 4/25/2023-6:38 AM 4/25/2023
+55: *6:38 AM 4/25/2023-6:50 AM 4/25/2023
+56: *6:50 AM 4/25/2023-6:56 AM 4/25/2023
+57: *6:56 AM 4/25/2023-6:59 AM 4/25/2023
+58: *6:59 AM 4/25/2023-7:02 AM 4/25/2023
+59: *7:02 AM 4/25/2023-7:04 AM 4/25/2023
+60: *7:04 AM 4/25/2023-7:10 AM 4/25/2023
+61: *7:10 AM 4/25/2023-7:10 AM 4/25/2023
+62: *7:10 AM 4/25/2023-7:18 AM 4/25/2023
+63: *7:18 AM 4/25/2023-7:22 AM 4/25/2023
+64: *7:22 AM 4/25/2023-7:28 AM 4/25/2023
+65: *7:28 AM 4/25/2023-8:07 AM 4/25/2023
+66: *8:07 AM 4/25/2023-8:11 AM 4/25/2023
+- achtung: wenn allcss.css jetzt ueberschrieben wird dann wird er wieder alles durcheinander mixen!!!!!
+- ich koennte bs4 ueberall preponen bei bs4
+- allcss soll ein reset am anfang haben!
+- achtung da gibt es jetzt ein problem!!!!
+- test ob *::before geht!
+- statt @ zu testen muss ich doch @keyframes testen!
+- versuch die selection aus transitions mit nur keyframes
+- types sollten human readable uebergeben werden!!!
+- cssbaseNew aufteilen!!!
+- cssSelectFrom(cssfile,types)
+- in welcher form mach ich das? classes und keyframes
+- ich sollte eine moeglichkeit haben styles von zB bs4 zu verwenden ohne die tag styles!
+- soll ich transitions.css reinbringen? schau es an!
+- read cssbase.css
+- extend: read in all the files including cssbase.css excluding alibs
+- wie mach ich die closure?
+67: *8:11 AM 4/25/2023-8:16 AM 4/25/2023
+68: *8:16 AM 4/25/2023-8:25 AM 4/25/2023
+69: *8:25 AM 4/25/2023-8:29 AM 4/25/2023
+70: *8:29 AM 4/25/2023-8:36 AM 4/25/2023
+71: *8:36 AM 4/25/2023-9:23 AM 4/25/2023
+72: *9:23 AM 4/25/2023-9:56 AM 4/25/2023
+73: *9:56 AM 4/25/2023-9:56 AM 4/25/2023
+74: *9:56 AM 4/25/2023-9:58 AM 4/25/2023
+75: *9:58 AM 4/25/2023-9:58 AM 4/25/2023
+76: *9:58 AM 4/25/2023-6:24 PM 4/25/2023
+86: *6:24 PM 4/25/2023-6:27 PM 4/25/2023
+87: *6:27 PM 4/25/2023-6:30 PM 4/25/2023
+88: *6:30 PM 4/25/2023-7:12 PM 4/25/2023
+98: *7:12 PM 4/25/2023-7:45 PM 4/25/2023
+99: *7:45 PM 4/25/2023-8:17 PM 4/25/2023
+__________ mi 26.4.23 waiting at the airport lib 29.4 
+110: *8:17 PM 4/25/2023-6:44 AM 4/26/2023
+111: *6:44 AM 4/26/2023-6:44 AM 4/26/2023
+112: *6:44 AM 4/26/2023-6:46 AM 4/26/2023
+113: *6:46 AM 4/26/2023-6:50 AM 4/26/2023
+114: *6:50 AM 4/26/2023-6:54 AM 4/26/2023
+115: *6:54 AM 4/26/2023-7:00 AM 4/26/2023
+116: *7:00 AM 4/26/2023-7:05 AM 4/26/2023
+117: *7:05 AM 4/26/2023-7:06 AM 4/26/2023
+118: *7:06 AM 4/26/2023-7:07 AM 4/26/2023
+119: *7:07 AM 4/26/2023-7:15 AM 4/26/2023
+120: *7:15 AM 4/26/2023-7:21 AM 4/26/2023
+121: *7:21 AM 4/26/2023-7:29 AM 4/26/2023
+122: *7:29 AM 4/26/2023-7:30 AM 4/26/2023
+123: *7:30 AM 4/26/2023-7:33 AM 4/26/2023
+124: *7:33 AM 4/26/2023-7:36 AM 4/26/2023
+125: *7:37 AM 4/26/2023-
+- bei code wird immer noch nicht removeTrailingComments gemacht!!!!
+- mach nochmal das coding!
+- versuch games aus aroot!!! da gibts jetzt problem mit images dir!!!
+- nature ist eigentlich jetzt gut!
+css guidelines:
+=>dont use id styles!!!!!!!!!!!!!!
+=>only use classes and keyframes!!!!!!!
+=>reset body and html, do NOT use generic tag styles!!!!
+
+- lsys_draw lsys_add tree_draw tree_add
+- und zwar in symlist! also beim aufruf!!!
+- das heisst _minimizeCode muss eine liste MUSS dazukriegen!
+- ok es ist klar: tree_init und lsys_init muss dazu! wegen get_func(name,'init')
+- schau in closure selbst
+- irgendeinen output machen!!!
+- rem cons!
+- er included NATURE const nicht!!!!
+NATURE
+toRadian
+- nature geht nicht: warum???
+- cai geht garnicht!
+- angleichen a04/base/assets und aroot/base/assets
+- nodemaster hat assets/icons/belinda.png
+- beethoven hat assets/
+
+- css closure
+- test! JA, ist invariant!!!!!
+
+- wie mach ich die closure?
+- der code ist noch nicht wirklich sauber!!! aber egal
+- versuch ein codebaseExtendFromProject
+- ich sollte codebaseFromFiles machen!!!!
+- wie muss css closure ausschauen?
+=>jetzt muss die closures machen!!!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+- einfach nur noch schreiben!
+- normalize ohne minimize!
+- nimm base.css ini beethoven/base und normalize!
+- 
+- dazu brauch ich aber erstmal ein allcss.css!
+- mach dasselbe mit cssbaseExtend
+- codebaseextend functioniert!!!!!!!
+- ok, override allglobals!
+- check ob coloPalette in allfuncs.js drin ist! JA!!!!
+- im alten allglobals sind functions drin!!!!!!!
+- araxis compare allglobals
+- bug
+- wow!!!
+- output bytype
+- build extended codebase! extendedglobals,extendedfuncs
+- und jetzt? integrate but how????
+- was jetzt?
+- all new objects are now in olist (in reihenfolge des einlesenss!)
+
+- jetzt mach dasselbe fuer die neuen in coding
+=>mach bykey
+codebaseExtend(project)
+read globlist and funclist mach ein bykey und ein bytypedraus
+read each file in index.html =>newkeys
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+- codebaseUpdate(project) soll alle einlesen und mit allfuncs und allglobals eine erweiterte basis bilden! die veraenderten duplicates sollen gezeigt werden!
+
+im moment macht er nur eine func-closure!
+er soll auch nur die globals die gebrauch werden importen!!!
+- was macht codeUpdateCodebase? es macht ein neues allfuncs das all die funcs added die im project sind und eine liste von changes ausgibt
+- was macht codeBuildClosure? es macht aus den files die als scripts included sind eine closure
+- dann brauch ich noch ein cssClosure und cssCodebase update
+- was macht 
+- er arbeitet mit ALTEM code!!!!
+- discord
+- das kann jetzt SEHR lange dauern!!!!!!!
+- D auf SSD
+- SSD
+- make a list
+['_addRelatives','_addFilterHighlight',
+- nachdem es nur funcs sind brauch ich mich nicht um order (also keys) kuemmern!!!
+if this is my last day I would like to spend it with music and lightness
+- bundle works, jetzt brauch ich closure!!!
+- test
+WAY SHORTER!!!
+- wenn jetzt noch neue keys sind, add to olist functions!
+- jetzt moecht ich all die included js files in einer liste
+
+- delete the following from z_all.yaml:
+load_Codebase
+_start_old
+load_codebase
+loadCodebase
+bundleGenerateFrom
+bundleGenFromProject
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+- kathastrophe!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+- mach neues allcode.yaml
+- open z_allcode und sch nach dynamicArea
+- changes die nur whitespaces involvieren sind NICHT significant changes!!!
+- mit allglobasl und allfuncs sollte es functionieren!
+- removeEmptyLines!
+- geh zu allcode 
+- geh zum fehler! toggle_tables_off
+- sieh es nur an und erkenne die irrelevanz
+- keine ahnung was das problem ist!
+- updateCodebase: nur allfuncs wird updated!!!
+- closure von allglobals und allfuncs
+- erstmal nur allcode!
+- way shorter!!!
+- in first line, if there is anything non-empty after ) { split
+- bau1 17
+- copy from server.js
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+- server.js wie hab ich datetime gemacht?
+- first, just point out duplicates, do NOT update them in yaml files
+
+- updateCodebase(project) heisst: die codebase erweitern um neue funktionen
+in project.
+=> wie stelle ich sicher dass duplicates nicht incompatible werden?
+-ch koennte bei jedem duplicate nachfragen
+override oder keep oder rename
+was will ich ueberhaupt?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+- found the bug!
+- ok alles klar, der htmlbodyfile soll nur angegeben werden wenn DIFFERENT from htmlscriptsfile!!!!!!!!!!!!!!! (das gilt eh nur fuer belinda!!!
+- wieso parsed er alles 2x???
+- was ist da los?!?!?!?!?!?!?
+- fgu wae
+- was wenn path duplicated?
+- bundle hat jetzt den path! der path soll die history sein!
+
+
+
+
+
+10- gu schwimmen um 1h30
+10- bad
+10- A gemuese reingeben!
+10- wae aufh
+=>100AA
+
+
+
+
+- dann auch bei den alten functions duplicates aufgezeichnet und auf wunsch code upgraded wird
+- ich sollte ein sortfunctions haben das alle functions in einem file alpha sorted!!!
+- also brauch ich:
+- sie soll ALLE classes,ids und keyframes enthalten
+- die tags sollen von einem designated css file kommen!
+- mach eine riesige css base
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+- was will ich ueberhaupt? 
+1. fuer jedes beliebige project will ich eine closure machen koennen
+2. ich will eine codebase und eine cssbase (jeweils 1 file + die yaml info)
+3. die codebase auf einfache art neu generieren koennen, starting von existing codebase!
+4. all das locally in javascript ohne node!
+5. spaeter auch mit node sodass er das komplette project generiert!
+6. danach eine UI die erlaubt code zu finden, zu editieren,..... all das zeug zu machen
+7. finally, web scraping for new code
+8. einen editor der mir erlaubt ganz schnell in vscode folders zu hiden oder zu showen
+
+- ausmusten von a04!!!!
+=>a04 ist mein neues vps mit node und py
+- eigentlich sollte das a04 sein! (auf github: vps)
+- das soll aber auch auf github kommen oder?
+- ich koennt ein neues a0root machen dass wirklich alles enthaelt
+was jetzt?
+
+
+- ich kann schon wiederall die relevanten projects in ein dev dir geben und dann weiter bearbeiten!
+
+- was kann ich jetzt machen waehrend das zeug laeuft?
+- how about that: 
+2. clear SSD500
+3. alte HD weggeben (!)
+4. 
+
+DATA/dev... hat insgesamt 136GB
+D hat 20GB
+OneDrive/dev hat 5GB
+=>alte HD hat 500GB free! 
+
+DATA hat wahrscheinlich weit ueber 100GB
+das ARBEIT dir soll NICHT am stick sein!!!
+=>compute how much I have in D and how much in DATA
+- ich wuerd sagen: SSD500 soll D und DATA von NIL halten
+
+
+
+
+
+
+=>ALLES von DATA dev... =>
+ALLES in aroot: dann kann ich 
+1. assets consolidieren
+2. common allcode haben
+3. common php code haben der basically auf mySQL zugreift und nur einfach web access provided
+4. common node modules haben, das grundlage fuer neue vps ist wenn wir eine bekommen
+5. serverX.js fuer all die node apps
+6. einlagern / auslagern muss auch gehen: manipulate .vscode settings!
+7. generate allcode
+8. generate closures fuer was immer ich will
+
+
+- oder: neuere sache: ALLES kommt in aroot
+was jetzt? wie will ich es organisieren?
+- eigentlich waer am besten 1 dev dir wo alles drin ist und in der root das coding das auf alles zugriefen kann!
+- wie waer es wenn ich einfach ALL das zeug in 1 grosses dev dir lade und DANACH im hauptdir das vs code laufen lasse und DANN davon alles mit live-server laufen lasse!
+
+- hole eine schachtel fuer sens, eine fuer mit, eine fuer trap
+
+fe sticks (in ziplock):
+Microsoft 16GB Kingston gross schwarz ist bootdisk von 2010
+
+HP sensadr
+
+lila Kingston 4GB guggi securer app
+
+HP bei tee: linux
+
+=>der duenne ist ein boot von 2017 16GB
+(versuch damit guggi's comp zu booten!)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+- discord,mail
+- test iviewer auf telecave!!!
+- index.html hab ich immer noch manually geedited! und hab noch kein css!
+- copy viewer dir
+- way shorter!!!
+- `; in 1 zeile wird nicht genommen!!!! wieso???
+- was macht der ueberhaupt? open start
+- try bundle from project iconViewer
+- belinda ist es komplizierter!!! ich muss die games classes adden!
+- gut ich hab den seed! jetzt minimize schau wie ich es bei belinda gemacht hae!!!
+- how to gen closure? from bundle di,ckeys
+- jett brauch closure!
+- if have bundle preserverRegions
+- warte: wie handled er im moment die regions? ich glaube falsch!!!
+- bei parseCodeFile brauch ich eine fileRegions options
+- do I still generate if have bundle? NO
+- closure generation
+- code cleanup
+WAY SHORTER
+- simplify!
+WAY SHORTER!!!
+
+- gut jetzt hab ich die files, was jetzt???
+- da ist ein fehler!
+- nochmal!
+- stringCount('das ist sau saubloed Sau','Sau')
+- gehoert in meine library!
+- ich moecht ein stringCount(s,ssub) => wie oft kommt ssub in s vor
+
+
+
+
+1. starbucks starken kaffe
+
+
+
+
+- bundleGenFromProject
+- closureGenerateFrom und bundleGenerateFrom
+- testPrettyCss => cssGenerateFrom
+- wie bekomm ich die files? von 1 project? brauch eigentlich normalerweise nur das index.html file!
+1- 
+=>library code analysis
+=>1. games bundle
+- vergleiche 2 bundles zB games und basemin
+- wie soll eine codebase ausschauen?
+==>work on codebase!!!
+- was ist mit shapes????
+- mach cards + base = final!
+- ich glaub jetzt geht es!!!
+- root key darf nicht mit :: starten!
+- 99?
+- warum nimmt er dButtons div nicht???
+- root
+WAY SHORTER!!!
+- falsch!
+- WAAAAAAAAS?
+
+- :root clause muss dazu!!!
+- children css eg #dButtons div
+
+
+
+html,
+body,
+#md,
+#rightSide {
+  /* height: 100%; */
+  padding: 0;
+  margin: 0;
+  font: 20px Arial;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+=>2 ist eigentlich im moment angesagt!
+ideen:
+1- per function code compare
+ - functions wo belinda und games verschieden sind: rename 1 version
+ - functions die gleich sind: make a commonbase
+2- css cleanup:
+ - bundle+index, alle css files einlesen
+ - nur die css nehmen die irgendwo im code oder in bisherigem css vorkommen
+ - diese in 1 cssbundle geben, alpha sort
+3- resort within bundle
+ - alles aus legacy und all zu basemin, gamehelpers, cards, or game
+ - eg., has_farm gehoert in aristo!
+4- coding project in a04 und nodemaster anwenden! 
+ - auch dort bundles/closures machen!
+ - vid bundle / closure machen!!!!!
+5- codebase anlegen
+ - bundle / closure aus dem huge codebase file machen!!!!! mit projects
+ - codepilot machen aus codebase
+ - css codebase!!!! (nimm alle aus den full versions von games nd belinda!
+6- github und stackoverflow scraping =>add to codebase!
+7- kleine ui lib die wirklich schoen ist!
+8- coding lab fuer den guggi!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+regions einfuegen! erstmal nur fname as region!
+
+- ich glaub es ist geloest!!!!
+WAY SHORTER!!!
+- revert cBlank and modify in accuse!!!
+- inno_card needs to be corrected as well!!!
+- cBlank has been changed!!! need to change spotit card!
+- repl mStyle in games2 basemin.js by new one!
+- araxis compare bundle.js to coding closuregames.js
+- auch bundle soll downloadAsText gemacht werden!
+- nochmal!!!!
+- hat VOLL functioniert!!!!!!!
+- save it as index.html
+- start coding
+- mach ein bundle!!!! mit coding
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+- mach ein bundle MIT computeclosure zeug
+- wie hab ich das all.js gemacht???
+- restore all.js
+- ideal waere:
+1. copy all relevant files to a bundle
+2. write a list of functions that have to work
+3. parse html file for stringAfter(onclick= 
+- was brauch ich fuer closure? eine liste von functions
+- brauch eine bessere art fuer closure!
+- sowas wie von server aus: closure
+- open
+- woher kommt eigentlich all.js??? das ist ja eine closure!!!
+- all.js ist mist!!!
 - copy includes
 - consolidate games bau is nix!!!
 - games closure versuchen!!!

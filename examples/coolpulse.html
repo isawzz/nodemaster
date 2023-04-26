@@ -1,90 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Document</title>
-		<style>
-			body {
-				display: grid;
-				place-items: center;
-				margin: 0;
-				height: 100vh;
-				background-color: #000;
-			}
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        display: grid;
+        place-items: center;
+        margin: 0;
+        height: 100vh;
+        background-color: #000;
+      }
 
-			.image-pulse {
-				--pulse-width: 15px;
-				--pulse-color: rgba(135, 200, 235, 0.5);
-				position: relative;
-			}
-			.image-pulse img {
-				position: relative;
-				width: 200px;
-				height: 200px;
-				border-radius: 50%;
-				z-index: 2;
-			}
-			.image-pulse::after,
-			.image-pulse::before {
-				content: ' ';
-				position: absolute;
-				width: 140%;
-				height: 140%;
-				top: -20%;
-				left: -20%;
-				right: -20%;
-				bottom: -20%;
-				box-sizing: border-box;
-				border-style: solid;
-				border-color: var(--pulse-color);
-				border-width: var(--pulse-width);
-				border-radius: 50%;
-				z-index: 1;
-				transform: scale(0.7);
-				animation: pulse 2s linear infinite;
-			}
-			.image-pulse::after {
-				animation-delay: 1s;
-			}
-			.image-pulse:hover::after,
-			.image-pulse:hover::before {
-				animation: pulse 1s linear infinite, pulse-hover 5s linear infinite;
-			}
-			.image-pulse:hover::after {
-				animation-delay: 0.5s;
-			}
-			@keyframes pulse {
-				to {
-					opacity: 0;
-					transform: scale(1);
-				}
-			}
-			@keyframes pulse-hover {
-				0% {
-					border-color: red;
-				}
-				25% {
-					border-color: #80ff00;
-				}
-				50% {
-					border-color: aqua;
-				}
-				75% {
-					border-color: #8000ff;
-				}
-				100% {
-					border-color: red;
-				}
-			}
-		</style>
-	</head>
-	<body>
-		<div class="image-pulse">
-			<img src="https://1.bp.blogspot.com/-vhmWFWO2r8U/YLjr2A57toI/AAAAAAAACO4/0GBonlEZPmAiQW4uvkCTm5LvlJVd_-l_wCNcBGAsYHQ/s16000/team-1-2.jpg" />
-		</div>
+      .image-pulse {
+        --pulse-width: 15px;
+        --pulse-color: rgba(135, 200, 235, 0.5);
+        position: relative;
+      }
+      .image-pulse img {
+        position: relative;
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        z-index: 2;
+      }
+      .image-pulse::after,
+      .image-pulse::before {
+        content: ' ';
+        position: absolute;
+        width: 140%;
+        height: 140%;
+        top: -20%;
+        left: -20%;
+        right: -20%;
+        bottom: -20%;
+        box-sizing: border-box;
+        border-style: solid;
+        border-color: var(--pulse-color);
+        border-width: var(--pulse-width);
+        border-radius: 50%;
+        z-index: 1;
+        transform: scale(0.7);
+        animation: pulse 2s linear infinite;
+      }
+      .image-pulse::after {
+        animation-delay: 1s;
+      }
+      .image-pulse:hover::after,
+      .image-pulse:hover::before {
+        animation: pulse 1s linear infinite, pulse-hover 5s linear infinite;
+      }
+      .image-pulse:hover::after {
+        animation-delay: 0.5s;
+      }
+      @keyframes pulse {
+        to {
+          opacity: 0;
+          transform: scale(1);
+        }
+      }
+      @keyframes pulse-hover {
+        0% {
+          border-color: red;
+        }
+        25% {
+          border-color: #80ff00;
+        }
+        50% {
+          border-color: aqua;
+        }
+        75% {
+          border-color: #8000ff;
+        }
+        100% {
+          border-color: red;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="image-pulse">
+      <img src="https://1.bp.blogspot.com/-vhmWFWO2r8U/YLjr2A57toI/AAAAAAAACO4/0GBonlEZPmAiQW4uvkCTm5LvlJVd_-l_wCNcBGAsYHQ/s16000/team-1-2.jpg" />
+    </div>
 
-		<script></script>
-	</body>
+    <script></script>
+  </body>
 </html>
