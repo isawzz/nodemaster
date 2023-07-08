@@ -9389,7 +9389,20 @@ __________ mi 26.4.23 waiting at the airport lib 29.4
 122: *7:29 AM 4/26/2023-7:30 AM 4/26/2023
 123: *7:30 AM 4/26/2023-7:33 AM 4/26/2023
 124: *7:33 AM 4/26/2023-7:36 AM 4/26/2023
-125: *7:37 AM 4/26/2023-
+125: *7:37 AM 4/26/2023-8:48 AM 4/26/2023
+126: *8:48 AM 4/26/2023-8:49 AM 4/26/2023
+127: *8:49 AM 4/26/2023-8:51 AM 4/26/2023
+128: *8:52 AM 4/26/2023-8:56 AM 4/26/2023
+129: *8:56 AM 4/26/2023-8:15 PM 4/26/2023
+__________ do 27.4.23 waiting at the airport lib 29.4 
+229: *8:15 PM 4/26/2023-
+
+- als erstes mach einen pass wo ALLE empty lines entferne!
+- comment lines werden scheinbar jetzt als empty lines reingegeben!!!!
+- tbd: nicht wenn ein name in klammern ist reinnehmen!!!!!
+- rem cons!
+- repeat coding
+- 
 - bei code wird immer noch nicht removeTrailingComments gemacht!!!!
 - mach nochmal das coding!
 - versuch games aus aroot!!! da gibts jetzt problem mit images dir!!!
