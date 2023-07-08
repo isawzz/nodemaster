@@ -3533,7 +3533,7 @@ geh zu how to und mach alles genau so
 113: *6:57 AM 11/27/2022-6:59 AM 11/27/2022
 - dir struct
 - copy .env
-- welchen PORT will ich laufen? jetzt mal 2121
+- welchen PORT will ich laufen? jetzt mal 4041
 114: *6:59 AM 11/27/2022-7:00 AM 11/27/2022
 115: *7:00 AM 11/27/2022-7:00 AM 11/27/2022
 116: *7:01 AM 11/27/2022-7:01 AM 11/27/2022
@@ -3557,7 +3557,7 @@ ok - WinSCP connect, refresh + upload testmongo folder
 124: *7:15 AM 11/27/2022-7:17 AM 11/27/2022
 >node server.js
 125: *7:17 AM 11/27/2022-7:17 AM 11/27/2022
-- browse to 216.250.112.218:2121
+- browse to 216.250.112.218:4041
 __________ALLES HAT FUNKTIONIERRT!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 126: *7:17 AM 11/27/2022-7:19 AM 11/27/2022
 127: *7:19 AM 11/27/2022-7:21 AM 11/27/2022

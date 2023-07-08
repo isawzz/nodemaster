@@ -16,7 +16,7 @@ io.on('connection', (socket) => {
   console.log('a user connected');
 });
 
-let port = 2121;
+let port = 4041;
 server.listen(port, () => {
   console.log('listening on '+port);
 });

@@ -1137,7 +1137,7 @@ const BLUFF = {
   toword: { _: '_', '3': 'three', '4': 'four', '5': 'five', '6': 'six', '7': 'seven', '8': 'eight', '9': 'nine', T: 'ten', J: 'jack', Q: 'queen', K: 'king', A: 'ace' },
   rankstr: '3456789TJQKA',
 };
-const SERVERURL='http://localhost:2121';
+const SERVERURL='http://localhost:4041';
 const Simple = {
   axiom: 'A',
   rules: [

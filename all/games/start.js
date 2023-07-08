@@ -3,7 +3,7 @@ onload = start;
 TESTING = 'live'; // live | nginx | [false] | true (live for live-server, nginx for nginx) 
 
 async function start() {
-	Socket = TESTING == 'live' ? io('http://localhost:2121') : TESTING == 'nginx' ? io('http://216.250.112.218:3000') : io();
+	Socket = TESTING == 'live' ? io('http://localhost:4041') : TESTING == 'nginx' ? io('http://216.250.112.218:3000') : io();
 	await load_syms();
 	game_init(); //macht dHeader,dMessage,dTable,dFooter und den monkey: dPuppet
 

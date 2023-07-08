@@ -256,7 +256,7 @@ _________ npm install string for WebDefSimplified full stack course:
 _________ how to a04 run testmongo
 	goto a04/testmongo
 	>npx nodemon server.js
-	browse to localhost:2121
+	browse to localhost:4041
 
 _________ how to vps run testmongo
 	WinSCP connect, refresh + upload testmongo folder
@@ -264,7 +264,7 @@ _________ how to vps run testmongo
 	>npm i express ejs express-ejs-layouts mongoose dotenv nodemon cors -save 
 	>cd testmongo
 	>nodemon server.js
-	browse to 216.250.112.218:2121
+	browse to 216.250.112.218:4041
 
 ________________________ WebDefSimplified full stack dev: course #2
 _________ how to add a new (mvc) app to node js app 

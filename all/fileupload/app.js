@@ -4,7 +4,7 @@ const path = require("path");
 
 const { fileExtLimiter, filesPayloadExists, fileSizeLimiter } = require('./server/file');
 
-const PORT = process.env.PORT || 2121;
+const PORT = process.env.PORT || 4041;
 
 const app = express();
 

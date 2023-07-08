@@ -1,6 +1,6 @@
 const express = require("express");
 const path = require("path");
-const PORT = process.env.PORT || 2121;
+const PORT = process.env.PORT || 4041;
 const app = express();
 app.use(express.static(path.join(__dirname, '..'))); //Serve public directory
 

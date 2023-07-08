@@ -4,7 +4,7 @@ TESTING = 'live'; // live | nginx | [false] | true (live for live-server, nginx 
 
 async function start() {
 
-	Socket = TESTING == 'live' ? io('http://localhost:2121') : TESTING == 'nginx'? io('http://216.250.112.218:3000') : io(); 
+	Socket = TESTING == 'live' ? io('http://localhost:4041') : TESTING == 'nginx'? io('http://216.250.112.218:3000') : io(); 
 
 	//rotating monkey
 	await load_syms();
