@@ -20,7 +20,7 @@ function db_init_code() {
 	post_json('http://localhost:3000/db/init/code', code, r => console.log('resp', r));
 }
 function db_list_code(){
-
+	if (nundef(DB.code)) DB.code = [];
 	for(const code of DB.code){
 
 	}

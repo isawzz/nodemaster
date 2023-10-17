@@ -14,7 +14,7 @@ async function start() {
 	// dTable = mBy('dMain');
 	// mStyle(dTable,{w:'100vw',h:'100vh'});
 	// dTable.style.backgroundImage = 'url("../base/assets/img/airport/airport1.jpg")'; //img/table.png)';'
-	return;
+	//return;
 
 	//rotating monkey
 	await load_syms();
@@ -23,6 +23,7 @@ async function start() {
 
 	await db_load();	
 	dTable = mBy('dTable'); mCenterFlex(dTable); //mStyle(dTable,{bg:BLUE})
+	if (nundef(DB.code)) DB.code = [];
 	show_code_list(DB.code);
 }
 
